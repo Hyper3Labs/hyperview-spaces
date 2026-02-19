@@ -7,6 +7,8 @@ on:
       - spaces/imagenette-clip-hycoclip/**
       - .github/workflows/deploy-hf-space-imagenette.yml
       - .github/workflows/deploy-hf-space-reusable.yml
+  repository_dispatch:
+    types: [pypi-release]
   workflow_dispatch:
 
 concurrency:
