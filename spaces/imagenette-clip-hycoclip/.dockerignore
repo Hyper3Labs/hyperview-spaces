@@ -1,0 +1,15 @@
+# Git
+.git
+
+# Python
+__pycache__
+*.py[cod]
+.venv
+venv
+
+# Caches
+.mypy_cache
+.pytest_cache
+
+# Misc
+.DS_Store

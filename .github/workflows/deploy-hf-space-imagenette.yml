@@ -1,0 +1,22 @@
+name: Deploy HF Space - Imagenette CLIP HyCoCLIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/imagenette-clip-hycoclip/**
+      - .github/workflows/deploy-hf-space-imagenette.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-imagenette
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/imagenette-clip-hycoclip
+      space_id: hyper3labs/HyperView
+    secrets: inherit
