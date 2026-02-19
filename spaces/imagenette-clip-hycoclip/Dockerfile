@@ -21,11 +21,12 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-# Install latest releases from PyPI (split for better build caching & logging).
-# For reproducible builds, pin versions here:
-# RUN pip install hyperview==0.1.1 hyper-models==0.1.0
-RUN pip install hyperview && python -c "import hyperview; print('hyperview', hyperview.__version__)"
-RUN pip install hyper-models && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
+ARG HYPERVIEW_VERSION=0.2.0
+ARG HYPER_MODELS_VERSION=0.1.0
+
+# Pin package versions so Docker cache cannot silently hold an older PyPI release.
+RUN pip install "hyperview==${HYPERVIEW_VERSION}" && python -c "import hyperview; print('hyperview', hyperview.__version__)"
+RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 
 COPY --chown=user demo.py ./demo.py
 
