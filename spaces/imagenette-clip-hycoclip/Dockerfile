@@ -36,8 +36,7 @@ ENV HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     DEMO_SAMPLES=${DEMO_SAMPLES}
 
 # Precompute at build time so the Space starts fast.
-# If this fails, the app will still compute at startup (slower first launch).
-RUN python demo.py --precompute || echo "WARNING: precompute failed, will compute at startup"
+RUN python demo.py --precompute
 
 ENV HOST=0.0.0.0 \
     PORT=7860

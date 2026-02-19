@@ -43,7 +43,6 @@ def _ensure_demo_ready(dataset: hv.Dataset) -> None:
             image_key=HF_IMAGE_KEY,
             label_key=HF_LABEL_KEY,
             max_samples=NUM_SAMPLES,
-            shuffle=True,
         )
 
     spaces = dataset.list_spaces()
