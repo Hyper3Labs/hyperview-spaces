@@ -121,7 +121,13 @@ def main() -> None:
 
     if len(dataset) == 0 or not dataset.list_layouts():
         print("Preparing demo dataset...")
-        _ensure_demo_ready(dataset)
+        try:
+            _ensure_demo_ready(dataset)
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            print(f"\nFATAL: demo setup failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+            sys.exit(1)
     else:
         print(
             f"Loaded cached dataset '{DATASET_NAME}' with "

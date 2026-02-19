@@ -21,10 +21,11 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-# Install latest releases from PyPI.
+# Install latest releases from PyPI (split for better build caching & logging).
 # For reproducible builds, pin versions here:
-# RUN pip install --upgrade hyperview==0.1.1 hyper-models==0.1.0
-RUN pip install --upgrade hyperview hyper-models
+# RUN pip install hyperview==0.1.1 hyper-models==0.1.0
+RUN pip install hyperview && python -c "import hyperview; print('hyperview', hyperview.__version__)"
+RUN pip install hyper-models && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 
 COPY --chown=user demo.py ./demo.py
 
@@ -41,7 +42,7 @@ ENV HOST=0.0.0.0 \
 
 EXPOSE 7860
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
     CMD curl -f http://localhost:7860/__hyperview__/health || exit 1
 
 CMD ["python", "demo.py"]
