@@ -22,6 +22,7 @@ HF_SPLIT = os.environ.get("DEMO_HF_SPLIT", "validation")
 HF_IMAGE_KEY = os.environ.get("DEMO_HF_IMAGE_KEY", "image")
 HF_LABEL_KEY = os.environ.get("DEMO_HF_LABEL_KEY", "label")
 NUM_SAMPLES = int(os.environ.get("DEMO_SAMPLES", "300"))
+SAMPLE_SEED = int(os.environ.get("DEMO_SEED", "42"))
 
 CLIP_MODEL_ID = os.environ.get("DEMO_CLIP_MODEL", "openai/clip-vit-base-patch32")
 HYPER_MODEL_ID = os.environ.get("DEMO_HYPER_MODEL", "hycoclip-vit-s")
@@ -43,6 +44,8 @@ def _ensure_demo_ready(dataset: hv.Dataset) -> None:
             image_key=HF_IMAGE_KEY,
             label_key=HF_LABEL_KEY,
             max_samples=NUM_SAMPLES,
+            shuffle=True,
+            seed=SAMPLE_SEED,
         )
 
     spaces = dataset.list_spaces()
