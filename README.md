@@ -1,6 +1,6 @@
 # hyperview-spaces
 
-This folder is intended to be a **standalone repository** for Hugging Face Space deployments.
+This folder is intended to be a **standalone repository** for Hugging Face Space deployments. Our demo at https://huggingface.co/spaces/hyper3labs/HyperView follows the template described here. 
 
 Recommended GitHub repository name:
 
