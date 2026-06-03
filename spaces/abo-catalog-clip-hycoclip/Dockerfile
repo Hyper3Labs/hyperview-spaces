@@ -21,7 +21,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@main
+ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@13963ffd1a1de669eb2d4dfab52f2313d644faaa
 ARG HYPER_MODELS_VERSION=0.2.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
