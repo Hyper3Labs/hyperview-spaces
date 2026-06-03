@@ -26,7 +26,16 @@ ARG HYPER_MODELS_VERSION=0.2.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-RUN pip install "${HYPERVIEW_PACKAGE}" && python -c "import hyperview; print('hyperview', hyperview.__version__)"
+RUN pip install --force-reinstall --no-cache-dir "${HYPERVIEW_PACKAGE}" && python - <<'PY'
+import inspect
+import hyperview as hv
+
+launch_params = set(inspect.signature(hv.launch).parameters)
+print("hyperview", hv.__version__, inspect.signature(hv.launch))
+missing = {"block", "workspace_id"} - launch_params
+if missing:
+    raise RuntimeError(f"Installed HyperView is missing launch parameters: {sorted(missing)}")
+PY
 RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
@@ -49,6 +58,7 @@ PY
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
+    HYPERVIEW_WORKSPACE_ID=abo-catalog-clip-hycoclip \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
 

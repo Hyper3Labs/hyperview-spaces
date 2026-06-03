@@ -375,14 +375,17 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
     }
 
     session = hv.launch(dataset, **supported_kwargs(hv.launch, launch_kwargs))
+    print("Installing ABO demo extension...", flush=True)
     session.ui.add_extension(
         EXTENSION_DIR,
         **supported_kwargs(session.ui.add_extension, {"workspace_id": WORKSPACE_ID}),
     )
+    print("Applying ABO side-by-side demo view...", flush=True)
     session.ui.apply_view(
         build_demo_view(layouts),
         **supported_kwargs(session.ui.apply_view, {"workspace_id": WORKSPACE_ID}),
     )
+    print("Clearing initial query state...", flush=True)
     session.ui.set_active_layout(
         None,
         **supported_kwargs(session.ui.set_active_layout, {"workspace_id": WORKSPACE_ID}),
