@@ -1,0 +1,22 @@
+name: Deploy HF Space - HyperView ABO Catalog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/abo-catalog-clip-hycoclip/**
+      - .github/workflows/deploy-hf-space-abo-catalog.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-abo-catalog
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/abo-catalog-clip-hycoclip
+      space_id: hyper3labs/HyperView-ABO-Catalog
+    secrets: inherit

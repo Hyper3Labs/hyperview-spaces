@@ -9,3 +9,8 @@ venv/
 
 # Local test/build artifacts
 .pytest_cache/
+.cache/
+build/
+.env
+.env.*
+spaces/*/demo_data/
