@@ -26,7 +26,7 @@ ARG HYPER_MODELS_VERSION=0.2.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-RUN pip install --force-reinstall --no-cache-dir "${HYPERVIEW_PACKAGE}" && python - <<'PY'
+RUN pip install "${HYPERVIEW_PACKAGE}" && python - <<'PY'
 import inspect
 import hyperview as hv
 
