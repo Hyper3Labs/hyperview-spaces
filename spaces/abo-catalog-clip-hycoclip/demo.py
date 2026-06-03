@@ -334,6 +334,11 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
     return props
 
 
+def supported_kwargs(func: Any, kwargs: dict[str, Any]) -> dict[str, Any]:
+    params = signature(func).parameters
+    return {key: value for key, value in kwargs.items() if key in params}
+
+
 def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
     scatter_panels = [
         hv.ui.Scatter(
@@ -366,18 +371,26 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
         "port": SPACE_PORT,
         "open_browser": False,
         "workspace_id": WORKSPACE_ID,
+        "block": False,
     }
-    if "block" in signature(hv.launch).parameters:
-        launch_kwargs["block"] = False
 
-    session = hv.launch(dataset, **launch_kwargs)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
+    session = hv.launch(dataset, **supported_kwargs(hv.launch, launch_kwargs))
+    session.ui.add_extension(
+        EXTENSION_DIR,
+        **supported_kwargs(session.ui.add_extension, {"workspace_id": WORKSPACE_ID}),
+    )
     session.ui.apply_view(
         build_demo_view(layouts),
-        workspace_id=WORKSPACE_ID,
+        **supported_kwargs(session.ui.apply_view, {"workspace_id": WORKSPACE_ID}),
     )
-    session.ui.set_active_layout(None, workspace_id=WORKSPACE_ID)
-    session.ui.set_selection([], workspace_id=WORKSPACE_ID)
+    session.ui.set_active_layout(
+        None,
+        **supported_kwargs(session.ui.set_active_layout, {"workspace_id": WORKSPACE_ID}),
+    )
+    session.ui.set_selection(
+        [],
+        **supported_kwargs(session.ui.set_selection, {"workspace_id": WORKSPACE_ID}),
+    )
     print(f"\nHyperView ABO catalog demo is running at {session.url}", flush=True)
     model_names = " and ".join(spec["display_name"] for spec in MODEL_SPECS)
     print(f"   {model_names} pinned scatter panels are added side by side.", flush=True)
