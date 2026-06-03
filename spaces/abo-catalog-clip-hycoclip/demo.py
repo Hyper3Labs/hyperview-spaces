@@ -6,6 +6,7 @@ from __future__ import annotations
 import os
 import re
 import urllib.request
+from inspect import signature
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -360,14 +361,16 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
 
 
 def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
-    session = hv.launch(
-        dataset,
-        host=SPACE_HOST,
-        port=SPACE_PORT,
-        open_browser=False,
-        block=False,
-        workspace_id=WORKSPACE_ID,
-    )
+    launch_kwargs = {
+        "host": SPACE_HOST,
+        "port": SPACE_PORT,
+        "open_browser": False,
+        "workspace_id": WORKSPACE_ID,
+    }
+    if "block" in signature(hv.launch).parameters:
+        launch_kwargs["block"] = False
+
+    session = hv.launch(dataset, **launch_kwargs)
     session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
     session.ui.apply_view(
         build_demo_view(layouts),
