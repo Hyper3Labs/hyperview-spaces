@@ -32,6 +32,20 @@ RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
 COPY --chown=user demo.py ./demo.py
 COPY --chown=user .hyperview ./.hyperview
+COPY --chown=user static ./static
+
+RUN python - <<'PY'
+from pathlib import Path
+import shutil
+
+import hyperview.server.app as app
+
+destination = Path(app.__file__).parent / "static"
+if destination.exists():
+    shutil.rmtree(destination)
+shutil.copytree("static", destination)
+print("Installed HyperView static frontend at", destination)
+PY
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
