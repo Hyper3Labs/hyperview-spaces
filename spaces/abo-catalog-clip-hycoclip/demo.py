@@ -5,6 +5,9 @@ from __future__ import annotations
 
 import os
 import re
+import json
+import threading
+import time
 import urllib.request
 from inspect import signature
 from collections import Counter, defaultdict
@@ -320,12 +323,14 @@ def build_dataset() -> tuple[hv.Dataset, dict[str, str]]:
 def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
     props = []
     for spec in MODEL_SPECS:
+        layout_key = layouts[spec["key"]]
         props.append(
             {
                 "key": spec["key"],
                 "displayName": spec["display_name"],
                 "buttonLabel": spec["button_label"],
-                "layoutKey": layouts[spec["key"]],
+                "layoutKey": layout_key,
+                "spaceKey": layout_key.split("__euclidean_umap", 1)[0].split("__poincare_umap", 1)[0],
             }
         )
     return props
@@ -334,6 +339,78 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
 def supported_kwargs(func: Any, kwargs: dict[str, Any]) -> dict[str, Any]:
     params = signature(func).parameters
     return {key: value for key, value in kwargs.items() if key in params}
+
+
+def api_base_url() -> str:
+    host = "127.0.0.1" if SPACE_HOST == "0.0.0.0" else SPACE_HOST
+    return f"http://{host}:{SPACE_PORT}"
+
+
+def request_json(method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    body = None if payload is None else json.dumps(payload).encode("utf-8")
+    request = urllib.request.Request(
+        f"{api_base_url()}{path}",
+        data=body,
+        method=method,
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def wait_for_hyperview(timeout_s: float = 120.0) -> None:
+    deadline = time.time() + timeout_s
+    last_error: Exception | None = None
+    while time.time() < deadline:
+        try:
+            request_json("GET", "/__hyperview__/health")
+            return
+        except Exception as exc:
+            last_error = exc
+            time.sleep(0.5)
+    raise RuntimeError(f"HyperView server did not become ready: {last_error}")
+
+
+def add_panel(panel: dict[str, Any]) -> None:
+    request_json("POST", "/api/control/ui/panels", {"workspace_id": "default", **panel})
+
+
+def configure_v05_view(layouts: dict[str, str]) -> None:
+    request_json(
+        "POST",
+        "/api/control/extensions/install",
+        {"workspace_id": "default", "folder": str(EXTENSION_DIR)},
+    )
+    add_panel(
+        {
+            "panel_id": "clip-catalog-map",
+            "title": MODEL_SPECS[0]["panel_title"],
+            "kind": "scatter",
+            "layout_key": layouts["clip"],
+            "position": "center",
+        }
+    )
+    add_panel(
+        {
+            "panel_id": "candidate-catalog-map",
+            "title": MODEL_SPECS[1]["panel_title"],
+            "kind": "scatter",
+            "layout_key": layouts["candidate"],
+            "position": "center",
+            "reference_panel_id": "clip-catalog-map",
+            "direction": "right",
+        }
+    )
+    add_panel(
+        {
+            "panel_id": "catalog-hierarchy-readout",
+            "title": "Hierarchy Retrieval Readout",
+            "kind": "module",
+            "module_file": str(EXTENSION_DIR / "panel.js"),
+            "position": "right",
+        }
+    )
+    request_json("POST", "/api/control/ui/layout", {"workspace_id": "default", "layout_key": layouts["clip"]})
 
 
 def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
@@ -363,7 +440,29 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
 
 
 def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
+    launch_params = signature(hv.launch).parameters
     print(f"HyperView launch signature: {signature(hv.launch)}", flush=True)
+    if "block" not in launch_params:
+        thread = threading.Thread(
+            target=hv.launch,
+            kwargs={
+                "dataset": dataset,
+                "host": SPACE_HOST,
+                "port": SPACE_PORT,
+                "open_browser": False,
+            },
+            daemon=True,
+        )
+        thread.start()
+        wait_for_hyperview()
+        configure_v05_view(layouts)
+        print(f"\nHyperView ABO catalog demo is running at {api_base_url()}", flush=True)
+        print("   CLIP and HyCoCLIP pinned scatter panels are added side by side.", flush=True)
+        print("   Press Ctrl+C to stop.\n", flush=True)
+        while thread.is_alive():
+            time.sleep(1.0)
+        raise RuntimeError("HyperView server stopped unexpectedly.")
+
     session = hv.launch(
         dataset,
         host=SPACE_HOST,

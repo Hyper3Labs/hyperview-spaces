@@ -4,11 +4,49 @@ if (!sdk) throw new Error("HyperViewPanelSDK is not available on window.");
 const { React, components, hooks } = sdk;
 const { Panel, PanelToolbar, PanelToolbarButton } = components;
 const {
+  usePanelClient,
+  usePanelDatasetInfo,
   usePanelSelection,
   usePanelSamples,
   usePanelCommands,
   usePanelProps,
 } = hooks;
+
+const DEFAULT_EXAMPLES = [
+  {
+    id: "lighting",
+    title: "Lighting fixture",
+    family: "Lighting",
+    queryId: "B07HK5WXQP_510lSNJKiyL",
+    queryLabel: "LIGHT_FIXTURE",
+    summaries: {
+      clip: { hits: 2, text: "Also returns earrings, home decor, bedding, kitchen, sandals." },
+      candidate: { hits: 10, text: "Returns fixtures and lamps." },
+    },
+  },
+  {
+    id: "chandelier",
+    title: "Chandelier-style fixture",
+    family: "Lighting",
+    queryId: "B07MF1RNWQ_51Vei4EHzBL",
+    queryLabel: "LIGHT_FIXTURE",
+    summaries: {
+      clip: { hits: 2, text: "Also returns earrings, necklace-like jewelry, table." },
+      candidate: { hits: 10, text: "Returns light fixtures first, then lamps." },
+    },
+  },
+  {
+    id: "footwear",
+    title: "Sandal",
+    family: "Footwear",
+    queryId: "B07WHRRNQK_61_LTvw9qDL",
+    queryLabel: "SANDAL",
+    summaries: {
+      clip: { hits: 6, text: "Also returns accessories, handbags." },
+      candidate: { hits: 10, text: "Returns sandals with nearby shoes." },
+    },
+  },
+];
 
 const colors = {
   panelBg: "#111827",
@@ -85,8 +123,37 @@ function normalizeModels(value) {
         model.buttonLabel || model.button_label || `${model.displayName || model.key || "Model"} query`,
       ),
       layoutKey: model.layoutKey || model.layout_key || null,
+      spaceKey: model.spaceKey || model.space_key || null,
     }))
     .filter((model) => model.layoutKey);
+}
+
+function inferModels(datasetInfo) {
+  const layouts = Array.isArray(datasetInfo?.layouts) ? datasetInfo.layouts : [];
+
+  const clipLayout =
+    layouts.find((layout) => String(layout.layout_key || layout.layoutKey || "").includes("openai_clip")) ||
+    layouts.find((layout) => String(layout.geometry || "").toLowerCase() === "euclidean");
+  const candidateLayout =
+    layouts.find((layout) => String(layout.layout_key || layout.layoutKey || "").includes("hycoclip")) ||
+    layouts.find((layout) => String(layout.geometry || "").toLowerCase() === "poincare");
+
+  return [
+    clipLayout && {
+      key: "clip",
+      displayName: "CLIP",
+      buttonLabel: "CLIP query",
+      layoutKey: clipLayout.layout_key || clipLayout.layoutKey,
+      spaceKey: clipLayout.space_key || clipLayout.spaceKey,
+    },
+    candidateLayout && {
+      key: "candidate",
+      displayName: "HyCoCLIP",
+      buttonLabel: "HyCoCLIP query",
+      layoutKey: candidateLayout.layout_key || candidateLayout.layoutKey,
+      spaceKey: candidateLayout.space_key || candidateLayout.spaceKey,
+    },
+  ].filter(Boolean);
 }
 
 function getSummary(item, modelKey) {
@@ -178,6 +245,8 @@ function ExampleCard({
 }
 
 export default function CatalogComparisonPanel() {
+  const client = usePanelClient();
+  const datasetInfo = usePanelDatasetInfo();
   const selection = usePanelSelection();
   const samplesState = usePanelSamples();
   const commands = usePanelCommands();
@@ -185,17 +254,22 @@ export default function CatalogComparisonPanel() {
   const [panelError, setPanelError] = React.useState(null);
   const [loadingKey, setLoadingKey] = React.useState(null);
 
-  const models = React.useMemo(() => normalizeModels(panelProps.models), [panelProps.models]);
-  const examples = Array.isArray(panelProps.examples) ? panelProps.examples : [];
+  const models = React.useMemo(() => {
+    const fromProps = normalizeModels(panelProps.models);
+    return fromProps.length ? fromProps : inferModels(datasetInfo);
+  }, [datasetInfo, panelProps.models]);
+  const examples = Array.isArray(panelProps.examples) && panelProps.examples.length
+    ? panelProps.examples
+    : DEFAULT_EXAMPLES;
   const modelNames = React.useMemo(
     () => models.map((model) => model.displayName).join(" and "),
     [models],
   );
 
   const clearSelection = async () => {
-    commands.setLabelFilter(null);
+    if (commands.setLabelFilter) commands.setLabelFilter(null);
     setPanelError(null);
-    await commands.setSelection([], { clearLasso: true });
+    await commands.setSelection([]);
   };
 
   const selectModelQuery = async (item, model) => {
@@ -209,12 +283,16 @@ export default function CatalogComparisonPanel() {
 
     setLoadingKey(key);
     try {
-      await commands.showSimilar({
-        sampleId: item.queryId,
+      const similar = await client.searchSimilar(item.queryId, {
+        k: 10,
+        spaceKey: model.spaceKey,
         layoutKey: model.layoutKey,
-        k: 18,
-        focus: "samples",
       });
+      const neighborIds = Array.isArray(similar?.results)
+        ? similar.results.map((sample) => sample.id).filter(Boolean)
+        : [];
+      await commands.setLayout(model.layoutKey);
+      await commands.setSelection([item.queryId, ...neighborIds]);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       setPanelError(`Could not select query: ${message}`);
