@@ -21,9 +21,9 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@13963ffd1a1de669eb2d4dfab52f2313d644faaa
+ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@v0.6.0
 ARG HYPER_MODELS_VERSION=0.2.0
-ARG HYPERVIEW_INSTALL_CACHE_BUST=2026-06-04-abo
+ARG HYPERVIEW_INSTALL_CACHE_BUST=2026-06-04-abo-latest
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
@@ -40,10 +40,6 @@ RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyp
 RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
 COPY --chown=user . .
-
-RUN if [ -f demo_data.tar.gz ]; then \
-        tar -xzf demo_data.tar.gz && rm demo_data.tar.gz; \
-    fi
 
 RUN python - <<'PY'
 from pathlib import Path

@@ -14,4 +14,3 @@ build/
 .env
 .env.*
 spaces/*/demo_data/
-spaces/*/demo_data.tar.gz

@@ -269,6 +269,13 @@ export default function CatalogComparisonPanel() {
   const clearSelection = async () => {
     if (commands.setLabelFilter) commands.setLabelFilter(null);
     setPanelError(null);
+    if (client.clearSimilarityQuery) {
+      try {
+        await client.clearSimilarityQuery();
+      } catch {
+        // Older HyperView builds do not expose a persisted similarity query.
+      }
+    }
     await commands.setSelection([]);
   };
 
@@ -283,6 +290,23 @@ export default function CatalogComparisonPanel() {
 
     setLoadingKey(key);
     try {
+      const setActiveLayout = commands.setActiveLayout || commands.setLayout;
+      if (setActiveLayout) {
+        await setActiveLayout(model.layoutKey);
+      }
+
+      if (commands.showSimilar) {
+        await commands.showSimilar({
+          sampleId: item.queryId,
+          layoutKey: model.layoutKey,
+          spaceKey: model.spaceKey,
+          k: 10,
+          source: `abo-demo:${model.key}`,
+          focus: "samples",
+        });
+        return;
+      }
+
       const similar = await client.searchSimilar(item.queryId, {
         k: 10,
         spaceKey: model.spaceKey,
@@ -291,7 +315,6 @@ export default function CatalogComparisonPanel() {
       const neighborIds = Array.isArray(similar?.results)
         ? similar.results.map((sample) => sample.id).filter(Boolean)
         : [];
-      await commands.setLayout(model.layoutKey);
       await commands.setSelection([item.queryId, ...neighborIds]);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
