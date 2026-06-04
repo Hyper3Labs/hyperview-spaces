@@ -61,7 +61,6 @@ JavaScript.
 This folder is intended to deploy to `hyper3labs/HyperView-ABO-Catalog` from
 the `hyperview-spaces` deployment repository.
 
-The Dockerfile currently installs HyperView from GitHub `main` because the demo
-uses custom panel and explicit similarity-query APIs that must be present in
-the runtime. After the next HyperView release, switch `HYPERVIEW_PACKAGE` to a
-released PyPI pin such as `hyperview==0.4.3`.
+The Dockerfile installs `hyperview==0.6.0` from PyPI. The released HyperView
+wheel includes the built frontend assets, so this Space should not carry a
+local `static/` bundle or copy frontend files into the installed package.

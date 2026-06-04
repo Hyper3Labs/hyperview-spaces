@@ -3,7 +3,6 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
-    git \
     libssl-dev \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
@@ -21,15 +20,13 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@v0.6.0
+ARG HYPERVIEW_VERSION=0.6.0
 ARG HYPER_MODELS_VERSION=0.2.0
-ARG HYPERVIEW_INSTALL_CACHE_BUST=2026-06-04-abo-latest
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-RUN echo "Installing ${HYPERVIEW_PACKAGE} (${HYPERVIEW_INSTALL_CACHE_BUST})" \
-    && pip install "${HYPERVIEW_PACKAGE}" \
-    && pip install --force-reinstall --no-deps --no-cache-dir "${HYPERVIEW_PACKAGE}" \
+RUN echo "Installing hyperview==${HYPERVIEW_VERSION}" \
+    && pip install "hyperview==${HYPERVIEW_VERSION}" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
@@ -40,19 +37,6 @@ RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyp
 RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
 COPY --chown=user . .
-
-RUN python - <<'PY'
-from pathlib import Path
-import shutil
-
-import hyperview.server.app as app
-
-destination = Path(app.__file__).parent / "static"
-if destination.exists():
-    shutil.rmtree(destination)
-shutil.copytree("static", destination)
-print("Installed HyperView static frontend at", destination)
-PY
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
