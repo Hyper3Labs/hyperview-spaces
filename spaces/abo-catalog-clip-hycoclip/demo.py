@@ -23,7 +23,7 @@ import hyperview as hv
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6262"))
-WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "abo-catalog-clip-hyper3clip")
+WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "abo-catalog-clip-hyper3clip-split")
 DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "abo_catalog_clip_hyper3clip_side_by_side")
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "abo-catalog-readout"
 
@@ -399,6 +399,8 @@ def configure_v05_view(layouts: dict[str, str]) -> None:
             "kind": "scatter",
             "layout_key": layouts["clip"],
             "position": "center",
+            "reference_panel_id": "grid",
+            "direction": "right",
         }
     )
     add_panel(
@@ -416,23 +418,32 @@ def configure_v05_view(layouts: dict[str, str]) -> None:
 
 
 def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
-    scatter_panels = [
-        hv.ui.Scatter(
-            id=f"{spec['key']}-catalog-map",
-            title=spec["panel_title"],
-            layout_key=layouts[spec["key"]],
-            geometry=spec["geometry"],
-            layout_dimension=spec["layout_dimension"],
+    scatter_panels = []
+    previous_panel_id = "grid"
+    for spec in MODEL_SPECS:
+        panel_id = f"{spec['key']}-catalog-map"
+        scatter_panels.append(
+            hv.ui.Scatter(
+                id=panel_id,
+                title=spec["panel_title"],
+                layout_key=layouts[spec["key"]],
+                geometry=spec["geometry"],
+                layout_dimension=spec["layout_dimension"],
+                reference_panel_id=previous_panel_id,
+                direction="right",
+            )
         )
-        for spec in MODEL_SPECS
-    ]
+        previous_panel_id = panel_id
+
     return hv.ui.View(
-        hv.ui.Horizontal(*scatter_panels),
+        *scatter_panels,
         hv.ui.ExtensionPanel(
             id="catalog-hierarchy-readout",
             extension="abo-catalog-readout",
             panel="catalog-comparison",
             position="right",
+            reference_panel_id=previous_panel_id,
+            direction="right",
             props={
                 "models": model_panel_props(layouts),
                 "examples": DEMO_EXAMPLES,

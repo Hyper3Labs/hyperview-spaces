@@ -42,7 +42,7 @@ COPY --chown=user . .
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
-    HYPERVIEW_WORKSPACE_ID=abo-catalog-clip-hyper3clip \
+    HYPERVIEW_WORKSPACE_ID=abo-catalog-clip-hyper3clip-split \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
 
