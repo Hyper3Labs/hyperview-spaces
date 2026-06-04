@@ -44,11 +44,13 @@ ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
     HYPERVIEW_WORKSPACE_ID=abo-catalog-clip-hyper3clip-split \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
-    HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
+    HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media \
+    HF_HUB_ETAG_TIMEOUT=30 \
+    HF_HUB_DOWNLOAD_TIMEOUT=120
 
 EXPOSE 7860
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=600s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=2700s --retries=3 \
     CMD curl -f http://localhost:7860/__hyperview__/health || exit 1
 
 CMD ["python", "demo.py"]
