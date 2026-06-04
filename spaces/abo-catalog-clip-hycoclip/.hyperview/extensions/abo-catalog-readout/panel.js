@@ -51,6 +51,46 @@ function Section({ title, children }) {
   );
 }
 
+function TextBlock({ children }) {
+  return React.createElement(
+    "div",
+    { style: { color: colors.bodyText, fontSize: 12, lineHeight: 1.45 } },
+    children,
+  );
+}
+
+function Walkthrough({ modelNames }) {
+  const steps = [
+    "Start with the Lighting fixture example.",
+    `Click the CLIP query button and scan the nearest products in Samples.`,
+    `Click the Hyper3-CLIP query button. The query stays the same; only the embedding space changes.`,
+    "Use the labels in Samples to compare category drift versus category consistency.",
+  ];
+
+  return React.createElement(
+    "ol",
+    {
+      style: {
+        margin: 0,
+        paddingLeft: 18,
+        color: colors.bodyText,
+        fontSize: 12,
+        lineHeight: 1.45,
+      },
+    },
+    steps.map((step, index) =>
+      React.createElement("li", { key: index, style: { marginBottom: 5 } }, step),
+    ),
+    modelNames
+      ? React.createElement(
+          "li",
+          { key: "models", style: { marginBottom: 0 } },
+          `Repeat with another example to compare ${modelNames} on the same product.`,
+        )
+      : null,
+  );
+}
+
 function Button({ children, onClick, title, disabled }) {
   return React.createElement(
     "button",
@@ -256,12 +296,13 @@ export default function CatalogComparisonPanel() {
       },
       React.createElement(
         Section,
-        { title: "What This Shows" },
+        { title: "Walkthrough" },
         React.createElement(
-          "div",
-          { style: { color: colors.bodyText, fontSize: 12, lineHeight: 1.45 } },
-          `Use the same query image under ${modelNames}. Samples opens to that model's nearest products.`,
+          TextBlock,
+          null,
+          "This demo compares two embedding spaces on the same Amazon product query.",
         ),
+        React.createElement(Walkthrough, { modelNames }),
       ),
       React.createElement(
         Section,

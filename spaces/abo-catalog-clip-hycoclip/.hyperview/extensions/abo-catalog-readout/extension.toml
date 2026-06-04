@@ -1,5 +1,5 @@
 name = "abo-catalog-readout"
-description = "ABO CLIP vs HyCoCLIP catalog comparison readout"
+description = "ABO CLIP vs Hyper3-CLIP catalog comparison readout"
 
 [[panels]]
 id = "catalog-comparison"

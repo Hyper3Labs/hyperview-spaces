@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""ABO product-catalog comparison demo for CLIP vs HyCoCLIP in HyperView."""
+"""ABO product-catalog comparison demo for CLIP vs Hyper3-CLIP in HyperView."""
 
 from __future__ import annotations
 
@@ -23,8 +23,8 @@ import hyperview as hv
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6262"))
-WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "abo-catalog-clip-hycoclip")
-DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "abo_catalog_clip_hycoclip_side_by_side")
+WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "abo-catalog-clip-hyper3clip")
+DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "abo_catalog_clip_hyper3clip_side_by_side")
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "abo-catalog-readout"
 
 HF_ABO_DATASET = os.environ.get("ABO_HF_DATASET", "hyper3labs/amazon-berkeley-objects")
@@ -62,15 +62,15 @@ MODEL_SPECS = [
     },
     {
         "key": "candidate",
-        "display_name": os.environ.get("ABO_CANDIDATE_DISPLAY_NAME", "HyCoCLIP"),
-        "button_label": os.environ.get("ABO_CANDIDATE_BUTTON_LABEL", "HyCoCLIP query"),
-        "provider": os.environ.get("ABO_CANDIDATE_PROVIDER", "hyper-models"),
-        "model": os.environ.get("ABO_CANDIDATE_MODEL", "hycoclip-vit-s"),
+        "display_name": os.environ.get("ABO_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
+        "button_label": os.environ.get("ABO_CANDIDATE_BUTTON_LABEL", "Hyper3-CLIP query"),
+        "provider": os.environ.get("ABO_CANDIDATE_PROVIDER", "hyper3-clip"),
+        "model": os.environ.get("ABO_CANDIDATE_MODEL", "hyper3labs/hyper3-clip-v0.5"),
         "layout": os.environ.get("ABO_CANDIDATE_LAYOUT", "poincare:2d"),
         "geometry": os.environ.get("ABO_CANDIDATE_GEOMETRY", "poincare"),
         "layout_dimension": int(os.environ.get("ABO_CANDIDATE_LAYOUT_DIMENSION", "2")),
         "metric": os.environ.get("ABO_CANDIDATE_METRIC", "cosine"),
-        "panel_title": os.environ.get("ABO_CANDIDATE_PANEL_TITLE", "HyCoCLIP - Poincare Catalog Map"),
+        "panel_title": os.environ.get("ABO_CANDIDATE_PANEL_TITLE", "Hyper3-CLIP - Poincare Catalog Map"),
     },
 ]
 
@@ -88,7 +88,7 @@ DEMO_EXAMPLES = [
             },
             "candidate": {
                 "hits": 10,
-                "text": "Returns fixtures and lamps.",
+                "text": "Returns light fixtures and lamps.",
             },
         },
     },
@@ -105,7 +105,7 @@ DEMO_EXAMPLES = [
             },
             "candidate": {
                 "hits": 10,
-                "text": "Returns light fixtures first, then lamps.",
+                "text": "Returns ten light fixtures.",
             },
         },
     },
@@ -122,7 +122,7 @@ DEMO_EXAMPLES = [
             },
             "candidate": {
                 "hits": 10,
-                "text": "Returns sandals with nearby shoes.",
+                "text": "Returns sandals plus one nearby shoe.",
             },
         },
     },
@@ -341,6 +341,17 @@ def supported_kwargs(func: Any, kwargs: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in kwargs.items() if key in params}
 
 
+def register_hyper3_clip_provider() -> None:
+    from hyperview.runtime import ProviderRegistry
+
+    ProviderRegistry().register_python(
+        "hyper3-clip",
+        "hyper3_clip_provider:Hyper3ClipEmbeddings",
+        description="Hyper3-CLIP v0.5 image embeddings from hyper3labs/hyper3-clip-v0.5",
+        overwrite=True,
+    )
+
+
 def api_base_url() -> str:
     host = "127.0.0.1" if SPACE_HOST == "0.0.0.0" else SPACE_HOST
     return f"http://{host}:{SPACE_PORT}"
@@ -448,7 +459,7 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
         wait_for_hyperview()
         configure_v05_view(layouts)
         print(f"\nHyperView ABO catalog demo is running at {api_base_url()}", flush=True)
-        print("   CLIP and HyCoCLIP pinned scatter panels are added side by side.", flush=True)
+        print("   CLIP and Hyper3-CLIP pinned scatter panels are added side by side.", flush=True)
         print("   Press Ctrl+C to stop.\n", flush=True)
         while thread.is_alive():
             time.sleep(1.0)
@@ -489,6 +500,7 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
 
 
 def main() -> None:
+    register_hyper3_clip_provider()
     dataset, layouts = build_dataset()
     print("Layouts:", flush=True)
     for spec in MODEL_SPECS:
