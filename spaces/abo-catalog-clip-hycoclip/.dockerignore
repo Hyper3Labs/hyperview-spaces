@@ -1,4 +1,5 @@
 __pycache__/
 *.pyc
 .DS_Store
-demo_data/
+.env
+.env.*

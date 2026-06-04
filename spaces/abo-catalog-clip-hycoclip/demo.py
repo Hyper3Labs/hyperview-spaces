@@ -248,14 +248,11 @@ def add_abo_samples(dataset: hv.Dataset) -> None:
     ]
 
     if not FORCE_SAMPLE_REFRESH and not missing_ids and not missing_media:
-        product_counts.update(record["product_type"] for record in records)
         print(
             f"ABO samples already prepared ({len(records)} products). "
-            "Set HYPERVIEW_ABO_FORCE_REFRESH=1 to rebuild samples.",
+            "Refreshing sample metadata and media paths.",
             flush=True,
         )
-        print(f"Product-type counts: {dict(product_counts)}", flush=True)
-        return
 
     for index, record in enumerate(records, start=1):
         sample_id = safe_sample_id(str(record["item_id"]), str(record["image_id"]))

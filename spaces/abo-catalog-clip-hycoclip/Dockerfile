@@ -30,9 +30,7 @@ RUN pip install "${HYPERVIEW_PACKAGE}" && python -c "import hyperview; print('hy
 RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
-COPY --chown=user demo.py ./demo.py
-COPY --chown=user .hyperview ./.hyperview
-COPY --chown=user static ./static
+COPY --chown=user . .
 
 RUN python - <<'PY'
 from pathlib import Path
