@@ -83,11 +83,11 @@ DEMO_EXAMPLES = [
         "queryLabel": "LIGHT_FIXTURE",
         "summaries": {
             "clip": {
-                "hits": 2,
-                "text": "Also returns earrings, home decor, and sandals.",
+                "hits": 4,
+                "text": "Also returns earrings, sandals, office products, table, and sofa.",
             },
             "candidate": {
-                "hits": 9,
+                "hits": 8,
                 "text": "Mostly returns light fixtures and lamps.",
             },
         },
@@ -100,12 +100,12 @@ DEMO_EXAMPLES = [
         "queryLabel": "LIGHT_FIXTURE",
         "summaries": {
             "clip": {
-                "hits": 3,
-                "text": "Mostly returns earrings and jewelry-like items.",
+                "hits": 4,
+                "text": "Also returns earrings, accessories, office products, sofa, and home.",
             },
             "candidate": {
-                "hits": 10,
-                "text": "Returns light fixtures and lamps.",
+                "hits": 9,
+                "text": "Mostly returns light fixtures and lamps.",
             },
         },
     },
@@ -117,12 +117,12 @@ DEMO_EXAMPLES = [
         "queryLabel": "SANDAL",
         "summaries": {
             "clip": {
-                "hits": 5,
-                "text": "Also returns accessories, handbags, and home goods.",
+                "hits": 3,
+                "text": "Also returns handbags, jewelry, home goods, and accessories.",
             },
             "candidate": {
-                "hits": 10,
-                "text": "Returns sandals plus one nearby boot.",
+                "hits": 8,
+                "text": "Mostly returns sandals, shoes, and boots.",
             },
         },
     },
