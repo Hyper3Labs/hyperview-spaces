@@ -64,8 +64,8 @@ MODEL_SPECS = [
         "key": "candidate",
         "display_name": os.environ.get("ABO_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
         "button_label": os.environ.get("ABO_CANDIDATE_BUTTON_LABEL", "Hyper3-CLIP query"),
-        "provider": os.environ.get("ABO_CANDIDATE_PROVIDER", "hyper3-clip"),
-        "model": os.environ.get("ABO_CANDIDATE_MODEL", "hyper3labs/hyper3-clip-v0.5"),
+        "provider": os.environ.get("ABO_CANDIDATE_PROVIDER", "hyper-models"),
+        "model": os.environ.get("ABO_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
         "layout": os.environ.get("ABO_CANDIDATE_LAYOUT", "poincare:2d"),
         "geometry": os.environ.get("ABO_CANDIDATE_GEOMETRY", "poincare"),
         "layout_dimension": int(os.environ.get("ABO_CANDIDATE_LAYOUT_DIMENSION", "2")),
@@ -341,17 +341,6 @@ def supported_kwargs(func: Any, kwargs: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in kwargs.items() if key in params}
 
 
-def register_hyper3_clip_provider() -> None:
-    from hyperview.runtime import ProviderRegistry
-
-    ProviderRegistry().register_python(
-        "hyper3-clip",
-        "hyper3_clip_provider:Hyper3ClipEmbeddings",
-        description="Hyper3-CLIP v0.5 image embeddings from hyper3labs/hyper3-clip-v0.5",
-        overwrite=True,
-    )
-
-
 def api_base_url() -> str:
     host = "127.0.0.1" if SPACE_HOST == "0.0.0.0" else SPACE_HOST
     return f"http://{host}:{SPACE_PORT}"
@@ -500,7 +489,6 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
 
 
 def main() -> None:
-    register_hyper3_clip_provider()
     dataset, layouts = build_dataset()
     print("Layouts:", flush=True)
     for spec in MODEL_SPECS:

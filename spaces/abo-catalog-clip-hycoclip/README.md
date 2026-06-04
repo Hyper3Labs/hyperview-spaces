@@ -14,7 +14,7 @@ This demo builds a small Amazon Berkeley Objects product-catalog subset and open
 HyperView with two pinned scatter panels plus a comparison readout:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3labs/hyper3-clip-v0.5` in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v0.5` from `hyper-models` in a Poincare 2D layout
 
 The right-side panel uses fixed product examples to compare nearest-neighbor
 behavior for the same query under each model.
@@ -45,7 +45,7 @@ variables or edit the second entry in `MODEL_SPECS`:
 
 ```bash
 ABO_CANDIDATE_DISPLAY_NAME="New Model" \
-ABO_CANDIDATE_PROVIDER="hyper3-clip" \
+ABO_CANDIDATE_PROVIDER="hyper-models" \
 ABO_CANDIDATE_MODEL="new-model-id" \
 ABO_CANDIDATE_LAYOUT="poincare:2d" \
 ABO_CANDIDATE_GEOMETRY="poincare" \
@@ -61,10 +61,11 @@ JavaScript.
 This folder is intended to deploy to `hyper3labs/HyperView-ABO-Catalog` from
 the `hyperview-spaces` deployment repository.
 
-The Dockerfile installs `hyperview==0.6.0` from PyPI. The released HyperView
-wheel includes the built frontend assets, so this Space does not carry a local
-`static/` bundle or copy frontend files into the installed package.
+The Dockerfile installs `hyperview==0.6.1` and `hyper-models[ml]==0.3.0` from
+PyPI. The released HyperView wheel includes the built frontend assets, so this
+Space does not carry a local `static/` bundle or copy frontend files into the
+installed package.
 
-Hyper3-CLIP weights are loaded from the gated
-`hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs an
-`HF_TOKEN` secret with access to that model.
+Hyper3-CLIP weights are loaded through the `hyper-models` catalog entry for the
+gated `hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs
+an `HF_TOKEN` secret with access to that model.
