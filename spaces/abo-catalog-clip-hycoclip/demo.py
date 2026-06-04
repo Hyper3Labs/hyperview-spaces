@@ -363,15 +363,15 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
 
 
 def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
-    launch_kwargs = {
-        "host": SPACE_HOST,
-        "port": SPACE_PORT,
-        "open_browser": False,
-        "workspace_id": WORKSPACE_ID,
-        "block": False,
-    }
-
-    session = hv.launch(dataset, **supported_kwargs(hv.launch, launch_kwargs))
+    print(f"HyperView launch signature: {signature(hv.launch)}", flush=True)
+    session = hv.launch(
+        dataset,
+        host=SPACE_HOST,
+        port=SPACE_PORT,
+        open_browser=False,
+        workspace_id=WORKSPACE_ID,
+        block=False,
+    )
     print("Installing ABO demo extension...", flush=True)
     session.ui.add_extension(
         EXTENSION_DIR,

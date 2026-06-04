@@ -23,10 +23,19 @@ RUN pip install --upgrade pip
 
 ARG HYPERVIEW_PACKAGE=git+https://github.com/Hyper3Labs/HyperView.git@13963ffd1a1de669eb2d4dfab52f2313d644faaa
 ARG HYPER_MODELS_VERSION=0.2.0
+ARG HYPERVIEW_INSTALL_CACHE_BUST=2026-06-04-abo
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-RUN pip install "${HYPERVIEW_PACKAGE}" && python -c "import hyperview; print('hyperview', hyperview.__version__)"
+RUN echo "Installing ${HYPERVIEW_PACKAGE} (${HYPERVIEW_INSTALL_CACHE_BUST})" \
+    && pip install "${HYPERVIEW_PACKAGE}" \
+    && pip install --force-reinstall --no-deps --no-cache-dir "${HYPERVIEW_PACKAGE}" \
+    && python - <<'PY'
+import inspect
+import hyperview as hv
+
+print("hyperview", hv.__version__, inspect.signature(hv.launch))
+PY
 RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
