@@ -401,15 +401,6 @@ def configure_v05_view(layouts: dict[str, str]) -> None:
             "direction": "right",
         }
     )
-    add_panel(
-        {
-            "panel_id": "catalog-hierarchy-readout",
-            "title": "Hierarchy Retrieval Readout",
-            "kind": "module",
-            "module_file": str(EXTENSION_DIR / "panel.js"),
-            "position": "right",
-        }
-    )
     request_json("POST", "/api/control/ui/layout", {"workspace_id": "default", "layout_key": layouts["clip"]})
 
 
