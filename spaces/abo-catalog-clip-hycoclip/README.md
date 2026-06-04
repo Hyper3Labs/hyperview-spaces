@@ -21,8 +21,9 @@ behavior for the same query under each model.
 
 The demo loads the full ABO metadata mirror from
 `hyper3labs/amazon-berkeley-objects`, then deterministically selects a balanced
-subset for the live comparison. Local `demo_data` is only a runtime cache for
-downloaded images, HyperView dataset state, embeddings, and layouts.
+subset for the live comparison and always includes the fixed walkthrough query
+samples. Local `demo_data` is only a runtime cache for downloaded images,
+HyperView dataset state, embeddings, and layouts.
 
 Run locally from the HyperView repo:
 

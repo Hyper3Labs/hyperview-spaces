@@ -32,7 +32,7 @@ HF_ABO_CONFIG = os.environ.get("ABO_HF_CONFIG", "listings")
 HF_ABO_SPLIT = os.environ.get("ABO_HF_SPLIT", "train")
 
 MAX_PRODUCT_TYPES = int(os.environ.get("ABO_MAX_PRODUCT_TYPES", "20"))
-SAMPLES_PER_PRODUCT_TYPE = int(os.environ.get("ABO_SAMPLES_PER_PRODUCT_TYPE", "25"))
+SAMPLES_PER_PRODUCT_TYPE = int(os.environ.get("ABO_SAMPLES_PER_PRODUCT_TYPE", "12"))
 MIN_PRODUCT_TYPE_COUNT = int(os.environ.get("ABO_MIN_PRODUCT_TYPE_COUNT", "10"))
 IMAGE_MAX_SIZE = (768, 768)
 FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_ABO_FORCE_REFRESH", "").lower() in {
@@ -128,6 +128,8 @@ DEMO_EXAMPLES = [
     },
 ]
 
+DEMO_QUERY_IDS = {example["queryId"] for example in DEMO_EXAMPLES}
+
 
 def media_root() -> Path:
     root = Path(os.environ.get("HYPERVIEW_MEDIA_DIR", str(SPACE_DIR / "demo_data" / "media")))
@@ -163,6 +165,15 @@ def select_balanced(records: list[dict]) -> list[dict]:
     selected: list[dict] = []
     for _ptype, items in eligible[:MAX_PRODUCT_TYPES]:
         selected.extend(items[:SAMPLES_PER_PRODUCT_TYPE])
+
+    selected_ids = {
+        safe_sample_id(str(record["item_id"]), str(record["image_id"])) for record in selected
+    }
+    for record in records:
+        sample_id = safe_sample_id(str(record["item_id"]), str(record["image_id"]))
+        if sample_id in DEMO_QUERY_IDS and sample_id not in selected_ids:
+            selected.append(record)
+            selected_ids.add(sample_id)
     return selected
 
 
