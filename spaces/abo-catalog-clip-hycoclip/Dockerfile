@@ -41,6 +41,10 @@ RUN pip install "datasets>=4.5.0" "Pillow>=12.0.0"
 
 COPY --chown=user . .
 
+RUN if [ -f demo_data.tar.gz ]; then \
+        tar -xzf demo_data.tar.gz && rm demo_data.tar.gz; \
+    fi
+
 RUN python - <<'PY'
 from pathlib import Path
 import shutil
