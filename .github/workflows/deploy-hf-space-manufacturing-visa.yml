@@ -1,0 +1,22 @@
+name: Deploy HF Space - Manufacturing VisA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/manufacturing-visa-reference-clip-hyper3clip/**
+      - .github/workflows/deploy-hf-space-manufacturing-visa.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-manufacturing-visa
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/manufacturing-visa-reference-clip-hyper3clip
+      space_id: hyper3labs/HyperView-VisA-Manufacturing
+    secrets: inherit

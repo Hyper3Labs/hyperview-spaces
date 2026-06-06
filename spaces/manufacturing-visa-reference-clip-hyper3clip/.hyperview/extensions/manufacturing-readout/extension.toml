@@ -1,0 +1,8 @@
+name = "manufacturing-readout"
+description = "VisA CLIP vs Hyper3-CLIP inspection reference retrieval readout"
+
+[[panels]]
+id = "manufacturing-comparison"
+title = "Inspection Reference Readout"
+position = "right"
+file = "panel.js"
