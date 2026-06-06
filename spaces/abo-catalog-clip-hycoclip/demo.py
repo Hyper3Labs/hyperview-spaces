@@ -5,11 +5,8 @@ from __future__ import annotations
 
 import os
 import re
-import json
-import threading
-import time
+import shutil
 import urllib.request
-from inspect import signature
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -35,6 +32,7 @@ MAX_PRODUCT_TYPES = int(os.environ.get("ABO_MAX_PRODUCT_TYPES", "20"))
 SAMPLES_PER_PRODUCT_TYPE = int(os.environ.get("ABO_SAMPLES_PER_PRODUCT_TYPE", "4"))
 MIN_PRODUCT_TYPE_COUNT = int(os.environ.get("ABO_MIN_PRODUCT_TYPE_COUNT", "10"))
 IMAGE_MAX_SIZE = (768, 768)
+IMAGE_DOWNLOAD_TIMEOUT_SEC = int(os.environ.get("ABO_IMAGE_DOWNLOAD_TIMEOUT_SEC", "20"))
 FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_ABO_FORCE_REFRESH", "").lower() in {
     "1",
     "true",
@@ -51,7 +49,6 @@ MODEL_SPECS = [
     {
         "key": "clip",
         "display_name": os.environ.get("ABO_BASELINE_DISPLAY_NAME", "CLIP"),
-        "button_label": os.environ.get("ABO_BASELINE_BUTTON_LABEL", "CLIP query"),
         "provider": os.environ.get("ABO_BASELINE_PROVIDER", "embed-anything"),
         "model": os.environ.get("ABO_BASELINE_MODEL", "openai/clip-vit-base-patch32"),
         "layout": os.environ.get("ABO_BASELINE_LAYOUT", "euclidean:2d"),
@@ -63,7 +60,6 @@ MODEL_SPECS = [
     {
         "key": "candidate",
         "display_name": os.environ.get("ABO_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
-        "button_label": os.environ.get("ABO_CANDIDATE_BUTTON_LABEL", "Hyper3-CLIP query"),
         "provider": os.environ.get("ABO_CANDIDATE_PROVIDER", "hyper-models"),
         "model": os.environ.get("ABO_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
         "layout": os.environ.get("ABO_CANDIDATE_LAYOUT", "poincare:2d"),
@@ -77,8 +73,10 @@ MODEL_SPECS = [
 DEMO_EXAMPLES = [
     {
         "id": "lighting",
+        "mode": "image-neighborhood",
         "title": "Lighting fixture",
         "family": "Lighting",
+        "guide": "Look for category drift: the same fixture should retrieve lights and lamps, not jewelry, shoes, or office products.",
         "queryId": "B07HK5WXQP_510lSNJKiyL",
         "queryLabel": "LIGHT_FIXTURE",
         "summaries": {
@@ -94,8 +92,10 @@ DEMO_EXAMPLES = [
     },
     {
         "id": "chandelier",
+        "mode": "image-neighborhood",
         "title": "Chandelier-style fixture",
         "family": "Lighting",
+        "guide": "Look for hierarchy consistency: a chandelier-like fixture should stay inside the lighting neighborhood.",
         "queryId": "B07MF1RNWQ_51Vei4EHzBL",
         "queryLabel": "LIGHT_FIXTURE",
         "summaries": {
@@ -111,8 +111,10 @@ DEMO_EXAMPLES = [
     },
     {
         "id": "footwear",
+        "mode": "image-neighborhood",
         "title": "Sandal",
         "family": "Footwear",
+        "guide": "Look for product-family boundaries: a sandal query should stay with sandals and shoes instead of handbags or home goods.",
         "queryId": "B07WHRRNQK_61_LTvw9qDL",
         "queryLabel": "SANDAL",
         "summaries": {
@@ -126,9 +128,136 @@ DEMO_EXAMPLES = [
             },
         },
     },
+    {
+        "id": "grey-velvet-sofa",
+        "mode": "text-to-product",
+        "title": "Grey velvet sofa",
+        "family": "Furniture / sofa",
+        "query": "a product photo of grey velvet sofa: Frederick Mid-Century Modern Tufted Velvet Sofa Couch 77.5 W Grey, with metal, brass finish, wood, velvet upholstery, tufted",
+        "targetTitle": "Rivet Frederick Mid-Century Modern Tufted Velvet Sofa Couch, 77.5 W, Grey",
+        "targetSampleId": "B082VLTCM4_816VP-arPsL",
+        "summaries": {
+            "clip": {
+                "rank": 20,
+                "typePrecision": 0.7,
+                "text": "CLIP stays in the sofa family, but the exact grey velvet target first appears at rank 20.",
+            },
+            "candidate": {
+                "rank": 1,
+                "typePrecision": 1.0,
+                "text": "Hyper3 ranks the exact grey velvet target first and keeps the sofa set coherent.",
+            },
+        },
+        "results": {
+            "candidate": [
+                {"id": "B082VLTCM4_816VP-arPsL", "rank": 1, "target": True},
+                {"id": "B075X4VM73_81oPx1e8s_L", "rank": 2},
+                {"id": "B07B4DBBPG_81dwblf8ogL", "rank": 3},
+                {"id": "B07B4N29DG_81f4K_PGY-L", "rank": 4},
+                {"id": "B075X2X4GY_81RzuSu3GLL", "rank": 5},
+                {"id": "B082VLYCPC_71pzr1IKkIL", "rank": 6},
+            ],
+            "clip": [
+                {"id": "B075X4VM73_81oPx1e8s_L", "rank": 1},
+                {"id": "B082VLYCPC_71pzr1IKkIL", "rank": 2},
+                {"id": "B075X4F56V_81Oy-OJ68KL", "rank": 3},
+                {"id": "B07J2Z2BS5_81xPV3Ey1kL", "rank": 4},
+                {"id": "B07J2R9TVF_A1cLonmKWvL", "rank": 5},
+                {"id": "B075X4N4W9_81Z8ICQ9dUL", "rank": 6},
+            ],
+        },
+    },
+    {
+        "id": "chrome-clear-glass-lamp",
+        "mode": "text-to-product",
+        "title": "Chrome clear-glass lamp",
+        "family": "Home / lamp",
+        "query": "a product photo of chrome with clear glass lamp: Ravenna Home Modern Round Table Lamp With LED Light Bulb - Chrome with Clear Glass, with table lamp, shade, metal, chrome finish, glass",
+        "targetTitle": "Ravenna Home Modern Round Table Lamp With LED Light Bulb, Chrome with Clear Glass",
+        "targetSampleId": "B07DBHB6B5_41SHn0jzPOL",
+        "summaries": {
+            "clip": {
+                "rank": 31,
+                "typePrecision": 0.7,
+                "text": "CLIP recognizes lamps, but loses the requested chrome and clear-glass variant.",
+            },
+            "candidate": {
+                "rank": 3,
+                "typePrecision": 0.9,
+                "text": "Hyper3 keeps the requested material and finish in the first few results.",
+            },
+        },
+        "results": {
+            "candidate": [
+                {"id": "B001CD1GC0_71oh4KcBXJS", "rank": 1},
+                {"id": "B07DBK2P2G_41TnBzn9tFL", "rank": 2},
+                {"id": "B07DBHB6B5_41SHn0jzPOL", "rank": 3, "target": True},
+                {"id": "B07DBJQC4S_41Jv3-wdZ3L", "rank": 4},
+                {"id": "B07DTFBDTL_414HtkR3QZL", "rank": 5},
+                {"id": "B0742DR7C2_81jtRdRtkPL", "rank": 6},
+            ],
+            "clip": [
+                {"id": "B0742DR7C2_81jtRdRtkPL", "rank": 1},
+                {"id": "B07374K538_71XEFMKYAGL", "rank": 2},
+                {"id": "B001CD1GFM_61lepTd-EmS", "rank": 3},
+                {"id": "B07DBK2P2G_41TnBzn9tFL", "rank": 4},
+                {"id": "B07HKF59YX_41yzx8pNH6L", "rank": 5},
+                {"id": "B07DT153M1_418DZS6SpTL", "rank": 6},
+            ],
+        },
+    },
+    {
+        "id": "silver-mid-century-chair",
+        "mode": "text-to-product",
+        "title": "Silver mid-century chair",
+        "family": "Furniture / chair",
+        "query": "a product photo of silver mid-century modern chair: Logan Mid-Century Modern Dining Chair Set of 2 20.1 W Silver, with metal, silver tone, wood, mid-century style, modern style",
+        "targetTitle": "Rivet Logan Mid-Century Modern Dining Chair, Set of 2, 20.1 W, Silver",
+        "targetSampleId": "B0853L3W72_81mvF2gJy5L",
+        "summaries": {
+            "clip": {
+                "rank": 28,
+                "typePrecision": 0.3,
+                "text": "CLIP drifts across nearby furniture and misses the exact silver chair until rank 28.",
+            },
+            "candidate": {
+                "rank": 2,
+                "typePrecision": 0.8,
+                "text": "Hyper3 brings the requested chair variant to rank 2 while preserving product type.",
+            },
+        },
+        "results": {
+            "candidate": [
+                {"id": "B0746HFVWY_91-Pi95Hy9L", "rank": 1},
+                {"id": "B0853L3W72_81mvF2gJy5L", "rank": 2, "target": True},
+                {"id": "B0853KZW7Z_71LY8AELiuL", "rank": 3},
+                {"id": "B07B7B244W_71DNWOd-5bL", "rank": 4},
+                {"id": "B07B7B3RVS_7196wQbG7KL", "rank": 5},
+                {"id": "B075YN3HN9_81Rub8QQCvL", "rank": 6},
+            ],
+            "clip": [
+                {"id": "B075YPTG2Q_710tYWSG8SL", "rank": 1},
+                {"id": "B07HSB4WV6_71k4-giCqJL", "rank": 2},
+                {"id": "B075YP3C53_81tDegaK7zL", "rank": 3},
+                {"id": "B07HSLKKXG_81MUeTeLXVL", "rank": 4},
+                {"id": "B07HSK3534_81WypZMR_2L", "rank": 5},
+                {"id": "B0853KZW7Z_71LY8AELiuL", "rank": 6},
+            ],
+        },
+    },
 ]
 
-DEMO_QUERY_IDS = {example["queryId"] for example in DEMO_EXAMPLES}
+DEMO_QUERY_IDS = {example["queryId"] for example in DEMO_EXAMPLES if "queryId" in example}
+DEMO_REQUIRED_SAMPLE_IDS = set(DEMO_QUERY_IDS)
+for example in DEMO_EXAMPLES:
+    target_sample_id = example.get("targetSampleId")
+    if target_sample_id:
+        DEMO_REQUIRED_SAMPLE_IDS.add(str(target_sample_id))
+    for model_results in dict(example.get("results") or {}).values():
+        for result in list(model_results or []):
+            sample_id = result.get("id")
+            if sample_id:
+                DEMO_REQUIRED_SAMPLE_IDS.add(str(sample_id))
 
 
 def media_root() -> Path:
@@ -171,7 +300,7 @@ def select_balanced(records: list[dict]) -> list[dict]:
     }
     for record in records:
         sample_id = safe_sample_id(str(record["item_id"]), str(record["image_id"]))
-        if sample_id in DEMO_QUERY_IDS and sample_id not in selected_ids:
+        if sample_id in DEMO_REQUIRED_SAMPLE_IDS and sample_id not in selected_ids:
             selected.append(record)
             selected_ids.add(sample_id)
     return selected
@@ -188,7 +317,9 @@ def download_product_image(record: dict, destination: Path) -> bool:
     raw_path = destination.with_suffix(destination.suffix + ".download")
     tmp_path = destination.with_suffix(destination.suffix + ".tmp")
     try:
-        urllib.request.urlretrieve(url, raw_path)
+        with urllib.request.urlopen(url, timeout=IMAGE_DOWNLOAD_TIMEOUT_SEC) as response:
+            with raw_path.open("wb") as handle:
+                shutil.copyfileobj(response, handle)
         image = ImageOps.exif_transpose(Image.open(raw_path)).convert("RGB")
         image.thumbnail(IMAGE_MAX_SIZE, Image.Resampling.LANCZOS)
         image.save(tmp_path, format="JPEG", quality=90, optimize=True)
@@ -339,7 +470,6 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
             {
                 "key": spec["key"],
                 "displayName": spec["display_name"],
-                "buttonLabel": spec["button_label"],
                 "layoutKey": layout_key,
                 "spaceKey": layout_key.split("__euclidean_umap", 1)[0].split("__poincare_umap", 1)[0],
             }
@@ -347,80 +477,9 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
     return props
 
 
-def supported_kwargs(func: Any, kwargs: dict[str, Any]) -> dict[str, Any]:
-    params = signature(func).parameters
-    return {key: value for key, value in kwargs.items() if key in params}
-
-
-def api_base_url() -> str:
-    host = "127.0.0.1" if SPACE_HOST == "0.0.0.0" else SPACE_HOST
-    return f"http://{host}:{SPACE_PORT}"
-
-
-def request_json(method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
-    body = None if payload is None else json.dumps(payload).encode("utf-8")
-    request = urllib.request.Request(
-        f"{api_base_url()}{path}",
-        data=body,
-        method=method,
-        headers={"Content-Type": "application/json"},
-    )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        return json.loads(response.read().decode("utf-8"))
-
-
-def wait_for_hyperview(timeout_s: float = 120.0) -> None:
-    deadline = time.time() + timeout_s
-    last_error: Exception | None = None
-    while time.time() < deadline:
-        try:
-            request_json("GET", "/__hyperview__/health")
-            return
-        except Exception as exc:
-            last_error = exc
-            time.sleep(0.5)
-    raise RuntimeError(f"HyperView server did not become ready: {last_error}")
-
-
-def add_panel(panel: dict[str, Any]) -> None:
-    request_json("POST", "/api/control/ui/panels", {"workspace_id": "default", **panel})
-
-
-def configure_v05_view(layouts: dict[str, str]) -> None:
-    request_json(
-        "POST",
-        "/api/control/extensions/install",
-        {"workspace_id": "default", "folder": str(EXTENSION_DIR)},
-    )
-    add_panel(
-        {
-            "panel_id": "clip-catalog-map",
-            "title": MODEL_SPECS[0]["panel_title"],
-            "kind": "scatter",
-            "layout_key": layouts["clip"],
-            "position": "center",
-            "reference_panel_id": "grid",
-            "direction": "right",
-        }
-    )
-    add_panel(
-        {
-            "panel_id": "candidate-catalog-map",
-            "title": MODEL_SPECS[1]["panel_title"],
-            "kind": "scatter",
-            "layout_key": layouts["candidate"],
-            "position": "center",
-            "reference_panel_id": "clip-catalog-map",
-            "direction": "right",
-        }
-    )
-    request_json("POST", "/api/control/ui/layout", {"workspace_id": "default", "layout_key": layouts["clip"]})
-
-
 def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
     scatter_panels = []
-    previous_panel_id = "grid"
-    for spec in MODEL_SPECS:
+    for index, spec in enumerate(MODEL_SPECS):
         panel_id = f"{spec['key']}-catalog-map"
         scatter_panels.append(
             hv.ui.Scatter(
@@ -429,11 +488,10 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
                 layout_key=layouts[spec["key"]],
                 geometry=spec["geometry"],
                 layout_dimension=spec["layout_dimension"],
-                reference_panel_id=previous_panel_id,
-                direction="right",
+                reference_panel_id="grid" if index == 0 else scatter_panels[0].id,
+                direction="right" if index == 0 else "below",
             )
         )
-        previous_panel_id = panel_id
 
     return hv.ui.View(
         *scatter_panels,
@@ -442,8 +500,6 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
             extension="abo-catalog-readout",
             panel="catalog-comparison",
             position="right",
-            reference_panel_id=previous_panel_id,
-            direction="right",
             props={
                 "models": model_panel_props(layouts),
                 "examples": DEMO_EXAMPLES,
@@ -453,29 +509,6 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
 
 
 def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
-    launch_params = signature(hv.launch).parameters
-    print(f"HyperView launch signature: {signature(hv.launch)}", flush=True)
-    if "block" not in launch_params:
-        thread = threading.Thread(
-            target=hv.launch,
-            kwargs={
-                "dataset": dataset,
-                "host": SPACE_HOST,
-                "port": SPACE_PORT,
-                "open_browser": False,
-            },
-            daemon=True,
-        )
-        thread.start()
-        wait_for_hyperview()
-        configure_v05_view(layouts)
-        print(f"\nHyperView ABO catalog demo is running at {api_base_url()}", flush=True)
-        print("   CLIP and Hyper3-CLIP pinned scatter panels are added side by side.", flush=True)
-        print("   Press Ctrl+C to stop.\n", flush=True)
-        while thread.is_alive():
-            time.sleep(1.0)
-        raise RuntimeError("HyperView server stopped unexpectedly.")
-
     session = hv.launch(
         dataset,
         host=SPACE_HOST,
@@ -485,27 +518,15 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
         block=False,
     )
     print("Installing ABO demo extension...", flush=True)
-    session.ui.add_extension(
-        EXTENSION_DIR,
-        **supported_kwargs(session.ui.add_extension, {"workspace_id": WORKSPACE_ID}),
-    )
-    print("Applying ABO side-by-side demo view...", flush=True)
-    session.ui.apply_view(
-        build_demo_view(layouts),
-        **supported_kwargs(session.ui.apply_view, {"workspace_id": WORKSPACE_ID}),
-    )
+    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
+    print("Applying ABO stacked comparison demo view...", flush=True)
+    session.ui.apply_view(build_demo_view(layouts), workspace_id=WORKSPACE_ID)
     print("Clearing initial query state...", flush=True)
-    session.ui.set_active_layout(
-        None,
-        **supported_kwargs(session.ui.set_active_layout, {"workspace_id": WORKSPACE_ID}),
-    )
-    session.ui.set_selection(
-        [],
-        **supported_kwargs(session.ui.set_selection, {"workspace_id": WORKSPACE_ID}),
-    )
+    session.ui.set_active_layout(None, workspace_id=WORKSPACE_ID)
+    session.ui.set_selection([], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView ABO catalog demo is running at {session.url}", flush=True)
     model_names = " and ".join(spec["display_name"] for spec in MODEL_SPECS)
-    print(f"   {model_names} pinned scatter panels are added side by side.", flush=True)
+    print(f"   {model_names} pinned scatter panels are stacked for comparison.", flush=True)
     print("   Press Ctrl+C to stop.\n", flush=True)
     return session
 
