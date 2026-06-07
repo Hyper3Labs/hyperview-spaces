@@ -26,7 +26,7 @@ ARG HYPER_MODELS_VERSION=0.3.0
 COPY --chown=user vendor/*.whl /tmp/hyperview-wheel/
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
-RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+RUN pip install torch==2.9.1+cpu torchvision==0.24.1+cpu --index-url https://download.pytorch.org/whl/cpu
 RUN echo "Installing bundled HyperView wheel" \
     && pip install /tmp/hyperview-wheel/*.whl \
     && python - <<'PY'
