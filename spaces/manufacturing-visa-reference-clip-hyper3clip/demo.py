@@ -17,6 +17,7 @@ from typing import Any
 from PIL import Image, ImageOps
 
 import hyperview as hv
+from hyperview.core.dataset import Sample
 
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
@@ -221,9 +222,7 @@ def select_visa_records() -> list[dict[str, Any]]:
 def add_visa_samples(dataset: hv.Dataset) -> None:
     existing_ids = {sample.id for sample in dataset.samples}
     media_dir = media_root()
-    added = 0
-    updated = 0
-    skipped = 0
+    samples: list[Sample] = []
     for record in select_visa_records():
         sample_id = safe_sample_id(record["category"], record["split_name"], record["row_index"], record["defect_label"])
         destination = Path(record["local_path"]) if record.get("local_path") else media_dir / f"{sample_id}.jpg"
@@ -238,16 +237,17 @@ def add_visa_samples(dataset: hv.Dataset) -> None:
             "defect_status": "defect_or_test_item" if record["defect_label"] else "normal_reference",
             "source_dataset": "BrachioLab/visa",
         }
-        existed = sample_id in existing_ids
-        if existed and not FORCE_SAMPLE_REFRESH:
-            skipped += 1
-            continue
-        dataset.add_image(str(destination), label=record["category"], metadata=metadata, sample_id=sample_id)
-        if existed:
-            updated += 1
-        else:
-            added += 1
-            existing_ids.add(sample_id)
+        samples.append(
+            Sample(
+                id=sample_id,
+                filepath=str(destination),
+                label=record["category"],
+                metadata=metadata,
+            )
+        )
+    upserted, skipped = dataset.add_samples(samples, skip_existing=not FORCE_SAMPLE_REFRESH)
+    updated = sum(1 for sample in samples if sample.id in existing_ids) if FORCE_SAMPLE_REFRESH else 0
+    added = upserted - updated
     if skipped:
         print(f"Skipped {skipped} existing VisA sample rows.", flush=True)
     print(f"Prepared VisA samples ({added} added, {updated} updated).", flush=True)
