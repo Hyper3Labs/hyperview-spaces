@@ -39,7 +39,6 @@ function normalizeModels(value) {
       displayName: String(model.displayName || model.display_name || model.key || `Model ${index + 1}`),
       buttonLabel: String(model.buttonLabel || model.button_label || `${model.key || "Model"} query`),
       layoutKey: model.layoutKey || model.layout_key || null,
-      spaceKey: model.spaceKey || model.space_key || null,
     }))
     .filter((model) => model.layoutKey);
 }
@@ -174,6 +173,77 @@ function CompactEvidence({ item, models }) {
           React.createElement("td", { style: { ...cell, color: badCount === 0 ? colors.good : colors.error, fontWeight: 900 }, align: "right" }, badCount),
         );
       }),
+    ),
+  );
+}
+
+function ActiveNeighbors({ item, modelKey }) {
+  if (!item || !modelKey) return null;
+  const summary = item.summaries?.[modelKey] || {};
+  const neighbors = Array.isArray(summary.neighbors) ? summary.neighbors.slice(0, 5) : [];
+  if (!neighbors.length) return null;
+  const cell = {
+    padding: "4px 3px",
+    borderBottom: `1px solid ${colors.border}`,
+    fontSize: 10,
+    color: colors.bodyText,
+  };
+  const head = { ...cell, color: colors.mutedText, fontSize: 9, textTransform: "uppercase" };
+  return React.createElement(
+    "div",
+    {
+      style: {
+        borderTop: `1px solid ${colors.border}`,
+        paddingTop: 7,
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+      },
+    },
+    React.createElement(
+      "div",
+      { style: { color: colors.strongText, fontSize: 11.5, fontWeight: 900 } },
+      modelKey === "candidate" ? "Hyper3 Top Refs" : "CLIP Top Refs",
+    ),
+    React.createElement(
+      "table",
+      { style: { width: "100%", borderCollapse: "collapse" } },
+      React.createElement(
+        "thead",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement("th", { style: head, align: "left" }, "Rank"),
+          React.createElement("th", { style: head, align: "left" }, "SKU"),
+          React.createElement("th", { style: head, align: "right" }, "Signal"),
+        ),
+      ),
+      React.createElement(
+        "tbody",
+        null,
+        neighbors.map((neighbor) => {
+          const signal = neighbor.sameSkuNormal
+            ? "correct normal"
+            : neighbor.pipeFryumConfusion
+              ? "wrong line"
+              : neighbor.sameSku
+                ? "same SKU"
+                : "other";
+          const signalColor = neighbor.sameSkuNormal
+            ? colors.good
+            : neighbor.pipeFryumConfusion
+              ? colors.error
+              : colors.bodyText;
+          return React.createElement(
+            "tr",
+            { key: `${modelKey}-${neighbor.rank}-${neighbor.id}` },
+            React.createElement("td", { style: { ...cell, color: colors.strongText, fontWeight: 800 } }, `#${neighbor.rank}`),
+            React.createElement("td", { style: cell }, pretty(neighbor.sku)),
+            React.createElement("td", { style: { ...cell, color: signalColor, fontWeight: 800 }, align: "right" }, signal),
+          );
+        }),
+      ),
     ),
   );
 }
@@ -320,8 +390,7 @@ function choiceFromSimilarity(similarity, examples, models) {
   const sourceKey = source.includes(":") ? source.split(":").pop() : null;
   const model =
     models.find((candidate) => candidate.key === sourceKey) ||
-    models.find((candidate) => candidate.layoutKey === similarity.layout_key) ||
-    models.find((candidate) => candidate.spaceKey === similarity.space_key);
+    models.find((candidate) => candidate.layoutKey === similarity.layout_key);
   if (!model) return null;
   const metric = advantageMetric(model.key, item.id);
   return {
@@ -330,18 +399,6 @@ function choiceFromSimilarity(similarity, examples, models) {
     queryLabel: title(item.queryLabel || item.id),
     metricLine: metric?.line || null,
   };
-}
-
-async function sendJson(path, payload, method = "POST") {
-  const response = await fetch(path, {
-    method,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) {
-    throw new Error(await response.text());
-  }
-  return response.json();
 }
 
 function buttonText(model) {
@@ -416,6 +473,7 @@ function WalkthroughCard({ item, models, onSelectQuery, loadingKey, activeModelK
       { style: { color: colors.mutedText, fontSize: 10, lineHeight: 1.3 } },
       "Wrong-line references send operators to the wrong golden sample.",
     ),
+    React.createElement(ActiveNeighbors, { item, modelKey: activeModelKey }),
     React.createElement(CompactEvidence, { item, models }),
   );
 }
@@ -424,7 +482,6 @@ export default function ManufacturingPanel() {
   const props = usePanelProps() || {};
   const commands = usePanelCommands();
   const runtimeState = usePanelRuntimeState ? usePanelRuntimeState() : {};
-  const workspaceId = String(props.workspaceId || props.workspace_id || "manufacturing-visa-reference-clip-hyper3clip");
   const models = normalizeModels(props.models);
   const examples = Array.isArray(props.examples) ? props.examples : [];
   const primaryExample = examples.find((item) => item.id === "fryum") || examples[0] || null;
@@ -449,6 +506,7 @@ export default function ManufacturingPanel() {
       const item = examples.find((example) => example.queryId === sampleId);
       const metric = advantageMetric(model.key, item?.id);
       const nextChoice = {
+        modelKey: model.key,
         modelName: model.displayName,
         queryLabel: title(item?.queryLabel || "fryum"),
         metricLine: metric?.line || null,
@@ -458,63 +516,25 @@ export default function ManufacturingPanel() {
       setActiveChoice(nextChoice);
       setLoadingKey(choiceKey);
       try {
-        if (commands.setActiveLayout) {
-          await commands.setActiveLayout(model.layoutKey, { persist: "none" });
-        }
-        if (commands.showSimilar) {
-          await commands.showSimilar({
-            sampleId,
-            layoutKey: model.layoutKey,
-            spaceKey: model.spaceKey,
-            k: 10,
-            source: `manufacturing-demo:${model.key}`,
-            focus: "samples",
-            persist: "none",
-          });
-        }
-        await sendJson("/api/control/ui/state", {
-          workspace_id: workspaceId,
-          set_active_layout: true,
-          active_layout_key: model.layoutKey,
-          set_selection: true,
-          selected_ids: [sampleId],
-          set_similarity_query: true,
-          similarity_query: {
-            sample_id: sampleId,
-            layout_key: model.layoutKey,
-            space_key: model.spaceKey,
-            k: 10,
-            source: `manufacturing-demo:${model.key}`,
-          },
-        }, "PATCH");
+        await commands.setActiveLayout(model.layoutKey, { persist: true });
+        await commands.showSimilar({
+          sampleId,
+          layoutKey: model.layoutKey,
+          k: 10,
+          source: `manufacturing-demo:${model.key}`,
+          focus: "samples",
+          persist: true,
+        });
         setActiveChoice(nextChoice);
         setActiveModelKey(model.key);
       } catch (error) {
-        try {
-          await sendJson("/api/control/ui/layout", {
-            workspace_id: workspaceId,
-            layout_key: model.layoutKey,
-          });
-          await sendJson("/api/control/ui/similarity", {
-            workspace_id: workspaceId,
-            sample_id: sampleId,
-            layout_key: model.layoutKey,
-            space_key: model.spaceKey,
-            k: 10,
-            source: `manufacturing-demo:${model.key}`,
-          });
-          setActiveChoice(nextChoice);
-          setActiveModelKey(model.key);
-          return;
-        } catch (fallbackError) {
-          const message = fallbackError instanceof Error ? fallbackError.message : String(fallbackError);
-          setPanelError(`Could not show neighbors: ${message}`);
-        }
+        const message = error instanceof Error ? error.message : String(error);
+        setPanelError(`Could not show neighbors: ${message}`);
       } finally {
         setLoadingKey(null);
       }
     },
-    [commands, examples, workspaceId],
+    [commands, examples],
   );
 
   return React.createElement(

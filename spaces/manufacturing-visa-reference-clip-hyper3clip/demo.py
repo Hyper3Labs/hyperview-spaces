@@ -18,7 +18,6 @@ from PIL import Image, ImageOps
 
 import hyperview as hv
 
-
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6265"))
@@ -29,6 +28,11 @@ EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "manufacturing-readout
 SAMPLES_PER_CATEGORY = int(os.environ.get("VISA_SAMPLES_PER_CATEGORY", "4"))
 TRAIN_FRACTION = float(os.environ.get("VISA_TRAIN_FRACTION", "0.5"))
 IMAGE_MAX_SIZE = (640, 640)
+FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_VISA_FORCE_REFRESH", "").lower() in {
+    "1",
+    "true",
+    "yes",
+}
 ALLOW_CANDIDATE_FALLBACK = os.environ.get("HYPERVIEW_ALLOW_CANDIDATE_FALLBACK", "1").lower() in {
     "1",
     "true",
@@ -90,8 +94,8 @@ MODEL_SPECS = [
         "key": "candidate",
         "display_name": os.environ.get("VISA_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
         "button_label": os.environ.get("VISA_CANDIDATE_BUTTON_LABEL", "Show Hyper3 neighbors"),
-        "provider": os.environ.get("VISA_CANDIDATE_PROVIDER", "hyper3-clip"),
-        "model": os.environ.get("VISA_CANDIDATE_MODEL", "hyper3labs/hyper3-clip-v0.5"),
+        "provider": os.environ.get("VISA_CANDIDATE_PROVIDER", "hyper-models"),
+        "model": os.environ.get("VISA_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
         "layout": os.environ.get("VISA_CANDIDATE_LAYOUT", "poincare:2d"),
         "geometry": os.environ.get("VISA_CANDIDATE_GEOMETRY", "poincare"),
         "layout_dimension": int(os.environ.get("VISA_CANDIDATE_LAYOUT_DIMENSION", "2")),
@@ -219,6 +223,7 @@ def add_visa_samples(dataset: hv.Dataset) -> None:
     media_dir = media_root()
     added = 0
     updated = 0
+    skipped = 0
     for record in select_visa_records():
         sample_id = safe_sample_id(record["category"], record["split_name"], record["row_index"], record["defect_label"])
         destination = Path(record["local_path"]) if record.get("local_path") else media_dir / f"{sample_id}.jpg"
@@ -234,12 +239,17 @@ def add_visa_samples(dataset: hv.Dataset) -> None:
             "source_dataset": "BrachioLab/visa",
         }
         existed = sample_id in existing_ids
+        if existed and not FORCE_SAMPLE_REFRESH:
+            skipped += 1
+            continue
         dataset.add_image(str(destination), label=record["category"], metadata=metadata, sample_id=sample_id)
         if existed:
             updated += 1
         else:
             added += 1
             existing_ids.add(sample_id)
+    if skipped:
+        print(f"Skipped {skipped} existing VisA sample rows.", flush=True)
     print(f"Prepared VisA samples ({added} added, {updated} updated).", flush=True)
 
 
@@ -262,6 +272,7 @@ def ensure_layouts(dataset: hv.Dataset) -> dict[str, str]:
                 )
                 print(warning, flush=True)
                 RUNTIME_WARNINGS.append(warning)
+                fallback_layout_key = layouts["clip"]
                 spec.update(
                     {
                         "display_name": "Hyper3-CLIP unavailable (CLIP fallback)",
@@ -270,21 +281,22 @@ def ensure_layouts(dataset: hv.Dataset) -> dict[str, str]:
                         "layout_dimension": MODEL_SPECS[0]["layout_dimension"],
                         "panel_title": "Hyper3-CLIP unavailable - showing CLIP fallback",
                         "fallback": True,
-                        "space_key": MODEL_SPECS[0].get("space_key"),
+                        "layout_key": fallback_layout_key,
                     }
                 )
-                layouts[spec["key"]] = layouts["clip"]
+                layouts[spec["key"]] = fallback_layout_key
                 continue
             raise
-        spec["space_key"] = space_key
         print(f"Ensuring {spec['display_name']} layout...", flush=True)
-        layouts[spec["key"]] = dataset.compute_visualization(
+        layout_key = dataset.compute_visualization(
             space_key=space_key,
             layout=spec["layout"],
             n_neighbors=20,
             min_dist=0.08,
             metric=spec["metric"],
         )
+        spec["layout_key"] = layout_key
+        layouts[spec["key"]] = layout_key
     return layouts
 
 
@@ -305,24 +317,19 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
                 "displayName": spec["display_name"],
                 "buttonLabel": spec["button_label"],
                 "layoutKey": layout_key,
-                "spaceKey": spec.get("space_key") or space_key_from_layout(layout_key),
             }
         )
     return props
 
 
-def space_key_from_layout(layout_key: str) -> str:
-    return layout_key.split("__euclidean_umap", 1)[0].split("__poincare_umap", 1)[0]
-
-
 def reference_summary(dataset: hv.Dataset, sample_id: str, model_key: str) -> dict[str, Any]:
     spec = next((item for item in MODEL_SPECS if item["key"] == model_key), None)
-    if spec is None or spec.get("space_key") is None:
+    if spec is None or spec.get("layout_key") is None:
         return {}
     query = dataset[sample_id]
     query_sku = query.metadata.get("sku")
     query_family = query.metadata.get("product_family")
-    neighbors = dataset.find_similar(sample_id, k=10, space_key=str(spec["space_key"]))
+    neighbors = dataset.find_similar(sample_id, k=10, layout_key=str(spec["layout_key"]))
     sku_hits = sum(1 for sample, _distance in neighbors if sample.metadata.get("sku") == query_sku)
     family_hits = sum(1 for sample, _distance in neighbors if sample.metadata.get("product_family") == query_family)
     normal_refs = sum(1 for sample, _distance in neighbors if sample.metadata.get("workflow_role") == "normal_reference")
@@ -431,17 +438,6 @@ def category_strength_rows(dataset: hv.Dataset) -> list[dict[str, str]]:
     return sorted(rows, key=lambda row: float(row["delta"]), reverse=True)[:3]
 
 
-def register_hyper3_clip_provider() -> None:
-    from hyperview.runtime import ProviderRegistry
-
-    ProviderRegistry().register_python(
-        "hyper3-clip",
-        "hyper3_clip_provider:Hyper3ClipEmbeddings",
-        description="Hyper3-CLIP v0.5 image embeddings from hyper3labs/hyper3-clip-v0.5",
-        overwrite=True,
-    )
-
-
 def build_demo_view(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.ui.View:
     scatter_panels = [
         hv.ui.Scatter(
@@ -460,13 +456,19 @@ def build_demo_view(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.ui.View:
             extension="manufacturing-readout",
             panel="manufacturing-comparison",
             position="right",
+            layout=hv.ui.PanelLayout(width=340, min_width=300),
             props={
-                "workspaceId": WORKSPACE_ID,
                 "models": model_panel_props(layouts),
                 "examples": build_examples(dataset),
                 "strengthRows": category_strength_rows(dataset),
                 "warnings": RUNTIME_WARNINGS,
             },
+        ),
+        hv.ui.Samples(
+            id="manufacturing-neighbors",
+            title="Step 2 - Retrieved References",
+            position="bottom",
+            layout=hv.ui.PanelLayout(height=220, min_height=180),
         ),
     )
 
@@ -491,7 +493,6 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
 
 
 def main() -> None:
-    register_hyper3_clip_provider()
     dataset, layouts = build_dataset()
     print("Layouts:", flush=True)
     for spec in MODEL_SPECS:
