@@ -35,7 +35,6 @@ function normalizeModels(value) {
       key: String(model.key || `model-${index}`),
       displayName: String(model.displayName || model.display_name || model.key || `Model ${index + 1}`),
       layoutKey: model.layoutKey || model.layout_key || null,
-      spaceKey: model.spaceKey || model.space_key || null,
     }))
     .filter((model) => model.layoutKey);
 }
@@ -732,7 +731,6 @@ export default function CatalogComparisonPanel() {
       await commands.showSimilar({
         sampleId: item.queryId,
         layoutKey: model.layoutKey,
-        spaceKey: model.spaceKey,
         k: 10,
         source: `abo-demo:${model.key}`,
         focus: "samples",

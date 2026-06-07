@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import Any
 
 from datasets import load_dataset
+from hyperview.core.sample import Sample
 from PIL import Image, ImageOps
 
 import hyperview as hv
-
 
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
@@ -379,10 +379,9 @@ def prepare_catalog_records() -> list[dict]:
 def add_abo_samples(dataset: hv.Dataset) -> None:
     existing_ids = {sample.id for sample in dataset.samples}
     media_dir = media_root()
-    added = 0
-    updated = 0
     skipped = 0
     product_counts: Counter[str] = Counter()
+    samples: list[Sample] = []
     records = prepare_catalog_records()
     expected_ids = {
         safe_sample_id(str(record["item_id"]), str(record["image_id"])) for record in records
@@ -395,7 +394,7 @@ def add_abo_samples(dataset: hv.Dataset) -> None:
     if not FORCE_SAMPLE_REFRESH and not missing_ids and not missing_media:
         print(
             f"ABO samples already prepared ({len(records)} products). "
-            "Refreshing sample metadata and media paths.",
+            "Existing sample rows will be reused.",
             flush=True,
         )
 
@@ -406,31 +405,39 @@ def add_abo_samples(dataset: hv.Dataset) -> None:
             skipped += 1
             continue
 
-        sample_exists = sample_id in existing_ids
-
         metadata = dict(record)
         metadata["hierarchy"] = f"{record['department']} -> {record['product_type_readable']}"
 
-        dataset.add_image(
-            str(destination),
-            label=record["product_type"],
-            metadata=metadata,
-            sample_id=sample_id,
+        samples.append(
+            Sample(
+                id=sample_id,
+                filepath=str(destination),
+                label=record["product_type"],
+                metadata=metadata,
+            )
         )
-        if sample_exists:
-            updated += 1
-        else:
-            existing_ids.add(sample_id)
-            added += 1
         product_counts[record["product_type"]] += 1
 
         if index == 1 or index % 50 == 0 or index == len(records):
             print(
-                f"Prepared {index}/{len(records)} products "
-                f"({added} added, {updated} updated, {skipped} skipped).",
+                f"Prepared media for {index}/{len(records)} products "
+                f"({skipped} skipped).",
                 flush=True,
             )
 
+    upserted, skipped_existing = dataset.add_samples(
+        samples,
+        skip_existing=not FORCE_SAMPLE_REFRESH,
+    )
+    updated = (
+        sum(1 for sample in samples if sample.id in existing_ids)
+        if FORCE_SAMPLE_REFRESH
+        else 0
+    )
+    added = upserted - updated
+    if skipped_existing:
+        print(f"Skipped {skipped_existing} existing ABO sample rows.", flush=True)
+    print(f"Prepared ABO samples ({added} added, {updated} updated, {skipped} media skipped).", flush=True)
     print(f"Product-type counts: {dict(product_counts)}", flush=True)
 
 
@@ -471,7 +478,6 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
                 "key": spec["key"],
                 "displayName": spec["display_name"],
                 "layoutKey": layout_key,
-                "spaceKey": layout_key.split("__euclidean_umap", 1)[0].split("__poincare_umap", 1)[0],
             }
         )
     return props
