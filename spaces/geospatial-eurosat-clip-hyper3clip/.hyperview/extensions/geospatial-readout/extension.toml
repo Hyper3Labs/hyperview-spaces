@@ -1,0 +1,8 @@
+name = "geospatial-readout"
+description = "RESISC45 CLIP vs Hyper3-CLIP geospatial retrieval readout"
+
+[[panels]]
+id = "geospatial-comparison"
+title = "Scene Retrieval Readout"
+position = "right"
+file = "panel.js"

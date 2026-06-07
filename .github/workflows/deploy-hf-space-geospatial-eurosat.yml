@@ -1,0 +1,22 @@
+name: Deploy HF Space - HyperView EuroSAT Geospatial
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/geospatial-eurosat-clip-hyper3clip/**
+      - .github/workflows/deploy-hf-space-geospatial-eurosat.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-geospatial-eurosat
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/geospatial-eurosat-clip-hyper3clip
+      space_id: hyper3labs/HyperView-EuroSAT-Geospatial
+    secrets: inherit
