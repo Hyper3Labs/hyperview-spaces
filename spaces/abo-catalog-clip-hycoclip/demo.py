@@ -484,6 +484,16 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
 
 
 def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
+    samples_panel = hv.ui.Samples(
+        id="grid",
+        title="Samples",
+        position="center",
+        layout=hv.ui.PanelLayout(
+            width=int(os.environ.get("ABO_SAMPLES_PANEL_WIDTH", "220")),
+            min_width=180,
+            min_height=360,
+        ),
+    )
     scatter_panels = []
     for index, spec in enumerate(MODEL_SPECS):
         panel_id = f"{spec['key']}-catalog-map"
@@ -496,16 +506,22 @@ def build_demo_view(layouts: dict[str, str]) -> hv.ui.View:
                 layout_dimension=spec["layout_dimension"],
                 reference_panel_id="grid" if index == 0 else scatter_panels[0].id,
                 direction="right" if index == 0 else "below",
+                layout=hv.ui.PanelLayout(min_width=420, min_height=240),
             )
         )
 
     return hv.ui.View(
+        samples_panel,
         *scatter_panels,
         hv.ui.ExtensionPanel(
             id="catalog-hierarchy-readout",
             extension="abo-catalog-readout",
             panel="catalog-comparison",
             position="right",
+            layout=hv.ui.PanelLayout(
+                width=int(os.environ.get("ABO_READOUT_PANEL_WIDTH", "320")),
+                min_width=300,
+            ),
             props={
                 "models": model_panel_props(layouts),
                 "examples": DEMO_EXAMPLES,
@@ -532,7 +548,10 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
     session.ui.set_selection([], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView ABO catalog demo is running at {session.url}", flush=True)
     model_names = " and ".join(spec["display_name"] for spec in MODEL_SPECS)
-    print(f"   {model_names} pinned scatter panels are stacked for comparison.", flush=True)
+    print(
+        f"   Samples, {model_names} stacked maps, and the guided readout are pinned.",
+        flush=True,
+    )
     print("   Press Ctrl+C to stop.\n", flush=True)
     return session
 
