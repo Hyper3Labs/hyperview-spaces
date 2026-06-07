@@ -351,15 +351,35 @@ def add_geospatial_samples(dataset: hv.Dataset) -> None:
             }
         )
 
-    upserted, skipped_existing = dataset.add_images(
-        image_rows,
-        skip_existing=not FORCE_SAMPLE_REFRESH,
-    )
-    updated = (
-        sum(1 for row in image_rows if str(row["sample_id"]) in existing_ids)
-        if FORCE_SAMPLE_REFRESH
-        else 0
-    )
+    if hasattr(dataset, "add_images"):
+        upserted, skipped_existing = dataset.add_images(
+            image_rows,
+            skip_existing=not FORCE_SAMPLE_REFRESH,
+        )
+        updated = (
+            sum(1 for row in image_rows if str(row["sample_id"]) in existing_ids)
+            if FORCE_SAMPLE_REFRESH
+            else 0
+        )
+    else:
+        upserted = 0
+        skipped_existing = 0
+        updated = 0
+        for row in image_rows:
+            sample_id = str(row["sample_id"])
+            exists = sample_id in existing_ids
+            if exists and not FORCE_SAMPLE_REFRESH:
+                skipped_existing += 1
+                continue
+            dataset.add_image(
+                row["filepath"],
+                label=row["label"],
+                metadata=row["metadata"],
+                sample_id=sample_id,
+            )
+            upserted += 1
+            updated += int(exists)
+
     added = upserted - updated
     if skipped_existing:
         print(f"Skipped {skipped_existing} existing {DATASET_LABEL} sample rows.", flush=True)
