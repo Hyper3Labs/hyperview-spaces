@@ -40,7 +40,6 @@ RUN pip install \
     "datasets>=4.5.0" \
     "Pillow>=12.0.0" \
     "timm>=1.0.0" \
-    "transformers==4.49.0" \
     "safetensors>=0.4.0" \
     "pyyaml>=6.0.0" \
     "sentencepiece>=0.2.0" \
