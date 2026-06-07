@@ -2,8 +2,8 @@ FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     curl \
-    git \
     libssl-dev \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
@@ -21,13 +21,14 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE="hyperview @ git+https://github.com/Hyper3Labs/HyperView.git@1ddcd10b5cf4bf96f5989e8779698164cb92c1af"
 ARG HYPER_MODELS_VERSION=0.3.0
+
+COPY --chown=user vendor/*.whl /tmp/hyperview-wheel/
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-RUN echo "Installing ${HYPERVIEW_PACKAGE}" \
-    && pip install "${HYPERVIEW_PACKAGE}" \
+RUN echo "Installing bundled HyperView wheel" \
+    && pip install /tmp/hyperview-wheel/*.whl \
     && python - <<'PY'
 import inspect
 import hyperview as hv
