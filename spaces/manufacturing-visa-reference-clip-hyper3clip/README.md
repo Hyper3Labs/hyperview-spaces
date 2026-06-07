@@ -14,7 +14,7 @@ This Space builds a balanced subset of the VisA industrial visual anomaly
 dataset and opens HyperView with two side-by-side embedding spaces:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3-clip-v0.5` from `hyper-models` in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v0.5` from the public `hyper-models` provider in a Poincare 2D layout
 
 The workflow is inspection reference retrieval: given a production-line
 inspection image, retrieve the right normal references for the same SKU or
@@ -59,8 +59,9 @@ VISA_SAMPLES_PER_CATEGORY=12 HYPERVIEW_PORT=6265 \
   uv run python hyperview-spaces/spaces/manufacturing-visa-reference-clip-hyper3clip/demo.py
 ```
 
-Hyper3-CLIP weights are loaded through the `hyper-models` catalog entry for the
-gated `hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs
-an `HF_TOKEN` secret with access to that model. If unavailable, the Space can
-start with a clearly labeled CLIP fallback unless
-`HYPERVIEW_ALLOW_CANDIDATE_FALLBACK=0` is set.
+The Docker image installs HyperView from the public HyperView GitHub package and
+loads Hyper3-CLIP through the public `hyper-models` provider catalog entry for
+the gated `hyper3labs/hyper3-clip-v0.5` model repository. The Space needs an
+`HF_TOKEN` secret with access to that model. If unavailable, the Space can start
+with a clearly labeled CLIP fallback unless `HYPERVIEW_ALLOW_CANDIDATE_FALLBACK=0`
+is set.
