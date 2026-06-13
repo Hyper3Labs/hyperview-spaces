@@ -1,0 +1,8 @@
+name = "precision-region-readout"
+description = "RefCOCOg CLIP vs Hyper3-CLIP precision region-search readout"
+
+[[panels]]
+id = "precision-region-comparison"
+title = "Precision Region Search"
+position = "right"
+file = "panel-v064.js"

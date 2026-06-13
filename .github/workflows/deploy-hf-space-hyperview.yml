@@ -1,24 +1,24 @@
-name: Deploy HF Space - Imagenette CLIP HyCoCLIP
+name: Deploy HF Space - HyperView iNat24 Tiny
 
 on:
   push:
     branches: [main]
     paths:
-      - spaces/imagenette-clip-hycoclip/**
-      - .github/workflows/deploy-hf-space-imagenette.yml
+      - spaces/inat24-tiny-clip-hycoclip/**
+      - .github/workflows/deploy-hf-space-hyperview.yml
       - .github/workflows/deploy-hf-space-reusable.yml
   repository_dispatch:
     types: [pypi-release]
   workflow_dispatch:
 
 concurrency:
-  group: deploy-hf-space-imagenette
+  group: deploy-hf-space-hyperview
   cancel-in-progress: false
 
 jobs:
   deploy:
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
-      source_dir: spaces/imagenette-clip-hycoclip
+      source_dir: spaces/inat24-tiny-clip-hycoclip
       space_id: hyper3labs/HyperView
     secrets: inherit

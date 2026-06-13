@@ -28,26 +28,26 @@ logic in `demo.py` and Space-local files so contributors can copy a folder,
 change their dataset settings, and open a PR without carrying an internal
 source snapshot.
 
-The current Imagenette example is intentionally simple and keeps the editable
-dataset/model choices in one place so agents do not need to coordinate Docker
-args, runtime environment variables, and Python script flags.
+The current iNat24 Tiny example is the main HyperView geometry showcase. It
+keeps the editable dataset/model choices in one place so agents do not need to
+coordinate Docker args, runtime environment variables, and Python script flags.
 
 ## Create Your Own Hugging Face Space
 
-Use the Imagenette example as a copyable starter.
+Use the iNat24 Tiny example as a copyable starter.
 
 1. Create a new Space at https://huggingface.co/new-space.
 2. Choose a distinct Space name such as `yourproject-HyperView` or `HyperView-yourproject`.
 3. Select `Docker` as the Space SDK.
 4. Create the Space. Hugging Face will initialize it as a git-backed Docker Space with `sdk: docker` in `README.md`.
-5. In this repository, copy `spaces/imagenette-clip-hycoclip` to a new folder such as `spaces/yourproject-hyperview`.
+5. In this repository, copy `spaces/inat24-tiny-clip-hycoclip` to a new folder such as `spaces/yourproject-hyperview`.
 6. Edit `spaces/yourproject-hyperview/demo.py` and change the constants block at the top of the file.
 7. Edit `spaces/yourproject-hyperview/README.md` and rename the copied example from `HyperView` to your own project name.
 8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
-9. Copy `.github/workflows/deploy-hf-space-imagenette.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
+9. Copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
 10. Configure the GitHub Actions secrets `HF_USERNAME` and `HF_TOKEN`. The token must have write access to the target Hugging Face Space.
 11. Push to `main` or run the workflow manually with `workflow_dispatch`.
-12. Keep the Dockerfile on released PyPI packages such as `hyperview==0.3.1` or `hyperview[ml]==0.3.1` instead of vendoring `hyperview` into the Space folder.
+12. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.4.2` and `hyper-models==0.2.0` instead of vendoring `hyperview` into the Space folder.
 13. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
 
 ### Optional Local Test
@@ -80,8 +80,8 @@ Add one row here when you contribute a new Space.
 
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
-| HyperView - Imagenette | `hyper3labs/HyperView` | `spaces/imagenette-clip-hycoclip` | Hyper3Labs | Official example | Copyable starter template |
-| HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Official example | Advanced `timm-image` + spherical example using released `hyperview[ml]` |
+| HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `spaces/inat24-tiny-clip-hycoclip` | Hyper3Labs | Main demo | CLIP Euclidean 3D, CLIP spherical 3D, and HyCoCLIP Poincare on a stratified taxonomy sample |
+| HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
 
 ## Repository layout
 
@@ -90,16 +90,13 @@ Add one row here when you contribute a new Space.
 ├── .github/workflows/
 ├── spaces/
 │   ├── README.md
-│   ├── jaguar-reid-megadescriptor-spherical/
-│   │   ├── README.md
-│   │   ├── Dockerfile
-│   │   ├── .dockerignore
-│   │   └── demo.py
-│   └── imagenette-clip-hycoclip/
+│   └── inat24-tiny-clip-hycoclip/
 │       ├── README.md
 │       ├── Dockerfile
 │       ├── .dockerignore
 │       └── demo.py
+├── archived-spaces/
+│   └── jaguar-reid-megadescriptor-spherical/
 └── .gitignore
 ```
 
@@ -107,11 +104,12 @@ Add one row here when you contribute a new Space.
 
 Yes, you can ship precomputed LanceDB artifacts with the image. There are two valid options:
 
-1. **Build-time precompute** (current default)
+1. **Build-time precompute**
    - `RUN python -c "from demo import build_dataset; build_dataset()"`
    - Artifacts are baked into the Docker image layers
 2. **Commit precomputed artifacts into this repo**
    - Useful when startup determinism is critical
    - Usually requires careful size control (and potentially Git LFS)
 
-For now, this repo uses option 1.
+For now, this repo builds the dataset at first startup so Hugging Face CPU
+Spaces do not reopen LanceDB artifacts from slow Docker overlay layers.

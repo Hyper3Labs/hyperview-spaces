@@ -11,5 +11,8 @@ venv
 .mypy_cache
 .pytest_cache
 
+# Local runtime artifacts
+demo_data
+
 # Misc
 .DS_Store

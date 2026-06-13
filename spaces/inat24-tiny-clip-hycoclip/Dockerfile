@@ -21,10 +21,12 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_VERSION=0.3.1
-ARG HYPER_MODELS_VERSION=0.1.0
+ARG HYPERVIEW_VERSION=0.4.2
+ARG HYPER_MODELS_VERSION=0.2.0
 
-# Pin package versions so Docker cache cannot silently hold an older PyPI release.
+# Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle,
+# then pin released HyperView packages so Docker cache cannot hold an older release.
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 RUN pip install "hyperview==${HYPERVIEW_VERSION}" && python -c "import hyperview; print('hyperview', hyperview.__version__)"
 RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 
