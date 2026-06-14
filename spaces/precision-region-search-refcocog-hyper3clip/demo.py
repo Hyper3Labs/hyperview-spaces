@@ -419,13 +419,33 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any], spaces: dict[str, 
     return session
 
 
+def repair_sample_filepaths(dataset: hv.Dataset) -> None:
+    print("Checking and repairing sample filepaths...", flush=True)
+    samples_to_update = []
+    for sample in dataset.samples:
+        if "demo_assets/" in sample.filepath:
+            rel_path = sample.filepath.split("demo_assets/")[-1]
+            new_path = SPACE_DIR / "demo_assets" / rel_path
+            if sample.filepath != str(new_path):
+                print(f"Repairing filepath for {sample.id}: {sample.filepath} -> {new_path}", flush=True)
+                sample.filepath = str(new_path)
+                samples_to_update.append(sample)
+    if samples_to_update:
+        dataset._storage.update_samples_batch(samples_to_update)
+        print(f"Repaired {len(samples_to_update)} sample filepaths in database.", flush=True)
+    else:
+        print("All sample filepaths are correct.", flush=True)
+
+
 def main() -> None:
     payload = load_cases()
     dataset = hv.Dataset(DATASET_NAME)
+    repair_sample_filepaths(dataset)
     add_ranked_crop_samples(dataset, payload)
     spaces, layouts = set_real_layouts(dataset)
     session = launch_demo(dataset, payload, spaces, layouts)
     session.wait()
+
 
 
 if __name__ == "__main__":
