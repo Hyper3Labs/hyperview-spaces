@@ -1,5 +1,5 @@
+.env
+demo_data/datasets/
 __pycache__/
 *.pyc
 .DS_Store
-.env
-demo_data/datasets/
