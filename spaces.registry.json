@@ -6,6 +6,7 @@
       "folder": "spaces/inat24-tiny-clip-hycoclip",
       "demo_slug": "inat24-tiny",
       "demo_name": "HyperView - iNat24 Tiny",
+      "description": "Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy.",
       "expected_dataset": "inat24_tiny_geometry_showcase",
       "keep_warm": true
     },
@@ -14,6 +15,7 @@
       "folder": "spaces/abo-catalog-clip-hycoclip",
       "demo_slug": "abo-catalog",
       "demo_name": "HyperView - ABO Catalog",
+      "description": "Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings.",
       "expected_dataset": "abo_catalog_clip_hyper3clip_side_by_side",
       "keep_warm": true
     },
@@ -22,6 +24,7 @@
       "folder": "spaces/fashion-deepfashion-text-search-clip-hyper3clip",
       "demo_slug": "deepfashion-text-search",
       "demo_name": "HyperView - DeepFashion Text Search",
+      "description": "Explore shopper-style text-to-image retrieval wins on a curated fashion catalog.",
       "expected_dataset": "deepfashion_text_search_clip_hyper3clip",
       "keep_warm": true
     },
@@ -30,15 +33,8 @@
       "folder": "spaces/geospatial-eurosat-clip-hyper3clip",
       "demo_slug": "eurosat-geospatial",
       "demo_name": "HyperView - EuroSAT Geospatial",
+      "description": "Review remote-sensing scene retrieval and neighborhood drift in aerial imagery.",
       "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
-      "keep_warm": true
-    },
-    {
-      "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
-      "folder": "spaces/logo-brand-search-clip-hyper3clip",
-      "demo_slug": "logo-brand-search",
-      "demo_name": "HyperView - Logo Brand Search",
-      "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
       "keep_warm": true
     },
     {
@@ -46,6 +42,7 @@
       "folder": "spaces/manufacturing-visa-reference-clip-hyper3clip",
       "demo_slug": "visa-manufacturing",
       "demo_name": "HyperView - VisA Manufacturing",
+      "description": "Find same-SKU visual references for manufacturing inspection images.",
       "expected_dataset": "visa_manufacturing_reference_clip_hyper3clip",
       "keep_warm": true
     },
@@ -54,6 +51,7 @@
       "folder": "spaces/visual-safety-content-clip-hyper3clip",
       "demo_slug": "visual-safety",
       "demo_name": "HyperView - Visual Safety",
+      "description": "Triage public marketplace images into safe and policy-review buckets.",
       "expected_dataset": "openimages_visual_safety_marketplace_triage_assets_v1",
       "keep_warm": true
     }

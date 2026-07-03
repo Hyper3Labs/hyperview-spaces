@@ -1,6 +1,7 @@
 import registry from "../../spaces.registry.json";
 
 interface Env {
+  ASSETS: Fetcher;
   STATUS: KVNamespace;
   HEALTH_TIMEOUT_MS?: string;
   HISTORY_LIMIT?: string;
@@ -10,6 +11,7 @@ interface RegistrySpace {
   space_id: string;
   demo_slug: string;
   demo_name?: string;
+  description?: string;
   keep_warm?: boolean;
 }
 
@@ -74,9 +76,13 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return svgResponse(renderBadge(record));
   }
 
-  if (url.pathname === "/") {
+  if (url.pathname === "/status") {
     const snapshot = await readLatestSnapshot(env);
     return htmlResponse(renderStatusPage(snapshot));
+  }
+
+  if (url.pathname === "/") {
+    return env.ASSETS.fetch(request);
   }
 
   return new Response("Not Found", { status: 404 });

@@ -1,8 +1,22 @@
 # HyperView warm-worker
 
-Cloudflare Worker for Layer 1 of `docs/deployment-architecture.md`: keep registered Hugging Face Spaces warm, publish the latest status snapshot, and expose embeddable status badges.
+Cloudflare Worker for Layer 1 of `docs/deployment-architecture.md`: keep registered Hugging Face Spaces warm, publish the latest status snapshot, expose embeddable status badges, and serve the generated demos gallery as static assets.
 
-The Worker imports `../spaces.registry.json` at build time. Wrangler bundles JSON imports, so each deploy contains the registry version present in the repo at deploy time.
+The Worker imports `../spaces.registry.json` at build time. Wrangler bundles JSON imports, so each deploy contains the registry version present in the repo at deploy time. The gallery is generated from the same registry into `../gallery/out/index.html`.
+
+## Gallery build
+
+From `warm-worker/`:
+
+```sh
+npm run build:gallery
+```
+
+This runs `node ../gallery/build.mjs`, reads `../spaces.registry.json`, and writes `../gallery/out/index.html`. By default status badges use same-origin URLs such as `/badge/inat24-tiny.svg`. To point badges at another deployed Worker, set `WARM_WORKER_URL`:
+
+```sh
+WARM_WORKER_URL=https://hyperview-warm-worker.example.workers.dev npm run build:gallery
+```
 
 ## One-time setup
 
@@ -33,6 +47,7 @@ The Worker imports `../spaces.registry.json` at build time. Wrangler bundles JSO
 From `warm-worker/`:
 
 ```sh
+npm run build:gallery
 npm run deploy
 ```
 
@@ -46,7 +61,8 @@ crons = ["*/5 * * * *"]
 
 - `GET /status.json` returns the latest KV snapshot with CORS enabled.
 - `GET /badge/<demo_slug>.svg` returns a small SVG badge.
-- `GET /` returns a minimal HTML table of all monitored Spaces.
+- `GET /` serves the generated demos gallery from `../gallery/out`.
+- `GET /status` returns a minimal HTML table of all monitored Spaces.
 
 ## Replacing the GitHub monitor
 
