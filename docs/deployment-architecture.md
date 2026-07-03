@@ -2,6 +2,17 @@
 
 Status: design accepted July 2026. Constraint: **no infra spend beyond the
 existing Cloudflare Workers Paid ($5/mo) plan's included allowances.**
+Cloudflare Containers are explicitly out — too expensive; the plan's
+generous Workers/KV/static-asset allowances are the target.
+
+Product decision (Matin, 2026-07-04): hosted demos are allowed to be
+**read-only**, in the style of the FiftyOne and Rerun examples galleries.
+A visitor explores a fully interactive client-side workspace (pan/zoom,
+panels, selection, neighbor browsing, curated queries) but cannot mutate
+server state — because there is no server. Anyone who wants the mutable
+experience runs `pip install hyperview` locally; the demo page says exactly
+that. This removes the hardest constraint on Cloudflare hosting: nothing
+about the read-only path needs Python at request time.
 
 ## The actual problem
 
@@ -86,9 +97,30 @@ need live Python (agent-driven demos); showcase demos move to static.
      hyper3-clip text tower via transformers.js, cached by the browser.
   3. Never: a paid inference endpoint.
 
+### Custom panels in static bundles
+
+Demos rely on custom/extension panels (readout panels etc.). These already
+ship as JS modules loaded by `RuntimeModulePanel`, so they work unchanged in
+a static bundle: the export includes the extension panel modules and their
+declared `PanelDefinition`s in the snapshot. Panel *state* changes (tab
+focus, filters, selected sample) stay client-side and ephemeral — exactly
+the read-only contract. Commands that would mutate runtime state are
+disabled with a visible "read-only demo — run locally for the full
+workbench" affordance, which doubles as the pip-install CTA.
+
+### The demos gallery
+
+One static index page (FiftyOne/Rerun-style examples gallery) listing every
+demo with a thumbnail, one-line story, live status badge (from
+`warm-worker` for the remaining Docker Spaces; static bundles are always
+"live"), and links. Served from the same Cloudflare Worker static assets as
+the landing page (e.g. `hyper3labs.com/demos`), generated from
+`spaces.registry.json` so the registry stays the single source of truth.
+
 ### What stays out of scope
 
-- No Cloudflare Containers / Durable Objects compute for demos (paid paths).
+- No Cloudflare Containers / Durable Objects compute for demos (paid paths;
+  Containers explicitly rejected on cost).
 - LanceDB remains the storage backend for the real product; static bundles
   are an export format, not a storage migration.
 
