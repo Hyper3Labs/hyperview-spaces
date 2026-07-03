@@ -1,0 +1,18 @@
+name = "hyperview-warm-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+workers_dev = true
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[kv_namespaces]]
+binding = "STATUS"
+# TODO: replace this placeholder with the id from `npx wrangler kv namespace create STATUS`.
+id = "00000000000000000000000000000000"
+# TODO: replace this placeholder with the preview_id from `npx wrangler kv namespace create STATUS --preview`.
+preview_id = "00000000000000000000000000000000"
+
+[vars]
+HEALTH_TIMEOUT_MS = "4000"
+HISTORY_LIMIT = "288"
