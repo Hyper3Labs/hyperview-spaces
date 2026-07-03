@@ -29,6 +29,15 @@
       "keep_warm": true
     },
     {
+      "space_id": "hyper3labs/HyperView-Art-Text-Search",
+      "folder": "spaces/art-text-search-clip-hyper3clip",
+      "demo_slug": "art-text-search",
+      "demo_name": "HyperView - Art Text Search",
+      "description": "Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.",
+      "expected_dataset": "art_text_search_clip_hyper3clip",
+      "keep_warm": true
+    },
+    {
       "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
       "folder": "spaces/geospatial-eurosat-clip-hyper3clip",
       "demo_slug": "eurosat-geospatial",

@@ -1,0 +1,8 @@
+name = "art-search-readout"
+description = "Artwork CLIP vs Hyper3-CLIP compositional text-search readout"
+
+[[panels]]
+id = "art-comparison"
+title = "Artwork Search Readout"
+position = "right"
+file = "panel.js"
