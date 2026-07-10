@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "spaces": [
+    {
+      "space_id": "hyper3labs/HyperView",
+      "folder": "spaces/inat24-tiny-clip-hycoclip",
+      "demo_slug": "inat24-tiny",
+      "demo_name": "HyperView - iNat24 Tiny",
+      "expected_dataset": "inat24_tiny_geometry_showcase",
+      "keep_warm": true
+    },
+    {
+      "space_id": "hyper3labs/HyperView-ABO-Catalog",
+      "folder": "spaces/abo-catalog-clip-hycoclip",
+      "demo_slug": "abo-catalog",
+      "demo_name": "HyperView - ABO Catalog",
+      "expected_dataset": "abo_catalog_clip_hyper3clip_side_by_side",
+      "keep_warm": true
+    },
+    {
+      "space_id": "hyper3labs/HyperView-DeepFashion-Text-Search",
+      "folder": "spaces/fashion-deepfashion-text-search-clip-hyper3clip",
+      "demo_slug": "deepfashion-text-search",
+      "demo_name": "HyperView - DeepFashion Text Search",
+      "expected_dataset": "deepfashion_text_search_clip_hyper3clip",
+      "keep_warm": true
+    },
+    {
+      "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
+      "folder": "spaces/geospatial-eurosat-clip-hyper3clip",
+      "demo_slug": "eurosat-geospatial",
+      "demo_name": "HyperView - EuroSAT Geospatial",
+      "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
+      "keep_warm": true
+    },
+    {
+      "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
+      "folder": "spaces/logo-brand-search-clip-hyper3clip",
+      "demo_slug": "logo-brand-search",
+      "demo_name": "HyperView - Logo Brand Search",
+      "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+      "keep_warm": true
+    },
+    {
+      "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
+      "folder": "spaces/manufacturing-visa-reference-clip-hyper3clip",
+      "demo_slug": "visa-manufacturing",
+      "demo_name": "HyperView - VisA Manufacturing",
+      "expected_dataset": "visa_manufacturing_reference_clip_hyper3clip",
+      "keep_warm": true
+    },
+    {
+      "space_id": "mnm-matin/HyperView-Visual-Safety",
+      "folder": "spaces/visual-safety-content-clip-hyper3clip",
+      "demo_slug": "visual-safety",
+      "demo_name": "HyperView - Visual Safety",
+      "expected_dataset": "openimages_visual_safety_marketplace_triage_assets_v1",
+      "keep_warm": true
+    }
+  ]
+}

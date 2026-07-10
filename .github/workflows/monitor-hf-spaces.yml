@@ -1,0 +1,51 @@
+name: Monitor HF Spaces
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: monitor-hf-spaces
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wake and check Spaces
+        run: |
+          set -o pipefail
+          python3 scripts/monitor_spaces.py \
+            --output space-status.json \
+            --wake-wait-seconds 90 \
+            --fail-on-unhealthy \
+            | tee space-summary.md
+
+      - name: Write summary
+        if: always()
+        run: |
+          {
+            echo "## Hugging Face Spaces"
+            echo
+            if [ -f space-summary.md ]; then
+              cat space-summary.md
+            else
+              echo "Monitor did not produce a summary."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: space-status
+          path: space-status.json
+          if-no-files-found: warn
+          retention-days: 14
