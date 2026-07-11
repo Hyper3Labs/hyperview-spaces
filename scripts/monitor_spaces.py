@@ -219,14 +219,22 @@ def main() -> int:
     parser.add_argument(
         "--fail-on-unhealthy",
         action="store_true",
-        help="Exit nonzero unless every registered Space wakes and passes health checks.",
+        help="Exit nonzero unless every monitored Space wakes and passes health checks.",
     )
     args = parser.parse_args()
 
     registry = json.loads(args.registry.read_text())
     token = os.environ.get("HF_TOKEN")
     checked_at = utc_now()
-    results = [monitor_space(entry, args, token) for entry in registry.get("spaces", [])]
+    monitored_spaces = [
+        entry
+        for entry in registry.get("spaces", [])
+        if entry.get("status") == "live"
+        and entry.get("keep_warm") is True
+        and isinstance(entry.get("space_id"), str)
+        and entry["space_id"]
+    ]
+    results = [monitor_space(entry, args, token) for entry in monitored_spaces]
     payload = {
         "checked_at": checked_at,
         "registry": str(args.registry),
