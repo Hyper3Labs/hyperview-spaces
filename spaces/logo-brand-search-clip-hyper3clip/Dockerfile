@@ -1,0 +1,52 @@
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    libssl-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN useradd -m -u 1000 user
+USER user
+
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR $HOME/app
+
+RUN pip install --upgrade pip
+
+ARG HYPERVIEW_PACKAGE="hyperview[ml]==0.6.2"
+
+# Install CPU-only PyTorch first so the CPU Space does not pull CUDA wheels.
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+RUN echo "Installing ${HYPERVIEW_PACKAGE}" \
+    && pip install "${HYPERVIEW_PACKAGE}" \
+    && python - <<'PY'
+import inspect
+import hyperview as hv
+
+print("hyperview", hv.__version__, inspect.signature(hv.launch))
+PY
+
+COPY --chown=user . .
+
+ENV HYPERVIEW_HOST=0.0.0.0 \
+    HYPERVIEW_PORT=7860 \
+    HYPERVIEW_WORKSPACE_ID=logo-brand-search-clip-hyper3clip-hf-live-v4 \
+    HYPERVIEW_DATASET_NAME=logo_brand_search_clip_hyper3clip_hf_live_v4 \
+    LOGO_BRAND_HF_DATASET=logo-wizard/modern-logo-dataset \
+    LOGO_BRAND_HF_SPLIT=train[:160] \
+    HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
+    HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
+
+EXPOSE 7860
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20m --retries=3 \
+    CMD curl -f http://localhost:7860/__hyperview__/health || exit 1
+
+CMD ["python", "demo.py"]

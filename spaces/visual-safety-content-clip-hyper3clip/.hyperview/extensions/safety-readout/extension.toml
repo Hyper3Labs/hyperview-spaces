@@ -1,0 +1,8 @@
+name = "safety-readout"
+description = "Visual safety CLIP vs hyper3-clip moderation readout"
+
+[[panels]]
+id = "safety-comparison"
+title = "Safety Review Readout"
+position = "right"
+file = "panel.js"

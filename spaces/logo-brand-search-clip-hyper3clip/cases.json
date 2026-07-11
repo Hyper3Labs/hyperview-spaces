@@ -1,0 +1,390 @@
+{
+  "dataset": "logo-wizard/modern-logo-dataset",
+  "split": "train[:160]",
+  "benchmark": "bounded local text-to-logo retrieval probe",
+  "metrics": {
+    "text_to_logo": {
+      "hyper3_hit1": "35.6%",
+      "clip_hit1": "16.3%",
+      "hyper3_hit5": "73.1%",
+      "clip_hit5": "48.8%",
+      "mrr_delta": "+0.207"
+    },
+    "sample_count": 160,
+    "dataset": "logo-wizard/modern-logo-dataset"
+  },
+  "cases": [
+    {
+      "id": "01-barber-franchise",
+      "label": "Barber Franchise Mark",
+      "query": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+      "business": "Franchise and agency teams can retrieve the exact grooming concept by described symbols, not filename tags.",
+      "sampleCount": 160,
+      "targetRanks": {
+        "hyper3_clip": 1,
+        "clip_b32": 30
+      },
+      "metric": {
+        "hyper3_hit1": "35.6%",
+        "clip_hit1": "16.3%",
+        "hyper3_hit5": "73.1%",
+        "clip_hit5": "48.8%",
+        "mrr_delta": "+0.207"
+      },
+      "target": {
+        "hfIndex": 132,
+        "text": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+        "isTarget": false
+      },
+      "hyper3Results": [
+        {
+          "rank": 1,
+          "hfIndex": 132,
+          "text": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": true
+        },
+        {
+          "rank": 2,
+          "hfIndex": 48,
+          "text": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 68,
+          "text": "\"a logo of flower store, The letter H with a stretched arc, a word is written under the letter and above the arc, a twig is in the background, circles are located nearby., white background, darkgray, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 40,
+          "text": "\"a logo of flower store, A flower with four leaves, enclosed in an open circle containing small pieces, located above the word flower, soft-green background, dimgray, darkgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 120,
+          "text": "\"a logo of barbershop hair salon, In the middle of the image of the mustache and beard, to the left and right of them are two scissors. Captions above and below the figures. All in a decorative double frame., oldlace background, black, darkgray foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipResults": [
+        {
+          "rank": 1,
+          "hfIndex": 125,
+          "text": "\"a logo of barbershop hair salon, Hairdressing tool, triangle on the background, inscriptions in two lines under the main picture, snow background, darkslategray, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 2,
+          "hfIndex": 106,
+          "text": "\"a logo of barbershop hair salon, barbershop logo, scissors are depicted, there is an inscription in the center of the scissors, a comb below, an inscription in the center of the comb, white background, darkslategray, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 129,
+          "text": "\"a logo of barbershop hair salon, In the center, scissors are crossed over a rhombus, Mustaches and inscriptions are on top, a small clearing is below, and inscriptions go in a semicircle along the bottom, white background, darkslategray, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 124,
+          "text": "\"a logo of barbershop hair salon, In the center between the images of a beard and hair is an inscription. Scissors are shown before and after the inscription. There are also inscriptions at the very top and at the very bottom., white background, darkslategray, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 139,
+          "text": "\"a logo of barbershop hair salon, The hairbrush is horizontal in the center, the bottle is vertical. At the top are two decorative lines in a semicircle. There is an inscription along the arc. In the lower part there is a large inscription in two lines with a decorative line and a small inscription in two lines., white background, darkslategray, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipTargetProof": {
+        "rank": 30,
+        "hfIndex": 132,
+        "text": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+        "isTarget": true
+      }
+    },
+    {
+      "id": "02-floral-retail",
+      "label": "Floral Retail Identity",
+      "query": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+      "business": "Retail brand teams can search seasonal identity concepts by detailed motif, palette, and composition.",
+      "sampleCount": 160,
+      "targetRanks": {
+        "hyper3_clip": 1,
+        "clip_b32": 29
+      },
+      "metric": {
+        "hyper3_hit1": "35.6%",
+        "clip_hit1": "16.3%",
+        "hyper3_hit5": "73.1%",
+        "clip_hit5": "48.8%",
+        "mrr_delta": "+0.207"
+      },
+      "target": {
+        "hfIndex": 48,
+        "text": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+        "isTarget": false
+      },
+      "hyper3Results": [
+        {
+          "rank": 1,
+          "hfIndex": 48,
+          "text": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+          "isTarget": true
+        },
+        {
+          "rank": 2,
+          "hfIndex": 61,
+          "text": "\"a logo of flower store, Flowers resembling a chamomile inside a vicious circle. All this is located on a beige background, rosybrown, tan foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 50,
+          "text": "\"a logo of flower store, On a black square background there is a horizontal branch with five leaves, darkslategray background, gainsboro, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 132,
+          "text": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 40,
+          "text": "\"a logo of flower store, A flower with four leaves, enclosed in an open circle containing small pieces, located above the word flower, soft-green background, dimgray, darkgray foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipResults": [
+        {
+          "rank": 1,
+          "hfIndex": 56,
+          "text": "\"a logo of flower store, An oval frame depicts hand drawn rose with blossoming tons, linen background, gainsboro, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 2,
+          "hfIndex": 43,
+          "text": "\"a logo of flower store, A branch with a blossoming flower and leaves, located above the inscription in English, denoting floristic flowering., white background, black, rosybrown foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 46,
+          "text": "\"a logo of flower store, A poppy-like flower, red, with a black stem and green leaves, is arranged horizontally, with an inscription below it., white background, black, rosybrown foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 42,
+          "text": "\"a logo of flower store, A fantasy branch of blooming flowers, buds and leaves against a background that looks like a schematic image of the moon., oldlace background, black, black foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 61,
+          "text": "\"a logo of flower store, Flowers resembling a chamomile inside a vicious circle. All this is located on a beige background, rosybrown, tan foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipTargetProof": {
+        "rank": 29,
+        "hfIndex": 48,
+        "text": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+        "isTarget": true
+      }
+    },
+    {
+      "id": "03-construction-brand",
+      "label": "Construction Brand System",
+      "query": "\"a logo of building company with abstract building in the shape of a cube, three levels, columns, interlacing, whitesmoke background, darkslategray, whitesmoke foreground, minimalism, modern\"",
+      "business": "B2B teams can find a precise construction or real-estate mark inside a crowded concept library.",
+      "sampleCount": 160,
+      "targetRanks": {
+        "hyper3_clip": 2,
+        "clip_b32": 17
+      },
+      "metric": {
+        "hyper3_hit1": "35.6%",
+        "clip_hit1": "16.3%",
+        "hyper3_hit5": "73.1%",
+        "clip_hit5": "48.8%",
+        "mrr_delta": "+0.207"
+      },
+      "target": {
+        "hfIndex": 143,
+        "text": "\"a logo of building company with abstract building in the shape of a cube, three levels, columns, interlacing, whitesmoke background, darkslategray, whitesmoke foreground, minimalism, modern\"",
+        "isTarget": false
+      },
+      "hyper3Results": [
+        {
+          "rank": 1,
+          "hfIndex": 142,
+          "text": "\"a logo of building company with three high-rise buildings, the building in the middle is higher than the other two, are drawn with lines and geometric shapes, the tallest building is striped, the inscription below, black background, burlywood, darkolivegreen foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 2,
+          "hfIndex": 143,
+          "text": "\"a logo of building company with abstract building in the shape of a cube, three levels, columns, interlacing, whitesmoke background, darkslategray, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": true
+        },
+        {
+          "rank": 3,
+          "hfIndex": 141,
+          "text": "\"a logo of building company with the contour of three parallelepipeds intersect, forming a large parallelepiped, the contour is neon, the inscription below, black background, black, slateblue foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 146,
+          "text": "\"a logo of building company with a circle in which a high-rise building is drawn with lines, a striped circle, an inscription at the bottom, whitesmoke background, peru, black foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 148,
+          "text": "\"a logo of building company with three high-rise buildings that look like parallelepipeds are bounded from below by a curved arc, below the inscription, white background, black, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipResults": [
+        {
+          "rank": 1,
+          "hfIndex": 141,
+          "text": "\"a logo of building company with the contour of three parallelepipeds intersect, forming a large parallelepiped, the contour is neon, the inscription below, black background, black, slateblue foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 2,
+          "hfIndex": 146,
+          "text": "\"a logo of building company with a circle in which a high-rise building is drawn with lines, a striped circle, an inscription at the bottom, whitesmoke background, peru, black foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 154,
+          "text": "\"a logo of building company with the contour of the parallelepiped, on the right side of the parallelepiped the contour of the arch, at the bottom of the inscription, whitesmoke background, black, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 149,
+          "text": "\"a logo of building company with a minimalistic outline of four high-rise buildings, limited by an arc from below, short inscriptions on the right and left, an inscription below, white background, darkslategray, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 157,
+          "text": "\"a logo of building company with abstract contour of the house made of sticks, the entrance door in the form of an arch, the inscription below, white background, black, dimgray foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipTargetProof": {
+        "rank": 17,
+        "hfIndex": 143,
+        "text": "\"a logo of building company with abstract building in the shape of a cube, three levels, columns, interlacing, whitesmoke background, darkslategray, whitesmoke foreground, minimalism, modern\"",
+        "isTarget": true
+      }
+    },
+    {
+      "id": "04-hospitality-bar",
+      "label": "Hospitality Bar Concept",
+      "query": "\"a logo of cafe restaurant bar with a glass of wine in the form of a liquid, snow background, black, red wine foreground, minimalism, modern\"",
+      "business": "Hospitality operators can match a visual creative brief to the right bar or restaurant logo family.",
+      "sampleCount": 160,
+      "targetRanks": {
+        "hyper3_clip": 1,
+        "clip_b32": 17
+      },
+      "metric": {
+        "hyper3_hit1": "35.6%",
+        "clip_hit1": "16.3%",
+        "hyper3_hit5": "73.1%",
+        "clip_hit5": "48.8%",
+        "mrr_delta": "+0.207"
+      },
+      "target": {
+        "hfIndex": 34,
+        "text": "\"a logo of cafe restaurant bar with a glass of wine in the form of a liquid, snow background, black, red wine foreground, minimalism, modern\"",
+        "isTarget": false
+      },
+      "hyper3Results": [
+        {
+          "rank": 1,
+          "hfIndex": 34,
+          "text": "\"a logo of cafe restaurant bar with a glass of wine in the form of a liquid, snow background, black, red wine foreground, minimalism, modern\"",
+          "isTarget": true
+        },
+        {
+          "rank": 2,
+          "hfIndex": 14,
+          "text": "\"a logo of cafe restaurant bar with the small glass and an arc above, rosybrown background, tan, silver foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 37,
+          "text": "\"a logo of cafe restaurant bar with the glass of champagne, patterns on both sides and one stripe below, darkslategray background, beige, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 30,
+          "text": "\"a logo of cafe restaurant bar with the wine glass, gainsboro background, black, black foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 10,
+          "text": "\"a logo of cafe restaurant bar with a hand drawn coctail glass with a straw and a slice of orange as a decoration, sea and sun in the background, beige background, dimgray, rosybrown foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipResults": [
+        {
+          "rank": 1,
+          "hfIndex": 30,
+          "text": "\"a logo of cafe restaurant bar with the wine glass, gainsboro background, black, black foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 2,
+          "hfIndex": 32,
+          "text": "\"a logo of cafe restaurant bar with the cocktail glass in an oval frame and inscriptions outside, whitesmoke background, darkgray, whitesmoke foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 3,
+          "hfIndex": 37,
+          "text": "\"a logo of cafe restaurant bar with the glass of champagne, patterns on both sides and one stripe below, darkslategray background, beige, darkslategray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 4,
+          "hfIndex": 99,
+          "text": "\"a logo of coffee shop, The porcelain coffee cup is depicted sideways and turned forward with the bottom, under it is the logo, gainsboro background, darkolivegreen, darkgray foreground, minimalism, modern\"",
+          "isTarget": false
+        },
+        {
+          "rank": 5,
+          "hfIndex": 28,
+          "text": "\"a logo of asian cafe restaurant bar with a circle inside which is ramen with noodles, eggs, shrimps and kamaboko, chinese chopsticks crossed the circle, white background, maroon, sandybrown foreground, minimalism, modern\"",
+          "isTarget": false
+        }
+      ],
+      "clipTargetProof": {
+        "rank": 17,
+        "hfIndex": 34,
+        "text": "\"a logo of cafe restaurant bar with a glass of wine in the form of a liquid, snow background, black, red wine foreground, minimalism, modern\"",
+        "isTarget": true
+      }
+    }
+  ]
+}

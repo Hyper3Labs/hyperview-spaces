@@ -1,0 +1,8 @@
+name = "logo-brand-readout"
+description = "Logo brand-search CLIP vs Hyper3-CLIP readout"
+
+[[panels]]
+id = "logo-brand-comparison"
+title = "Logo Brand Search"
+position = "right"
+file = "panel.js"

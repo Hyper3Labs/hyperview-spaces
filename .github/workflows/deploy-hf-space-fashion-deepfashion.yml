@@ -1,0 +1,22 @@
+name: Deploy HF Space - HyperView DeepFashion Text Search
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/fashion-deepfashion-text-search-clip-hyper3clip/**
+      - .github/workflows/deploy-hf-space-fashion-deepfashion.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-fashion-deepfashion
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/fashion-deepfashion-text-search-clip-hyper3clip
+      space_id: hyper3labs/HyperView-DeepFashion-Text-Search
+    secrets: inherit
