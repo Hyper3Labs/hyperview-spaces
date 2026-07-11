@@ -4,7 +4,6 @@ if (!sdk) throw new Error("HyperViewPanelSDK is not available on window.");
 const { React, components, hooks } = sdk;
 const { Panel, PanelToolbar, PanelToolbarButton } = components;
 const {
-  usePanelClient,
   usePanelSelection,
   usePanelSamples,
   usePanelCommands,
@@ -27,9 +26,6 @@ const colors = {
   candidate: "#34d399",
   faint: "#1e293b",
   error: "#fca5a5",
-  warningBg: "#3b2f12",
-  warningBorder: "#92400e",
-  warningText: "#fde68a",
 };
 
 function prettyLabel(label) {
@@ -62,9 +58,9 @@ function Section({ title, children }) {
 
 function Walkthrough() {
   const steps = [
-    ["Pick", "Choose a ranked query."],
-    ["Baseline", "Show CLIP neighbors."],
-    ["Compare", "Switch to Hyper3-CLIP and count the top 10."],
+    ["Pick", "Start from a failing scene query."],
+    ["Compare", "Show CLIP, then Hyper3-CLIP."],
+    ["Audit", "Check exact scene and parent group."],
   ];
 
   return React.createElement(
@@ -104,6 +100,33 @@ function Walkthrough() {
   );
 }
 
+function BusinessCase() {
+  return React.createElement(
+    "div",
+    {
+      style: {
+        border: `1px solid ${colors.border}`,
+        borderRadius: 4,
+        background: colors.cardBg,
+        padding: 10,
+        display: "flex",
+        flexDirection: "column",
+        gap: 6,
+      },
+    },
+    React.createElement(
+      "div",
+      { style: { color: colors.strongText, fontSize: 13, fontWeight: 800, lineHeight: 1.25 } },
+      "Retrieval audit for aerial image libraries",
+    ),
+    React.createElement(
+      "div",
+      { style: { color: colors.bodyText, fontSize: 11, lineHeight: 1.35 } },
+      "When an analyst asks for more scenes like this, the top results should stay in the right scene class and operational group. This demo shows where CLIP drifts and where Hyper3-CLIP keeps the neighborhood cleaner.",
+    ),
+  );
+}
+
 function BenchmarkTable({ benchmark }) {
   if (!benchmark || !Array.isArray(benchmark.rows)) return null;
   return React.createElement(
@@ -132,7 +155,7 @@ function BenchmarkTable({ benchmark }) {
         React.createElement(
           "tr",
           { style: { background: colors.cardBgSoft } },
-          ["Metric", "CLIP", "Hyper3", "Delta"].map((heading) =>
+          ["Metric", "CLIP", "Hyper3-CLIP", "Delta"].map((heading) =>
             React.createElement(
               "th",
               {
@@ -428,12 +451,26 @@ function ExampleCard({
       ),
       deltaLine(item),
     ),
+    item.insight
+      ? React.createElement(
+          "div",
+          {
+            style: {
+              color: colors.bodyText,
+              fontSize: 11,
+              lineHeight: 1.35,
+              borderLeft: `2px solid ${colors.accent}`,
+              paddingLeft: 8,
+            },
+          },
+          item.insight,
+        )
+      : null,
     React.createElement(ModelCompareTable, { item, models, loadingKey, onSelectQuery }),
   );
 }
 
 export default function GeospatialComparisonPanel() {
-  const client = usePanelClient();
   const selection = usePanelSelection();
   const samplesState = usePanelSamples();
   const commands = usePanelCommands();
@@ -443,7 +480,6 @@ export default function GeospatialComparisonPanel() {
 
   const models = React.useMemo(() => normalizeModels(panelProps.models), [panelProps.models]);
   const examples = Array.isArray(panelProps.examples) ? panelProps.examples : [];
-  const warnings = Array.isArray(panelProps.warnings) ? panelProps.warnings.filter(Boolean) : [];
   const datasetLabel = String(panelProps.datasetLabel || "NWPU-RESISC45");
   const sampleCount = typeof panelProps.sampleCount === "number" ? panelProps.sampleCount : samplesState.totalSamples;
   const classCount = typeof panelProps.classCount === "number" ? panelProps.classCount : null;
@@ -451,8 +487,7 @@ export default function GeospatialComparisonPanel() {
   const clearSelection = async () => {
     if (commands.setLabelFilter) commands.setLabelFilter(null);
     setPanelError(null);
-    await client.clearSimilarityQuery();
-    await commands.clearSelection();
+    await commands.clearQueryContext({ persist: true });
   };
 
   const selectModelQuery = async (item, model) => {
@@ -466,13 +501,14 @@ export default function GeospatialComparisonPanel() {
 
     setLoadingKey(key);
     try {
-      await commands.setActiveLayout(model.layoutKey);
+      await commands.setActiveLayout(model.layoutKey, { persist: false });
       await commands.showSimilar({
         sampleId: item.queryId,
         layoutKey: model.layoutKey,
         k: 10,
         source: `geospatial-demo:${model.key}`,
         focus: "samples",
+        persist: false,
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -512,29 +548,17 @@ export default function GeospatialComparisonPanel() {
       },
       React.createElement(
         Section,
-        { title: "How to read it" },
-        React.createElement(Walkthrough, null),
+        { title: "Business case" },
+        React.createElement(BusinessCase, null),
       ),
-      warnings.length
-        ? React.createElement(
-            "div",
-            {
-              style: {
-                border: `1px solid ${colors.warningBorder}`,
-                borderRadius: 4,
-                background: colors.warningBg,
-                color: colors.warningText,
-                padding: 8,
-                fontSize: 11,
-                lineHeight: 1.35,
-              },
-            },
-            warnings[0],
-          )
-        : null,
       React.createElement(
         Section,
-        { title: "Best live examples" },
+        { title: "What to do" },
+        React.createElement(Walkthrough, null),
+      ),
+      React.createElement(
+        Section,
+        { title: "Queries to inspect" },
         examples.length && models.length
           ? React.createElement(
               "div",
@@ -564,7 +588,7 @@ export default function GeospatialComparisonPanel() {
         : null,
       React.createElement(
         Section,
-        { title: "Benchmark table" },
+        { title: "Benchmark context" },
         React.createElement(BenchmarkTable, { benchmark: panelProps.benchmark }),
       ),
     ),

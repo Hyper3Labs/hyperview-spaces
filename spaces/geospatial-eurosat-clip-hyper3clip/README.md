@@ -24,7 +24,7 @@ This demo builds a balanced NWPU-RESISC45 remote-sensing subset and opens
 HyperView with two pinned scatter panels plus a compact scene-retrieval readout:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3labs/hyper3-clip-v0.5` in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v0.5` from `hyper-models` in a Poincare 2D layout
 
 The readout panel ranks live query examples by where Hyper3-CLIP improves the
 top-10 neighborhood over CLIP. The demo is designed around remote-sensing review
@@ -51,7 +51,9 @@ remote-sensing imagery, not as a replacement for specialist remote-sensing
 classifiers.
 
 The runtime sample is drawn from `tanganke/resisc45`, using the `test` split by
-default and selecting a balanced number of images per RESISC45 class.
+default and selecting a balanced curated subset of RESISC45 classes that support
+the landing-page comparison queries. Override `GEOSPATIAL_DEMO_LABELS` to change
+the comma-separated class list.
 
 Run locally from the HyperView repo:
 
@@ -76,14 +78,10 @@ remote-sensing model.
 
 ## Deploy Source
 
-This folder is intended to deploy to `hyper3labs/HyperView-EuroSAT-Geospatial`
-from the `hyperview-spaces` deployment repository.
+This folder deploys to `mnm-matin/HyperView-EuroSAT-Geospatial` as the live
+Space. The `hyper3labs/HyperView-EuroSAT-Geospatial` Space is kept as a
+commit-synced org mirror, but remains paused.
 
-Hyper3-CLIP weights are loaded from the gated
-`hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs an
-`HF_TOKEN` secret with access to that model.
-
-If that secret is missing or lacks gated-model access, the Space starts with a
-clearly labeled CLIP fallback for the Hyper3-CLIP panel instead of exiting
-during startup. Set `HYPERVIEW_ALLOW_CANDIDATE_FALLBACK=0` to make candidate
-model failures hard errors again.
+Hyper3-CLIP weights are loaded through the `hyper-models` catalog entry for the
+gated `hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs
+an `HF_TOKEN` secret with access to that model.

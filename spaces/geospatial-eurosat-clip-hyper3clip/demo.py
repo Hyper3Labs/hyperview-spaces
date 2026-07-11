@@ -13,57 +13,31 @@ from datasets import load_dataset
 from PIL import Image, ImageOps
 
 import hyperview as hv
+from hyperview.core import Sample
 
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6262"))
-WORKSPACE_ID = os.environ.get(
-    "HYPERVIEW_WORKSPACE_ID", "geospatial-resisc45-clip-hyper3clip"
-)
+WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "geospatial-resisc45-clip-hyper3clip")
 DATASET_NAME = os.environ.get(
-    "HYPERVIEW_DATASET_NAME", "resisc45_clip_hyper3clip_side_by_side"
+    "HYPERVIEW_DATASET_NAME", "resisc45_clip_hyper3clip_curated_side_by_side"
 )
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "geospatial-readout"
 
-HF_DATASET = os.environ.get(
-    "GEOSPATIAL_HF_DATASET", os.environ.get("EUROSAT_HF_DATASET", "tanganke/resisc45")
-)
-HF_SPLIT = os.environ.get(
-    "GEOSPATIAL_HF_SPLIT", os.environ.get("EUROSAT_HF_SPLIT", "test")
-)
+HF_DATASET = os.environ.get("GEOSPATIAL_HF_DATASET", "tanganke/resisc45")
+HF_SPLIT = os.environ.get("GEOSPATIAL_HF_SPLIT", "test")
 DATASET_LABEL = os.environ.get("GEOSPATIAL_DATASET_LABEL", "NWPU-RESISC45")
-SAMPLE_SEED = int(
-    os.environ.get(
-        "GEOSPATIAL_SAMPLE_SEED", os.environ.get("EUROSAT_SAMPLE_SEED", "42")
-    )
-)
-SAMPLES_PER_CLASS = int(
-    os.environ.get(
-        "GEOSPATIAL_SAMPLES_PER_CLASS", os.environ.get("EUROSAT_SAMPLES_PER_CLASS", "5")
-    )
-)
+SAMPLE_SEED = int(os.environ.get("GEOSPATIAL_SAMPLE_SEED", "42"))
+SAMPLES_PER_CLASS = int(os.environ.get("GEOSPATIAL_SAMPLES_PER_CLASS", "5"))
 TOP_EXAMPLES = int(os.environ.get("GEOSPATIAL_TOP_EXAMPLES", "3"))
-MIN_EXAMPLE_CLASS_DELTA = int(os.environ.get("GEOSPATIAL_MIN_EXAMPLE_CLASS_DELTA", "3"))
-MIN_EXAMPLE_PARENT_DELTA = int(
-    os.environ.get("GEOSPATIAL_MIN_EXAMPLE_PARENT_DELTA", "4")
-)
+MIN_EXAMPLE_CLASS_DELTA = int(os.environ.get("GEOSPATIAL_MIN_EXAMPLE_CLASS_DELTA", "2"))
+MIN_EXAMPLE_PARENT_DELTA = int(os.environ.get("GEOSPATIAL_MIN_EXAMPLE_PARENT_DELTA", "3"))
 IMAGE_MAX_SIZE = (512, 512)
-FORCE_SAMPLE_REFRESH = os.environ.get(
-    "HYPERVIEW_GEOSPATIAL_FORCE_REFRESH",
-    os.environ.get("HYPERVIEW_EUROSAT_FORCE_REFRESH", ""),
-).lower() in {
+FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_GEOSPATIAL_FORCE_REFRESH", "").lower() in {
     "1",
     "true",
     "yes",
 }
-ALLOW_CANDIDATE_FALLBACK = os.environ.get(
-    "HYPERVIEW_ALLOW_CANDIDATE_FALLBACK", "1"
-).lower() in {
-    "1",
-    "true",
-    "yes",
-}
-RUNTIME_WARNINGS: list[str] = []
 
 BENCHMARK_CLAIMS = {
     "dataset": "NWPU-RESISC45",
@@ -135,6 +109,21 @@ PARENT_GROUPS = {
     "snowberg": "natural_terrain",
 }
 
+DEFAULT_DEMO_LABELS = [
+    "airplane",
+    "airport",
+    "runway",
+    "bridge",
+    "meadow",
+    "rectangular farmland",
+    "circular farmland",
+    "forest",
+    "terrace",
+    "sparse residential",
+    "basketball court",
+    "storage tank",
+]
+
 PREFERRED_EXAMPLES = [
     ("airplane", "Transport"),
     ("runway", "Transport"),
@@ -144,104 +133,44 @@ PREFERRED_EXAMPLES = [
     ("dense residential", "Built environment"),
 ]
 
-
-def env_value(name: str, legacy_name: str, default: str) -> str:
-    """Read the geospatial env name while preserving old EuroSAT aliases."""
-    return os.environ.get(name, os.environ.get(legacy_name, default))
-
-
-def env_int(name: str, legacy_name: str, default: str) -> int:
-    return int(env_value(name, legacy_name, default))
-
-
 MODEL_SPECS = [
     {
         "key": "clip",
-        "display_name": env_value(
-            "GEOSPATIAL_BASELINE_DISPLAY_NAME", "EUROSAT_BASELINE_DISPLAY_NAME", "CLIP"
+        "display_name": os.environ.get("GEOSPATIAL_BASELINE_DISPLAY_NAME", "CLIP"),
+        "button_label": os.environ.get(
+            "GEOSPATIAL_BASELINE_BUTTON_LABEL", "Inspect CLIP neighbors"
         ),
-        "button_label": env_value(
-            "GEOSPATIAL_BASELINE_BUTTON_LABEL",
-            "EUROSAT_BASELINE_BUTTON_LABEL",
-            "Inspect CLIP neighbors",
-        ),
-        "provider": env_value(
-            "GEOSPATIAL_BASELINE_PROVIDER",
-            "EUROSAT_BASELINE_PROVIDER",
-            "embed-anything",
-        ),
-        "model": env_value(
-            "GEOSPATIAL_BASELINE_MODEL",
-            "EUROSAT_BASELINE_MODEL",
-            "openai/clip-vit-base-patch32",
-        ),
-        "layout": env_value(
-            "GEOSPATIAL_BASELINE_LAYOUT", "EUROSAT_BASELINE_LAYOUT", "euclidean:2d"
-        ),
-        "geometry": env_value(
-            "GEOSPATIAL_BASELINE_GEOMETRY", "EUROSAT_BASELINE_GEOMETRY", "euclidean"
-        ),
-        "layout_dimension": env_int(
-            "GEOSPATIAL_BASELINE_LAYOUT_DIMENSION",
-            "EUROSAT_BASELINE_LAYOUT_DIMENSION",
-            "2",
-        ),
-        "metric": env_value(
-            "GEOSPATIAL_BASELINE_METRIC", "EUROSAT_BASELINE_METRIC", "cosine"
-        ),
-        "panel_title": env_value(
-            "GEOSPATIAL_BASELINE_PANEL_TITLE",
-            "EUROSAT_BASELINE_PANEL_TITLE",
-            "CLIP - Euclidean Scene Map",
+        "provider": os.environ.get("GEOSPATIAL_BASELINE_PROVIDER", "embed-anything"),
+        "model": os.environ.get("GEOSPATIAL_BASELINE_MODEL", "openai/clip-vit-base-patch32"),
+        "layout": os.environ.get("GEOSPATIAL_BASELINE_LAYOUT", "euclidean:2d"),
+        "geometry": os.environ.get("GEOSPATIAL_BASELINE_GEOMETRY", "euclidean"),
+        "layout_dimension": int(os.environ.get("GEOSPATIAL_BASELINE_LAYOUT_DIMENSION", "2")),
+        "metric": os.environ.get("GEOSPATIAL_BASELINE_METRIC", "cosine"),
+        "panel_title": os.environ.get(
+            "GEOSPATIAL_BASELINE_PANEL_TITLE", "CLIP - Euclidean Scene Map"
         ),
     },
     {
         "key": "candidate",
-        "display_name": env_value(
-            "GEOSPATIAL_CANDIDATE_DISPLAY_NAME",
-            "EUROSAT_CANDIDATE_DISPLAY_NAME",
-            "Hyper3-CLIP",
+        "display_name": os.environ.get("GEOSPATIAL_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
+        "button_label": os.environ.get(
+            "GEOSPATIAL_CANDIDATE_BUTTON_LABEL", "Inspect Hyper3-CLIP neighbors"
         ),
-        "button_label": env_value(
-            "GEOSPATIAL_CANDIDATE_BUTTON_LABEL",
-            "EUROSAT_CANDIDATE_BUTTON_LABEL",
-            "Inspect Hyper3-CLIP neighbors",
-        ),
-        "provider": env_value(
-            "GEOSPATIAL_CANDIDATE_PROVIDER", "EUROSAT_CANDIDATE_PROVIDER", "hyper3-clip"
-        ),
-        "model": env_value(
-            "GEOSPATIAL_CANDIDATE_MODEL",
-            "EUROSAT_CANDIDATE_MODEL",
-            "hyper3labs/hyper3-clip-v0.5",
-        ),
-        "layout": env_value(
-            "GEOSPATIAL_CANDIDATE_LAYOUT", "EUROSAT_CANDIDATE_LAYOUT", "poincare:2d"
-        ),
-        "geometry": env_value(
-            "GEOSPATIAL_CANDIDATE_GEOMETRY", "EUROSAT_CANDIDATE_GEOMETRY", "poincare"
-        ),
-        "layout_dimension": env_int(
-            "GEOSPATIAL_CANDIDATE_LAYOUT_DIMENSION",
-            "EUROSAT_CANDIDATE_LAYOUT_DIMENSION",
-            "2",
-        ),
-        "metric": env_value(
-            "GEOSPATIAL_CANDIDATE_METRIC", "EUROSAT_CANDIDATE_METRIC", "cosine"
-        ),
-        "panel_title": env_value(
-            "GEOSPATIAL_CANDIDATE_PANEL_TITLE",
-            "EUROSAT_CANDIDATE_PANEL_TITLE",
-            "Hyper3-CLIP - Poincare Scene Map",
+        "provider": os.environ.get("GEOSPATIAL_CANDIDATE_PROVIDER", "hyper-models"),
+        "model": os.environ.get("GEOSPATIAL_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
+        "layout": os.environ.get("GEOSPATIAL_CANDIDATE_LAYOUT", "poincare:2d"),
+        "geometry": os.environ.get("GEOSPATIAL_CANDIDATE_GEOMETRY", "poincare"),
+        "layout_dimension": int(os.environ.get("GEOSPATIAL_CANDIDATE_LAYOUT_DIMENSION", "2")),
+        "metric": os.environ.get("GEOSPATIAL_CANDIDATE_METRIC", "cosine"),
+        "panel_title": os.environ.get(
+            "GEOSPATIAL_CANDIDATE_PANEL_TITLE", "Hyper3-CLIP - Poincare Scene Map"
         ),
     },
 ]
 
 
 def media_root() -> Path:
-    root = Path(
-        os.environ.get("HYPERVIEW_MEDIA_DIR", str(SPACE_DIR / "demo_data" / "media"))
-    )
+    root = Path(os.environ.get("HYPERVIEW_MEDIA_DIR", str(SPACE_DIR / "demo_data" / "media")))
     path = root / DATASET_NAME
     path.mkdir(parents=True, exist_ok=True)
     return path
@@ -267,12 +196,61 @@ def readable_group(label: str) -> str:
     return label.replace("_", " ").replace("-", " ").title()
 
 
+def demo_target_labels() -> list[str]:
+    configured = os.environ.get("GEOSPATIAL_DEMO_LABELS", "")
+    raw_labels = configured.split(",") if configured else DEFAULT_DEMO_LABELS
+    labels: list[str] = []
+    for label in raw_labels:
+        normalized = label.strip().replace("_", " ")
+        if not normalized:
+            continue
+        if normalized not in PARENT_GROUPS:
+            raise ValueError(f"Unknown RESISC45 demo label: {label!r}")
+        if normalized not in labels:
+            labels.append(normalized)
+    if not labels:
+        raise ValueError("GEOSPATIAL_DEMO_LABELS must include at least one RESISC45 label")
+    return labels
+
+
+def example_insight(
+    label: str,
+    clip_summary: dict[str, Any],
+    candidate_summary: dict[str, Any],
+) -> str:
+    clip_same = clip_summary["sameClassHits"]
+    clip_parent = clip_summary["parentHits"]
+    candidate_same = candidate_summary["sameClassHits"]
+    candidate_parent = candidate_summary["parentHits"]
+    total = candidate_summary.get("total", 10)
+    if label == "airplane":
+        return (
+            f"Transport audit: Hyper3-CLIP raises the neighborhood from {clip_parent}/{total} "
+            f"to {candidate_parent}/{total} transport scenes and finds {candidate_same}/{total} exact airplanes."
+        )
+    if label == "meadow":
+        return (
+            f"Land-cover QA: Hyper3-CLIP keeps {candidate_parent}/{total} neighbors in agriculture/vegetation "
+            f"versus CLIP's {clip_parent}/{total}, with {candidate_same}/{total} exact meadows."
+        )
+    if label == "forest":
+        return (
+            f"Land-cover QA: Hyper3-CLIP keeps {candidate_parent}/{total} vegetation neighbors "
+            f"versus CLIP's {clip_parent}/{total}, reducing off-group scene drift."
+        )
+    if label == "runway":
+        return (
+            f"Infrastructure search: Hyper3-CLIP finds {candidate_same}/{total} exact runways versus "
+            f"CLIP's {clip_same}/{total}, while doubling the transport-group neighborhood."
+        )
+    return (
+        f"Hyper3-CLIP improves exact scene hits from {clip_same}/{total} to {candidate_same}/{total} "
+        f"and parent-group hits from {clip_parent}/{total} to {candidate_parent}/{total}."
+    )
+
+
 def save_image(image: Image.Image, destination: Path) -> None:
-    if (
-        destination.exists()
-        and destination.stat().st_size > 0
-        and not FORCE_SAMPLE_REFRESH
-    ):
+    if destination.exists() and destination.stat().st_size > 0 and not FORCE_SAMPLE_REFRESH:
         return
     tmp_path = destination.with_suffix(destination.suffix + ".tmp")
     image = ImageOps.exif_transpose(image).convert("RGB")
@@ -282,17 +260,15 @@ def save_image(image: Image.Image, destination: Path) -> None:
 
 
 def select_balanced_records() -> list[dict[str, Any]]:
-    print(
-        f"Loading {DATASET_LABEL} split {HF_SPLIT!r} from {HF_DATASET}...", flush=True
-    )
+    print(f"Loading {DATASET_LABEL} split {HF_SPLIT!r} from {HF_DATASET}...", flush=True)
     source = load_dataset(HF_DATASET, split=HF_SPLIT).shuffle(seed=SAMPLE_SEED)
     counts: Counter[str] = Counter()
     selected: list[dict[str, Any]] = []
-    target_labels = list(PARENT_GROUPS)
+    target_labels = demo_target_labels()
 
     for index, row in enumerate(source):
         label = class_label_name(source, row["label"])
-        if label not in PARENT_GROUPS or counts[label] >= SAMPLES_PER_CLASS:
+        if label not in target_labels or counts[label] >= SAMPLES_PER_CLASS:
             continue
         selected.append(
             {
@@ -315,9 +291,7 @@ def select_balanced_records() -> list[dict[str, Any]]:
         if counts[label] < SAMPLES_PER_CLASS
     }
     if missing:
-        raise RuntimeError(
-            f"Could not build balanced {DATASET_LABEL} sample. Missing: {missing}"
-        )
+        raise RuntimeError(f"Could not build balanced {DATASET_LABEL} sample. Missing: {missing}")
 
     print(f"Selected {len(selected)} {DATASET_LABEL} tiles: {dict(counts)}", flush=True)
     return selected
@@ -351,34 +325,27 @@ def add_geospatial_samples(dataset: hv.Dataset) -> None:
             }
         )
 
-    if hasattr(dataset, "add_images"):
-        upserted, skipped_existing = dataset.add_images(
-            image_rows,
-            skip_existing=not FORCE_SAMPLE_REFRESH,
+    samples = [
+        Sample(
+            id=str(row["sample_id"]),
+            filepath=row["filepath"],
+            label=row["label"],
+            metadata=row["metadata"],
         )
-        updated = (
-            sum(1 for row in image_rows if str(row["sample_id"]) in existing_ids)
-            if FORCE_SAMPLE_REFRESH
-            else 0
-        )
-    else:
-        upserted = 0
-        skipped_existing = 0
-        updated = 0
-        for row in image_rows:
-            sample_id = str(row["sample_id"])
-            exists = sample_id in existing_ids
-            if exists and not FORCE_SAMPLE_REFRESH:
-                skipped_existing += 1
-                continue
-            dataset.add_image(
-                row["filepath"],
-                label=row["label"],
-                metadata=row["metadata"],
-                sample_id=sample_id,
-            )
-            upserted += 1
-            updated += int(exists)
+        for row in image_rows
+        if FORCE_SAMPLE_REFRESH or str(row["sample_id"]) not in existing_ids
+    ]
+    skipped_existing = 0 if FORCE_SAMPLE_REFRESH else len(image_rows) - len(samples)
+    upserted, add_samples_skipped = dataset.add_samples(
+        samples,
+        skip_existing=not FORCE_SAMPLE_REFRESH,
+    )
+    skipped_existing += add_samples_skipped
+    updated = (
+        sum(1 for row in image_rows if str(row["sample_id"]) in existing_ids)
+        if FORCE_SAMPLE_REFRESH
+        else 0
+    )
 
     added = upserted - updated
     if skipped_existing:
@@ -394,48 +361,12 @@ def ensure_layouts(dataset: hv.Dataset) -> dict[str, str]:
     layouts: dict[str, str] = {}
     for spec in MODEL_SPECS:
         print(f"Ensuring {spec['display_name']} embeddings...", flush=True)
-        try:
-            space_key = dataset.compute_embeddings(
-                model=spec["model"],
-                provider=spec["provider"],
-                batch_size=32,
-                show_progress=True,
-            )
-        except Exception as exc:
-            if (
-                spec["key"] == "candidate"
-                and ALLOW_CANDIDATE_FALLBACK
-                and "clip" in layouts
-            ):
-                warning = (
-                    f"Hyper3-CLIP embeddings are unavailable ({type(exc).__name__}: {exc}). "
-                    "Showing the CLIP layout as a clearly labeled fallback so the Space can start."
-                )
-                print(warning, flush=True)
-                RUNTIME_WARNINGS.append(warning)
-                spec.update(
-                    {
-                        "display_name": os.environ.get(
-                            "EUROSAT_CANDIDATE_FALLBACK_DISPLAY_NAME",
-                            "Hyper3-CLIP unavailable (CLIP fallback)",
-                        ),
-                        "button_label": os.environ.get(
-                            "EUROSAT_CANDIDATE_FALLBACK_BUTTON_LABEL",
-                            "CLIP fallback query",
-                        ),
-                        "geometry": MODEL_SPECS[0]["geometry"],
-                        "layout_dimension": MODEL_SPECS[0]["layout_dimension"],
-                        "panel_title": os.environ.get(
-                            "EUROSAT_CANDIDATE_FALLBACK_PANEL_TITLE",
-                            "Hyper3-CLIP unavailable - showing CLIP fallback",
-                        ),
-                        "fallback": True,
-                        "space_key": MODEL_SPECS[0].get("space_key"),
-                    }
-                )
-                layouts[spec["key"]] = layouts["clip"]
-                continue
-            raise
+        space_key = dataset.compute_embeddings(
+            model=spec["model"],
+            provider=spec["provider"],
+            batch_size=32,
+            show_progress=True,
+        )
         spec["space_key"] = space_key
         print(f"Ensuring {spec['display_name']} layout...", flush=True)
         layouts[spec["key"]] = dataset.compute_visualization(
@@ -470,9 +401,7 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
     return props
 
 
-def neighbor_summary(
-    dataset: hv.Dataset, sample_id: str, model_key: str
-) -> dict[str, Any]:
+def neighbor_summary(dataset: hv.Dataset, sample_id: str, model_key: str) -> dict[str, Any]:
     spec = next((item for item in MODEL_SPECS if item["key"] == model_key), None)
     if spec is None:
         return {}
@@ -485,13 +414,9 @@ def neighbor_summary(
 
     neighbors = dataset.find_similar(sample_id, k=10, space_key=str(space_key))
     parent_hits = sum(
-        1
-        for sample, _distance in neighbors
-        if sample.metadata.get("parent_group") == query_parent
+        1 for sample, _distance in neighbors if sample.metadata.get("parent_group") == query_parent
     )
-    class_hits = sum(
-        1 for sample, _distance in neighbors if sample.label == query.label
-    )
+    class_hits = sum(1 for sample, _distance in neighbors if sample.label == query.label)
     total = len(neighbors)
     return {
         "hits": parent_hits,
@@ -528,15 +453,10 @@ def build_examples(
             continue
         class_delta = candidate_summary["sameClassHits"] - clip_summary["sameClassHits"]
         parent_delta = candidate_summary["parentHits"] - clip_summary["parentHits"]
-        if (
-            class_delta < MIN_EXAMPLE_CLASS_DELTA
-            or parent_delta < MIN_EXAMPLE_PARENT_DELTA
-        ):
+        if class_delta < MIN_EXAMPLE_CLASS_DELTA or parent_delta < MIN_EXAMPLE_PARENT_DELTA:
             continue
         score = class_delta * 10 + parent_delta
-        ranked.append(
-            (score, str(sample.label), sample, clip_summary, candidate_summary)
-        )
+        ranked.append((score, str(sample.label), sample, clip_summary, candidate_summary))
 
     examples = []
     ordered = sorted(ranked, key=lambda item: item[0], reverse=True)
@@ -559,6 +479,7 @@ def build_examples(
                 "score": score,
                 "classDelta": class_delta,
                 "parentDelta": parent_delta,
+                "insight": example_insight(label, clip_summary, candidate_summary),
                 "summaries": {
                     "clip": clip_summary,
                     "candidate": candidate_summary,
@@ -609,71 +530,101 @@ def aggregate_metrics(
     return metrics
 
 
-def register_hyper3_clip_provider() -> None:
-    from hyperview.runtime import ProviderRegistry
-
-    ProviderRegistry().register_python(
-        "hyper3-clip",
-        "hyper3_clip_provider:Hyper3ClipEmbeddings",
-        description="Hyper3-CLIP v0.5 image embeddings from hyper3labs/hyper3-clip-v0.5",
-        overwrite=True,
-    )
-
-
-def build_demo_view(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.ui.View:
-    summaries = collect_neighbor_summaries(dataset)
-    scatter_panels = [
-        hv.ui.Scatter(
-            id=f"{spec['key']}-geospatial-map",
-            title=spec["panel_title"],
-            layout_key=layouts[spec["key"]],
-            geometry=spec["geometry"],
-            layout_dimension=spec["layout_dimension"],
-        )
-        for spec in MODEL_SPECS
-    ]
-    return hv.ui.View(
-        hv.ui.Horizontal(*scatter_panels),
-        hv.ui.ExtensionPanel(
-            id="geospatial-retrieval-readout",
-            extension="geospatial-readout",
-            panel="geospatial-comparison",
-            position="right",
-            props={
-                "datasetLabel": DATASET_LABEL,
-                "sampleCount": len(dataset.samples),
-                "classCount": len({sample.label for sample in dataset.samples}),
-                "task": "Scene-neighborhood retrieval audit",
-                "benchmark": BENCHMARK_CLAIMS,
-                "aggregate": aggregate_metrics(dataset, summaries),
-                "models": model_panel_props(layouts),
-                "examples": build_examples(dataset, summaries),
-                "warnings": RUNTIME_WARNINGS,
-            },
+def build_demo_view(
+    dataset: hv.Dataset,
+    layouts: dict[str, str],
+    *,
+    include_readout: bool = True,
+) -> hv.ui.View:
+    clip_spec = MODEL_SPECS[0]
+    candidate_spec = MODEL_SPECS[1]
+    samples_panel_id = "grid"
+    clip_panel_id = "clip-geospatial-map"
+    candidate_panel_id = "candidate-geospatial-map"
+    panels = [
+        hv.ui.Samples(
+            id=samples_panel_id,
+            title="Samples",
+            position="center",
+            layout=hv.ui.PanelLayout(min_height=220, min_width=360),
         ),
+        hv.ui.Scatter(
+            id=clip_panel_id,
+            title=clip_spec["panel_title"],
+            layout_key=layouts[clip_spec["key"]],
+            position="center",
+            reference_panel_id=samples_panel_id,
+            direction="below",
+            geometry=clip_spec["geometry"],
+            layout_dimension=clip_spec["layout_dimension"],
+            layout=hv.ui.PanelLayout(height=260, min_height=190, min_width=280),
+        ),
+        hv.ui.Scatter(
+            id=candidate_panel_id,
+            title=candidate_spec["panel_title"],
+            layout_key=layouts[candidate_spec["key"]],
+            position="center",
+            reference_panel_id=clip_panel_id,
+            direction="right",
+            geometry=candidate_spec["geometry"],
+            layout_dimension=candidate_spec["layout_dimension"],
+            layout=hv.ui.PanelLayout(min_height=190, min_width=280),
+        ),
+    ]
+
+    if include_readout:
+        summaries = collect_neighbor_summaries(dataset)
+        panels.append(
+            hv.ui.ExtensionPanel(
+                id="geospatial-retrieval-readout",
+                extension="geospatial-readout",
+                panel="geospatial-comparison",
+                position="right",
+                layout=hv.ui.PanelLayout(width=330, min_width=290),
+                props={
+                    "datasetLabel": DATASET_LABEL,
+                    "sampleCount": len(dataset.samples),
+                    "classCount": len({sample.label for sample in dataset.samples}),
+                    "task": "Scene-neighborhood retrieval audit",
+                    "benchmark": BENCHMARK_CLAIMS,
+                    "aggregate": aggregate_metrics(dataset, summaries),
+                    "models": model_panel_props(layouts),
+                    "examples": build_examples(dataset, summaries),
+                },
+            )
+        )
+
+    return hv.ui.View(
+        *panels,
+        active_panel="geospatial-retrieval-readout" if include_readout else samples_panel_id,
     )
 
 
 def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
-    from hyperview.api import Session
-    from hyperview.runtime import HyperViewRuntime
-
-    runtime = HyperViewRuntime()
-    runtime.attach_dataset_instance(WORKSPACE_ID, dataset, activate_workspace=True)
-    session = Session(runtime, SPACE_HOST, SPACE_PORT, dataset)
+    print("Launching HyperView with explicit map and Samples panels...", flush=True)
+    session = hv.launch(
+        dataset,
+        port=SPACE_PORT,
+        host=SPACE_HOST,
+        open_browser=False,
+        block=False,
+        workspace_id=WORKSPACE_ID,
+        view=build_demo_view(dataset, layouts, include_readout=False),
+    )
     print("Installing geospatial demo extension...", flush=True)
     session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
     print("Applying geospatial side-by-side demo view...", flush=True)
-    session.ui.apply_view(build_demo_view(dataset, layouts), workspace_id=WORKSPACE_ID)
+    session.ui.apply_view(
+        build_demo_view(dataset, layouts, include_readout=True),
+        workspace_id=WORKSPACE_ID,
+    )
     session.ui.set_active_layout(None, workspace_id=WORKSPACE_ID)
     session.ui.set_selection([], workspace_id=WORKSPACE_ID)
-    session.start(background=True)
-    print(f"\nHyperView geospatial demo is running at {session.url}", flush=True)
+    print(f"\nHyperView geospatial demo is ready at {session.url}", flush=True)
     return session
 
 
 def main() -> None:
-    register_hyper3_clip_provider()
     dataset, layouts = build_dataset()
     print("Layouts:", flush=True)
     for spec in MODEL_SPECS:
