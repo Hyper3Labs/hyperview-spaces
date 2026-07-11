@@ -23,7 +23,7 @@ RUN pip install --upgrade pip
 COPY --chown=user vendor/*.whl /tmp/hyperview-wheel/
 
 RUN echo "Installing bundled HyperView wheel" \
-    && pip install /tmp/hyperview-wheel/*.whl \
+    && pip install /tmp/hyperview-wheel/*.whl "hyper-models[ml]" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
