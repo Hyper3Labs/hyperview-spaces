@@ -34,13 +34,6 @@ FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_VISA_FORCE_REFRESH", "").lower(
     "true",
     "yes",
 }
-ALLOW_CANDIDATE_FALLBACK = os.environ.get("HYPERVIEW_ALLOW_CANDIDATE_FALLBACK", "1").lower() in {
-    "1",
-    "true",
-    "yes",
-}
-RUNTIME_WARNINGS: list[str] = []
-
 VISA_CATEGORIES = (
     "candle",
     "capsules",
@@ -257,36 +250,12 @@ def ensure_layouts(dataset: hv.Dataset) -> dict[str, str]:
     layouts: dict[str, str] = {}
     for spec in MODEL_SPECS:
         print(f"Ensuring {spec['display_name']} embeddings...", flush=True)
-        try:
-            space_key = dataset.compute_embeddings(
-                model=spec["model"],
-                provider=spec["provider"],
-                batch_size=32,
-                show_progress=True,
-            )
-        except Exception as exc:
-            if spec["key"] == "candidate" and ALLOW_CANDIDATE_FALLBACK and "clip" in layouts:
-                warning = (
-                    f"Hyper3-CLIP embeddings are unavailable ({type(exc).__name__}: {exc}). "
-                    "Showing the CLIP layout as a clearly labeled fallback so the Space can start."
-                )
-                print(warning, flush=True)
-                RUNTIME_WARNINGS.append(warning)
-                fallback_layout_key = layouts["clip"]
-                spec.update(
-                    {
-                        "display_name": "Hyper3-CLIP unavailable (CLIP fallback)",
-                        "button_label": "CLIP fallback query",
-                        "geometry": MODEL_SPECS[0]["geometry"],
-                        "layout_dimension": MODEL_SPECS[0]["layout_dimension"],
-                        "panel_title": "Hyper3-CLIP unavailable - showing CLIP fallback",
-                        "fallback": True,
-                        "layout_key": fallback_layout_key,
-                    }
-                )
-                layouts[spec["key"]] = fallback_layout_key
-                continue
-            raise
+        space_key = dataset.compute_embeddings(
+            model=spec["model"],
+            provider=spec["provider"],
+            batch_size=32,
+            show_progress=True,
+        )
         print(f"Ensuring {spec['display_name']} layout...", flush=True)
         layout_key = dataset.compute_visualization(
             space_key=space_key,
@@ -376,16 +345,10 @@ def build_examples(dataset: hv.Dataset) -> list[dict[str, Any]]:
         if sample.metadata.get("workflow_role") == "inspection_query":
             by_category.setdefault(sample.label, sample)
     examples = []
-    candidate_is_fallback = any(spec["key"] == "candidate" and spec.get("fallback") for spec in MODEL_SPECS)
     for category, family_title in PREFERRED_EXAMPLES:
         sample = by_category.get(category)
         if sample is None:
             continue
-        candidate_text = (
-            "Hyper3-CLIP is unavailable in this runtime, so this button shows the CLIP fallback neighborhood."
-            if candidate_is_fallback
-            else "Inspect whether normal references and same-SKU examples stay ahead of wrong-line neighbors."
-        )
         examples.append(
             {
                 "id": category,
@@ -399,7 +362,7 @@ def build_examples(dataset: hv.Dataset) -> list[dict[str, Any]]:
                         **reference_summary(dataset, sample.id, "clip"),
                     },
                     "candidate": {
-                        "text": candidate_text,
+                        "text": "Inspect whether normal references and same-SKU examples stay ahead of wrong-line neighbors.",
                         **reference_summary(dataset, sample.id, "candidate"),
                     },
                 },
@@ -461,7 +424,6 @@ def build_demo_view(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.ui.View:
                 "models": model_panel_props(layouts),
                 "examples": build_examples(dataset),
                 "strengthRows": category_strength_rows(dataset),
-                "warnings": RUNTIME_WARNINGS,
             },
         ),
         hv.ui.Samples(

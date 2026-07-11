@@ -18,9 +18,6 @@ const colors = {
   goodBg: "#132018",
   accent: "#8fb8ff",
   error: "#fca5a5",
-  warningBg: "#3b2f12",
-  warningBorder: "#92400e",
-  warningText: "#fde68a",
 };
 
 function pretty(value) {
@@ -485,7 +482,6 @@ export default function ManufacturingPanel() {
   const models = normalizeModels(props.models);
   const examples = Array.isArray(props.examples) ? props.examples : [];
   const primaryExample = examples.find((item) => item.id === "fryum") || examples[0] || null;
-  const warnings = Array.isArray(props.warnings) ? props.warnings : [];
   const [loadingKey, setLoadingKey] = React.useState(null);
   const [panelError, setPanelError] = React.useState(null);
   const [activeChoice, setActiveChoice] = React.useState(null);
@@ -604,24 +600,6 @@ export default function ManufacturingPanel() {
             panelError,
           )
         : null,
-      warnings.map((warning, index) =>
-        React.createElement(
-          "div",
-          {
-            key: index,
-            style: {
-              border: `1px solid ${colors.warningBorder}`,
-              background: colors.warningBg,
-              color: colors.warningText,
-              borderRadius: 5,
-              padding: 8,
-              fontSize: 11,
-              lineHeight: 1.35,
-            },
-          },
-          warning,
-        ),
-      ),
       React.createElement(StrengthTable, { rows: Array.isArray(props.strengthRows) ? props.strengthRows : [] }),
     ),
   );
