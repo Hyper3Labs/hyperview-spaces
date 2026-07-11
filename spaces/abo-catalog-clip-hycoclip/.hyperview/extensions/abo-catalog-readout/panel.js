@@ -61,11 +61,11 @@ function compactTitle(value, limit = 58) {
   return `${text.slice(0, Math.max(0, limit - 1)).trim()}...`;
 }
 
-function sampleTitle(sample, fallback) {
+function sampleTitle(sample, defaultTitle) {
   return (
     sample?.metadata?.title ||
     sample?.metadata?.product_title ||
-    fallback ||
+    defaultTitle ||
     sample?.filename ||
     sample?.id ||
     "sample"
