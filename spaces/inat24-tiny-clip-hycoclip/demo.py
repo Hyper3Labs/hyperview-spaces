@@ -12,6 +12,7 @@ from datasets import load_dataset
 from PIL import Image, ImageOps
 
 import hyperview as hv
+from hyperview.core.sample import Sample
 
 SPACE_HOST = "0.0.0.0"
 SPACE_PORT = 7860
@@ -154,11 +155,13 @@ def add_inat24_samples(dataset: hv.Dataset) -> None:
         metadata["source_dataset"] = HF_DATASET
         metadata["sample_strategy"] = "stratified_by_inat24_supercategory"
 
-        dataset.add_image(
-            str(image_path),
-            label=group,
-            metadata=metadata,
-            sample_id=sample_id,
+        dataset.add_sample(
+            Sample(
+                id=sample_id,
+                filepath=str(image_path),
+                label=group,
+                metadata=metadata,
+            ),
         )
         counts[group] += 1
         existing_ids.add(sample_id)
