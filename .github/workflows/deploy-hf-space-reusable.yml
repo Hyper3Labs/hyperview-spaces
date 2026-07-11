@@ -11,11 +11,20 @@ on:
         description: "Repository folder to sync to Space root"
         required: true
         type: string
+      use_space_credentials:
+        description: "Prefer the optional per-Space Hugging Face credentials"
+        required: false
+        type: boolean
+        default: false
     secrets:
       HF_USERNAME:
         required: true
       HF_TOKEN:
         required: true
+      HF_SPACE_USERNAME:
+        required: false
+      HF_SPACE_TOKEN:
+        required: false
 
 jobs:
   deploy:
@@ -37,8 +46,8 @@ jobs:
 
       - name: Sync folder to Hugging Face Space
         env:
-          HF_USERNAME: ${{ secrets.HF_USERNAME }}
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USERNAME: ${{ inputs.use_space_credentials && secrets.HF_SPACE_USERNAME || secrets.HF_USERNAME }}
+          HF_TOKEN: ${{ inputs.use_space_credentials && secrets.HF_SPACE_TOKEN || secrets.HF_TOKEN }}
           SPACE_ID: ${{ inputs.space_id }}
           SOURCE_DIR: ${{ inputs.source_dir }}
         run: |

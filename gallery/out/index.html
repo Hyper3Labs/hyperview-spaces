@@ -133,6 +133,20 @@
       margin-top: 1px;
     }
 
+    .registry-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
     h2 {
       margin: 14px 0 10px;
       font-size: 21px;
@@ -220,7 +234,7 @@
       <article class="card">
         <div class="card-top">
           <div class="slug">inat24-tiny</div>
-          <img class="badge" src="/badge/inat24-tiny.svg" alt="Status for inat24-tiny" loading="lazy">
+          <img class="badge" src="/badge/inat24-tiny.svg" alt="Live status for inat24-tiny" loading="lazy">
         </div>
         <h2>HyperView - iNat24 Tiny</h2>
         <p class="description">Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy.</p>
@@ -232,7 +246,7 @@
       <article class="card">
         <div class="card-top">
           <div class="slug">abo-catalog</div>
-          <img class="badge" src="/badge/abo-catalog.svg" alt="Status for abo-catalog" loading="lazy">
+          <img class="badge" src="/badge/abo-catalog.svg" alt="Live status for abo-catalog" loading="lazy">
         </div>
         <h2>HyperView - ABO Catalog</h2>
         <p class="description">Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings.</p>
@@ -244,7 +258,7 @@
       <article class="card">
         <div class="card-top">
           <div class="slug">deepfashion-text-search</div>
-          <img class="badge" src="/badge/deepfashion-text-search.svg" alt="Status for deepfashion-text-search" loading="lazy">
+          <img class="badge" src="/badge/deepfashion-text-search.svg" alt="Live status for deepfashion-text-search" loading="lazy">
         </div>
         <h2>HyperView - DeepFashion Text Search</h2>
         <p class="description">Explore shopper-style text-to-image retrieval wins on a curated fashion catalog.</p>
@@ -255,8 +269,19 @@
       </article>
       <article class="card">
         <div class="card-top">
+          <div class="slug">art-text-search</div>
+          <span class="registry-status">draft</span>
+        </div>
+        <h2>HyperView - Art Text Search</h2>
+        <p class="description">Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.</p>
+        <div class="links">
+          <a class="link" href="https://huggingface.co/spaces/hyper3labs/HyperView-Art-Text-Search">Hugging Face</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-top">
           <div class="slug">eurosat-geospatial</div>
-          <img class="badge" src="/badge/eurosat-geospatial.svg" alt="Status for eurosat-geospatial" loading="lazy">
+          <img class="badge" src="/badge/eurosat-geospatial.svg" alt="Live status for eurosat-geospatial" loading="lazy">
         </div>
         <h2>HyperView - EuroSAT Geospatial</h2>
         <p class="description">Review remote-sensing scene retrieval and neighborhood drift in aerial imagery.</p>
@@ -268,7 +293,7 @@
       <article class="card">
         <div class="card-top">
           <div class="slug">visa-manufacturing</div>
-          <img class="badge" src="/badge/visa-manufacturing.svg" alt="Status for visa-manufacturing" loading="lazy">
+          <img class="badge" src="/badge/visa-manufacturing.svg" alt="Live status for visa-manufacturing" loading="lazy">
         </div>
         <h2>HyperView - VisA Manufacturing</h2>
         <p class="description">Find same-SKU visual references for manufacturing inspection images.</p>
@@ -280,13 +305,35 @@
       <article class="card">
         <div class="card-top">
           <div class="slug">visual-safety</div>
-          <img class="badge" src="/badge/visual-safety.svg" alt="Status for visual-safety" loading="lazy">
+          <img class="badge" src="/badge/visual-safety.svg" alt="Live status for visual-safety" loading="lazy">
         </div>
         <h2>HyperView - Visual Safety</h2>
         <p class="description">Triage public marketplace images into safe and policy-review buckets.</p>
         <div class="links">
           <a class="link primary" href="https://mnm-matin-hyperview-visual-safety.hf.space">Open demo</a>
           <a class="link" href="https://huggingface.co/spaces/mnm-matin/HyperView-Visual-Safety">Hugging Face</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <div class="slug">logo-brand-search</div>
+          <span class="registry-status">local</span>
+        </div>
+        <h2>HyperView - Logo Brand Search</h2>
+        <p class="description">Compare CLIP and Hyper3-CLIP for detailed text-to-logo retrieval across a curated brand catalog.</p>
+        <div class="links">
+          <span class="link">Local only</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <div class="slug">precision-region-search</div>
+          <span class="registry-status">local</span>
+        </div>
+        <h2>HyperView - Precision Region Search</h2>
+        <p class="description">Compare exact crop retrieval with CLIP and Hyper3-CLIP on RefCOCOg-style scenes.</p>
+        <div class="links">
+          <span class="link">Local only</span>
         </div>
       </article>
     </section>

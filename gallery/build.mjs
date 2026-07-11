@@ -150,6 +150,20 @@ const html = `<!doctype html>
       margin-top: 1px;
     }
 
+    .registry-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
     h2 {
       margin: 14px 0 10px;
       font-size: 21px;
@@ -251,7 +265,7 @@ await writeFile(outPath, html, "utf8");
 console.log(`Wrote ${outPath}`);
 
 function renderCard(space) {
-  const required = ["space_id", "demo_slug"];
+  const required = ["demo_slug"];
   for (const key of required) {
     if (typeof space[key] !== "string" || space[key].length === 0) {
       throw new Error(`registry space is missing ${key}`);
@@ -260,22 +274,52 @@ function renderCard(space) {
 
   const name = space.demo_name || space.demo_slug;
   const description = space.description || "Explore this HyperView demo workspace.";
-  const liveUrl = `https://${space.space_id.replaceAll("/", "-").toLowerCase()}.hf.space`;
-  const hfUrl = `https://huggingface.co/spaces/${space.space_id}`;
-  const badgeSrc = `${warmWorkerUrl}/badge/${encodeURIComponent(space.demo_slug)}.svg`;
+  const status = normalizeStatus(space.status);
+  const spaceId = typeof space.space_id === "string" && space.space_id.length > 0
+    ? space.space_id
+    : null;
+  const statusMarkup = renderStatus(space.demo_slug, status, spaceId);
+  const linksMarkup = renderLinks(status, spaceId);
 
   return `      <article class="card">
         <div class="card-top">
           <div class="slug">${escapeHtml(space.demo_slug)}</div>
-          <img class="badge" src="${escapeAttribute(badgeSrc)}" alt="Status for ${escapeAttribute(space.demo_slug)}" loading="lazy">
+          ${statusMarkup}
         </div>
         <h2>${escapeHtml(name)}</h2>
         <p class="description">${escapeHtml(description)}</p>
         <div class="links">
-          <a class="link primary" href="${escapeAttribute(liveUrl)}">Open demo</a>
-          <a class="link" href="${escapeAttribute(hfUrl)}">Hugging Face</a>
+${linksMarkup}
         </div>
       </article>`;
+}
+
+function normalizeStatus(value) {
+  return ["live", "draft", "local"].includes(value) ? value : "unknown";
+}
+
+function renderStatus(demoSlug, status, spaceId) {
+  if (status === "live" && spaceId) {
+    const badgeSrc = `${warmWorkerUrl}/badge/${encodeURIComponent(demoSlug)}.svg`;
+    return `<img class="badge" src="${escapeAttribute(badgeSrc)}" alt="Live status for ${escapeAttribute(demoSlug)}" loading="lazy">`;
+  }
+  return `<span class="registry-status">${escapeHtml(status)}</span>`;
+}
+
+function renderLinks(status, spaceId) {
+  const links = [];
+  if (status === "live" && spaceId) {
+    const liveUrl = `https://${spaceId.replaceAll("/", "-").toLowerCase()}.hf.space`;
+    links.push(`<a class="link primary" href="${escapeAttribute(liveUrl)}">Open demo</a>`);
+  }
+  if (spaceId) {
+    const hfUrl = `https://huggingface.co/spaces/${spaceId}`;
+    links.push(`<a class="link" href="${escapeAttribute(hfUrl)}">Hugging Face</a>`);
+  }
+  if (links.length === 0) {
+    links.push(`<span class="link">Local only</span>`);
+  }
+  return links.map((link) => `          ${link}`).join("\n");
 }
 
 function normalizeBaseUrl(value) {

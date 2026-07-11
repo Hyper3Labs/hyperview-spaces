@@ -8,12 +8,17 @@ interface Env {
 }
 
 interface RegistrySpace {
-  space_id: string;
+  space_id: string | null;
+  folder: string;
   demo_slug: string;
   demo_name?: string;
   description?: string;
   keep_warm?: boolean;
+  status: "live" | "draft" | "local" | (string & {});
+  deploy_targets: string[];
 }
+
+type WarmableSpace = RegistrySpace & { space_id: string };
 
 interface Registry {
   version: number;
@@ -42,7 +47,10 @@ interface TimedResponse {
 }
 
 const typedRegistry = registry as Registry;
-const warmSpaces = typedRegistry.spaces.filter((space) => space.keep_warm);
+const warmSpaces = typedRegistry.spaces.filter(
+  (space): space is WarmableSpace =>
+    space.keep_warm === true && typeof space.space_id === "string" && space.space_id.length > 0
+);
 
 const DEFAULT_TIMEOUT_MS = 4000;
 const DEFAULT_HISTORY_LIMIT = 288;
@@ -107,7 +115,7 @@ async function checkAndStoreSpaces(env: Env): Promise<StatusSnapshot> {
   return snapshot;
 }
 
-async function checkSpace(space: RegistrySpace, env: Env, checkedAt: string): Promise<StatusRecord> {
+async function checkSpace(space: WarmableSpace, env: Env, checkedAt: string): Promise<StatusRecord> {
   const timeoutMs = positiveInteger(env.HEALTH_TIMEOUT_MS, DEFAULT_TIMEOUT_MS);
   const healthUrl = `${spaceRootUrl(space.space_id)}/__hyperview__/health`;
   const rootUrl = spaceRootUrl(space.space_id);
@@ -129,7 +137,8 @@ async function checkSpace(space: RegistrySpace, env: Env, checkedAt: string): Pr
     stage,
     http_status: spaceCheck?.response.status ?? null,
     latency_ms: spaceCheck?.latencyMs ?? null,
-    hyperview_version: readStringProperty(healthJson, "hyperview_version"),
+    hyperview_version:
+      readStringProperty(healthJson, "version") ?? readStringProperty(healthJson, "hyperview_version"),
     checked_at: checkedAt
   };
 }

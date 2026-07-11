@@ -18,5 +18,6 @@ jobs:
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
       source_dir: spaces/geospatial-eurosat-clip-hyper3clip
-      space_id: hyper3labs/HyperView-EuroSAT-Geospatial
+      space_id: mnm-matin/HyperView-EuroSAT-Geospatial
+      use_space_credentials: true
     secrets: inherit

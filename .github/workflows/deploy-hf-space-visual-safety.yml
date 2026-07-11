@@ -1,0 +1,23 @@
+name: Deploy HF Space - HyperView Visual Safety
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/visual-safety-content-clip-hyper3clip/**
+      - .github/workflows/deploy-hf-space-visual-safety.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-visual-safety
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/visual-safety-content-clip-hyper3clip
+      space_id: mnm-matin/HyperView-Visual-Safety
+      use_space_credentials: true
+    secrets: inherit
