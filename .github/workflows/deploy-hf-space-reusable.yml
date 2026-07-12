@@ -44,6 +44,26 @@ jobs:
           [[ -f "$src/README.md" ]] || { echo "Missing $src/README.md"; exit 1; }
           [[ -f "$src/Dockerfile" ]] || { echo "Missing $src/Dockerfile"; exit 1; }
 
+      - name: Ensure destination Space exists
+        env:
+          HF_TOKEN: ${{ inputs.use_space_credentials && secrets.HF_SPACE_TOKEN || secrets.HF_TOKEN }}
+          SPACE_ID: ${{ inputs.space_id }}
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --quiet huggingface_hub
+          HF_TOKEN="$HF_TOKEN" SPACE_ID="$SPACE_ID" python - <<'PY'
+          import os
+
+          from huggingface_hub import HfApi
+
+          HfApi(token=os.environ["HF_TOKEN"]).create_repo(
+              repo_id=os.environ["SPACE_ID"],
+              repo_type="space",
+              space_sdk="docker",
+              exist_ok=True,
+          )
+          PY
+
       - name: Sync folder to Hugging Face Space
         env:
           HF_USERNAME: ${{ inputs.use_space_credentials && secrets.HF_SPACE_USERNAME || secrets.HF_USERNAME }}

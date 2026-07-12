@@ -89,7 +89,7 @@ Add one row here when you contribute a new Space.
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
 | HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `spaces/inat24-tiny-clip-hycoclip` | Hyper3Labs | `live` | Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy. |
-| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `spaces/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
+| HyperView - ABO Catalog | `mnm-matin/HyperView-ABO-Catalog` | `spaces/abo-catalog-clip-hycoclip` | mnm-matin | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `spaces/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
 | HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `spaces/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content. |
 | HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | Hyper3Labs | `live` | Review remote-sensing scene retrieval and neighborhood drift in aerial imagery. |
