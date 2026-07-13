@@ -94,14 +94,14 @@
       ]
     },
     {
-      "space_id": null,
+      "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
       "folder": "spaces/logo-brand-search-clip-hyper3clip",
       "demo_slug": "logo-brand-search",
       "demo_name": "HyperView - Logo Brand Search",
       "description": "Compare CLIP and Hyper3-CLIP for detailed text-to-logo retrieval across a curated brand catalog.",
-      "expected_dataset": "modern_logo_text_search_clip_hyper3clip",
-      "keep_warm": false,
-      "status": "local",
+      "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+      "keep_warm": true,
+      "status": "live",
       "deploy_targets": []
     },
     {

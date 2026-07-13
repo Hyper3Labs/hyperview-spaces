@@ -95,7 +95,7 @@ Add one row here when you contribute a new Space.
 | HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | Hyper3Labs | `live` | Review remote-sensing scene retrieval and neighborhood drift in aerial imagery. |
 | HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `spaces/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
 | HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `spaces/visual-safety-content-clip-hyper3clip` | Hyper3Labs | `live` | Triage public marketplace images into safe and policy-review buckets. |
-| HyperView - Logo Brand Search | — | `spaces/logo-brand-search-clip-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
+| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `spaces/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
 | HyperView - Precision Region Search | — | `spaces/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
 | HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
 
