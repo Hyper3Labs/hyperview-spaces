@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 
 from huggingface_hub import HfApi
+from huggingface_hub.utils import HfHubHTTPError
 
 
 def parse_args() -> argparse.Namespace:
@@ -37,12 +38,18 @@ def main() -> int:
 
     token = os.environ.get("HF_TOKEN")
     api = HfApi(token=token) if token else HfApi()
-    api.create_repo(
-        repo_id=args.space_id,
-        repo_type="space",
-        space_sdk="docker",
-        exist_ok=True,
-    )
+    try:
+        api.repo_info(repo_id=args.space_id, repo_type="space")
+    except HfHubHTTPError as exc:
+        status_code = exc.response.status_code if exc.response is not None else None
+        if status_code != 404:
+            raise
+        api.create_repo(
+            repo_id=args.space_id,
+            repo_type="space",
+            space_sdk="docker",
+            exist_ok=True,
+        )
     message = args.commit_message or f"Deploy {args.space_id} from {source_dir.name}"
     commit = api.upload_folder(
         repo_id=args.space_id,
