@@ -63,9 +63,7 @@
       "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
       "keep_warm": true,
       "status": "live",
-      "deploy_targets": [
-        "hf-docker"
-      ]
+      "deploy_targets": []
     },
     {
       "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
@@ -89,9 +87,7 @@
       "expected_dataset": "openimages_visual_safety_marketplace_triage_assets_v1",
       "keep_warm": true,
       "status": "live",
-      "deploy_targets": [
-        "hf-docker"
-      ]
+      "deploy_targets": []
     },
     {
       "space_id": "mnm-matin/HyperView-Logo-Brand-Search",

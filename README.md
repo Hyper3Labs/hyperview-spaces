@@ -10,7 +10,8 @@ Recommended GitHub repository name:
 
 - Keep Space deployment logic separate from the core HyperView codebase
 - Reuse one template pattern for multiple Space demos
-- Deploy each demo folder to a different Hugging Face Space via GitHub Actions
+- Deploy Hyper3Labs-owned Spaces through GitHub Actions
+- Deploy personal-account Spaces manually with the local HF deployment helper
 
 ## Intended reuse flow
 
@@ -45,11 +46,27 @@ Use the iNat24 Tiny example as a copyable starter.
 6. Edit `spaces/yourproject-hyperview/demo.py` and change the constants block at the top of the file.
 7. Edit `spaces/yourproject-hyperview/README.md` and rename the copied example from `HyperView` to your own project name.
 8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
-9. Copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
-10. Configure the GitHub Actions secrets `HF_USERNAME` and `HF_TOKEN`. The token must have write access to the target Hugging Face Space.
-11. Push to `main` or run the workflow manually with `workflow_dispatch`.
-12. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.6.2` and `hyper-models==0.2.0`; use a vendored wheel only for the temporary development escape hatch described below.
-13. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
+9. For a Hyper3Labs-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
+10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
+11. For an org-owned Space, configure the GitHub Actions secrets `HF_USERNAME` and `HF_TOKEN`. The token must have write access to the target Space.
+12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
+13. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.6.2` and `hyper-models==0.2.0`; use a vendored wheel only for the temporary development escape hatch described below.
+14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
+
+### Manual HF deployment
+
+Personal-account Spaces are intentionally excluded from deployment CI. Authenticate
+locally with a Hugging Face token that can write to the target Space, then run:
+
+```bash
+cd /Users/matin/hyperview_org/HyperView
+uv run python hyperview-spaces/scripts/deploy_hf_space.py \
+  --space-id mnm-matin/HyperView-Logo-Brand-Search \
+  --source-dir hyperview-spaces/spaces/logo-brand-search-clip-hyper3clip
+```
+
+The command creates the Docker Space when needed and synchronizes the source folder.
+The monitoring workflow still checks personal Spaces; it does not deploy them.
 
 ### Vendored wheels
 
@@ -92,9 +109,9 @@ Add one row here when you contribute a new Space.
 | HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `spaces/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `spaces/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
 | HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `spaces/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content. |
-| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | Hyper3Labs | `live` | Review remote-sensing scene retrieval and neighborhood drift in aerial imagery. |
+| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
 | HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `spaces/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
-| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `spaces/visual-safety-content-clip-hyper3clip` | Hyper3Labs | `live` | Triage public marketplace images into safe and policy-review buckets. |
+| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `spaces/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
 | HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `spaces/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
 | HyperView - Precision Region Search | — | `spaces/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
 | HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
@@ -103,9 +120,10 @@ Add one row here when you contribute a new Space.
 
 Spaces may live under any Hugging Face organization or personal account. Copy
 an existing space folder, add its `folder`, `space_id`, `status`,
-`deploy_targets`, and `keep_warm` values to `spaces.registry.json`, then add a
-deploy workflow that calls the reusable workflow and open a PR. The
-`check-spaces.yml` CI workflow enforces registry consistency.
+`deploy_targets`, and `keep_warm` values to `spaces.registry.json`. Add a
+deployment workflow only for a Hyper3Labs-owned Space; use the manual command
+above for personal Spaces. The `check-spaces.yml` CI workflow enforces registry
+consistency.
 
 ## Repository layout
 
