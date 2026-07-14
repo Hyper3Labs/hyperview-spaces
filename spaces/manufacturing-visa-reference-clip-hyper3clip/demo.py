@@ -29,11 +29,14 @@ EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "manufacturing-readout
 SAMPLES_PER_CATEGORY = int(os.environ.get("VISA_SAMPLES_PER_CATEGORY", "4"))
 TRAIN_FRACTION = float(os.environ.get("VISA_TRAIN_FRACTION", "0.5"))
 IMAGE_MAX_SIZE = (640, 640)
+VISA_DATASET_ID = "BrachioLab/visa"
+VISA_DATASET_REVISION = "d185c42584b49f1df81fe12bde627559ed88d483"
 FORCE_SAMPLE_REFRESH = os.environ.get("HYPERVIEW_VISA_FORCE_REFRESH", "").lower() in {
     "1",
     "true",
     "yes",
 }
+DATASET_SERVER_UNAVAILABLE = False
 VISA_CATEGORIES = (
     "candle",
     "capsules",
@@ -116,9 +119,11 @@ def readable(value: str) -> str:
 
 
 def fetch_rows(split: str, count: int) -> list[dict[str, Any]]:
+    global DATASET_SERVER_UNAVAILABLE
+
     params = urllib.parse.urlencode(
         {
-            "dataset": "BrachioLab/visa",
+            "dataset": VISA_DATASET_ID,
             "config": "default",
             "split": split,
             "offset": 0,
@@ -127,22 +132,45 @@ def fetch_rows(split: str, count: int) -> list[dict[str, Any]]:
     )
     url = f"https://datasets-server.huggingface.co/rows?{params}"
     last_error: Exception | None = None
-    for attempt in range(1, 5):
-        try:
-            with urllib.request.urlopen(url, timeout=60) as response:
-                payload = json.loads(response.read().decode("utf-8"))
-            break
-        except Exception as exc:
-            last_error = exc
-            if attempt == 4:
-                raise
-            time.sleep(1.5 * attempt)
-    else:
-        raise RuntimeError(f"Could not fetch VisA split {split}") from last_error
-    rows = [item["row"] for item in payload["rows"]]
+    if not DATASET_SERVER_UNAVAILABLE:
+        for attempt in range(1, 5):
+            try:
+                with urllib.request.urlopen(url, timeout=60) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                rows = [item["row"] for item in payload["rows"]]
+                if len(rows) < count:
+                    raise RuntimeError(f"Split {split} returned {len(rows)} rows for requested count {count}")
+                return rows[:count]
+            except Exception as exc:
+                last_error = exc
+                if attempt < 4:
+                    time.sleep(1.5 * attempt)
+        DATASET_SERVER_UNAVAILABLE = True
+        print(
+            f"VisA dataset-server rows unavailable ({type(last_error).__name__}: {last_error}); "
+            "falling back to the pinned Hub dataset.",
+            flush=True,
+        )
+
+    try:
+        from datasets import load_dataset
+
+        stream = load_dataset(
+            VISA_DATASET_ID,
+            split=split,
+            revision=VISA_DATASET_REVISION,
+            streaming=True,
+        )
+        rows = []
+        for row in stream:
+            rows.append(row)
+            if len(rows) >= count:
+                break
+    except Exception as exc:
+        raise RuntimeError(f"Could not fetch pinned VisA split {split} from the Hub") from exc
     if len(rows) < count:
-        raise RuntimeError(f"Split {split} returned {len(rows)} rows for requested count {count}")
-    return rows[:count]
+        raise RuntimeError(f"Split {split} returned {len(rows)} rows for requested count {count}") from last_error
+    return rows
 
 
 def local_records(category: str, split_type: str, count: int) -> list[dict[str, Any]]:
@@ -168,11 +196,16 @@ def local_records(category: str, split_type: str, count: int) -> list[dict[str, 
     return records[:count]
 
 
-def save_url_image(url: str, destination: Path) -> None:
+def save_image(source: Any, destination: Path) -> None:
     if destination.exists() and destination.stat().st_size > 0:
         return
-    with urllib.request.urlopen(url, timeout=60) as response:
-        image = Image.open(io.BytesIO(response.read()))
+    if isinstance(source, str):
+        with urllib.request.urlopen(source, timeout=60) as response:
+            image = Image.open(io.BytesIO(response.read()))
+    elif isinstance(source, Image.Image):
+        image = source
+    else:
+        raise TypeError(f"Unsupported VisA image source: {type(source).__name__}")
     image = ImageOps.exif_transpose(image).convert("RGB")
     image.thumbnail(IMAGE_MAX_SIZE, Image.Resampling.LANCZOS)
     tmp_path = destination.with_suffix(destination.suffix + ".tmp")
@@ -195,10 +228,11 @@ def select_visa_records() -> list[dict[str, Any]]:
             split_name = f"{category}.{split_type}"
             rows = fetch_rows(split_name, count)
             for row_index, row in enumerate(rows):
+                image = row["image"]
                 records.append(
                     {
                         "row_index": row_index,
-                        "image_url": row["image"]["src"],
+                        "image_source": image["src"] if isinstance(image, dict) else image,
                         "local_path": None,
                         "category": category,
                         "family": FAMILY_BY_CATEGORY[category],
@@ -219,8 +253,8 @@ def add_visa_samples(dataset: hv.Dataset) -> None:
     for record in select_visa_records():
         sample_id = safe_sample_id(record["category"], record["split_name"], record["row_index"], record["defect_label"])
         destination = Path(record["local_path"]) if record.get("local_path") else media_dir / f"{sample_id}.jpg"
-        if record.get("image_url"):
-            save_url_image(record["image_url"], destination)
+        if record.get("image_source") is not None:
+            save_image(record["image_source"], destination)
         metadata = {
             "sku": record["category"],
             "product_family": record["family"],
