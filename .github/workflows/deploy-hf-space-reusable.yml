@@ -12,8 +12,6 @@ on:
         required: true
         type: string
     secrets:
-      HF_USERNAME:
-        required: true
       HF_TOKEN:
         required: true
 
@@ -26,6 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Install Hugging Face client
+        run: python -m pip install --disable-pip-version-check "huggingface_hub>=0.30,<1"
+
       - name: Validate source folder
         run: |
           set -euo pipefail
@@ -37,33 +43,12 @@ jobs:
 
       - name: Sync folder to Hugging Face Space
         env:
-          HF_USERNAME: ${{ secrets.HF_USERNAME }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           SPACE_ID: ${{ inputs.space_id }}
           SOURCE_DIR: ${{ inputs.source_dir }}
         run: |
           set -euo pipefail
-
-          tmp_dir="$(mktemp -d)"
-          trap 'rm -rf "$tmp_dir"' EXIT
-
-          repo_url="https://${HF_USERNAME}:${HF_TOKEN}@huggingface.co/spaces/${SPACE_ID}"
-
-          git clone "$repo_url" "$tmp_dir/space"
-          rsync -a --delete --exclude='.git/' "${SOURCE_DIR}/" "$tmp_dir/space/"
-
-          cd "$tmp_dir/space"
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "No deployment changes for ${SPACE_ID}"
-            exit 0
-          fi
-
-          short_sha="${GITHUB_SHA::7}"
-          git commit -m "Deploy ${SPACE_ID} from ${GITHUB_REPOSITORY}@${short_sha}"
-          git push origin HEAD
+          python scripts/deploy_hf_space.py \
+            --space-id "${SPACE_ID}" \
+            --source-dir "${SOURCE_DIR}" \
+            --commit-message "Deploy ${SPACE_ID} from ${GITHUB_REPOSITORY}@${GITHUB_SHA::7}"

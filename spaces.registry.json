@@ -48,11 +48,9 @@
       "demo_name": "HyperView - Art Text Search",
       "description": "Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.",
       "expected_dataset": "art_text_search_clip_hyper3clip",
-      "keep_warm": true,
+      "keep_warm": false,
       "status": "draft",
-      "deploy_targets": [
-        "hf-docker"
-      ]
+      "deploy_targets": []
     },
     {
       "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",

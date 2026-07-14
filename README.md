@@ -48,7 +48,7 @@ Use the iNat24 Tiny example as a copyable starter.
 8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
 9. For a Hyper3Labs-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
 10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
-11. For an org-owned Space, configure the GitHub Actions secrets `HF_USERNAME` and `HF_TOKEN`. The token must have write access to the target Space.
+11. For an org-owned Space, configure the GitHub Actions secret `HF_TOKEN`. The token must have write access to the target Space.
 12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
 13. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.6.2` and `hyper-models==0.2.0`; use a vendored wheel only for the temporary development escape hatch described below.
 14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
@@ -97,7 +97,7 @@ If you want your Space to appear in this repository as a community example:
 5. Add a row for your Space in the community table below.
 6. Open a pull request describing the Hugging Face Space ID, dataset source, embedding models, and whether the deploy workflow is expected to run from this repository.
 
-Important: deployment workflows in this repository use the shared `HF_USERNAME` and `HF_TOKEN` GitHub secrets. A contributed workflow will only deploy successfully if that token has write access to the target Space.
+Important: deployment workflows in this repository use the shared `HF_TOKEN` GitHub secret. A contributed workflow will only deploy successfully if that token has write access to the target Space.
 
 ## Community Contributed Spaces
 
@@ -108,7 +108,7 @@ Add one row here when you contribute a new Space.
 | HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `spaces/inat24-tiny-clip-hycoclip` | Hyper3Labs | `live` | Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy. |
 | HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `spaces/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `spaces/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
-| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `spaces/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content. |
+| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `spaces/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
 | HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
 | HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `spaces/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
 | HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `spaces/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
