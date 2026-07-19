@@ -21,4 +21,3 @@ jobs:
     with:
       source_dir: spaces/inat24-tiny-clip-hycoclip
       space_id: hyper3labs/HyperView
-    secrets: inherit

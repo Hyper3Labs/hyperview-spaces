@@ -19,4 +19,3 @@ jobs:
     with:
       source_dir: spaces/fashion-deepfashion-text-search-clip-hyper3clip
       space_id: hyper3labs/HyperView-DeepFashion-Text-Search
-    secrets: inherit

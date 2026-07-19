@@ -48,7 +48,7 @@ Use the iNat24 Tiny example as a copyable starter.
 8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
 9. For a Hyper3Labs-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
 10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
-11. For an org-owned Space, configure the GitHub Actions secret `HF_TOKEN`. The token must have write access to the target Space.
+11. For an org-owned Space, add a Hugging Face Trusted Publisher for the GitHub repository, `main` branch, and exact deployment workflow filename. No long-lived GitHub secret is required.
 12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
 13. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.6.2` and `hyper-models==0.2.0`; use a vendored wheel only for the temporary development escape hatch described below.
 14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
@@ -97,7 +97,7 @@ If you want your Space to appear in this repository as a community example:
 5. Add a row for your Space in the community table below.
 6. Open a pull request describing the Hugging Face Space ID, dataset source, embedding models, and whether the deploy workflow is expected to run from this repository.
 
-Important: deployment workflows in this repository use the shared `HF_TOKEN` GitHub secret. A contributed workflow will only deploy successfully if that token has write access to the target Space.
+Important: deployment workflows in this repository use Hugging Face Trusted Publishers. Each target Space must trust `Hyper3Labs/hyperview-spaces`, the `main` branch, and its exact caller workflow filename.
 
 ## Community Contributed Spaces
 

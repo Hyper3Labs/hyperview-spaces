@@ -46,7 +46,7 @@ release instead of vendoring `hyperview` into the Space.
 5. Edit the constants block in `spaces/yourproject-hyperview/demo.py`.
 6. Edit `spaces/yourproject-hyperview/README.md` and rename the copied `HyperView` title and H1 to your own project name.
 7. Copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `space_id`, `source_dir`, `paths`, `name`, and `concurrency`.
-8. Make sure the GitHub Actions secrets `HF_USERNAME` and `HF_TOKEN` can push to your target Space.
+8. Configure a Hugging Face Trusted Publisher for `Hyper3Labs/hyperview-spaces`, the `main` branch, and the exact deployment workflow filename.
 9. Keep the Dockerfile on current released packages such as `hyperview==0.4.2` and `hyper-models==0.2.0`.
 10. Push to `main` or trigger `workflow_dispatch`.
 11. Verify the Space build logs on Hugging Face.
@@ -69,10 +69,11 @@ Each per-space workflow:
    - `space_id` (e.g. `hyper3labs/HyperView`)
    - `source_dir` (e.g. `spaces/inat24-tiny-clip-hycoclip`)
 
-## Required GitHub secrets
+## Deployment authentication
 
-- `HF_USERNAME` — your Hugging Face username
-- `HF_TOKEN` — Hugging Face write token for Spaces
+No long-lived GitHub secrets are required. The reusable workflow sets
+`HF_OIDC_RESOURCE` to `spaces/<owner>/<space-name>` so Hugging Face can issue a
+short-lived, repo-scoped deployment token.
 
 ## Add a new Space
 

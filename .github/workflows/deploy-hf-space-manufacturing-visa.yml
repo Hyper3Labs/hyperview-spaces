@@ -19,4 +19,3 @@ jobs:
     with:
       source_dir: spaces/manufacturing-visa-reference-clip-hyper3clip
       space_id: hyper3labs/HyperView-VisA-Manufacturing
-    secrets: inherit
