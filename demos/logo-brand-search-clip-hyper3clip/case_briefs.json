@@ -1,0 +1,50 @@
+{
+  "01-barber-franchise": {
+    "shortLabel": "Barber",
+    "attributes": {
+      "Category": "Barbershop / hair salon",
+      "Motif": "Vertical scissors with a flower ring",
+      "Composition": "Arch, two-line inscription, symmetrical leaves",
+      "Palette": "Black on white / whitesmoke",
+      "Style": "Minimal, modern"
+    },
+    "hyper3Readout": "Exact asset at #1; motif and arch composition survive the first-screen cutoff.",
+    "clipReadout": "Category is right, but the flower-ring and leaf-arch composition are absent; exact asset first appears at #30."
+  },
+  "02-floral-retail": {
+    "shortLabel": "Floral",
+    "attributes": {
+      "Category": "Flower store",
+      "Motif": "Central shrub / grass twig",
+      "Composition": "Oval text formed by upper, lower, and side lines",
+      "Palette": "Dark gray on linen",
+      "Style": "Minimal, modern"
+    },
+    "hyper3Readout": "Exact asset at #1; the central twig and oval inscription structure are preserved.",
+    "clipReadout": "Generic floral marks dominate the first screen; exact composition first appears at #29."
+  },
+  "03-construction-brand": {
+    "shortLabel": "Construction",
+    "attributes": {
+      "Category": "Building company",
+      "Motif": "Abstract cube-shaped building",
+      "Composition": "Three levels, columns, interlacing",
+      "Palette": "Dark slate gray on whitesmoke",
+      "Style": "Minimal, modern"
+    },
+    "hyper3Readout": "Exact asset reaches #2 behind one related building system.",
+    "clipReadout": "Building outlines are retrieved, but the exact cube-and-column structure first appears at #17."
+  },
+  "04-hospitality-bar": {
+    "shortLabel": "Hospitality",
+    "attributes": {
+      "Category": "Cafe / restaurant / bar",
+      "Motif": "Wine glass formed like a liquid",
+      "Composition": "Single centered mark",
+      "Palette": "Black and red wine on snow white",
+      "Style": "Minimal, modern"
+    },
+    "hyper3Readout": "Exact asset at #1; wine motif, sparse composition, and palette align.",
+    "clipReadout": "Related drink marks lead the list, but the liquid-glass asset first appears at #17."
+  }
+}

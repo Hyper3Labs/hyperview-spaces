@@ -39,7 +39,7 @@ import runpy
 from pathlib import Path
 
 space = runpy.run_path(
-    str(Path(os.environ["SPACES_REPO"]) / "spaces/inat24-tiny-clip-hycoclip/demo.py")
+    str(Path(os.environ["SPACES_REPO"]) / "demos/inat24-tiny-clip-hycoclip/demo.py")
 )
 dataset = space["build_dataset"]()
 session = space["hv"].launch(
@@ -145,7 +145,7 @@ custom-domain URL. No Worker script or server component is required.
 
 ## Registry
 
-`spaces.registry.json` remains unchanged. Its current checker contract requires
+`live-spaces.registry.json` remains unchanged. Its current checker contract requires
 every registry entry to map to a Docker space folder and deployment workflow;
 adding an `hf-static` or `cf-static` entry before that schema is extended would
 break `scripts/check_spaces.py` semantics.

@@ -34,7 +34,7 @@ Fix in two layers:
 
 ## Layer 1: `warm-worker` (implement now)
 
-One Cloudflare Worker, cron-triggered, driven by `spaces.registry.json`:
+One Cloudflare Worker, cron-triggered, driven by `live-spaces.registry.json`:
 
 - Every 5 minutes: `GET` each registered space's `/__hyperview__/health`
   (falls back to the Space root URL), record `{space_id, status, latency_ms,
@@ -61,7 +61,7 @@ Two orders of magnitude of headroom. The GitHub Actions
 the worker is live.
 
 Repo layout: `warm-worker/` with `wrangler.toml` (cron trigger `*/5 * * * *`),
-`src/index.ts`, reading a build-time copy of `spaces.registry.json`.
+`src/index.ts`, reading a build-time copy of `live-spaces.registry.json`.
 Deploy: `npx wrangler deploy` (manual) — no CI secrets needed initially.
 
 ## Layer 2: static demo bundles (the real fix)
@@ -115,7 +115,7 @@ demo with a thumbnail, one-line story, live status badge (from
 `warm-worker` for the remaining Docker Spaces; static bundles are always
 "live"), and links. Served from the same Cloudflare Worker static assets as
 the landing page (e.g. `hyper3labs.com/demos`), generated from
-`spaces.registry.json` so the registry stays the single source of truth.
+`live-spaces.registry.json` so the registry stays the single source of truth.
 
 ### What stays out of scope
 

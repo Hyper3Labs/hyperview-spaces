@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "artifactId": "resisc45-geospatial-retrieval-evidence-2026-07-22",
+  "protocol": {
+    "dataset": "tanganke/resisc45",
+    "split": "test",
+    "subset": "60 curated tiles; 12 scene classes; 5 tiles per class",
+    "queries": 60,
+    "gallery": 60,
+    "selfMatch": "excluded",
+    "k": 10,
+    "distance": "Hyper3 hyperbolic; CLIP cosine",
+    "baselineModel": "openai/clip-vit-base-patch32",
+    "candidateModel": "hyper3-clip-v0.5",
+    "modelRevisionCaveat": "Exact model repository revisions were not captured in the original persisted run.",
+    "claimBoundary": "A bounded neighborhood-quality probe, not a specialist remote-sensing benchmark."
+  },
+  "aggregate": {
+    "clip": { "exactP10": 0.2783333333, "parentP10": 0.6216666667 },
+    "hyper3": { "exactP10": 0.3316666667, "parentP10": 0.7033333333 },
+    "delta": { "exactP10": 0.0533333334, "parentP10": 0.0816666666 }
+  },
+  "cases": [
+    {
+      "id": "airplane-win",
+      "title": "Airplane / transport",
+      "kind": "Aircraft",
+      "question": "Does the neighborhood stay with aircraft and transport infrastructure?",
+      "anchorSampleId": "resisc45_airplane_119",
+      "exactClass": "airplane",
+      "parentGroup": "transport",
+      "sourceImageId": "119",
+      "models": {
+        "clip": {
+          "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+          "exactHits": 0,
+          "parentHits": 4,
+          "resultIds": ["resisc45_runway_241", "resisc45_airport_85", "resisc45_runway_202", "resisc45_sparse_residential_196", "resisc45_sparse_residential_367", "resisc45_sparse_residential_477", "resisc45_terrace_148", "resisc45_meadow_13", "resisc45_basketball_court_49", "resisc45_airport_157"]
+        },
+        "hyper3": {
+          "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+          "exactHits": 3,
+          "parentHits": 9,
+          "resultIds": ["resisc45_runway_202", "resisc45_airplane_136", "resisc45_airplane_96", "resisc45_airplane_46", "resisc45_airport_51", "resisc45_airport_14", "resisc45_runway_319", "resisc45_airport_85", "resisc45_runway_241", "resisc45_rectangular_farmland_91"]
+        }
+      }
+    },
+    {
+      "id": "forest-win",
+      "title": "Forest / vegetation",
+      "kind": "Forest",
+      "question": "Does the neighborhood avoid residential and transport drift?",
+      "anchorSampleId": "resisc45_forest_20",
+      "exactClass": "forest",
+      "parentGroup": "agriculture_vegetation",
+      "sourceImageId": "20",
+      "models": {
+        "clip": {
+          "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+          "exactHits": 2,
+          "parentHits": 5,
+          "resultIds": ["resisc45_forest_111", "resisc45_forest_26", "resisc45_terrace_148", "resisc45_sparse_residential_196", "resisc45_sparse_residential_477", "resisc45_terrace_116", "resisc45_sparse_residential_367", "resisc45_meadow_13", "resisc45_airport_157", "resisc45_sparse_residential_469"]
+        },
+        "hyper3": {
+          "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+          "exactHits": 4,
+          "parentHits": 9,
+          "resultIds": ["resisc45_forest_36", "resisc45_forest_26", "resisc45_forest_27", "resisc45_forest_111", "resisc45_meadow_34", "resisc45_meadow_75", "resisc45_terrace_148", "resisc45_sparse_residential_196", "resisc45_circular_farmland_74", "resisc45_circular_farmland_43"]
+        }
+      }
+    },
+    {
+      "id": "storage-tank-win",
+      "title": "Storage tank / built environment",
+      "kind": "Industrial",
+      "question": "Does circular industrial infrastructure stay separate from farmland?",
+      "anchorSampleId": "resisc45_storage_tank_1",
+      "exactClass": "storage tank",
+      "parentGroup": "built_environment",
+      "sourceImageId": "1",
+      "models": {
+        "clip": {
+          "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+          "exactHits": 2,
+          "parentHits": 2,
+          "resultIds": ["resisc45_storage_tank_272", "resisc45_circular_farmland_7", "resisc45_storage_tank_315", "resisc45_airplane_96", "resisc45_runway_241", "resisc45_airplane_46", "resisc45_circular_farmland_74", "resisc45_circular_farmland_43", "resisc45_terrace_116", "resisc45_airport_85"]
+        },
+        "hyper3": {
+          "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+          "exactHits": 4,
+          "parentHits": 4,
+          "resultIds": ["resisc45_storage_tank_272", "resisc45_storage_tank_315", "resisc45_storage_tank_4", "resisc45_storage_tank_271", "resisc45_circular_farmland_7", "resisc45_circular_farmland_43", "resisc45_airplane_46", "resisc45_runway_313", "resisc45_circular_farmland_47", "resisc45_airport_14"]
+        }
+      }
+    },
+    {
+      "id": "airport-regression",
+      "title": "Airport / transport",
+      "kind": "Airport",
+      "question": "Which model keeps airports and transport infrastructure together?",
+      "anchorSampleId": "resisc45_airport_14",
+      "exactClass": "airport",
+      "parentGroup": "transport",
+      "sourceImageId": "14",
+      "models": {
+        "clip": {
+          "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+          "exactHits": 4,
+          "parentHits": 7,
+          "resultIds": ["resisc45_airport_51", "resisc45_runway_313", "resisc45_airport_85", "resisc45_rectangular_farmland_198", "resisc45_airport_157", "resisc45_airport_358", "resisc45_terrace_148", "resisc45_bridge_230", "resisc45_bridge_174", "resisc45_rectangular_farmland_89"]
+        },
+        "hyper3": {
+          "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+          "exactHits": 3,
+          "parentHits": 5,
+          "resultIds": ["resisc45_airport_85", "resisc45_airport_51", "resisc45_runway_313", "resisc45_rectangular_farmland_198", "resisc45_rectangular_farmland_91", "resisc45_terrace_148", "resisc45_airport_358", "resisc45_runway_202", "resisc45_circular_farmland_47", "resisc45_rectangular_farmland_89"]
+        }
+      }
+    }
+  ]
+}

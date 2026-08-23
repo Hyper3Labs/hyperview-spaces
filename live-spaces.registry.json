@@ -1,0 +1,113 @@
+{
+  "version": 2,
+  "known_conflicts": [],
+  "spaces": [
+    {
+      "space_id": "hyper3labs/HyperView",
+      "folder": "demos/inat24-tiny-clip-hycoclip",
+      "demo_slug": "inat24-tiny",
+      "demo_name": "HyperView - iNat24 Tiny",
+      "description": "Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy.",
+      "expected_dataset": "inat24_tiny_geometry_showcase",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": [
+        "hf-docker"
+      ]
+    },
+    {
+      "space_id": "hyper3labs/HyperView-ABO-Catalog",
+      "folder": "demos/abo-catalog-clip-hycoclip",
+      "demo_slug": "abo-catalog",
+      "demo_name": "HyperView - ABO Catalog",
+      "description": "Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings.",
+      "expected_dataset": "abo_catalog_clip_hyper3clip_side_by_side",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": [
+        "hf-docker"
+      ]
+    },
+    {
+      "space_id": "hyper3labs/HyperView-DeepFashion-Text-Search",
+      "folder": "demos/fashion-deepfashion-text-search-clip-hyper3clip",
+      "demo_slug": "deepfashion-text-search",
+      "demo_name": "HyperView - DeepFashion Text Search",
+      "description": "Explore shopper-style text-to-image retrieval wins on a curated fashion catalog.",
+      "expected_dataset": "deepfashion_text_search_clip_hyper3clip",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": [
+        "hf-docker"
+      ]
+    },
+    {
+      "space_id": "hyper3labs/HyperView-Art-Text-Search",
+      "folder": "demos/art-text-search-clip-hyper3clip",
+      "demo_slug": "art-text-search",
+      "demo_name": "HyperView - Art Text Search",
+      "description": "Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.",
+      "expected_dataset": "art_text_search_clip_hyper3clip",
+      "keep_warm": false,
+      "status": "draft",
+      "deploy_targets": []
+    },
+    {
+      "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
+      "folder": "demos/geospatial-eurosat-clip-hyper3clip",
+      "demo_slug": "eurosat-geospatial",
+      "demo_name": "HyperView - EuroSAT Geospatial",
+      "description": "Review remote-sensing scene retrieval and neighborhood drift in aerial imagery.",
+      "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": []
+    },
+    {
+      "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
+      "folder": "demos/manufacturing-visa-reference-clip-hyper3clip",
+      "demo_slug": "visa-manufacturing",
+      "demo_name": "HyperView - VisA Manufacturing",
+      "description": "Find same-SKU visual references for manufacturing inspection images.",
+      "expected_dataset": "visa_manufacturing_reference_clip_hyper3clip",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": [
+        "hf-docker"
+      ]
+    },
+    {
+      "space_id": "mnm-matin/HyperView-Visual-Safety",
+      "folder": "demos/visual-safety-content-clip-hyper3clip",
+      "demo_slug": "visual-safety",
+      "demo_name": "HyperView - Visual Safety",
+      "description": "Triage public marketplace images into safe and policy-review buckets.",
+      "expected_dataset": "openimages_visual_safety_marketplace_triage_assets_v1",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": []
+    },
+    {
+      "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
+      "folder": "demos/logo-brand-search-clip-hyper3clip",
+      "demo_slug": "logo-brand-search",
+      "demo_name": "HyperView - Logo Brand Search",
+      "description": "Compare CLIP and Hyper3-CLIP for detailed text-to-logo retrieval across a curated brand catalog.",
+      "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+      "keep_warm": true,
+      "status": "live",
+      "deploy_targets": []
+    },
+    {
+      "space_id": null,
+      "folder": "demos/precision-region-search-refcocog-hyper3clip",
+      "demo_slug": "precision-region-search",
+      "demo_name": "HyperView - Precision Region Search",
+      "description": "Compare exact crop retrieval with CLIP and Hyper3-CLIP on RefCOCOg-style scenes.",
+      "expected_dataset": "precision_region_search_refcocog",
+      "keep_warm": false,
+      "status": "local",
+      "deploy_targets": []
+    }
+  ]
+}

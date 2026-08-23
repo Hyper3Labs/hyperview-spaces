@@ -1,17 +1,25 @@
 # hyperview-spaces
 
-This folder is intended to be a **standalone repository** for Hugging Face Space deployments. Our demo at https://huggingface.co/spaces/hyper3labs/HyperView follows the template described here. 
+This is the standalone repository for HyperView demo sources and their two
+delivery modes:
 
-Recommended GitHub repository name:
+- A **Live Space** is connected to a Python runtime. It can load data, run new
+  queries and providers, recompute layouts, and mutate workspace state.
+- A **Shared View** is a generated, portable read-only workspace. It retains the
+  full HyperView shell and prepared interactions, and can be hosted as ordinary
+  static files.
 
-- `hyperview-spaces`
+Each use case has one canonical implementation under `demos/`. Live Spaces and
+Shared Views are produced from that same source; there is no forked “static
+demo” implementation.
 
 ## Purpose
 
 - Keep Space deployment logic separate from the core HyperView codebase
-- Reuse one template pattern for multiple Space demos
+- Keep one canonical source for both runtime-backed and static delivery
 - Deploy Hyper3Labs-owned Spaces through GitHub Actions
 - Deploy personal-account Spaces manually with the local HF deployment helper
+- Publish reviewed Shared Views through any static host
 
 ## Intended reuse flow
 
@@ -19,7 +27,7 @@ This repo is meant to be easy to hand to an external coding agent.
 
 The happy path is:
 
-1. Copy one folder from `spaces/`
+1. Copy one folder from `demos/`
 2. Edit the constants block at the top of that folder's `demo.py`
 3. Update the Space `README.md`
 4. Add or retarget one deploy workflow
@@ -42,9 +50,9 @@ Use the iNat24 Tiny example as a copyable starter.
 2. Choose a distinct Space name such as `yourproject-HyperView` or `HyperView-yourproject`.
 3. Select `Docker` as the Space SDK.
 4. Create the Space. Hugging Face will initialize it as a git-backed Docker Space with `sdk: docker` in `README.md`.
-5. In this repository, copy `spaces/inat24-tiny-clip-hycoclip` to a new folder such as `spaces/yourproject-hyperview`.
-6. Edit `spaces/yourproject-hyperview/demo.py` and change the constants block at the top of the file.
-7. Edit `spaces/yourproject-hyperview/README.md` and rename the copied example from `HyperView` to your own project name.
+5. In this repository, copy `demos/inat24-tiny-clip-hycoclip` to a new folder such as `demos/yourproject-hyperview`.
+6. Edit `demos/yourproject-hyperview/demo.py` and change the constants block at the top of the file.
+7. Edit `demos/yourproject-hyperview/README.md` and rename the copied example from `HyperView` to your own project name.
 8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
 9. For a Hyper3Labs-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
 10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
@@ -62,7 +70,7 @@ locally with a Hugging Face token that can write to the target Space, then run:
 cd /Users/matin/hyperview_org/HyperView
 uv run python hyperview-spaces/scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
-  --source-dir hyperview-spaces/spaces/logo-brand-search-clip-hyper3clip
+  --source-dir hyperview-spaces/demos/logo-brand-search-clip-hyper3clip
 ```
 
 The command creates the Docker Space when needed and synchronizes the source folder.
@@ -80,7 +88,7 @@ pin and remove the vendored wheel.
 From the `hyperview-spaces` repository root:
 
 ```bash
-docker build -t yourproject-hyperview spaces/yourproject-hyperview
+docker build -t yourproject-hyperview demos/yourproject-hyperview
 docker run --rm -p 7860:7860 yourproject-hyperview
 ```
 
@@ -91,7 +99,7 @@ Then open `http://127.0.0.1:7860`.
 If you want your Space to appear in this repository as a community example:
 
 1. Fork this repository or create a branch if you already have write access.
-2. Add your Space folder under `spaces/<your-slug>`.
+2. Add your Space folder under `demos/<your-slug>`.
 3. Rename the copied `HyperView` title and heading to your own project name such as `yourproject-HyperView` or `HyperView-yourproject`.
 4. Add or update a deploy workflow for your folder if this repository should deploy it.
 5. Add a row for your Space in the community table below.
@@ -105,39 +113,45 @@ Add one row here when you contribute a new Space.
 
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
-| HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `spaces/inat24-tiny-clip-hycoclip` | Hyper3Labs | `live` | Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy. |
-| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `spaces/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
-| HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `spaces/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
-| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `spaces/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
-| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `spaces/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
-| HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `spaces/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
-| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `spaces/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
-| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `spaces/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
-| HyperView - Precision Region Search | — | `spaces/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
+| HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `demos/inat24-tiny-clip-hycoclip` | Hyper3Labs | `live` | Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy. |
+| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
+| HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `demos/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
+| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
+| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
+| HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `demos/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
+| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
+| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
+| HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
 | HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
 
 ### Adding your own Space
 
-Spaces may live under any Hugging Face organization or personal account. Copy
-an existing space folder, add its `folder`, `space_id`, `status`,
-`deploy_targets`, and `keep_warm` values to `spaces.registry.json`. Add a
+Live Spaces may live under any Hugging Face organization or personal account.
+Copy an existing demo folder, add its `folder`, `space_id`, `status`,
+`deploy_targets`, and `keep_warm` values to `live-spaces.registry.json`. Add a
 deployment workflow only for a Hyper3Labs-owned Space; use the manual command
 above for personal Spaces. The `check-spaces.yml` CI workflow enforces registry
 consistency.
+
+Landing-page Shared Views are listed separately in
+`shared-views.registry.json`. Their generated bundles live under
+`shared-views/<slug>/` and are intentionally ignored by Git.
 
 ## Repository layout
 
 ```text
 .
 ├── .github/workflows/
-├── spaces/                 # nine registered live, draft, and local spaces
+├── demos/                       # canonical source; one folder per use case
+├── shared-views/                # ignored generated read-only bundles
 ├── archived-spaces/        # retired examples, not part of the active registry
 ├── build/                  # build and deployment support
 ├── docs/                   # architecture and operations documentation
 ├── gallery/                # registry-generated static gallery
 ├── scripts/                # registry checks and maintenance tools
 ├── warm-worker/            # registry-driven monitoring worker
-├── spaces.registry.json    # source of truth for active and local spaces
+├── live-spaces.registry.json    # runtime deployments and local runtime demos
+├── shared-views.registry.json   # reviewed static artifacts and mount paths
 └── README.md
 ```
 

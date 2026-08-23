@@ -13,4 +13,6 @@ venv/
 build/
 .env
 .env.*
-spaces/*/demo_data/
+demos/*/demo_data/
+shared-views/*
+!shared-views/README.md

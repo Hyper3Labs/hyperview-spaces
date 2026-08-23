@@ -2,7 +2,7 @@
 
 Cloudflare Worker for Layer 1 of `docs/deployment-architecture.md`: keep registered Hugging Face Spaces warm, publish the latest status snapshot, expose embeddable status badges, and serve the generated demos gallery as static assets.
 
-The Worker imports `../spaces.registry.json` at build time. Wrangler bundles JSON imports, so each deploy contains the registry version present in the repo at deploy time. The gallery is generated from the same registry into `../gallery/out/index.html`.
+The Worker imports `../live-spaces.registry.json` at build time. Wrangler bundles JSON imports, so each deploy contains the registry version present in the repo at deploy time. The gallery is generated from the same registry into `../gallery/out/index.html`.
 
 ## Gallery build
 
@@ -12,7 +12,7 @@ From `warm-worker/`:
 npm run build:gallery
 ```
 
-This runs `node ../gallery/build.mjs`, reads `../spaces.registry.json`, and writes `../gallery/out/index.html`. By default status badges use same-origin URLs such as `/badge/inat24-tiny.svg`. To point badges at another deployed Worker, set `WARM_WORKER_URL`:
+This runs `node ../gallery/build.mjs`, reads `../live-spaces.registry.json`, and writes `../gallery/out/index.html`. By default status badges use same-origin URLs such as `/badge/inat24-tiny.svg`. To point badges at another deployed Worker, set `WARM_WORKER_URL`:
 
 ```sh
 WARM_WORKER_URL=https://hyperview-warm-worker.example.workers.dev npm run build:gallery

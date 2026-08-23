@@ -43,7 +43,7 @@ script to stay within typical Hugging Face build limits.
 
 ## Reuse this example
 
-If you need a simple starter, copy `spaces/inat24-tiny-clip-hycoclip` first.
+If you need a simple starter, copy `demos/inat24-tiny-clip-hycoclip` first.
 If your own Space needs a timm backbone or a spherical 3D layout, copy this
 folder instead and change the constants block at the top of [demo.py](demo.py).
 

@@ -14,9 +14,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_REGISTRY = ROOT / "spaces.registry.json"
+DEFAULT_REGISTRY = ROOT / "live-spaces.registry.json"
 DEFAULT_OUTPUT = ROOT / "space-status.json"
 
 

@@ -1,0 +1,8 @@
+name = "fashion-search-readout"
+description = "Photo-match and shopper-query comparison"
+
+[[panels]]
+id = "fashion-comparison"
+title = "Catalog search walkthrough"
+position = "right"
+file = "panel.jsx"

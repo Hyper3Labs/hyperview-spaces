@@ -1,0 +1,95 @@
+{
+  "dataset": "lmms-lab/RefCOCOg",
+  "split": "val",
+  "protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+  "models": {
+    "hyper3": "hyper3-clip-v0.5",
+    "clip": "openai/clip-vit-base-patch32"
+  },
+  "benchmark": {
+    "queryCount": 180,
+    "hyper3Hit1": "55.0%",
+    "clipHit1": "50.6%",
+    "hyper3Hit10": "90.0%",
+    "clipHit10": "87.8%",
+    "hyper3Mrr": "0.669",
+    "clipMrr": "0.633"
+  },
+  "cases": [
+    {
+      "id": "facilities",
+      "label": "Workspace / Facilities",
+      "shortLabel": "Sofa with pillows",
+      "context": "Property inspection",
+      "query": "A grey couch with pillows on it.",
+      "business": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+      "target": { "hyper3Rank": 1, "clipRank": 20 },
+      "results": {
+        "hyper3": [
+          { "rank": 1, "text": "A grey couch with pillows on it.", "isTarget": true },
+          { "rank": 2, "text": "Brown loveseat with cushions." },
+          { "rank": 3, "text": "Beige armchair." },
+          { "rank": 4, "text": "Cream sofa in a living room." },
+          { "rank": 5, "text": "Tan armchair." }
+        ],
+        "clip": [
+          { "rank": 1, "text": "Brown loveseat with cushions." },
+          { "rank": 2, "text": "Cream couch in a different room." },
+          { "rank": 3, "text": "Chair beside curtains." },
+          { "rank": 4, "text": "Tan armchair." },
+          { "rank": 5, "text": "Person sitting on a bench." }
+        ]
+      }
+    },
+    {
+      "id": "retail",
+      "label": "Retail / Tabletop",
+      "shortLabel": "Soap bottle",
+      "context": "Store shelf",
+      "query": "The bottle of soap to the left.",
+      "business": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+      "target": { "hyper3Rank": 1, "clipRank": 12 },
+      "results": {
+        "hyper3": [
+          { "rank": 1, "text": "The bottle of soap to the left.", "isTarget": true },
+          { "rank": 2, "text": "Milk bottle." },
+          { "rank": 3, "text": "White sink." },
+          { "rank": 4, "text": "Tabletop edge." },
+          { "rank": 5, "text": "Clear drink bottle." }
+        ],
+        "clip": [
+          { "rank": 1, "text": "White sink." },
+          { "rank": 2, "text": "Person holding a sandwich." },
+          { "rank": 3, "text": "White tabletop." },
+          { "rank": 4, "text": "Tabletop edge." },
+          { "rank": 5, "text": "Knife in a jar." }
+        ]
+      }
+    },
+    {
+      "id": "fleet",
+      "label": "Fleet / Vehicles",
+      "shortLabel": "Double-decker bus",
+      "context": "Street asset",
+      "query": "A double decker bus parked on the right side of the street facing forward.",
+      "business": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery.",
+      "target": { "hyper3Rank": 1, "clipRank": 4 },
+      "results": {
+        "hyper3": [
+          { "rank": 1, "text": "A double decker bus parked on the right side of the street facing forward.", "isTarget": true },
+          { "rank": 2, "text": "Red single-decker bus." },
+          { "rank": 3, "text": "Green bus." },
+          { "rank": 4, "text": "White van." },
+          { "rank": 5, "text": "Bus marked SAI." }
+        ],
+        "clip": [
+          { "rank": 1, "text": "Green bus." },
+          { "rank": 2, "text": "Bus in front of other vehicles." },
+          { "rank": 3, "text": "White van." },
+          { "rank": 4, "text": "A double decker bus parked on the right side of the street facing forward.", "isTarget": true },
+          { "rank": 5, "text": "Red single-decker bus." }
+        ]
+      }
+    }
+  ]
+}

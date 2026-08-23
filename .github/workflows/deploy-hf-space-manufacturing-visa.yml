@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - spaces/manufacturing-visa-reference-clip-hyper3clip/**
+      - demos/manufacturing-visa-reference-clip-hyper3clip/**
       - .github/workflows/deploy-hf-space-manufacturing-visa.yml
       - .github/workflows/deploy-hf-space-reusable.yml
   workflow_dispatch:
@@ -20,5 +20,5 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
-      source_dir: spaces/manufacturing-visa-reference-clip-hyper3clip
+      source_dir: demos/manufacturing-visa-reference-clip-hyper3clip
       space_id: hyper3labs/HyperView-VisA-Manufacturing

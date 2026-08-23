@@ -1,0 +1,126 @@
+{
+  "dataset": "Marqo/deepfashion-inshop",
+  "split": "data",
+  "protocol": "Text embedding ranked against a fixed 1,120-image corpus from 260 products. A positive is any image view with the same DeepFashion product key as the metadata-generated query.",
+  "workspaceBoundary": "The topology contains 741 catalog images from 199 products. Ranks come from a separate 1,120-image benchmark pool.",
+  "models": {
+    "hyper3": "Hyper3-CLIP v0.5",
+    "clip": "OpenAI CLIP ViT-B/32"
+  },
+  "aggregate": {
+    "queryCount": 180,
+    "candidateCount": 1120,
+    "hyper3Hit1": 0.244,
+    "clipHit1": 0.233,
+    "hyper3Hit10": 0.572,
+    "clipHit10": 0.55,
+    "hyper3Hit50": 0.883,
+    "clipHit50": 0.922,
+    "hyper3StrongWins": 13,
+    "clipStrongWins": 9,
+    "definition": "Strong win: one model ranks a positive in the Top 10 while the other ranks its first positive at 20 or lower."
+  },
+  "claim": "These selected cases expose concrete attribute and garment-category failure modes. The aggregate lift is modest and does not establish a universal text-search advantage.",
+  "photoArtifact": {
+    "id": "deepfashion-same-product-persisted-spaces-2026-08-12",
+    "readout": "PHOTO_EVIDENCE.md",
+    "sha256": "958017f729f73990b392530b37cbdbe8812c923141573077dbdc0c3f65213c4b",
+    "hashProjection": "canonical JSON of {photoBenchmark, photoCases}"
+  },
+  "photoBenchmark": {
+    "queryCount": 710,
+    "candidateCount": 741,
+    "hyper3R1": 0.7591549296,
+    "clipR1": 0.4563380282,
+    "hyper3R10": 0.9704225352,
+    "clipR10": 0.8450704225,
+    "hyper3Map": 0.6352828462,
+    "clipMap": 0.352022505,
+    "selectionRule": "Largest first-match rank gap in each direction across the persisted 741-image catalog."
+  },
+  "photoCases": [
+    {
+      "id": "patterned-romper",
+      "label": "Patterned romper",
+      "context": "Back view to side view",
+      "anchorSampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+      "target": {"productKey": "WOMEN_Rompers_Jumpsuits_id_00000076_01", "hyper3Rank": 1, "clipRank": 138},
+      "modelReadout": {"hyper3": "Another view of the same romper ranks first.", "clip": "A matching view first appears at #138."},
+      "results": {
+        "hyper3": [
+          {"rank": 1, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_2_side", "isTarget": true},
+          {"rank": 2, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000268_01_3_back"},
+          {"rank": 3, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_1_front", "isTarget": true},
+          {"rank": 4, "sampleId": "WOMEN_Blouses_Shirts_id_00007161_02_2_side"},
+          {"rank": 5, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000137_01_1_front"},
+          {"rank": 6, "sampleId": "WOMEN_Graphic_Tees_id_00000195_01_2_side"}
+        ],
+        "clip": [
+          {"rank": 1, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000268_01_3_back"},
+          {"rank": 2, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000268_01_1_front"},
+          {"rank": 3, "sampleId": "WOMEN_Tees_Tanks_id_00000676_01_1_front"},
+          {"rank": 4, "sampleId": "WOMEN_Skirts_id_00000111_02_7_additional"},
+          {"rank": 5, "sampleId": "WOMEN_Graphic_Tees_id_00000195_01_3_back"},
+          {"rank": 6, "sampleId": "WOMEN_Rompers_Jumpsuits_id_00000180_04_7_additional"}
+        ]
+      }
+    },
+    {
+      "id": "ampersand-tee",
+      "label": "Ampersand tee",
+      "context": "Full look to product view",
+      "anchorSampleId": "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+      "target": {"productKey": "WOMEN_Graphic_Tees_id_00000044_01", "hyper3Rank": 12, "clipRank": 1},
+      "modelReadout": {"hyper3": "The matching product appears at #12.", "clip": "Another view of the same tee ranks first."},
+      "results": {
+        "hyper3": [
+          {"rank": 1, "sampleId": "WOMEN_Graphic_Tees_id_00000195_01_4_full"},
+          {"rank": 2, "sampleId": "WOMEN_Skirts_id_00000111_02_4_full"},
+          {"rank": 3, "sampleId": "WOMEN_Graphic_Tees_id_00000019_01_4_full"},
+          {"rank": 4, "sampleId": "WOMEN_Graphic_Tees_id_00000195_01_1_front"},
+          {"rank": 5, "sampleId": "WOMEN_Blouses_Shirts_id_00000024_04_4_full"},
+          {"rank": 6, "sampleId": "WOMEN_Skirts_id_00000111_02_7_additional"}
+        ],
+        "clip": [
+          {"rank": 1, "sampleId": "WOMEN_Graphic_Tees_id_00000044_01_1_front", "isTarget": true},
+          {"rank": 2, "sampleId": "WOMEN_Graphic_Tees_id_00000195_01_4_full"},
+          {"rank": 3, "sampleId": "WOMEN_Cardigans_id_00000284_02_7_additional"},
+          {"rank": 4, "sampleId": "WOMEN_Dresses_id_00000011_02_1_front"},
+          {"rank": 5, "sampleId": "WOMEN_Cardigans_id_00000284_01_1_front"},
+          {"rank": 6, "sampleId": "WOMEN_Cardigans_id_00000291_05_7_additional"}
+        ]
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "light-denim-leggings",
+      "label": "Light denim leggings",
+      "query": "women's light denim leggings with skinny fit, zipper details, five-pocket construction, pockets",
+      "attributes": ["light denim", "leggings", "skinny fit", "zipper details", "five-pocket construction"],
+      "target": {"sampleId": "WOMEN_Leggings_id_00001867_02_3_back", "title": "Light denim leggings", "productKey": "WOMEN_Leggings_id_00001867_02", "hyper3Rank": 1, "clipRank": 32},
+      "modelReadout": {
+        "hyper3": "A matching view ranks first and preserves the light-denim leggings intent.",
+        "clip": "The top results drift toward darker denim and leggings; the first matching view ranks #32."
+      },
+      "results": {
+        "hyper3": [
+          {"rank": 1, "sampleId": "WOMEN_Leggings_id_00001867_02_3_back", "isTarget": true},
+          {"rank": 2, "sampleId": "WOMEN_Denim_id_00002338_03_3_back"},
+          {"rank": 3, "sampleId": "WOMEN_Leggings_id_00001412_01_2_side"},
+          {"rank": 4, "sampleId": "WOMEN_Leggings_id_00002130_02_2_side"},
+          {"rank": 5, "sampleId": "WOMEN_Pants_id_00001574_02_3_back"},
+          {"rank": 6, "sampleId": "WOMEN_Denim_id_00002338_03_7_additional"}
+        ],
+        "clip": [
+          {"rank": 1, "sampleId": "WOMEN_Leggings_id_00003850_01_2_side"},
+          {"rank": 2, "sampleId": "WOMEN_Denim_id_00000152_04_2_side"},
+          {"rank": 3, "sampleId": "WOMEN_Denim_id_00000152_04_1_front"},
+          {"rank": 4, "sampleId": "WOMEN_Leggings_id_00003908_08_2_side"},
+          {"rank": 5, "sampleId": "WOMEN_Pants_id_00000053_02_1_front"},
+          {"rank": 6, "sampleId": "WOMEN_Denim_id_00002338_02_7_additional"}
+        ]
+      }
+    }
+  ]
+}

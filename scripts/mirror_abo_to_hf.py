@@ -23,7 +23,6 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-
 ABO_BASE = "https://amazon-berkeley-objects.s3.amazonaws.com"
 DEFAULT_REPO_ID = "hyper3labs/amazon-berkeley-objects"
 

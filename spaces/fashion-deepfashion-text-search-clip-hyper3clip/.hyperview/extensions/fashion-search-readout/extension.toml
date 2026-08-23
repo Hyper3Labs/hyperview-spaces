@@ -1,8 +1,0 @@
-name = "fashion-search-readout"
-description = "DeepFashion CLIP vs Hyper3-CLIP text-search readout"
-
-[[panels]]
-id = "fashion-comparison"
-title = "Fashion Search Readout"
-position = "right"
-file = "panel.js"

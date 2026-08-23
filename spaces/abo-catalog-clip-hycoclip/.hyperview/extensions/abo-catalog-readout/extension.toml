@@ -1,8 +1,0 @@
-name = "abo-catalog-readout"
-description = "ABO CLIP vs Hyper3-CLIP catalog comparison readout"
-
-[[panels]]
-id = "catalog-comparison"
-title = "Hierarchy Retrieval Readout"
-position = "right"
-file = "panel.js"

@@ -1,22 +1,51 @@
 #!/usr/bin/env python3
-"""Validate that spaces.registry.json agrees with spaces, workflows, and docs."""
+"""Validate that live-spaces.registry.json agrees with demos, workflows, and docs."""
 
 from __future__ import annotations
 
+import ast
 import json
 import re
 import sys
 from pathlib import Path
 from typing import Any
 
-
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / "spaces.registry.json"
-SPACES_DIR = ROOT / "spaces"
+REGISTRY_PATH = ROOT / "live-spaces.registry.json"
+DEMOS_DIR = ROOT / "demos"
 WORKFLOWS_DIR = ROOT / ".github" / "workflows"
 README_PATH = ROOT / "README.md"
 VALID_STATUSES = {"live", "draft", "local"}
 VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
+SDK_V2_HOOKS = {
+    "listTools",
+    "useActiveLayout",
+    "useCollection",
+    "useCommandClient",
+    "useDatasetInfo",
+    "useHostAdapter",
+    "usePanelActions",
+    "usePanelInteractions",
+    "usePanelState",
+    "useQuery",
+    "useSample",
+    "useSampleResults",
+    "useSamples",
+    "useSelection",
+    "useSimilarSamples",
+    "useSupportsLassoSelection",
+    "useSupportsTextSearch",
+    "useSupportsTools",
+    "useTool",
+}
+LEGACY_PANEL_SDK_TOKENS = {
+    "sdk.components": "sdk.components",
+    "usePanelCommands": "usePanelCommands",
+    "usePanelProps": "usePanelProps",
+    "usePanelRuntimeState": "usePanelRuntimeState",
+    "usePanelSamples": "usePanelSamples",
+    "usePanelSelection": "usePanelSelection",
+}
 
 
 def error(message: str, errors: list[str]) -> None:
@@ -63,11 +92,15 @@ def hyperview_source(folder: Path) -> tuple[str, bool]:
         detail = ", ".join(wheels) if wheels else "Dockerfile vendor/*.whl pattern"
         return f"vendored wheel ({detail})", True
 
-    version_arg = re.search(r"^ARG\s+HYPERVIEW_VERSION\s*=\s*['\"]?([^\s'\"]+)", dockerfile, re.MULTILINE)
+    version_arg = re.search(
+        r"^ARG\s+HYPERVIEW_VERSION\s*=\s*['\"]?([^\s'\"]+)", dockerfile, re.MULTILINE
+    )
     if version_arg:
         return f"PyPI pin {version_arg.group(1)} (HYPERVIEW_VERSION)", True
 
-    package_arg = re.search(r"^ARG\s+HYPERVIEW_PACKAGE\s*=\s*['\"]?([^\n'\"]+)", dockerfile, re.MULTILINE)
+    package_arg = re.search(
+        r"^ARG\s+HYPERVIEW_PACKAGE\s*=\s*['\"]?([^\n'\"]+)", dockerfile, re.MULTILINE
+    )
     if package_arg:
         package = package_arg.group(1).strip()
         version = re.search(r"\bhyperview(?:\[[^]]+\])?==([^\s]+)", package)
@@ -84,12 +117,50 @@ def hyperview_source(folder: Path) -> tuple[str, bool]:
     return "no hyperview installation found", False
 
 
+def validate_public_python_api(folder: Path, errors: list[str]) -> None:
+    for path in sorted(folder.glob("*.py")):
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        except SyntaxError as exc:
+            error(f"{path.relative_to(ROOT)}:{exc.lineno}: invalid Python: {exc.msg}", errors)
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom) and (node.module or "").startswith("hyperview."):
+                error(
+                    f"{path.relative_to(ROOT)}:{node.lineno}: import HyperView APIs from the "
+                    "top-level public package (`import hyperview as hv`)",
+                    errors,
+                )
+
+
+def validate_panel_sdk(folder: Path, errors: list[str]) -> None:
+    extension_root = folder / ".hyperview" / "extensions"
+    for path in sorted(extension_root.glob("*/*")):
+        if path.suffix not in {".js", ".jsx"}:
+            continue
+        source = path.read_text(encoding="utf-8")
+        relative = path.relative_to(ROOT)
+        if 'sdk.version !== "2"' not in source:
+            error(f"{relative}: panel must require HyperViewPanelSDK v2", errors)
+        for token, label in LEGACY_PANEL_SDK_TOKENS.items():
+            if token in source:
+                error(f"{relative}: legacy panel SDK API is not supported: {label}", errors)
+        for match in re.finditer(r"const\s*\{(?P<hooks>[^}]+)\}\s*=\s*hooks\s*;", source):
+            hooks = {
+                item.strip().split(":", 1)[0].strip()
+                for item in match.group("hooks").split(",")
+                if item.strip()
+            }
+            for hook in sorted(hooks - SDK_V2_HOOKS):
+                error(f"{relative}: hook is not exported by HyperViewPanelSDK v2: {hook}", errors)
+
+
 def main() -> int:
     errors: list[str] = []
     registry: dict[str, Any] = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     spaces = registry.get("spaces")
     if not isinstance(spaces, list):
-        error("spaces.registry.json must contain a spaces list", errors)
+        error("live-spaces.registry.json must contain a spaces list", errors)
         return 1
 
     registry_by_folder: dict[str, dict[str, Any]] = {}
@@ -98,7 +169,7 @@ def main() -> int:
             error(f"registry entry {index} is not an object", errors)
             continue
         folder = space.get("folder")
-        if not isinstance(folder, str) or not folder.startswith("spaces/"):
+        if not isinstance(folder, str) or not folder.startswith("demos/"):
             error(f"registry entry {index} has invalid folder: {folder!r}", errors)
             continue
         if folder in registry_by_folder:
@@ -107,10 +178,17 @@ def main() -> int:
 
         status = space.get("status")
         if status not in VALID_STATUSES:
-            error(f"{folder}: status must be one of {sorted(VALID_STATUSES)}, got {status!r}", errors)
+            error(
+                f"{folder}: status must be one of {sorted(VALID_STATUSES)}, got {status!r}", errors
+            )
         targets = space.get("deploy_targets")
-        if not isinstance(targets, list) or any(target not in VALID_DEPLOY_TARGETS for target in targets):
-            error(f"{folder}: deploy_targets must be a list drawn from {sorted(VALID_DEPLOY_TARGETS)}", errors)
+        if not isinstance(targets, list) or any(
+            target not in VALID_DEPLOY_TARGETS for target in targets
+        ):
+            error(
+                f"{folder}: deploy_targets must be a list drawn from {sorted(VALID_DEPLOY_TARGETS)}",
+                errors,
+            )
         space_id = space.get("space_id")
         if space_id is not None and (not isinstance(space_id, str) or not space_id.strip()):
             error(f"{folder}: space_id must be a non-empty string or null", errors)
@@ -119,7 +197,7 @@ def main() -> int:
 
     disk_folders = {
         path.relative_to(ROOT).as_posix()
-        for path in SPACES_DIR.iterdir()
+        for path in DEMOS_DIR.iterdir()
         if path.is_dir() and not path.name.startswith(".")
     }
     registry_folders = set(registry_by_folder)
@@ -159,7 +237,10 @@ def main() -> int:
             continue
         workflows = workflows_by_source.get(folder, [])
         if not workflows:
-            error(f"{folder}: deploy_targets includes hf-docker but no workflow has source_dir {folder}", errors)
+            error(
+                f"{folder}: deploy_targets includes hf-docker but no workflow has source_dir {folder}",
+                errors,
+            )
             continue
         if len(workflows) > 1:
             names = ", ".join(path.name for path, _ in workflows)
@@ -194,14 +275,20 @@ def main() -> int:
         readme = path / "README.md"
         if readme.is_file():
             frontmatter = read_frontmatter(readme)
-            if frontmatter is None or not re.search(r"^sdk:\s*docker\s*$", frontmatter, re.MULTILINE):
+            if frontmatter is None or not re.search(
+                r"^sdk:\s*docker\s*$", frontmatter, re.MULTILINE
+            ):
                 error(f"{folder}: README.md frontmatter must contain sdk: docker", errors)
         dockerfile = path / "Dockerfile"
         if dockerfile.is_file():
             source, valid = hyperview_source(path)
             print(f"INFO: {folder}: hyperview source: {source}")
             if not valid:
-                error(f"{folder}: PyPI-installed hyperview must have an explicit version pin", errors)
+                error(
+                    f"{folder}: PyPI-installed hyperview must have an explicit version pin", errors
+                )
+        validate_public_python_api(path, errors)
+        validate_panel_sdk(path, errors)
 
     root_readme = README_PATH.read_text(encoding="utf-8")
     table_match = re.search(

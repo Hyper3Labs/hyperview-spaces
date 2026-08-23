@@ -1,4 +1,4 @@
-import registry from "../../spaces.registry.json";
+import registry from "../../live-spaces.registry.json";
 
 interface Env {
   ASSETS: Fetcher;

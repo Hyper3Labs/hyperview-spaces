@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - spaces/abo-catalog-clip-hycoclip/**
+      - demos/abo-catalog-clip-hycoclip/**
       - .github/workflows/deploy-hf-space-abo-catalog.yml
       - .github/workflows/deploy-hf-space-reusable.yml
   workflow_dispatch:
@@ -20,5 +20,5 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
-      source_dir: spaces/abo-catalog-clip-hycoclip
+      source_dir: demos/abo-catalog-clip-hycoclip
       space_id: hyper3labs/HyperView-ABO-Catalog

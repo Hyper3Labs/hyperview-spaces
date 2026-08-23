@@ -4,12 +4,12 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const registryPath = resolve(__dirname, "../spaces.registry.json");
+const registryPath = resolve(__dirname, "../live-spaces.registry.json");
 const outPath = resolve(__dirname, "out/index.html");
 
 const registry = JSON.parse(await readFile(registryPath, "utf8"));
 if (!registry || !Array.isArray(registry.spaces)) {
-  throw new Error("spaces.registry.json must contain a spaces array");
+  throw new Error("live-spaces.registry.json must contain a spaces array");
 }
 
 const warmWorkerUrl = normalizeBaseUrl(process.env.WARM_WORKER_URL ?? "");
@@ -242,9 +242,9 @@ const html = `<!doctype html>
     <header>
       <div>
         <div class="wordmark">hyper3labs</div>
-        <h1>Demos gallery</h1>
+        <h1>Live Spaces</h1>
       </div>
-      <p class="lede">Read-only HyperView workspaces for exploring embedding spaces, retrieval behavior, and model comparisons.</p>
+      <p class="lede">Runtime-connected HyperView demos for new queries, model jobs, computed layouts, and editable workspace state.</p>
     </header>
 
     <section class="grid" aria-label="HyperView demos">
@@ -252,8 +252,8 @@ ${cards}
     </section>
 
     <footer>
-      <p>These demos are read-only exports. pip install hyperview for the full workbench.</p>
-      <p>Generated from spaces.registry.json.</p>
+      <p>For portable access without a runtime, use the read-only Spaces.</p>
+      <p>Generated from live-spaces.registry.json.</p>
     </footer>
   </main>
 </body>
@@ -310,7 +310,7 @@ function renderLinks(status, spaceId) {
   const links = [];
   if (status === "live" && spaceId) {
     const liveUrl = `https://${spaceId.replaceAll("/", "-").toLowerCase()}.hf.space`;
-    links.push(`<a class="link primary" href="${escapeAttribute(liveUrl)}">Open demo</a>`);
+    links.push(`<a class="link primary" href="${escapeAttribute(liveUrl)}">Open Live Space</a>`);
   }
   if (spaceId) {
     const hfUrl = `https://huggingface.co/spaces/${spaceId}`;
