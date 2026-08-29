@@ -46,7 +46,7 @@ release instead of vendoring `hyperview` into the Space.
 6. Edit `demos/yourproject-hyperview/README.md` and rename the copied `HyperView` title and H1 to your own project name.
 7. Copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `space_id`, `source_dir`, `paths`, `name`, and `concurrency`.
 8. Configure a Hugging Face Trusted Publisher for `Hyper3Labs/hyperview-spaces`, the `main` branch, and the exact deployment workflow filename.
-9. Keep the Dockerfile on current released packages such as `hyperview==0.4.2` and `hyper-models==0.2.0`.
+9. Keep the Dockerfile on current released packages such as `hyperview==1.0.0` and `hyper-models==0.3.0`.
 10. Push to `main` or trigger `workflow_dispatch`.
 11. Verify the Space build logs on Hugging Face.
 

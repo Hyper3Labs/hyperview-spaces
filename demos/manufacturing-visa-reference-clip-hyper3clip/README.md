@@ -59,7 +59,7 @@ VISA_SAMPLES_PER_CATEGORY=12 HYPERVIEW_PORT=6265 \
   uv run python hyperview-spaces/demos/manufacturing-visa-reference-clip-hyper3clip/demo.py
 ```
 
-The Docker image installs the bundled latest HyperView wheel for this repo and
+The Docker image installs `hyperview==1.0.0` from PyPI and
 uses HyperView's public dataset, UI, and panel command APIs. Hyper3-CLIP loads
 through the public `hyper-models` provider catalog entry for the gated
 `hyper3labs/hyper3-clip-v0.5` model repository. The Space needs an `HF_TOKEN`

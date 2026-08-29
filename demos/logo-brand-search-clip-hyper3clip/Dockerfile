@@ -19,7 +19,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE="hyperview[ml]==0.6.2"
+ARG HYPERVIEW_PACKAGE="hyperview[ml]==1.0.0"
 
 # Install CPU-only PyTorch first so the CPU Space does not pull CUDA wheels.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
@@ -39,10 +39,8 @@ ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
     HYPERVIEW_WORKSPACE_ID=logo-brand-search-clip-hyper3clip-hf-live-v4 \
     HYPERVIEW_DATASET_NAME=logo_brand_search_clip_hyper3clip_hf_live_v4 \
-    LOGO_BRAND_HF_DATASET=logo-wizard/modern-logo-dataset \
-    LOGO_BRAND_HF_SPLIT=train[:160] \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
-    HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
+    HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/logo_images
 
 EXPOSE 7860
 

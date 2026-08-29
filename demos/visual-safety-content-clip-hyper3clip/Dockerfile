@@ -20,13 +20,13 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
+ARG HYPERVIEW_VERSION=1.0.0
 ARG HYPER_MODELS_VERSION=0.3.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-COPY --chown=user vendor/hyperview-*.whl /tmp/
-RUN echo "Installing vendored HyperView wheel" \
-    && pip install /tmp/hyperview-*.whl \
+RUN echo "Installing hyperview==${HYPERVIEW_VERSION}" \
+    && pip install "hyperview==${HYPERVIEW_VERSION}" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
@@ -49,10 +49,9 @@ COPY --chown=user . .
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
-    HYPERVIEW_WORKSPACE_ID=visual-safety-content-clip-hyper3clip \
+    HYPERVIEW_WORKSPACE_ID=visual-safety-review-queue-evidence-v3 \
     HYPERVIEW_DATASETS_DIR=/home/user/.cache/hyperview/datasets \
-    HYPERVIEW_MEDIA_DIR=/home/user/.cache/hyperview/media \
-    SAFETY_ASSET_REPO_TYPE=space
+    HYPERVIEW_MEDIA_DIR=/home/user/.cache/hyperview/media
 
 EXPOSE 7860
 

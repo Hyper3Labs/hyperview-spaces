@@ -20,7 +20,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_VERSION=0.6.2
+ARG HYPERVIEW_VERSION=1.0.0
 ARG HYPER_MODELS_VERSION=0.3.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
@@ -48,7 +48,7 @@ COPY --chown=user . .
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
-    HYPERVIEW_WORKSPACE_ID=geospatial-resisc45-clip-hyper3clip \
+    HYPERVIEW_WORKSPACE_ID=geospatial-resisc45-retrieval-evidence-v2 \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media \
     HF_HUB_ETAG_TIMEOUT=30 \

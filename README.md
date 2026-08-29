@@ -32,9 +32,9 @@ The happy path is:
 3. Update the Space `README.md`
 4. Add or retarget one deploy workflow
 
-Most deployable examples install released packages from PyPI. A few spaces use
-the temporary vendored-wheel escape hatch documented below when they need
-unreleased HyperView features. Keep custom Space logic in `demo.py` and
+Deployable examples install released packages from PyPI. The temporary
+vendored-wheel escape hatch documented below is reserved for unreleased
+HyperView features. Keep custom Space logic in `demo.py` and
 Space-local files so contributors can copy a folder, change their dataset
 settings, and open a PR without carrying an internal source snapshot.
 
@@ -58,7 +58,7 @@ Use the iNat24 Tiny example as a copyable starter.
 10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
 11. For an org-owned Space, add a Hugging Face Trusted Publisher for the GitHub repository, `main` branch, and exact deployment workflow filename. No long-lived GitHub secret is required.
 12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
-13. Keep the Dockerfile on current released PyPI packages such as `hyperview==0.6.2` and `hyper-models==0.2.0`; use a vendored wheel only for the temporary development escape hatch described below.
+13. Keep the Dockerfile on current released PyPI packages such as `hyperview==1.0.0` and `hyper-models==0.3.0`; use a vendored wheel only for the temporary development escape hatch described below.
 14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
 
 ### Manual HF deployment

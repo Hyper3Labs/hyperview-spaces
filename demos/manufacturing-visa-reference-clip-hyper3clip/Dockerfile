@@ -21,12 +21,13 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-COPY --chown=user vendor/*.whl /tmp/hyperview-wheel/
+ARG HYPERVIEW_VERSION=1.0.0
+ARG HYPER_MODELS_VERSION=0.3.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
 RUN pip install torch==2.9.1+cpu torchvision==0.24.1+cpu --index-url https://download.pytorch.org/whl/cpu
-RUN echo "Installing bundled HyperView wheel" \
-    && pip install /tmp/hyperview-wheel/*.whl \
+RUN echo "Installing hyperview==${HYPERVIEW_VERSION}" \
+    && pip install "hyperview==${HYPERVIEW_VERSION}" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
@@ -34,6 +35,7 @@ import hyperview as hv
 print("hyperview", hv.__version__, inspect.signature(hv.launch))
 PY
 RUN pip install \
+    "hyper-models[ml]==${HYPER_MODELS_VERSION}" \
     "datasets>=4.5.0" \
     "Pillow>=12.0.0" \
     "timm>=1.0.0" \

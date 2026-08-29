@@ -20,22 +20,26 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-COPY --chown=user vendor/*.whl /tmp/hyperview-wheel/
+ARG HYPERVIEW_VERSION=1.0.0
+ARG HYPER_MODELS_VERSION=0.3.0
 
-RUN echo "Installing bundled HyperView wheel" \
-    && pip install /tmp/hyperview-wheel/*.whl "hyper-models[ml]" \
+# Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+RUN echo "Installing hyperview==${HYPERVIEW_VERSION}" \
+    && pip install "hyperview==${HYPERVIEW_VERSION}" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
 
 print("hyperview", hv.__version__, inspect.signature(hv.launch))
 PY
+RUN pip install "hyper-models[ml]==${HYPER_MODELS_VERSION}"
 
 COPY --chown=user . .
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
-    HYPERVIEW_WORKSPACE_ID=precision-region-search-refcocog-hyper3clip \
+    HYPERVIEW_WORKSPACE_ID=precision-region-search-business-evidence-v3 \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
 

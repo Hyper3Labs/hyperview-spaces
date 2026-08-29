@@ -20,7 +20,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_VERSION=0.6.2
+ARG HYPERVIEW_VERSION=1.0.0
 ARG HYPER_MODELS_VERSION=0.3.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.
@@ -42,12 +42,9 @@ COPY --chown=user . .
 
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
-    HYPERVIEW_WORKSPACE_ID=fashion-retail-search-v062-samples-visible \
+    HYPERVIEW_WORKSPACE_ID=fashion-typed-search-business-evidence-v3 \
     HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media \
-    FASHION_ENABLE_CONTEXT_MAPS=1 \
-    DEEPFASHION_SAMPLES_PER_CATEGORY=10 \
-    DEEPFASHION_MAX_SAMPLES=180 \
     HF_HUB_ETAG_TIMEOUT=30 \
     HF_HUB_DOWNLOAD_TIMEOUT=120
 
