@@ -221,7 +221,7 @@ def build_demo_view(
     )
     hyper3_samples = hv.ui.Samples(
         id="samples",
-        title="Product search · Hyper3 prepared",
+        title="Hyper3-CLIP · Product matches",
         position="center",
         props={
             "mode": "auto",

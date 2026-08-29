@@ -10,7 +10,8 @@
       "bundle_folder": "shared-views/abo-catalog",
       "mount_path": "/spaces/abo-catalog",
       "live_space_id": "hyper3labs/HyperView-ABO-Catalog",
-      "live_url": "https://hyper3labs-hyperview-abo-catalog.hf.space"
+      "live_url": "https://hyper3labs-hyperview-abo-catalog.hf.space",
+      "similarity_k": 10
     },
     {
       "slug": "precision-regions",

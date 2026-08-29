@@ -98,7 +98,7 @@ CASE_CONSEQUENCES: dict[str, dict[str, str]] = {
         ),
         "clip": (
             "Stronger exact airport hits and broader transport-parent "
-            "coverage on this prepared probe."
+            "coverage on this example."
         ),
         "comparison": (
             "Explicit regression: CLIP wins exact and parent quality here; "
@@ -280,13 +280,13 @@ def panel_props(payload: dict[str, Any]) -> dict[str, Any]:
                 "layoutKey": HYPER3_LAYOUT_KEY,
                 "spaceKey": HYPER3_SPACE_KEY,
                 "geometry": "poincare",
-                "title": "Hyper3 multimodal topology",
+                "title": "Hyper3 archive map",
             },
             "clip": {
                 "layoutKey": CLIP_LAYOUT_KEY,
                 "spaceKey": CLIP_SPACE_KEY,
                 "geometry": "euclidean",
-                "title": "CLIP multimodal topology",
+                "title": "CLIP archive map",
             },
         },
         "panelIds": {
@@ -346,7 +346,7 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
     )
     hyper3_scatter = hv.ui.Scatter(
         id=HYPER3_SCATTER_ID,
-        title="Archive topology · Hyper3 multimodal",
+        title="Archive map · Hyper3-CLIP",
         layout_key=HYPER3_LAYOUT_KEY,
         geometry="poincare",
         layout_dimension=2,
@@ -357,7 +357,7 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
     )
     clip_scatter = hv.ui.Scatter(
         id=CLIP_SCATTER_ID,
-        title="Archive topology · CLIP multimodal",
+        title="Archive map · OpenAI CLIP",
         layout_key=CLIP_LAYOUT_KEY,
         geometry="euclidean",
         layout_dimension=2,

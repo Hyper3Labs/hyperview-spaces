@@ -50,12 +50,13 @@ export default function FashionSearchPanel() {
     setError(null);
     void (async () => {
       try {
-        await showResults(
+        const hyper3Results = await showResults(
           item.results.hyper3.map((result) => result.sampleId),
           { focus: false, source: `${item.label} · Hyper3-CLIP` },
         );
         const anchorSampleId = nextMode === "photo" ? item.anchorSampleId : null;
-        await updateProps("samples", { mode: "results", collectionId: item.collectionIds.hyper3, anchorSampleId });
+        const hyper3CollectionId = hyper3Results?.result?.collection_id || item.collectionIds.hyper3;
+        await updateProps("samples", { mode: "results", collectionId: hyper3CollectionId, anchorSampleId });
         await updateProps(props.clipSamplesPanelId || "fashion-clip-results", { mode: "results", collectionId: item.collectionIds.clip, anchorSampleId });
         await patchState(nextMode === "photo" ? { activeMode: "photo", activePhotoCaseId: item.id } : { activeMode: "text", activeTextCaseId: item.id });
         await setSelection([nextMode === "photo" ? item.anchorSampleId : item.target.sampleId]);

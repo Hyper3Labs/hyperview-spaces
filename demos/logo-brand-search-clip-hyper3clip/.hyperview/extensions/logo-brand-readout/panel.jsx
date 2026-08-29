@@ -22,6 +22,11 @@ function visibleTargetIds(item, modelKey) {
     : [];
 }
 
+function percentage(value) {
+  const parsed = Number.parseFloat(String(value ?? ""));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 export default function LogoBriefDesk() {
   const { props = {}, state = {}, patchState } = usePanelState();
   const { showResults, resetResults } = useSampleResults();
@@ -63,6 +68,12 @@ export default function LogoBriefDesk() {
   const rank =
     activeModelKey === "hyper3" ? active.target.hyper3Rank : active.target.clipRank;
   const aggregate = props.aggregate || {};
+  const hyper3Hit1 = percentage(aggregate.hyper3Hit1);
+  const clipHit1 = percentage(aggregate.clipHit1);
+  const firstRankRatio =
+    hyper3Hit1 !== null && clipHit1 !== null && clipHit1 > 0
+      ? (hyper3Hit1 / clipHit1).toFixed(1)
+      : null;
 
   return (
     <main className="lb-root">
@@ -217,7 +228,11 @@ export default function LogoBriefDesk() {
 
       <section className="lb-benchmark" aria-label="Full benchmark results">
         <span className="lb-kicker">Full benchmark</span>
-        <h3>Across all {aggregate.queryCount || 160} logo briefs</h3>
+        <h3>
+          {firstRankRatio
+            ? `Hyper3 ranks the exact logo first ${firstRankRatio}× as often`
+            : "How often does the exact logo reach the first screen?"}
+        </h3>
         <table className="lb-table">
           <thead><tr><th>Exact logo found</th><th style={{color:"#60a5fa"}}>Hyper3</th><th style={{color:"#f59e0b"}}>CLIP</th></tr></thead>
           <tbody>
@@ -225,7 +240,7 @@ export default function LogoBriefDesk() {
             <tr><td>Within top five</td><td>{aggregate.hyper3Hit5} ({aggregate.hyper3Hit5Count})</td><td>{aggregate.clipHit5} ({aggregate.clipHit5Count})</td></tr>
           </tbody>
         </table>
-        <p className="lb-table-note">Each brief searches the same 160-logo catalog. Mean reciprocal rank improves by {aggregate.mrrDelta}.</p>
+        <p className="lb-table-note">Across {aggregate.queryCount || 160} briefs, each searching the same 160-logo catalog. Mean reciprocal rank improves by {aggregate.mrrDelta}.</p>
       </section>
       <p className="lb-footer">{props.claim}</p>
       {error ? (

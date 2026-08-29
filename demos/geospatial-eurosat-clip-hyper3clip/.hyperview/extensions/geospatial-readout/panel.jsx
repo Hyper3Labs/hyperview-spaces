@@ -28,9 +28,9 @@ const css = `
 .geo-cases{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:11px}
 .geo-case{min-width:0;border:1px solid var(--hv-color-border);border-radius:7px;padding:7px 8px;color:var(--hv-color-muted-foreground);background:var(--hv-color-surface);cursor:pointer;text-align:left}
 .geo-case[aria-pressed=true]{border-color:var(--hv-color-accent);color:var(--hv-color-foreground);box-shadow:inset 3px 0 var(--hv-color-accent);background:color-mix(in srgb,var(--hv-color-accent) 10%,var(--hv-color-surface))}
-.geo-case small,.geo-case strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.geo-case small,.geo-case strong{display:block;overflow:hidden}
 .geo-case small{font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-.geo-case strong{margin-top:2px;font-size:11px}
+.geo-case strong{min-height:2.5em;margin-top:2px;font-size:11px;line-height:1.25}
 .geo-active{margin-top:11px;border:1px solid var(--hv-color-border);border-radius:8px;padding:9px;background:var(--hv-color-surface)}
 .geo-active h3{margin:3px 0 0;font-size:13px;line-height:1.3}
 .geo-facts{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
@@ -218,8 +218,6 @@ export default function GeospatialAuditPanel() {
           </button>
         ))}
       </nav>
-      <p className="geo-hint">Airport is the case here where OpenAI CLIP does better.</p>
-
       <section className="geo-active" aria-label="Selected tile">
         <span className="geo-kicker">Selected tile</span>
         <h3>{active.question}</h3>
@@ -275,7 +273,7 @@ export default function GeospatialAuditPanel() {
         </div>
       ) : null}
 
-      <p className="geo-hint">Use each panel’s archive-topology tab to inspect the full embedding map. Ranked lists use rank only because hyperbolic and cosine distances are not directly comparable.</p>
+      <p className="geo-hint">Open each archive map to inspect clusters and outliers. Compare rank rather than distance because the models use different geometries.</p>
 
       <section className="geo-aggregate" aria-label="Aggregate retrieval results">
         <div className="geo-aggregate-head">
@@ -291,7 +289,6 @@ export default function GeospatialAuditPanel() {
       <details className="geo-footer">
         <summary>Evaluation scope</summary>
         <p>{props.protocol?.dataset} · {props.protocol?.split} · {props.protocol?.subset}. {props.protocol?.claimBoundary}</p>
-        <p>{props.protocol?.modelRevisionCaveat}</p>
       </details>
 
       {busy ? <div className="geo-status">Updating ranked neighbours…</div> : null}
