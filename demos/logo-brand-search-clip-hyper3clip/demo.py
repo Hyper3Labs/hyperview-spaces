@@ -84,7 +84,12 @@ def prepared_sample_ids(payload: dict[str, Any]) -> set[str]:
 
 
 def repair_media_paths(dataset: hv.Dataset) -> None:
-    media_dir = SPACE_DIR / "demo_data" / "logo_images"
+    media_dir = Path(
+        os.environ.get(
+            "HYPERVIEW_MEDIA_DIR",
+            str(SPACE_DIR / "demo_data" / "logo_images"),
+        )
+    )
     repaired: list[hv.Sample] = []
     for sample in dataset.samples:
         expected = media_dir / f"{sample.id}.jpg"
