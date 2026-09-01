@@ -111,6 +111,17 @@ def main() -> int:
             errors.append(f"{slug}: bundle has export warnings: {manifest.get('warnings')!r}")
         if not isinstance(capabilities, dict) or capabilities.get("text_search") is not False:
             errors.append(f"{slug}: bundle exposes backend-only text search")
+        # The registry field alone proves nothing: the exporter rebases asset
+        # URLs against the mount path it was given, so a bundle built without
+        # one serves /_next/... and 404s everything once published under
+        # /spaces/<slug>/. Compare what the bundle was actually built for.
+        bundle_mount_path = manifest.get("mount_path")
+        if bundle_mount_path != mount_path:
+            errors.append(
+                f"{slug}: bundle was built for mount_path {bundle_mount_path!r}, "
+                f"but the registry mounts it at {mount_path!r}; "
+                f"re-export with --mount-path {mount_path}"
+            )
         manifest_workspace = manifest.get("workspace")
         manifest_workspace_id = (
             manifest_workspace.get("id")

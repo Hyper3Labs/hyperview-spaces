@@ -54,6 +54,12 @@ def main() -> int:
             "--out",
             str(destination),
         ]
+        # Without this the exporter emits root-relative asset URLs, so a bundle
+        # published under /spaces/<slug>/ 404s its own JS, CSS and media. The
+        # registry already records where each bundle is mounted; pass it.
+        mount_path = entry.get("mount_path")
+        if mount_path:
+            command += ["--mount-path", str(mount_path)]
         similarity_k = entry.get("similarity_k")
         if similarity_k is not None:
             command += ["--similarity-k", str(similarity_k)]
