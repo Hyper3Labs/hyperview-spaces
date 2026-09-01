@@ -89,6 +89,42 @@ Neither ships a prepared live dataset. The demos adopted an architecture that
 v1 has no supported way to deliver, which is why the data ended up as an
 untracked local directory.
 
+## The live text-search Space should be Art, not DeepFashion
+
+`demos/art-text-search-clip-hyper3clip` is the only demo that both does text
+search and boots from a clean checkout. It streams the public
+`Artificio/WikiArt` at runtime, computes its own embeddings and layouts, and —
+crucially — **passes its computed layout keys into the view instead of pinning
+them as constants** (`demo.py:554`, `demo.py:565`). That is the pattern the
+other three should follow.
+
+Verified end to end on current `main` with `hyper-models 0.3.1`, from an empty
+dataset name, with no prepared data and no Hugging Face token:
+
+```text
+Selected 240 artwork images by genre: {...15 genres...}
+Ensuring CLIP embeddings...       Computed euclidean umap layout in 3.9s
+Ensuring Hyper3-CLIP embeddings... Computed poincare umap layout in 2.4s
+Installing artwork search demo extension...
+Applying artwork marketplace search demo view...
+```
+
+The UI renders fully: the compositional query gallery, the buyer-prompt
+readout, the Samples grid, and both context maps. Its 16 query cards are
+well chosen — each pairs a prompt with the reason it is hard
+(`OBJECT + COLOR + IMPROBABLE SETTING`, `ANIMAL + COLOR + WEATHER`), which is
+the point being demonstrated: the title cannot carry the match, so the image
+has to.
+
+Two things to settle before it ships:
+
+- It is `status: "draft"` with `deploy_targets: []` and no Space or workflow.
+  Standing it up is net-new: create the Space, add a path-scoped workflow,
+  register the Trusted Publisher.
+- Its own Dataset Note says the WikiArt HF card declares no SPDX license and
+  recommends a CC0 museum mirror for production. For a customer-facing demo
+  that should be resolved, not just disclosed.
+
 ## What has to be decided
 
 The demos need a data path that works from a clean CI checkout. The options,
