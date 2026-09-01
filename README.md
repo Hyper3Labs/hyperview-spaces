@@ -21,6 +21,16 @@ demo” implementation.
 - Deploy personal-account Spaces manually with the local HF deployment helper
 - Publish reviewed Shared Views through any static host
 
+## Agent skill
+
+Coding agents working in this repo should read
+[`.agents/skills/hyperview-spaces/SKILL.md`](.agents/skills/hyperview-spaces/SKILL.md).
+It covers the Live Space / Shared View split, the two registries, the
+copy-a-demo-folder flow, the version-pin rules, and every check enforced by
+`scripts/check_spaces.py` and `scripts/check_shared_views.py`. For driving
+HyperView itself, use the `hyperview-cli` skill shipped with the `hyperview`
+package (`hyperview skill install`).
+
 ## Intended reuse flow
 
 This repo is meant to be easy to hand to an external coding agent.
@@ -58,7 +68,7 @@ Use the iNat24 Tiny example as a copyable starter.
 10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
 11. For an org-owned Space, add a Hugging Face Trusted Publisher for the GitHub repository, `main` branch, and exact deployment workflow filename. No long-lived GitHub secret is required.
 12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
-13. Keep the Dockerfile on current released PyPI packages such as `hyperview==1.0.0` and `hyper-models==0.3.0`; use a vendored wheel only for the temporary development escape hatch described below.
+13. Keep the Dockerfile on current released PyPI packages such as `hyperview==1.0.0` and `hyper-models==0.3.1`; use a vendored wheel only for the temporary development escape hatch described below.
 14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
 
 ### Manual HF deployment
@@ -141,6 +151,7 @@ Landing-page Shared Views are listed separately in
 
 ```text
 .
+├── .agents/skills/hyperview-spaces/   # agent skill for working in this repo
 ├── .github/workflows/
 ├── demos/                       # canonical source; one folder per use case
 ├── shared-views/                # ignored generated read-only bundles
