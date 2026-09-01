@@ -1,0 +1,312 @@
+{
+  "source": {
+    "hf_dataset": "tanganke/resisc45",
+    "split": "test"
+  },
+  "id_scheme": "resisc45_<class-with-underscores>_<n>, where n is the ORIGINAL RESISC45 filename number for that class (1-700), NOT a row index into any split.",
+  "count": 60,
+  "samples": [
+    {
+      "id": "resisc45_airplane_119",
+      "label": "airplane",
+      "class_index": 119
+    },
+    {
+      "id": "resisc45_airplane_136",
+      "label": "airplane",
+      "class_index": 136
+    },
+    {
+      "id": "resisc45_airplane_156",
+      "label": "airplane",
+      "class_index": 156
+    },
+    {
+      "id": "resisc45_airplane_46",
+      "label": "airplane",
+      "class_index": 46
+    },
+    {
+      "id": "resisc45_airplane_96",
+      "label": "airplane",
+      "class_index": 96
+    },
+    {
+      "id": "resisc45_airport_14",
+      "label": "airport",
+      "class_index": 14
+    },
+    {
+      "id": "resisc45_airport_157",
+      "label": "airport",
+      "class_index": 157
+    },
+    {
+      "id": "resisc45_airport_358",
+      "label": "airport",
+      "class_index": 358
+    },
+    {
+      "id": "resisc45_airport_51",
+      "label": "airport",
+      "class_index": 51
+    },
+    {
+      "id": "resisc45_airport_85",
+      "label": "airport",
+      "class_index": 85
+    },
+    {
+      "id": "resisc45_basketball_court_17",
+      "label": "basketball court",
+      "class_index": 17
+    },
+    {
+      "id": "resisc45_basketball_court_49",
+      "label": "basketball court",
+      "class_index": 49
+    },
+    {
+      "id": "resisc45_basketball_court_62",
+      "label": "basketball court",
+      "class_index": 62
+    },
+    {
+      "id": "resisc45_basketball_court_67",
+      "label": "basketball court",
+      "class_index": 67
+    },
+    {
+      "id": "resisc45_basketball_court_69",
+      "label": "basketball court",
+      "class_index": 69
+    },
+    {
+      "id": "resisc45_bridge_174",
+      "label": "bridge",
+      "class_index": 174
+    },
+    {
+      "id": "resisc45_bridge_230",
+      "label": "bridge",
+      "class_index": 230
+    },
+    {
+      "id": "resisc45_bridge_297",
+      "label": "bridge",
+      "class_index": 297
+    },
+    {
+      "id": "resisc45_bridge_327",
+      "label": "bridge",
+      "class_index": 327
+    },
+    {
+      "id": "resisc45_bridge_90",
+      "label": "bridge",
+      "class_index": 90
+    },
+    {
+      "id": "resisc45_circular_farmland_43",
+      "label": "circular farmland",
+      "class_index": 43
+    },
+    {
+      "id": "resisc45_circular_farmland_47",
+      "label": "circular farmland",
+      "class_index": 47
+    },
+    {
+      "id": "resisc45_circular_farmland_55",
+      "label": "circular farmland",
+      "class_index": 55
+    },
+    {
+      "id": "resisc45_circular_farmland_7",
+      "label": "circular farmland",
+      "class_index": 7
+    },
+    {
+      "id": "resisc45_circular_farmland_74",
+      "label": "circular farmland",
+      "class_index": 74
+    },
+    {
+      "id": "resisc45_forest_111",
+      "label": "forest",
+      "class_index": 111
+    },
+    {
+      "id": "resisc45_forest_20",
+      "label": "forest",
+      "class_index": 20
+    },
+    {
+      "id": "resisc45_forest_26",
+      "label": "forest",
+      "class_index": 26
+    },
+    {
+      "id": "resisc45_forest_27",
+      "label": "forest",
+      "class_index": 27
+    },
+    {
+      "id": "resisc45_forest_36",
+      "label": "forest",
+      "class_index": 36
+    },
+    {
+      "id": "resisc45_meadow_13",
+      "label": "meadow",
+      "class_index": 13
+    },
+    {
+      "id": "resisc45_meadow_34",
+      "label": "meadow",
+      "class_index": 34
+    },
+    {
+      "id": "resisc45_meadow_45",
+      "label": "meadow",
+      "class_index": 45
+    },
+    {
+      "id": "resisc45_meadow_75",
+      "label": "meadow",
+      "class_index": 75
+    },
+    {
+      "id": "resisc45_meadow_79",
+      "label": "meadow",
+      "class_index": 79
+    },
+    {
+      "id": "resisc45_rectangular_farmland_171",
+      "label": "rectangular farmland",
+      "class_index": 171
+    },
+    {
+      "id": "resisc45_rectangular_farmland_198",
+      "label": "rectangular farmland",
+      "class_index": 198
+    },
+    {
+      "id": "resisc45_rectangular_farmland_21",
+      "label": "rectangular farmland",
+      "class_index": 21
+    },
+    {
+      "id": "resisc45_rectangular_farmland_89",
+      "label": "rectangular farmland",
+      "class_index": 89
+    },
+    {
+      "id": "resisc45_rectangular_farmland_91",
+      "label": "rectangular farmland",
+      "class_index": 91
+    },
+    {
+      "id": "resisc45_runway_184",
+      "label": "runway",
+      "class_index": 184
+    },
+    {
+      "id": "resisc45_runway_202",
+      "label": "runway",
+      "class_index": 202
+    },
+    {
+      "id": "resisc45_runway_241",
+      "label": "runway",
+      "class_index": 241
+    },
+    {
+      "id": "resisc45_runway_313",
+      "label": "runway",
+      "class_index": 313
+    },
+    {
+      "id": "resisc45_runway_319",
+      "label": "runway",
+      "class_index": 319
+    },
+    {
+      "id": "resisc45_sparse_residential_196",
+      "label": "sparse residential",
+      "class_index": 196
+    },
+    {
+      "id": "resisc45_sparse_residential_367",
+      "label": "sparse residential",
+      "class_index": 367
+    },
+    {
+      "id": "resisc45_sparse_residential_421",
+      "label": "sparse residential",
+      "class_index": 421
+    },
+    {
+      "id": "resisc45_sparse_residential_469",
+      "label": "sparse residential",
+      "class_index": 469
+    },
+    {
+      "id": "resisc45_sparse_residential_477",
+      "label": "sparse residential",
+      "class_index": 477
+    },
+    {
+      "id": "resisc45_storage_tank_1",
+      "label": "storage tank",
+      "class_index": 1
+    },
+    {
+      "id": "resisc45_storage_tank_271",
+      "label": "storage tank",
+      "class_index": 271
+    },
+    {
+      "id": "resisc45_storage_tank_272",
+      "label": "storage tank",
+      "class_index": 272
+    },
+    {
+      "id": "resisc45_storage_tank_315",
+      "label": "storage tank",
+      "class_index": 315
+    },
+    {
+      "id": "resisc45_storage_tank_4",
+      "label": "storage tank",
+      "class_index": 4
+    },
+    {
+      "id": "resisc45_terrace_116",
+      "label": "terrace",
+      "class_index": 116
+    },
+    {
+      "id": "resisc45_terrace_148",
+      "label": "terrace",
+      "class_index": 148
+    },
+    {
+      "id": "resisc45_terrace_16",
+      "label": "terrace",
+      "class_index": 16
+    },
+    {
+      "id": "resisc45_terrace_37",
+      "label": "terrace",
+      "class_index": 37
+    },
+    {
+      "id": "resisc45_terrace_87",
+      "label": "terrace",
+      "class_index": 87
+    }
+  ],
+  "provenance_status": "unresolved",
+  "provenance_note": "The demo's evidence_cases.json protocol names 'tanganke/resisc45' split 'test' as the source, but that dataset cannot reproduce this selection. It exposes only {image, label} with no filename field, and its test split holds 140 rows per class, while this manifest contains class indices as high as 358. Resolving these 60 ids by row-order-within-class against that split recovers only 39 of 60. The curated tiles were therefore drawn from the full RESISC45, or from a source that preserves original filenames -- which one is not recorded anywhere. See docs/demo-evidence-integrity.md."
+}

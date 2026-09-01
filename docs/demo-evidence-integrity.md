@@ -78,6 +78,36 @@ Either restate the benchmark from this script's output, or commit the protocol
 that produced the original figures. A number a customer cannot reproduce is not
 doing the work a number is supposed to do.
 
+## GeoSpatial's stated source cannot rebuild its dataset
+
+Same class of problem, found while trying to fix the deployment blocker.
+
+`evidence_cases.json` declares the protocol as `tanganke/resisc45`, split
+`test`, "60 curated tiles; 12 scene classes; 5 tiles per class". The 60 sample
+ids are recorded in
+`demos/geospatial-eurosat-clip-hyper3clip/dataset_manifest.json`, extracted
+from the local prepared dataset.
+
+That declared source cannot regenerate them:
+
+- `tanganke/resisc45` exposes only `{image, label}`. There is **no filename or
+  image-id field**, so an id like `resisc45_airport_358` has nothing to match.
+- Its `test` split holds 6300 rows — 140 per class. The manifest contains class
+  indices of 358, 327, 297, 230, 174. Those cannot be row indices into a
+  140-row-per-class split.
+- Resolving all 60 by row-order-within-class against that split recovers
+  **39 of 60**.
+
+So the ids are original RESISC45 filename numbers (1–700 per class), and the
+tiles were drawn from the full dataset or from a mirror that preserves
+filenames. Which one is not recorded. The manifest keeps the 60 ids — they were
+previously written down nowhere — but is marked `provenance_status:
+"unresolved"` until the actual source is identified.
+
+This matters beyond tidiness: it is the reason the demo cannot be converted to
+build-at-boot the way `art-text-search-clip-hyper3clip` does. A rebuild needs a
+source that can resolve these ids, and the declared one cannot.
+
 ## What to do
 
 1. **Add a losing case to Precision Regions.** This requires re-running the
