@@ -39,6 +39,11 @@ PY
 
 COPY --chown=user . .
 
+# HyperView 1.0 mints a session token and rejects unauthenticated runtime
+# commands. A public Space has no way to hand visitors that token, so panel
+# creation, media fetches and case switching all 401. The container is the
+# trust boundary here, so disable the local-session check.
+ENV HYPERVIEW_NO_AUTH=1
 ENV HYPERVIEW_HOST=0.0.0.0 \
     HYPERVIEW_PORT=7860 \
     HYPERVIEW_WORKSPACE_ID=logo-brand-search-clip-hyper3clip-hf-live-v4 \

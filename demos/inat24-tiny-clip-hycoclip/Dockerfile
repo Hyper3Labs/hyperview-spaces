@@ -32,6 +32,11 @@ RUN pip install "hyper-models[ml]==${HYPER_MODELS_VERSION}" && python -c "import
 
 COPY --chown=user demo.py ./demo.py
 
+# HyperView 1.0 mints a session token and rejects unauthenticated runtime
+# commands. A public Space has no way to hand visitors that token, so panel
+# creation, media fetches and case switching all 401. The container is the
+# trust boundary here, so disable the local-session check.
+ENV HYPERVIEW_NO_AUTH=1
 ENV HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
 
