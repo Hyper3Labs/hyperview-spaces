@@ -117,6 +117,50 @@ def hyperview_source(folder: Path) -> tuple[str, bool]:
     return "no hyperview installation found", False
 
 
+def dockerfile_pins(folder: Path) -> dict[str, str]:
+    """The package versions a demo's Docker build actually installs."""
+
+    dockerfile = (folder / "Dockerfile").read_text(encoding="utf-8")
+    pins: dict[str, str] = {}
+
+    arg = re.search(
+        r"^ARG\s+HYPER_MODELS_VERSION\s*=\s*['\"]?([^\s'\"]+)", dockerfile, re.MULTILINE
+    )
+    direct = re.search(r"\bhyper-models(?:\[[^]]+\])?==([A-Za-z0-9_.+-]+)", dockerfile)
+    if arg:
+        pins["hyper-models"] = arg.group(1)
+    elif direct:
+        pins["hyper-models"] = direct.group(1)
+
+    source, valid = hyperview_source(folder)
+    version = re.search(r"PyPI pin ([A-Za-z0-9_.+-]+)", source) if valid else None
+    if version:
+        pins["hyperview"] = version.group(1)
+    return pins
+
+
+def validate_documented_pins(folder: Path, pins: dict[str, str], errors: list[str]) -> None:
+    """Prose that names a version must name the one the Dockerfile installs.
+
+    A README claiming `hyper-models==0.3.0` while the build pins 0.3.1 sends
+    anyone reproducing the Space to the wrong package, and nothing else here
+    reads prose, so the drift survives a green run.
+    """
+
+    for doc in sorted(folder.glob("*.md")):
+        text = doc.read_text(encoding="utf-8")
+        for package, pinned in pins.items():
+            pattern = rf"\b{re.escape(package)}(?:\[[^]]+\])?==([A-Za-z0-9_.+-]+)"
+            for match in re.finditer(pattern, text):
+                if match.group(1) != pinned:
+                    line = text.count("\n", 0, match.start()) + 1
+                    error(
+                        f"{doc.relative_to(ROOT)}:{line}: documents {package}=={match.group(1)} "
+                        f"but the Dockerfile pins {pinned}",
+                        errors,
+                    )
+
+
 def validate_public_python_api(folder: Path, errors: list[str]) -> None:
     for path in sorted(folder.glob("*.py")):
         try:
@@ -206,6 +250,9 @@ def main() -> int:
     for folder in sorted(registry_folders - disk_folders):
         error(f"registry folder does not exist: {folder}", errors)
 
+    # package -> pinned version -> folders installing it
+    pins_by_package: dict[str, dict[str, list[str]]] = {}
+
     workflows_by_source: dict[str, list[tuple[Path, str]]] = {}
     for workflow in sorted(WORKFLOWS_DIR.glob("deploy-hf-space-*.yml")):
         if workflow.name == "deploy-hf-space-reusable.yml":
@@ -287,8 +334,22 @@ def main() -> int:
                 error(
                     f"{folder}: PyPI-installed hyperview must have an explicit version pin", errors
                 )
+            pins = dockerfile_pins(path)
+            for package, pinned in pins.items():
+                pins_by_package.setdefault(package, {}).setdefault(pinned, []).append(folder)
+            validate_documented_pins(path, pins, errors)
         validate_public_python_api(path, errors)
         validate_panel_sdk(path, errors)
+
+    # Spaces sharing a model catalog must share its version, or two demos claiming
+    # the same embedding space quietly compute different vectors.
+    for package, versions in sorted(pins_by_package.items()):
+        print(f"INFO: {package} pins: {', '.join(sorted(versions))}")
+        if len(versions) > 1:
+            spread = "; ".join(
+                f"{version}: {', '.join(folders)}" for version, folders in sorted(versions.items())
+            )
+            error(f"demos disagree on the {package} pin -- {spread}", errors)
 
     root_readme = README_PATH.read_text(encoding="utf-8")
     table_match = re.search(
