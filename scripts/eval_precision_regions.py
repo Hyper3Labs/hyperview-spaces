@@ -28,17 +28,8 @@ import time
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-
 import hyperview as hv
 from hyperview import Sample
-from hyperview.embeddings.engine import get_engine
-from hyperview.storage.metrics import (
-    distance_metric_for_space,
-    pairwise_embedding_distances,
-    resolve_hyperboloid_curvature,
-)
-
 
 DATASET_ID = "lmms-lab/RefCOCOg"
 SPLIT = "val"
@@ -166,30 +157,25 @@ def compute_model_rankings(
         batch_size=32 if provider == "embed-anything" else 1,
         show_progress=True,
     )
-    space = next(item for item in dataset.list_spaces() if item.space_key == space_key)
-    ids, vectors = dataset._storage.get_embeddings(space_key)
-    by_id = {sample_id: index for index, sample_id in enumerate(ids)}
-    spec = dataset._embedding_spec_for_space(space_key)
-    query_vectors = get_engine().embed_texts(
-        [row["expression"] for row in records], spec, batch_size=32, show_progress=True
-    )
-    metric = distance_metric_for_space(space)
-    curvature = resolve_hyperboloid_curvature(space, vectors) if metric == "hyperboloid" else 1.0
+    # Rank the whole pool, not a top-k slice: the metrics below need the
+    # target's rank wherever it lands. This is the same retrieval path the
+    # demo's search box uses, so the benchmark measures the shipped behaviour
+    # rather than a reimplementation of it.
+    pool_size = len(dataset)
     rankings: list[list[dict[str, Any]]] = []
-    for row, query in zip(records, query_vectors, strict=True):
-        distances = pairwise_embedding_distances(
-            query, vectors, metric=metric, curvature=curvature
+    for row in records:
+        matches = dataset.find_similar_by_text(
+            row["expression"], k=pool_size, space_key=space_key
         )
-        order = sorted(range(len(ids)), key=lambda i: (float(distances[i]), ids[i]))
         rankings.append(
             [
                 {
                     "rank": rank,
-                    "sample_id": ids[index],
-                    "distance": float(distances[index]),
-                    "is_target": ids[index] == row["sample_id"],
+                    "sample_id": sample.id,
+                    "distance": float(distance),
+                    "is_target": sample.id == row["sample_id"],
                 }
-                for rank, index in enumerate(order, start=1)
+                for rank, (sample, distance) in enumerate(matches, start=1)
             ]
         )
     return space_key, rankings

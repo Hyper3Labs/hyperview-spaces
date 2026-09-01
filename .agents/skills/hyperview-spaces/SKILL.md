@@ -143,7 +143,11 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   mints a session token and rejects unauthenticated runtime commands. A public
   Space has no way to hand visitors that token, so the container starts, the
   healthcheck passes, Hugging Face reports RUNNING, and every visitor gets 401s
-  on panel creation and media. The container is the trust boundary here.
+  on panel creation. The flag marks the server public rather than open:
+  visitors keep the viewer commands (panels, selection, retrieval,
+  collections), while provider registration, extension install, tool execution
+  and compute answer 403. A demo that needs one of those on a public Space is
+  a demo to rethink, not a reason to widen the allowlist.
 - **Do not remove `.hyperview/extensions/` from a copied folder** unless you
   also remove the panel it backs from `demo.py`.
 - **A benchmark a demo prints must be regenerable, and its cases must come from
