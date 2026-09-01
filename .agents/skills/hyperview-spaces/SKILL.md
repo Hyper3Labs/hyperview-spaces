@@ -45,7 +45,8 @@ archived-spaces/              retired examples, outside the active registry
 scripts/                      registry checks and maintenance tools
 gallery/                      registry-generated static gallery
 warm-worker/                  registry-driven monitoring worker
-docs/                         deployment-architecture.md, static-inat24.md
+docs/                         deployment architecture, data delivery, evidence audit
+results/                      reproducible eval output backing demo benchmarks
 live-spaces.registry.json     runtime deployments and local runtime demos
 shared-views.registry.json    reviewed static artifacts and mount paths
 .github/workflows/            per-space deploy, reusable deploy, checks, monitor
@@ -140,3 +141,8 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   URLs against it; a mismatch produces a bundle that 404s its own media.
 - **Do not remove `.hyperview/extensions/` from a copied folder** unless you
   also remove the panel it backs from `demo.py`.
+- **A benchmark a demo prints must be regenerable, and its cases must come from
+  the same run.** Ship the eval under `scripts/`, point `benchmark.source` at
+  it, and include at least one case the baseline wins - a demo whose cases are
+  all wins next to a near-even table tells two different stories. See
+  [../../../docs/demo-evidence-integrity.md](../../../docs/demo-evidence-integrity.md).
