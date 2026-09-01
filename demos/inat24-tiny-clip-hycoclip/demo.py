@@ -184,10 +184,14 @@ def add_inat24_samples(dataset: hv.Dataset) -> None:
         raise RuntimeError(f"Could not build the target iNat24 Tiny sample. Missing: {missing}.")
 
 
-def build_dataset() -> hv.Dataset:
+def build_dataset() -> tuple[hv.Dataset, dict[str, str]]:
     dataset = hv.Dataset(DATASET_NAME)
     add_inat24_samples(dataset)
 
+    # Layout keys carry a content hash, so they are only knowable after the
+    # layout is computed. Collect them here and hand them to the view rather
+    # than pinning them as constants that a rebuild would invalidate.
+    layout_keys: dict[str, str] = {}
     for embedding in EMBEDDING_LAYOUTS:
         print(f"Ensuring {embedding['name']} embeddings ({embedding['model']})...", flush=True)
         space_key = dataset.compute_embeddings(
@@ -198,15 +202,58 @@ def build_dataset() -> hv.Dataset:
 
         for layout in embedding["layouts"]:
             print(f"Ensuring {embedding['name']} {layout} layout...", flush=True)
-            dataset.compute_visualization(space_key=space_key, layout=layout)
+            layout_keys[f"{embedding['name']}:{layout}"] = dataset.compute_visualization(
+                space_key=space_key, layout=layout
+            )
 
-    return dataset
+    return dataset, layout_keys
+
+
+def build_demo_view(layout_keys: dict[str, str]) -> hv.ui.View:
+    """Open the showcase on its three geometries, side by side.
+
+    Without an explicit view the workspace launches with no active layout, so
+    the embeddings panel renders "No 2D embeddings layout available" even
+    though three layouts exist -- the one thing this demo is here to show.
+    """
+
+    panels: list[hv.ui.Scatter | hv.ui.Samples] = []
+    previous_id: str | None = None
+    for label, layout_key in layout_keys.items():
+        name, layout = label.split(":", 1)
+        panel = hv.ui.Scatter(
+            id=f"map-{layout.replace(':', '-')}",
+            title=f"{name} · {layout}",
+            layout_key=layout_key,
+            position="center",
+            reference_panel_id=previous_id,
+            direction="right" if previous_id else None,
+            layout=hv.ui.PanelLayout(min_width=220, min_height=260),
+        )
+        panels.append(panel)
+        previous_id = panel.id
+
+    panels.append(
+        hv.ui.Samples(
+            id="samples",
+            title="iNat24 Tiny · 300 observations",
+            position="bottom",
+            layout=hv.ui.PanelLayout(height=260, min_height=180),
+        )
+    )
+    return hv.ui.View(*panels, active_panel=panels[0].id)
 
 
 def main() -> None:
-    dataset = build_dataset()
+    dataset, layout_keys = build_dataset()
     print(f"Starting HyperView on {SPACE_HOST}:{SPACE_PORT}", flush=True)
-    hv.launch(dataset, host=SPACE_HOST, port=SPACE_PORT, open_browser=False)
+    hv.launch(
+        dataset,
+        host=SPACE_HOST,
+        port=SPACE_PORT,
+        open_browser=False,
+        view=build_demo_view(layout_keys),
+    )
 
 
 if __name__ == "__main__":
