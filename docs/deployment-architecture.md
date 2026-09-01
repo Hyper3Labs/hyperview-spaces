@@ -16,12 +16,17 @@ about the read-only path needs Python at request time.
 
 ## The actual problem
 
-Every demo Space is a Docker container that, on cold start, installs nothing
+A demo Space is a Docker container that, on cold start, installs nothing
 (baked) but **downloads the dataset and re-embeds it with CPU PyTorch** —
 the healthcheck allows a 45-minute start period. HF free Spaces sleep after
 inactivity, so a prospect clicking a demo from hyper3labs.com can hit a dead
 page. Keep-warm pinging treats the symptom. The cause is that we compute at
 serve time what should be computed at deploy time.
+
+The Fashion, GeoSpatial, and Logo demos have since moved off that path: they
+open a dataset prepared ahead of time rather than building one at boot. That
+is the right direction, but it is not finished — see
+[prepared-demo-data.md](prepared-demo-data.md).
 
 Fix in two layers:
 

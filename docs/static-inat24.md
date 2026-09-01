@@ -21,8 +21,8 @@ export OUT="$SCRATCH/static-inat24"
 python3.12 -m venv "$VENV"
 "$VENV/bin/python" -m pip install --upgrade pip
 "$VENV/bin/python" -m pip install \
-  "hyperview==0.6.2" \
-  "hyper-models[ml]==0.3.0" \
+  "hyperview==1.0.0" \
+  "hyper-models[ml]==0.3.1" \
   "datasets>=4.5.0" \
   "Pillow>=12.0.0"
 
@@ -57,8 +57,8 @@ finally:
 PY
 ```
 
-The verified 300-sample export made with HyperView
-`0.6.3.dev0+g1ddcd10b5.d20260613` contains 643 files, 3 layouts, and 600
+The verified 300-sample export was made with a pre-1.0 development build,
+HyperView `0.6.3.dev0+g1ddcd10b5.d20260613`. It contains 643 files, 3 layouts, and 600
 media/thumbnail files. `Session.export()` reported **24,789,132 bytes (23.64
 MiB)**; `du -sh` reports **25M**. This is far below the 1 GB caution threshold
 for Hugging Face static Spaces and Cloudflare static assets.

@@ -20,12 +20,16 @@ WORKDIR $HOME/app
 RUN pip install --upgrade pip
 
 ARG HYPERVIEW_PACKAGE="hyperview[ml]==1.0.0"
+# Pinned explicitly, not left to hyperview[ml]'s `hyper-models[ml]>=0.3.1`. The
+# floor would let a future model release change this demo's vectors on a rebuild,
+# and the embeddings are what the demo is showing.
+ARG HYPER_MODELS_VERSION=0.3.1
 
 # Install CPU-only PyTorch first so the CPU Space does not pull CUDA wheels.
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
-RUN echo "Installing ${HYPERVIEW_PACKAGE}" \
-    && pip install "${HYPERVIEW_PACKAGE}" \
+RUN echo "Installing ${HYPERVIEW_PACKAGE} with hyper-models==${HYPER_MODELS_VERSION}" \
+    && pip install "${HYPERVIEW_PACKAGE}" "hyper-models[ml]==${HYPER_MODELS_VERSION}" \
     && python - <<'PY'
 import inspect
 import hyperview as hv
