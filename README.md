@@ -1,125 +1,136 @@
 # hyperview-spaces
 
-This is the standalone repository for HyperView demo sources and their two
-delivery modes:
+Source for the HyperView demos: one folder per use case, shipped either as a
+static **Shared View** anyone can open in a browser or as a runtime-backed
+**Live Space** on Hugging Face.
 
-- A **Live Space** is connected to a Python runtime. It can load data, run new
-  queries and providers, recompute layouts, and mutate workspace state.
-- A **Shared View** is a generated, portable read-only workspace. It retains the
-  full HyperView shell and prepared interactions, and can be hosted as ordinary
-  static files.
+## Open one
 
-Each use case has one canonical implementation under `demos/`. Live Spaces and
-Shared Views are produced from that same source; there is no forked “static
-demo” implementation.
+Each Shared View is a complete, read-only HyperView workspace over one corpus.
+No install, no backend, no account — the ranked results, the embedding topology,
+and every underlying sample are there to inspect.
 
-## Purpose
+| Space | The question it answers |
+| --- | --- |
+| [ABO Catalog](https://hyper3labs.github.io/spaces/abo-catalog/) | Does the model find the right product, not just a plausible category match? |
+| [Fashion Products](https://hyper3labs.github.io/spaces/fashion-products/) | Does the exact SKU reach the shopper's first screen? |
+| [Precision Regions](https://hyper3labs.github.io/spaces/precision-regions/) | Does the exact region reach the operator's first screen? |
+| [Logo Search](https://hyper3labs.github.io/spaces/logo-search/) | Which existing logo best satisfies a detailed creative brief? |
+| [GeoSpatial](https://hyper3labs.github.io/spaces/geospatial/) | Do retrieved neighbours preserve land-use identity? |
+| [Visual Safety](https://hyper3labs.github.io/spaces/visual-safety/) | Is one extra catch worth five false reviews and six more queue slots? |
 
-- Keep Space deployment logic separate from the core HyperView codebase
-- Keep one canonical source for both runtime-backed and static delivery
-- Deploy Hyper3Labs-owned Spaces through GitHub Actions
-- Deploy personal-account Spaces manually with the local HF deployment helper
-- Publish reviewed Shared Views through any static host
+Each one compares `hyper3-clip-v0.5` against OpenAI CLIP ViT-B/32 on the same
+bounded probe and shows the per-case evidence for both, including the cases
+CLIP wins.
 
-## Agent skill
+## Two delivery modes, one source
 
-Coding agents working in this repo should read
-[`.agents/skills/hyperview-spaces/SKILL.md`](.agents/skills/hyperview-spaces/SKILL.md).
-It covers the Live Space / Shared View split, the two registries, the
-copy-a-demo-folder flow, the version-pin rules, and every check enforced by
-`scripts/check_spaces.py` and `scripts/check_shared_views.py`. For driving
-HyperView itself, use the `hyperview-cli` skill shipped with the `hyperview`
-package (`hyperview skill install`).
+|  | Live Space | Shared View |
+| --- | --- | --- |
+| Runtime | Docker container running HyperView on Hugging Face | None — static files |
+| Can do | New queries, new embeddings, recomputed layouts, mutated state | Prepared interactions, pan/zoom/lasso/selection, precomputed similarity, materialized text search |
+| Registry | `live-spaces.registry.json` | `shared-views.registry.json` |
+| Built by | Docker build of `demos/<slug>/` | `scripts/export_shared_views.py` |
 
-## Intended reuse flow
+Both are produced from the same folder under `demos/`. There is no forked
+"static demo" implementation — if you need different behaviour, change the demo.
 
-This repo is meant to be easy to hand to an external coding agent.
+## Make your own
 
-The happy path is:
+The happy path is four steps:
 
-1. Copy one folder from `demos/`
-2. Edit the constants block at the top of that folder's `demo.py`
-3. Update the Space `README.md`
-4. Add or retarget one deploy workflow
-
-Deployable examples install released packages from PyPI. The temporary
-vendored-wheel escape hatch documented below is reserved for unreleased
-HyperView features. Keep custom Space logic in `demo.py` and
-Space-local files so contributors can copy a folder, change their dataset
-settings, and open a PR without carrying an internal source snapshot.
-
-The current iNat24 Tiny example is the main HyperView geometry showcase. It
-keeps the editable dataset/model choices in one place so agents do not need to
-coordinate Docker args, runtime environment variables, and Python script flags.
-
-## Create Your Own Hugging Face Space
-
-Use the iNat24 Tiny example as a copyable starter.
-
-1. Create a new Space at https://huggingface.co/new-space.
-2. Choose a distinct Space name such as `yourproject-HyperView` or `HyperView-yourproject`.
-3. Select `Docker` as the Space SDK.
-4. Create the Space. Hugging Face will initialize it as a git-backed Docker Space with `sdk: docker` in `README.md`.
-5. In this repository, copy `demos/inat24-tiny-clip-hycoclip` to a new folder such as `demos/yourproject-hyperview`.
-6. Edit `demos/yourproject-hyperview/demo.py` and change the constants block at the top of the file.
-7. Edit `demos/yourproject-hyperview/README.md` and rename the copied example from `HyperView` to your own project name.
-8. Keep the Space name consistent across the Hugging Face Space ID, the README frontmatter `title`, and the Markdown H1. Good patterns are `yourproject-HyperView` and `HyperView-yourproject`.
-9. For a Hyper3Labs-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`.
-10. For a personal Space, use the manual deployment command below; do not add a GitHub deployment secret.
-11. For an org-owned Space, add a Hugging Face Trusted Publisher for the GitHub repository, `main` branch, and exact deployment workflow filename. No long-lived GitHub secret is required.
-12. Push to `main` or run the org workflow manually with `workflow_dispatch`.
-13. Keep the Dockerfile on current released PyPI packages such as `hyperview==1.0.0` and `hyper-models==0.3.1`; use a vendored wheel only for the temporary development escape hatch described below.
-14. Check the Hugging Face Space logs to confirm the Docker image built and the container started on port `7860`.
-
-### Manual HF deployment
-
-Personal-account Spaces are intentionally excluded from deployment CI. Authenticate
-locally with a Hugging Face token that can write to the target Space, then run:
+1. Copy a folder from `demos/` — `inat24-tiny-clip-hycoclip` for a geometry
+   showcase, `fashion-deepfashion-text-search-clip-hyper3clip` for text search
+   with a custom panel.
+2. Edit the constants block at the top of the new `demo.py` (dataset, models,
+   layouts). Everything you need to change lives there.
+3. Rewrite the folder's `README.md` — the YAML frontmatter is the Hugging Face
+   Space page, and it must keep `sdk: docker`.
+4. Register the folder in `live-spaces.registry.json`, add a row to the
+   community table below, and run the checks.
 
 ```bash
-cd /Users/matin/hyperview_org/HyperView
-uv run python hyperview-spaces/scripts/deploy_hf_space.py \
-  --space-id mnm-matin/HyperView-Logo-Brand-Search \
-  --source-dir hyperview-spaces/demos/logo-brand-search-clip-hyper3clip
+uv run --project ../ python scripts/check_spaces.py
+uv run --project ../ python scripts/check_shared_views.py
 ```
 
-The command creates the Docker Space when needed and synchronizes the source folder.
-The monitoring workflow still checks personal Spaces; it does not deploy them.
-
-### Vendored wheels
-
-Some spaces use `vendor/*.whl` when they need unreleased HyperView features.
-This is a temporary development escape hatch: once the required HyperView
-version is released, the space must switch back to an explicit PyPI version
-pin and remove the vendored wheel.
-
-### Optional Local Test
-
-From the `hyperview-spaces` repository root:
+Test the image locally before deploying anything:
 
 ```bash
 docker build -t yourproject-hyperview demos/yourproject-hyperview
-docker run --rm -p 7860:7860 yourproject-hyperview
+docker run --rm -p 7860:7860 yourproject-hyperview   # then open http://127.0.0.1:7860
 ```
 
-Then open `http://127.0.0.1:7860`.
+**Working here with a coding agent?** Point it at
+[`.agents/skills/hyperview-spaces/SKILL.md`](.agents/skills/hyperview-spaces/SKILL.md).
+It carries the full contract: the registry field rules, the version-pin rules,
+the export pipeline, and every check `check_spaces.py` enforces. For driving
+HyperView itself, use the `hyperview-cli` skill shipped with the package
+(`hyperview skill install`).
 
-## Contribute Your Space Back
+## Deploying
 
-If you want your Space to appear in this repository as a community example:
+| Owner | How | Auth |
+| --- | --- | --- |
+| `hyper3labs/*` | Push to `main` touching the demo folder, or `workflow_dispatch` | Hugging Face Trusted Publisher (OIDC) — no long-lived secret |
+| Personal account | `scripts/deploy_hf_space.py` | Your local `huggingface-cli` login |
 
-1. Fork this repository or create a branch if you already have write access.
-2. Add your Space folder under `demos/<your-slug>`.
-3. Rename the copied `HyperView` title and heading to your own project name such as `yourproject-HyperView` or `HyperView-yourproject`.
-4. Add or update a deploy workflow for your folder if this repository should deploy it.
-5. Add a row for your Space in the community table below.
-6. Open a pull request describing the Hugging Face Space ID, dataset source, embedding models, and whether the deploy workflow is expected to run from this repository.
+For an org-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml`
+and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`, then
+add a Trusted Publisher on the Space for `Hyper3Labs/hyperview-spaces`, branch
+`main`, and that exact workflow filename.
 
-Important: deployment workflows in this repository use Hugging Face Trusted Publishers. Each target Space must trust `Hyper3Labs/hyperview-spaces`, the `main` branch, and its exact caller workflow filename.
+For a personal Space, deploy manually — these are deliberately excluded from
+deploy CI, so do not add a Hugging Face token as a GitHub secret:
+
+```bash
+uv run --project ../ python scripts/deploy_hf_space.py \
+  --space-id mnm-matin/HyperView-Logo-Brand-Search \
+  --source-dir demos/logo-brand-search-clip-hyper3clip
+```
+
+> **A push to `main` deploys.** Per-space workflows are path-scoped to their
+> demo folder, so bumping a version pin to a package that is not on PyPI yet
+> will rebuild the Space and fail. Publish first, then push the pin.
+
+Keep Dockerfiles on released PyPI pins. `check_spaces.py` rejects an unpinned
+`hyperview`, and it rejects a version named in a demo's prose that disagrees
+with the version its Dockerfile installs.
+
+Monitor what is deployed:
+
+```bash
+uv run --project ../ python scripts/monitor_spaces.py --fail-on-unhealthy
+```
+
+### Vendored wheels
+
+`vendor/*.whl` is a temporary escape hatch for a Space that needs an unreleased
+HyperView feature. Once that version is on PyPI, the Space must go back to an
+explicit version pin and the wheel must be deleted.
+
+## Repository layout
+
+```text
+.
+├── .agents/skills/hyperview-spaces/   # agent skill: the full contract for this repo
+├── .github/workflows/                 # per-space deploy, reusable deploy, checks, monitor
+├── demos/                             # canonical source; one folder per use case
+├── shared-views/                      # generated read-only bundles (gitignored)
+├── archived-spaces/                   # retired examples, outside the active registry
+├── build/                             # build and deployment support
+├── docs/                              # architecture and operations documentation
+├── gallery/                           # registry-generated static gallery
+├── scripts/                           # registry checks and maintenance tools
+├── warm-worker/                       # registry-driven monitoring worker
+├── live-spaces.registry.json          # runtime deployments and local runtime demos
+└── shared-views.registry.json         # reviewed static artifacts and mount paths
+```
 
 ## Community Contributed Spaces
 
-Add one row here when you contribute a new Space.
+Add one row here when you contribute a new Space. `check_spaces.py` requires
+every registered folder to appear in this table.
 
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
@@ -134,57 +145,27 @@ Add one row here when you contribute a new Space.
 | HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
 | HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
 
-### Adding your own Space
+When you open a pull request, state the Hugging Face Space ID, the dataset
+source, the embedding models, and whether this repository should deploy the
+Space or only host the example folder.
 
-Live Spaces may live under any Hugging Face organization or personal account.
-Copy an existing demo folder, add its `folder`, `space_id`, `status`,
-`deploy_targets`, and `keep_warm` values to `live-spaces.registry.json`. Add a
-deployment workflow only for a Hyper3Labs-owned Space; use the manual command
-above for personal Spaces. The `check-spaces.yml` CI workflow enforces registry
-consistency.
+## Notes
 
-Landing-page Shared Views are listed separately in
-`shared-views.registry.json`. Their generated bundles live under
-`shared-views/<slug>/` and are intentionally ignored by Git.
+### Precomputed Lance data
 
-## Repository layout
+You can ship precomputed LanceDB artifacts with the image, either by
+precomputing at build time (`RUN python -c "from demo import build_dataset;
+build_dataset()"`) or by committing the artifacts, which usually needs Git LFS.
+This repo currently builds the dataset at first startup instead, so Hugging Face
+CPU Spaces do not reopen LanceDB artifacts from slow Docker overlay layers. The
+tradeoff is a long first boot, which is why the Dockerfiles use a
+`--start-period` of 45 minutes.
 
-```text
-.
-├── .agents/skills/hyperview-spaces/   # agent skill for working in this repo
-├── .github/workflows/
-├── demos/                       # canonical source; one folder per use case
-├── shared-views/                # ignored generated read-only bundles
-├── archived-spaces/        # retired examples, not part of the active registry
-├── build/                  # build and deployment support
-├── docs/                   # architecture and operations documentation
-├── gallery/                # registry-generated static gallery
-├── scripts/                # registry checks and maintenance tools
-├── warm-worker/            # registry-driven monitoring worker
-├── live-spaces.registry.json    # runtime deployments and local runtime demos
-├── shared-views.registry.json   # reviewed static artifacts and mount paths
-└── README.md
-```
-
-## About precomputed Lance data
-
-Yes, you can ship precomputed LanceDB artifacts with the image. There are two valid options:
-
-1. **Build-time precompute**
-   - `RUN python -c "from demo import build_dataset; build_dataset()"`
-   - Artifacts are baked into the Docker image layers
-2. **Commit precomputed artifacts into this repo**
-   - Useful when startup determinism is critical
-   - Usually requires careful size control (and potentially Git LFS)
-
-For now, this repo builds the dataset at first startup so Hugging Face CPU
-Spaces do not reopen LanceDB artifacts from slow Docker overlay layers.
-
-## Dataset mirrors
+### Dataset mirrors
 
 The ABO catalog demo expects a Hugging Face metadata mirror at
-`hyper3labs/amazon-berkeley-objects`. Build and upload that mirror from the
-HyperView repo root with:
+`hyper3labs/amazon-berkeley-objects`. Build and upload it from the HyperView
+repo root:
 
 ```bash
 uv run --with pyarrow --with huggingface_hub \
@@ -192,6 +173,6 @@ uv run --with pyarrow --with huggingface_hub \
 ```
 
 The script writes Parquet configs for `listings`, `images`, `spins`, and
-`3dmodels`, preserves original ABO notices, and stores official S3 asset URLs
-instead of duplicating image/model binaries. Upload requires a local Hugging
-Face token with write access to the `hyper3labs` org.
+`3dmodels`, preserves the original ABO notices, and stores official S3 asset
+URLs rather than duplicating image or model binaries. Upload requires a local
+Hugging Face token with write access to the `hyper3labs` org.
