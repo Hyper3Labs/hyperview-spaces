@@ -139,6 +139,11 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   registry entry, never the bundle.
 - **`mount_path` must be exactly `/spaces/<slug>`.** The exporter rebases asset
   URLs against it; a mismatch produces a bundle that 404s its own media.
+- **A Live Space Dockerfile must set `HYPERVIEW_NO_AUTH=1`.** HyperView 1.0
+  mints a session token and rejects unauthenticated runtime commands. A public
+  Space has no way to hand visitors that token, so the container starts, the
+  healthcheck passes, Hugging Face reports RUNNING, and every visitor gets 401s
+  on panel creation and media. The container is the trust boundary here.
 - **Do not remove `.hyperview/extensions/` from a copied folder** unless you
   also remove the panel it backs from `demo.py`.
 - **A benchmark a demo prints must be regenerable, and its cases must come from
