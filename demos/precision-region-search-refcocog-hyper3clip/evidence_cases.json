@@ -8,12 +8,13 @@
   },
   "benchmark": {
     "queryCount": 180,
-    "hyper3Hit1": "55.0%",
-    "clipHit1": "50.6%",
-    "hyper3Hit10": "90.0%",
-    "clipHit10": "87.8%",
-    "hyper3Mrr": "0.669",
-    "clipMrr": "0.633"
+    "hyper3Hit1": "52.8%",
+    "clipHit1": "48.3%",
+    "hyper3Hit10": "90.6%",
+    "clipHit10": "83.9%",
+    "hyper3Mrr": "0.662",
+    "clipMrr": "0.615",
+    "source": "scripts/eval_precision_regions.py"
   },
   "cases": [
     {
@@ -88,6 +89,31 @@
           { "rank": 3, "text": "White van." },
           { "rank": 4, "text": "A double decker bus parked on the right side of the street facing forward.", "isTarget": true },
           { "rank": 5, "text": "Red single-decker bus." }
+        ]
+      }
+    },
+    {
+      "id": "bench",
+      "label": "Hospitality / Seating",
+      "shortLabel": "Empty bench seat",
+      "context": "Venue seating",
+      "query": "An empty seat at on a bench.",
+      "business": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five plausible chairs before reaching the annotated bench seat, while CLIP ranks it first.",
+      "target": { "hyper3Rank": 9, "clipRank": 1 },
+      "results": {
+        "hyper3": [
+          { "rank": 1, "text": "the chair on the bottom right" },
+          { "rank": 2, "text": "An office chair closest to the corner." },
+          { "rank": 3, "text": "the front bleacher" },
+          { "rank": 4, "text": "The empty chair on the end of the row." },
+          { "rank": 5, "text": "The wicker chair to the left." }
+        ],
+        "clip": [
+          { "rank": 1, "text": "An empty seat at on a bench.", "isTarget": true },
+          { "rank": 2, "text": "The chair on the right, closest to the guy with no hat on." },
+          { "rank": 3, "text": "The white planter chair with the woman wearing dark clothes and white sneakers sitting in it." },
+          { "rank": 4, "text": "An office chair with wheels" },
+          { "rank": 5, "text": "A back rest of a wooden chair which was occupied by a man" }
         ]
       }
     }
