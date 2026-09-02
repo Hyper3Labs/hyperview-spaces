@@ -32,11 +32,9 @@ RUN pip install "hyper-models[ml]==${HYPER_MODELS_VERSION}" && python -c "import
 
 COPY --chown=user demo.py ./demo.py
 
-# HyperView 1.0 mints a session token and rejects unauthenticated runtime
-# commands. A public Space has no way to hand visitors that token, so panel
-# creation and case switching 401 without this. It marks the server public:
-# visitors get the viewer commands and nothing else, so provider registration,
-# extension install, tool execution and compute stay closed.
+# Only POST/PATCH/DELETE under /api/ are token-gated -- media GETs stay open
+# either way. This marks the server public so viewer commands run without the
+# token, while provider.register, extension.install, tools and compute get 403.
 ENV HYPERVIEW_NO_AUTH=1
 ENV HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
