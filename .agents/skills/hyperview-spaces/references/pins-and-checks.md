@@ -105,7 +105,7 @@ INFO: hyperview pins: 1.0.0
 
 ```bash
 uv run --project ../ python scripts/check_spaces.py
-uv run --project ../ python scripts/check_shared_views.py
+uv run --project ../ python scripts/check_static_spaces.py
 ```
 
 `.github/workflows/check-spaces.yml` runs these on push and pull request. They

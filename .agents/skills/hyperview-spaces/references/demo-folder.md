@@ -1,7 +1,7 @@
 # Anatomy of a demo folder
 
 A folder under `demos/<slug>/` is the single canonical source for one use case.
-It is deployed as a Live Space and exported as a Shared View without forking.
+It is deployed as a Live Space and exported as a Static Space without forking.
 
 ## Required files
 

@@ -1,6 +1,6 @@
 ---
 name: hyperview-spaces
-description: Author, validate, and ship HyperView demos from the hyperview-spaces repo - add a demo folder, deploy it as a Hugging Face Live Space, export it as a static Shared View bundle, keep the live-spaces and shared-views registries consistent, and satisfy the check_spaces / check_shared_views CI gates.
+description: Author, validate, and ship HyperView demos from the hyperview-spaces repo - add a demo folder, deploy it as a Hugging Face Live Space, export it as a Static Space bundle, keep the live-spaces and static-spaces registries consistent, and satisfy the check_spaces / check_static_spaces CI gates.
 license: MIT
 compatibility: Requires the hyperview-spaces checkout, Python 3.10-3.13, and a HyperView install (`uv run --project ../` from inside the repo, or `uv tool install hyperview`). Deployment needs a Hugging Face account; export needs a locally built workspace.
 metadata:
@@ -15,24 +15,24 @@ the registries, workflows, and version pins that describe it consistent.
 
 ## The two delivery modes
 
-| | Live Space | Shared View |
+| | Live Space | Static Space |
 | --- | --- | --- |
-| What it is | Docker container running a Python HyperView runtime on Hugging Face | Self-contained read-only static bundle |
+| What it is | Docker container running a Python HyperView runtime on Hugging Face | Self-contained read-only bundle served as plain files |
 | Can do | New text queries, new embeddings, recomputed layouts, mutated workspace state | Prepared interactions, pan/zoom/lasso/selection, precomputed similarity, materialized text-search results |
 | Cannot do | - | Anything that needs the backend: live embedding of a typed query, new providers |
-| Registry | `live-spaces.registry.json` | `shared-views.registry.json` |
-| Produced by | Docker build of `demos/<slug>/` | `hyperview export` via `scripts/export_shared_views.py` |
+| Registry | `live-spaces.registry.json` | `static-spaces.registry.json` |
+| Produced by | Docker build of `demos/<slug>/` | `hyperview export` via `scripts/export_static_spaces.py` |
 | Hosted at | `huggingface.co/spaces/<owner>/<name>` | Any static host, at any path |
 
 Both come from **one** canonical source under `demos/<slug>/`. There is no
-forked "static demo" implementation - if you find yourself writing one, stop and
+forked "Static Space" implementation - if you find yourself writing one, stop and
 change the demo folder instead.
 
 ## When to use this skill
 
 - Add a new demo, or change an existing one's dataset, models, panels, or copy.
 - Deploy or redeploy a Live Space to Hugging Face.
-- Regenerate a Shared View bundle after a demo's workspace or panels changed.
+- Regenerate a Static Space bundle after a demo's workspace or panels changed.
 - Bump a `hyperview` or `hyper-models` version pin across demos.
 - Diagnose a red `check-spaces.yml` run or an unhealthy Space.
 
@@ -40,7 +40,7 @@ change the demo folder instead.
 
 ```text
 demos/                        canonical source; one folder per use case
-shared-views/                 generated read-only bundles (gitignored)
+static-spaces/                generated read-only bundles (gitignored)
 archived-spaces/              retired examples, outside the active registry
 scripts/                      registry checks and maintenance tools
 gallery/                      registry-generated static gallery
@@ -48,7 +48,7 @@ warm-worker/                  registry-driven monitoring worker
 docs/                         deployment architecture, data delivery, evidence audit
 results/                      reproducible eval output backing demo benchmarks
 live-spaces.registry.json     runtime deployments and local runtime demos
-shared-views.registry.json    reviewed static artifacts
+static-spaces.registry.json   reviewed static artifacts
 .github/workflows/            per-space deploy, reusable deploy, checks, monitor
 ```
 
@@ -73,23 +73,23 @@ shared-views.registry.json    reviewed static artifacts
 
 Full detail: [references/demo-folder.md](references/demo-folder.md).
 
-## Core workflow: ship a Shared View
+## Core workflow: ship a Static Space
 
 ```bash
 # 1. Build the workspace locally (the exporter reads the local runtime state)
 uv run --project ../ python demos/<slug>/demo.py
 
-# 2. Export registered bundles into shared-views/<slug>/
-uv run --project ../ python scripts/export_shared_views.py <slug>
+# 2. Export registered bundles into static-spaces/<slug>/
+uv run --project ../ python scripts/export_static_spaces.py <slug>
 
 # 3. Validate, including the generated bundles
-uv run --project ../ python scripts/check_shared_views.py --require-bundles
+uv run --project ../ python scripts/check_static_spaces.py --require-bundles
 ```
 
-`export_shared_views.py` takes positional slugs; with no arguments it exports
-every registered Shared View. The exporter validates its own output, so a green
+`export_static_spaces.py` takes positional slugs; with no arguments it exports
+every registered Static Space. The exporter validates its own output, so a green
 run means the bundle is a real static export with no backend-only text search
-left in it. Detail: [references/shared-views.md](references/shared-views.md).
+left in it. Detail: [references/static-spaces.md](references/static-spaces.md).
 
 ## Core workflow: deploy a Live Space
 
@@ -113,7 +113,7 @@ Run both before opening a PR. `check-spaces.yml` runs them in CI.
 
 ```bash
 uv run --project ../ python scripts/check_spaces.py
-uv run --project ../ python scripts/check_shared_views.py
+uv run --project ../ python scripts/check_static_spaces.py
 ```
 
 `check_spaces.py` enforces registry/disk/workflow agreement, required files,
@@ -135,7 +135,7 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
 - **Demos sharing a model catalog must share its version.** Two demos on
   different `hyper-models` pins silently compute different vectors while both
   claim the same embedding space.
-- **`shared-views/` is gitignored.** Bundles are generated artifacts; commit the
+- **`static-spaces/` is gitignored.** Bundles are generated artifacts; commit the
   registry entry, never the bundle.
 - **Bundles are location-independent.** They reference assets relatively and
   resolve API and media from the document URL, so the same files work at any

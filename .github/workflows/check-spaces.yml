@@ -5,7 +5,7 @@ on:
     paths:
       - "live-spaces.registry.json"
       - "demos/**"
-      - "shared-views.registry.json"
+      - "static-spaces.registry.json"
       - ".github/workflows/**"
       - "README.md"
       - "scripts/**"
@@ -25,5 +25,5 @@ jobs:
       # HyperView instead of keeping its own copy of the hook list.
       - run: python -m pip install --disable-pip-version-check hyperview ruff
       - run: python scripts/check_spaces.py
-      - run: python scripts/check_shared_views.py
+      - run: python scripts/check_static_spaces.py
       - run: ruff check demos scripts

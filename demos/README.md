@@ -19,7 +19,7 @@ demos/
 ```
 
 Each subfolder is the canonical source for a use case and can be deployed as a
-Live Space or exported as a Shared View. A deployable root contains at least
+Live Space or exported as a Static Space. A deployable root contains at least
 `README.md`, `Dockerfile`, and `demo.py`.
 
 ## Agent-friendly pattern

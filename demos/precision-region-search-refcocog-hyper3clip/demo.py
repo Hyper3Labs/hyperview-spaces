@@ -275,7 +275,7 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
             payload,
             # Bind the authored default explicitly. Static exports reconstruct
             # the panel from view props, so using the transient all-items
-            # collection here makes the Shared Space open on the full dataset.
+            # collection here makes the Static Space open on the full dataset.
             collection_id=collection_ids[DEFAULT_CASE_ID]["hyper3"],
             collection_ids=collection_ids,
         ),

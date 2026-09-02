@@ -32,7 +32,7 @@ Fix in two layers:
 
 1. **Keep-warm + status monitoring on Cloudflare** (today, cheap, no HyperView
    changes) — stop demos from being dead links.
-2. **Static demo bundles** (after HyperView `hyperview export`, see
+2. **Static Spaces** (after HyperView `hyperview export`, see
    `docs/refactor-plan-2026-07.md` Phase 4) — most demos stop needing a
    server at all, which makes them deployable to HF *and* Cloudflare for
    free, with zero cold start, permanently.
@@ -69,7 +69,7 @@ Repo layout: `warm-worker/` with `wrangler.toml` (cron trigger `*/5 * * * *`),
 `src/index.ts`, reading a build-time copy of `live-spaces.registry.json`.
 Deploy: `npx wrangler deploy` (manual) — no CI secrets needed initially.
 
-## Layer 2: static demo bundles (the real fix)
+## Layer 2: Static Spaces (the real fix)
 
 `hyperview export` (HyperView Phase 4) produces a self-contained bundle:
 static frontend + runtime snapshot JSON + materialized collections + sample
@@ -89,7 +89,7 @@ Registry change: each entry gains
 workflows dispatch accordingly. Demos stay on `hf-docker` only if they truly
 need live Python (agent-driven demos); showcase demos move to static.
 
-### Interactivity budget for static demos
+### Interactivity budget for a Static Space
 
 - Browsing, panels, layouts, selection, neighbor exploration: precomputed
   collections + embeddings shipped in the bundle; nearest-neighbor over
@@ -102,11 +102,11 @@ need live Python (agent-driven demos); showcase demos move to static.
      hyper3-clip text tower via transformers.js, cached by the browser.
   3. Never: a paid inference endpoint.
 
-### Custom panels in static bundles
+### Custom panels in a Static Space
 
 Demos rely on custom/extension panels (readout panels etc.). These already
 ship as JS modules loaded by `RuntimeModulePanel`, so they work unchanged in
-a static bundle: the export includes the extension panel modules and their
+a Static Space: the export includes the extension panel modules and their
 declared `PanelDefinition`s in the snapshot. Panel *state* changes (tab
 focus, filters, selected sample) stay client-side and ephemeral — exactly
 the read-only contract. Commands that would mutate runtime state are
@@ -117,7 +117,7 @@ workbench" affordance, which doubles as the pip-install CTA.
 
 One static index page (FiftyOne/Rerun-style examples gallery) listing every
 demo with a thumbnail, one-line story, live status badge (from
-`warm-worker` for the remaining Docker Spaces; static bundles are always
+`warm-worker` for the remaining Docker Spaces; Static Spaces are always
 "live"), and links. Served from the same Cloudflare Worker static assets as
 the landing page (e.g. `hyper3labs.com/demos`), generated from
 `live-spaces.registry.json` so the registry stays the single source of truth.
@@ -126,14 +126,14 @@ the landing page (e.g. `hyper3labs.com/demos`), generated from
 
 - No Cloudflare Containers / Durable Objects compute for demos (paid paths;
   Containers explicitly rejected on cost).
-- LanceDB remains the storage backend for the real product; static bundles
+- LanceDB remains the storage backend for the real product; Static Spaces
   are an export format, not a storage migration.
 
 ## Rollout order
 
 1. `warm-worker` live (Layer 1) — kills dead-demo links this week.
 2. HyperView Phase 1 & 4 land `hyperview export`.
-3. Port `inat24-tiny` (flagship) to a static bundle; deploy to **both** an HF
+3. Port `inat24-tiny` (flagship) to a Static Space; deploy to **both** an HF
    static Space and Workers static assets; verify parity.
 4. Port remaining showcase demos; flip hyper3labs.com embeds to the static
    URLs; keep-warm list shrinks to genuinely dynamic Spaces only.

@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "shared_views": [
+  "static_spaces": [
     {
       "slug": "abo-catalog",
       "name": "ABO Catalog",
       "source_folder": "demos/abo-catalog-clip-hycoclip",
       "workspace_id": "abo-catalog-clip-hyper3clip-split",
       "walkthrough_panel_id": "catalog-hierarchy-readout",
-      "bundle_folder": "shared-views/abo-catalog",
+      "bundle_folder": "static-spaces/abo-catalog",
       "live_space_id": "hyper3labs/HyperView-ABO-Catalog",
       "live_url": "https://hyper3labs-hyperview-abo-catalog.hf.space",
       "similarity_k": 10
@@ -18,7 +18,7 @@
       "source_folder": "demos/precision-region-search-refcocog-hyper3clip",
       "workspace_id": "precision-region-search-business-evidence-v3",
       "walkthrough_panel_id": "precision-region-readout",
-      "bundle_folder": "shared-views/precision-regions",
+      "bundle_folder": "static-spaces/precision-regions",
       "live_space_id": null,
       "live_url": null
     },
@@ -28,7 +28,7 @@
       "source_folder": "demos/fashion-deepfashion-text-search-clip-hyper3clip",
       "workspace_id": "fashion-typed-search-business-evidence-v3",
       "walkthrough_panel_id": "fashion-search-readout",
-      "bundle_folder": "shared-views/fashion-products",
+      "bundle_folder": "static-spaces/fashion-products",
       "live_space_id": "hyper3labs/HyperView-DeepFashion-Text-Search",
       "live_url": "https://hyper3labs-hyperview-deepfashion-text-search.hf.space"
     },
@@ -38,7 +38,7 @@
       "source_folder": "demos/logo-brand-search-clip-hyper3clip",
       "workspace_id": "logo-brand-search-clip-hyper3clip-hf-live-v4",
       "walkthrough_panel_id": "logo-brand-readout",
-      "bundle_folder": "shared-views/logo-search",
+      "bundle_folder": "static-spaces/logo-search",
       "live_space_id": "mnm-matin/HyperView-Logo-Brand-Search",
       "live_url": "https://mnm-matin-hyperview-logo-brand-search.hf.space"
     },
@@ -48,7 +48,7 @@
       "source_folder": "demos/geospatial-eurosat-clip-hyper3clip",
       "workspace_id": "geospatial-resisc45-retrieval-evidence-v2",
       "walkthrough_panel_id": "geospatial-retrieval-readout",
-      "bundle_folder": "shared-views/geospatial",
+      "bundle_folder": "static-spaces/geospatial",
       "live_space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
       "live_url": "https://mnm-matin-hyperview-eurosat-geospatial.hf.space",
       "similarity_k": 10
@@ -59,7 +59,7 @@
       "source_folder": "demos/visual-safety-content-clip-hyper3clip",
       "workspace_id": "visual-safety-review-queue-evidence-v3",
       "walkthrough_panel_id": "visual-safety-readout",
-      "bundle_folder": "shared-views/visual-safety",
+      "bundle_folder": "static-spaces/visual-safety",
       "live_space_id": "mnm-matin/HyperView-Visual-Safety",
       "live_url": "https://mnm-matin-hyperview-visual-safety.hf.space"
     }

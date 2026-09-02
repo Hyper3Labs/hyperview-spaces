@@ -82,7 +82,7 @@ local image directory — it re-embeds, which regenerates the content-hash layou
 keys that the demos pin as constants (`HYPER3_LAYOUT_KEY`, `CLIP_LAYOUT_KEY`).
 Rebuilding at boot therefore does not reproduce the same workspace.
 
-`hyperview export` produces a read-only static Shared View, not a live dataset
+`hyperview export` produces a read-only Static Space, not a live dataset
 that can be opened with `hv.Dataset(name)`.
 
 Neither ships a prepared live dataset. The demos adopted an architecture that

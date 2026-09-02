@@ -1,6 +1,6 @@
 # Demo evidence: what each one can actually back up
 
-The README tells a reader that every Shared View "shows the per-case evidence
+The README tells a reader that every Static Space "shows the per-case evidence
 for both, including the cases CLIP wins." That is the right promise. It was not
 true of every demo; this page is the audit that closed the gap, and what is
 still open.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Shared View metadata and any locally generated bundles."""
+"""Validate Static Space metadata and any locally generated bundles."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / "shared-views.registry.json"
+REGISTRY_PATH = ROOT / "static-spaces.registry.json"
 LIVE_REGISTRY_PATH = ROOT / "live-spaces.registry.json"
 
 
@@ -25,15 +25,15 @@ def main() -> int:
     parser.add_argument(
         "--require-bundles",
         action="store_true",
-        help="Fail when an ignored local Shared View bundle has not been generated.",
+        help="Fail when an ignored local Static Space bundle has not been generated.",
     )
     args = parser.parse_args()
 
     errors: list[str] = []
     registry = read_object(REGISTRY_PATH)
-    entries = registry.get("shared_views")
+    entries = registry.get("static_spaces")
     if not isinstance(entries, list):
-        print("ERROR: shared-views.registry.json must contain a shared_views list")
+        print("ERROR: static-spaces.registry.json must contain a static_spaces list")
         return 1
 
     live_registry = read_object(LIVE_REGISTRY_PATH)
@@ -61,7 +61,7 @@ def main() -> int:
             errors.append(f"entry {index} has an invalid slug")
             continue
         if slug in seen_slugs:
-            errors.append(f"duplicate Shared View slug: {slug}")
+            errors.append(f"duplicate Static Space slug: {slug}")
         seen_slugs.add(slug)
 
         if (
@@ -75,9 +75,9 @@ def main() -> int:
         else:
             seen_sources.add(source_folder)
 
-        if bundle_folder != f"shared-views/{slug}":
+        if bundle_folder != f"static-spaces/{slug}":
             errors.append(
-                f"{slug}: bundle_folder must be 'shared-views/{slug}', got {bundle_folder!r}"
+                f"{slug}: bundle_folder must be 'static-spaces/{slug}', got {bundle_folder!r}"
             )
         if not isinstance(workspace_id, str) or not workspace_id:
             errors.append(f"{slug}: workspace_id must be a non-empty string")
@@ -91,7 +91,7 @@ def main() -> int:
         bundle = ROOT / str(bundle_folder)
         manifest_path = bundle / "hyperview-static.json"
         if not manifest_path.is_file():
-            message = f"{slug}: local Shared View bundle has not been generated"
+            message = f"{slug}: local Static Space bundle has not been generated"
             if args.require_bundles:
                 errors.append(message)
             else:
@@ -154,7 +154,7 @@ def main() -> int:
     if errors:
         print(f"FAILED: {len(errors)} error(s)")
         return 1
-    print(f"PASS: {len(entries)} Shared View entries are valid")
+    print(f"PASS: {len(entries)} Static Space entries are valid")
     return 0
 
 

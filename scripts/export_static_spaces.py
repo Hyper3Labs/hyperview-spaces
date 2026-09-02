@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Export every registered Shared View bundle from the local HyperView runtime.
+"""Export every registered Static Space bundle from the local HyperView runtime.
 
-Reads shared-views.registry.json and runs `hyperview export <workspace_id>`
-into shared-views/<slug> for each entry, then validates the results with
-check_shared_views.py. Workspaces must already exist locally (run the demo's
+Reads static-spaces.registry.json and runs `hyperview export <workspace_id>`
+into static-spaces/<slug> for each entry, then validates the results with
+check_static_spaces.py. Workspaces must already exist locally (run the demo's
 demo.py first when a workspace or its panel content changed).
 
 Usage:
-  uv run --project ../ python scripts/export_shared_views.py [slug ...]
+  uv run --project ../ python scripts/export_static_spaces.py [slug ...]
 
-With no arguments every registered Shared View is exported; passing slugs
+With no arguments every registered Static Space is exported; passing slugs
 limits the run to those entries.
 """
 
@@ -21,15 +21,15 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / "shared-views.registry.json"
+REGISTRY_PATH = ROOT / "static-spaces.registry.json"
 HYPERVIEW_ROOT = ROOT.parent
 
 
 def main() -> int:
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-    entries = registry.get("shared_views")
+    entries = registry.get("static_spaces")
     if not isinstance(entries, list):
-        print("ERROR: shared-views.registry.json must contain a shared_views list")
+        print("ERROR: static-spaces.registry.json must contain a static_spaces list")
         return 1
 
     wanted = set(sys.argv[1:])
@@ -64,9 +64,9 @@ def main() -> int:
             return result.returncode
         exported += 1
 
-    print(f"Exported {exported} Shared View bundle(s); validating…")
+    print(f"Exported {exported} Static Space bundle(s); validating…")
     return subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "check_shared_views.py"), "--require-bundles"],
+        [sys.executable, str(ROOT / "scripts" / "check_static_spaces.py"), "--require-bundles"],
     ).returncode
 
 

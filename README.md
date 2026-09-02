@@ -1,12 +1,12 @@
 # hyperview-spaces
 
 Source for the HyperView demos: one folder per use case, shipped either as a
-static **Shared View** anyone can open in a browser or as a runtime-backed
-**Live Space** on Hugging Face.
+**Static Space** (the exported bundle served as plain files) anyone can open
+in a browser, or as a runtime-backed **Live Space** on Hugging Face.
 
 ## Open one
 
-Each Shared View is a complete, read-only HyperView workspace over one corpus.
+Each Static Space is a complete, read-only HyperView workspace over one corpus.
 No install, no backend, no account — the ranked results, the embedding topology,
 and every underlying sample are there to inspect.
 
@@ -25,15 +25,15 @@ CLIP wins.
 
 ## Two delivery modes, one source
 
-|  | Live Space | Shared View |
+|  | Live Space | Static Space |
 | --- | --- | --- |
 | Runtime | Docker container running HyperView on Hugging Face | None — static files |
 | Can do | New queries, new embeddings, recomputed layouts, mutated state | Prepared interactions, pan/zoom/lasso/selection, precomputed similarity, materialized text search |
-| Registry | `live-spaces.registry.json` | `shared-views.registry.json` |
-| Built by | Docker build of `demos/<slug>/` | `scripts/export_shared_views.py` |
+| Registry | `live-spaces.registry.json` | `static-spaces.registry.json` |
+| Built by | Docker build of `demos/<slug>/` | `scripts/export_static_spaces.py` |
 
 Both are produced from the same folder under `demos/`. There is no forked
-"static demo" implementation — if you need different behaviour, change the demo.
+"Static Space" implementation — if you need different behaviour, change the demo.
 
 ## Make your own
 
@@ -51,7 +51,7 @@ The happy path is four steps:
 
 ```bash
 uv run --project ../ python scripts/check_spaces.py
-uv run --project ../ python scripts/check_shared_views.py
+uv run --project ../ python scripts/check_static_spaces.py
 ```
 
 Test the image locally before deploying anything:
@@ -116,7 +116,7 @@ explicit version pin and the wheel must be deleted.
 ├── .agents/skills/hyperview-spaces/   # agent skill: the full contract for this repo
 ├── .github/workflows/                 # per-space deploy, reusable deploy, checks, monitor
 ├── demos/                             # canonical source; one folder per use case
-├── shared-views/                      # generated read-only bundles (gitignored)
+├── static-spaces/                      # generated read-only bundles (gitignored)
 ├── archived-spaces/                   # retired examples, outside the active registry
 ├── build/                             # build and deployment support
 ├── docs/                              # architecture and operations documentation
@@ -124,7 +124,7 @@ explicit version pin and the wheel must be deleted.
 ├── scripts/                           # registry checks and maintenance tools
 ├── warm-worker/                       # registry-driven monitoring worker
 ├── live-spaces.registry.json          # runtime deployments and local runtime demos
-└── shared-views.registry.json         # reviewed static artifacts and mount paths
+└── static-spaces.registry.json         # reviewed static artifacts and mount paths
 ```
 
 ## Community Contributed Spaces

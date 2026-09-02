@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const registryPath = resolve(__dirname, "../live-spaces.registry.json");
-const sharedRegistryPath = resolve(__dirname, "../shared-views.registry.json");
+const staticRegistryPath = resolve(__dirname, "../static-spaces.registry.json");
 const outPath = resolve(__dirname, "out/index.html");
 
 const registry = JSON.parse(await readFile(registryPath, "utf8"));
@@ -13,20 +13,20 @@ if (!registry || !Array.isArray(registry.spaces)) {
   throw new Error("live-spaces.registry.json must contain a spaces array");
 }
 
-const sharedRegistry = JSON.parse(await readFile(sharedRegistryPath, "utf8"));
-if (!sharedRegistry || !Array.isArray(sharedRegistry.shared_views)) {
-  throw new Error("shared-views.registry.json must contain a shared_views array");
+const staticRegistry = JSON.parse(await readFile(staticRegistryPath, "utf8"));
+if (!staticRegistry || !Array.isArray(staticRegistry.static_spaces)) {
+  throw new Error("static-spaces.registry.json must contain a static_spaces array");
 }
 
 const warmWorkerUrl = normalizeBaseUrl(process.env.WARM_WORKER_URL ?? "");
-// The two registries do not share a slug: a Shared View is named for its
+// The two registries do not share a slug: a Static Space is named for its
 // bundle ("precision-regions") and a Live Space for its demo
 // ("precision-region-search"). The demo folder is what they agree on.
 const liveByFolder = new Map(
   registry.spaces.map((space) => [space.folder, space]),
 );
 const cards = registry.spaces.map(renderCard).join("\n");
-const sharedCards = sharedRegistry.shared_views.map(renderSharedCard).join("\n");
+const staticCards = staticRegistry.static_spaces.map(renderStaticCard).join("\n");
 
 const html = `<!doctype html>
 <html lang="en">
@@ -272,13 +272,13 @@ ${cards}
 
     <header class="section-header">
       <div>
-        <h1>Shared Views</h1>
+        <h1>Static Spaces</h1>
       </div>
-      <p class="lede">Read-only static bundles. No runtime, no cold start: prepared cases, pan/zoom/lasso, precomputed similarity and materialized search results, with every image served from the bundle itself.</p>
+      <p class="lede">Read-only bundles served as plain files. No runtime, no cold start: prepared cases, pan/zoom/lasso, precomputed similarity and materialized search results, with every image served from the bundle itself.</p>
     </header>
 
-    <section class="grid" aria-label="Shared Views">
-${sharedCards}
+    <section class="grid" aria-label="Static Spaces">
+${staticCards}
     </section>
 
     <footer>
@@ -323,9 +323,9 @@ ${linksMarkup}
       </article>`;
 }
 
-function renderSharedCard(view) {
+function renderStaticCard(view) {
   if (typeof view.slug !== "string" || view.slug.length === 0) {
-    throw new Error("shared view is missing slug");
+    throw new Error("static space is missing slug");
   }
   const live = liveByFolder.get(view.source_folder) ?? {};
   const name = view.name || live.demo_name || view.slug;
@@ -341,7 +341,7 @@ function renderSharedCard(view) {
         <h2>${escapeHtml(name)}</h2>
         <p class="description">${escapeHtml(description)}</p>
         <div class="links">
-          <a class="primary" href="${escapeAttribute(href)}">Open Shared View</a>
+          <a class="primary" href="${escapeAttribute(href)}">Open Static Space</a>
         </div>
       </article>`;
 }
