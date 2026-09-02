@@ -120,7 +120,6 @@ explicit version pin and the wheel must be deleted.
 ├── archived-spaces/                   # retired examples, outside the active registry
 ├── build/                             # build and deployment support
 ├── docs/                              # architecture and operations documentation
-├── gallery/                           # registry-generated static gallery
 ├── scripts/                           # registry checks and maintenance tools
 ├── warm-worker/                       # registry-driven monitoring worker
 ├── live-spaces.registry.json          # runtime deployments and local runtime demos

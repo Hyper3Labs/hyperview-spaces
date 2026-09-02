@@ -43,7 +43,6 @@ demos/                        canonical source; one folder per use case
 static-spaces/                generated read-only bundles (gitignored)
 archived-spaces/              retired examples, outside the active registry
 scripts/                      registry checks and maintenance tools
-gallery/                      registry-generated static gallery
 warm-worker/                  registry-driven monitoring worker
 docs/                         deployment architecture, data delivery, evidence audit
 results/                      reproducible eval output backing demo benchmarks

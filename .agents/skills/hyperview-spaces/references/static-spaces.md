@@ -99,8 +99,8 @@ at a domain root or at any path inside a containing site:
   in the bundle depends on it
 - Locally, any static file server rooted at the directory holding `spaces/`
 
-`gallery/build.mjs` generates the static gallery from the registries; it is the
-index page over the exported bundles.
+The landing site's `/spaces` page (hyper3labs.github.io, `lib/spaces.ts`) is the
+index over the published Static Spaces.
 
 ## Choosing a mode
 

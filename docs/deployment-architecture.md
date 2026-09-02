@@ -113,9 +113,9 @@ the read-only contract. Commands that would mutate runtime state are
 disabled with a visible "read-only demo — run locally for the full
 workbench" affordance, which doubles as the pip-install CTA.
 
-### The demos gallery
+### The demos index
 
-One static index page (FiftyOne/Rerun-style examples gallery) listing every
+The landing site `/spaces` page (hyper3labs.github.io) lists every
 demo with a thumbnail, one-line story, live status badge (from
 `warm-worker` for the remaining Docker Spaces; Static Spaces are always
 "live"), and links. Served from the same Cloudflare Worker static assets as
