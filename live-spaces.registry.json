@@ -5,6 +5,7 @@
     {
       "space_id": "hyper3labs/HyperView",
       "folder": "demos/inat24-tiny-clip-hycoclip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "inat24-tiny",
       "demo_name": "HyperView - iNat24 Tiny",
       "description": "Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy.",
@@ -18,6 +19,8 @@
     {
       "space_id": "hyper3labs/HyperView-ABO-Catalog",
       "folder": "demos/abo-catalog-clip-hycoclip",
+      "deploy_mode": "live-bundle",
+      "bundle_slug": "abo-catalog",
       "demo_slug": "abo-catalog",
       "demo_name": "HyperView - ABO Catalog",
       "description": "Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings.",
@@ -31,6 +34,8 @@
     {
       "space_id": "hyper3labs/HyperView-DeepFashion-Text-Search",
       "folder": "demos/fashion-deepfashion-text-search-clip-hyper3clip",
+      "deploy_mode": "live-bundle",
+      "bundle_slug": "fashion-products",
       "demo_slug": "deepfashion-text-search",
       "demo_name": "HyperView - DeepFashion Text Search",
       "description": "Explore shopper-style text-to-image retrieval wins on a curated fashion catalog.",
@@ -44,6 +49,7 @@
     {
       "space_id": "hyper3labs/HyperView-Art-Text-Search",
       "folder": "demos/art-text-search-clip-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "art-text-search",
       "demo_name": "HyperView - Art Text Search",
       "description": "Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.",
@@ -55,6 +61,7 @@
     {
       "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
       "folder": "demos/geospatial-eurosat-clip-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "eurosat-geospatial",
       "demo_name": "HyperView - EuroSAT Geospatial",
       "description": "Review remote-sensing scene retrieval and neighborhood drift in aerial imagery.",
@@ -66,6 +73,7 @@
     {
       "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
       "folder": "demos/manufacturing-visa-reference-clip-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "visa-manufacturing",
       "demo_name": "HyperView - VisA Manufacturing",
       "description": "Find same-SKU visual references for manufacturing inspection images.",
@@ -79,6 +87,7 @@
     {
       "space_id": "mnm-matin/HyperView-Visual-Safety",
       "folder": "demos/visual-safety-content-clip-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "visual-safety",
       "demo_name": "HyperView - Visual Safety",
       "description": "Triage public marketplace images into safe and policy-review buckets.",
@@ -90,6 +99,7 @@
     {
       "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
       "folder": "demos/logo-brand-search-clip-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "logo-brand-search",
       "demo_name": "HyperView - Logo Brand Search",
       "description": "Compare CLIP and Hyper3-CLIP for detailed text-to-logo retrieval across a curated brand catalog.",
@@ -101,6 +111,7 @@
     {
       "space_id": null,
       "folder": "demos/precision-region-search-refcocog-hyper3clip",
+      "deploy_mode": "docker-folder",
       "demo_slug": "precision-region-search",
       "demo_name": "HyperView - Precision Region Search",
       "description": "Compare exact crop retrieval with CLIP and Hyper3-CLIP on RefCOCOg-style scenes.",

@@ -1,12 +1,21 @@
 name: Deploy HF Space - HyperView DeepFashion Text Search
 
+# live-bundle mode: the deployed artifact is the exported bundle committed to
+# the landing site, not this repository's demo folder. Nothing under
+# demos/fashion-deepfashion-text-search-clip-hyper3clip triggers a deploy;
+# after re-exporting and committing the bundle on the site, run this workflow
+# with workflow_dispatch (or send a `static-bundle-published` repository
+# dispatch) to roll the Live Space forward.
+
 on:
   push:
     branches: [main]
     paths:
-      - demos/fashion-deepfashion-text-search-clip-hyper3clip/**
+      - live-spaces.registry.json
       - .github/workflows/deploy-hf-space-fashion-deepfashion.yml
       - .github/workflows/deploy-hf-space-reusable.yml
+  repository_dispatch:
+    types: [static-bundle-published]
   workflow_dispatch:
 
 concurrency:
@@ -20,5 +29,9 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
-      source_dir: demos/fashion-deepfashion-text-search-clip-hyper3clip
+      deploy_mode: live-bundle
+      bundle_slug: fashion-products
+      hyperview_version: "1.1.0"
+      extra_pip: |
+        hyper-models[ml]==0.3.1
       space_id: hyper3labs/HyperView-DeepFashion-Text-Search

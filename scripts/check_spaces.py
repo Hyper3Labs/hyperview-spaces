@@ -12,12 +12,20 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "live-spaces.registry.json"
+STATIC_REGISTRY_PATH = ROOT / "static-spaces.registry.json"
 DEMOS_DIR = ROOT / "demos"
 SCRIPTS_DIR = ROOT / "scripts"
 WORKFLOWS_DIR = ROOT / ".github" / "workflows"
 README_PATH = ROOT / "README.md"
 VALID_STATUSES = {"live", "draft", "local"}
 VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
+# How a Space is put on Hugging Face. `docker-folder` syncs demos/<slug>/ and
+# lets the Space build that Dockerfile; `live-bundle` publishes the exported
+# bundle the landing site also serves as a Static Space. Both end up as an HF
+# Docker Space, so both keep `hf-docker` in deploy_targets.
+DEFAULT_DEPLOY_MODE = "docker-folder"
+VALID_DEPLOY_MODES = {"docker-folder", "live-bundle"}
+PINNED_REQUIREMENT = re.compile(r"^[A-Za-z0-9_.-]+(?:\[[^]]+\])?==[A-Za-z0-9_.+-]+$")
 LEGACY_PANEL_SDK_TOKENS = {
     "usePanelCommands": "usePanelCommands",
     "usePanelProps": "usePanelProps",
@@ -70,13 +78,51 @@ def yaml_scalar(text: str) -> str:
     return value
 
 
-def workflow_values(path: Path) -> tuple[str, str] | None:
-    text = path.read_text(encoding="utf-8")
-    source_match = re.search(r"^\s+source_dir:\s*(.+?)\s*$", text, re.MULTILINE)
-    space_match = re.search(r"^\s+space_id:\s*(.+?)\s*$", text, re.MULTILINE)
-    if not source_match or not space_match:
+def workflow_inputs(path: Path) -> dict[str, str] | None:
+    """The `with:` mapping a caller workflow passes to the reusable deploy job.
+
+    Hand-parsed rather than pulled through PyYAML: the check workflow installs
+    only HyperView and ruff, and the shape here is a flat mapping of scalars
+    plus the occasional `|` block (``extra_pip``), whose lines are joined with
+    newlines so the caller sees one requirement per line.
+    """
+
+    lines = path.read_text(encoding="utf-8").splitlines()
+    try:
+        start = next(
+            index for index, line in enumerate(lines) if re.fullmatch(r"(\s+)with:\s*", line)
+        )
+    except StopIteration:
         return None
-    return yaml_scalar(source_match.group(1)), yaml_scalar(space_match.group(1))
+    base_indent = len(lines[start]) - len(lines[start].lstrip())
+
+    values: dict[str, str] = {}
+    index = start + 1
+    while index < len(lines):
+        line = lines[index]
+        if not line.strip() or line.lstrip().startswith("#"):
+            index += 1
+            continue
+        indent = len(line) - len(line.lstrip())
+        if indent <= base_indent:
+            break
+        match = re.match(r"\s*([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$", line)
+        if not match:
+            return None
+        key, raw = match.group(1), match.group(2).strip()
+        index += 1
+        if raw in {"|", "|-", "|+", ">", ">-"}:
+            block: list[str] = []
+            while index < len(lines):
+                following = lines[index]
+                if following.strip() and len(following) - len(following.lstrip()) <= indent:
+                    break
+                block.append(following.strip())
+                index += 1
+            values[key] = "\n".join(item for item in block if item)
+        else:
+            values[key] = yaml_scalar(raw)
+    return values or None
 
 
 def read_frontmatter(path: Path) -> str | None:
@@ -206,6 +252,52 @@ def validate_panel_sdk(folder: Path, surface: dict[str, Any], errors: list[str])
                 )
 
 
+def validate_workflow_inputs(
+    deploy_mode: str,
+    workflow: Path,
+    values: dict[str, str],
+    errors: list[str],
+) -> None:
+    """The caller workflow must pass the inputs its deploy mode actually reads.
+
+    The two modes take disjoint inputs, and a workflow that mixes them silently
+    ignores half of what it was given: the reusable job branches on
+    `deploy_mode` and never looks at the rest.
+    """
+
+    if deploy_mode == "docker-folder":
+        for unused in ("bundle_slug", "hyperview_version", "extra_pip"):
+            if values.get(unused):
+                error(
+                    f"{workflow.name}: {unused} applies to deploy_mode live-bundle only", errors
+                )
+        return
+
+    if values.get("source_dir"):
+        error(
+            f"{workflow.name}: a live-bundle deploy publishes the exported bundle, "
+            "not source_dir",
+            errors,
+        )
+    version = values.get("hyperview_version", "")
+    if not version:
+        error(f"{workflow.name}: deploy_mode live-bundle needs hyperview_version", errors)
+    elif ".dev" in version or "+" in version:
+        # The generated Dockerfile installs this from PyPI; a working-tree
+        # version builds for minutes and then fails on the install step.
+        error(
+            f"{workflow.name}: hyperview_version must be a released version, got {version}",
+            errors,
+        )
+    for requirement in values.get("extra_pip", "").splitlines():
+        requirement = requirement.strip()
+        if requirement and not PINNED_REQUIREMENT.match(requirement):
+            error(
+                f"{workflow.name}: extra_pip must hold pkg==version pins, got {requirement!r}",
+                errors,
+            )
+
+
 def main() -> int:
     errors: list[str] = []
     sdk_surface = panel_sdk_surface(errors)
@@ -222,6 +314,15 @@ def main() -> int:
     if not isinstance(spaces, list):
         error("live-spaces.registry.json must contain a spaces list", errors)
         return 1
+
+    # A live-bundle Space deploys the very bundle the static registry mounts on
+    # the landing site, so the two registries have to name the same pairing.
+    static_registry: dict[str, Any] = json.loads(STATIC_REGISTRY_PATH.read_text(encoding="utf-8"))
+    static_by_slug: dict[str, dict[str, Any]] = {
+        entry["slug"]: entry
+        for entry in static_registry.get("static_spaces", [])
+        if isinstance(entry, dict) and isinstance(entry.get("slug"), str)
+    }
 
     registry_by_folder: dict[str, dict[str, Any]] = {}
     for index, space in enumerate(spaces):
@@ -255,6 +356,43 @@ def main() -> int:
         if space.get("keep_warm") and space_id is None:
             error(f"{folder}: keep_warm cannot be true when space_id is null", errors)
 
+        deploy_mode = space.get("deploy_mode", DEFAULT_DEPLOY_MODE)
+        bundle_slug = space.get("bundle_slug")
+        if deploy_mode not in VALID_DEPLOY_MODES:
+            error(
+                f"{folder}: deploy_mode must be one of {sorted(VALID_DEPLOY_MODES)}, "
+                f"got {deploy_mode!r}",
+                errors,
+            )
+        elif deploy_mode == "live-bundle":
+            if not isinstance(bundle_slug, str) or not bundle_slug.strip():
+                error(f"{folder}: deploy_mode live-bundle needs a bundle_slug", errors)
+            elif bundle_slug not in static_by_slug:
+                error(
+                    f"{folder}: bundle_slug {bundle_slug!r} is not a slug in "
+                    "static-spaces.registry.json",
+                    errors,
+                )
+            elif static_by_slug[bundle_slug].get("live_space_id") != space_id:
+                error(
+                    f"{folder}: bundle {bundle_slug!r} records live_space_id "
+                    f"{static_by_slug[bundle_slug].get('live_space_id')!r}, but this entry is "
+                    f"{space_id!r}",
+                    errors,
+                )
+            if space_id is None:
+                error(f"{folder}: deploy_mode live-bundle needs a space_id to publish to", errors)
+            # The bundle is published as an HF Docker Space, so the deploy target
+            # is unchanged; only the way the image is produced changed.
+            if isinstance(targets, list) and "hf-docker" not in targets:
+                error(
+                    f"{folder}: deploy_mode live-bundle still deploys an HF Docker Space, "
+                    "so deploy_targets must include hf-docker",
+                    errors,
+                )
+        elif bundle_slug is not None:
+            error(f"{folder}: bundle_slug applies to deploy_mode live-bundle only", errors)
+
     disk_folders = {
         path.relative_to(ROOT).as_posix()
         for path in DEMOS_DIR.iterdir()
@@ -269,15 +407,29 @@ def main() -> int:
     # package -> pinned version -> folders installing it
     pins_by_package: dict[str, dict[str, list[str]]] = {}
 
-    workflows_by_source: dict[str, list[tuple[Path, str]]] = {}
+    # A caller workflow is matched to its registry entry by whatever it deploys:
+    # the demo folder in docker-folder mode, the bundle slug in live-bundle mode.
+    workflows_by_key: dict[tuple[str, str], list[tuple[Path, dict[str, str]]]] = {}
     for workflow in sorted(WORKFLOWS_DIR.glob("deploy-hf-space-*.yml")):
         if workflow.name == "deploy-hf-space-reusable.yml":
             continue
-        values = workflow_values(workflow)
-        if values is None:
+        values = workflow_inputs(workflow)
+        if values is None or "space_id" not in values:
             continue
-        source_dir, space_id = values
-        workflows_by_source.setdefault(source_dir, []).append((workflow, space_id))
+        mode = values.get("deploy_mode", DEFAULT_DEPLOY_MODE)
+        if mode not in VALID_DEPLOY_MODES:
+            error(
+                f"{workflow.name}: deploy_mode must be one of {sorted(VALID_DEPLOY_MODES)}, "
+                f"got {mode!r}",
+                errors,
+            )
+            continue
+        key_field = "bundle_slug" if mode == "live-bundle" else "source_dir"
+        key_value = values.get(key_field, "")
+        if not key_value:
+            error(f"{workflow.name}: deploy_mode {mode} needs {key_field}", errors)
+            continue
+        workflows_by_key.setdefault((key_field, key_value), []).append((workflow, values))
 
     known_conflicts: dict[tuple[str, str | None, str], dict[str, Any]] = {}
     for conflict in registry.get("known_conflicts", []):
@@ -298,19 +450,43 @@ def main() -> int:
         targets = space.get("deploy_targets", [])
         if "hf-docker" not in targets:
             continue
-        workflows = workflows_by_source.get(folder, [])
+        deploy_mode = space.get("deploy_mode", DEFAULT_DEPLOY_MODE)
+        if deploy_mode == "live-bundle":
+            key = ("bundle_slug", str(space.get("bundle_slug") or ""))
+        else:
+            key = ("source_dir", folder)
+        workflows = workflows_by_key.get(key, [])
         if not workflows:
-            error(
-                f"{folder}: deploy_targets includes hf-docker but no workflow has source_dir {folder}",
-                errors,
-            )
+            # A workflow deploying this Space some other way is the likely cause,
+            # and saying so beats reporting the lookup that missed.
+            elsewhere = [
+                (path, values)
+                for matches in workflows_by_key.values()
+                for path, values in matches
+                if values.get("space_id") == space.get("space_id")
+            ]
+            if elsewhere:
+                path, values = elsewhere[0]
+                error(
+                    f"{folder}: registry says deploy_mode {deploy_mode}, but {path.name} "
+                    f"deploys this Space as {values.get('deploy_mode', DEFAULT_DEPLOY_MODE)}",
+                    errors,
+                )
+            else:
+                error(
+                    f"{folder}: deploy_targets includes hf-docker but no workflow has "
+                    f"{key[0]} {key[1]}",
+                    errors,
+                )
             continue
         if len(workflows) > 1:
             names = ", ".join(path.name for path, _ in workflows)
-            error(f"{folder}: multiple deploy workflows match source_dir ({names})", errors)
+            error(f"{folder}: multiple deploy workflows match {key[0]} ({names})", errors)
             continue
-        workflow, workflow_space_id = workflows[0]
+        workflow, workflow_values = workflows[0]
+        workflow_space_id = workflow_values.get("space_id")
         registry_space_id = space.get("space_id")
+        validate_workflow_inputs(deploy_mode, workflow, workflow_values, errors)
         if workflow_space_id != registry_space_id:
             key = (folder, registry_space_id, workflow_space_id)
             if key in known_conflicts:

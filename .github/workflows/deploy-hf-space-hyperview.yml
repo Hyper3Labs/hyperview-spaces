@@ -22,5 +22,6 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
+      deploy_mode: docker-folder
       source_dir: demos/inat24-tiny-clip-hycoclip
       space_id: hyper3labs/HyperView
