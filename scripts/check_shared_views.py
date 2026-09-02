@@ -55,7 +55,6 @@ def main() -> int:
         bundle_folder = entry.get("bundle_folder")
         workspace_id = entry.get("workspace_id")
         walkthrough_panel_id = entry.get("walkthrough_panel_id")
-        mount_path = entry.get("mount_path")
         live_space_id = entry.get("live_space_id")
 
         if not isinstance(slug, str) or not slug:
@@ -80,8 +79,6 @@ def main() -> int:
             errors.append(
                 f"{slug}: bundle_folder must be 'shared-views/{slug}', got {bundle_folder!r}"
             )
-        if mount_path != f"/spaces/{slug}":
-            errors.append(f"{slug}: mount_path must be '/spaces/{slug}', got {mount_path!r}")
         if not isinstance(workspace_id, str) or not workspace_id:
             errors.append(f"{slug}: workspace_id must be a non-empty string")
         if not isinstance(walkthrough_panel_id, str) or not walkthrough_panel_id:
@@ -111,16 +108,12 @@ def main() -> int:
             errors.append(f"{slug}: bundle has export warnings: {manifest.get('warnings')!r}")
         if not isinstance(capabilities, dict) or capabilities.get("text_search") is not False:
             errors.append(f"{slug}: bundle exposes backend-only text search")
-        # The registry field alone proves nothing: the exporter rebases asset
-        # URLs against the mount path it was given, so a bundle built without
-        # one serves /_next/... and 404s everything once published under
-        # /spaces/<slug>/. Compare what the bundle was actually built for.
-        bundle_mount_path = manifest.get("mount_path")
-        if bundle_mount_path != mount_path:
+        # A bundle must not name its own URL prefix: that is what made it
+        # break when published anywhere other than where it was built for.
+        if "mount_path" in manifest:
             errors.append(
-                f"{slug}: bundle was built for mount_path {bundle_mount_path!r}, "
-                f"but the registry mounts it at {mount_path!r}; "
-                f"re-export with --mount-path {mount_path}"
+                f"{slug}: bundle records a mount_path; re-export with a current "
+                "HyperView so it resolves its assets relatively"
             )
         manifest_workspace = manifest.get("workspace")
         manifest_workspace_id = (

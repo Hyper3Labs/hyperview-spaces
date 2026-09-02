@@ -32,7 +32,6 @@ tower, which needs the Python runtime, which means a Live Space.
   "workspace_id": "abo-catalog-clip-hyper3clip-split",
   "walkthrough_panel_id": "catalog-hierarchy-readout",
   "bundle_folder": "shared-views/abo-catalog",
-  "mount_path": "/spaces/abo-catalog",
   "live_space_id": "hyper3labs/HyperView-ABO-Catalog",
   "live_url": "https://hyper3labs-hyperview-abo-catalog.hf.space",
   "similarity_k": 10
@@ -44,8 +43,9 @@ Field rules enforced by `check_shared_views.py`:
 - `slug` unique and non-empty; `source_folder` unique and pointing at a real
   `demos/` folder
 - `bundle_folder` must be `shared-views/<slug>`
-- `mount_path` must be exactly `/spaces/<slug>` - the exporter rebases every
-  asset URL against it, so a mismatch yields a bundle that 404s its own media
+- the bundle must not record a `mount_path`; bundles reference their assets
+  relatively and resolve API and media from the document URL, so one that pins
+  a prefix came from an old HyperView and needs re-exporting
 - `workspace_id` and `walkthrough_panel_id` non-empty strings
 - `live_space_id` / `live_url` may be null for a static-only view
 
@@ -89,11 +89,13 @@ Bundle-level checks, each one a distinct failure message:
 
 ## Hosting
 
-Bundles are plain static files. Serve them under their `mount_path`:
+Bundles are plain static files, and location-independent - the same files work
+at a domain root or at any path inside a containing site:
 
 - Cloudflare Workers Static Assets - `hyperview export` writes a
   `wrangler.jsonc`, so `npx wrangler deploy` from the bundle directory works
-- Any static host or CDN, as long as the bundle sits at `/spaces/<slug>`
+- Any static host or CDN. The site convention is `/spaces/<slug>`, but nothing
+  in the bundle depends on it
 - Locally, any static file server rooted at the directory holding `spaces/`
 
 `gallery/build.mjs` generates the static gallery from the registries; it is the

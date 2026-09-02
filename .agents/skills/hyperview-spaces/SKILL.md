@@ -22,7 +22,7 @@ the registries, workflows, and version pins that describe it consistent.
 | Cannot do | - | Anything that needs the backend: live embedding of a typed query, new providers |
 | Registry | `live-spaces.registry.json` | `shared-views.registry.json` |
 | Produced by | Docker build of `demos/<slug>/` | `hyperview export` via `scripts/export_shared_views.py` |
-| Hosted at | `huggingface.co/spaces/<owner>/<name>` | Any static host, mounted at `/spaces/<slug>` |
+| Hosted at | `huggingface.co/spaces/<owner>/<name>` | Any static host, at any path |
 
 Both come from **one** canonical source under `demos/<slug>/`. There is no
 forked "static demo" implementation - if you find yourself writing one, stop and
@@ -48,7 +48,7 @@ warm-worker/                  registry-driven monitoring worker
 docs/                         deployment architecture, data delivery, evidence audit
 results/                      reproducible eval output backing demo benchmarks
 live-spaces.registry.json     runtime deployments and local runtime demos
-shared-views.registry.json    reviewed static artifacts and mount paths
+shared-views.registry.json    reviewed static artifacts
 .github/workflows/            per-space deploy, reusable deploy, checks, monitor
 ```
 
@@ -137,8 +137,10 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   claim the same embedding space.
 - **`shared-views/` is gitignored.** Bundles are generated artifacts; commit the
   registry entry, never the bundle.
-- **`mount_path` must be exactly `/spaces/<slug>`.** The exporter rebases asset
-  URLs against it; a mismatch produces a bundle that 404s its own media.
+- **Bundles are location-independent.** They reference assets relatively and
+  resolve API and media from the document URL, so the same files work at any
+  path. A bundle that records a `mount_path` predates this and must be
+  re-exported.
 - **A Live Space Dockerfile must set `HYPERVIEW_NO_AUTH=1`.** HyperView 1.0
   mints a session token and rejects unauthenticated runtime commands. A public
   Space has no way to hand visitors that token, so the container starts, the
