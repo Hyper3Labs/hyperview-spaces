@@ -14,7 +14,8 @@ as ordinary static files with no Python and no container.
 - Optional precomputed similarity (`similarity_k` nearest neighbors per sample)
 - Materialized text-search results for the demo's prepared queries
 - A manifest declaring static mode, export warnings, and the panels present
-- Mount-path rebasing so the bundle can be served from a subdirectory
+- No baked-in URL prefix: assets resolve relative to the document, so the same
+  bundle serves from an origin root or a subdirectory
 
 The tradeoff: a Shared View can replay the queries that were materialized at
 export time. It cannot embed a query typed by the visitor - that needs a text
