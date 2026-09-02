@@ -8,8 +8,7 @@ on:
       - "shared-views.registry.json"
       - ".github/workflows/**"
       - "README.md"
-      - "scripts/check_spaces.py"
-      - "scripts/check_shared_views.py"
+      - "scripts/**"
 
 permissions:
   contents: read
@@ -22,5 +21,9 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
+      # check_spaces.py reads the panel SDK contract from the installed
+      # HyperView instead of keeping its own copy of the hook list.
+      - run: python -m pip install --disable-pip-version-check hyperview ruff
       - run: python scripts/check_spaces.py
       - run: python scripts/check_shared_views.py
+      - run: ruff check demos scripts

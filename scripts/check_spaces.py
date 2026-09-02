@@ -13,31 +13,11 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "live-spaces.registry.json"
 DEMOS_DIR = ROOT / "demos"
+SCRIPTS_DIR = ROOT / "scripts"
 WORKFLOWS_DIR = ROOT / ".github" / "workflows"
 README_PATH = ROOT / "README.md"
 VALID_STATUSES = {"live", "draft", "local"}
 VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
-SDK_V2_HOOKS = {
-    "listTools",
-    "useActiveLayout",
-    "useCollection",
-    "useCommandClient",
-    "useDatasetInfo",
-    "useHostAdapter",
-    "usePanelActions",
-    "usePanelInteractions",
-    "usePanelState",
-    "useQuery",
-    "useSample",
-    "useSampleResults",
-    "useSamples",
-    "useSelection",
-    "useSimilarSamples",
-    "useSupportsLassoSelection",
-    "useSupportsTextSearch",
-    "useSupportsTools",
-    "useTool",
-}
 LEGACY_PANEL_SDK_TOKENS = {
     "sdk.components": "sdk.components",
     "usePanelCommands": "usePanelCommands",
@@ -55,6 +35,33 @@ def error(message: str, errors: list[str]) -> None:
 
 def warning(message: str) -> None:
     print(f"WARNING: {message}")
+
+
+def panel_sdk_surface(errors: list[str]) -> dict[str, Any] | None:
+    """The SDK contract, read from the installed HyperView rather than copied here.
+
+    A hand-maintained hook list drifts the moment the shell adds a hook, and the
+    drift only shows up as a demo panel this checker refuses for no reason.
+    """
+
+    try:
+        import hyperview
+    except ImportError:
+        error(
+            "HyperView is not importable, so the panel SDK surface cannot be read: "
+            "install hyperview (or run this with the HyperView virtualenv)",
+            errors,
+        )
+        return None
+    reader = getattr(hyperview, "panel_sdk_surface", None)
+    if reader is None:
+        error(
+            f"installed HyperView {getattr(hyperview, '__version__', '?')} is too old: "
+            "it does not expose panel_sdk_surface(); upgrade hyperview",
+            errors,
+        )
+        return None
+    return reader()
 
 
 def yaml_scalar(text: str) -> str:
@@ -177,15 +184,17 @@ def validate_public_python_api(folder: Path, errors: list[str]) -> None:
                 )
 
 
-def validate_panel_sdk(folder: Path, errors: list[str]) -> None:
+def validate_panel_sdk(folder: Path, surface: dict[str, Any], errors: list[str]) -> None:
+    sdk_version = str(surface["version"])
+    sdk_hooks = set(surface["hooks"])
     extension_root = folder / ".hyperview" / "extensions"
     for path in sorted(extension_root.glob("*/*")):
         if path.suffix not in {".js", ".jsx"}:
             continue
         source = path.read_text(encoding="utf-8")
         relative = path.relative_to(ROOT)
-        if 'sdk.version !== "2"' not in source:
-            error(f"{relative}: panel must require HyperViewPanelSDK v2", errors)
+        if f'sdk.version !== "{sdk_version}"' not in source:
+            error(f"{relative}: panel must require HyperViewPanelSDK v{sdk_version}", errors)
         for token, label in LEGACY_PANEL_SDK_TOKENS.items():
             if token in source:
                 error(f"{relative}: legacy panel SDK API is not supported: {label}", errors)
@@ -195,12 +204,24 @@ def validate_panel_sdk(folder: Path, errors: list[str]) -> None:
                 for item in match.group("hooks").split(",")
                 if item.strip()
             }
-            for hook in sorted(hooks - SDK_V2_HOOKS):
-                error(f"{relative}: hook is not exported by HyperViewPanelSDK v2: {hook}", errors)
+            for hook in sorted(hooks - sdk_hooks):
+                error(
+                    f"{relative}: hook is not exported by HyperViewPanelSDK "
+                    f"v{sdk_version}: {hook}",
+                    errors,
+                )
 
 
 def main() -> int:
     errors: list[str] = []
+    sdk_surface = panel_sdk_surface(errors)
+    if sdk_surface is None:
+        print(f"FAILED: {len(errors)} error(s)")
+        return 1
+    print(
+        f"INFO: HyperViewPanelSDK v{sdk_surface['version']} exposes "
+        f"{len(sdk_surface['hooks'])} hooks"
+    )
     registry: dict[str, Any] = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     spaces = registry.get("spaces")
     if not isinstance(spaces, list):
@@ -339,7 +360,12 @@ def main() -> int:
                 pins_by_package.setdefault(package, {}).setdefault(pinned, []).append(folder)
             validate_documented_pins(path, pins, errors)
         validate_public_python_api(path, errors)
-        validate_panel_sdk(path, errors)
+        validate_panel_sdk(path, sdk_surface, errors)
+
+    # The repo's own tooling is held to the contract it enforces on demos: a
+    # script reaching into hyperview internals breaks on the next release just
+    # as loudly as a demo would.
+    validate_public_python_api(SCRIPTS_DIR, errors)
 
     # Spaces sharing a model catalog must share its version, or two demos claiming
     # the same embedding space quietly compute different vectors.
