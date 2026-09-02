@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const registryPath = resolve(__dirname, "../live-spaces.registry.json");
+const sharedRegistryPath = resolve(__dirname, "../shared-views.registry.json");
 const outPath = resolve(__dirname, "out/index.html");
 
 const registry = JSON.parse(await readFile(registryPath, "utf8"));
@@ -12,8 +13,20 @@ if (!registry || !Array.isArray(registry.spaces)) {
   throw new Error("live-spaces.registry.json must contain a spaces array");
 }
 
+const sharedRegistry = JSON.parse(await readFile(sharedRegistryPath, "utf8"));
+if (!sharedRegistry || !Array.isArray(sharedRegistry.shared_views)) {
+  throw new Error("shared-views.registry.json must contain a shared_views array");
+}
+
 const warmWorkerUrl = normalizeBaseUrl(process.env.WARM_WORKER_URL ?? "");
+// The two registries do not share a slug: a Shared View is named for its
+// bundle ("precision-regions") and a Live Space for its demo
+// ("precision-region-search"). The demo folder is what they agree on.
+const liveByFolder = new Map(
+  registry.spaces.map((space) => [space.folder, space]),
+);
 const cards = registry.spaces.map(renderCard).join("\n");
+const sharedCards = sharedRegistry.shared_views.map(renderSharedCard).join("\n");
 
 const html = `<!doctype html>
 <html lang="en">
@@ -79,6 +92,12 @@ const html = `<!doctype html>
       justify-content: space-between;
       gap: 24px;
       padding: 18px 0 34px;
+    }
+
+    .section-header {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 40px;
     }
 
     .wordmark {
@@ -247,12 +266,22 @@ const html = `<!doctype html>
       <p class="lede">Runtime-connected HyperView demos for new queries, model jobs, computed layouts, and editable workspace state.</p>
     </header>
 
-    <section class="grid" aria-label="HyperView demos">
+    <section class="grid" aria-label="Live Spaces">
 ${cards}
     </section>
 
+    <header class="section-header">
+      <div>
+        <h1>Shared Views</h1>
+      </div>
+      <p class="lede">Read-only static bundles. No runtime, no cold start: prepared cases, pan/zoom/lasso, precomputed similarity and materialized search results, with every image served from the bundle itself.</p>
+    </header>
+
+    <section class="grid" aria-label="Shared Views">
+${sharedCards}
+    </section>
+
     <footer>
-      <p>For portable access without a runtime, use the read-only Spaces.</p>
       <p>Generated from live-spaces.registry.json.</p>
     </footer>
   </main>
@@ -294,12 +323,38 @@ ${linksMarkup}
       </article>`;
 }
 
+function renderSharedCard(view) {
+  if (typeof view.slug !== "string" || view.slug.length === 0) {
+    throw new Error("shared view is missing slug");
+  }
+  const live = liveByFolder.get(view.source_folder) ?? {};
+  const name = view.name || live.demo_name || view.slug;
+  const description =
+    live.description || "Explore this HyperView demo as a read-only bundle.";
+  const href = `${view.mount_path}/`;
+
+  return `      <article class="card">
+        <div class="card-top">
+          <div class="slug">${escapeHtml(view.slug)}</div>
+          <span class="registry-status">static</span>
+        </div>
+        <h2>${escapeHtml(name)}</h2>
+        <p class="description">${escapeHtml(description)}</p>
+        <div class="links">
+          <a class="primary" href="${escapeAttribute(href)}">Open Shared View</a>
+        </div>
+      </article>`;
+}
+
 function normalizeStatus(value) {
   return ["live", "draft", "local"].includes(value) ? value : "unknown";
 }
 
 function renderStatus(demoSlug, status, spaceId) {
-  if (status === "live" && spaceId) {
+  // The badge is served by the warm worker. With no worker configured the
+  // <img> resolves to /badge/... on this host and every card shows a broken
+  // image, so fall back to the registry status text.
+  if (status === "live" && spaceId && warmWorkerUrl) {
     const badgeSrc = `${warmWorkerUrl}/badge/${encodeURIComponent(demoSlug)}.svg`;
     return `<img class="badge" src="${escapeAttribute(badgeSrc)}" alt="Live status for ${escapeAttribute(demoSlug)}" loading="lazy">`;
   }
