@@ -94,11 +94,6 @@ def read_frontmatter(path: Path) -> str | None:
 
 def hyperview_source(folder: Path) -> tuple[str, bool]:
     dockerfile = (folder / "Dockerfile").read_text(encoding="utf-8")
-    if re.search(r"\bvendor/[^\s]*\.whl\b|\bvendor/\*\.whl\b", dockerfile):
-        wheels = sorted(path.name for path in (folder / "vendor").glob("*.whl"))
-        detail = ", ".join(wheels) if wheels else "Dockerfile vendor/*.whl pattern"
-        return f"vendored wheel ({detail})", True
-
     version_arg = re.search(
         r"^ARG\s+HYPERVIEW_VERSION\s*=\s*['\"]?([^\s'\"]+)", dockerfile, re.MULTILINE
     )
