@@ -19,7 +19,6 @@ README_PATH = ROOT / "README.md"
 VALID_STATUSES = {"live", "draft", "local"}
 VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
 LEGACY_PANEL_SDK_TOKENS = {
-    "sdk.components": "sdk.components",
     "usePanelCommands": "usePanelCommands",
     "usePanelProps": "usePanelProps",
     "usePanelRuntimeState": "usePanelRuntimeState",
@@ -215,7 +214,8 @@ def main() -> int:
         return 1
     print(
         f"INFO: HyperViewPanelSDK v{sdk_surface['version']} exposes "
-        f"{len(sdk_surface['hooks'])} hooks"
+        f"{len(sdk_surface['hooks'])} hooks and "
+        f"{len(sdk_surface.get('components', []))} components"
     )
     registry: dict[str, Any] = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     spaces = registry.get("spaces")
