@@ -70,6 +70,23 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 
 ## Deploying
 
+> **Hugging Face plan gate (2026-09).** Creating a Docker Space under the
+> `hyper3labs` organization answers `402 Payment Required` on the free plan,
+> and the Trusted-Publisher (OIDC) deploys below fail with `invalid_grant` for
+> the same reason. Committing to an *existing* org Docker Space still works,
+> and Static Spaces are free. Until the org has a plan, publish a Live Space
+> by hand with a write token:
+>
+> ```bash
+> infisical run --projectId <project> --env dev -- \
+>   hyperview publish ../hyper3labs.github.io/public/spaces/<slug> \
+>     --to hf:hyper3labs/<Space> --mode live \
+>     --extra-pip "hyperview==1.1.1" --extra-pip "hyper-models[ml]==0.3.1" \
+>     --extra-pip "datasets>=4.5.0" --extra-pip "Pillow>=12.0.0" \
+>     --pre-install "torch torchvision --index-url https://download.pytorch.org/whl/cpu"
+> ```
+
+
 A Live Space can be built two ways, and the registry entry says which:
 
 | `deploy_mode` | What is uploaded | The container | Use it when |
