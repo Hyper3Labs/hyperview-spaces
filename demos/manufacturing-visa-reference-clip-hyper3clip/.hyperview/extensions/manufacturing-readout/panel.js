@@ -3,7 +3,8 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is not available on window.");
 }
 
-const { React, hooks } = sdk;
+const { React, components, hooks } = sdk;
+const { Panel } = components;
 const { useActiveLayout, useCommandClient, usePanelActions, usePanelState } = hooks;
 
 const colors = {
@@ -533,26 +534,19 @@ export default function ManufacturingPanel() {
   );
 
   return React.createElement(
-    "main",
-    {
-      style: {
-        background: colors.panelBg,
-        color: colors.text,
-        height: "100%",
-        minHeight: 0,
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-      },
-    },
+    Panel,
+    null,
     React.createElement(
       "div",
       {
         style: {
+          background: colors.panelBg,
+          color: colors.text,
           display: "flex",
           flexDirection: "column",
           gap: 9,
           padding: 10,
+          flex: 1,
           minHeight: 0,
           overflowY: "auto",
           scrollbarGutter: "stable",
