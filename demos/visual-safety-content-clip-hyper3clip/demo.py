@@ -13,6 +13,7 @@ import hashlib
 import html
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +31,15 @@ DEFAULT_CASE_ID = "knife"
 HYPER3_SAMPLES_PANEL_ID = "samples"
 CLIP_SAMPLES_PANEL_ID = "visual-safety-clip-queue"
 AUDIT_PANEL_ID = "visual-safety-readout"
+BATCH_SIZE = 7
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 CASE_SPECS = (
     {
@@ -199,12 +209,9 @@ def panel_cases(
                 "sameCategory": same_category,
                 "relatedCategory": related,
                 "otherFlagged": max(0, relevant - same_category - related),
-                "manualReview": 7 - relevant,
+                "manualReview": BATCH_SIZE - relevant,
                 "collectionId": (collection_ids or {}).get(str(spec["id"]), {}).get(model),
-                "resultIds": [
-                    batch_sample_id(str(spec["id"]), model, rank)
-                    for rank in range(1, 8)
-                ],
+                "resultIds": batch_result_ids(str(spec["id"]), model),
             }
         cases.append(
             {
@@ -220,27 +227,43 @@ def panel_cases(
     return cases
 
 
-def materialize_batch_collections(
-    session: hv.Session,
-    payload: dict[str, Any],
-) -> dict[str, dict[str, str]]:
-    collection_ids: dict[str, dict[str, str]] = {}
-    for spec in CASE_SPECS:
-        case_id = str(spec["id"])
-        collection_ids[case_id] = {}
-        for model in ("hyper3", "clip"):
-            ordered_ids = [batch_sample_id(case_id, model, rank) for rank in range(1, 8)]
-            result = session.ui.show_samples(
-                ordered_ids,
+def batch_result_ids(case_id: str, model: str) -> list[str]:
+    """One case's review batch for one model, in rank order."""
+
+    return [batch_sample_id(case_id, model, rank) for rank in range(1, BATCH_SIZE + 1)]
+
+
+def materialize_batch_collections(session: hv.Session) -> dict[str, dict[str, str]]:
+    """Store each case's review batch as a durable workspace collection."""
+
+    return {
+        str(spec["id"]): {
+            model: session.create_collection(
+                batch_result_ids(str(spec["id"]), model),
+                name=(
+                    f"{spec['label']} review batch · "
+                    f"{'Hyper3-CLIP' if model == 'hyper3' else 'OpenAI CLIP'}"
+                ),
                 workspace_id=WORKSPACE_ID,
-                focus=False,
-                source=f"{spec['label']} review batch · {'Hyper3-CLIP' if model == 'hyper3' else 'OpenAI CLIP'}",
             )
-            collection_id = result.get("collection_id")
-            if not collection_id:
-                raise RuntimeError(f"HyperView did not return a collection for {case_id}/{model}")
-            collection_ids[case_id][model] = str(collection_id)
-    return collection_ids
+            for model in ("hyper3", "clip")
+        }
+        for spec in CASE_SPECS
+    }
+
+
+def materialize_case_anchors(session: hv.Session) -> str:
+    """One collection holding the anchor image the readout panel renders itself.
+
+    The panel shows the item a review batch started from, so it needs those
+    four rows loaded without paging through the whole ledger.
+    """
+
+    return session.create_collection(
+        [str(spec["sample_id"]) for spec in CASE_SPECS],
+        name="Visual Safety case anchors",
+        workspace_id=WORKSPACE_ID,
+    )
 
 
 def batch_metrics(payload: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -259,8 +282,8 @@ def batch_metrics(payload: dict[str, Any]) -> dict[str, dict[str, Any]]:
                 str(neighbor["sourceLabel"]).casefold() == str(anchor["sourceLabel"]).casefold()
                 for neighbor in neighbors
             )
-            clean_batches += relevant_count == 7
-        denominator = len(positives) * 7
+            clean_batches += relevant_count == BATCH_SIZE
+        denominator = len(positives) * BATCH_SIZE
         metrics[model] = {
             "relevantRate": relevant / denominator,
             "sameCategoryRate": same_category / denominator,
@@ -304,19 +327,15 @@ def build_demo_view(
     hyper3_queue = hv.ui.Samples(
         id=HYPER3_SAMPLES_PANEL_ID,
         title="The batch · Hyper3-CLIP",
-        props={
-            "mode": "results",
-            "collectionId": default_collections["hyper3"],
-        },
+        mode="results",
+        collection_id=default_collections["hyper3"],
         layout=hv.ui.PanelLayout(min_width=200, min_height=240),
     )
     clip_queue = hv.ui.Samples(
         id=CLIP_SAMPLES_PANEL_ID,
         title="The batch · OpenAI CLIP",
-        props={
-            "mode": "results",
-            "collectionId": default_collections["clip"],
-        },
+        mode="results",
+        collection_id=default_collections["clip"],
         layout=hv.ui.PanelLayout(min_width=200, min_height=240),
     )
     audit = hv.ui.ExtensionPanel(
@@ -336,6 +355,8 @@ def build_demo_view(
             collection_ids=collection_ids,
             collection_id=collection_id,
         ),
+        # The audit opens on the default case; there is no patch step after.
+        state={"activeCaseId": DEFAULT_CASE_ID},
     )
     return hv.ui.View(
         hv.ui.Horizontal(hyper3_queue, clip_queue, shares=[1, 1]),
@@ -352,34 +373,16 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing Visual Safety evidence extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
-    samples_state = session.ui.get_panel_state("samples", workspace_id=WORKSPACE_ID)
-    collection_id = dict(samples_state.get("state") or {}).get("collection_id")
     print("Materializing review batches...", flush=True)
-    collection_ids = materialize_batch_collections(session, payload)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
     session.ui.apply_view(
         build_demo_view(
             payload,
-            collection_ids=collection_ids,
-            collection_id=str(collection_id) if collection_id else None,
+            collection_ids=materialize_batch_collections(session),
+            collection_id=materialize_case_anchors(session),
         ),
         workspace_id=WORKSPACE_ID,
-    )
-    session.ui.patch_panel_state(
-        AUDIT_PANEL_ID,
-        {"activeCaseId": DEFAULT_CASE_ID},
-        workspace_id=WORKSPACE_ID,
-        replace_state=True,
-    )
-    session.ui.show_samples(
-        [batch_sample_id(DEFAULT_CASE_ID, "hyper3", rank) for rank in range(1, 8)],
-        workspace_id=WORKSPACE_ID,
-        focus=False,
-        source="Knife · Hyper3-CLIP review batch",
     )
     session.ui.set_selection([CASE_SPECS[0]["sample_id"]], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView Visual Safety demo is running at {session.url}", flush=True)
@@ -394,7 +397,11 @@ def main() -> None:
     payload = load_benchmark()
     dataset = hv.Dataset(DATASET_NAME)
     prepare_dataset(dataset, payload)
-    launch_demo(dataset, payload).wait()
+    session = launch_demo(dataset, payload)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
+    session.wait()
 
 
 if __name__ == "__main__":
