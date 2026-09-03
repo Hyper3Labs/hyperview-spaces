@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,14 @@ EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "precision-region-read
 CASE_FILE = SPACE_DIR / "evidence_cases.json"
 ASSET_DIR = SPACE_DIR / "demo_assets" / "evidence"
 DEFAULT_CASE_ID = os.environ.get("PRECISION_REGION_DEFAULT_CASE_ID", "facilities")
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 
 def load_cases() -> dict[str, Any]:
@@ -82,28 +91,25 @@ def evidence_samples(payload: dict[str, Any]) -> list[hv.Sample]:
         )
         for model in ("hyper3", "clip"):
             for result in case["results"][model]:
-                rank = int(result["rank"])
-                # The ground-truth crop is one canonical sample. Reusing its
-                # id in ranked collections keeps selection and inspection tied
-                # to the tile the user can actually see.
+                # The ground-truth crop is one canonical sample, added above.
+                # Reusing its id in ranked collections keeps selection and
+                # inspection tied to the tile the user can actually see, so
+                # every sample built here is a non-target result.
                 if bool(result.get("isTarget")):
                     continue
+                rank = int(result["rank"])
                 samples.append(
                     hv.Sample(
                         id=result_sample_id(case_id, model, rank),
                         filepath=str(case_dir / f"{model}_{rank}.jpg"),
-                        label=(
-                            f"#{rank} · "
-                            f"{'TARGET · ' if bool(result.get('isTarget')) else ''}"
-                            f"{result['text']}"
-                        ),
+                        label=f"#{rank} · {result['text']}",
                         metadata={
                             **shared_case,
                             "role": "ranked_region_result",
                             "model": payload["models"][model],
                             "model_key": model,
                             "rank": rank,
-                            "is_target": bool(result.get("isTarget")),
+                            "is_target": False,
                         },
                     )
                 )
@@ -197,15 +203,15 @@ def build_demo_view(
             collection_id=collection_id,
             collection_ids=collection_ids,
         ),
+        # The panel opens on the default case; there is no patch step after.
+        state={"activeCaseId": DEFAULT_CASE_ID},
     )
     hyper3_results = hv.ui.Samples(
         id="samples",
         title="Hyper3-CLIP · Top 5 regions",
         position="center",
-        props={
-            "mode": "results",
-            "collectionId": default_collections["hyper3"],
-        },
+        mode="results",
+        collection_id=default_collections["hyper3"],
         layout=hv.ui.PanelLayout(min_width=180, min_height=220),
     )
     clip_results = hv.ui.Samples(
@@ -214,10 +220,8 @@ def build_demo_view(
         position="center",
         reference_panel_id=hyper3_results.id,
         direction="right",
-        props={
-            "mode": "results",
-            "collectionId": default_collections["clip"],
-        },
+        mode="results",
+        collection_id=default_collections["clip"],
         layout=hv.ui.PanelLayout(min_width=180, min_height=220),
     )
     return hv.ui.View(
@@ -228,32 +232,31 @@ def build_demo_view(
     )
 
 
+def ordered_result_ids(case: dict[str, Any], model: str) -> list[str]:
+    """The model's result sample ids for one case, best rank first."""
+
+    return [
+        str(result["sampleId"])
+        for result in sorted(case["results"][model], key=lambda result: int(result["rank"]))
+    ]
+
+
 def materialize_result_collections(
     session: hv.Session,
     payload: dict[str, Any],
 ) -> dict[str, dict[str, str]]:
+    """Store each case's ranked region list as a durable workspace collection."""
+
     collection_ids: dict[str, dict[str, str]] = {}
     for case in panel_cases(payload):
-        case_id = str(case["id"])
-        collection_ids[case_id] = {}
-        for model in ("hyper3", "clip"):
-            ordered_ids = [
-                str(result["sampleId"])
-                for result in sorted(
-                    case["results"][model],
-                    key=lambda result: int(result["rank"]),
-                )
-            ]
-            result = session.ui.show_samples(
-                ordered_ids,
+        collection_ids[str(case["id"])] = {
+            model: session.create_collection(
+                ordered_result_ids(case, model),
+                name=f"{case['shortLabel']} · {payload['models'][model]} · Top 5",
                 workspace_id=WORKSPACE_ID,
-                focus=False,
-                source=f"{case['shortLabel']} · {payload['models'][model]} · Top 5",
             )
-            collection_id = result.get("collection_id")
-            if not collection_id:
-                raise RuntimeError(f"HyperView did not return a collection for {case_id}/{model}")
-            collection_ids[case_id][model] = str(collection_id)
+            for model in ("hyper3", "clip")
+        }
     return collection_ids
 
 
@@ -265,11 +268,9 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing Precision Regions evidence extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
     collection_ids = materialize_result_collections(session, payload)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
     session.ui.apply_view(
         build_demo_view(
             payload,
@@ -280,27 +281,6 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
             collection_ids=collection_ids,
         ),
         workspace_id=WORKSPACE_ID,
-    )
-    default_case = next(
-        case for case in panel_cases(payload) if str(case["id"]) == DEFAULT_CASE_ID
-    )
-    session.ui.show_samples(
-        [
-            str(result["sampleId"])
-            for result in sorted(
-                default_case["results"]["hyper3"],
-                key=lambda result: int(result["rank"]),
-            )
-        ],
-        workspace_id=WORKSPACE_ID,
-        focus=False,
-        source=f"{default_case['shortLabel']} · {payload['models']['hyper3']} · Top 5",
-    )
-    session.ui.patch_panel_state(
-        "precision-region-readout",
-        {"activeCaseId": DEFAULT_CASE_ID},
-        workspace_id=WORKSPACE_ID,
-        replace_state=True,
     )
     session.ui.set_selection([target_sample_id(DEFAULT_CASE_ID)], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView Precision Regions demo is running at {session.url}", flush=True)
@@ -313,6 +293,9 @@ def main() -> None:
     dataset = hv.Dataset(DATASET_NAME)
     prepare_dataset(dataset, payload)
     session = launch_demo(dataset, payload)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
     session.wait()
 
 
