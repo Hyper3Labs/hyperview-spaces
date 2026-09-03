@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -15,6 +16,14 @@ import hyperview as hv
 
 SPACE_HOST = "0.0.0.0"
 SPACE_PORT = 7860
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 DATASET_NAME = "inat24_tiny_geometry_showcase"
 HF_DATASET = "evendrow/inat24_tiny"
@@ -247,13 +256,18 @@ def build_demo_view(layout_keys: dict[str, str]) -> hv.ui.View:
 def main() -> None:
     dataset, layout_keys = build_dataset()
     print(f"Starting HyperView on {SPACE_HOST}:{SPACE_PORT}", flush=True)
-    hv.launch(
+    session = hv.launch(
         dataset,
         host=SPACE_HOST,
         port=SPACE_PORT,
         open_browser=False,
         view=build_demo_view(layout_keys),
+        block=False,
     )
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
+    session.wait()
 
 
 if __name__ == "__main__":
