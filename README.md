@@ -138,7 +138,7 @@ uv run --project ../ python scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
   --mode live-bundle \
   --bundle ../../hyper3labs.github.io/public/spaces/logo-search \
-  --extra-pip 'hyperview==1.1.0' --extra-pip 'hyper-models[ml]==0.3.1'
+  --extra-pip 'hyperview==1.1.1' --extra-pip 'hyper-models[ml]==0.3.1'
 ```
 
 > **The org account runs at most three `cpu-basic` Spaces at once.** A fourth
