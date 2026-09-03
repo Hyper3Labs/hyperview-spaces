@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -24,13 +25,20 @@ EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "fashion-search-readou
 CASE_FILE = SPACE_DIR / "evidence_cases.json"
 DEFAULT_CASE_ID = os.environ.get("FASHION_DEFAULT_EXAMPLE_ID", "light-denim-leggings")
 DEFAULT_PHOTO_CASE_ID = "patterned-romper"
-DEFAULT_MODEL = "hyper3"
 EXPECTED_SAMPLE_COUNT = 741
 RESULT_SAMPLE_PREFIX = "fashion-evidence-"
-HYPER3_LAYOUT_KEY = (
-    "hyper-models__hyper3-clip-v0_5__42052c955756__"
-    "poincare_umap__2d_1a6bcbc4"
-)
+
+# The catalog map is the Hyper3 multimodal space, not the older image-only one.
+HYPER3_MODEL = "hyper3-clip-v0.5"
+HYPER3_PROVIDER = "hyper-models"
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 
 def load_evidence() -> dict[str, Any]:
@@ -89,7 +97,33 @@ def repair_media_paths(dataset: hv.Dataset) -> None:
         print(f"Repaired {len(repaired)} Fashion media paths.", flush=True)
 
 
-def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> None:
+def resolve_layout_key(dataset: hv.Dataset) -> str:
+    """Find the catalog map by describing it rather than pinning its key.
+
+    A layout key carries a content hash of the embedding and projection
+    parameters, so it is only knowable after the layout is computed and a
+    constant copied into this file goes stale the next time the space is
+    rebuilt.
+    """
+
+    layout_key = dataset.find_layout(
+        model=HYPER3_MODEL,
+        provider=HYPER3_PROVIDER,
+        modality="multimodal",
+        geometry="poincare",
+        dimension=2,
+    )
+    if layout_key is None:
+        available = "\n  ".join(record.describe() for record in dataset.list_layouts())
+        raise RuntimeError(
+            f"Fashion workspace needs a 2D Poincare layout over the {HYPER3_MODEL} "
+            f"multimodal space; {dataset.name} has none. Layouts present:\n  "
+            + (available or "(none)")
+        )
+    return layout_key
+
+
+def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> str:
     samples = [
         sample for sample in dataset.samples if not sample.id.startswith(RESULT_SAMPLE_PREFIX)
     ]
@@ -113,14 +147,14 @@ def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> None:
         preview = ", ".join(missing_media[:5])
         raise RuntimeError(f"Fashion dataset has missing local media: {preview}")
 
-    layouts = {layout.layout_key: layout for layout in dataset.list_layouts()}
-    layout = layouts.get(HYPER3_LAYOUT_KEY)
-    if layout is None:
-        raise RuntimeError(f"Required Fashion layout is missing: {HYPER3_LAYOUT_KEY}")
-    if int(layout.count) != EXPECTED_SAMPLE_COUNT:
+    layout_key = resolve_layout_key(dataset)
+    layout = next(record for record in dataset.list_layouts() if record.key == layout_key)
+    if int(layout.sample_count) != EXPECTED_SAMPLE_COUNT:
         raise RuntimeError(
-            f"Fashion layout covers {layout.count} samples, expected {EXPECTED_SAMPLE_COUNT}."
+            f"Fashion layout covers {layout.sample_count} samples, "
+            f"expected {EXPECTED_SAMPLE_COUNT}."
         )
+    return layout_key
 
 
 def result_sample_id(mode: str, case_id: str, model: str, rank: int) -> str:
@@ -212,6 +246,7 @@ def readout_props(
 def build_demo_view(
     payload: dict[str, Any],
     *,
+    layout_key: str,
     collection_ids: dict[str, dict[str, dict[str, str]]],
     collection_id: str | None,
 ) -> hv.ui.View:
@@ -223,12 +258,10 @@ def build_demo_view(
         id="samples",
         title="Hyper3-CLIP · Product matches",
         position="center",
-        props={
-            "mode": "auto",
-            "collectionId": defaults["hyper3"],
-            "anchorSampleId": default_photo["anchorSampleId"],
-            "showTextSearch": True,
-        },
+        mode="auto",
+        collection_id=defaults["hyper3"],
+        anchor_sample_id=default_photo["anchorSampleId"],
+        show_text_search=True,
         layout=hv.ui.PanelLayout(min_width=240, min_height=340),
     )
     clip_samples = hv.ui.Samples(
@@ -237,13 +270,15 @@ def build_demo_view(
         position="center",
         reference_panel_id=hyper3_samples.id,
         direction="right",
-        props={"mode": "results", "collectionId": defaults["clip"], "anchorSampleId": default_photo["anchorSampleId"]},
+        mode="results",
+        collection_id=defaults["clip"],
+        anchor_sample_id=default_photo["anchorSampleId"],
         layout=hv.ui.PanelLayout(min_width=240, min_height=340),
     )
     catalog_map = hv.ui.Scatter(
         id="fashion-catalog-map",
         title="Catalog similarity map",
-        layout_key=HYPER3_LAYOUT_KEY,
+        layout_key=layout_key,
         geometry="poincare",
         layout_dimension=2,
         position="center",
@@ -263,6 +298,12 @@ def build_demo_view(
             collection_ids=collection_ids,
             collection_id=collection_id,
         ),
+        # The panel opens on the photo tab; there is no patch step afterwards.
+        state={
+            "activeMode": "photo",
+            "activePhotoCaseId": DEFAULT_PHOTO_CASE_ID,
+            "activeTextCaseId": DEFAULT_CASE_ID,
+        },
     )
     return hv.ui.View(
         hv.ui.Horizontal(
@@ -290,26 +331,44 @@ def materialize_result_collections(
     session: hv.Session,
     payload: dict[str, Any],
 ) -> dict[str, dict[str, dict[str, str]]]:
+    """Store each case's ranked result list as a durable workspace collection."""
+
     collection_ids: dict[str, dict[str, dict[str, str]]] = {"photo": {}, "text": {}}
     for mode, cases in (("photo", payload["photoCases"]), ("text", payload["cases"])):
         for case in cases:
             case_id = str(case["id"])
-            collection_ids[mode][case_id] = {}
-            for model in ("hyper3", "clip"):
-                result = session.ui.show_samples(
+            collection_ids[mode][case_id] = {
+                model: session.create_collection(
                     ordered_result_ids(mode, case, model),
+                    name=(
+                        f"{case['label']} · "
+                        f"{'Hyper3-CLIP' if model == 'hyper3' else 'OpenAI CLIP'} · Top 6"
+                    ),
                     workspace_id=WORKSPACE_ID,
-                    focus=False,
-                    source=f"{case['label']} · {'Hyper3-CLIP' if model == 'hyper3' else 'OpenAI CLIP'} · Top 6",
                 )
-                collection_id = result.get("collection_id")
-                if not collection_id:
-                    raise RuntimeError(f"HyperView did not return a collection for {mode}/{case_id}/{model}")
-                collection_ids[mode][case_id][model] = str(collection_id)
+                for model in ("hyper3", "clip")
+            }
     return collection_ids
 
 
-def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
+def materialize_case_visuals(session: hv.Session, payload: dict[str, Any]) -> str:
+    """One collection holding every tile the readout panel renders itself.
+
+    The panel shows the starting photo of a photo case and the target product
+    of a typed case, so it needs those rows loaded without opening the whole
+    catalog.
+    """
+
+    visual_ids = [str(case["anchorSampleId"]) for case in payload["photoCases"]]
+    visual_ids += [str(case["target"]["sampleId"]) for case in payload["cases"]]
+    return session.create_collection(
+        list(dict.fromkeys(visual_ids)),
+        name="Fashion case visuals",
+        workspace_id=WORKSPACE_ID,
+    )
+
+
+def launch_demo(dataset: hv.Dataset, payload: dict[str, Any], layout_key: str) -> hv.Session:
     session = hv.launch(
         dataset,
         host=SPACE_HOST,
@@ -317,38 +376,22 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing Fashion search extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
-    samples_state = session.ui.get_panel_state("samples", workspace_id=WORKSPACE_ID)
-    collection_id = dict(samples_state.get("state") or {}).get("collection_id")
     collection_ids = materialize_result_collections(session, payload)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
     session.ui.apply_view(
         build_demo_view(
             payload,
+            layout_key=layout_key,
             collection_ids=collection_ids,
-            collection_id=str(collection_id) if collection_id else None,
+            collection_id=materialize_case_visuals(session, payload),
         ),
         workspace_id=WORKSPACE_ID,
     )
-    session.ui.patch_panel_state(
-        "fashion-search-readout",
-        {
-            "activeMode": "photo",
-            "activePhotoCaseId": DEFAULT_PHOTO_CASE_ID,
-            "activeTextCaseId": DEFAULT_CASE_ID,
-        },
-        workspace_id=WORKSPACE_ID,
-        replace_state=True,
-    )
-    default_case = next(case for case in payload["photoCases"] if case["id"] == DEFAULT_PHOTO_CASE_ID)
-    session.ui.show_samples(
-        ordered_result_ids("photo", default_case, "hyper3"),
-        workspace_id=WORKSPACE_ID,
-        focus=False,
-        source=f"{default_case['label']} · Hyper3-CLIP · Top 6",
+    # The Samples panel already opens on the default case's collection, so the
+    # only thing left is to mark the starting photo as selected.
+    default_case = next(
+        case for case in payload["photoCases"] if case["id"] == DEFAULT_PHOTO_CASE_ID
     )
     session.ui.set_selection([str(default_case["anchorSampleId"])], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView Fashion Products demo is running at {session.url}", flush=True)
@@ -363,9 +406,12 @@ def main() -> None:
     payload = load_evidence()
     dataset = hv.Dataset(DATASET_NAME)
     repair_media_paths(dataset)
-    validate_dataset(dataset, payload)
+    layout_key = validate_dataset(dataset, payload)
     prepare_result_samples(dataset, payload)
-    session = launch_demo(dataset, payload)
+    session = launch_demo(dataset, payload, layout_key)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
     session.wait()
 
 

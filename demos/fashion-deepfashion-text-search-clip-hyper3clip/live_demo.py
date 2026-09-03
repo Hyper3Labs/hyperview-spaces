@@ -11,16 +11,29 @@ import hyperview as hv
 
 WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "fashion-live-catalog-search")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6266"))
-CLIP_LAYOUT_KEY = (
-    "embed-anything__openai_clip-vit-base-patch32__4771034973d8__"
-    "euclidean_umap__2d_1a6bcbc4"
-)
+CLIP_MODEL = "openai/clip-vit-base-patch32"
+CLIP_PROVIDER = "embed-anything"
 
 
 def main() -> None:
     dataset = hv.Dataset(DATASET_NAME)
     repair_media_paths(dataset)
     validate_dataset(dataset, load_evidence())
+
+    # The map opens on the image-only CLIP space. Layout keys carry a content
+    # hash, so describe the layout instead of pinning its key.
+    clip_layout_key = dataset.find_layout(
+        model=CLIP_MODEL,
+        provider=CLIP_PROVIDER,
+        modality="image",
+        geometry="euclidean",
+        dimension=2,
+    )
+    if clip_layout_key is None:
+        raise RuntimeError(
+            f"Live Fashion search needs a 2D euclidean {CLIP_MODEL} image layout; "
+            f"{dataset.name} has none."
+        )
 
     session = hv.launch(
         dataset,
@@ -34,13 +47,13 @@ def main() -> None:
         id="samples",
         title="Live catalog search",
         position="center",
-        props={"mode": "auto"},
+        mode="auto",
         layout=hv.ui.PanelLayout(min_width=420, min_height=420),
     )
     catalog_map = hv.ui.Scatter(
         id="fashion-live-catalog-map",
         title="Catalog map",
-        layout_key=CLIP_LAYOUT_KEY,
+        layout_key=clip_layout_key,
         position="right",
         reference_panel_id=search.id,
         direction="right",
