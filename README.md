@@ -70,32 +70,81 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 
 ## Deploying
 
+A Live Space can be built two ways, and the registry entry says which:
+
+| `deploy_mode` | What is uploaded | The container | Use it when |
+| --- | --- | --- | --- |
+| `docker-folder` | `demos/<slug>/` | Builds that `Dockerfile`, runs `demo.py`, which rebuilds the workspace on first boot | The demo can prepare its own data from public sources |
+| `live-bundle` | The exported bundle, from the landing site repository | A generated `Dockerfile` running `hyperview serve --from <bundle> --public` | The data was prepared locally, or the boot is too slow to sit through |
+
+`live-bundle` is the fix for a Space that boots into `RUNTIME_ERROR`. A demo
+whose dataset was curated on a laptop cannot rebuild itself inside a container
+that has never seen the source images, so `demo.py` fails and the Space dies.
+The exported bundle already carries the prepared workspace — samples, media,
+layouts, panels — and `hyperview serve --from` restores it, so the same
+artifact the site publishes as a **Static Space** becomes the **Live Space**.
+One export, two hosts, no second copy of the data to keep in step.
+
+The bundles live in the landing site repository
+(`Hyper3Labs/hyper3labs.github.io`, under `public/spaces/<slug>/`), which is
+where they are already committed for the Static Spaces. The deploy job checks
+that repository out and publishes from it, so **a re-exported bundle does not
+deploy itself**: commit it on the site, then run the Space's workflow here with
+`workflow_dispatch` (or send it a `static-bundle-published` repository
+dispatch).
+
 | Owner | How | Auth |
 | --- | --- | --- |
-| `hyper3labs/*` | Push to `main` touching the demo folder, or `workflow_dispatch` | Hugging Face Trusted Publisher (OIDC) — no long-lived secret |
+| `hyper3labs/*` | `workflow_dispatch`, or a push to `main` touching the trigger paths | Hugging Face Trusted Publisher (OIDC) — no long-lived secret |
 | Personal account | `scripts/deploy_hf_space.py` | Your local `huggingface-cli` login |
 
-For an org-owned Space, copy `.github/workflows/deploy-hf-space-hyperview.yml`
-and update `name`, `concurrency`, `paths`, `source_dir`, and `space_id`, then
-add a Trusted Publisher on the Space for `Hyper3Labs/hyperview-spaces`, branch
-`main`, and that exact workflow filename.
+For an org-owned Space, copy an existing caller workflow —
+`deploy-hf-space-hyperview.yml` for `docker-folder`,
+`deploy-hf-space-fashion-deepfashion.yml` for `live-bundle` — and update
+`name`, `concurrency`, `paths`, and the `with:` inputs. Then add a Trusted
+Publisher on the Space for `Hyper3Labs/hyperview-spaces`, branch `main`, and
+that exact workflow filename. **Renaming a caller workflow breaks the trust**
+until the Space's Trusted Publisher entry is updated to match.
 
 For a personal Space, deploy manually — these are deliberately excluded from
-deploy CI, so do not add a Hugging Face token as a GitHub secret:
+deploy CI, so do not add a Hugging Face token as a GitHub secret. The script
+offers the same two modes:
 
 ```bash
+# Sync a demo folder
 uv run --project ../ python scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
   --source-dir demos/logo-brand-search-clip-hyper3clip
+
+# Publish an exported bundle as a Live Space
+uv run --project ../ python scripts/deploy_hf_space.py \
+  --space-id mnm-matin/HyperView-Logo-Brand-Search \
+  --mode live-bundle \
+  --bundle ../../hyper3labs.github.io/public/spaces/logo-search \
+  --extra-pip 'hyperview==1.1.0' --extra-pip 'hyper-models[ml]==0.3.1'
 ```
 
-> **A push to `main` deploys.** Per-space workflows are path-scoped to their
-> demo folder, so bumping a version pin to a package that is not on PyPI yet
-> will rebuild the Space and fail. Publish first, then push the pin.
+> **The org account runs at most three `cpu-basic` Spaces at once.** A fourth
+> will not start. Before turning a Space on, turn one off — `keep_warm` and
+> `status` in the registry describe intent, not capacity, and neither the
+> workflows nor the checks enforce the cap.
+
+> **A push to `main` deploys.** Bumping a pin to a package that is not on PyPI
+> yet will rebuild the Space and fail. Publish first, then push the pin. In
+> `live-bundle` mode the same applies to `hyperview_version`: the generated
+> image installs it from PyPI, so it must be a released version, and the bundle
+> must have been exported by a HyperView that version can restore.
 
 Keep Dockerfiles on released PyPI pins. `check_spaces.py` rejects an unpinned
-`hyperview`, and it rejects a version named in a demo's prose that disagrees
-with the version its Dockerfile installs.
+`hyperview`, rejects a version named in a demo's prose that disagrees with the
+version its Dockerfile installs, and reconciles each caller workflow's inputs
+against its registry entry — including that a `live-bundle` entry's
+`bundle_slug` names a bundle in `static-spaces.registry.json` that records the
+same Live Space.
+
+A `live-bundle` deploy renders the Dockerfile with `--dry-run` before it
+uploads anything, so an unreadable bundle or an unresolvable pin fails the run
+instead of half-replacing a working Space.
 
 Monitor what is deployed:
 
