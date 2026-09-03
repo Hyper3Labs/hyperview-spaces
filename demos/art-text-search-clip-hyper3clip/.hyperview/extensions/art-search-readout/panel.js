@@ -3,7 +3,8 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is not available on window.");
 }
 
-const { React, hooks } = sdk;
+const { React, components, hooks } = sdk;
+const { Panel } = components;
 const {
   useActiveLayout,
   useCommandClient,
@@ -331,17 +332,8 @@ export default function ArtSearchComparisonPanel() {
   };
 
   return React.createElement(
-    "main",
-    {
-      style: {
-        height: "100%",
-        minHeight: 0,
-        display: "flex",
-        flexDirection: "column",
-        background: colors.panelBg,
-        color: colors.text,
-      },
-    },
+    Panel,
+    null,
     React.createElement(
       "header",
       {
@@ -351,6 +343,7 @@ export default function ArtSearchComparisonPanel() {
           gap: 10,
           padding: "8px 12px",
           borderBottom: `1px solid ${colors.border}`,
+          background: colors.panelBg,
           color: colors.bodyText,
           fontSize: 10,
         },
@@ -382,10 +375,12 @@ export default function ArtSearchComparisonPanel() {
       {
         ref: contentRef,
         style: {
-          height: "100%",
+          flex: 1,
+          minHeight: 0,
           overflow: "auto",
           padding: compactLayout ? 10 : 14,
           background: colors.panelBg,
+          color: colors.text,
           display: "flex",
           flexDirection: "column",
           gap: compactLayout ? 12 : 14,

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 import time
 from collections import Counter
 from itertools import islice
@@ -18,10 +19,18 @@ import hyperview as hv
 
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
-SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6262"))
+SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6263"))
 WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "art-marketplace-search-v062")
 DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "art_text_search_clip_hyper3clip")
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "art-search-readout"
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 HF_DATASET = os.environ.get("ART_HF_DATASET", "Artificio/WikiArt")
 HF_SPLIT = os.environ.get("ART_HF_SPLIT", "train")
@@ -596,9 +605,8 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing artwork search demo extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
     print("Applying artwork marketplace search demo view...", flush=True)
     session.ui.apply_view(build_demo_view(dataset, layouts), workspace_id=WORKSPACE_ID)
     if ENABLE_CONTEXT_MAPS and layouts:
@@ -620,6 +628,9 @@ def main() -> None:
     else:
         print("Context maps disabled; skipping embedding/layout startup.", flush=True)
     session = launch_demo(dataset, layouts)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
     session.wait()
 
 
