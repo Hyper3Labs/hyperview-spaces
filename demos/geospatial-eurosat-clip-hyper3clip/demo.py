@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -32,15 +33,31 @@ DEFAULT_CASE_ID = os.environ.get("GEOSPATIAL_DEFAULT_CASE_ID", "airplane-win")
 EXPECTED_SAMPLE_COUNT = 60
 NEIGHBOUR_K = 10
 
-# Explicit layouts matching the versioned evidence embedding spaces.
-HYPER3_SPACE_KEY = "hyper-models__hyper3-clip-v0_5__42052c955756"
-CLIP_SPACE_KEY = "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
-HYPER3_LAYOUT_KEY = (
-    f"{HYPER3_SPACE_KEY}__poincare_umap__2d_1a6bcbc4"
-)
-CLIP_LAYOUT_KEY = (
-    f"{CLIP_SPACE_KEY}__euclidean_umap__2d_1a6bcbc4"
-)
+# Both archive maps are drawn over the multimodal embedding space, which is
+# the only thing separating them from the image-only space of the same model.
+# Layout keys carry a content hash, so describe the layouts and look them up.
+MODEL_LAYOUTS: dict[str, dict[str, str]] = {
+    "hyper3": {
+        "model": "hyper3-clip-v0.5",
+        "provider": "hyper-models",
+        "geometry": "poincare",
+        "title": "Hyper3 archive map",
+    },
+    "clip": {
+        "model": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "geometry": "euclidean",
+        "title": "CLIP archive map",
+    },
+}
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 HYPER3_SAMPLES_ID = "hyper3-neighbours"
 CLIP_SAMPLES_ID = "clip-neighbours"
@@ -122,7 +139,10 @@ def model_counts(model: dict[str, Any]) -> dict[str, int]:
     }
 
 
-def prepare_cases(payload: dict[str, Any]) -> list[dict[str, Any]]:
+def prepare_cases(
+    payload: dict[str, Any],
+    layouts: dict[str, dict[str, str]],
+) -> list[dict[str, Any]]:
     prepared: list[dict[str, Any]] = []
     for case in payload["cases"]:
         case_id = str(case["id"])
@@ -133,9 +153,7 @@ def prepare_cases(payload: dict[str, Any]) -> list[dict[str, Any]]:
             counts = model_counts(source)
             models[model_key] = {
                 "spaceKey": source["spaceKey"],
-                "layoutKey": (
-                    HYPER3_LAYOUT_KEY if model_key == "hyper3" else CLIP_LAYOUT_KEY
-                ),
+                "layoutKey": layouts[model_key]["layoutKey"],
                 **counts,
                 "resultIds": list(source["resultIds"]),
                 "consequence": consequences.get(model_key, ""),
@@ -157,7 +175,64 @@ def prepare_cases(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return prepared
 
 
-def require_prepared_dataset(payload: dict[str, Any]) -> hv.Dataset:
+def resolve_layouts(
+    dataset: hv.Dataset,
+    payload: dict[str, Any],
+) -> dict[str, dict[str, str]]:
+    """Look each archive map up by description, not by a written-down key.
+
+    A layout key carries a content hash of the embedding and projection
+    parameters, so it is only knowable after the layout is computed. This also
+    checks that the layout found sits on the same embedding space the recorded
+    evidence was ranked in, which is what makes the shown ranks trustworthy.
+    """
+
+    evidence_spaces = {
+        model_key: {
+            str(case["models"][model_key]["spaceKey"]) for case in payload["cases"]
+        }
+        for model_key in MODEL_LAYOUTS
+    }
+    resolved: dict[str, dict[str, str]] = {}
+    for model_key, spec in MODEL_LAYOUTS.items():
+        layout_key = dataset.find_layout(
+            model=spec["model"],
+            provider=spec["provider"],
+            modality="multimodal",
+            geometry=spec["geometry"],
+            dimension=2,
+        )
+        if layout_key is None:
+            available = "\n  ".join(record.describe() for record in dataset.list_layouts())
+            raise RuntimeError(
+                f"GeoSpatial needs a 2D {spec['geometry']} layout over the "
+                f"{spec['model']} multimodal space; {dataset.name} has none. "
+                "Layouts present:\n  " + (available or "(none)")
+            )
+        record = next(item for item in dataset.list_layouts() if item.key == layout_key)
+        if int(record.sample_count) != EXPECTED_SAMPLE_COUNT:
+            raise RuntimeError(
+                f"Layout {layout_key!r} covers {record.sample_count} samples, "
+                f"expected {EXPECTED_SAMPLE_COUNT}."
+            )
+        if record.space_key not in evidence_spaces[model_key]:
+            raise RuntimeError(
+                f"Layout {layout_key!r} sits on space {record.space_key!r}, but the "
+                f"recorded {model_key} evidence was ranked in "
+                f"{', '.join(sorted(evidence_spaces[model_key]))}."
+            )
+        resolved[model_key] = {
+            "layoutKey": layout_key,
+            "spaceKey": str(record.space_key),
+            "geometry": spec["geometry"],
+            "title": spec["title"],
+        }
+    return resolved
+
+
+def require_prepared_dataset(
+    payload: dict[str, Any],
+) -> tuple[hv.Dataset, dict[str, dict[str, str]]]:
     dataset = hv.Dataset(DATASET_NAME)
     media_dir = SPACE_DIR / "demo_data" / "media" / DATASET_NAME
     repaired: list[hv.Sample] = []
@@ -211,7 +286,6 @@ def require_prepared_dataset(payload: dict[str, Any]) -> hv.Dataset:
         for case in payload["cases"]
         for model in case["models"].values()
     }
-    required_spaces.update({HYPER3_SPACE_KEY, CLIP_SPACE_KEY})
     missing_spaces = sorted(required_spaces - space_keys)
     if missing_spaces:
         raise RuntimeError(
@@ -219,54 +293,30 @@ def require_prepared_dataset(payload: dict[str, Any]) -> hv.Dataset:
             f"present in {DATASET_NAME!r}: {', '.join(missing_spaces)}"
         )
 
-    layouts = {layout.layout_key: layout for layout in dataset.list_layouts()}
-    for layout_key, space_key, geometry in (
-        (HYPER3_LAYOUT_KEY, HYPER3_SPACE_KEY, "poincare"),
-        (CLIP_LAYOUT_KEY, CLIP_SPACE_KEY, "euclidean"),
-    ):
-        layout = layouts.get(layout_key)
-        if layout is None:
-            raise RuntimeError(
-                f"Required layout {layout_key!r} is missing from {DATASET_NAME!r}."
-            )
-        if layout.space_key != space_key:
-            raise RuntimeError(
-                f"Layout {layout_key!r} is bound to {layout.space_key!r}, "
-                f"expected {space_key!r}."
-            )
-        if getattr(layout, "geometry", None) != geometry:
-            raise RuntimeError(
-                f"Layout {layout_key!r} geometry is "
-                f"{getattr(layout, 'geometry', None)!r}, expected {geometry!r}."
-            )
-        if int(layout.count) != EXPECTED_SAMPLE_COUNT:
-            raise RuntimeError(
-                f"Layout {layout_key!r} covers {layout.count} samples, "
-                f"expected {EXPECTED_SAMPLE_COUNT}."
-            )
-
-    return dataset
+    return dataset, resolve_layouts(dataset, payload)
 
 
-def ranked_samples_props(
+def neighbour_rank(
     *,
     layout_key: str,
     anchor_sample_id: str,
     model_label: str,
 ) -> dict[str, Any]:
+    """The ranking one Samples panel opens on, as ``hv.ui.Samples(rank=...)``."""
+
     return {
-        "mode": "ranked",
-        "rank": {
-            "anchorSampleId": anchor_sample_id,
-            "layoutKey": layout_key,
-            "k": NEIGHBOUR_K,
-            "source": f"{model_label} · aerial neighbours",
-            "showDistance": False,
-        },
+        "anchor_sample_id": anchor_sample_id,
+        "layout_key": layout_key,
+        "k": NEIGHBOUR_K,
+        "source": f"{model_label} · aerial neighbours",
+        "show_distance": False,
     }
 
 
-def panel_props(payload: dict[str, Any]) -> dict[str, Any]:
+def panel_props(
+    payload: dict[str, Any],
+    layouts: dict[str, dict[str, str]],
+) -> dict[str, Any]:
     return {
         "artifactId": payload["artifactId"],
         "protocol": payload["protocol"],
@@ -275,20 +325,7 @@ def panel_props(payload: dict[str, Any]) -> dict[str, Any]:
             "hyper3": "Hyper3-CLIP v0.5",
             "clip": "OpenAI CLIP ViT-B/32",
         },
-        "layouts": {
-            "hyper3": {
-                "layoutKey": HYPER3_LAYOUT_KEY,
-                "spaceKey": HYPER3_SPACE_KEY,
-                "geometry": "poincare",
-                "title": "Hyper3 archive map",
-            },
-            "clip": {
-                "layoutKey": CLIP_LAYOUT_KEY,
-                "spaceKey": CLIP_SPACE_KEY,
-                "geometry": "euclidean",
-                "title": "CLIP archive map",
-            },
-        },
+        "layouts": layouts,
         "panelIds": {
             "hyper3Samples": HYPER3_SAMPLES_ID,
             "clipSamples": CLIP_SAMPLES_ID,
@@ -298,7 +335,7 @@ def panel_props(payload: dict[str, Any]) -> dict[str, Any]:
         "neighbourK": NEIGHBOUR_K,
         "workspaceSampleCount": EXPECTED_SAMPLE_COUNT,
         "initialCaseId": DEFAULT_CASE_ID,
-        "cases": prepare_cases(payload),
+        "cases": prepare_cases(payload, layouts),
         "businessQuestions": [
             (
                 "From an anchor tile, do retrieved neighbours preserve land-use "
@@ -312,8 +349,11 @@ def panel_props(payload: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
-    cases = prepare_cases(payload)
+def build_demo_view(
+    payload: dict[str, Any],
+    layouts: dict[str, dict[str, str]],
+) -> hv.ui.View:
+    cases = prepare_cases(payload, layouts)
     default_case = next(
         (case for case in cases if case["id"] == DEFAULT_CASE_ID),
         cases[0],
@@ -324,8 +364,9 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
         id=HYPER3_SAMPLES_ID,
         title="Hyper3-CLIP · Ranked neighbours",
         position="center",
-        props=ranked_samples_props(
-            layout_key=HYPER3_LAYOUT_KEY,
+        mode="ranked",
+        rank=neighbour_rank(
+            layout_key=layouts["hyper3"]["layoutKey"],
             anchor_sample_id=anchor,
             model_label="Hyper3-CLIP v0.5",
         ),
@@ -337,8 +378,9 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
         position="center",
         reference_panel_id=HYPER3_SAMPLES_ID,
         direction="right",
-        props=ranked_samples_props(
-            layout_key=CLIP_LAYOUT_KEY,
+        mode="ranked",
+        rank=neighbour_rank(
+            layout_key=layouts["clip"]["layoutKey"],
             anchor_sample_id=anchor,
             model_label="OpenAI CLIP ViT-B/32",
         ),
@@ -347,7 +389,7 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
     hyper3_scatter = hv.ui.Scatter(
         id=HYPER3_SCATTER_ID,
         title="Archive map · Hyper3-CLIP",
-        layout_key=HYPER3_LAYOUT_KEY,
+        layout_key=layouts["hyper3"]["layoutKey"],
         geometry="poincare",
         layout_dimension=2,
         position="center",
@@ -358,7 +400,7 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
     clip_scatter = hv.ui.Scatter(
         id=CLIP_SCATTER_ID,
         title="Archive map · OpenAI CLIP",
-        layout_key=CLIP_LAYOUT_KEY,
+        layout_key=layouts["clip"]["layoutKey"],
         geometry="euclidean",
         layout_dimension=2,
         position="center",
@@ -373,7 +415,9 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
         panel="geospatial-comparison",
         position="right",
         layout=hv.ui.PanelLayout(width=380, min_width=360, max_width=410),
-        props=panel_props(payload),
+        props=panel_props(payload, layouts),
+        # The audit opens on the default case; there is no patch step after.
+        state={"activeCaseId": DEFAULT_CASE_ID},
     )
     return hv.ui.View(
         hv.ui.Horizontal(
@@ -394,7 +438,11 @@ def build_demo_view(payload: dict[str, Any]) -> hv.ui.View:
     )
 
 
-def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
+def launch_demo(
+    dataset: hv.Dataset,
+    payload: dict[str, Any],
+    layouts: dict[str, dict[str, str]],
+) -> hv.Session:
     session = hv.launch(
         dataset,
         host=SPACE_HOST,
@@ -402,16 +450,9 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing GeoSpatial aerial audit extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
-    session.ui.apply_view(build_demo_view(payload), workspace_id=WORKSPACE_ID)
-    session.ui.patch_panel_state(
-        READOUT_ID,
-        {"activeCaseId": DEFAULT_CASE_ID},
-        workspace_id=WORKSPACE_ID,
-        replace_state=True,
-    )
+    session.ui.apply_view(build_demo_view(payload, layouts), workspace_id=WORKSPACE_ID)
     default_case = next(
         (case for case in payload["cases"] if case["id"] == DEFAULT_CASE_ID),
         payload["cases"][0],
@@ -419,7 +460,7 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
     session.ui.set_selection(
         [default_case["anchorSampleId"]], workspace_id=WORKSPACE_ID
     )
-    session.ui.set_active_layout(HYPER3_LAYOUT_KEY, workspace_id=WORKSPACE_ID)
+    session.ui.set_active_layout(layouts["hyper3"]["layoutKey"], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView GeoSpatial demo is running at {session.url}", flush=True)
     print(
         "   Dual ranked Samples + dual topology maps + right-side aerial identity audit.",
@@ -430,8 +471,12 @@ def launch_demo(dataset: hv.Dataset, payload: dict[str, Any]) -> hv.Session:
 
 def main() -> None:
     payload = load_evidence()
-    dataset = require_prepared_dataset(payload)
-    launch_demo(dataset, payload).wait()
+    dataset, layouts = require_prepared_dataset(payload)
+    session = launch_demo(dataset, payload, layouts)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
+    session.wait()
 
 
 if __name__ == "__main__":

@@ -3,12 +3,13 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is required.");
 }
 
-const { React, hooks } = sdk;
+const { React, components, hooks } = sdk;
+const { Panel } = components;
 const { usePanelActions, usePanelState, useSelection } = hooks;
 
 const css = `
 *{box-sizing:border-box}
-.geo-root{height:100%;min-height:0;overflow:auto;overscroll-behavior:contain;padding:12px 13px;color:var(--hv-color-foreground);background:var(--hv-color-background);font:11px/1.4 system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+.geo-root{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:12px 13px;color:var(--hv-color-foreground);background:var(--hv-color-background);font:11px/1.4 system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
 .geo-kicker{display:block;color:var(--hv-color-muted-foreground);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
 .geo-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .geo-header h2{margin:3px 0 0;font-size:16px;line-height:1.15;letter-spacing:-.02em}
@@ -175,128 +176,132 @@ export default function GeospatialAuditPanel() {
 
   if (!active) {
     return (
-      <main className="geo-root">
-        <style aria-hidden="true">{css}</style>
-        No GeoSpatial case is available.
-      </main>
+      <Panel>
+        <div className="geo-root">
+          <style aria-hidden="true">{css}</style>
+          No GeoSpatial case is available.
+        </div>
+      </Panel>
     );
   }
 
   const aggregate = props.aggregate || {};
   return (
-    <main className="geo-root">
-      <style aria-hidden="true">{css}</style>
+    <Panel>
+      <div className="geo-root">
+        <style aria-hidden="true">{css}</style>
 
-      <header className="geo-header">
-        <div>
-          <span className="geo-kicker">Aerial image retrieval</span>
-          <h2>Which tiles belong together?</h2>
-          <p>Choose a tile and compare its ten nearest neighbours.</p>
-        </div>
-        <button
-          type="button"
-          className="geo-reset"
-          disabled={busy}
-          onClick={reset}
-        >
-          Reset
-        </button>
-      </header>
-
-      <nav className="geo-cases" aria-label="Example tiles">
-        {cases.map((item) => (
+        <header className="geo-header">
+          <div>
+            <span className="geo-kicker">Aerial image retrieval</span>
+            <h2>Which tiles belong together?</h2>
+            <p>Choose a tile and compare its ten nearest neighbours.</p>
+          </div>
           <button
-            key={item.id}
             type="button"
-            className="geo-case"
-            aria-pressed={item.id === active.id}
+            className="geo-reset"
             disabled={busy}
-            onClick={() => presentCase(item)}
+            onClick={reset}
           >
-            <small>{item.kind}</small>
-            <strong>{item.title}</strong>
+            Reset
           </button>
-        ))}
-      </nav>
-      <section className="geo-active" aria-label="Selected tile">
-        <span className="geo-kicker">Selected tile</span>
-        <h3>{active.question}</h3>
-        <div className="geo-facts">
-          <span className="geo-pill">Exact: {readable(active.exactClass)}</span>
-          <span className="geo-pill">
-            Parent: {readable(active.parentGroup)}
-          </span>
-        </div>
+        </header>
 
-        <div className="geo-models" aria-label="Model identity counts">
-          {["hyper3", "clip"].map((modelKey) => {
-            const model = active.models[modelKey] || {};
-            return (
-              <article className="geo-model" key={modelKey}>
-                <div className="geo-model-head">
-                  <span>
-                    <i style={{ background: modelColor(modelKey) }} />
-                    <span className={modelKey === "hyper3" ? "geo-hyper" : "geo-clip"}>
-                      {models[modelKey] || modelKey}
+        <nav className="geo-cases" aria-label="Example tiles">
+          {cases.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="geo-case"
+              aria-pressed={item.id === active.id}
+              disabled={busy}
+              onClick={() => presentCase(item)}
+            >
+              <small>{item.kind}</small>
+              <strong>{item.title}</strong>
+            </button>
+          ))}
+        </nav>
+        <section className="geo-active" aria-label="Selected tile">
+          <span className="geo-kicker">Selected tile</span>
+          <h3>{active.question}</h3>
+          <div className="geo-facts">
+            <span className="geo-pill">Exact: {readable(active.exactClass)}</span>
+            <span className="geo-pill">
+              Parent: {readable(active.parentGroup)}
+            </span>
+          </div>
+
+          <div className="geo-models" aria-label="Model identity counts">
+            {["hyper3", "clip"].map((modelKey) => {
+              const model = active.models[modelKey] || {};
+              return (
+                <article className="geo-model" key={modelKey}>
+                  <div className="geo-model-head">
+                    <span>
+                      <i style={{ background: modelColor(modelKey) }} />
+                      <span className={modelKey === "hyper3" ? "geo-hyper" : "geo-clip"}>
+                        {models[modelKey] || modelKey}
+                      </span>
                     </span>
-                  </span>
-                  <span className="geo-kicker">Top {neighbourK}</span>
-                </div>
-                <div className="geo-counts">
-                  <CountCell
-                    kind="exact"
-                    label="Exact (max 4)"
-                    value={model.exactHits ?? "—"}
-                  />
-                  <CountCell
-                    kind="parent"
-                    label="Same group (incl. exact)"
-                    value={model.parentHits ?? "—"}
-                  />
-                  <CountCell
-                    kind="off"
-                    label="Off-group"
-                    value={model.offGroupHits ?? "—"}
-                  />
-                </div>
-                <p>{model.consequence}</p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
+                    <span className="geo-kicker">Top {neighbourK}</span>
+                  </div>
+                  <div className="geo-counts">
+                    <CountCell
+                      kind="exact"
+                      label="Exact (max 4)"
+                      value={model.exactHits ?? "—"}
+                    />
+                    <CountCell
+                      kind="parent"
+                      label="Same group (incl. exact)"
+                      value={model.parentHits ?? "—"}
+                    />
+                    <CountCell
+                      kind="off"
+                      label="Off-group"
+                      value={model.offGroupHits ?? "—"}
+                    />
+                  </div>
+                  <p>{model.consequence}</p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
-      {active.comparison ? (
-        <div className="geo-compare">
-          <strong>What this means</strong>
-          <p>{active.comparison}</p>
-        </div>
-      ) : null}
+        {active.comparison ? (
+          <div className="geo-compare">
+            <strong>What this means</strong>
+            <p>{active.comparison}</p>
+          </div>
+        ) : null}
 
-      <p className="geo-hint">Open each archive map to inspect clusters and outliers. Compare rank rather than distance because the models use different geometries.</p>
+        <p className="geo-hint">Open each archive map to inspect clusters and outliers. Compare rank rather than distance because the models use different geometries.</p>
 
-      <section className="geo-aggregate" aria-label="Aggregate retrieval results">
-        <div className="geo-aggregate-head">
-          <strong>Across all {props.workspaceSampleCount || 60} tiles</strong>
-          <span>Precision at 10</span>
-        </div>
-        <div className="geo-metrics">
-          <div className="geo-metric"><span>Same class (4 available per query)</span><strong><span className="geo-hyper">H3 {percent(aggregate.hyper3?.exactP10)}</span>{" · "}<span className="geo-clip">CLIP {percent(aggregate.clip?.exactP10)}</span></strong></div>
-          <div className="geo-metric"><span>Same land-use group</span><strong><span className="geo-hyper">H3 {percent(aggregate.hyper3?.parentP10)}</span>{" · "}<span className="geo-clip">CLIP {percent(aggregate.clip?.parentP10)}</span></strong></div>
-        </div>
-      </section>
+        <section className="geo-aggregate" aria-label="Aggregate retrieval results">
+          <div className="geo-aggregate-head">
+            <strong>Across all {props.workspaceSampleCount || 60} tiles</strong>
+            <span>Precision at 10</span>
+          </div>
+          <div className="geo-metrics">
+            <div className="geo-metric"><span>Same class (4 available per query)</span><strong><span className="geo-hyper">H3 {percent(aggregate.hyper3?.exactP10)}</span>{" · "}<span className="geo-clip">CLIP {percent(aggregate.clip?.exactP10)}</span></strong></div>
+            <div className="geo-metric"><span>Same land-use group</span><strong><span className="geo-hyper">H3 {percent(aggregate.hyper3?.parentP10)}</span>{" · "}<span className="geo-clip">CLIP {percent(aggregate.clip?.parentP10)}</span></strong></div>
+          </div>
+        </section>
 
-      <details className="geo-footer">
-        <summary>Evaluation scope</summary>
-        <p>{props.protocol?.dataset} · {props.protocol?.split} · {props.protocol?.subset}. {props.protocol?.claimBoundary}</p>
-      </details>
+        <details className="geo-footer">
+          <summary>Evaluation scope</summary>
+          <p>{props.protocol?.dataset} · {props.protocol?.split} · {props.protocol?.subset}. {props.protocol?.claimBoundary}</p>
+        </details>
 
-      {busy ? <div className="geo-status">Updating ranked neighbours…</div> : null}
-      {error ? (
-        <div className="geo-error" role="alert">
-          {error}
-        </div>
-      ) : null}
-    </main>
+        {busy ? <div className="geo-status">Updating ranked neighbours…</div> : null}
+        {error ? (
+          <div className="geo-error" role="alert">
+            {error}
+          </div>
+        ) : null}
+      </div>
+    </Panel>
   );
 }
