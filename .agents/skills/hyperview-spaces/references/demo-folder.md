@@ -64,6 +64,96 @@ Keep Docker args, runtime environment variables, and script constants in sync
 from this one place so an agent editing a copy does not have to coordinate three
 files.
 
+One constant belongs in every demo, not just a copied one:
+
+```python
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
+```
+
+`main()` then launches with `block=False`, returns early when `BUILD_ONLY` is
+set, and calls `session.wait()` otherwise. The container gets the serving
+behaviour it has always had; an export or a build check gets a process that
+finishes.
+
+## Composing the workspace
+
+A demo describes the workspace it wants and hands the description to HyperView.
+The API for that is small, and each call replaces something a demo used to do by
+reaching into the running runtime.
+
+```python
+session = hv.launch(
+    dataset,
+    workspace_id=WORKSPACE_ID,
+    block=False,
+    extensions=[EXTENSION_DIR],      # registered before any view names its panel
+)
+
+shortlist = session.create_collection(  # durable; a static export keeps it
+    ordered_result_ids(case, "hyper3"),
+    name="Denim leggings · Hyper3-CLIP · Top 6",
+    workspace_id=WORKSPACE_ID,
+)
+
+layout_key = dataset.find_layout(       # described, not pinned
+    model="hyper3-clip-v0.5",
+    provider="hyper-models",
+    modality="multimodal",
+    geometry="poincare",
+    dimension=2,
+)
+if layout_key is None:
+    raise RuntimeError("This workspace has no 2D Poincare Hyper3 layout.")
+
+session.ui.apply_view(
+    hv.ui.View(
+        hv.ui.Samples(
+            id="samples",
+            mode="results",             # typed keywords for the documented props
+            collection_id=shortlist,
+            label_field="title",
+        ),
+        hv.ui.Scatter(id="map", layout_key=layout_key, geometry="poincare"),
+        hv.ui.ExtensionPanel(
+            id="readout",
+            extension="fashion-search-readout",
+            panel="fashion-comparison",
+            props={"cases": cases},     # raw props stay open for custom ones
+            state={"activeCaseId": "denim"},  # opening state, no patch after
+        ),
+    ),
+    workspace_id=WORKSPACE_ID,
+)
+```
+
+Four things to carry away:
+
+- **A layout key is a content hash.** It is only knowable after the layout is
+  computed, so a constant in `demo.py` goes stale on the next rebuild.
+  `find_layout` returns `None` when nothing matches and raises with the
+  candidates listed when more than one does. One model often has both an
+  image-only and a multimodal embedding space in the same dataset, and
+  `modality=` is the only criterion that tells their layouts apart.
+- **`create_collection` is how a result list survives.** Building one by calling
+  `show_samples` and reading the reply's `collection_id` leaves a transient
+  collection that a static export drops, so the exported Space opens on the
+  whole dataset instead of the six products the demo chose.
+- **`state=` replaces `patch_panel_state(..., replace_state=True)`.** The panel
+  opens in the right place instead of flickering through a default first.
+- **`extensions=[...]` on `launch` replaces `add_extension` between `launch` and
+  `apply_view`.** `apply_view` validates every panel type, so an extension that
+  is not registered yet fails loudly rather than opening an empty workspace.
+
+Typed keywords (`mode`, `collection_id`, `anchor_sample_id`, `label_field`,
+`show_text_search`, `rank`, `preset`) cover the documented props; `props={...}`
+stays open for anything a custom panel understands.
+
 ## Import rule
 
 ```python
@@ -132,6 +222,28 @@ const { useHostState, useSampleQuery, ... } = hooks;
 `sdk.version !== "2"` guard, if it uses a legacy SDK API, or if it destructures
 a hook that SDK v2 does not export. Authoring guidance for the panel itself is
 in the `hyperview-cli` skill's `references/panel-modules.md`.
+
+The SDK also ships the chrome the built-in panels are made of, so a panel does
+not have to hand-roll its own shell:
+
+```jsx
+const { React, components, hooks } = sdk;
+const { Panel } = components;   // also PanelHeader, PanelToolbar,
+                                // PanelToolbarButton, PanelToolbarIconButton
+
+return (
+  <Panel>
+    <div className="fs-root">…</div>
+  </Panel>
+);
+```
+
+`Panel` is the full-height flex column with hidden overflow that a demo panel
+otherwise writes out in inline CSS. Its scrolling body should take the remaining
+space - `flex: 1; min-height: 0` - rather than asking for `height: 100%` inside
+a flex parent. Reach for `PanelHeader` and the toolbar components when a panel
+wants the workspace's own chrome; a panel with an editorial header of its own
+design should keep it.
 
 ## Static vs live variants
 

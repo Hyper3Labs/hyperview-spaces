@@ -72,11 +72,36 @@ static-spaces.registry.json   reviewed static artifacts
 
 Full detail: [references/demo-folder.md](references/demo-folder.md).
 
+## How a demo composes its workspace
+
+A demo says what it wants once, up front, and lets HyperView apply it. Five
+calls cover almost everything:
+
+| To do this | Use | Not |
+| --- | --- | --- |
+| Pin a result list a panel opens on | `session.create_collection(ids, name=...)` | `show_samples(...)` and reading `collection_id` back out of the reply |
+| Name a layout | `dataset.find_layout(model=..., modality=..., geometry=...)` | a layout key written down as a constant |
+| Open a panel in a particular state | `state=` on the panel | `patch_panel_state(..., replace_state=True)` after `apply_view` |
+| Install an extension | `hv.launch(..., extensions=[EXTENSION_DIR])` | `add_extension` squeezed between `launch` and `apply_view` |
+| Set a documented panel prop | the typed keyword: `mode=`, `collection_id=`, `rank=`, `label_field=` | a raw camelCase `props={...}` entry |
+
+Two of these are about durability rather than taste. A collection made by
+`create_collection` lives in workspace state, so a static export keeps it; the
+transient one a `show_samples` call leaves behind does not, and the exported
+Space opens on the whole dataset instead of the shortlist the demo authored. And
+a layout key carries a content hash of the embedding and projection parameters,
+so it cannot be known before the layout is computed - a constant copied into
+`demo.py` is correct until the next rebuild and silently wrong after it.
+`find_layout` returns `None` when nothing matches and raises when more than one
+does, so describe the layout until one is left. One model routinely has both an
+image-only and a multimodal space in the same dataset; `modality=` is the only
+thing that separates them.
+
 ## Core workflow: ship a Static Space
 
 ```bash
 # 1. Build the workspace locally (the exporter reads the local runtime state)
-uv run --project ../ python demos/<slug>/demo.py
+HYPERVIEW_BUILD_ONLY=1 uv run --project ../ python demos/<slug>/demo.py
 
 # 2. Export registered bundles into static-spaces/<slug>/
 uv run --project ../ python scripts/export_static_spaces.py <slug>
@@ -84,6 +109,12 @@ uv run --project ../ python scripts/export_static_spaces.py <slug>
 # 3. Validate, including the generated bundles
 uv run --project ../ python scripts/check_static_spaces.py --require-bundles
 ```
+
+`HYPERVIEW_BUILD_ONLY=1` (or the `--build-only` flag) is what makes step 1
+finish. Without it every `demo.py` builds its workspace and then serves it
+forever, which is right for a container and wrong for an export: the shell
+never comes back. With it the demo builds, prints, and exits, leaving exactly
+the durable workspace the exporter reads.
 
 `export_static_spaces.py` takes positional slugs; with no arguments it exports
 every registered Static Space. The exporter validates its own output, so a green
@@ -149,6 +180,9 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   collections), while provider registration, extension install, tool execution
   and compute answer 403. A demo that needs one of those on a public Space is
   a demo to rethink, not a reason to widen the allowlist.
+- **Every `demo.py` must exit under `HYPERVIEW_BUILD_ONLY=1`.** A demo that
+  serves anyway cannot be exported or build-checked without a server left
+  running behind it.
 - **Do not remove `.hyperview/extensions/` from a copied folder** unless you
   also remove the panel it backs from `demo.py`.
 - **A benchmark a demo prints must be regenerable, and its cases must come from

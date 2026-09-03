@@ -54,8 +54,9 @@ Field rules enforced by `check_static_spaces.py`:
 
 ```bash
 # Build or refresh the workspace first - the exporter reads local runtime state,
-# so a stale workspace exports a stale bundle with no warning.
-uv run --project ../ python demos/<slug>/demo.py
+# so a stale workspace exports a stale bundle with no warning. Build-only makes
+# the demo exit once the workspace is built instead of serving it forever.
+HYPERVIEW_BUILD_ONLY=1 uv run --project ../ python demos/<slug>/demo.py
 
 # All registered views, or just the named slugs
 uv run --project ../ python scripts/export_static_spaces.py
