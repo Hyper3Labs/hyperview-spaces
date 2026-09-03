@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hyperview-spaces",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-03",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "spaces.hyper3labs.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  }
+}
