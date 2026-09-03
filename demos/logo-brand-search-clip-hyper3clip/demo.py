@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -33,11 +34,20 @@ BRIEF_FILE = SPACE_DIR / "case_briefs.json"
 DEFAULT_CASE_ID = os.environ.get("LOGO_BRAND_DEFAULT_CASE_ID", "01-barber-franchise")
 DEFAULT_MODEL = "hyper3"
 EXPECTED_SAMPLE_COUNT = 160
-# Hyper3 multimodal embedding space (image+text), not the older image-only layout.
-HYPER3_LAYOUT_KEY = (
-    "hyper-models__hyper3-clip-v0_5__42052c955756__"
-    "poincare_umap__2d_1a6bcbc4"
-)
+
+# The style map is the Hyper3 multimodal space (image+text), not the older
+# image-only one; nothing but the modality separates their layouts.
+HYPER3_MODEL = "hyper3-clip-v0.5"
+HYPER3_PROVIDER = "hyper-models"
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
+
 SAMPLES_PANEL_ID = "samples"
 TOPOLOGY_PANEL_ID = "logo-style-topology"
 DECISION_PANEL_ID = "logo-brand-readout"
@@ -112,7 +122,33 @@ def repair_media_paths(dataset: hv.Dataset) -> None:
         print(f"Repaired {len(repaired)} Logo Search media paths.", flush=True)
 
 
-def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> None:
+def resolve_layout_key(dataset: hv.Dataset) -> str:
+    """Find the style map by describing it rather than pinning its key.
+
+    A layout key carries a content hash of the embedding and projection
+    parameters, so it is only knowable after the layout is computed, and a
+    constant copied into this file goes stale the next time the space is
+    rebuilt.
+    """
+
+    layout_key = dataset.find_layout(
+        model=HYPER3_MODEL,
+        provider=HYPER3_PROVIDER,
+        modality="multimodal",
+        geometry="poincare",
+        dimension=2,
+    )
+    if layout_key is None:
+        available = "\n  ".join(record.describe() for record in dataset.list_layouts())
+        raise RuntimeError(
+            f"Logo workspace needs a 2D Poincare layout over the {HYPER3_MODEL} "
+            f"multimodal space; {dataset.name} has none. Layouts present:\n  "
+            + (available or "(none)")
+        )
+    return layout_key
+
+
+def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> str:
     samples = dataset.samples
     if len(samples) != EXPECTED_SAMPLE_COUNT:
         raise RuntimeError(
@@ -136,18 +172,12 @@ def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> None:
         preview = ", ".join(missing_media[:5])
         raise RuntimeError(f"Logo dataset has missing local media: {preview}")
 
-    layouts = {layout.layout_key: layout for layout in dataset.list_layouts()}
-    layout = layouts.get(HYPER3_LAYOUT_KEY)
-    if layout is None:
-        raise RuntimeError(f"Required Hyper3 multimodal layout is missing: {HYPER3_LAYOUT_KEY}")
-    if int(layout.count) != EXPECTED_SAMPLE_COUNT:
+    layout_key = resolve_layout_key(dataset)
+    layout = next(record for record in dataset.list_layouts() if record.key == layout_key)
+    if int(layout.sample_count) != EXPECTED_SAMPLE_COUNT:
         raise RuntimeError(
-            f"Hyper3 multimodal layout covers {layout.count} samples, "
+            f"Hyper3 multimodal layout covers {layout.sample_count} samples, "
             f"expected {EXPECTED_SAMPLE_COUNT}."
-        )
-    if getattr(layout, "geometry", None) != "poincare":
-        raise RuntimeError(
-            f"Expected Poincare Hyper3 layout geometry; found {getattr(layout, 'geometry', None)}."
         )
 
     print(
@@ -156,6 +186,7 @@ def validate_dataset(dataset: hv.Dataset, payload: dict[str, Any]) -> None:
         f"{len(prepared_sample_ids(payload))} prepared evidence IDs covered.",
         flush=True,
     )
+    return layout_key
 
 
 def panel_cases(payload: dict[str, Any], briefs: dict[str, Any]) -> list[dict[str, Any]]:
@@ -245,18 +276,25 @@ def readout_props(payload: dict[str, Any], briefs: dict[str, Any]) -> dict[str, 
     }
 
 
-def build_demo_view(payload: dict[str, Any], briefs: dict[str, Any]) -> hv.ui.View:
+def build_demo_view(
+    payload: dict[str, Any],
+    briefs: dict[str, Any],
+    *,
+    layout_key: str,
+    collection_id: str,
+) -> hv.ui.View:
     samples = hv.ui.Samples(
         id=SAMPLES_PANEL_ID,
         title="Top 5 of 160 logos",
         position="center",
-        props={"mode": "results"},
+        mode="results",
+        collection_id=collection_id,
         layout=hv.ui.PanelLayout(min_width=320, min_height=340),
     )
     topology = hv.ui.Scatter(
         id=TOPOLOGY_PANEL_ID,
         title="Logo style map · Hyper3 multimodal",
-        layout_key=HYPER3_LAYOUT_KEY,
+        layout_key=layout_key,
         geometry="poincare",
         layout_dimension=2,
         position="center",
@@ -272,6 +310,8 @@ def build_demo_view(payload: dict[str, Any], briefs: dict[str, Any]) -> hv.ui.Vi
         position="right",
         layout=hv.ui.PanelLayout(width=380, min_width=360, max_width=410),
         props=readout_props(payload, briefs),
+        # The desk opens on the default brief; there is no patch step after.
+        state={"activeCaseId": DEFAULT_CASE_ID, "activeModelKey": DEFAULT_MODEL},
     )
     return hv.ui.View(
         hv.ui.Tabs(samples, topology, active_tab=samples.id),
@@ -293,7 +333,10 @@ def default_case_payload(payload: dict[str, Any], briefs: dict[str, Any]) -> dic
 
 
 def launch_demo(
-    dataset: hv.Dataset, payload: dict[str, Any], briefs: dict[str, Any]
+    dataset: hv.Dataset,
+    payload: dict[str, Any],
+    briefs: dict[str, Any],
+    layout_key: str,
 ) -> hv.Session:
     session = hv.launch(
         dataset,
@@ -302,22 +345,26 @@ def launch_demo(
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
-    )
-    print("Installing Logo Search creative-brief extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
-    session.ui.apply_view(build_demo_view(payload, briefs), workspace_id=WORKSPACE_ID)
-    session.ui.patch_panel_state(
-        DECISION_PANEL_ID,
-        {"activeCaseId": DEFAULT_CASE_ID, "activeModelKey": DEFAULT_MODEL},
-        workspace_id=WORKSPACE_ID,
-        replace_state=True,
+        extensions=[EXTENSION_DIR],
     )
     default_case = default_case_payload(payload, briefs)
-    session.ui.show_samples(
-        ordered_result_ids(default_case, DEFAULT_MODEL),
+    session.ui.apply_view(
+        build_demo_view(
+            payload,
+            briefs,
+            layout_key=layout_key,
+            # The opening shortlist is a stored collection, so the Static
+            # Space keeps it instead of falling back to the whole catalog.
+            collection_id=session.create_collection(
+                ordered_result_ids(default_case, DEFAULT_MODEL),
+                name=(
+                    f"Hyper3-CLIP · {default_case['label']} · "
+                    f"Top 5 of {EXPECTED_SAMPLE_COUNT} logos"
+                ),
+                workspace_id=WORKSPACE_ID,
+            ),
+        ),
         workspace_id=WORKSPACE_ID,
-        focus=False,
-        source=f"Hyper3-CLIP · {default_case['label']} · Top 5 of {EXPECTED_SAMPLE_COUNT} logos",
     )
     default_target_is_visible = any(
         bool(result.get("isTarget"))
@@ -327,7 +374,7 @@ def launch_demo(
         [default_case["target"]["sampleId"]] if default_target_is_visible else [],
         workspace_id=WORKSPACE_ID,
     )
-    session.ui.set_active_layout(HYPER3_LAYOUT_KEY, workspace_id=WORKSPACE_ID)
+    session.ui.set_active_layout(layout_key, workspace_id=WORKSPACE_ID)
     print(f"\nHyperView Logo Search demo is running at {session.url}", flush=True)
     print(
         "   Creative briefs drive native Samples; the Hyper3 map shows full catalog coverage.",
@@ -340,8 +387,11 @@ def main() -> None:
     payload, briefs = load_evidence()
     dataset = hv.Dataset(DATASET_NAME)
     repair_media_paths(dataset)
-    validate_dataset(dataset, payload)
-    session = launch_demo(dataset, payload, briefs)
+    layout_key = validate_dataset(dataset, payload)
+    session = launch_demo(dataset, payload, briefs, layout_key)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
     session.wait()
 
 
