@@ -565,6 +565,10 @@ def model_panel_props(layouts: dict[str, str]) -> list[dict[str, Any]]:
                 "displayName": spec["display_name"],
                 "layoutKey": layout_key,
                 "rankPanelId": f"{spec['key']}-nearest-neighbours",
+                # The readout's "target" control focuses this map so a viewer can
+                # see where the exact target sits in each model's space, not just
+                # read its rank.
+                "mapPanelId": f"{spec['key']}-catalog-map",
             }
         )
     return props
@@ -591,7 +595,51 @@ def demo_examples(dataset: hv.Dataset, layouts: dict[str, str]) -> list[dict[str
         )
 
     examples = deepcopy(DEMO_EXAMPLES)
+    pool_size = len(available_ids)
     for example in examples:
+        if example["mode"] == "text-to-product":
+            # The readout prints these ranks as evidence, so they have to come
+            # from this dataset rather than a hand-maintained literal. Rank the
+            # whole pool: the interesting number is where the target lands, and
+            # for the baseline that is usually outside any shortlist.
+            example["results"] = {}
+            for spec in MODEL_SPECS:
+                matches = dataset.find_similar_by_text(
+                    example["query"],
+                    k=pool_size,
+                    layout_key=layouts[spec["key"]],
+                )
+                target_rank = next(
+                    (
+                        rank
+                        for rank, (sample, _distance) in enumerate(matches, start=1)
+                        if sample.id == example["targetSampleId"]
+                    ),
+                    None,
+                )
+                if target_rank is None:
+                    raise RuntimeError(
+                        f"{spec['display_name']} ranking for '{example['id']}' "
+                        f"never returned target {example['targetSampleId']}."
+                    )
+                rows = [
+                    {
+                        "id": sample.id,
+                        "rank": rank,
+                        **({"target": True} if sample.id == example["targetSampleId"] else {}),
+                    }
+                    for rank, (sample, _distance) in enumerate(matches[:6], start=1)
+                ]
+                summary = example["summaries"][spec["key"]]
+                summary["rank"] = target_rank
+                summary["text"] = (
+                    f"Ranks the exact target first out of {pool_size} products."
+                    if target_rank == 1
+                    else f"The exact target first appears at rank {target_rank} of {pool_size}."
+                )
+                example["results"][spec["key"]] = rows
+            continue
+
         if example["mode"] != "image-neighborhood":
             continue
 
