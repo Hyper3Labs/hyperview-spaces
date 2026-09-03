@@ -25,7 +25,7 @@ rights holder.
 
 The Docker image installs released packages from PyPI:
 
-- `hyperview==1.0.0`
+- `hyperview==1.1.0`
 - `hyper-models[ml]==0.3.1`
 
 ## Dataset

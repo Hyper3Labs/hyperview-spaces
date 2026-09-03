@@ -21,7 +21,7 @@ export OUT="$SCRATCH/static-inat24"
 python3.12 -m venv "$VENV"
 "$VENV/bin/python" -m pip install --upgrade pip
 "$VENV/bin/python" -m pip install \
-  "hyperview==1.0.0" \
+  "hyperview==1.1.0" \
   "hyper-models[ml]==0.3.1" \
   "datasets>=4.5.0" \
   "Pillow>=12.0.0"

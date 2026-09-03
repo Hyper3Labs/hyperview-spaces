@@ -70,7 +70,7 @@ JavaScript.
 This folder is intended to deploy to `hyper3labs/HyperView-ABO-Catalog` from
 the `hyperview-spaces` deployment repository.
 
-The Dockerfile installs `hyperview==1.0.0` and `hyper-models[ml]==0.3.1` from
+The Dockerfile installs `hyperview==1.1.0` and `hyper-models[ml]==0.3.1` from
 PyPI. The released HyperView wheel includes the built frontend assets, so this
 Space does not carry a local `static/` bundle or copy frontend files into the
 installed package.

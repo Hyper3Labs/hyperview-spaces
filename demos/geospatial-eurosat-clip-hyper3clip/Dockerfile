@@ -20,7 +20,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_VERSION=1.0.0
+ARG HYPERVIEW_VERSION=1.1.0
 ARG HYPER_MODELS_VERSION=0.3.1
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle.

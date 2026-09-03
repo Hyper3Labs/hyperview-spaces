@@ -19,7 +19,7 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_PACKAGE="hyperview[ml]==1.0.0"
+ARG HYPERVIEW_PACKAGE="hyperview[ml]==1.1.0"
 # Pinned explicitly, not left to hyperview[ml]'s `hyper-models[ml]>=0.3.1`. The
 # floor would let a future model release change this demo's vectors on a rebuild,
 # and the embeddings are what the demo is showing.

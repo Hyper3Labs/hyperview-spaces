@@ -203,7 +203,7 @@ Notes:
   health endpoint answers; a short grace period restarts the container in a
   loop and it never finishes.
 - `ARG HYPERVIEW_VERSION` / `ARG HYPER_MODELS_VERSION` are the pin form
-  `check_spaces.py` reads first. A direct `pip install hyperview==1.0.0` also
+  `check_spaces.py` reads first. A direct `pip install hyperview==1.1.0` also
   works; an unpinned `pip install hyperview` is an error.
 - The build-time `import hyperview` print is an install smoke test: it fails the
   image build rather than the container start if the wheel is broken.
