@@ -3,7 +3,8 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is not available on window.");
 }
 
-const { React, hooks } = sdk;
+const { React, components, hooks } = sdk;
+const { Panel } = components;
 const {
   usePanelActions,
   usePanelState,
@@ -281,90 +282,92 @@ export default function CatalogRetrievalPanel() {
   };
 
   return (
-    <main className="abo-root">
-      <style>{`
-        .abo-root{box-sizing:border-box;height:100%;overflow:auto;padding:14px;background:var(--hv-color-background);color:var(--hv-color-foreground);font:12px/1.45 system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
-        .abo-root *{box-sizing:border-box}.abo-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.abo-kicker,.abo-case-kicker{display:block;color:var(--hv-color-muted-foreground);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.abo-header h2{margin:3px 0 0;font-size:18px;line-height:1.12;letter-spacing:-.02em}.abo-header p{margin:7px 0 0;color:var(--hv-color-muted-foreground)}
-        .abo-reset,.abo-action{border:1px solid var(--hv-color-border);border-radius:6px;padding:6px 9px;background:var(--hv-color-surface-muted);color:var(--hv-color-foreground);cursor:pointer;font-size:11px}.abo-sections{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:13px 0 10px}.abo-section-button{border:1px solid var(--hv-color-border);border-radius:7px;padding:8px;background:var(--hv-color-surface);color:var(--hv-color-muted-foreground);cursor:pointer;font-weight:700}.abo-section-button.is-active{border-color:var(--hv-color-accent);background:color-mix(in srgb,var(--hv-color-accent) 16%,var(--hv-color-surface));color:var(--hv-color-foreground)}
-        .abo-cases{display:grid;gap:6px}.abo-case{display:flex;min-width:0;align-items:center;gap:8px;border:1px solid var(--hv-color-border);border-radius:7px;padding:7px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left;cursor:pointer}.abo-case.is-active{border-color:var(--hv-color-accent);box-shadow:inset 0 0 0 1px var(--hv-color-accent)}.abo-case img,.abo-image-placeholder{width:40px;height:40px;flex:0 0 40px;border-radius:5px;object-fit:contain;background:var(--hv-color-surface-muted)}.abo-case strong,.abo-case small{display:block}.abo-case small{margin-top:2px;color:var(--hv-color-muted-foreground);font-size:9px}.abo-text-case{display:block}.abo-case-kicker{margin-bottom:3px}
-        .abo-question-block,.abo-query-card{margin-top:10px;border-top:1px solid var(--hv-color-border);padding-top:10px}.abo-question-block h3{margin:3px 0;font-size:14px}.abo-question-block p,.abo-hint{margin:5px 0 0;color:var(--hv-color-muted-foreground)}.abo-query-card blockquote{margin:6px 0 0;font-size:13px;font-weight:650;line-height:1.45}.abo-target{display:flex;width:100%;align-items:center;gap:9px;margin-top:9px;border:1px solid var(--hv-color-accent);border-radius:8px;padding:8px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left;cursor:pointer}.abo-target img,.abo-target .abo-image-placeholder{width:62px;height:62px;flex:0 0 62px;object-fit:contain;border-radius:6px;background:var(--hv-color-surface-muted)}.abo-target small,.abo-target strong{display:block}.abo-target small{color:var(--hv-color-muted-foreground);font-size:9px;text-transform:uppercase;letter-spacing:.07em}.abo-target strong{margin-top:4px;font-size:11px}
-        .abo-case-body{min-width:0}.abo-case-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}.abo-scores{display:flex;gap:7px;flex:0 0 auto;font-size:9px;font-weight:800;white-space:nowrap}.abo-score{display:flex;align-items:center;gap:3px}.abo-score i{width:5px;height:5px;border-radius:99px;flex:0 0 auto}.abo-visibility{display:block;margin-top:5px;font-size:9px;font-weight:800;letter-spacing:.04em}.abo-visibility.is-hit{color:#22c55e}.abo-visibility.is-miss{color:#f59e0b}.abo-mini-actions{display:flex;gap:5px;margin-top:7px}.abo-mini{border:1px solid var(--hv-color-border);border-radius:5px;padding:3px 7px;background:var(--hv-color-surface-muted);color:var(--hv-color-foreground);cursor:pointer;font-size:9px;font-weight:700}.abo-mini:hover{border-color:var(--hv-color-accent)}.abo-model-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.abo-model-card{border:1px solid var(--hv-color-border);border-radius:8px;padding:9px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left}.abo-model-row{display:flex;align-items:center;justify-content:space-between;gap:6px;font-weight:750}.abo-model-row span{display:flex;align-items:center;gap:5px;min-width:0}.abo-model-row i{width:7px;height:7px;border-radius:99px;flex:0 0 auto}.abo-model-row strong{font-size:14px}.abo-model-card small{display:block;margin-top:3px;color:var(--hv-color-muted-foreground);font-size:9px}.abo-model-card p{margin:6px 0 0;color:var(--hv-color-muted-foreground);font-size:10px;line-height:1.4}.abo-actions{display:flex;gap:6px;margin-top:10px}.abo-error{color:#ef4444}
-        @media(max-width:420px){.abo-root{padding:10px}.abo-model-grid{grid-template-columns:1fr}}
-      `}</style>
+    <Panel>
+      <div className="abo-root">
+        <style>{`
+          .abo-root{box-sizing:border-box;flex:1;min-height:0;overflow:auto;padding:14px;background:var(--hv-color-background);color:var(--hv-color-foreground);font:12px/1.45 system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+          .abo-root *{box-sizing:border-box}.abo-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.abo-kicker,.abo-case-kicker{display:block;color:var(--hv-color-muted-foreground);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.abo-header h2{margin:3px 0 0;font-size:18px;line-height:1.12;letter-spacing:-.02em}.abo-header p{margin:7px 0 0;color:var(--hv-color-muted-foreground)}
+          .abo-reset,.abo-action{border:1px solid var(--hv-color-border);border-radius:6px;padding:6px 9px;background:var(--hv-color-surface-muted);color:var(--hv-color-foreground);cursor:pointer;font-size:11px}.abo-sections{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:13px 0 10px}.abo-section-button{border:1px solid var(--hv-color-border);border-radius:7px;padding:8px;background:var(--hv-color-surface);color:var(--hv-color-muted-foreground);cursor:pointer;font-weight:700}.abo-section-button.is-active{border-color:var(--hv-color-accent);background:color-mix(in srgb,var(--hv-color-accent) 16%,var(--hv-color-surface));color:var(--hv-color-foreground)}
+          .abo-cases{display:grid;gap:6px}.abo-case{display:flex;min-width:0;align-items:center;gap:8px;border:1px solid var(--hv-color-border);border-radius:7px;padding:7px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left;cursor:pointer}.abo-case.is-active{border-color:var(--hv-color-accent);box-shadow:inset 0 0 0 1px var(--hv-color-accent)}.abo-case img,.abo-image-placeholder{width:40px;height:40px;flex:0 0 40px;border-radius:5px;object-fit:contain;background:var(--hv-color-surface-muted)}.abo-case strong,.abo-case small{display:block}.abo-case small{margin-top:2px;color:var(--hv-color-muted-foreground);font-size:9px}.abo-text-case{display:block}.abo-case-kicker{margin-bottom:3px}
+          .abo-question-block,.abo-query-card{margin-top:10px;border-top:1px solid var(--hv-color-border);padding-top:10px}.abo-question-block h3{margin:3px 0;font-size:14px}.abo-question-block p,.abo-hint{margin:5px 0 0;color:var(--hv-color-muted-foreground)}.abo-query-card blockquote{margin:6px 0 0;font-size:13px;font-weight:650;line-height:1.45}.abo-target{display:flex;width:100%;align-items:center;gap:9px;margin-top:9px;border:1px solid var(--hv-color-accent);border-radius:8px;padding:8px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left;cursor:pointer}.abo-target img,.abo-target .abo-image-placeholder{width:62px;height:62px;flex:0 0 62px;object-fit:contain;border-radius:6px;background:var(--hv-color-surface-muted)}.abo-target small,.abo-target strong{display:block}.abo-target small{color:var(--hv-color-muted-foreground);font-size:9px;text-transform:uppercase;letter-spacing:.07em}.abo-target strong{margin-top:4px;font-size:11px}
+          .abo-case-body{min-width:0}.abo-case-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}.abo-scores{display:flex;gap:7px;flex:0 0 auto;font-size:9px;font-weight:800;white-space:nowrap}.abo-score{display:flex;align-items:center;gap:3px}.abo-score i{width:5px;height:5px;border-radius:99px;flex:0 0 auto}.abo-visibility{display:block;margin-top:5px;font-size:9px;font-weight:800;letter-spacing:.04em}.abo-visibility.is-hit{color:#22c55e}.abo-visibility.is-miss{color:#f59e0b}.abo-mini-actions{display:flex;gap:5px;margin-top:7px}.abo-mini{border:1px solid var(--hv-color-border);border-radius:5px;padding:3px 7px;background:var(--hv-color-surface-muted);color:var(--hv-color-foreground);cursor:pointer;font-size:9px;font-weight:700}.abo-mini:hover{border-color:var(--hv-color-accent)}.abo-model-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.abo-model-card{border:1px solid var(--hv-color-border);border-radius:8px;padding:9px;background:var(--hv-color-surface);color:var(--hv-color-foreground);text-align:left}.abo-model-row{display:flex;align-items:center;justify-content:space-between;gap:6px;font-weight:750}.abo-model-row span{display:flex;align-items:center;gap:5px;min-width:0}.abo-model-row i{width:7px;height:7px;border-radius:99px;flex:0 0 auto}.abo-model-row strong{font-size:14px}.abo-model-card small{display:block;margin-top:3px;color:var(--hv-color-muted-foreground);font-size:9px}.abo-model-card p{margin:6px 0 0;color:var(--hv-color-muted-foreground);font-size:10px;line-height:1.4}.abo-actions{display:flex;gap:6px;margin-top:10px}.abo-error{color:#ef4444}
+          @media(max-width:420px){.abo-root{padding:10px}.abo-model-grid{grid-template-columns:1fr}}
+        `}</style>
 
-      <header className="abo-header">
-        <div>
-          <span className="abo-kicker">ABO retrieval workbench</span>
-          <h2>Does the model find the right product?</h2>
-          <p>Search from a product photo or a detailed shopper request.</p>
-        </div>
-        <button type="button" className="abo-reset" disabled={busy} onClick={reset}>Reset</button>
-      </header>
+        <header className="abo-header">
+          <div>
+            <span className="abo-kicker">ABO retrieval workbench</span>
+            <h2>Does the model find the right product?</h2>
+            <p>Search from a product photo or a detailed shopper request.</p>
+          </div>
+          <button type="button" className="abo-reset" disabled={busy} onClick={reset}>Reset</button>
+        </header>
 
-      <nav className="abo-sections" aria-label="Retrieval mode">
-        <SectionButton active={activeSection === "text"} onClick={() => activeText && chooseText(activeText)}>
-          Text → product
-        </SectionButton>
-        <SectionButton active={activeSection === "image"} onClick={() => activeImage && chooseImage(activeImage)}>
-          Image → neighbours
-        </SectionButton>
-      </nav>
+        <nav className="abo-sections" aria-label="Retrieval mode">
+          <SectionButton active={activeSection === "text"} onClick={() => activeText && chooseText(activeText)}>
+            Text → product
+          </SectionButton>
+          <SectionButton active={activeSection === "image"} onClick={() => activeImage && chooseImage(activeImage)}>
+            Image → neighbours
+          </SectionButton>
+        </nav>
 
-      {activeSection === "image" ? (
-        <>
-          <div className="abo-cases">
-            {imageExamples.map((item) => (
-              <ImageCaseButton
-                key={item.id}
-                item={item}
-                sample={samplesById.get(item.queryId)}
+        {activeSection === "image" ? (
+          <>
+            <div className="abo-cases">
+              {imageExamples.map((item) => (
+                <ImageCaseButton
+                  key={item.id}
+                  item={item}
+                  sample={samplesById.get(item.queryId)}
+                  models={models}
+                  active={item.id === activeImage?.id}
+                  busy={busy}
+                  onClick={() => chooseImage(item)}
+                />
+              ))}
+            </div>
+            {activeImage ? <ImageEvidence item={activeImage} models={models} /> : null}
+          </>
+        ) : (
+          <>
+            <div className="abo-cases">
+              {textExamples.map((item) => (
+                <TextCaseButton
+                  key={item.id}
+                  item={item}
+                  models={models}
+                  active={item.id === activeText?.id}
+                  busy={busy}
+                  onClick={() => chooseText(item)}
+                />
+              ))}
+            </div>
+            {activeText ? (
+              <TextEvidence
+                item={activeText}
                 models={models}
-                active={item.id === activeImage?.id}
-                busy={busy}
-                onClick={() => chooseImage(item)}
+                samplesById={samplesById}
+                onShowResults={(model) => showResults(activeText, model)}
+                onTarget={(model) => showTarget(activeText, model)}
               />
-            ))}
-          </div>
-          {activeImage ? <ImageEvidence item={activeImage} models={models} /> : null}
-        </>
-      ) : (
-        <>
-          <div className="abo-cases">
-            {textExamples.map((item) => (
-              <TextCaseButton
-                key={item.id}
-                item={item}
-                models={models}
-                active={item.id === activeText?.id}
-                busy={busy}
-                onClick={() => chooseText(item)}
-              />
-            ))}
-          </div>
-          {activeText ? (
-            <TextEvidence
-              item={activeText}
-              models={models}
-              samplesById={samplesById}
-              onShowResults={(model) => showResults(activeText, model)}
-              onTarget={(model) => showTarget(activeText, model)}
-            />
-          ) : null}
-          <div className="abo-actions">
-            <button type="button" className="abo-action" disabled={busy} onClick={() => void run(async () => {
-              await resetResults({ focus: false, source: "catalog-browse" });
-              await focusPanel(props.samplesPanelId || "samples");
-            })}>
-              Browse all {samplePage.total.toLocaleString()} products
-            </button>
-          </div>
-        </>
-      )}
+            ) : null}
+            <div className="abo-actions">
+              <button type="button" className="abo-action" disabled={busy} onClick={() => void run(async () => {
+                await resetResults({ focus: false, source: "catalog-browse" });
+                await focusPanel(props.samplesPanelId || "samples");
+              })}>
+                Browse all {samplePage.total.toLocaleString()} products
+              </button>
+            </div>
+          </>
+        )}
 
-      {samplePage.loading ? <p className="abo-hint">Loading catalog records…</p> : null}
-      {samplePage.error ? <p className="abo-error">{samplePage.error}</p> : null}
-      {error ? <p className="abo-error">{error}</p> : null}
+        {samplePage.loading ? <p className="abo-hint">Loading catalog records…</p> : null}
+        {samplePage.error ? <p className="abo-error">{samplePage.error}</p> : null}
+        {error ? <p className="abo-error">{error}</p> : null}
 
-    </main>
+      </div>
+    </Panel>
   );
 }

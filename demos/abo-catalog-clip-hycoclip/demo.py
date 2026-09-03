@@ -6,6 +6,7 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import sys
 import urllib.request
 from collections import Counter, defaultdict
 from copy import deepcopy
@@ -23,6 +24,14 @@ SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6262"))
 WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "abo-catalog-clip-hyper3clip-split")
 DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "abo_catalog_clip_hyper3clip_side_by_side")
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "abo-catalog-readout"
+
+# Build the workspace and exit instead of serving it. This is how a Static
+# Space is produced: build, exit, export.
+BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
+    "1",
+    "true",
+    "yes",
+} or "--build-only" in sys.argv[1:]
 
 HF_ABO_DATASET = os.environ.get("ABO_HF_DATASET", "hyper3labs/amazon-berkeley-objects")
 HF_ABO_CONFIG = os.environ.get("ABO_HF_CONFIG", "listings")
@@ -710,21 +719,19 @@ def panel_props(
     }
 
 
-def ranked_samples_props(
+def neighbour_rank(
     spec: dict[str, Any],
     layout_key: str,
     anchor_sample_id: str,
 ) -> dict[str, Any]:
+    """The ranking one Samples panel opens on, as ``hv.ui.Samples(rank=...)``."""
+
     return {
-        "mode": "ranked",
-        "labelField": "title",
-        "rank": {
-            "anchorSampleId": anchor_sample_id,
-            "layoutKey": layout_key,
-            "k": 10,
-            "source": f"{spec['display_name']} image neighbours",
-            "showDistance": False,
-        },
+        "anchor_sample_id": anchor_sample_id,
+        "layout_key": layout_key,
+        "k": 10,
+        "source": f"{spec['display_name']} image neighbours",
+        "show_distance": False,
     }
 
 
@@ -741,27 +748,36 @@ def materialize_text_result_collections(
     session: hv.Session,
     examples: list[dict[str, Any]],
 ) -> dict[str, dict[str, str]]:
-    collection_ids: dict[str, dict[str, str]] = {}
-    for example in examples:
-        if example.get("mode") != "text-to-product":
-            continue
-        case_id = str(example["id"])
-        collection_ids[case_id] = {}
-        for spec in MODEL_SPECS:
-            model_key = str(spec["key"])
-            result = session.ui.show_samples(
-                ordered_result_ids(example, model_key),
+    """Store each shopper request's ranked results as a workspace collection."""
+
+    return {
+        str(example["id"]): {
+            str(spec["key"]): session.create_collection(
+                ordered_result_ids(example, str(spec["key"])),
+                name=f"{spec['display_name']} · {example['title']} · Top 6",
                 workspace_id=WORKSPACE_ID,
-                focus=False,
-                source=f"{spec['display_name']} · {example['title']} · Top 6",
             )
-            collection_id = result.get("collection_id")
-            if not collection_id:
-                raise RuntimeError(
-                    f"HyperView did not return a collection for {case_id}/{model_key}"
-                )
-            collection_ids[case_id][model_key] = str(collection_id)
-    return collection_ids
+            for spec in MODEL_SPECS
+        }
+        for example in examples
+        if example.get("mode") == "text-to-product"
+    }
+
+
+def materialize_catalog_collection(session: hv.Session, dataset: hv.Dataset) -> str:
+    """One collection holding the whole catalog, in dataset order.
+
+    It backs the Catalog browse tab and gives the readout panel the rows it
+    renders itself -- the thumbnail of each case's query product. Stored as a
+    collection, it survives into a static export; the transient all-items
+    collection the samples panel used to hold did not.
+    """
+
+    return session.create_collection(
+        [sample.id for sample in dataset.samples],
+        name="Full ABO catalog",
+        workspace_id=WORKSPACE_ID,
+    )
 
 
 def build_demo_view(
@@ -769,6 +785,7 @@ def build_demo_view(
     layouts: dict[str, str],
     *,
     readout_props: dict[str, Any] | None = None,
+    readout_state: dict[str, Any] | None = None,
 ) -> hv.ui.View:
     examples = readout_props.get("examples") if readout_props else None
     configured_examples = examples or panel_props(dataset, layouts)["examples"]
@@ -787,6 +804,8 @@ def build_demo_view(
             min_height=220,
         ),
         props=readout_props or panel_props(dataset, layouts),
+        # The readout opens on the default image case; no patch step after.
+        state=readout_state or None,
     )
 
     ranked_panels = []
@@ -799,7 +818,9 @@ def build_demo_view(
                 position="center",
                 reference_panel_id=ranked_panels[0].id if index else None,
                 direction="right" if index else None,
-                props=ranked_samples_props(
+                mode="ranked",
+                label_field="title",
+                rank=neighbour_rank(
                     spec,
                     layouts[spec["key"]],
                     str(default_example["queryId"]),
@@ -814,11 +835,9 @@ def build_demo_view(
         position="center",
         reference_panel_id=ranked_panels[0].id,
         direction="within",
-        props={
-            "mode": "results",
-            "collectionId": (readout_props or {}).get("collectionId"),
-            "labelField": "title",
-        },
+        mode="results",
+        collection_id=(readout_props or {}).get("collectionId"),
+        label_field="title",
         layout=hv.ui.PanelLayout(min_width=180, min_height=220),
     )
 
@@ -866,25 +885,14 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
         open_browser=False,
         workspace_id=WORKSPACE_ID,
         block=False,
+        extensions=[EXTENSION_DIR],
     )
-    print("Installing ABO demo extension...", flush=True)
-    session.ui.add_extension(EXTENSION_DIR, workspace_id=WORKSPACE_ID)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
-    samples_state = session.ui.get_panel_state("samples", workspace_id=WORKSPACE_ID)
-    samples_collection = dict(samples_state.get("state") or {}).get("collection_id")
-    text_collection_ids = materialize_text_result_collections(session, examples)
-    session.ui.reset_samples(workspace_id=WORKSPACE_ID, focus=False)
     readout_props = panel_props(
         dataset,
         layouts,
         examples=examples,
-        collection_id=str(samples_collection) if samples_collection else None,
-        text_collection_ids=text_collection_ids,
-    )
-    print("Applying ABO stacked comparison demo view...", flush=True)
-    session.ui.apply_view(
-        build_demo_view(dataset, layouts, readout_props=readout_props),
-        workspace_id=WORKSPACE_ID,
+        collection_id=materialize_catalog_collection(session, dataset),
+        text_collection_ids=materialize_text_result_collections(session, examples),
     )
     default_image_example = next(
         example for example in examples if example["mode"] == "image-neighborhood"
@@ -892,15 +900,19 @@ def launch_demo(dataset: hv.Dataset, layouts: dict[str, str]) -> hv.Session:
     default_text_example = next(
         example for example in examples if example["mode"] == "text-to-product"
     )
-    session.ui.patch_panel_state(
-        "catalog-hierarchy-readout",
-        {
-            "activeSection": "image",
-            "activeImageCaseId": str(default_image_example["id"]),
-            "activeTextCaseId": str(default_text_example["id"]),
-        },
+    print("Applying ABO stacked comparison demo view...", flush=True)
+    session.ui.apply_view(
+        build_demo_view(
+            dataset,
+            layouts,
+            readout_props=readout_props,
+            readout_state={
+                "activeSection": "image",
+                "activeImageCaseId": str(default_image_example["id"]),
+                "activeTextCaseId": str(default_text_example["id"]),
+            },
+        ),
         workspace_id=WORKSPACE_ID,
-        replace_state=True,
     )
     print("Presenting the default image-neighbour comparison...", flush=True)
     session.ui.set_active_layout(None, workspace_id=WORKSPACE_ID)
@@ -928,6 +940,9 @@ def main() -> None:
     for spec in MODEL_SPECS:
         print(f"  {spec['display_name']}: {layouts[spec['key']]}", flush=True)
     session = launch_demo(dataset, layouts)
+    if BUILD_ONLY:
+        print("Workspace built; stopping before serving (build-only).", flush=True)
+        return
     session.wait()
 
 
