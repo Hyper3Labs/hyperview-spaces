@@ -6,6 +6,66 @@ existing Cloudflare Workers Paid ($5/mo) plan's included allowances.**
 Cloudflare Containers are explicitly out — too expensive; the plan's
 generous Workers/KV/static-asset allowances are the target.
 
+## Current operational layout (September 2026)
+
+- `live-spaces.registry.json` is the canonical inventory for every source demo,
+  its Hugging Face target, desired lifecycle state, and gallery copy.
+- `static-spaces.registry.json` attaches reviewed exported bundles to that
+  inventory. It is not a second marketing catalog.
+- `spaces.hyper3labs.com/<slug>/` is already deployed as one Cloudflare Worker
+  with Static Assets. The custom domain is declared in
+  `spaces-site/wrangler.jsonc`; all bundles share that one deployment.
+- `hyper3labs.com/spaces/` is the collection page. Its catalog JSON is generated
+  from both registries, and it refreshes runtime stages from
+  `https://spaces.hyper3labs.com/status.json`. Paused and broken entries remain
+  visible with an explicit status.
+- `.github/workflows/monitor-hf-spaces.yml` checks the registered Live Spaces
+  hourly. The Worker status endpoint is the low-latency public view; Actions is
+  the independent failing CI signal.
+- `.github/workflows/deploy-cloudflare-spaces.yml` assembles the six reviewed
+  bundles from `Hyper3Labs/hyper3labs.github.io`, validates the Worker upload,
+  and deploys after loading Cloudflare credentials from Infisical with GitHub
+  OIDC. Until `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` exist in the
+  Infisical `prod` environment and the two public identity/project variables
+  are configured, it deliberately stops after a green dry-run.
+
+The intended URL contract is therefore:
+
+| URL | Responsibility |
+| --- | --- |
+| `hyper3labs.com/spaces/` | Branded collection and status-aware catalog |
+| `spaces.hyper3labs.com/<slug>/` | Canonical Static Space artifacts |
+| `<owner>-<space>.hf.space` | Live HyperView runtime when the use case needs one |
+
+Cloudflare is the canonical home for Static Spaces: one custom domain, no cold
+starts, one deploy, and a status API. Hugging Face is the right home for Live
+Spaces because it runs the Python/Docker runtime and is useful for ecosystem
+discovery. An HF Static Space can be a mirror, but making it the primary static
+fleet would duplicate repositories and deployment state.
+
+## Hugging Face Trusted Publisher recovery
+
+`invalid_grant` is an exchange failure, not a generic application error. For
+each org-owned Space, remove and recreate the Trusted Publisher with exact
+claims:
+
+1. Repository: `Hyper3Labs/hyperview-spaces`.
+2. Branch: `main`.
+3. Workflow: the exact per-Space caller filename, for example
+   `deploy-hf-space-hyperview.yml`—not the reusable workflow filename.
+4. GitHub job permission: `id-token: write`.
+5. Environment: `HF_OIDC_RESOURCE=spaces/<owner>/<Space>` and
+   `huggingface_hub>=1.19`.
+
+Then rerun only that Space's `workflow_dispatch`. If the exchange still fails,
+confirm the target repo exists, the org account is writable/not plan-blocked,
+and the account is not locked. The emergency path is a narrowly scoped
+`HF_TOKEN` injected from Infisical; it should not become a GitHub secret or a
+file in either repository. A deployment token only writes the Space repository.
+A gated runtime model such as `hyper3-clip-v0.5` separately needs an `HF_TOKEN`
+configured as a Hugging Face Space secret, or the model and embeddings must be
+prepared in a bundle before deployment.
+
 Product decision (Matin, 2026-07-04): hosted demos are allowed to be
 **read-only**, in the style of the FiftyOne and Rerun examples galleries.
 A visitor explores a fully interactive client-side workspace (pan/zoom,

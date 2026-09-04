@@ -1,0 +1,82 @@
+name: Deploy Cloudflare Static Spaces
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - live-spaces.registry.json
+      - static-spaces.registry.json
+      - scripts/build_spaces_site.py
+      - spaces-site/**
+      - .github/workflows/deploy-cloudflare-spaces.yml
+  repository_dispatch:
+    types: [static-bundle-published]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-cloudflare-spaces
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout registry and Worker
+        uses: actions/checkout@v6
+
+      - name: Checkout reviewed Static Space bundles
+        uses: actions/checkout@v6
+        with:
+          repository: Hyper3Labs/hyper3labs.github.io
+          path: bundle-site
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install released HyperView
+        run: python -m pip install --disable-pip-version-check "hyperview[publish]==1.1.1"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: spaces-site/package-lock.json
+
+      - name: Install Worker dependencies
+        run: npm ci --prefix spaces-site
+
+      - name: Assemble every registered Static Space
+        env:
+          HYPERVIEW_STATIC_SPACES_ROOT: ${{ github.workspace }}/bundle-site/public/spaces
+        run: python scripts/build_spaces_site.py
+
+      - name: Validate Worker upload
+        run: npx --prefix spaces-site wrangler deploy --dry-run --config spaces-site/wrangler.jsonc
+
+      # Create an Infisical Machine Identity whose GitHub OIDC subject is
+      # repo:Hyper3Labs/hyperview-spaces:ref:refs/heads/main, then set these two
+      # non-secret repository variables. The action injects CLOUDFLARE_API_TOKEN
+      # and CLOUDFLARE_ACCOUNT_ID without storing them in GitHub or this repo.
+      - name: Load deployment credentials from Infisical
+        if: github.ref == 'refs/heads/main' && vars.INFISICAL_IDENTITY_ID != '' && vars.INFISICAL_PROJECT_SLUG != ''
+        uses: Infisical/secrets-action@v1.0.9
+        with:
+          method: oidc
+          identity-id: ${{ vars.INFISICAL_IDENTITY_ID }}
+          project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
+          env-slug: prod
+
+      - name: Deploy spaces.hyper3labs.com
+        if: github.ref == 'refs/heads/main' && vars.INFISICAL_IDENTITY_ID != '' && vars.INFISICAL_PROJECT_SLUG != ''
+        run: npx --prefix spaces-site wrangler deploy --config spaces-site/wrangler.jsonc
+
+      - name: Explain skipped deployment
+        if: vars.INFISICAL_IDENTITY_ID == '' || vars.INFISICAL_PROJECT_SLUG == ''
+        run: echo "Cloudflare dry-run passed; configure the Infisical repository variables to enable deployment."
