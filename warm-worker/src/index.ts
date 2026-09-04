@@ -1,7 +1,6 @@
 import registry from "../../live-spaces.registry.json";
 
 interface Env {
-  ASSETS: Fetcher;
   STATUS: KVNamespace;
   HEALTH_TIMEOUT_MS?: string;
   HISTORY_LIMIT?: string;
@@ -90,7 +89,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
 
   if (url.pathname === "/") {
-    return env.ASSETS.fetch(request);
+    // The demo gallery moved to the landing site; this Worker is status-only.
+    return Response.redirect("https://hyper3labs.com/spaces/", 302);
   }
 
   return new Response("Not Found", { status: 404 });
