@@ -3,8 +3,12 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is not available on window.");
 }
 
-const { React, components, hooks } = sdk;
-const { Panel } = components;
+const { React, components = {}, hooks = {} } = sdk;
+const Panel = components.Panel || (({ children, className = "" }) => (
+  <div className={`flex flex-col h-full bg-card overflow-hidden ${className}`.trim()} style={{ height: "100%" }}>
+    {children}
+  </div>
+));
 const { usePanelState, useSelection } = hooks;
 
 const geometryColors = {

@@ -3,8 +3,12 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is not available on window.");
 }
 
-const { React, components, hooks } = sdk;
-const { Panel } = components;
+const { React, components = {}, hooks } = sdk;
+const Panel = components.Panel || (({ children, className = "" }) => (
+  <div className={`flex flex-col h-full bg-card overflow-hidden ${className}`.trim()} style={{ height: "100%" }}>
+    {children}
+  </div>
+));
 const { usePanelActions, usePanelState, useSample, useSampleResults, useSelection } = hooks;
 
 function mediaUrl(sample) {
@@ -76,14 +80,14 @@ export default function PrecisionRegionPanel() {
         <header className="pr-header">
           <span className="pr-kicker">Language-guided region search</span>
           <h2>Which region matches the description?</h2>
-          <p>Compare where the boxed region appears in each result list.</p>
+          <p>Every case boxes the annotated RefCOCOg region in its own source photo. Compare where that region lands in each result list.</p>
         </header>
 
         <blockquote className="pr-query">“{active.query}”</blockquote>
 
         <button type="button" className="pr-visual" onClick={() => void setSelection([active.targetSampleId])}>
           {sourceUrl ? <img src={sourceUrl} alt={`${active.shortLabel} source scene`} /> : null}
-          <span className="pr-visual-label">The object in context</span>
+          <span className="pr-visual-label">Annotated region in the source photo</span>
           <span className="pr-crop">
             {targetUrl ? <img src={targetUrl} alt={active.query || "Target crop"} /> : null}
             <span>Target</span>
@@ -94,7 +98,7 @@ export default function PrecisionRegionPanel() {
           <RankCard name="Hyper3-CLIP" color="#60a5fa" rank={active.target.hyper3Rank} />
           <RankCard name="OpenAI CLIP" color="#f59e0b" rank={active.target.clipRank} />
         </section>
-        <p className="pr-note">Each list shows the top five regions from the shared cross-image pool. A target ranked below five is outside that visible shortlist.</p>
+        <p className="pr-note">Both models rank the same shared pool of {benchmark.queryCount || 180} region crops drawn from across the images; each list shows its top five. A target ranked below five is outside that visible shortlist.</p>
 
         <nav className="pr-cases" aria-label="Object search examples">
           {cases.map((item) => (

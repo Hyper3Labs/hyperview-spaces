@@ -3,8 +3,12 @@ if (!sdk || sdk.version !== "2") {
   throw new Error("HyperViewPanelSDK v2 is required.");
 }
 
-const { React, components, hooks } = sdk;
-const { Panel } = components;
+const { React, components = {}, hooks = {} } = sdk;
+const Panel = components.Panel || (({ children, className = "" }) => (
+  <div className={.trim()} style={{ height: "100%" }}>
+    {children}
+  </div>
+));
 const { usePanelActions, usePanelState, useSampleResults, useSamples, useSelection } = hooks;
 
 function mediaUrl(sample) {
