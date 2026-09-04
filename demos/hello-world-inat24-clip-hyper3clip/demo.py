@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""HyperView main Hugging Face Space geometry demo."""
+"""HyperView Hello World: one dataset, three embedding geometries."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
     "yes",
 } or "--build-only" in sys.argv[1:]
 
-DATASET_NAME = "inat24_tiny_geometry_showcase"
+DATASET_NAME = "hello_world_inat24_multigeometry"
 HF_DATASET = "evendrow/inat24_tiny"
 HF_SPLIT = "train"
 SAMPLE_SEED = 42
@@ -43,20 +43,21 @@ TARGET_SUPERCATEGORY_COUNTS = {
     "mollusks": 10,
 }
 SAMPLE_COUNT = sum(TARGET_SUPERCATEGORY_COUNTS.values())
-IMAGE_MAX_SIZE = (768, 768)
+IMAGE_MAX_SIZE = (1024, 1024)
+INTRO_EXTENSION = Path(__file__).parent / ".hyperview" / "extensions" / "hello-world-intro"
 
 EMBEDDING_LAYOUTS = [
     {
         "name": "CLIP",
         "provider": "embed-anything",
         "model": "openai/clip-vit-base-patch32",
-        "layouts": ["euclidean:3d", "spherical"],
+        "layouts": ["euclidean:3d", "spherical:3d"],
     },
     {
-        "name": "HyCoCLIP",
+        "name": "Hyper3-CLIP",
         "provider": "hyper-models",
-        "model": "hycoclip-vit-s",
-        "layouts": ["poincare"],
+        "model": "hyper3-clip-v0.5",
+        "layouts": ["poincare:2d"],
     },
 ]
 
@@ -113,7 +114,7 @@ def save_image(row: dict, destination: Path) -> None:
 
     image = ImageOps.exif_transpose(image).convert("RGB")
     image.thumbnail(IMAGE_MAX_SIZE, Image.Resampling.LANCZOS)
-    image.save(destination, format="JPEG", quality=90, optimize=True)
+    image.save(destination, format="JPEG", quality=92, optimize=True)
 
 
 def existing_label_counts(dataset: hv.Dataset) -> Counter[str]:
@@ -218,6 +219,16 @@ def build_dataset() -> tuple[hv.Dataset, dict[str, str]]:
     return dataset, layout_keys
 
 
+def geometry_title(name: str, layout: str) -> str:
+    geometry, _, dimension = layout.partition(":")
+    geometry_name = {
+        "euclidean": "Euclidean",
+        "spherical": "Spherical",
+        "poincare": "Hyperbolic · Poincare",
+    }.get(geometry, geometry.title())
+    return f"{name} · {geometry_name}{f' {dimension.upper()}' if dimension else ''}"
+
+
 def build_demo_view(layout_keys: dict[str, str]) -> hv.ui.View:
     """Open the showcase on its three geometries, side by side.
 
@@ -226,13 +237,13 @@ def build_demo_view(layout_keys: dict[str, str]) -> hv.ui.View:
     though three layouts exist -- the one thing this demo is here to show.
     """
 
-    panels: list[hv.ui.Scatter | hv.ui.Samples] = []
+    panels: list[hv.ui.Scatter | hv.ui.Samples | hv.ui.ExtensionPanel] = []
     previous_id: str | None = None
     for label, layout_key in layout_keys.items():
         name, layout = label.split(":", 1)
         panel = hv.ui.Scatter(
             id=f"map-{layout.replace(':', '-')}",
-            title=f"{name} · {layout}",
+            title=geometry_title(name, layout),
             layout_key=layout_key,
             position="center",
             reference_panel_id=previous_id,
@@ -250,7 +261,29 @@ def build_demo_view(layout_keys: dict[str, str]) -> hv.ui.View:
             layout=hv.ui.PanelLayout(height=260, min_height=180),
         )
     )
-    return hv.ui.View(*panels, active_panel=panels[0].id)
+    intro = hv.ui.ExtensionPanel(
+        id="hello-world-intro",
+        extension="hello-world-intro",
+        panel="hello-world-intro",
+        title="Start here",
+        position="right",
+        layout=hv.ui.PanelLayout(width=360, min_width=300, max_width=440),
+        props={
+            "sampleCount": SAMPLE_COUNT,
+            "dataset": "iNat24 Tiny",
+            "geometries": [
+                {"name": "Euclidean", "model": "CLIP", "dimension": "3D"},
+                {"name": "Spherical", "model": "CLIP", "dimension": "3D"},
+                {
+                    "name": "Hyperbolic · Poincare",
+                    "model": "Hyper3-CLIP",
+                    "dimension": "2D",
+                },
+            ],
+        },
+    )
+    panels.append(intro)
+    return hv.ui.View(*panels, active_panel=intro.id)
 
 
 def main() -> None:
@@ -262,6 +295,7 @@ def main() -> None:
         port=SPACE_PORT,
         open_browser=False,
         view=build_demo_view(layout_keys),
+        extensions=[str(INTRO_EXTENSION)],
         block=False,
     )
     if BUILD_ONLY:

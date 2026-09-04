@@ -8,14 +8,15 @@ app_port: 7860
 pinned: false
 ---
 
-# HyperView - iNat24 Tiny Geometry Showcase
+# HyperView Hello World
 
-This is the main HyperView demo Space. It shows the same taxonomy-backed image
-sample through multiple geometric views:
+This is the main HyperView starter Space. It shows the same higher-resolution,
+taxonomy-backed image sample through three geometric views and includes a small
+custom introduction panel built with the public HyperView panel SDK:
 
 - CLIP (`openai/clip-vit-base-patch32`) in Euclidean 3D
 - CLIP (`openai/clip-vit-base-patch32`) in spherical 3D
-- HyCoCLIP (`hycoclip-vit-s`) in Poincare 2D
+- Hyper3-CLIP (`hyper3-clip-v0.5`) in hyperbolic Poincare 2D
 
 The sample is drawn from `evendrow/inat24_tiny`, a compact iNaturalist 2024
 subset with 1,000 images, 100 species, and taxonomy metadata. The visible label
@@ -46,7 +47,8 @@ The default stratified sample contains 300 images:
 | mollusks | 10 |
 
 This keeps the demo small enough for Hugging Face CPU Spaces while preserving a
-real biological hierarchy for geometry comparison.
+real biological hierarchy for geometry comparison. Images are resized only
+when they exceed 1024 × 1024, avoiding the tiny 32 × 32 appearance of CIFAR.
 
 ## Reuse This Template
 
@@ -61,3 +63,7 @@ When copying this folder for another dataset:
 
 This folder is synchronized to `hyper3labs/HyperView` by GitHub Actions from
 the `hyperview-spaces` deployment repository.
+
+Because `hyper3-clip-v0.5` is gated on Hugging Face, the running Space needs an
+`HF_TOKEN` Space secret with read access to the model. The GitHub deployment
+credential does not become a runtime secret automatically.

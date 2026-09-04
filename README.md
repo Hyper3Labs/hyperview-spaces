@@ -39,7 +39,7 @@ Both are produced from the same folder under `demos/`. There is no forked
 
 The happy path is four steps:
 
-1. Copy a folder from `demos/` — `inat24-tiny-clip-hycoclip` for a geometry
+1. Copy a folder from `demos/` — `hello-world-inat24-clip-hyper3clip` for a geometry
    showcase, `fashion-deepfashion-text-search-clip-hyper3clip` for text search
    with a custom panel.
 2. Edit the constants block at the top of the new `demo.py` (dataset, models,
@@ -70,12 +70,14 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 
 ## Deploying
 
-> **Hugging Face plan gate (2026-09).** Creating a Docker Space under the
-> `hyper3labs` organization answers `402 Payment Required` on the free plan,
-> and the Trusted-Publisher (OIDC) deploys below fail with `invalid_grant` for
-> the same reason. Committing to an *existing* org Docker Space still works,
-> and Static Spaces are free. Until the org has a plan, publish a Live Space
-> by hand with a write token:
+> **Hugging Face OIDC recovery (2026-09).** The current org deploy runs fail
+> with `invalid_grant`. Treat that as a Trusted Publisher mismatch until the
+> exact publisher claims have been rechecked: repository
+> `Hyper3Labs/hyperview-spaces`, branch `main`, and the exact caller workflow
+> filename for that Space. Also confirm the Space still exists and the org
+> account is allowed to write it. The local Infisical `agent-credentials`
+> project contains a working `HF_TOKEN`, so a scoped token publish remains a
+> recovery path while OIDC is repaired; never commit or print that token:
 >
 > ```bash
 > infisical run --projectId <project> --env dev -- \
@@ -169,6 +171,12 @@ Monitor what is deployed:
 uv run --project ../ python scripts/monitor_spaces.py --fail-on-unhealthy
 ```
 
+The GitHub monitor runs hourly and fails on paused, unhealthy, warming,
+metadata-mismatched, or unknown registered Live Spaces. The Cloudflare host at
+`spaces.hyper3labs.com` serves all Static Spaces from one Worker and exposes a
+registry-driven `/status.json`; `/spaces` on the main site consumes that feed
+and keeps unhealthy entries visible instead of deleting their links.
+
 ### Vendored wheels
 
 `vendor/*.whl` is a temporary escape hatch for a Space that needs an unreleased
@@ -183,7 +191,6 @@ explicit version pin and the wheel must be deleted.
 ├── .github/workflows/                 # per-space deploy, reusable deploy, checks, monitor
 ├── demos/                             # canonical source; one folder per use case
 ├── static-spaces/                      # generated read-only bundles (gitignored)
-├── archived-spaces/                   # retired examples, outside the active registry
 ├── build/                             # build and deployment support
 ├── docs/                              # architecture and operations documentation
 ├── scripts/                           # registry checks and maintenance tools
@@ -199,7 +206,7 @@ every registered folder to appear in this table.
 
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
-| HyperView - iNat24 Tiny | `hyper3labs/HyperView` | `demos/inat24-tiny-clip-hycoclip` | Hyper3Labs | `live` | Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy. |
+| HyperView Hello World | `hyper3labs/HyperView` | `demos/hello-world-inat24-clip-hyper3clip` | Hyper3Labs | `live` | Compare CLIP in Euclidean and spherical geometry with Hyper3-CLIP in hyperbolic Poincare geometry. |
 | HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `demos/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
 | HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
@@ -208,7 +215,7 @@ every registered folder to appear in this table.
 | HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
 | HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
 | HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
-| HyperView - Jaguar Re-ID | `hyper3labs/HyperView-Jaguar-ReID` | `archived-spaces/jaguar-reid-megadescriptor-spherical` | Hyper3Labs | Archived | Superseded by `hyper3labs/jaguar-hyperview-multigeometry` |
+| Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `external/hyper3labs/jaguar-hyperview-multigeometry` | Hyper3Labs | `live` | Current paper-facing Space; source remains in its Hugging Face repository and is tracked here as an external deployment. |
 
 When you open a pull request, state the Hugging Face Space ID, the dataset
 source, the embedding models, and whether this repository should deploy the

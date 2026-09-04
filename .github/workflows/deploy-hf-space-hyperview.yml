@@ -1,10 +1,10 @@
-name: Deploy HF Space - HyperView iNat24 Tiny
+name: Deploy HF Space - HyperView Hello World
 
 on:
   push:
     branches: [main]
     paths:
-      - demos/inat24-tiny-clip-hycoclip/**
+      - demos/hello-world-inat24-clip-hyper3clip/**
       - .github/workflows/deploy-hf-space-hyperview.yml
       - .github/workflows/deploy-hf-space-reusable.yml
   repository_dispatch:
@@ -23,5 +23,5 @@ jobs:
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
       deploy_mode: docker-folder
-      source_dir: demos/inat24-tiny-clip-hycoclip
+      source_dir: demos/hello-world-inat24-clip-hyper3clip
       space_id: hyper3labs/HyperView

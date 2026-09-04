@@ -4,17 +4,23 @@
   "spaces": [
     {
       "space_id": "hyper3labs/HyperView",
-      "folder": "demos/inat24-tiny-clip-hycoclip",
+      "folder": "demos/hello-world-inat24-clip-hyper3clip",
       "deploy_mode": "docker-folder",
-      "demo_slug": "inat24-tiny",
-      "demo_name": "HyperView - iNat24 Tiny",
-      "description": "Compare Euclidean, spherical, and Poincare views of iNaturalist species taxonomy.",
-      "expected_dataset": "inat24_tiny_geometry_showcase",
+      "demo_slug": "hello-world",
+      "demo_name": "HyperView Hello World",
+      "description": "Compare CLIP in Euclidean and spherical geometry with Hyper3-CLIP in hyperbolic Poincare geometry.",
+      "expected_dataset": "hello_world_inat24_multigeometry",
       "keep_warm": true,
       "status": "live",
       "deploy_targets": [
         "hf-docker"
-      ]
+      ],
+      "gallery": {
+        "context": "Geometric embedding starter",
+        "workflow": "Geometry intro",
+        "modality": "iNaturalist images · three geometries · custom panel",
+        "question": "How does the same image collection change across Euclidean, spherical, and hyperbolic views?"
+      }
     },
     {
       "space_id": "hyper3labs/HyperView-ABO-Catalog",
@@ -29,7 +35,13 @@
       "status": "live",
       "deploy_targets": [
         "hf-docker"
-      ]
+      ],
+      "gallery": {
+        "context": "Product retrieval workbench",
+        "workflow": "Catalog search",
+        "modality": "Images · embeddings · ranked neighbours",
+        "question": "Does the model find the right product—not just a plausible category match?"
+      }
     },
     {
       "space_id": "hyper3labs/HyperView-DeepFashion-Text-Search",
@@ -44,7 +56,13 @@
       "status": "live",
       "deploy_targets": [
         "hf-docker"
-      ]
+      ],
+      "gallery": {
+        "context": "Fashion product matching",
+        "workflow": "Catalog search",
+        "modality": "Product photos · text · ranked matches",
+        "question": "Can the catalog recognize the same product from a different photo?"
+      }
     },
     {
       "space_id": "hyper3labs/HyperView-Art-Text-Search",
@@ -56,7 +74,13 @@
       "expected_dataset": "art_text_search_clip_hyper3clip",
       "keep_warm": false,
       "status": "draft",
-      "deploy_targets": []
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Art marketplace search",
+        "workflow": "Catalog search",
+        "modality": "Art images · text · ranked matches",
+        "question": "Can a visual search recover the artwork when its title omits what is depicted?"
+      }
     },
     {
       "space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",
@@ -68,7 +92,13 @@
       "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
       "keep_warm": true,
       "status": "live",
-      "deploy_targets": []
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Remote-sensing archive QA",
+        "workflow": "Archive QA",
+        "modality": "Aerial imagery · neighbours · archive maps",
+        "question": "Which aerial tiles belong together?"
+      }
     },
     {
       "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
@@ -82,7 +112,13 @@
       "status": "live",
       "deploy_targets": [
         "hf-docker"
-      ]
+      ],
+      "gallery": {
+        "context": "Manufacturing reference search",
+        "workflow": "Reference matching",
+        "modality": "Inspection images · SKU references · neighbours",
+        "question": "Can an operator find the right same-SKU reference before judging a defect?"
+      }
     },
     {
       "space_id": "mnm-matin/HyperView-Visual-Safety",
@@ -94,7 +130,13 @@
       "expected_dataset": "openimages_visual_proxy_evidence_v3",
       "keep_warm": true,
       "status": "live",
-      "deploy_targets": []
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Model audit · review ops",
+        "workflow": "Trust & safety",
+        "modality": "Images · review batches · ranking quality",
+        "question": "What does each model’s review queue miss?"
+      }
     },
     {
       "space_id": "mnm-matin/HyperView-Logo-Brand-Search",
@@ -106,7 +148,13 @@
       "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
       "keep_warm": true,
       "status": "live",
-      "deploy_targets": []
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Creative asset retrieval",
+        "workflow": "Catalog search",
+        "modality": "Logos · creative briefs · style map",
+        "question": "Which existing logo best satisfies a detailed creative brief?"
+      }
     },
     {
       "space_id": null,
@@ -118,7 +166,31 @@
       "expected_dataset": "refcocog_text_region_evidence_v3",
       "keep_warm": false,
       "status": "local",
-      "deploy_targets": []
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Region-level retrieval audit",
+        "workflow": "Region retrieval",
+        "modality": "Scenes · crops · ranked regions",
+        "question": "Does the exact region reach the operator's first screen?"
+      }
+    },
+    {
+      "space_id": "hyper3labs/jaguar-hyperview-multigeometry",
+      "folder": "external/hyper3labs/jaguar-hyperview-multigeometry",
+      "source_repository": "https://huggingface.co/spaces/hyper3labs/jaguar-hyperview-multigeometry/tree/main",
+      "deploy_mode": "external",
+      "demo_slug": "jaguar-multigeometry",
+      "demo_name": "Jaguar Multi-Geometry",
+      "description": "Inspect Euclidean and hyperbolic representations used in the current Jaguar re-identification study.",
+      "keep_warm": false,
+      "status": "live",
+      "deploy_targets": [],
+      "gallery": {
+        "context": "Research embedding audit",
+        "workflow": "Research",
+        "modality": "Jaguar imagery · re-identification · multiple geometries",
+        "question": "Is the representation recognizing the jaguar or its background?"
+      }
     }
   ]
 }

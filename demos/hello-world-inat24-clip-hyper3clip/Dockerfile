@@ -31,6 +31,7 @@ RUN pip install "hyperview==${HYPERVIEW_VERSION}" && python -c "import hyperview
 RUN pip install "hyper-models[ml]==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
 
 COPY --chown=user demo.py ./demo.py
+COPY --chown=user .hyperview ./.hyperview
 
 # Only POST/PATCH/DELETE under /api/ are token-gated -- media GETs stay open
 # either way. This marks the server public so viewer commands run without the

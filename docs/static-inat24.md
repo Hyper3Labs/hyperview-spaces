@@ -39,7 +39,7 @@ import runpy
 from pathlib import Path
 
 space = runpy.run_path(
-    str(Path(os.environ["SPACES_REPO"]) / "demos/inat24-tiny-clip-hycoclip/demo.py")
+    str(Path(os.environ["SPACES_REPO"]) / "demos/hello-world-inat24-clip-hyper3clip/demo.py")
 )
 dataset = space["build_dataset"]()
 session = space["hv"].launch(

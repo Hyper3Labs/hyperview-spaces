@@ -11,7 +11,7 @@ This folder implements a **one-repository** strategy:
 ```text
 demos/
   README.md
-  inat24-tiny-clip-hycoclip/
+  hello-world-inat24-clip-hyper3clip/
     README.md
     Dockerfile
     .dockerignore
@@ -27,7 +27,7 @@ Live Space or exported as a Static Space. A deployable root contains at least
 The example folders are meant to be easy for external coding agents to edit.
 The intended workflow is:
 
-1. Copy `demos/inat24-tiny-clip-hycoclip` to a new slug.
+1. Copy `demos/hello-world-inat24-clip-hyper3clip` to a new slug.
 2. Edit the constants block at the top of the new `demo.py`.
 3. Update the new folder's `README.md` frontmatter and title.
 4. Copy and retarget the matching deploy workflow.
@@ -41,7 +41,7 @@ release instead of vendoring `hyperview` into the Space.
 1. Create a new Hugging Face Space at https://huggingface.co/new-space.
 2. Name it something distinct like `yourproject-HyperView` or `HyperView-yourproject`.
 3. Choose `Docker` as the SDK.
-4. Copy `demos/inat24-tiny-clip-hycoclip` to `demos/yourproject-hyperview`.
+4. Copy `demos/hello-world-inat24-clip-hyper3clip` to `demos/yourproject-hyperview`.
 5. Edit the constants block in `demos/yourproject-hyperview/demo.py`.
 6. Edit `demos/yourproject-hyperview/README.md` and rename the copied `HyperView` title and H1 to your own project name.
 7. Copy `.github/workflows/deploy-hf-space-hyperview.yml` to a new workflow file and update `space_id`, `source_dir`, `paths`, `name`, and `concurrency`.
@@ -66,7 +66,7 @@ Each per-space workflow:
 1. Watches one space folder
 2. Calls the reusable workflow with:
    - `space_id` (e.g. `hyper3labs/HyperView`)
-   - `source_dir` (e.g. `demos/inat24-tiny-clip-hycoclip`)
+   - `source_dir` (e.g. `demos/hello-world-inat24-clip-hyper3clip`)
 
 ## Deployment authentication
 
@@ -76,7 +76,7 @@ short-lived, repo-scoped deployment token.
 
 ## Add a new Space
 
-1. Copy `demos/inat24-tiny-clip-hycoclip` to a new slug
+1. Copy `demos/hello-world-inat24-clip-hyper3clip` to a new slug
 2. Edit the constants block in the new `demo.py`
 3. Rename the copied `HyperView` title to your own project name such as `yourproject-HyperView` or `HyperView-yourproject`
 4. Edit the new folder's `README.md` YAML frontmatter and title

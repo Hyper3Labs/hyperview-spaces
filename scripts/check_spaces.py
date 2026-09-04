@@ -24,7 +24,7 @@ VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
 # bundle the landing site also serves as a Static Space. Both end up as an HF
 # Docker Space, so both keep `hf-docker` in deploy_targets.
 DEFAULT_DEPLOY_MODE = "docker-folder"
-VALID_DEPLOY_MODES = {"docker-folder", "live-bundle"}
+VALID_DEPLOY_MODES = {"docker-folder", "live-bundle", "external"}
 PINNED_REQUIREMENT = re.compile(r"^[A-Za-z0-9_.-]+(?:\[[^]]+\])?==[A-Za-z0-9_.+-]+$")
 LEGACY_PANEL_SDK_TOKENS = {
     "usePanelCommands": "usePanelCommands",
@@ -330,12 +330,21 @@ def main() -> int:
             error(f"registry entry {index} is not an object", errors)
             continue
         folder = space.get("folder")
-        if not isinstance(folder, str) or not folder.startswith("demos/"):
-            error(f"registry entry {index} has invalid folder: {folder!r}", errors)
-            continue
-        if folder in registry_by_folder:
-            error(f"duplicate registry folder: {folder}", errors)
-        registry_by_folder[folder] = space
+        deploy_mode = space.get("deploy_mode", DEFAULT_DEPLOY_MODE)
+        is_external = deploy_mode == "external"
+        if is_external:
+            if not isinstance(folder, str) or not folder.startswith("external/"):
+                error(f"external registry entry {index} has invalid source: {folder!r}", errors)
+                continue
+            if not isinstance(space.get("source_repository"), str):
+                error(f"{folder}: external entries need source_repository", errors)
+        else:
+            if not isinstance(folder, str) or not folder.startswith("demos/"):
+                error(f"registry entry {index} has invalid folder: {folder!r}", errors)
+                continue
+            if folder in registry_by_folder:
+                error(f"duplicate registry folder: {folder}", errors)
+            registry_by_folder[folder] = space
 
         status = space.get("status")
         if status not in VALID_STATUSES:
@@ -356,7 +365,6 @@ def main() -> int:
         if space.get("keep_warm") and space_id is None:
             error(f"{folder}: keep_warm cannot be true when space_id is null", errors)
 
-        deploy_mode = space.get("deploy_mode", DEFAULT_DEPLOY_MODE)
         bundle_slug = space.get("bundle_slug")
         if deploy_mode not in VALID_DEPLOY_MODES:
             error(
@@ -566,7 +574,7 @@ def main() -> int:
         print(f"FAILED: {len(errors)} error(s), {len(used_conflicts)} allowed conflict warning(s)")
         return 1
     print(
-        f"PASS: {len(registry_by_folder)} registry entries match space folders, workflows, "
+        f"PASS: {len(spaces)} registry entries match space folders, workflows, "
         f"Docker metadata, and README rows; {len(used_conflicts)} allowed conflict warning(s)"
     )
     return 0
