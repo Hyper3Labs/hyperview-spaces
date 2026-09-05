@@ -27,9 +27,12 @@ python3.12 -m venv "$VENV"
   "Pillow>=12.0.0"
 
 mkdir -p "$STATIC_DATA"
+# HYPERVIEW_HOME keeps datasets, media, and the workspace registry together in a
+# fresh directory, so the export cannot pick up panel state from an earlier run
+# (HyperView >= 1.1.4; on older releases set HYPERVIEW_DATASETS_DIR and
+# HYPERVIEW_MEDIA_DIR under a directory whose parent is not shared).
 PYTHONPATH="$HYPERVIEW_REPO/src" \
-HYPERVIEW_DATASETS_DIR="$STATIC_DATA/datasets" \
-HYPERVIEW_MEDIA_DIR="$STATIC_DATA/media" \
+HYPERVIEW_HOME="$STATIC_DATA" \
 HF_HOME="$STATIC_DATA/hf" \
 PYTHONUNBUFFERED=1 \
 "$VENV/bin/python" - <<'PY'

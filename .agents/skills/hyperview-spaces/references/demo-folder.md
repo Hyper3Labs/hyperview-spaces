@@ -19,7 +19,7 @@ It is deployed as a Live Space and exported as a Static Space without forking.
 | --- | --- |
 | `.dockerignore` | Keeps `__pycache__`, local caches, and stray artifacts out of the image. |
 | `.hyperview/extensions/<name>/` | A demo-local extension: `extension.toml` + `panel.jsx`. Discovered from the nearest `.hyperview/extensions` directory. |
-| `demo_data/` | Prepared datasets and media the container serves (`HYPERVIEW_DATASETS_DIR`, `HYPERVIEW_MEDIA_DIR`). |
+| `demo_data/` | Prepared datasets and media the container serves (`HYPERVIEW_DATASETS_DIR`, `HYPERVIEW_MEDIA_DIR`). When exporting a Static Space from a build-then-export run, prefer one fresh `HYPERVIEW_HOME` so the workspace registry is not shared with earlier runs. |
 | `demo_assets/` | Static assets referenced by panels. |
 | `evidence_cases.json` | Prepared query/result cases the demo replays. |
 | `PHOTO_EVIDENCE.md` | The claim the demo makes, with the numbers behind it. |
