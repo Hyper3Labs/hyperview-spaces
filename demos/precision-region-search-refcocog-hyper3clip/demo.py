@@ -23,6 +23,11 @@ CASE_FILE = SPACE_DIR / "evidence_cases.json"
 ASSET_DIR = SPACE_DIR / "demo_assets" / "evidence"
 DEFAULT_CASE_ID = os.environ.get("PRECISION_REGION_DEFAULT_CASE_ID", "facilities")
 
+# Panel ids are authored here and handed to the readout as props, so the
+# extension never has to hard-code the id of a panel it drives.
+HYPER3_RESULTS_PANEL_ID = "samples"
+CLIP_RESULTS_PANEL_ID = "precision-clip-results"
+
 # Build the workspace and exit instead of serving it. This is how a Static
 # Space is produced: build, exit, export.
 BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
@@ -46,6 +51,22 @@ def target_sample_id(case_id: str) -> str:
 
 def result_sample_id(case_id: str, model: str, rank: int) -> str:
     return f"precision-{case_id}-{model}-{rank:02d}"
+
+
+def provenance(entry: dict[str, Any]) -> dict[str, Any]:
+    """Where one shown crop came from in RefCOCOg.
+
+    Every tile in this Space is a region of a real COCO image, so each sample
+    carries the source image, the annotated box, and the referring-expression
+    id it was cut for. A reviewer can re-derive the crop from those three
+    fields alone.
+    """
+
+    return {
+        "image_id": entry["sourceImageId"],
+        "bbox": list(entry["bbox"]),
+        "refcocog_query_id": entry["questionId"],
+    }
 
 
 def evidence_samples(payload: dict[str, Any]) -> list[hv.Sample]:
@@ -73,7 +94,12 @@ def evidence_samples(payload: dict[str, Any]) -> list[hv.Sample]:
                     id=source_sample_id(case_id),
                     filepath=str(case_dir / "target_full.jpg"),
                     label=f"{case['shortLabel']} source scene",
-                    metadata={**shared_case, "role": "source_scene"},
+                    metadata={
+                        **shared_case,
+                        **provenance(case),
+                        "role": "source_scene",
+                        "image_size": list(case["imageSize"]),
+                    },
                 ),
                 hv.Sample(
                     id=target_sample_id(case_id),
@@ -81,6 +107,8 @@ def evidence_samples(payload: dict[str, Any]) -> list[hv.Sample]:
                     label=f"TARGET · {case['query']}",
                     metadata={
                         **shared_case,
+                        **provenance(case),
+                        "crop_box": list(case["cropBox"]),
                         "role": "ground_truth_region",
                         "is_target": True,
                         "hyper3_rank": case["target"]["hyper3Rank"],
@@ -105,6 +133,9 @@ def evidence_samples(payload: dict[str, Any]) -> list[hv.Sample]:
                         label=f"#{rank} · {result['text']}",
                         metadata={
                             **shared_case,
+                            # A ranked result is another query's region, so its
+                            # provenance is that record's, not this case's.
+                            **provenance(result),
                             "role": "ranked_region_result",
                             "model": payload["models"][model],
                             "model_key": model,
@@ -168,6 +199,8 @@ def readout_props(
     collection_ids: dict[str, dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     return {
+        "hyper3PanelId": HYPER3_RESULTS_PANEL_ID,
+        "clipPanelId": CLIP_RESULTS_PANEL_ID,
         "dataset": payload["dataset"],
         "split": payload["split"],
         "protocol": payload["protocol"],
@@ -207,7 +240,7 @@ def build_demo_view(
         state={"activeCaseId": DEFAULT_CASE_ID},
     )
     hyper3_results = hv.ui.Samples(
-        id="samples",
+        id=HYPER3_RESULTS_PANEL_ID,
         title="Hyper3-CLIP · Top 5 regions",
         position="center",
         mode="results",
@@ -215,7 +248,7 @@ def build_demo_view(
         layout=hv.ui.PanelLayout(min_width=180, min_height=220),
     )
     clip_results = hv.ui.Samples(
-        id="precision-clip-results",
+        id=CLIP_RESULTS_PANEL_ID,
         title="OpenAI CLIP · Top 5 regions",
         position="center",
         reference_panel_id=hyper3_results.id,
@@ -228,7 +261,7 @@ def build_demo_view(
         hyper3_results,
         clip_results,
         readout,
-        active_panel="samples",
+        active_panel=HYPER3_RESULTS_PANEL_ID,
     )
 
 

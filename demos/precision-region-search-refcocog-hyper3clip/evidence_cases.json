@@ -20,75 +20,472 @@
     {
       "id": "facilities",
       "label": "Workspace / Facilities",
-      "shortLabel": "Sofa with pillows",
+      "shortLabel": "Grey couch",
       "context": "Property inspection",
       "query": "A grey couch with pillows on it.",
       "business": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
-      "target": { "hyper3Rank": 1, "clipRank": 20 },
+      "questionId": "115801",
+      "sourceImageId": "COCO_train2014_000000315297_115801.jpg",
+      "bbox": [
+        421.9,
+        158.44,
+        157.55,
+        106.81
+      ],
+      "cropBox": [
+        421,
+        158,
+        580,
+        266
+      ],
+      "imageSize": [
+        640,
+        413
+      ],
+      "target": {
+        "hyper3Rank": 1,
+        "clipRank": 7
+      },
       "results": {
         "hyper3": [
-          { "rank": 1, "text": "A grey couch with pillows on it.", "isTarget": true },
-          { "rank": 2, "text": "Brown loveseat with cushions." },
-          { "rank": 3, "text": "Beige armchair." },
-          { "rank": 4, "text": "Cream sofa in a living room." },
-          { "rank": 5, "text": "Tan armchair." }
+          {
+            "rank": 1,
+            "text": "A grey couch with pillows on it.",
+            "isTarget": true,
+            "questionId": "115801",
+            "sourceImageId": "COCO_train2014_000000315297_115801.jpg",
+            "bbox": [
+              421.9,
+              158.44,
+              157.55,
+              106.81
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "A dark red armchair",
+            "questionId": "113428",
+            "sourceImageId": "COCO_train2014_000000246102_113428.jpg",
+            "bbox": [
+              110.34,
+              406.21,
+              248.28,
+              212.41
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A brown couch sitting against the window.",
+            "questionId": "112603",
+            "sourceImageId": "COCO_train2014_000000337255_112603.jpg",
+            "bbox": [
+              4.13,
+              18.87,
+              623.48,
+              325.16
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "A white arm chair by the fireplace",
+            "questionId": "381178",
+            "sourceImageId": "COCO_train2014_000000386018_381178.jpg",
+            "bbox": [
+              14.68,
+              305.38,
+              132.48,
+              133.22
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "A black and white designed chair on the outside dinning table",
+            "questionId": "381043",
+            "sourceImageId": "COCO_train2014_000000434857_381043.jpg",
+            "bbox": [
+              31.64,
+              340.85,
+              126.56,
+              149.58
+            ]
+          }
         ],
         "clip": [
-          { "rank": 1, "text": "Brown loveseat with cushions." },
-          { "rank": 2, "text": "Cream couch in a different room." },
-          { "rank": 3, "text": "Chair beside curtains." },
-          { "rank": 4, "text": "Tan armchair." },
-          { "rank": 5, "text": "Person sitting on a bench." }
+          {
+            "rank": 1,
+            "text": "A beige loveseat with a throw pillow on it.",
+            "questionId": "291163",
+            "sourceImageId": "COCO_train2014_000000250079_291163.jpg",
+            "bbox": [
+              385.92,
+              289.54,
+              253.15,
+              132.78
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "A white arm chair by the fireplace",
+            "questionId": "381178",
+            "sourceImageId": "COCO_train2014_000000386018_381178.jpg",
+            "bbox": [
+              14.68,
+              305.38,
+              132.48,
+              133.22
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A dark red armchair",
+            "questionId": "113428",
+            "sourceImageId": "COCO_train2014_000000246102_113428.jpg",
+            "bbox": [
+              110.34,
+              406.21,
+              248.28,
+              212.41
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "An office chair with wheels",
+            "questionId": "100704",
+            "sourceImageId": "COCO_train2014_000000171374_100704.jpg",
+            "bbox": [
+              0.0,
+              178.11,
+              68.38,
+              270.66
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "The wicker chair to the left.",
+            "questionId": "108052",
+            "sourceImageId": "COCO_train2014_000000185116_108052.jpg",
+            "bbox": [
+              30.71,
+              225.84,
+              121.2,
+              130.33
+            ]
+          }
         ]
       }
     },
     {
       "id": "retail",
       "label": "Retail / Tabletop",
-      "shortLabel": "Soap bottle",
-      "context": "Store shelf",
-      "query": "The bottle of soap to the left.",
+      "shortLabel": "Apple slice",
+      "context": "Produce counter",
+      "query": "the slice of apple closest to the red bananas",
       "business": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
-      "target": { "hyper3Rank": 1, "clipRank": 12 },
+      "questionId": "1048737",
+      "sourceImageId": "COCO_train2014_000000269477_1048737.jpg",
+      "bbox": [
+        243.95,
+        192.0,
+        90.36,
+        194.26
+      ],
+      "cropBox": [
+        243,
+        192,
+        335,
+        387
+      ],
+      "imageSize": [
+        640,
+        480
+      ],
+      "target": {
+        "hyper3Rank": 2,
+        "clipRank": 12
+      },
       "results": {
         "hyper3": [
-          { "rank": 1, "text": "The bottle of soap to the left.", "isTarget": true },
-          { "rank": 2, "text": "Milk bottle." },
-          { "rank": 3, "text": "White sink." },
-          { "rank": 4, "text": "Tabletop edge." },
-          { "rank": 5, "text": "Clear drink bottle." }
+          {
+            "rank": 1,
+            "text": "A banana on a fork to the left of all the other bananas.",
+            "questionId": "1044306",
+            "sourceImageId": "COCO_train2014_000000528756_1044306.jpg",
+            "bbox": [
+              1.0,
+              0.89,
+              201.48,
+              103.24
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "the slice of apple closest to the red bananas",
+            "isTarget": true,
+            "questionId": "1048737",
+            "sourceImageId": "COCO_train2014_000000269477_1048737.jpg",
+            "bbox": [
+              243.95,
+              192.0,
+              90.36,
+              194.26
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A utensil with a wooden handle sitting to the right of a pizza.",
+            "questionId": "694426",
+            "sourceImageId": "COCO_train2014_000000470055_694426.jpg",
+            "bbox": [
+              403.29,
+              54.15,
+              236.6,
+              333.89
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "the chair the man in the red shirt is sitting in",
+            "questionId": "379937",
+            "sourceImageId": "COCO_train2014_000000430950_379937.jpg",
+            "bbox": [
+              36.92,
+              187.55,
+              378.47,
+              220.24
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "A doughnut with white frosting and red confetti sprinkles.",
+            "questionId": "1081377",
+            "sourceImageId": "COCO_train2014_000000521674_1081377.jpg",
+            "bbox": [
+              176.22,
+              44.32,
+              262.7,
+              235.68
+            ]
+          }
         ],
         "clip": [
-          { "rank": 1, "text": "White sink." },
-          { "rank": 2, "text": "Person holding a sandwich." },
-          { "rank": 3, "text": "White tabletop." },
-          { "rank": 4, "text": "Tabletop edge." },
-          { "rank": 5, "text": "Knife in a jar." }
+          {
+            "rank": 1,
+            "text": "A banana on a fork to the left of all the other bananas.",
+            "questionId": "1044306",
+            "sourceImageId": "COCO_train2014_000000528756_1044306.jpg",
+            "bbox": [
+              1.0,
+              0.89,
+              201.48,
+              103.24
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "An empty hotdog bun.",
+            "questionId": "1069026",
+            "sourceImageId": "COCO_train2014_000000240331_1069026.jpg",
+            "bbox": [
+              252.05,
+              340.18,
+              221.34,
+              84.08
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A white tabletop.",
+            "questionId": "1620331",
+            "sourceImageId": "COCO_train2014_000000550235_1620331.jpg",
+            "bbox": [
+              0.0,
+              204.78,
+              253.65,
+              166.01
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "A pizza is being eaten by a man.",
+            "questionId": "1076634",
+            "sourceImageId": "COCO_train2014_000000495095_1076634.jpg",
+            "bbox": [
+              270.32,
+              52.07,
+              255.61,
+              96.98
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "A muffin next to some larger food items.",
+            "questionId": "1084979",
+            "sourceImageId": "COCO_train2014_000000124835_1084979.jpg",
+            "bbox": [
+              439.95,
+              88.78,
+              192.87,
+              135.63
+            ]
+          }
         ]
       }
     },
     {
       "id": "fleet",
       "label": "Fleet / Vehicles",
-      "shortLabel": "Double-decker bus",
-      "context": "Street asset",
-      "query": "A double decker bus parked on the right side of the street facing forward.",
-      "business": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery.",
-      "target": { "hyper3Rank": 1, "clipRank": 4 },
+      "shortLabel": "Green bus",
+      "context": "Depot bay",
+      "query": "A green and white bus next to people standing.",
+      "business": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+      "questionId": "366497",
+      "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+      "bbox": [
+        471.14,
+        1.92,
+        166.0,
+        420.28
+      ],
+      "cropBox": [
+        471,
+        1,
+        638,
+        423
+      ],
+      "imageSize": [
+        640,
+        427
+      ],
+      "target": {
+        "hyper3Rank": 1,
+        "clipRank": 2
+      },
       "results": {
         "hyper3": [
-          { "rank": 1, "text": "A double decker bus parked on the right side of the street facing forward.", "isTarget": true },
-          { "rank": 2, "text": "Red single-decker bus." },
-          { "rank": 3, "text": "Green bus." },
-          { "rank": 4, "text": "White van." },
-          { "rank": 5, "text": "Bus marked SAI." }
+          {
+            "rank": 1,
+            "text": "A green and white bus next to people standing.",
+            "isTarget": true,
+            "questionId": "366497",
+            "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+            "bbox": [
+              471.14,
+              1.92,
+              166.0,
+              420.28
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "a red colored bus",
+            "questionId": "365993",
+            "sourceImageId": "COCO_train2014_000000287974_365993.jpg",
+            "bbox": [
+              32.5,
+              16.75,
+              172.5,
+              123.0
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A woman in a yellow skirt retrieves a purchase from a vending machine.",
+            "questionId": "216928",
+            "sourceImageId": "COCO_train2014_000000026362_216928.jpg",
+            "bbox": [
+              125.12,
+              247.13,
+              174.03,
+              280.45
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "a truck number 14 on a snow bank.",
+            "questionId": "401571",
+            "sourceImageId": "COCO_train2014_000000307082_401571.jpg",
+            "bbox": [
+              355.36,
+              191.14,
+              199.64,
+              146.16
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "A white truck with a worker standing on it, which is in front of the man who is directing traffic.",
+            "questionId": "397485",
+            "sourceImageId": "COCO_train2014_000000429207_397485.jpg",
+            "bbox": [
+              347.97,
+              96.19,
+              167.93,
+              173.82
+            ]
+          }
         ],
         "clip": [
-          { "rank": 1, "text": "Green bus." },
-          { "rank": 2, "text": "Bus in front of other vehicles." },
-          { "rank": 3, "text": "White van." },
-          { "rank": 4, "text": "A double decker bus parked on the right side of the street facing forward.", "isTarget": true },
-          { "rank": 5, "text": "Red single-decker bus." }
+          {
+            "rank": 1,
+            "text": "a red colored bus",
+            "questionId": "365993",
+            "sourceImageId": "COCO_train2014_000000287974_365993.jpg",
+            "bbox": [
+              32.5,
+              16.75,
+              172.5,
+              123.0
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "A green and white bus next to people standing.",
+            "isTarget": true,
+            "questionId": "366497",
+            "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+            "bbox": [
+              471.14,
+              1.92,
+              166.0,
+              420.28
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "A woman in a yellow skirt retrieves a purchase from a vending machine.",
+            "questionId": "216928",
+            "sourceImageId": "COCO_train2014_000000026362_216928.jpg",
+            "bbox": [
+              125.12,
+              247.13,
+              174.03,
+              280.45
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "a truck number 14 on a snow bank.",
+            "questionId": "401571",
+            "sourceImageId": "COCO_train2014_000000307082_401571.jpg",
+            "bbox": [
+              355.36,
+              191.14,
+              199.64,
+              146.16
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "The open cabinet.",
+            "questionId": "1121234",
+            "sourceImageId": "COCO_train2014_000000391831_1121234.jpg",
+            "bbox": [
+              18.65,
+              404.66,
+              330.05,
+              190.86
+            ]
+          }
         ]
       }
     },
@@ -98,22 +495,154 @@
       "shortLabel": "Empty bench seat",
       "context": "Venue seating",
       "query": "An empty seat at on a bench.",
-      "business": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five plausible chairs before reaching the annotated bench seat, while CLIP ranks it first.",
-      "target": { "hyper3Rank": 9, "clipRank": 1 },
+      "business": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+      "questionId": "2061563",
+      "sourceImageId": "COCO_train2014_000000149921_2061563.jpg",
+      "bbox": [
+        367.96,
+        324.04,
+        127.58,
+        155.96
+      ],
+      "cropBox": [
+        367,
+        324,
+        496,
+        480
+      ],
+      "imageSize": [
+        640,
+        480
+      ],
+      "target": {
+        "hyper3Rank": 9,
+        "clipRank": 1
+      },
       "results": {
         "hyper3": [
-          { "rank": 1, "text": "the chair on the bottom right" },
-          { "rank": 2, "text": "An office chair closest to the corner." },
-          { "rank": 3, "text": "the front bleacher" },
-          { "rank": 4, "text": "The empty chair on the end of the row." },
-          { "rank": 5, "text": "The wicker chair to the left." }
+          {
+            "rank": 1,
+            "text": "the chair on the bottom right",
+            "questionId": "108076",
+            "sourceImageId": "COCO_train2014_000000434372_108076.jpg",
+            "bbox": [
+              434.35,
+              261.74,
+              128.83,
+              165.26
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "An office chair closest to the corner.",
+            "questionId": "1938820",
+            "sourceImageId": "COCO_train2014_000000485014_1938820.jpg",
+            "bbox": [
+              43.26,
+              240.26,
+              104.02,
+              174.52
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "the front bleacher",
+            "questionId": "573614",
+            "sourceImageId": "COCO_train2014_000000012522_573614.jpg",
+            "bbox": [
+              427.64,
+              199.43,
+              212.36,
+              76.77
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "The empty chair on the end of the row.",
+            "questionId": "373167",
+            "sourceImageId": "COCO_train2014_000000344644_373167.jpg",
+            "bbox": [
+              91.16,
+              284.27,
+              127.62,
+              139.13
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "The wicker chair to the left.",
+            "questionId": "108052",
+            "sourceImageId": "COCO_train2014_000000185116_108052.jpg",
+            "bbox": [
+              30.71,
+              225.84,
+              121.2,
+              130.33
+            ]
+          }
         ],
         "clip": [
-          { "rank": 1, "text": "An empty seat at on a bench.", "isTarget": true },
-          { "rank": 2, "text": "The chair on the right, closest to the guy with no hat on." },
-          { "rank": 3, "text": "The white planter chair with the woman wearing dark clothes and white sneakers sitting in it." },
-          { "rank": 4, "text": "An office chair with wheels" },
-          { "rank": 5, "text": "A back rest of a wooden chair which was occupied by a man" }
+          {
+            "rank": 1,
+            "text": "An empty seat at on a bench.",
+            "isTarget": true,
+            "questionId": "2061563",
+            "sourceImageId": "COCO_train2014_000000149921_2061563.jpg",
+            "bbox": [
+              367.96,
+              324.04,
+              127.58,
+              155.96
+            ]
+          },
+          {
+            "rank": 2,
+            "text": "The chair on the right, closest to the guy with no hat on.",
+            "questionId": "1932002",
+            "sourceImageId": "COCO_train2014_000000574217_1932002.jpg",
+            "bbox": [
+              266.92,
+              353.6,
+              127.03,
+              126.4
+            ]
+          },
+          {
+            "rank": 3,
+            "text": "The white planter chair with the woman wearing dark clothes and white sneakers sitting in it.",
+            "questionId": "26893",
+            "sourceImageId": "COCO_train2014_000000469495_26893.jpg",
+            "bbox": [
+              27.69,
+              1.58,
+              114.69,
+              317.2
+            ]
+          },
+          {
+            "rank": 4,
+            "text": "An office chair with wheels",
+            "questionId": "100704",
+            "sourceImageId": "COCO_train2014_000000171374_100704.jpg",
+            "bbox": [
+              0.0,
+              178.11,
+              68.38,
+              270.66
+            ]
+          },
+          {
+            "rank": 5,
+            "text": "A back rest of a wooden chair which was occupied by a man",
+            "questionId": "385941",
+            "sourceImageId": "COCO_train2014_000000205202_385941.jpg",
+            "bbox": [
+              12.97,
+              251.87,
+              103.73,
+              172.89
+            ]
+          }
         ]
       }
     }

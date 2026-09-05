@@ -16,6 +16,17 @@ function mediaUrl(sample) {
   return typeof raw === "string" && raw ? raw : null;
 }
 
+function formatBox(bbox) {
+  if (!Array.isArray(bbox) || bbox.length !== 4) return "unknown";
+  const [x, y, w, h] = bbox.map((value) => Number(value).toFixed(1));
+  return `${x}, y ${y}, ${w}×${h}`;
+}
+
+function formatSize(size) {
+  if (!Array.isArray(size) || size.length !== 2) return "size unknown";
+  return `${size[0]}×${size[1]}`;
+}
+
 function RankCard({ name, color, rank }) {
   const consequence = rank === 1
     ? "Found first"
@@ -43,6 +54,12 @@ export default function PrecisionRegionPanel() {
   const [busy, setBusy] = React.useState(false);
   const [error, setError] = React.useState(null);
 
+  // The Space authors both result panels, so the id of the baseline panel this
+  // readout drives arrives as a prop instead of being hard-coded here.
+  const clipPanelId = typeof props.clipPanelId === "string" && props.clipPanelId
+    ? props.clipPanelId
+    : "precision-clip-results";
+
   const chooseCase = (item) => {
     if (busy) return;
     setBusy(true);
@@ -53,7 +70,7 @@ export default function PrecisionRegionPanel() {
           item.results.hyper3.map((result) => result.sampleId),
           { focus: false, source: `${item.shortLabel} · Hyper3-CLIP · Top 5` },
         );
-        await updateProps("precision-clip-results", { mode: "results", collectionId: item.collectionIds.clip });
+        await updateProps(clipPanelId, { mode: "results", collectionId: item.collectionIds.clip });
         await patchState({ activeCaseId: item.id });
         await setSelection([item.targetSampleId]);
       } catch (reason) {
@@ -80,7 +97,7 @@ export default function PrecisionRegionPanel() {
         <header className="pr-header">
           <span className="pr-kicker">Language-guided region search</span>
           <h2>Which region matches the description?</h2>
-          <p>Every case boxes the annotated RefCOCOg region in its own source photo. Compare where that region lands in each result list.</p>
+          <p>Each case boxes the annotated RefCOCOg region in its own source photo. The two lists are each model’s top five from the shared crop pool; the cards below give the rank the boxed region actually reached.</p>
         </header>
 
         <blockquote className="pr-query">“{active.query}”</blockquote>
@@ -93,12 +110,13 @@ export default function PrecisionRegionPanel() {
             <span>Target</span>
           </span>
         </button>
+        <p className="pr-note">Source image {active.sourceImageId} · {formatSize(active.imageSize)} · box x {formatBox(active.bbox)} · RefCOCOg query {active.questionId}. Every tile in this Space carries its own image id, box and query id in its metadata, so any crop here can be re-cut from RefCOCOg.</p>
 
         <section className="pr-ranks" aria-label="Exact target ranks">
           <RankCard name="Hyper3-CLIP" color="#60a5fa" rank={active.target.hyper3Rank} />
           <RankCard name="OpenAI CLIP" color="#f59e0b" rank={active.target.clipRank} />
         </section>
-        <p className="pr-note">Both models rank the same shared pool of {benchmark.queryCount || 180} region crops drawn from across the images; each list shows its top five. A target ranked below five is outside that visible shortlist.</p>
+        <p className="pr-note">Both models rank the same pool of {benchmark.queryCount || 180} region crops cut from across the source images; each list shows its top five, so a boxed region ranked below five is not in the visible shortlist.</p>
 
         <nav className="pr-cases" aria-label="Object search examples">
           {cases.map((item) => (
@@ -117,7 +135,7 @@ export default function PrecisionRegionPanel() {
             <tr><td>Within top ten</td><td>{benchmark.hyper3Hit10}</td><td>{benchmark.clipHit10}</td></tr>
             <tr><td>Average rank score</td><td>{benchmark.hyper3Mrr}</td><td>{benchmark.clipMrr}</td></tr>
           </tbody></table>
-          <p className="pr-note">The examples are diagnostic rank-separation cases; the table covers the full subset and is descriptive, not a significance claim.</p>
+          <p className="pr-note">The four cases are diagnostic, not a highlight reel: two show Hyper3-CLIP surfacing a region the baseline buries, one is a narrow win, and one is a case the baseline wins outright. The table covers the whole subset and is descriptive, not a significance claim.</p>
         </section>
 
         {sourceError || targetError ? <div className="pr-error">{sourceError || targetError}</div> : null}
