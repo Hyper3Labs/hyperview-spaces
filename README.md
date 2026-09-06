@@ -130,10 +130,10 @@ deploy CI, so do not add a Hugging Face token as a GitHub secret. The script
 offers the same two modes:
 
 ```bash
-# Sync a demo folder
+# Sync a self-contained demo folder
 uv run --project ../ python scripts/deploy_hf_space.py \
-  --space-id mnm-matin/HyperView-Logo-Brand-Search \
-  --source-dir demos/logo-brand-search-clip-hyper3clip
+  --space-id mnm-matin/HyperView-Visual-Safety \
+  --source-dir demos/visual-safety-content-clip-hyper3clip
 
 # Publish an exported bundle as a Live Space
 uv run --project ../ python scripts/deploy_hf_space.py \
@@ -210,10 +210,10 @@ every registered folder to appear in this table.
 | HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `demos/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
 | HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
-| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
+| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy its reviewed Static Space bundle manually. |
 | HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `demos/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
 | HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
-| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored Hugging Face Space; deployment is managed outside this repository. |
+| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy its reviewed Static Space bundle manually. |
 | HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
 | Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `external/hyper3labs/jaguar-hyperview-multigeometry` | Hyper3Labs | `live` | Current paper-facing Space; source remains in its Hugging Face repository and is tracked here as an external deployment. |
 

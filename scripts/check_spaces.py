@@ -362,6 +362,9 @@ def main() -> int:
         space_id = space.get("space_id")
         if space_id is not None and (not isinstance(space_id, str) or not space_id.strip()):
             error(f"{folder}: space_id must be a non-empty string or null", errors)
+        manual_deploy = space.get("manual_deploy", False)
+        if not isinstance(manual_deploy, bool):
+            error(f"{folder}: manual_deploy must be a boolean when present", errors)
         if space.get("keep_warm") and space_id is None:
             error(f"{folder}: keep_warm cannot be true when space_id is null", errors)
 
@@ -465,6 +468,12 @@ def main() -> int:
             key = ("source_dir", folder)
         workflows = workflows_by_key.get(key, [])
         if not workflows:
+            if space.get("manual_deploy"):
+                print(
+                    f"INFO: {folder}: {key[0]} {key[1]} is deployed manually; "
+                    "no GitHub workflow is expected"
+                )
+                continue
             # A workflow deploying this Space some other way is the likely cause,
             # and saying so beats reporting the lookup that missed.
             elsewhere = [
