@@ -19,7 +19,7 @@ and every underlying sample are there to inspect.
 | [GeoSpatial](https://hyper3labs.github.io/spaces/geospatial/) | Do retrieved neighbours preserve land-use identity? |
 | [Visual Safety](https://hyper3labs.github.io/spaces/visual-safety/) | Is one extra catch worth five false reviews and six more queue slots? |
 
-Each one compares `hyper3-clip-v0.5` against OpenAI CLIP ViT-B/32 on the same
+Each one compares `hyper3-clip-v1` against OpenAI CLIP ViT-B/32 on the same
 bounded probe and shows the per-case evidence for both, including the cases
 CLIP wins.
 
@@ -83,7 +83,7 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 > infisical run --projectId <project> --env dev -- \
 >   hyperview publish ../hyper3labs.github.io/public/spaces/<slug> \
 >     --to hf:hyper3labs/<Space> --mode live \
->     --extra-pip "hyperview==1.1.1" --extra-pip "hyper-models[ml]==0.3.1" \
+>     --extra-pip "hyperview==1.1.1" --extra-pip "hyper-models[ml]==0.3.2" \
 >     --extra-pip "datasets>=4.5.0" --extra-pip "Pillow>=12.0.0" \
 >     --pre-install "torch torchvision --index-url https://download.pytorch.org/whl/cpu"
 > ```
@@ -140,7 +140,7 @@ uv run --project ../ python scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
   --mode live-bundle \
   --bundle ../../hyper3labs.github.io/public/spaces/logo-search \
-  --extra-pip 'hyperview==1.1.1' --extra-pip 'hyper-models[ml]==0.3.1'
+  --extra-pip 'hyperview==1.1.1' --extra-pip 'hyper-models[ml]==0.3.2'
 ```
 
 > **The org account runs at most three `cpu-basic` Spaces at once.** A fourth

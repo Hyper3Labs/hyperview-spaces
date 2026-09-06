@@ -47,7 +47,7 @@ workspace data.
 
 - Dataset: 120 public Open Images V7 validation images, 60 proxy-positive and
   60 proxy-negative.
-- Models: OpenAI CLIP ViT-B/32 and Hyper3-CLIP v0.5 image embeddings.
+- Models: OpenAI CLIP ViT-B/32 and Hyper3-CLIP v1 image embeddings.
 - Scoring: leave-one-out vote among seven nearest neighbours in each persisted
   image-embedding space.
 - Operating point: queue at least five proxy-positive neighbours, applying the

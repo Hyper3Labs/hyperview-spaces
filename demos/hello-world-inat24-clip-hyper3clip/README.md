@@ -16,7 +16,7 @@ custom introduction panel built with the public HyperView panel SDK:
 
 - CLIP (`openai/clip-vit-base-patch32`) in Euclidean 3D
 - CLIP (`openai/clip-vit-base-patch32`) in spherical 3D
-- Hyper3-CLIP (`hyper3-clip-v0.5`) in hyperbolic Poincare 2D
+- Hyper3-CLIP (`hyper3-clip-v1`) in hyperbolic Poincare 2D
 
 The sample is drawn from `evendrow/inat24_tiny`, a compact iNaturalist 2024
 subset with 1,000 images, 100 species, and taxonomy metadata. The visible label
@@ -27,7 +27,7 @@ rights holder.
 The Docker image installs released packages from PyPI:
 
 - `hyperview==1.1.1`
-- `hyper-models[ml]==0.3.1`
+- `hyper-models[ml]==0.3.2`
 
 ## Dataset
 
@@ -64,6 +64,6 @@ When copying this folder for another dataset:
 This folder is synchronized to `hyper3labs/HyperView` by GitHub Actions from
 the `hyperview-spaces` deployment repository.
 
-Because `hyper3-clip-v0.5` is gated on Hugging Face, the running Space needs an
+Because `hyper3-clip-v1` is gated on Hugging Face, the running Space needs an
 `HF_TOKEN` Space secret with read access to the model. The GitHub deployment
 credential does not become a runtime secret automatically.

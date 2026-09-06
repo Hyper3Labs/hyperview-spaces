@@ -22,7 +22,7 @@
     "claimBoundary": "Object-label proxy only; not a production content-policy classifier or prevalence estimate.",
     "models": {
       "clip": "openai/clip-vit-base-patch32",
-      "hyper3": "hyper3-clip-v0.5"
+      "hyper3": "hyper3-clip-v1"
     }
   },
   "metrics": {
@@ -4855,5 +4855,5 @@
       }
     }
   ],
-  "sha256": "ab2ca06dd9e6513988cf479b0f90cb2fa94565e302f3e57d81f976b36c7fff59"
+  "sha256": "0a3cfd6a28fa787fbe92ef23ddfaab9a321a4368d71ec00961568e6be8e55d18"
 }

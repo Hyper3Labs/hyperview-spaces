@@ -3,7 +3,7 @@
   "split": "val",
   "protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
   "models": {
-    "hyper3": "hyper3-clip-v0.5",
+    "hyper3": "hyper3-clip-v1",
     "clip": "openai/clip-vit-base-patch32"
   },
   "benchmark": {

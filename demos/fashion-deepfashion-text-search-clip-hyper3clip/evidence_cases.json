@@ -4,7 +4,7 @@
   "protocol": "Text embedding ranked against a fixed 1,120-image corpus from 260 products. A positive is any image view with the same DeepFashion product key as the metadata-generated query.",
   "workspaceBoundary": "The topology contains 741 catalog images from 199 products. Ranks come from a separate 1,120-image benchmark pool.",
   "models": {
-    "hyper3": "Hyper3-CLIP v0.5",
+    "hyper3": "Hyper3-CLIP v1",
     "clip": "OpenAI CLIP ViT-B/32"
   },
   "aggregate": {

@@ -42,7 +42,7 @@ The script uses the public, unauthenticated `lmms-lab/RefCOCOg` Hugging Face dat
 
 For each selected row, the `[x,y,w,h]` bbox is converted to `[floor(x), floor(y), ceil(x+w), ceil(y+h)]` and clamped to the source image bounds. The resulting 180 crops form the complete shared pool and each query's target is its own crop. Crops are cached under `results/precision_regions_assets/`.
 
-Embeddings are computed through HyperView's own providers: `embed-anything` with `openai/clip-vit-base-patch32` and `hyper-models` 0.3.1 with `hyper3-clip-v0.5`. Ranking uses cosine distance for CLIP and the provider-configured hyperboloid distance for Hyper3-CLIP.
+Embeddings are computed through HyperView's own providers: `embed-anything` with `openai/clip-vit-base-patch32` and `hyper-models` 0.3.1 with `hyper3-clip-v1`. Ranking uses cosine distance for CLIP and the provider-configured hyperboloid distance for Hyper3-CLIP.
 
 ## CLIP-win case
 

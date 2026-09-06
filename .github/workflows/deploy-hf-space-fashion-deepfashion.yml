@@ -33,5 +33,5 @@ jobs:
       bundle_slug: fashion-products
       hyperview_version: "1.1.1"
       extra_pip: |
-        hyper-models[ml]==0.3.1
+        hyper-models[ml]==0.3.2
       space_id: hyper3labs/HyperView-DeepFashion-Text-Search

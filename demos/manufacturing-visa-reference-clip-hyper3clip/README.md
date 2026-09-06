@@ -14,7 +14,7 @@ This Space builds a balanced subset of the VisA industrial visual anomaly
 dataset and opens HyperView with two side-by-side embedding spaces:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3-clip-v0.5` from the public `hyper-models` provider in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v1` from the public `hyper-models` provider in a Poincare 2D layout
 
 The workflow is inspection reference retrieval: given a production-line
 inspection image, retrieve the right normal references for the same SKU or
@@ -62,5 +62,5 @@ VISA_SAMPLES_PER_CATEGORY=12 HYPERVIEW_PORT=6265 \
 The Docker image installs `hyperview==1.1.1` from PyPI and
 uses HyperView's public dataset, UI, and panel command APIs. Hyper3-CLIP loads
 through the public `hyper-models` provider catalog entry for the gated
-`hyper3labs/hyper3-clip-v0.5` model repository. The Space needs an `HF_TOKEN`
+`hyper3labs/hyper3-clip-v1` model repository. The Space needs an `HF_TOKEN`
 secret with access to that model; startup fails if the model cannot be loaded.

@@ -19,7 +19,7 @@ The workspace combines native ranked Samples panels, two native scatter panels,
 a native prepared-results panel, and a compact right-side question panel:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3-clip-v0.5` from `hyper-models` in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v1` from `hyper-models` in a Poincare 2D layout
 
 The right-side panel offers three prepared text-to-product searches and three
 prepared image anchors. Static visitors can switch cases and models, inspect
@@ -70,11 +70,11 @@ JavaScript.
 This folder is intended to deploy to `hyper3labs/HyperView-ABO-Catalog` from
 the `hyperview-spaces` deployment repository.
 
-The Dockerfile installs `hyperview==1.1.1` and `hyper-models[ml]==0.3.1` from
+The Dockerfile installs `hyperview==1.1.1` and `hyper-models[ml]==0.3.2` from
 PyPI. The released HyperView wheel includes the built frontend assets, so this
 Space does not carry a local `static/` bundle or copy frontend files into the
 installed package.
 
 Hyper3-CLIP weights are loaded through the `hyper-models` catalog entry for the
-gated `hyper3labs/hyper3-clip-v0.5` model repository at runtime. The Space needs
+gated `hyper3labs/hyper3-clip-v1` model repository at runtime. The Space needs
 an `HF_TOKEN` secret with access to that model.

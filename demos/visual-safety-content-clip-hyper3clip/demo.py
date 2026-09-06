@@ -313,7 +313,7 @@ def readout_props(
         "collectionId": collection_id,
         "metrics": batch_metrics(payload),
         "cases": panel_cases(payload, collection_ids=collection_ids),
-        "models": {"clip": "OpenAI CLIP", "hyper3": "Hyper3-CLIP v0.5"},
+        "models": {"clip": "OpenAI CLIP", "hyper3": "Hyper3-CLIP v1"},
     }
 
 

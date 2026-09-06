@@ -36,7 +36,7 @@ SPLIT = "val"
 DEFAULT_LIMIT = 180
 DEFAULT_SEED = 0
 CLIP_MODEL = "openai/clip-vit-base-patch32"
-HYPER3_MODEL = "hyper3-clip-v0.5"
+HYPER3_MODEL = "hyper3-clip-v1"
 
 
 def parse_args() -> argparse.Namespace:

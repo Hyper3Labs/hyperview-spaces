@@ -13,7 +13,7 @@ pinned: false
 This demo loads a bounded artwork subset into HyperView and compares:
 
 - CLIP ViT-B/32 in a Euclidean 2D layout
-- Hyper3-CLIP `hyper3-clip-v0.5` in a Poincare 2D layout
+- Hyper3-CLIP `hyper3-clip-v1` in a Poincare 2D layout
 
 The buyer story is art marketplace search. A buyer can type a visual composition such as "blue ship on a hill" and the right painting needs to rank highly even when the artwork title does not describe the visible content.
 
@@ -58,7 +58,7 @@ ART_MAX_SAMPLES=1200 \
 python3 demos/art-text-search-clip-hyper3clip/demo.py
 ```
 
-The model comparison follows the same `MODEL_SPECS` pattern as the other text-query demos. The baseline defaults to `openai/clip-vit-base-patch32` through `embed-anything`, and the candidate defaults to `hyper3-clip-v0.5` through `hyper-models`.
+The model comparison follows the same `MODEL_SPECS` pattern as the other text-query demos. The baseline defaults to `openai/clip-vit-base-patch32` through `embed-anything`, and the candidate defaults to `hyper3-clip-v1` through `hyper-models`.
 
 ## Deploy Source
 

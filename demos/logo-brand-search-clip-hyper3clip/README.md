@@ -24,7 +24,7 @@ scatter shows catalog topology with pan/zoom/lasso and shared selection, and a
 compact right decision panel owns prepared briefs, brief attributes, business
 interpretation, aggregate evidence, and the model toggle.
 
-The comparison is Hyper3-CLIP v0.5 versus OpenAI CLIP ViT-B/32 on a bounded
+The comparison is Hyper3-CLIP v1 versus OpenAI CLIP ViT-B/32 on a bounded
 160-row slice of `logo-wizard/modern-logo-dataset`. Each dataset caption ranks
 the same 160 images and the paired logo is the one exact positive. Aggregate
 text-to-logo results are:

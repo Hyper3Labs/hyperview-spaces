@@ -108,7 +108,7 @@ export default function FashionSearchPanel() {
         </button>
 
         <section className="fs-models" aria-label="First matching product rank">
-          <ModelCard name="Hyper3-CLIP" checkpoint={models.hyper3 || "v0.5"} color="#60a5fa" rank={active.target.hyper3Rank} readout={active.modelReadout.hyper3} />
+          <ModelCard name="Hyper3-CLIP" checkpoint={models.hyper3 || "v1"} color="#60a5fa" rank={active.target.hyper3Rank} readout={active.modelReadout.hyper3} />
           <ModelCard name="OpenAI CLIP" checkpoint={models.clip || "ViT-B/32"} color="#f59e0b" rank={active.target.clipRank} readout={active.modelReadout.clip} />
         </section>
 

@@ -67,7 +67,7 @@ text search. Three queries typed into the native Samples box:
 | a floral summer romper with short sleeves | rompers dominant, dresses adjacent |
 | a pleated denim skirt | leggings dominant, 2 skirts |
 
-Distances rank correctly and the three result sets are distinct, so the v0.5
+Distances rank correctly and the three result sets are distinct, so the v1
 text tower is doing real retrieval — this is the 0.3.1 behaviour, not 0.3.0's
 random-weight noise. The third query is a genuine weakness worth keeping in
 the demo rather than hiding: a denim skirt request surfaces leggings first.

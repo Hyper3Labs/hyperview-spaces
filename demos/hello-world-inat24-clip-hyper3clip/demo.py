@@ -56,7 +56,7 @@ EMBEDDING_LAYOUTS = [
     {
         "name": "Hyper3-CLIP",
         "provider": "hyper-models",
-        "model": "hyper3-clip-v0.5",
+        "model": "hyper3-clip-v1",
         "layouts": ["poincare:2d"],
     },
 ]

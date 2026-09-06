@@ -90,7 +90,7 @@ MODEL_SPECS = [
         "display_name": os.environ.get("ART_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
         "button_label": os.environ.get("ART_CANDIDATE_BUTTON_LABEL", "Inspect Hyper3-CLIP neighborhood"),
         "provider": os.environ.get("ART_CANDIDATE_PROVIDER", "hyper-models"),
-        "model": os.environ.get("ART_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
+        "model": os.environ.get("ART_CANDIDATE_MODEL", "hyper3-clip-v1"),
         "layout": os.environ.get("ART_CANDIDATE_LAYOUT", "poincare:2d"),
         "geometry": os.environ.get("ART_CANDIDATE_GEOMETRY", "poincare"),
         "layout_dimension": int(os.environ.get("ART_CANDIDATE_LAYOUT_DIMENSION", "2")),

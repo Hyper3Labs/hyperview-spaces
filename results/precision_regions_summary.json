@@ -20,7 +20,7 @@
       "metric": "cosine"
     },
     "hyper3": {
-      "model": "hyper3-clip-v0.5",
+      "model": "hyper3-clip-v1",
       "provider": "hyper-models",
       "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756",
       "metric": "hyperboloid"

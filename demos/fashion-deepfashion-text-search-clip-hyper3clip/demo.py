@@ -29,7 +29,7 @@ EXPECTED_SAMPLE_COUNT = 741
 RESULT_SAMPLE_PREFIX = "fashion-evidence-"
 
 # The catalog map is the Hyper3 multimodal space, not the older image-only one.
-HYPER3_MODEL = "hyper3-clip-v0.5"
+HYPER3_MODEL = "hyper3-clip-v1"
 HYPER3_PROVIDER = "hyper-models"
 
 # Build the workspace and exit instead of serving it. This is how a Static

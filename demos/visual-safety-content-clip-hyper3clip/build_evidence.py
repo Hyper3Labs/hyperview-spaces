@@ -142,7 +142,7 @@ def main() -> None:
             "claimBoundary": "Object-label proxy only; not a production content-policy classifier or prevalence estimate.",
             "models": {
                 "clip": "openai/clip-vit-base-patch32",
-                "hyper3": "hyper3-clip-v0.5",
+                "hyper3": "hyper3-clip-v1",
             },
         },
         "metrics": {},

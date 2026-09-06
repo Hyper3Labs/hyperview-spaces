@@ -7,7 +7,7 @@ sdk: docker
 app_port: 7860
 pinned: false
 models:
-- hyper3labs/hyper3-clip-v0.5
+- hyper3labs/hyper3-clip-v1
 - openai/clip-vit-base-patch32
 datasets:
 - tanganke/resisc45

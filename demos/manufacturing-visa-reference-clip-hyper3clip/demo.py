@@ -100,7 +100,7 @@ MODEL_SPECS = [
         "display_name": os.environ.get("VISA_CANDIDATE_DISPLAY_NAME", "Hyper3-CLIP"),
         "button_label": os.environ.get("VISA_CANDIDATE_BUTTON_LABEL", "Show Hyper3 neighbors"),
         "provider": os.environ.get("VISA_CANDIDATE_PROVIDER", "hyper-models"),
-        "model": os.environ.get("VISA_CANDIDATE_MODEL", "hyper3-clip-v0.5"),
+        "model": os.environ.get("VISA_CANDIDATE_MODEL", "hyper3-clip-v1"),
         "layout": os.environ.get("VISA_CANDIDATE_LAYOUT", "poincare:2d"),
         "geometry": os.environ.get("VISA_CANDIDATE_GEOMETRY", "poincare"),
         "layout_dimension": int(os.environ.get("VISA_CANDIDATE_LAYOUT_DIMENSION", "2")),

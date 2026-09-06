@@ -37,7 +37,7 @@ EXPECTED_SAMPLE_COUNT = 160
 
 # The style map is the Hyper3 multimodal space (image+text), not the older
 # image-only one; nothing but the modality separates their layouts.
-HYPER3_MODEL = "hyper3-clip-v0.5"
+HYPER3_MODEL = "hyper3-clip-v1"
 HYPER3_PROVIDER = "hyper-models"
 
 # Build the workspace and exit instead of serving it. This is how a Static
@@ -253,7 +253,7 @@ def readout_props(payload: dict[str, Any], briefs: dict[str, Any]) -> dict[str, 
             "Hyper3 multimodal style map. Prepared ranks are fixed evidence from the "
             "bounded probe and are not recomputed in static exports."
         ),
-        "models": {"hyper3": "Hyper3-CLIP v0.5", "clip": "OpenAI CLIP ViT-B/32"},
+        "models": {"hyper3": "Hyper3-CLIP v1", "clip": "OpenAI CLIP ViT-B/32"},
         "aggregate": {
             "queryCount": 160,
             "candidateCount": 160,

@@ -189,7 +189,7 @@ def dockerfile_pins(folder: Path) -> dict[str, str]:
 def validate_documented_pins(folder: Path, pins: dict[str, str], errors: list[str]) -> None:
     """Prose that names a version must name the one the Dockerfile installs.
 
-    A README claiming `hyper-models==0.3.0` while the build pins 0.3.1 sends
+    A README claiming `hyper-models==0.3.0` while the build pins 0.3.2 sends
     anyone reproducing the Space to the wrong package, and nothing else here
     reads prose, so the drift survives a green run.
     """

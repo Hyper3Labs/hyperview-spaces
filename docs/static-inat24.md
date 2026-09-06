@@ -22,7 +22,7 @@ python3.12 -m venv "$VENV"
 "$VENV/bin/python" -m pip install --upgrade pip
 "$VENV/bin/python" -m pip install \
   "hyperview==1.1.1" \
-  "hyper-models[ml]==0.3.1" \
+  "hyper-models[ml]==0.3.2" \
   "datasets>=4.5.0" \
   "Pillow>=12.0.0"
 

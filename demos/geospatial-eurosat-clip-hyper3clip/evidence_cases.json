@@ -11,7 +11,7 @@
     "k": 10,
     "distance": "Hyper3 hyperbolic; CLIP cosine",
     "baselineModel": "openai/clip-vit-base-patch32",
-    "candidateModel": "hyper3-clip-v0.5",
+    "candidateModel": "hyper3-clip-v1",
     "modelRevisionCaveat": "Exact model repository revisions were not captured in the original persisted run.",
     "claimBoundary": "A bounded neighborhood-quality probe, not a specialist remote-sensing benchmark."
   },

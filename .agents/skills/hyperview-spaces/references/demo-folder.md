@@ -102,7 +102,7 @@ shortlist = session.create_collection(  # durable; a static export keeps it
 )
 
 layout_key = dataset.find_layout(       # described, not pinned
-    model="hyper3-clip-v0.5",
+    model="hyper3-clip-v1",
     provider="hyper-models",
     modality="multimodal",
     geometry="poincare",

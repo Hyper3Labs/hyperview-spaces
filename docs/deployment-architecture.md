@@ -62,7 +62,7 @@ confirm the target repo exists, the org account is writable/not plan-blocked,
 and the account is not locked. The emergency path is a narrowly scoped
 `HF_TOKEN` injected from Infisical; it should not become a GitHub secret or a
 file in either repository. A deployment token only writes the Space repository.
-A gated runtime model such as `hyper3-clip-v0.5` separately needs an `HF_TOKEN`
+A gated runtime model such as `hyper3-clip-v1` separately needs an `HF_TOKEN`
 configured as a Hugging Face Space secret, or the model and embeddings must be
 prepared in a bundle before deployment.
 

@@ -38,7 +38,7 @@ NEIGHBOUR_K = 10
 # Layout keys carry a content hash, so describe the layouts and look them up.
 MODEL_LAYOUTS: dict[str, dict[str, str]] = {
     "hyper3": {
-        "model": "hyper3-clip-v0.5",
+        "model": "hyper3-clip-v1",
         "provider": "hyper-models",
         "geometry": "poincare",
         "title": "Hyper3 archive map",
@@ -322,7 +322,7 @@ def panel_props(
         "protocol": payload["protocol"],
         "aggregate": payload["aggregate"],
         "models": {
-            "hyper3": "Hyper3-CLIP v0.5",
+            "hyper3": "Hyper3-CLIP v1",
             "clip": "OpenAI CLIP ViT-B/32",
         },
         "layouts": layouts,
@@ -368,7 +368,7 @@ def build_demo_view(
         rank=neighbour_rank(
             layout_key=layouts["hyper3"]["layoutKey"],
             anchor_sample_id=anchor,
-            model_label="Hyper3-CLIP v0.5",
+            model_label="Hyper3-CLIP v1",
         ),
         layout=hv.ui.PanelLayout(min_width=220, min_height=240),
     )
