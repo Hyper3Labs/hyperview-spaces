@@ -112,7 +112,7 @@
       "demo_name": "HyperView - VisA Manufacturing",
       "description": "Find same-SKU visual references for manufacturing inspection images.",
       "expected_dataset": "visa_manufacturing_reference_clip_hyper3clip",
-      "keep_warm": true,
+      "keep_warm": false,
       "status": "live",
       "deploy_targets": [
         "hf-docker"
