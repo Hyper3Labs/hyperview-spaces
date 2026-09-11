@@ -31,10 +31,10 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.x"
+          python-version: "3.12"
       # check_spaces.py reads the panel SDK contract from the installed
       # HyperView instead of keeping its own copy of the hook list.
-      - run: python -m pip install --disable-pip-version-check hyperview ruff
+      - run: python -m pip install --disable-pip-version-check "hyperview==1.1.1" ruff
       - run: python scripts/check_spaces.py
       - run: python scripts/check_static_spaces.py
       - run: ruff check demos scripts
