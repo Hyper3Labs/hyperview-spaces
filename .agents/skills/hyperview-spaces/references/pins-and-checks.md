@@ -106,8 +106,13 @@ INFO: hyperview pins: 1.0.0
 ```bash
 uv run --project ../ python scripts/check_spaces.py
 uv run --project ../ python scripts/check_static_spaces.py
+uvx ruff@0.16.7 check demos scripts
 ```
 
 `.github/workflows/check-spaces.yml` runs these on push and pull request. They
 are cheap and read-only - run them after any edit to a demo folder, a registry,
 or a workflow.
+
+`ruff.toml` keeps lint rules and HyperView import grouping identical in a
+standalone checkout and one nested under the HyperView source repository. Use
+the Ruff version pinned in `check-spaces.yml` when reproducing CI locally.
