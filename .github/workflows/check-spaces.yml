@@ -1,10 +1,21 @@
 name: Check demo registries
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "live-spaces.registry.json"
+      - "static-spaces.registry.json"
+      - "demos/**"
+      - "archived-spaces/**"
+      - ".github/workflows/**"
+      - "README.md"
+      - "scripts/**"
   pull_request:
     paths:
       - "live-spaces.registry.json"
       - "demos/**"
+      - "archived-spaces/**"
       - "static-spaces.registry.json"
       - ".github/workflows/**"
       - "README.md"

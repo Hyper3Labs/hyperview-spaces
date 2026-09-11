@@ -14,10 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "live-spaces.registry.json"
 STATIC_REGISTRY_PATH = ROOT / "static-spaces.registry.json"
 DEMOS_DIR = ROOT / "demos"
+ARCHIVED_DEMOS_DIR = ROOT / "archived-spaces" / "demos"
 SCRIPTS_DIR = ROOT / "scripts"
 WORKFLOWS_DIR = ROOT / ".github" / "workflows"
 README_PATH = ROOT / "README.md"
-VALID_STATUSES = {"live", "draft", "local"}
+VALID_STATUSES = {"live", "draft", "local", "archived"}
 VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
 # How a Space is put on Hugging Face. `docker-folder` syncs demos/<slug>/ and
 # lets the Space build that Dockerfile; `live-bundle` publishes the exported
@@ -330,6 +331,7 @@ def main() -> int:
             error(f"registry entry {index} is not an object", errors)
             continue
         folder = space.get("folder")
+        is_archived = space.get("status") == "archived"
         deploy_mode = space.get("deploy_mode", DEFAULT_DEPLOY_MODE)
         is_external = deploy_mode == "external"
         if is_external:
@@ -339,7 +341,8 @@ def main() -> int:
             if not isinstance(space.get("source_repository"), str):
                 error(f"{folder}: external entries need source_repository", errors)
         else:
-            if not isinstance(folder, str) or not folder.startswith("demos/"):
+            valid_prefixes = ("demos/", "archived-spaces/demos/") if is_archived else ("demos/",)
+            if not isinstance(folder, str) or not folder.startswith(valid_prefixes):
                 error(f"registry entry {index} has invalid folder: {folder!r}", errors)
                 continue
             if folder in registry_by_folder:
@@ -367,6 +370,16 @@ def main() -> int:
             error(f"{folder}: manual_deploy must be a boolean when present", errors)
         if space.get("keep_warm") and space_id is None:
             error(f"{folder}: keep_warm cannot be true when space_id is null", errors)
+        if is_archived:
+            if space.get("keep_warm") is not False:
+                error(f"{folder}: archived Spaces must set keep_warm to false", errors)
+            if isinstance(targets, list) and any(
+                isinstance(target, str) and target.startswith("hf-") for target in targets
+            ):
+                error(f"{folder}: archived Live Spaces cannot have HF deploy targets", errors)
+            for field in ("archived_at", "archive_reason"):
+                if not isinstance(space.get(field), str) or not space[field].strip():
+                    error(f"{folder}: archived Spaces need {field}", errors)
 
         bundle_slug = space.get("bundle_slug")
         if deploy_mode not in VALID_DEPLOY_MODES:
@@ -395,7 +408,7 @@ def main() -> int:
                 error(f"{folder}: deploy_mode live-bundle needs a space_id to publish to", errors)
             # The bundle is published as an HF Docker Space, so the deploy target
             # is unchanged; only the way the image is produced changed.
-            if isinstance(targets, list) and "hf-docker" not in targets:
+            if not is_archived and isinstance(targets, list) and "hf-docker" not in targets:
                 error(
                     f"{folder}: deploy_mode live-bundle still deploys an HF Docker Space, "
                     "so deploy_targets must include hf-docker",
@@ -406,7 +419,9 @@ def main() -> int:
 
     disk_folders = {
         path.relative_to(ROOT).as_posix()
-        for path in DEMOS_DIR.iterdir()
+        for base in (DEMOS_DIR, ARCHIVED_DEMOS_DIR)
+        if base.is_dir()
+        for path in base.iterdir()
         if path.is_dir() and not path.name.startswith(".")
     }
     registry_folders = set(registry_by_folder)
@@ -458,6 +473,15 @@ def main() -> int:
 
     used_conflicts: set[tuple[str, str | None, str]] = set()
     for folder, space in sorted(registry_by_folder.items()):
+        if space.get("status") == "archived":
+            for matches in workflows_by_key.values():
+                for workflow, values in matches:
+                    if values.get("space_id") == space.get("space_id"):
+                        error(
+                            f"{folder}: archived Space still has deploy workflow {workflow.name}",
+                            errors,
+                        )
+            continue
         targets = space.get("deploy_targets", [])
         if "hf-docker" not in targets:
             continue
@@ -524,6 +548,9 @@ def main() -> int:
         error(f"stale known conflict no longer matches registry/workflow values: {key}", errors)
 
     for folder in sorted(disk_folders):
+        if folder.startswith("archived-spaces/"):
+            # Retired sources retain their historical pins and APIs.
+            continue
         path = ROOT / folder
         for required in ("README.md", "Dockerfile", "demo.py"):
             if not (path / required).is_file():

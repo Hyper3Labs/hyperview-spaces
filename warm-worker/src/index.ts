@@ -48,7 +48,7 @@ interface TimedResponse {
 const typedRegistry = registry as Registry;
 const warmSpaces = typedRegistry.spaces.filter(
   (space): space is WarmableSpace =>
-    space.keep_warm === true && typeof space.space_id === "string" && space.space_id.length > 0
+    space.status === "live" && space.keep_warm === true && typeof space.space_id === "string" && space.space_id.length > 0
 );
 
 const DEFAULT_TIMEOUT_MS = 4000;

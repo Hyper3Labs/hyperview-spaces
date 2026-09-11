@@ -67,6 +67,18 @@ async function statusResponse(request, ctx) {
 }
 
 async function checkSpace(space, checkedAt) {
+  if (space.status === 'archived') {
+    return {
+      space_id: space.space_id,
+      demo_slug: space.demo_slug,
+      declared_status: 'archived',
+      stage: 'ARCHIVED',
+      huggingface_stage: null,
+      api_status: null,
+      health_status: null,
+      checked_at: checkedAt,
+    };
+  }
   const info = await fetchJson(`https://huggingface.co/api/spaces/${space.space_id}`);
   const rawStage = info.payload?.runtime?.stage || 'UNKNOWN';
   let stage = rawStage;

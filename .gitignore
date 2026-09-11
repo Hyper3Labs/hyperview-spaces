@@ -14,6 +14,7 @@ build/
 .env
 .env.*
 demos/*/demo_data/
+archived-spaces/demos/*/demo_data/
 static-spaces/*
 !static-spaces/README.md
 

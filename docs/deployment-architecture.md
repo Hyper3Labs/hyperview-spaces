@@ -8,6 +8,11 @@ generous Workers/KV/static-asset allowances are the target.
 
 ## Current operational layout (September 2026)
 
+- Lifecycle update (2026-09-11): Hello World, DeepFashion, and the external
+  Jaguar paper demo remain live. ABO, Logo Search, GeoSpatial, and Visual Safety
+  retain their Static Spaces but their HF runtimes are archived and paused.
+  VisA and the Art draft are archived. `status: archived` never permits
+  keep-warm or an active HF deploy workflow; see `archived-spaces/README.md`.
 - `live-spaces.registry.json` is the canonical inventory for every source demo,
   its Hugging Face target, desired lifecycle state, and gallery copy.
 - `static-spaces.registry.json` attaches reviewed exported bundles to that

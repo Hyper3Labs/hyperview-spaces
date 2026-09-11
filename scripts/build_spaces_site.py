@@ -170,17 +170,24 @@ def main() -> int:
         static = static_by_source.get(entry.get("folder"))
         static_slug = static.get("slug") if static else None
         space_id = entry.get("space_id")
+        archived = entry.get("status") == "archived"
+        if archived and static_slug not in collected:
+            continue
         links: list[str] = []
         if static_slug in collected:
             links.append(f'<a href="/{html.escape(static_slug)}/">Open Static Space</a>')
-        if space_id:
+        if space_id and not archived:
             live_url = f"https://{space_id.replace('/', '-').lower()}.hf.space"
             links.append(
                 f'<a href="{html.escape(live_url)}" target="_blank" rel="noopener">Open Live Space</a>'
             )
-        stage = "checking" if space_id else entry.get("status", "not deployed")
+        stage = (
+            "static" if archived
+            else "checking" if space_id
+            else entry.get("status", "not deployed")
+        )
         status_attribute = (
-            f' data-space-id="{html.escape(space_id)}"' if space_id else ""
+            f' data-space-id="{html.escape(space_id)}"' if space_id and not archived else ""
         )
         item_rows.append(
             '    <li class="space">'

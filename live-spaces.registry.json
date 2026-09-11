@@ -31,10 +31,12 @@
       "demo_name": "HyperView - ABO Catalog",
       "description": "Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings.",
       "expected_dataset": "abo_catalog_clip_hyper3clip_side_by_side",
-      "keep_warm": true,
-      "status": "live",
+      "keep_warm": false,
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Redundant live runtime; retain the active ABO Catalog Static Space.",
       "deploy_targets": [
-        "hf-docker"
+        "cf-static"
       ],
       "gallery": {
         "context": "Product retrieval workbench",
@@ -66,14 +68,16 @@
     },
     {
       "space_id": "hyper3labs/HyperView-Art-Text-Search",
-      "folder": "demos/art-text-search-clip-hyper3clip",
+      "folder": "archived-spaces/demos/art-text-search-clip-hyper3clip",
       "deploy_mode": "docker-folder",
       "demo_slug": "art-text-search",
       "demo_name": "HyperView - Art Text Search",
       "description": "Compare CLIP and Hyper3-CLIP for compositional art marketplace search where titles omit visual content.",
       "expected_dataset": "art_text_search_clip_hyper3clip",
       "keep_warm": false,
-      "status": "draft",
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Unpublished draft retired from the active demo lineup; source retained for reference.",
       "deploy_targets": [],
       "gallery": {
         "context": "Art marketplace search",
@@ -91,11 +95,13 @@
       "demo_name": "HyperView - EuroSAT Geospatial",
       "description": "Review remote-sensing scene retrieval and neighborhood drift in aerial imagery.",
       "expected_dataset": "resisc45_clip_hyper3clip_curated_side_by_side",
-      "keep_warm": true,
-      "status": "live",
+      "keep_warm": false,
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Redundant live runtime; retain the active GeoSpatial Static Space.",
       "manual_deploy": true,
       "deploy_targets": [
-        "hf-docker"
+        "cf-static"
       ],
       "gallery": {
         "context": "Remote-sensing archive QA",
@@ -106,17 +112,17 @@
     },
     {
       "space_id": "hyper3labs/HyperView-VisA-Manufacturing",
-      "folder": "demos/manufacturing-visa-reference-clip-hyper3clip",
+      "folder": "archived-spaces/demos/manufacturing-visa-reference-clip-hyper3clip",
       "deploy_mode": "docker-folder",
       "demo_slug": "visa-manufacturing",
       "demo_name": "HyperView - VisA Manufacturing",
       "description": "Find same-SKU visual references for manufacturing inspection images.",
       "expected_dataset": "visa_manufacturing_reference_clip_hyper3clip",
       "keep_warm": false,
-      "status": "live",
-      "deploy_targets": [
-        "hf-docker"
-      ],
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Inactive manufacturing demo retired; keep its existing paused HF repository and source recoverable.",
+      "deploy_targets": [],
       "gallery": {
         "context": "Manufacturing reference search",
         "workflow": "Reference matching",
@@ -132,11 +138,13 @@
       "demo_name": "HyperView - Visual Safety",
       "description": "Triage public marketplace images into safe and policy-review buckets.",
       "expected_dataset": "openimages_visual_proxy_evidence_v3",
-      "keep_warm": true,
-      "status": "live",
+      "keep_warm": false,
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Redundant live runtime; retain the active Visual Safety Static Space.",
       "manual_deploy": true,
       "deploy_targets": [
-        "hf-docker"
+        "cf-static"
       ],
       "gallery": {
         "context": "Model audit · review ops",
@@ -154,11 +162,13 @@
       "demo_name": "HyperView - Logo Brand Search",
       "description": "Compare CLIP and Hyper3-CLIP for detailed text-to-logo retrieval across a curated brand catalog.",
       "expected_dataset": "logo_brand_search_clip_hyper3clip_hf_live_v4",
-      "keep_warm": true,
-      "status": "live",
+      "keep_warm": false,
+      "status": "archived",
+      "archived_at": "2026-09-11",
+      "archive_reason": "Redundant live runtime; retain the active Logo Search Static Space.",
       "manual_deploy": true,
       "deploy_targets": [
-        "hf-docker"
+        "cf-static"
       ],
       "gallery": {
         "context": "Creative asset retrieval",

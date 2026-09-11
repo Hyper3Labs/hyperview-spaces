@@ -22,6 +22,12 @@ Each subfolder is the canonical source for a use case and can be deployed as a
 Live Space or exported as a Static Space. A deployable root contains at least
 `README.md`, `Dockerfile`, and `demo.py`.
 
+The active HF runtimes managed here are Hello World and DeepFashion; Jaguar is
+an external paper demo. ABO, GeoSpatial, Logo Search, and Visual Safety keep
+their Static Spaces but have archived, paused live runtimes. The Art draft and
+VisA source are preserved under `../archived-spaces/demos/`. Check the registry
+lifecycle before deploying: the manual publisher refuses archived targets.
+
 ## Agent-friendly pattern
 
 The example folders are meant to be easy for external coding agents to edit.

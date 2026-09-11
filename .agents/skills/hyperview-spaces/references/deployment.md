@@ -19,11 +19,16 @@
 }
 ```
 
-- `folder` must start with `demos/`, be unique, and exist on disk. Every folder
+- `folder` must start with `demos/` (or `archived-spaces/demos/` for an archived
+  entry), be unique, and exist on disk. Every folder
   on disk must have an entry - adding a demo folder without registering it fails
   CI.
 - `space_id` is a non-empty string, or `null` for a demo with no Space yet.
-- `status` is one of `live`, `draft`, `local`.
+- `status` is one of `live`, `draft`, `local`, `archived`. An archived Live Space
+  can still have an active Static Space. It must have `archived_at` and
+  `archive_reason`, set `keep_warm: false`, have no HF deploy targets, and have
+  no active caller workflow. Move retired workflows outside `.github/workflows/`
+  and disable them in GitHub Actions before pausing the HF runtime.
 - `deploy_targets` is a list drawn from `hf-docker`, `hf-static`, `cf-static`.
   Only `hf-docker` requires a matching deploy workflow.
 - `keep_warm: true` requires a non-null `space_id` - you cannot ping nothing.

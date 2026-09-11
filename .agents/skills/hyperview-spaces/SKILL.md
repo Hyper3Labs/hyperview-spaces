@@ -41,7 +41,7 @@ change the demo folder instead.
 ```text
 demos/                        canonical source; one folder per use case
 static-spaces/                generated read-only bundles (gitignored)
-archived-spaces/              retired examples, outside the active registry
+archived-spaces/              retired source/workflows, retained in the registry as archived
 scripts/                      registry checks and maintenance tools
 warm-worker/                  registry-driven monitoring worker
 docs/                         deployment architecture, data delivery, evidence audit
@@ -53,7 +53,7 @@ static-spaces.registry.json   reviewed static artifacts
 
 ## Core workflow: add a demo
 
-1. Copy an existing folder: `demos/inat24-tiny-clip-hycoclip` for a geometry
+1. Copy an existing folder: `demos/hello-world-inat24-clip-hyper3clip` for a geometry
    showcase, `demos/fashion-deepfashion-text-search-clip-hyper3clip` for a
    text-search demo with a custom panel.
 2. Edit the constants block at the top of the new `demo.py` (dataset name, HF
@@ -154,6 +154,11 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
 
 ## Rules that are easy to get wrong
 
+- **Archived Live Spaces stay paused.** `status: archived` requires
+  `keep_warm: false`, an archive date/reason, no HF deploy targets, and no active
+  caller workflow. Keep sources in `demos/` when their Static Space is active;
+  move wholly retired demos to `archived-spaces/demos/`. Keep registry records
+  and HF repositories so URLs and provenance survive.
 - **A push to `main` deploys.** Per-space workflows are path-scoped to their
   demo folder. Do not push a pin bump to an unreleased version - the Space will
   rebuild and fail on a PyPI package that does not exist yet.

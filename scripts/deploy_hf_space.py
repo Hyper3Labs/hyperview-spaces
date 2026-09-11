@@ -18,6 +18,7 @@ offers the same two modes:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -153,6 +154,17 @@ def main() -> int:
     args = parse_args()
     if "/" not in args.space_id or args.space_id.startswith("/") or args.space_id.endswith("/"):
         raise SystemExit("--space-id must use the owner/name form")
+
+    registry = json.loads(
+        (Path(__file__).resolve().parents[1] / "live-spaces.registry.json").read_text()
+    )
+    if any(
+        entry.get("space_id") == args.space_id and entry.get("status") == "archived"
+        for entry in registry.get("spaces", [])
+    ):
+        raise SystemExit(
+            f"{args.space_id} is archived; restore its registry lifecycle before deploying"
+        )
 
     if args.mode == "folder":
         if args.source_dir is None:

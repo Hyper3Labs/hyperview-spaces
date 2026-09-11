@@ -70,6 +70,17 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 
 ## Deploying
 
+The active Live Spaces are **Hello World**, **DeepFashion**, and the external
+**Jaguar Multi-Geometry** paper demo. ABO, Logo Search, GeoSpatial, and Visual
+Safety retain their Static Spaces; their redundant HF runtimes are archived
+and paused. VisA and the unpublished Art draft are archived in
+[`archived-spaces/`](archived-spaces/README.md).
+
+`status: archived` describes the retired Live Space, not its Static Space.
+Archived entries remain in the registry for provenance, with `keep_warm: false`,
+no HF deploy targets, and no active caller workflow. Static demo sources stay in
+`demos/`; wholly retired sources move to `archived-spaces/demos/`.
+
 > **Hugging Face OIDC recovery (2026-09).** The current org deploy runs fail
 > with `invalid_grant`. Treat that as a Trusted Publisher mismatch until the
 > exact publisher claims have been rechecked: repository
@@ -190,6 +201,7 @@ explicit version pin and the wheel must be deleted.
 ├── .agents/skills/hyperview-spaces/   # agent skill: the full contract for this repo
 ├── .github/workflows/                 # per-space deploy, reusable deploy, checks, monitor
 ├── demos/                             # canonical source; one folder per use case
+├── archived-spaces/                   # retired demos and disabled workflow sources
 ├── static-spaces/                      # generated read-only bundles (gitignored)
 ├── build/                             # build and deployment support
 ├── docs/                              # architecture and operations documentation
@@ -207,14 +219,14 @@ every registered folder to appear in this table.
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
 | HyperView Hello World | `hyper3labs/HyperView` | `demos/hello-world-inat24-clip-hyper3clip` | Hyper3Labs | `live` | Compare CLIP in Euclidean and spherical geometry with Hyper3-CLIP in hyperbolic Poincare geometry. |
-| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `live` | Inspect product-catalog neighborhoods across CLIP and Hyper3-CLIP embeddings. |
+| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `archived` live runtime | Static Space remains active; HF runtime paused. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `demos/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
-| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `draft` | Draft only; no confirmed Hugging Face Space or deployment workflow. |
-| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy its reviewed Static Space bundle manually. |
-| HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `demos/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `live` | Find same-SKU visual references for manufacturing inspection images. |
-| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy manually. |
-| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `live` | Monitored personal Space; deploy its reviewed Static Space bundle manually. |
-| HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` | Local draft with no confirmed Hugging Face Space or deploy workflow. |
+| HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `archived-spaces/demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `archived` | Unpublished draft; authenticated HF lookup returns 404. |
+| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `archived-spaces/demos/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `archived` | Retired source retained; HF runtime paused and deploy workflow archived. |
+| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` runtime | Published Static Space remains active; no HF runtime. |
 | Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `external/hyper3labs/jaguar-hyperview-multigeometry` | Hyper3Labs | `live` | Current paper-facing Space; source remains in its Hugging Face repository and is tracked here as an external deployment. |
 
 When you open a pull request, state the Hugging Face Space ID, the dataset
