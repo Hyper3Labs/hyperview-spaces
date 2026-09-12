@@ -91,14 +91,16 @@ Archived entries remain in the registry for provenance, with `keep_warm: false`,
 no HF deploy targets, and no active caller workflow. Static demo sources stay in
 `demos/`; wholly retired sources move to `archived-spaces/demos/`.
 
-> **Hugging Face OIDC recovery (2026-09).** The current org deploy runs fail
-> with `invalid_grant`. Treat that as a Trusted Publisher mismatch until the
+> **Hugging Face OIDC (verified 2026-09-12).** DeepFashion's
+> [CI publish succeeded](https://github.com/Hyper3Labs/hyperview-spaces/actions/runs/34685520984)
+> using the Trusted Publisher path. Earlier runs failed with `invalid_grant`;
+> if another Space has that error, treat it as a per-Space trust mismatch until the
 > exact publisher claims have been rechecked: repository
 > `Hyper3Labs/hyperview-spaces`, branch `main`, and the exact caller workflow
 > filename for that Space. Also confirm the Space still exists and the org
 > account is allowed to write it. The local Infisical `agent-credentials`
 > project contains a working `HF_TOKEN`, so a scoped token publish remains a
-> recovery path while OIDC is repaired; never commit or print that token:
+> recovery path if a publisher needs repair; never commit or print that token:
 >
 > ```bash
 > infisical run --projectId <project> --env dev -- \
