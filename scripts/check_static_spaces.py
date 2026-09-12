@@ -55,6 +55,7 @@ def main() -> int:
         bundle_folder = entry.get("bundle_folder")
         workspace_id = entry.get("workspace_id")
         walkthrough_panel_id = entry.get("walkthrough_panel_id")
+        walkthrough_position = entry.get("walkthrough_panel_position", "right")
         live_space_id = entry.get("live_space_id")
 
         if not isinstance(slug, str) or not slug:
@@ -63,6 +64,13 @@ def main() -> int:
         if slug in seen_slugs:
             errors.append(f"duplicate Static Space slug: {slug}")
         seen_slugs.add(slug)
+        if entry.get("export_script") not in (None, f"{source_folder}/demo.py"):
+            errors.append(f"{slug}: export_script must be its canonical demo.py")
+        targets = entry.get("deploy_targets", ["cf-static"])
+        if not isinstance(targets, list) or not targets or any(
+            target not in {"hf-static", "cf-static"} for target in targets
+        ):
+            errors.append(f"{slug}: invalid static deploy_targets")
 
         if (
             not isinstance(source_folder, str)
@@ -83,6 +91,8 @@ def main() -> int:
             errors.append(f"{slug}: workspace_id must be a non-empty string")
         if not isinstance(walkthrough_panel_id, str) or not walkthrough_panel_id:
             errors.append(f"{slug}: walkthrough_panel_id must be a non-empty string")
+        if walkthrough_position not in ("center", "right", "bottom"):
+            errors.append(f"{slug}: invalid walkthrough_panel_position")
         if live_space_id is not None and live_space_id not in live_by_id:
             errors.append(
                 f"{slug}: live_space_id {live_space_id!r} is absent from live-spaces.registry.json"
@@ -143,9 +153,9 @@ def main() -> int:
             )
             if walkthrough is None:
                 errors.append(f"{slug}: walkthrough panel {walkthrough_panel_id!r} is absent")
-            elif walkthrough.get("position") != "right":
+            elif walkthrough.get("position") != walkthrough_position:
                 errors.append(
-                    f"{slug}: walkthrough panel must be positioned right, "
+                    f"{slug}: walkthrough panel must be positioned {walkthrough_position}, "
                     f"got {walkthrough.get('position')!r}"
                 )
 

@@ -57,6 +57,12 @@ def main() -> int:
         similarity_k = entry.get("similarity_k")
         if similarity_k is not None:
             command += ["--similarity-k", str(similarity_k)]
+        export_script = entry.get("export_script")
+        if export_script:
+            expected = f"{entry['source_folder']}/demo.py"
+            if export_script != expected:
+                raise ValueError(f"{slug}: export_script must be its canonical demo.py")
+            command = [sys.executable, str(ROOT / export_script), "--export", str(destination)]
         print(f"==> {slug}: exporting workspace {workspace_id} -> {destination}")
         result = subprocess.run(command, cwd=HYPERVIEW_ROOT)
         if result.returncode != 0:

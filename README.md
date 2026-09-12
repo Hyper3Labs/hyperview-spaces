@@ -23,6 +23,11 @@ Each one compares `hyper3-clip-v1` against OpenAI CLIP ViT-B/32 on the same
 bounded probe and shows the per-case evidence for both, including the cases
 CLIP wins.
 
+The paper-facing [Jaguar Multi-Geometry Space](https://huggingface.co/spaces/hyper3labs/jaguar-hyperview-multigeometry)
+is also static, hosted on Hugging Face at its original URL. It preserves the
+original Triplet, ArcFace, and Lorentz research vectors and projections rather
+than comparing CLIP models.
+
 ## Two delivery modes, one source
 
 |  | Live Space | Static Space |
@@ -70,11 +75,16 @@ HyperView itself, use the `hyperview-cli` skill shipped with the package
 
 ## Deploying
 
-The active Live Spaces are **Hello World**, **DeepFashion**, and the external
-**Jaguar Multi-Geometry** paper demo. ABO, Logo Search, GeoSpatial, and Visual
+The active Live Spaces are **Hello World** and **DeepFashion**. The
+**Jaguar Multi-Geometry** paper demo is an HF Static Space at its original URL;
+see [its migration record](docs/jaguar-static-migration.md). ABO, Logo Search, GeoSpatial, and Visual
 Safety retain their Static Spaces; their redundant HF runtimes are archived
 and paused. VisA and the unpublished Art draft are archived in
 [`archived-spaces/`](archived-spaces/README.md).
+
+Jaguar's canonical HF page is unchanged, but its direct app host is now
+`hyper3labs-jaguar-hyperview-multigeometry.static.hf.space`. The old Docker host
+does not redirect; update any direct-host embeds and cite the stable HF page.
 
 `status: archived` describes the retired Live Space, not its Static Space.
 Archived entries remain in the registry for provenance, with `keep_warm: false`,
@@ -107,6 +117,14 @@ A Live Space can be built two ways, and the registry entry says which:
 | `docker-folder` | `demos/<slug>/` | Builds that `Dockerfile`, runs `demo.py`, which rebuilds the workspace on first boot | The demo can prepare its own data from public sources |
 | `live-bundle` | The exported bundle, from the landing site repository | A generated `Dockerfile` running `hyperview serve --from <bundle> --public` | The data was prepared locally, or the boot is too slow to sit through |
 
+Separately, `deploy_mode: static-bundle` publishes files to an HF Static HTML
+Space (`deploy_targets: ["hf-static"]`, `keep_warm: false`). It stays in the
+historically named live registry for inventory and health checks, and also has
+an artifact entry in the static registry. Jaguar uses this mode. Its canonical
+export script preserves research-specific cosine neighbors; do not replace it
+with the generic runtime publisher. Static registry entries can select
+`hf-static`, `cf-static`, or both; the Cloudflare site only collects `cf-static`.
+
 `live-bundle` is the fix for a Space that boots into `RUNTIME_ERROR`. A demo
 whose dataset was curated on a laptop cannot rebuild itself inside a container
 that has never seen the source images, so `demo.py` fails and the Space dies.
@@ -126,7 +144,7 @@ dispatch).
 | Owner | How | Auth |
 | --- | --- | --- |
 | `hyper3labs/*` | `workflow_dispatch`, or a push to `main` touching the trigger paths | Hugging Face Trusted Publisher (OIDC) — no long-lived secret |
-| Personal account | `scripts/deploy_hf_space.py` | Your local `huggingface-cli` login |
+| Personal account | `scripts/deploy_hf_space.py` | Your local `hf auth` login |
 
 For an org-owned Space, copy an existing caller workflow —
 `deploy-hf-space-hyperview.yml` for `docker-folder`,
@@ -183,10 +201,16 @@ uv run --project ../ python scripts/monitor_spaces.py --fail-on-unhealthy
 ```
 
 The GitHub monitor runs hourly and fails on paused, unhealthy, warming,
-metadata-mismatched, or unknown registered Live Spaces. The Cloudflare host at
-`spaces.hyper3labs.com` serves all Static Spaces from one Worker and exposes a
-registry-driven `/status.json`; `/spaces` on the main site consumes that feed
-and keeps unhealthy entries visible instead of deleting their links.
+metadata-mismatched, or unknown active monitored Spaces. It checks the static
+manifest for Jaguar and never tries to wake a container. Archived entries are
+excluded. The Cloudflare host at `spaces.hyper3labs.com` serves the six
+Cloudflare-targeted Static Spaces from one Worker; Jaguar stays on HF.
+
+The registry-driven gallery/status implementation is in this repo, but its
+Cloudflare rollout is still pending (2026-09-12): the deployed `/status.json`
+currently returns 404. Configure the missing Infisical GitHub OIDC identity and
+project variables, then deploy the Worker and main-site gallery updates. The
+intended gallery keeps unhealthy active entries visible so they can be fixed.
 
 ### Vendored wheels
 
@@ -227,7 +251,7 @@ every registered folder to appear in this table.
 | HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
 | HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
 | HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` runtime | Published Static Space remains active; no HF runtime. |
-| Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `external/hyper3labs/jaguar-hyperview-multigeometry` | Hyper3Labs | `live` | Current paper-facing Space; source remains in its Hugging Face repository and is tracked here as an external deployment. |
+| Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `demos/jaguar-multigeometry` | Hyper3Labs | `live` static site | Same paper URL; frozen research vectors, coordinates and cosine neighbors. No runtime or keep-warm. |
 
 When you open a pull request, state the Hugging Face Space ID, the dataset
 source, the embedding models, and whether this repository should deploy the

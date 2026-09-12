@@ -84,7 +84,18 @@ async function checkSpace(space, checkedAt) {
   let stage = rawStage;
   let healthStatus = null;
 
-  if (rawStage === 'RUNNING') {
+  if (space.deploy_mode === 'static-bundle') {
+    const host = info.payload?.host || spaceRootUrl(space.space_id, true);
+    const manifest = await fetchJson(`${host.replace(/\/$/, '')}/hyperview-static.json`);
+    healthStatus = manifest.status;
+    stage = info.payload?.sdk === 'static' && manifest.status === 200 &&
+      manifest.payload?.static === true && manifest.payload?.kind === 'hyperview-static-space'
+      ? 'STATIC' : 'UNHEALTHY';
+    if (stage === 'STATIC' && space.expected_dataset &&
+      manifest.payload?.workspace?.dataset_name !== space.expected_dataset) {
+      stage = 'METADATA_MISMATCH';
+    }
+  } else if (rawStage === 'RUNNING') {
     const health = await fetchJson(
       `${spaceRootUrl(space.space_id)}/__hyperview__/health`,
     );
@@ -133,6 +144,6 @@ async function fetchJson(url) {
   }
 }
 
-function spaceRootUrl(spaceId) {
-  return `https://${spaceId.replaceAll('/', '-').toLowerCase()}.hf.space`;
+function spaceRootUrl(spaceId, isStatic = false) {
+  return `https://${spaceId.replaceAll('/', '-').toLowerCase()}.${isStatic ? 'static.' : ''}hf.space`;
 }

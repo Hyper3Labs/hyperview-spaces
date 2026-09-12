@@ -2,6 +2,20 @@
   "version": 1,
   "static_spaces": [
     {
+      "slug": "jaguar-multigeometry",
+      "name": "Jaguar Multi-Geometry",
+      "source_folder": "demos/jaguar-multigeometry",
+      "workspace_id": "jaguar-multigeometry",
+      "walkthrough_panel_id": "samples",
+      "walkthrough_panel_position": "center",
+      "bundle_folder": "static-spaces/jaguar-multigeometry",
+      "live_space_id": "hyper3labs/jaguar-hyperview-multigeometry",
+      "live_url": "https://hyper3labs-jaguar-hyperview-multigeometry.static.hf.space",
+      "deploy_targets": ["hf-static"],
+      "export_script": "demos/jaguar-multigeometry/demo.py",
+      "similarity_k": 100
+    },
+    {
       "slug": "abo-catalog",
       "name": "ABO Catalog",
       "source_folder": "demos/abo-catalog-clip-hycoclip",

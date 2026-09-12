@@ -48,7 +48,14 @@ Field rules enforced by `check_static_spaces.py`:
   relatively and resolve API and media from the document URL, so one that pins
   a prefix came from an old HyperView and needs re-exporting
 - `workspace_id` and `walkthrough_panel_id` non-empty strings
+- `walkthrough_panel_position` defaults to `right`; an explicit horizontal
+  layout can use `center` because its split tree places the panel, as in Jaguar.
 - `live_space_id` / `live_url` may be null for a static-only view
+- `deploy_targets` may contain `hf-static` and/or `cf-static`; omission defaults
+  to `cf-static`. The Cloudflare site build excludes HF-only bundles.
+- Optional `export_script` must be `<source_folder>/demo.py`. The export driver
+  runs it with `--export <bundle_folder>`, allowing a public-API dataset
+  specialization to preserve research-specific behavior during export.
 
 ## Export
 
@@ -66,6 +73,12 @@ uv run --project ../ python scripts/export_static_spaces.py abo-catalog fashion-
 The script runs `hyperview export <workspace_id>` into `static-spaces/<slug>`
 for each entry, then calls `check_static_spaces.py` on the results. Passing an
 unknown slug is an error, not a silent no-op.
+
+Jaguar is the `export_script` case: follow
+[`demos/jaguar-multigeometry/README.md`](../../../../demos/jaguar-multigeometry/README.md)
+to build with its released HyperView pin and run `scripts/check_jaguar_static.py`.
+Its frozen vectors and layouts must not be recomputed. Its cosine neighbors are
+intentional, including for the Lorentz model.
 
 ## Validate
 
@@ -98,6 +111,8 @@ at a domain root or at any path inside a containing site:
   `wrangler.jsonc`, so `npx wrangler deploy` from the bundle directory works
 - Any static host or CDN. The site convention is `/spaces/<slug>`, but nothing
   in the bundle depends on it
+- Hugging Face Static HTML Spaces (`sdk: static`, `app_file: index.html`).
+  Jaguar uses the existing paper-facing HF repository, not a new CF URL.
 - Locally, any static file server rooted at the directory holding `spaces/`
 
 The landing site's `/spaces` page (hyper3labs.github.io, `lib/spaces.ts`) is the
@@ -107,7 +122,8 @@ index over the published Static Spaces.
 
 Use a **Static Space** when the demo replays prepared evidence: fixed queries,
 fixed comparisons, a walkthrough panel telling the story. This is the default -
-it costs nothing to run, cannot go down, and starts instantly.
+it needs no runtime compute or warm-up. Broken assets, a bad export, or a host
+outage can still break it, so validate bundles and monitor the published files.
 
 Use a **Live Space** only when the interaction genuinely requires the runtime:
 a visitor typing their own query, a provider being registered, layouts being

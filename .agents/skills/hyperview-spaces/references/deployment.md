@@ -33,6 +33,26 @@
   Only `hf-docker` requires a matching deploy workflow.
 - `keep_warm: true` requires a non-null `space_id` - you cannot ping nothing.
 - `expected_dataset` is the dataset name the monitor expects the Space to serve.
+- `deploy_mode: static-bundle` is an HF static deployment, despite this
+  registry's historical filename. It requires a matching `bundle_slug` in the
+  static registry, `hf-static`, no `hf-docker`, and `keep_warm: false`.
+  `status: live` means published, not necessarily a Python runtime.
+
+## HF static migration at an existing URL
+
+The canonical `huggingface.co/spaces/<owner>/<name>` page is preserved, but HF
+switches the direct app host from `.hf.space` to `.static.hf.space`. Use the
+Space API's `host` field for health probes; use the stable repository URL for
+gallery links and citations. Check and update any old direct-host paper embeds.
+
+Keep the original owner/name and tag the pre-migration revision. Test the
+exported artifact, then change the existing repository's README frontmatter to
+`sdk: static`, `app_file: index.html` in the same upload as its files. For
+research Spaces, retain the original sources/assets and do not use a publisher
+that deletes unmatched files. Use an optimistic parent-commit guard to avoid
+overwriting someone else's concurrent change. See
+[`docs/jaguar-static-migration.md`](../../../../docs/jaguar-static-migration.md)
+for the preserved dataset, validation, publishing, and rollback procedure.
 
 ### known_conflicts
 
@@ -140,6 +160,9 @@ uv run --project ../ python scripts/monitor_spaces.py --fail-on-unhealthy
 `monitor-hf-spaces.yml` runs this on a schedule; `warm-worker/` is the
 registry-driven worker that keeps `keep_warm: true` Spaces from sleeping. The
 monitor covers personal Spaces even though it does not deploy them.
+It also monitors active `static-bundle` entries regardless of `keep_warm`:
+these check HF's SDK and `/hyperview-static.json`, including the dataset name,
+and never query or wake a runtime. Archived entries are excluded.
 
 ## First-boot cost
 

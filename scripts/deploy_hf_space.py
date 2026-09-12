@@ -165,6 +165,14 @@ def main() -> int:
         raise SystemExit(
             f"{args.space_id} is archived; restore its registry lifecycle before deploying"
         )
+    if any(
+        entry.get("space_id") == args.space_id and entry.get("deploy_mode") == "static-bundle"
+        for entry in registry.get("spaces", [])
+    ):
+        raise SystemExit(
+            f"{args.space_id} is static; use its reviewed static publishing recipe, "
+            "not the Docker publisher"
+        )
 
     if args.mode == "folder":
         if args.source_dir is None:

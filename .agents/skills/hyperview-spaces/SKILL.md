@@ -20,7 +20,7 @@ the registries, workflows, and version pins that describe it consistent.
 | What it is | Docker container running a Python HyperView runtime on Hugging Face | Self-contained read-only bundle served as plain files |
 | Can do | New text queries, new embeddings, recomputed layouts, mutated workspace state | Prepared interactions, pan/zoom/lasso/selection, precomputed similarity, materialized text-search results |
 | Cannot do | - | Anything that needs the backend: live embedding of a typed query, new providers |
-| Registry | `live-spaces.registry.json` | `static-spaces.registry.json` |
+| Registry | `live-spaces.registry.json` | `static-spaces.registry.json`; HF deployments also remain in the live registry as `static-bundle` |
 | Produced by | Docker build of `demos/<slug>/` | `hyperview export` via `scripts/export_static_spaces.py` |
 | Hosted at | `huggingface.co/spaces/<owner>/<name>` | Any static host, at any path |
 
@@ -121,6 +121,11 @@ every registered Static Space. The exporter validates its own output, so a green
 run means the bundle is a real static export with no backend-only text search
 left in it. Detail: [references/static-spaces.md](references/static-spaces.md).
 
+An entry with `export_script` invokes its canonical `demo.py --export` instead
+of reopening a saved workspace. Jaguar uses this to preserve its original
+cosine-neighbor contract. Use its pinned build recipe and artifact validator;
+do not substitute a generic export or recompute its paper projections.
+
 ## Core workflow: deploy a Live Space
 
 Hyper3Labs-owned Spaces deploy from GitHub Actions on a push to `main` that
@@ -159,6 +164,11 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
   caller workflow. Keep sources in `demos/` when their Static Space is active;
   move wholly retired demos to `archived-spaces/demos/`. Keep registry records
   and HF repositories so URLs and provenance survive.
+- **HF Static Spaces are monitored, not kept warm.** Use
+  `deploy_mode: static-bundle`, target `hf-static`, and `keep_warm: false`.
+  The monitor validates their static manifest instead of a Python health URL.
+  For a paper-linked migration, preserve the repository name, tag the previous
+  revision, and upload without deleting original research sources.
 - **A push to `main` deploys.** Per-space workflows are path-scoped to their
   demo folder. Do not push a pin bump to an unreleased version - the Space will
   rebuild and fail on a PyPI package that does not exist yet.

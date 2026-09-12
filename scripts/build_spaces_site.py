@@ -135,6 +135,8 @@ def main() -> int:
 
     for entry in entries:
         slug = entry["slug"]
+        if "cf-static" not in entry.get("deploy_targets", ["cf-static"]):
+            continue
         if wanted and slug not in wanted:
             continue
         source = (
@@ -171,15 +173,21 @@ def main() -> int:
         static_slug = static.get("slug") if static else None
         space_id = entry.get("space_id")
         archived = entry.get("status") == "archived"
+        static_only = entry.get("deploy_mode") == "static-bundle"
         if archived and static_slug not in collected:
             continue
         links: list[str] = []
         if static_slug in collected:
             links.append(f'<a href="/{html.escape(static_slug)}/">Open Static Space</a>')
         if space_id and not archived:
-            live_url = f"https://{space_id.replace('/', '-').lower()}.hf.space"
+            live_url = (
+                f"https://huggingface.co/spaces/{space_id}"
+                if static_only
+                else f"https://{space_id.replace('/', '-').lower()}.hf.space"
+            )
+            label = "Open Static Space" if static_only else "Open Live Space"
             links.append(
-                f'<a href="{html.escape(live_url)}" target="_blank" rel="noopener">Open Live Space</a>'
+                f'<a href="{html.escape(live_url)}" target="_blank" rel="noopener">{label}</a>'
             )
         stage = (
             "static" if archived

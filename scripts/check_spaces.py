@@ -25,7 +25,7 @@ VALID_DEPLOY_TARGETS = {"hf-docker", "hf-static", "cf-static"}
 # bundle the landing site also serves as a Static Space. Both end up as an HF
 # Docker Space, so both keep `hf-docker` in deploy_targets.
 DEFAULT_DEPLOY_MODE = "docker-folder"
-VALID_DEPLOY_MODES = {"docker-folder", "live-bundle", "external"}
+VALID_DEPLOY_MODES = {"docker-folder", "live-bundle", "static-bundle", "external"}
 PINNED_REQUIREMENT = re.compile(r"^[A-Za-z0-9_.-]+(?:\[[^]]+\])?==[A-Za-z0-9_.+-]+$")
 LEGACY_PANEL_SDK_TOKENS = {
     "usePanelCommands": "usePanelCommands",
@@ -388,9 +388,9 @@ def main() -> int:
                 f"got {deploy_mode!r}",
                 errors,
             )
-        elif deploy_mode == "live-bundle":
+        elif deploy_mode in {"live-bundle", "static-bundle"}:
             if not isinstance(bundle_slug, str) or not bundle_slug.strip():
-                error(f"{folder}: deploy_mode live-bundle needs a bundle_slug", errors)
+                error(f"{folder}: deploy_mode {deploy_mode} needs a bundle_slug", errors)
             elif bundle_slug not in static_by_slug:
                 error(
                     f"{folder}: bundle_slug {bundle_slug!r} is not a slug in "
@@ -405,17 +405,21 @@ def main() -> int:
                     errors,
                 )
             if space_id is None:
-                error(f"{folder}: deploy_mode live-bundle needs a space_id to publish to", errors)
-            # The bundle is published as an HF Docker Space, so the deploy target
-            # is unchanged; only the way the image is produced changed.
-            if not is_archived and isinstance(targets, list) and "hf-docker" not in targets:
+                error(f"{folder}: deploy_mode {deploy_mode} needs a space_id to publish to", errors)
+            # A live bundle restores a runtime; a static bundle serves only files.
+            required_target = "hf-static" if deploy_mode == "static-bundle" else "hf-docker"
+            if not is_archived and isinstance(targets, list) and required_target not in targets:
                 error(
-                    f"{folder}: deploy_mode live-bundle still deploys an HF Docker Space, "
-                    "so deploy_targets must include hf-docker",
+                    f"{folder}: deploy_mode {deploy_mode} requires {required_target}",
                     errors,
                 )
+            if deploy_mode == "static-bundle" and (
+                space.get("keep_warm") is not False
+                or (isinstance(targets, list) and "hf-docker" in targets)
+            ):
+                error(f"{folder}: static bundles cannot keep warm or deploy as Docker", errors)
         elif bundle_slug is not None:
-            error(f"{folder}: bundle_slug applies to deploy_mode live-bundle only", errors)
+            error(f"{folder}: bundle_slug applies to bundle deploy modes only", errors)
 
     disk_folders = {
         path.relative_to(ROOT).as_posix()

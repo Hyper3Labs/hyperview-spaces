@@ -16,7 +16,8 @@ the runtime is paused and the Space card carries a retirement notice.
 
 The four static demo sources stay in `demos/` because they still produce active
 Static Spaces. Precision Regions is also an active Static Space, not an
-abandoned draft. Hello World, DeepFashion, and Jaguar remain live.
+abandoned draft. Hello World and DeepFashion remain live runtimes; Jaguar is
+preserved as a Static Space on Hugging Face at its original paper URL.
 
 The ABO and VisA caller workflows are retained under `workflows/`, outside
 `.github/workflows/`, and were disabled in GitHub Actions. Archived registry

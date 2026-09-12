@@ -23,11 +23,14 @@ def utc_now() -> str:
     return dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def hf_space_url(space_id: str) -> str:
-    return f"https://{space_id.replace('/', '-').lower()}.hf.space"
+def hf_space_url(space_id: str, *, static: bool = False) -> str:
+    suffix = "static.hf.space" if static else "hf.space"
+    return f"https://{space_id.replace('/', '-').lower()}.{suffix}"
 
 
-def request_json(url: str, *, token: str | None, timeout: float) -> tuple[int | None, Any, str | None]:
+def request_json(
+    url: str, *, token: str | None, timeout: float
+) -> tuple[int | None, Any, str | None]:
     headers = {
         "Accept": "application/json",
         "User-Agent": "hyperview-space-monitor/0.1",
@@ -59,16 +62,34 @@ def compact_card_data(space_info: dict[str, Any] | None) -> dict[str, Any] | Non
     return {key: card.get(key) for key in keep if key in card}
 
 
-def probe_health(base_url: str, *, timeout: float, token: str | None) -> dict[str, Any]:
+def probe_health(
+    base_url: str, *, timeout: float, token: str | None, static: bool = False
+) -> dict[str, Any]:
     started = time.perf_counter()
     status, payload, error = request_json(
-        base_url.rstrip("/") + "/__hyperview__/health",
+        base_url.rstrip("/") + ("/hyperview-static.json" if static else "/__hyperview__/health"),
         token=token,
         timeout=timeout,
     )
     latency_ms = round((time.perf_counter() - started) * 1000)
+    valid = isinstance(payload, dict) and (
+        payload.get("static") is True
+        and payload.get("kind") == "hyperview-static-space"
+        and isinstance(payload.get("workspace"), dict)
+        if static
+        else payload.get("name") == "hyperview"
+    )
+    if static and valid:
+        workspace = payload["workspace"]
+        payload = {
+            "name": "hyperview",
+            "static": True,
+            "version": payload.get("hyperview_version"),
+            "workspace_id": workspace.get("id"),
+            "dataset": workspace.get("dataset_name"),
+        }
     return {
-        "ok": status == 200 and isinstance(payload, dict) and payload.get("name") == "hyperview",
+        "ok": status == 200 and valid,
         "http_status": status,
         "latency_ms": latency_ms,
         "payload": payload if isinstance(payload, dict) else None,
@@ -112,24 +133,34 @@ def summarize_status(
     return "unhealthy", reasons
 
 
-def monitor_space(entry: dict[str, Any], args: argparse.Namespace, token: str | None) -> dict[str, Any]:
+def monitor_space(
+    entry: dict[str, Any], args: argparse.Namespace, token: str | None
+) -> dict[str, Any]:
     space_id = entry["space_id"]
-    base_url = entry.get("url") or hf_space_url(space_id)
-
     info_status, info, info_error = request_json(
         f"https://huggingface.co/api/spaces/{space_id}",
         token=token,
         timeout=args.api_timeout,
     )
-    runtime_status, runtime, runtime_error = request_json(
-        f"https://huggingface.co/api/spaces/{space_id}/runtime",
-        token=token,
-        timeout=args.api_timeout,
-    )
+    static = entry.get("deploy_mode") == "static-bundle"
+    reported_host = info.get("host") if isinstance(info, dict) else None
+    base_url = entry.get("url") or reported_host or hf_space_url(space_id, static=static)
+    if static:
+        runtime_status = info_status
+        runtime = {"stage": "STATIC"}
+        runtime_error = info_error
+        if isinstance(info, dict) and info.get("sdk") != "static":
+            runtime_error = f"Expected static HF SDK, got {info.get('sdk')}"
+    else:
+        runtime_status, runtime, runtime_error = request_json(
+            f"https://huggingface.co/api/spaces/{space_id}/runtime",
+            token=token,
+            timeout=args.api_timeout,
+        )
 
     health: dict[str, Any] | None = None
-    if entry.get("keep_warm", True):
-        health = probe_health(base_url, timeout=args.health_timeout, token=None)
+    if static or entry.get("keep_warm", True):
+        health = probe_health(base_url, timeout=args.health_timeout, token=None, static=static)
         if (
             not health.get("ok")
             and args.wake_wait_seconds > 0
@@ -229,7 +260,7 @@ def main() -> int:
         entry
         for entry in registry.get("spaces", [])
         if entry.get("status") == "live"
-        and entry.get("keep_warm") is True
+        and (entry.get("keep_warm") is True or entry.get("deploy_mode") == "static-bundle")
         and isinstance(entry.get("space_id"), str)
         and entry["space_id"]
     ]
