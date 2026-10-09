@@ -87,10 +87,10 @@ uv run --project ../ python scripts/check_static_spaces.py                    # 
 uv run --project ../ python scripts/check_static_spaces.py --require-bundles  # registry + generated output
 ```
 
-Without `--require-bundles` a missing bundle is tolerated, which is what CI
-wants: `static-spaces/` is gitignored, so a clean checkout has no bundles to
-check. Use `--require-bundles` locally after an export, and in any job that
-actually generates them.
+The seven Cloudflare bundles are committed and must exist even in a clean
+checkout. CI validates their manifests and panel modules. A missing HF-only
+bundle (Jaguar) is tolerated by default because it lives in its canonical HF
+repository. Use `--require-bundles` after generating all artifacts locally.
 
 Bundle-level checks, each one a distinct failure message:
 

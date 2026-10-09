@@ -25,7 +25,7 @@ def main() -> int:
     parser.add_argument(
         "--require-bundles",
         action="store_true",
-        help="Fail when an ignored local Static Space bundle has not been generated.",
+        help="Require HF-only local bundles as well as the committed Cloudflare bundles.",
     )
     args = parser.parse_args()
 
@@ -102,7 +102,7 @@ def main() -> int:
         manifest_path = bundle / "hyperview-static.json"
         if not manifest_path.is_file():
             message = f"{slug}: local Static Space bundle has not been generated"
-            if args.require_bundles:
+            if args.require_bundles or "cf-static" in targets:
                 errors.append(message)
             else:
                 print(f"INFO: {message}")

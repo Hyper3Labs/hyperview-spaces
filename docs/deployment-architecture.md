@@ -6,11 +6,12 @@ existing Cloudflare Workers Paid ($5/mo) plan's included allowances.**
 Cloudflare Containers are explicitly out — too expensive; the plan's
 generous Workers/KV/static-asset allowances are the target.
 
-## Current operational layout (September 2026)
+## Current operational layout (October 9, 2026)
 
 - Lifecycle update (2026-09-11): Hello World, DeepFashion, and the external
   Jaguar paper demo remain live. ABO, Logo Search, GeoSpatial, and Visual Safety
-  retain their Static Spaces but their HF runtimes are archived and paused.
+  retain their Static Spaces; their redundant HF repositories were deleted
+  after backup on October 9. VisA remains paused because it has no replacement.
   VisA and the Art draft are archived. `status: archived` never permits
   keep-warm or an active HF deploy workflow; see `archived-spaces/README.md`.
 - `live-spaces.registry.json` is the canonical inventory for every source demo,
@@ -20,10 +21,11 @@ generous Workers/KV/static-asset allowances are the target.
 - `spaces.hyper3labs.com/<slug>/` is already deployed as one Cloudflare Worker
   with Static Assets. The custom domain is declared in
   `spaces-site/wrangler.jsonc`; all bundles share that one deployment.
-- `hyper3labs.com/spaces/` is the collection page. Its catalog JSON is generated
-  from both registries, and it refreshes runtime stages from
-  `https://spaces.hyper3labs.com/status.json`. Paused and broken entries remain
-  visible with an explicit status.
+- `spaces.hyper3labs.com/` is the gallery, generated from both registries, with
+  runtime stages from `https://spaces.hyper3labs.com/status.json`.
+- `hyper3labs.github.io` is the docs hub for HyperView, hyper-models and
+  hyper-scatter. Company and paper content live on `hyper3labs.com`; the old
+  company `/spaces/` collection is removed without a redirect.
 - `.github/workflows/monitor-hf-spaces.yml` checks the registered Live Spaces
   hourly. The Worker status endpoint is the low-latency public view; Actions is
   the independent failing CI signal.
@@ -38,7 +40,8 @@ The intended URL contract is therefore:
 
 | URL | Responsibility |
 | --- | --- |
-| `hyper3labs.com/spaces/` | Branded collection and status-aware catalog |
+| `spaces.hyper3labs.com/` | HyperView gallery and status-aware catalog |
+| `hyper3labs.github.io/docs/<project>/` | Multi-project documentation |
 | `spaces.hyper3labs.com/<slug>/` | Canonical Static Space artifacts |
 | `<owner>-<space>.hf.space` | Live HyperView runtime when the use case needs one |
 
@@ -228,7 +231,9 @@ folder, or `hyperview publish --mode live`.
 
 The exported bundles are committed here, in `static-spaces/<slug>/`. The same
 files are served by spaces.hyper3labs.com and published to the Live Spaces, so
-committing a re-exported bundle to `main` redeploys both.
+committing a re-exported bundle to `main` redeploys its Live Space. Cloudflare
+CI currently validates only; deploy the gallery manually until its Infisical
+identity and project variables are configured.
 
 Authentication is unchanged from Layer 1's workflows and deliberately so:
 `id-token: write` plus `HF_OIDC_RESOURCE=spaces/<owner>/<name>` lets

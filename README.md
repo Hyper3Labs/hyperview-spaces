@@ -79,7 +79,8 @@ The active Live Spaces are **Hello World** and **DeepFashion**. The
 **Jaguar Multi-Geometry** paper demo is an HF Static Space at its original URL;
 see [its migration record](docs/jaguar-static-migration.md). ABO, Logo Search, GeoSpatial, and Visual
 Safety retain their Static Spaces; their redundant HF runtimes are archived
-and paused. VisA and the unpublished Art draft are archived in
+and were deleted after backup on October 9, 2026. VisA remains paused because
+it has no replacement; VisA and the unpublished Art draft are archived in
 [`archived-spaces/`](archived-spaces/README.md).
 
 Jaguar's canonical HF page is unchanged, but its direct app host is now
@@ -202,14 +203,23 @@ uv run --project ../ python scripts/monitor_spaces.py --fail-on-unhealthy
 The GitHub monitor runs hourly and fails on paused, unhealthy, warming,
 metadata-mismatched, or unknown active monitored Spaces. It checks the static
 manifest for Jaguar and never tries to wake a container. Archived entries are
-excluded. The Cloudflare host at `spaces.hyper3labs.com` serves the six
+excluded. The Cloudflare host at `spaces.hyper3labs.com` serves the seven
 Cloudflare-targeted Static Spaces from one Worker; Jaguar stays on HF.
 
-The registry-driven gallery/status implementation is in this repo, but its
-Cloudflare rollout is still pending (2026-09-12): the deployed `/status.json`
-currently returns 404. Configure the missing Infisical GitHub OIDC identity and
-project variables, then deploy the Worker and main-site gallery updates. The
-intended gallery keeps unhealthy active entries visible so they can be fixed.
+The gallery and `/status.json` are deployed at spaces.hyper3labs.com (manual
+Wrangler deployment, October 9, 2026). CI builds and validates the upload, but
+its deployment step still skips until the Infisical GitHub OIDC identity and
+project variables are configured. Until then, after a reviewed change run:
+
+```bash
+uv run --project ../ python scripts/build_spaces_site.py
+npx --prefix spaces-site wrangler deploy --config spaces-site/wrangler.jsonc
+```
+
+Gallery thumbnails are maintained here in `spaces-site/previews/`. To refresh
+them against a running local gallery, use
+`node scripts/capture-space-previews.mjs --base http://localhost:8787`, then
+rebuild the gallery. The script reads the same static registry as the builder.
 
 ### Vendored wheels
 
@@ -225,7 +235,7 @@ explicit version pin and the wheel must be deleted.
 ├── .github/workflows/                 # per-space deploy, reusable deploy, checks, monitor
 ├── demos/                             # canonical source; one folder per use case
 ├── archived-spaces/                   # retired demos and disabled workflow sources
-├── static-spaces/                      # generated read-only bundles (gitignored)
+├── static-spaces/                      # committed read-only bundles (Jaguar hosted on HF)
 ├── build/                             # build and deployment support
 ├── docs/                              # architecture and operations documentation
 ├── scripts/                           # registry checks and maintenance tools
@@ -242,13 +252,13 @@ every registered folder to appear in this table.
 | Space | Hugging Face Space ID | Folder | Maintainer | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
 | HyperView Hello World | `hyper3labs/HyperView` | `demos/hello-world-inat24-clip-hyper3clip` | Hyper3Labs | `live` | Compare CLIP in Euclidean and spherical geometry with Hyper3-CLIP in hyperbolic Poincare geometry. |
-| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - ABO Catalog | `hyper3labs/HyperView-ABO-Catalog` | `demos/abo-catalog-clip-hycoclip` | Hyper3Labs | `archived` live runtime | Static Space remains active; redundant HF repository deleted 2026-10-09 after backup. |
 | HyperView - DeepFashion Text Search | `hyper3labs/HyperView-DeepFashion-Text-Search` | `demos/fashion-deepfashion-text-search-clip-hyper3clip` | Hyper3Labs | `live` | Explore shopper-style text-to-image retrieval wins on a curated fashion catalog. |
 | HyperView - Art Text Search | `hyper3labs/HyperView-Art-Text-Search` | `archived-spaces/demos/art-text-search-clip-hyper3clip` | Hyper3Labs | `archived` | Unpublished draft; authenticated HF lookup returns 404. |
-| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - EuroSAT Geospatial | `mnm-matin/HyperView-EuroSAT-Geospatial` | `demos/geospatial-eurosat-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; redundant HF repository deleted 2026-10-09 after backup. |
 | HyperView - VisA Manufacturing | `hyper3labs/HyperView-VisA-Manufacturing` | `archived-spaces/demos/manufacturing-visa-reference-clip-hyper3clip` | Hyper3Labs | `archived` | Retired source retained; HF runtime paused and deploy workflow archived. |
-| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
-| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; HF runtime paused. |
+| HyperView - Visual Safety | `mnm-matin/HyperView-Visual-Safety` | `demos/visual-safety-content-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; redundant HF repository deleted 2026-10-09 after backup. |
+| HyperView - Logo Brand Search | `mnm-matin/HyperView-Logo-Brand-Search` | `demos/logo-brand-search-clip-hyper3clip` | mnm-matin | `archived` live runtime | Static Space remains active; redundant HF repository deleted 2026-10-09 after backup. |
 | HyperView - Precision Region Search | — | `demos/precision-region-search-refcocog-hyper3clip` | Hyper3Labs | `local` runtime | Published Static Space remains active; no HF runtime. |
 | Jaguar Multi-Geometry | `hyper3labs/jaguar-hyperview-multigeometry` | `demos/jaguar-multigeometry` | Hyper3Labs | `live` static site | Same paper URL; frozen research vectors, coordinates and cosine neighbors. No runtime or keep-warm. |
 

@@ -32,7 +32,7 @@ SITE_DIR = ROOT / "spaces-site"
 PUBLIC_DIR = SITE_DIR / "public"
 PREVIEWS_DIR = SITE_DIR / "previews"
 SOURCE_TREE = "https://github.com/Hyper3Labs/hyperview-spaces/tree/main"
-DOCS_URL = "https://hyper3labs.github.io/"
+DOCS_URL = "https://hyper3labs.github.io/docs/hyperview/"
 
 # Gallery order. Entries not listed here follow in registry order.
 ORDER = [

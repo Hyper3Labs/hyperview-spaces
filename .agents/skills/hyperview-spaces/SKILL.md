@@ -40,7 +40,7 @@ change the demo folder instead.
 
 ```text
 demos/                        canonical source; one folder per use case
-static-spaces/                generated read-only bundles (gitignored)
+static-spaces/                committed read-only bundles (Jaguar hosted on HF)
 archived-spaces/              retired source/workflows, retained in the registry as archived
 scripts/                      registry checks and maintenance tools
 warm-worker/                  registry-driven monitoring worker
@@ -162,8 +162,9 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
 - **Archived Live Spaces stay paused.** `status: archived` requires
   `keep_warm: false`, an archive date/reason, no HF deploy targets, and no active
   caller workflow. Keep sources in `demos/` when their Static Space is active;
-  move wholly retired demos to `archived-spaces/demos/`. Keep registry records
-  and HF repositories so URLs and provenance survive.
+  move wholly retired demos to `archived-spaces/demos/`. Keep historical Space IDs in registry records. The four redundant HF
+  repositories deleted after backup on October 9 remain documented; VisA
+  stays paused because it has no replacement.
 - **HF Static Spaces are monitored, not kept warm.** Use
   `deploy_mode: static-bundle`, target `hf-static`, and `keep_warm: false`.
   The monitor validates their static manifest instead of a Python health URL.
@@ -180,8 +181,10 @@ message: [references/pins-and-checks.md](references/pins-and-checks.md).
 - **Demos sharing a model catalog must share its version.** Two demos on
   different `hyper-models` pins silently compute different vectors while both
   claim the same embedding space.
-- **`static-spaces/` is gitignored.** Bundles are generated artifacts; commit the
-  registry entry, never the bundle.
+- **Commit reviewed bundles in `static-spaces/<slug>/`.** This repository owns
+  the sources, registries, gallery previews and exported artifacts. The same
+  bundle feeds spaces.hyper3labs.com and its Live Space. Jaguar remains in its
+  canonical HF repository to preserve its paper URL.
 - **Bundles are location-independent.** They reference assets relatively and
   resolve API and media from the document URL, so the same files work at any
   path. A bundle that records a `mount_path` predates this and must be
