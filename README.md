@@ -139,7 +139,11 @@ One export, two hosts, no second copy of the data to keep in step.
 Every bundle is committed in this repository under `static-spaces/<slug>/`,
 and the same files feed spaces.hyper3labs.com and the Live Spaces. Committing a
 re-exported bundle to `main` redeploys the Live Space whose workflow lists that
-path; `workflow_dispatch` reruns a deploy by hand.
+path; `workflow_dispatch` reruns a deploy by hand. Bundle-backed runtimes still
+need the encoder dependencies for fresh text queries: both active callers pin
+`hyper-models[ml]==0.4.0`, matching their source Dockerfiles. Their existing
+`HF_TOKEN` Space secrets grant access to the gated model; neither dependency
+installation nor runtime model access is supplied by the static bundle itself.
 
 | Owner | How | Auth |
 | --- | --- | --- |
