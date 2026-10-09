@@ -12,6 +12,8 @@ on:
     branches: [main]
     paths:
       - static-spaces/hello-world/**
+      - live-spaces.registry.json
+      - .github/workflows/deploy-hf-space-reusable.yml
       - .github/workflows/deploy-hf-space-hyperview.yml
   repository_dispatch:
     types: [static-bundle-published]
@@ -31,4 +33,6 @@ jobs:
       deploy_mode: live-bundle
       bundle_slug: hello-world
       hyperview_version: "1.2.0"
+      extra_pip: |
+        hyper-models[ml]==0.4.0
       space_id: hyper3labs/HyperView

@@ -299,6 +299,30 @@ def validate_workflow_inputs(
             )
 
 
+
+def validate_live_bundle_model_deps(
+    folder: Path,
+    workflow: Path,
+    values: dict[str, str],
+    errors: list[str],
+) -> None:
+    """Bundle restoration preserves vectors, but fresh queries need the encoder."""
+    dockerfile = folder / "Dockerfile"
+    if not dockerfile.is_file() or "hyper-models[ml]" not in dockerfile.read_text():
+        return
+    version = dockerfile_pins(folder).get("hyper-models")
+    requirements = values.get("extra_pip", "").splitlines()
+    for requirement in requirements:
+        match = re.fullmatch(r"hyper-models\[([^]]+)\]==([^\s]+)", requirement.strip())
+        if match and "ml" in match[1].split(",") and match[2] == version:
+            return
+    error(
+        f"{workflow.name}: live-bundle fresh queries require "
+        f"hyper-models[ml]=={version}, matching the demo Dockerfile",
+        errors,
+    )
+
+
 def main() -> int:
     errors: list[str] = []
     sdk_surface = panel_sdk_surface(errors)
@@ -532,6 +556,8 @@ def main() -> int:
         workflow_space_id = workflow_values.get("space_id")
         registry_space_id = space.get("space_id")
         validate_workflow_inputs(deploy_mode, workflow, workflow_values, errors)
+        if deploy_mode == "live-bundle":
+            validate_live_bundle_model_deps(ROOT / folder, workflow, workflow_values, errors)
         if workflow_space_id != registry_space_id:
             key = (folder, registry_space_id, workflow_space_id)
             if key in known_conflicts:
