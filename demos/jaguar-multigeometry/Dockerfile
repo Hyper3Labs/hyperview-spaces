@@ -1,5 +1,5 @@
 FROM python:3.12-slim
-ARG HYPERVIEW_VERSION=1.1.1
+ARG HYPERVIEW_VERSION=1.2.0
 RUN pip install --no-cache-dir "hyperview==${HYPERVIEW_VERSION}"
 WORKDIR /app
 COPY demo.py research-snapshot.json README.md SPACE_README.md ./

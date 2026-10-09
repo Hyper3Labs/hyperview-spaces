@@ -106,7 +106,7 @@ no HF deploy targets, and no active caller workflow. Static demo sources stay in
 > infisical run --projectId <project> --env dev -- \
 >   hyperview publish ../hyper3labs.github.io/public/spaces/<slug> \
 >     --to hf:hyper3labs/<Space> --mode live \
->     --extra-pip "hyperview==1.1.1" --extra-pip "hyper-models[ml]==0.3.2" \
+>     --extra-pip "hyperview==1.2.0" --extra-pip "hyper-models[ml]==0.4.0" \
 >     --extra-pip "datasets>=4.5.0" --extra-pip "Pillow>=12.0.0" \
 >     --pre-install "torch torchvision --index-url https://download.pytorch.org/whl/cpu"
 > ```
@@ -171,7 +171,7 @@ uv run --project ../ python scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
   --mode live-bundle \
   --bundle ../../hyper3labs.github.io/public/spaces/logo-search \
-  --extra-pip 'hyperview==1.1.1' --extra-pip 'hyper-models[ml]==0.3.2'
+  --extra-pip 'hyperview==1.2.0' --extra-pip 'hyper-models[ml]==0.4.0'
 ```
 
 > **The org account runs at most three `cpu-basic` Spaces at once.** A fourth

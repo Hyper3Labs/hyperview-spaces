@@ -26,6 +26,7 @@ BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
 } or "--build-only" in sys.argv[1:]
 
 DATASET_NAME = "hello_world_inat24_multigeometry"
+WORKSPACE_ID = "hello-world"
 HF_DATASET = "evendrow/inat24_tiny"
 HF_SPLIT = "train"
 SAMPLE_SEED = 42
@@ -294,6 +295,7 @@ def main() -> None:
         host=SPACE_HOST,
         port=SPACE_PORT,
         open_browser=False,
+        workspace_id=WORKSPACE_ID,
         view=build_demo_view(layout_keys),
         extensions=[str(INTRO_EXTENSION)],
         block=False,

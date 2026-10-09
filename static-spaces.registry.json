@@ -2,6 +2,18 @@
   "version": 1,
   "static_spaces": [
     {
+      "slug": "hello-world",
+      "name": "Hello World",
+      "source_folder": "demos/hello-world-inat24-clip-hyper3clip",
+      "workspace_id": "hello-world",
+      "walkthrough_panel_id": "hello-world-intro",
+      "walkthrough_panel_position": "right",
+      "bundle_folder": "static-spaces/hello-world",
+      "live_space_id": "hyper3labs/HyperView",
+      "live_url": "https://hyper3labs-hyperview.hf.space",
+      "similarity_k": 10
+    },
+    {
       "slug": "jaguar-multigeometry",
       "name": "Jaguar Multi-Geometry",
       "source_folder": "demos/jaguar-multigeometry",

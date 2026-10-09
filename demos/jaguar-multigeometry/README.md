@@ -15,7 +15,7 @@ static Space card.
 Build and export from `hyperview-spaces/`:
 
 ```bash
-HYPERVIEW_NO_AUTH=1 uv run --no-project --with 'hyperview==1.1.1' --python 3.12 python demos/jaguar-multigeometry/demo.py \
+HYPERVIEW_NO_AUTH=1 uv run --no-project --with 'hyperview==1.2.0' --python 3.12 python demos/jaguar-multigeometry/demo.py \
   --export static-spaces/jaguar-multigeometry
 uv run --project ../ python scripts/check_jaguar_static.py static-spaces/jaguar-multigeometry \
   --report static-spaces/jaguar-multigeometry/research/artifact-verification.json

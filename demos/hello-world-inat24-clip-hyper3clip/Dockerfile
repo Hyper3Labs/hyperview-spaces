@@ -21,8 +21,8 @@ WORKDIR $HOME/app
 
 RUN pip install --upgrade pip
 
-ARG HYPERVIEW_VERSION=1.1.1
-ARG HYPER_MODELS_VERSION=0.3.2
+ARG HYPERVIEW_VERSION=1.2.0
+ARG HYPER_MODELS_VERSION=0.4.0
 
 # Install CPU-only PyTorch first so the Space does not pull the default CUDA bundle,
 # then pin released HyperView packages so Docker cache cannot hold an older release.

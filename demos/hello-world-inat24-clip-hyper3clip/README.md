@@ -10,13 +10,14 @@ pinned: false
 
 # HyperView Hello World
 
-This is the main HyperView starter Space. It shows the same higher-resolution,
+This is the main HyperView starter Space, served at
+[hyper3labs/HyperView](https://huggingface.co/spaces/hyper3labs/HyperView). It shows the same higher-resolution,
 taxonomy-backed image sample through three geometric views and includes a small
 custom introduction panel built with the public HyperView panel SDK:
 
 - CLIP (`openai/clip-vit-base-patch32`) in Euclidean 3D
 - CLIP (`openai/clip-vit-base-patch32`) in spherical 3D
-- Hyper3-CLIP (`hyper3-clip-v1`) in hyperbolic Poincare 2D
+- Hyper3-CLIP (`hyper3-clip-v1`) in hyperbolic Poincaré 2D
 
 The sample is drawn from `evendrow/inat24_tiny`, a compact iNaturalist 2024
 subset with 1,000 images, 100 species, and taxonomy metadata. The visible label
@@ -24,10 +25,7 @@ is the broad `supercategory`, while sample metadata keeps common name, species,
 kingdom, phylum, class, order, family, genus, location fields, license, and
 rights holder.
 
-The Docker image installs released packages from PyPI:
-
-- `hyperview==1.1.1`
-- `hyper-models[ml]==0.3.2`
+Built with `hyperview==1.2.0` and `hyper-models[ml]==0.4.0`.
 
 ## Dataset
 
@@ -50,20 +48,29 @@ This keeps the demo small enough for Hugging Face CPU Spaces while preserving a
 real biological hierarchy for geometry comparison. Images are resized only
 when they exceed 1024 × 1024, avoiding the tiny 32 × 32 appearance of CIFAR.
 
-## Reuse This Template
+## Build and deploy
 
-When copying this folder for another dataset:
+The Space does not compute anything at startup. It serves an exported bundle,
+so it boots in seconds and needs no dataset download, model download or
+`HF_TOKEN` secret.
+
+```bash
+uv venv -p 3.11 && uv pip install "hyperview==1.2.0" "hyper-models[ml]==0.4.0" "datasets>=4.5" "Pillow>=12"
+python demo.py --build-only                      # builds the `hello-world` workspace
+hyperview export hello-world --out ../../static-spaces/hello-world --similarity-k 10
+```
+
+`hyper3-clip-v1` is gated on Hugging Face: accept its terms and log in with
+`hf auth login` before the first build.
+
+Copy the bundle into the site repository's `public/spaces/hello-world/` with
+`scripts/mount-hyperview-spaces.py`, commit it there, then run the
+`Deploy HF Space - HyperView Hello World` workflow. It publishes the bundle with
+`hyperview publish --mode live`, and the Space runs
+`hyperview serve --from <bundle> --public`.
+
+## Reuse this template
 
 1. Edit the constants block at the top of [demo.py](demo.py).
 2. Update the stratification labels and target counts.
-3. Rename the copied Space from `HyperView` to your project name.
-4. Point a deploy workflow at the new folder.
-
-## Deploy Source
-
-This folder is synchronized to `hyper3labs/HyperView` by GitHub Actions from
-the `hyperview-spaces` deployment repository.
-
-Because `hyper3-clip-v1` is gated on Hugging Face, the running Space needs an
-`HF_TOKEN` Space secret with read access to the model. The GitHub deployment
-credential does not become a runtime secret automatically.
+3. Change `WORKSPACE_ID` and register the new bundle in `static-spaces.registry.json`.
