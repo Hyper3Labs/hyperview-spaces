@@ -74,13 +74,13 @@
     "similarity_k": 10,
     "text_search": false
   },
-  "created_at": "2026-10-09T07:35:22.435513+00:00",
+  "created_at": "2026-10-09T11:21:25.761103+00:00",
   "deployment": {
     "cloudflare": {
       "command": "npx wrangler deploy --config wrangler.jsonc",
       "config": "wrangler.jsonc",
       "mode": "static-assets-only",
-      "worker_name": "hyperview-geospatial-resisc45-retrieval-evidence-v2"
+      "worker_name": "hyperview-geospatial-resisc45-v1-2026-10-09"
     },
     "hosting": {
       "mode": "static-assets"
@@ -102,12 +102,12 @@
       }
     }
   },
-  "hyperview_version": "1.2.0",
+  "hyperview_version": "1.2.1.dev2+gf8e865af9",
   "kind": "hyperview-static-space",
   "producer": {
-    "hyper_models": "0.4.0",
-    "hyperview": "1.2.0",
-    "python": "3.12.8"
+    "hyper_models": "0.3.2",
+    "hyperview": "1.2.1.dev2+gf8e865af9",
+    "python": "3.11.11"
   },
   "restore": {
     "collections": [
@@ -115,7 +115,7 @@
     ],
     "dataset": {
       "fields": "api/dataset.json",
-      "name": "resisc45_clip_hyper3clip_curated_side_by_side",
+      "name": "resisc45_geospatial_v1",
       "num_samples": 60,
       "samples": "api/samples/index.json"
     },
@@ -126,22 +126,22 @@
         "panels": [],
         "path": "extensions/geospatial-readout",
         "source": "extension",
-        "workspace_id": "geospatial-resisc45-retrieval-evidence-v2"
+        "workspace_id": "geospatial-resisc45-v1-2026-10-09"
       }
     ],
     "layouts": [
       {
-        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4.json",
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4.json",
         "count": 60,
         "geometry": "poincare",
-        "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+        "layout_key": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
         "method": "umap",
         "params": {
           "metric": "cosine",
           "min_dist": 0.08,
           "n_neighbors": 20
         },
-        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756"
+        "space_key": "hyper-models__hyper3-clip-v1__12a8d89022ce"
       },
       {
         "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4.json",
@@ -155,32 +155,6 @@
           "n_neighbors": 20
         },
         "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
-      },
-      {
-        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4.json",
-        "count": 60,
-        "geometry": "poincare",
-        "layout_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4",
-        "method": "umap",
-        "params": {
-          "metric": "cosine",
-          "min_dist": 0.08,
-          "n_neighbors": 20
-        },
-        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15"
-      },
-      {
-        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4.json",
-        "count": 60,
-        "geometry": "euclidean",
-        "layout_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4",
-        "method": "umap",
-        "params": {
-          "metric": "cosine",
-          "min_dist": 0.08,
-          "n_neighbors": 20
-        },
-        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8"
       }
     ],
     "media": {
@@ -189,32 +163,6 @@
     },
     "schema_version": 1,
     "spaces": [
-      {
-        "config": {
-          "dim": 513,
-          "geometry": "hyperboloid",
-          "modality": "multimodal",
-          "model_id": "hyper3-clip-v0.5",
-          "params": {
-            "curvature": 0.09999999794581678
-          },
-          "params_source": {
-            "curvature": "inferred"
-          },
-          "provider": "hyper-models",
-          "spatial_dim": 512
-        },
-        "count": 60,
-        "dim": 513,
-        "geometry": "hyperboloid",
-        "index_id": "space:hyper-models__hyper3-clip-v0_5__42052c955756",
-        "modality": "multimodal",
-        "model_id": "hyper3-clip-v0.5",
-        "provider": "hyper-models",
-        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__42052c955756",
-        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756",
-        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__42052c955756/vectors.npz"
-      },
       {
         "config": {
           "dim": 512,
@@ -236,10 +184,13 @@
       },
       {
         "config": {
+          "checkpoint_sha256": "a2fb2f2fb19d239dff8017e6b895e2ff0fb3cc8f1f61a3348e4e97da3cc0d1a9",
           "dim": 513,
           "geometry": "hyperboloid",
-          "modality": "image",
-          "model_id": "hyper3-clip-v0.5",
+          "modality": "multimodal",
+          "model_id": "hyper3-clip-v1",
+          "model_repo": "hyper3labs/hyper3-clip-v1",
+          "model_revision": "12a8d89022cec75a3fbac91047683231cbc0fa82",
           "params": {
             "curvature": 0.09999999794581678
           },
@@ -252,43 +203,24 @@
         "count": 60,
         "dim": 513,
         "geometry": "hyperboloid",
-        "index_id": "space:hyper-models__hyper3-clip-v0_5__33d32a431c15",
-        "modality": "image",
-        "model_id": "hyper3-clip-v0.5",
+        "index_id": "space:hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "modality": "multimodal",
+        "model_id": "hyper3-clip-v1",
         "provider": "hyper-models",
-        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__33d32a431c15",
-        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15",
-        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__33d32a431c15/vectors.npz"
-      },
-      {
-        "config": {
-          "dim": 512,
-          "geometry": "euclidean",
-          "modality": "image",
-          "model_id": "openai/clip-vit-base-patch32",
-          "provider": "embed-anything"
-        },
-        "count": 60,
-        "dim": 512,
-        "geometry": "euclidean",
-        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
-        "modality": "image",
-        "model_id": "openai/clip-vit-base-patch32",
-        "provider": "embed-anything",
-        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
-        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8",
-        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__4771034973d8/vectors.npz"
+        "representation_id": "representation:hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "space_key": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v1__12a8d89022ce/vectors.npz"
       }
     ],
     "supported": true,
-    "workspace_id": "geospatial-resisc45-retrieval-evidence-v2"
+    "workspace_id": "geospatial-resisc45-v1-2026-10-09"
   },
   "schema_version": 1,
   "static": true,
   "warnings": [],
   "workspace": {
-    "dataset_name": "resisc45_clip_hyper3clip_curated_side_by_side",
-    "fingerprint": "4c05e64d01e32ada8ab07657129f2d234e8e25c046d2c82f6ba63e90a54edb90",
-    "id": "geospatial-resisc45-retrieval-evidence-v2"
+    "dataset_name": "resisc45_geospatial_v1",
+    "fingerprint": "52237d521acd10a3386d2e8b1cab34b6fd2cd7eedbedc98fb711a9b72963b16d",
+    "id": "geospatial-resisc45-v1-2026-10-09"
   }
 }

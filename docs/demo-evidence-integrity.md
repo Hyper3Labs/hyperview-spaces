@@ -148,3 +148,25 @@ Neither of the first two is a hedge. The demos are strongest when the losses are
 visible: the
 Fashion demo already shows `ampersand-tee`, where CLIP ranks the target first
 and hyper3-clip ranks it twelfth, and it is more convincing for it.
+
+
+## GeoSpatial V1 rebuild — October 9, 2026
+
+The published artifact carried v0.5 model and space identifiers while the
+source configuration had moved to V1. `scripts/eval_geospatial.py` now encodes
+the same committed 60 images with the pinned V1 checkpoint, retaining the
+original CLIP baseline. The fresh V1 vectors are byte-identical to the previous
+candidate vectors: this resolves the legacy naming ambiguity without changing
+any score or selected example. The new bundle contains only the V1 candidate
+and CLIP baseline, with explicit V1 repository revision and checkpoint hash.
+
+`evidence_cases.json` carries both vector digests and image hashes;
+`results/geospatial_v1_rankings.json` records every anchor's results.
+`test_geospatial_artifact.py` reconciles those ranks, counts, aggregate metrics,
+model identities and hashes against the exported bundle. The evaluation scope
+in the panel states the four-neighbour same-class ceiling, self-match exclusion,
+different scoring geometries and the remaining source/baseline revision limits.
+
+The upstream tile-selection provenance described above remains unresolved.
+The rebuild uses the exact shipped images; it does not assert that their IDs can
+be recovered from the previously declared HF split.

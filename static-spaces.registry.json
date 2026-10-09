@@ -72,7 +72,7 @@
       "slug": "geospatial",
       "name": "GeoSpatial",
       "source_folder": "demos/geospatial-eurosat-clip-hyper3clip",
-      "workspace_id": "geospatial-resisc45-retrieval-evidence-v2",
+      "workspace_id": "geospatial-resisc45-v1-2026-10-09",
       "walkthrough_panel_id": "geospatial-retrieval-readout",
       "bundle_folder": "static-spaces/geospatial",
       "live_space_id": "mnm-matin/HyperView-EuroSAT-Geospatial",

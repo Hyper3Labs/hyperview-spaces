@@ -21,12 +21,8 @@ import hyperview as hv
 SPACE_DIR = Path(__file__).resolve().parent
 SPACE_HOST = os.environ.get("HYPERVIEW_HOST", "127.0.0.1")
 SPACE_PORT = int(os.environ.get("HYPERVIEW_PORT", "6264"))
-WORKSPACE_ID = os.environ.get(
-    "HYPERVIEW_WORKSPACE_ID", "geospatial-resisc45-retrieval-evidence-v2"
-)
-DATASET_NAME = os.environ.get(
-    "HYPERVIEW_DATASET_NAME", "resisc45_clip_hyper3clip_curated_side_by_side"
-)
+WORKSPACE_ID = os.environ.get("HYPERVIEW_WORKSPACE_ID", "geospatial-resisc45-v1-2026-10-09")
+DATASET_NAME = os.environ.get("HYPERVIEW_DATASET_NAME", "resisc45_geospatial_v1")
 EXTENSION_DIR = SPACE_DIR / ".hyperview" / "extensions" / "geospatial-readout"
 EVIDENCE_FILE = SPACE_DIR / "evidence_cases.json"
 DEFAULT_CASE_ID = os.environ.get("GEOSPATIAL_DEFAULT_CASE_ID", "airplane-win")
@@ -53,76 +49,21 @@ MODEL_LAYOUTS: dict[str, dict[str, str]] = {
 
 # Build the workspace and exit instead of serving it. This is how a Static
 # Space is produced: build, exit, export.
-BUILD_ONLY = os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower() in {
-    "1",
-    "true",
-    "yes",
-} or "--build-only" in sys.argv[1:]
+BUILD_ONLY = (
+    os.environ.get("HYPERVIEW_BUILD_ONLY", "").lower()
+    in {
+        "1",
+        "true",
+        "yes",
+    }
+    or "--build-only" in sys.argv[1:]
+)
 
 HYPER3_SAMPLES_ID = "hyper3-neighbours"
 CLIP_SAMPLES_ID = "clip-neighbours"
 HYPER3_SCATTER_ID = "hyper3-map"
 CLIP_SCATTER_ID = "clip-map"
 READOUT_ID = "geospatial-retrieval-readout"
-
-CASE_CONSEQUENCES: dict[str, dict[str, str]] = {
-    "airplane-win": {
-        "hyper3": (
-            "Transport-family neighbours dominate; aircraft and airfield "
-            "infrastructure stay together for follow-up review."
-        ),
-        "clip": (
-            "Exact aircraft hits collapse; residential and meadow tiles enter "
-            "the shortlist and raise false-positive cost."
-        ),
-        "comparison": (
-            "Hyper3 keeps the operational transport cluster; CLIP drifts into "
-            "unrelated land use that would waste analyst time."
-        ),
-    },
-    "forest-win": {
-        "hyper3": (
-            "Vegetation stays coherent: forest plus meadow/farmland parents "
-            "with minimal residential leakage."
-        ),
-        "clip": (
-            "Half the neighbourhood leaves the vegetation parent; sparse "
-            "residential tiles create costly confusions."
-        ),
-        "comparison": (
-            "Hyper3 is safer for vegetation-identity QA; CLIP pulls built "
-            "environment into the forest neighbourhood."
-        ),
-    },
-    "storage-tank-win": {
-        "hyper3": (
-            "All four available same-class tank tiles are recovered; circular "
-            "farmland still occupies the remaining shortlist positions."
-        ),
-        "clip": (
-            "Circular farmland competes with tanks early; industrial identity "
-            "is harder to trust from the shortlist alone."
-        ),
-        "comparison": (
-            "Both confuse tanks with circular farmland, but Hyper3 recovers "
-            "more exact industrial matches before drift."
-        ),
-    },
-    "airport-regression": {
-        "hyper3": (
-            "Exact and parent transport hits drop; rectangular farmland "
-            "enters the neighbourhood earlier than desired."
-        ),
-        "clip": (
-            "Stronger exact airport hits and broader transport-parent "
-            "coverage on this example."
-        ),
-        "comparison": (
-            "Explicit regression: CLIP wins exact and parent quality here; "
-            "use it to pressure-test Hyper3 airfield topology."
-        ),
-    },
-}
 
 
 def load_evidence() -> dict[str, Any]:
@@ -146,7 +87,6 @@ def prepare_cases(
     prepared: list[dict[str, Any]] = []
     for case in payload["cases"]:
         case_id = str(case["id"])
-        consequences = CASE_CONSEQUENCES.get(case_id, {})
         models: dict[str, Any] = {}
         for model_key in ("hyper3", "clip"):
             source = case["models"][model_key]
@@ -156,7 +96,6 @@ def prepare_cases(
                 "layoutKey": layouts[model_key]["layoutKey"],
                 **counts,
                 "resultIds": list(source["resultIds"]),
-                "consequence": consequences.get(model_key, ""),
             }
         prepared.append(
             {
@@ -168,7 +107,15 @@ def prepare_cases(
                 "exactClass": case["exactClass"],
                 "parentGroup": case["parentGroup"],
                 "sourceImageId": case["sourceImageId"],
-                "comparison": consequences.get("comparison", ""),
+                "comparison": (
+                    "Hyper3 returns more same-class and same-group tiles."
+                    if models["hyper3"]["exactHits"] > models["clip"]["exactHits"]
+                    and models["hyper3"]["parentHits"] > models["clip"]["parentHits"]
+                    else "CLIP returns more same-class and same-group tiles."
+                    if models["clip"]["exactHits"] > models["hyper3"]["exactHits"]
+                    and models["clip"]["parentHits"] > models["hyper3"]["parentHits"]
+                    else "Compare each model’s same-class and same-group matches."
+                ),
                 "models": models,
             }
         )
@@ -188,9 +135,7 @@ def resolve_layouts(
     """
 
     evidence_spaces = {
-        model_key: {
-            str(case["models"][model_key]["spaceKey"]) for case in payload["cases"]
-        }
+        model_key: {str(case["models"][model_key]["spaceKey"]) for case in payload["cases"]}
         for model_key in MODEL_LAYOUTS
     }
     resolved: dict[str, dict[str, str]] = {}
@@ -263,10 +208,7 @@ def require_prepared_dataset(
         )
 
     sample_ids = {sample.id for sample in samples}
-    required_ids = {
-        case["anchorSampleId"]
-        for case in payload["cases"]
-    }
+    required_ids = {case["anchorSampleId"] for case in payload["cases"]}
     required_ids.update(
         sample_id
         for case in payload["cases"]
@@ -282,9 +224,7 @@ def require_prepared_dataset(
 
     space_keys = {space.space_key for space in dataset.list_spaces()}
     required_spaces = {
-        model["spaceKey"]
-        for case in payload["cases"]
-        for model in case["models"].values()
+        model["spaceKey"] for case in payload["cases"] for model in case["models"].values()
     }
     missing_spaces = sorted(required_spaces - space_keys)
     if missing_spaces:
@@ -321,8 +261,9 @@ def panel_props(
         "artifactId": payload["artifactId"],
         "protocol": payload["protocol"],
         "aggregate": payload["aggregate"],
+        "provenance": payload.get("provenance", {}),
         "models": {
-            "hyper3": "Hyper3-CLIP v1",
+            "hyper3": "Hyper3-CLIP V1",
             "clip": "OpenAI CLIP ViT-B/32",
         },
         "layouts": layouts,
@@ -336,16 +277,6 @@ def panel_props(
         "workspaceSampleCount": EXPECTED_SAMPLE_COUNT,
         "initialCaseId": DEFAULT_CASE_ID,
         "cases": prepare_cases(payload, layouts),
-        "businessQuestions": [
-            (
-                "From an anchor tile, do retrieved neighbours preserve land-use "
-                "identity and avoid operationally costly confusions?"
-            ),
-            (
-                "Do the two embedding models organize the full archive into "
-                "coherent, inspectable topology, outliers, and drift?"
-            ),
-        ],
     }
 
 
@@ -362,19 +293,19 @@ def build_demo_view(
 
     hyper3_samples = hv.ui.Samples(
         id=HYPER3_SAMPLES_ID,
-        title="Hyper3-CLIP · Ranked neighbours",
+        title="Hyper3-CLIP V1 · Neighbours",
         position="center",
         mode="ranked",
         rank=neighbour_rank(
             layout_key=layouts["hyper3"]["layoutKey"],
             anchor_sample_id=anchor,
-            model_label="Hyper3-CLIP v1",
+            model_label="Hyper3-CLIP V1",
         ),
         layout=hv.ui.PanelLayout(min_width=220, min_height=240),
     )
     clip_samples = hv.ui.Samples(
         id=CLIP_SAMPLES_ID,
-        title="CLIP B/32 · Ranked neighbours",
+        title="CLIP ViT-B/32 · Neighbours",
         position="center",
         reference_panel_id=HYPER3_SAMPLES_ID,
         direction="right",
@@ -410,7 +341,7 @@ def build_demo_view(
     )
     audit = hv.ui.ExtensionPanel(
         id=READOUT_ID,
-        title="Aerial identity audit",
+        title="Compare aerial tiles",
         extension="geospatial-readout",
         panel="geospatial-comparison",
         position="right",
@@ -433,7 +364,7 @@ def build_demo_view(
             ),
             shares=[1, 1],
         ),
-        audit,
+        hv.ui.Tabs(audit, active_tab=audit.id),
         active_panel=audit.id,
     )
 
@@ -453,13 +384,16 @@ def launch_demo(
         extensions=[EXTENSION_DIR],
     )
     session.ui.apply_view(build_demo_view(payload, layouts), workspace_id=WORKSPACE_ID)
+    # The comparison is the default tab when the host collapses this view
+    # onto a narrow screen. Keep that choice in runtime-managed panel state.
+    session.ui.update_panel(
+        READOUT_ID, position="right", active=True, workspace_id=WORKSPACE_ID
+    )
     default_case = next(
         (case for case in payload["cases"] if case["id"] == DEFAULT_CASE_ID),
         payload["cases"][0],
     )
-    session.ui.set_selection(
-        [default_case["anchorSampleId"]], workspace_id=WORKSPACE_ID
-    )
+    session.ui.set_selection([default_case["anchorSampleId"]], workspace_id=WORKSPACE_ID)
     session.ui.set_active_layout(layouts["hyper3"]["layoutKey"], workspace_id=WORKSPACE_ID)
     print(f"\nHyperView GeoSpatial demo is running at {session.url}", flush=True)
     print(

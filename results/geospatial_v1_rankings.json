@@ -1,0 +1,2065 @@
+{
+  "artifactId": "resisc45-geospatial-v1-2026-10-09",
+  "protocol": {
+    "dataset": "NWPU-RESISC45",
+    "split": "prepared 60-tile subset",
+    "subset": "60 curated tiles; 12 scene classes; 5 tiles per class",
+    "queries": 60,
+    "gallery": 60,
+    "selfMatch": "excluded",
+    "k": 10,
+    "distance": "Hyper3 hyperbolic; CLIP cosine",
+    "baselineModel": "openai/clip-vit-base-patch32",
+    "candidateModel": "hyper3-clip-v1",
+    "modelRevisionCaveat": "Hyper3-CLIP V1 is pinned; the original CLIP checkpoint revision was not recorded.",
+    "claimBoundary": "A small curated retrieval probe, not a full remote-sensing benchmark.",
+    "sourceCaveat": "The original upstream source and split of this tile selection were not recorded. The committed tiles and their hashes define this probe.",
+    "metricDefinition": "P@10 is matching neighbours divided by 10, averaged over all 60 anchors. Self-matches are excluded; only four same-class neighbours are available, so same-class P@10 is capped at 40%. Group counts include same-class matches."
+  },
+  "rankings": {
+    "hyper3": {
+      "resisc45_storage_tank_1": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_272",
+          "resisc45_storage_tank_315",
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_271",
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_43",
+          "resisc45_airplane_46",
+          "resisc45_runway_313",
+          "resisc45_circular_farmland_47",
+          "resisc45_airport_14"
+        ]
+      },
+      "resisc45_storage_tank_4": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_271",
+          "resisc45_storage_tank_315",
+          "resisc45_storage_tank_272",
+          "resisc45_circular_farmland_47",
+          "resisc45_storage_tank_1",
+          "resisc45_runway_313",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_airport_14",
+          "resisc45_circular_farmland_43",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_circular_farmland_7": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_circular_farmland_43",
+          "resisc45_circular_farmland_55",
+          "resisc45_circular_farmland_74",
+          "resisc45_circular_farmland_47",
+          "resisc45_storage_tank_1",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_runway_319",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_storage_tank_272",
+          "resisc45_terrace_148"
+        ]
+      },
+      "resisc45_meadow_13": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 0,
+        "parentHits": 2,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_469",
+          "resisc45_basketball_court_69",
+          "resisc45_sparse_residential_367",
+          "resisc45_basketball_court_62",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_sparse_residential_477",
+          "resisc45_forest_111"
+        ]
+      },
+      "resisc45_airport_14": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 5,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_airport_51",
+          "resisc45_runway_313",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_terrace_148",
+          "resisc45_airport_358",
+          "resisc45_runway_202",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_terrace_16": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_terrace_87",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_47",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_circular_farmland_55",
+          "resisc45_runway_313",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_198"
+        ]
+      },
+      "resisc45_basketball_court_17": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_basketball_court_62",
+          "resisc45_basketball_court_67",
+          "resisc45_runway_313",
+          "resisc45_airport_157",
+          "resisc45_basketball_court_49",
+          "resisc45_runway_184",
+          "resisc45_runway_202",
+          "resisc45_airport_358",
+          "resisc45_runway_319",
+          "resisc45_bridge_297"
+        ]
+      },
+      "resisc45_forest_20": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_forest_36",
+          "resisc45_forest_26",
+          "resisc45_forest_27",
+          "resisc45_forest_111",
+          "resisc45_meadow_34",
+          "resisc45_meadow_75",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_196",
+          "resisc45_circular_farmland_74",
+          "resisc45_circular_farmland_43"
+        ]
+      },
+      "resisc45_rectangular_farmland_21": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_sparse_residential_196",
+          "resisc45_terrace_37",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_sparse_residential_367",
+          "resisc45_circular_farmland_55",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_74"
+        ]
+      },
+      "resisc45_forest_26": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_forest_36",
+          "resisc45_forest_20",
+          "resisc45_forest_27",
+          "resisc45_meadow_34",
+          "resisc45_meadow_75",
+          "resisc45_meadow_45",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_meadow_79",
+          "resisc45_meadow_13"
+        ]
+      },
+      "resisc45_forest_27": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_forest_36",
+          "resisc45_meadow_45",
+          "resisc45_forest_26",
+          "resisc45_meadow_79",
+          "resisc45_forest_20",
+          "resisc45_meadow_75",
+          "resisc45_meadow_34",
+          "resisc45_terrace_148",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_171"
+        ]
+      },
+      "resisc45_meadow_34": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_meadow_75",
+          "resisc45_meadow_45",
+          "resisc45_forest_111",
+          "resisc45_terrace_37",
+          "resisc45_forest_27",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_74",
+          "resisc45_sparse_residential_196",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_forest_36"
+        ]
+      },
+      "resisc45_forest_36": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_forest_26",
+          "resisc45_forest_20",
+          "resisc45_forest_27",
+          "resisc45_forest_111",
+          "resisc45_meadow_75",
+          "resisc45_meadow_34",
+          "resisc45_meadow_45",
+          "resisc45_meadow_79",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_74"
+        ]
+      },
+      "resisc45_terrace_37": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_rectangular_farmland_89",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_terrace_116",
+          "resisc45_airport_85",
+          "resisc45_airport_358",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_196"
+        ]
+      },
+      "resisc45_circular_farmland_43": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_74",
+          "resisc45_circular_farmland_47",
+          "resisc45_circular_farmland_55",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_272",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_terrace_148",
+          "resisc45_storage_tank_271"
+        ]
+      },
+      "resisc45_meadow_45": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_75",
+          "resisc45_forest_27",
+          "resisc45_meadow_34",
+          "resisc45_meadow_79",
+          "resisc45_forest_36",
+          "resisc45_forest_26",
+          "resisc45_meadow_13",
+          "resisc45_terrace_116",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_74"
+        ]
+      },
+      "resisc45_airplane_46": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airplane_96",
+          "resisc45_airplane_136",
+          "resisc45_airport_14",
+          "resisc45_airport_51",
+          "resisc45_runway_319",
+          "resisc45_airplane_119",
+          "resisc45_runway_313",
+          "resisc45_basketball_court_17",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_storage_tank_1"
+        ]
+      },
+      "resisc45_circular_farmland_47": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_rectangular_farmland_91",
+          "resisc45_circular_farmland_55",
+          "resisc45_circular_farmland_74",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_terrace_116",
+          "resisc45_terrace_148",
+          "resisc45_airport_85",
+          "resisc45_circular_farmland_43",
+          "resisc45_runway_313"
+        ]
+      },
+      "resisc45_basketball_court_49": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_basketball_court_69",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_62",
+          "resisc45_sparse_residential_367",
+          "resisc45_basketball_court_67",
+          "resisc45_airport_157",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_sparse_residential_421",
+          "resisc45_basketball_court_17",
+          "resisc45_sparse_residential_196"
+        ]
+      },
+      "resisc45_airport_51": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airport_14",
+          "resisc45_runway_313",
+          "resisc45_airport_85",
+          "resisc45_bridge_230",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_runway_202",
+          "resisc45_bridge_327",
+          "resisc45_runway_319",
+          "resisc45_circular_farmland_47"
+        ]
+      },
+      "resisc45_circular_farmland_55": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_circular_farmland_74",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_43",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_sparse_residential_196",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_basketball_court_62": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_basketball_court_67",
+          "resisc45_basketball_court_17",
+          "resisc45_airport_157",
+          "resisc45_basketball_court_69",
+          "resisc45_basketball_court_49",
+          "resisc45_airport_358",
+          "resisc45_meadow_13",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196"
+        ]
+      },
+      "resisc45_basketball_court_67": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_basketball_court_62",
+          "resisc45_basketball_court_17",
+          "resisc45_basketball_court_69",
+          "resisc45_sparse_residential_367",
+          "resisc45_airport_358",
+          "resisc45_basketball_court_49",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_airport_14",
+          "resisc45_runway_313"
+        ]
+      },
+      "resisc45_basketball_court_69": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_basketball_court_49",
+          "resisc45_basketball_court_62",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_67",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196",
+          "resisc45_airport_358",
+          "resisc45_sparse_residential_477",
+          "resisc45_airport_157"
+        ]
+      },
+      "resisc45_circular_farmland_74": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_circular_farmland_43",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_circular_farmland_55",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_7",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_terrace_148",
+          "resisc45_forest_111",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_meadow_75": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_34",
+          "resisc45_meadow_79",
+          "resisc45_meadow_45",
+          "resisc45_forest_27",
+          "resisc45_forest_36",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_terrace_116",
+          "resisc45_forest_111",
+          "resisc45_forest_20",
+          "resisc45_circular_farmland_74"
+        ]
+      },
+      "resisc45_meadow_79": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_75",
+          "resisc45_meadow_45",
+          "resisc45_forest_27",
+          "resisc45_meadow_34",
+          "resisc45_forest_36",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_forest_20",
+          "resisc45_forest_26",
+          "resisc45_circular_farmland_43",
+          "resisc45_terrace_87"
+        ]
+      },
+      "resisc45_airport_85": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_airport_358",
+          "resisc45_airport_14",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_terrace_148",
+          "resisc45_runway_313",
+          "resisc45_terrace_37",
+          "resisc45_terrace_116",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_airport_51"
+        ]
+      },
+      "resisc45_terrace_87": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_terrace_16",
+          "resisc45_terrace_116",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_runway_319",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_rectangular_farmland_89": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_airport_358",
+          "resisc45_terrace_37",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_terrace_116",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_forest_111",
+          "resisc45_sparse_residential_196",
+          "resisc45_terrace_148",
+          "resisc45_runway_313"
+        ]
+      },
+      "resisc45_bridge_90": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_bridge_174",
+          "resisc45_bridge_297",
+          "resisc45_bridge_230",
+          "resisc45_bridge_327",
+          "resisc45_runway_184",
+          "resisc45_runway_202",
+          "resisc45_runway_241",
+          "resisc45_runway_319",
+          "resisc45_airport_157",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_rectangular_farmland_91": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_circular_farmland_55",
+          "resisc45_terrace_148",
+          "resisc45_runway_313",
+          "resisc45_airport_14",
+          "resisc45_sparse_residential_196",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_airplane_96": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_airplane_136",
+          "resisc45_airplane_46",
+          "resisc45_airport_51",
+          "resisc45_airplane_156",
+          "resisc45_airplane_119",
+          "resisc45_airport_14",
+          "resisc45_runway_319",
+          "resisc45_runway_184",
+          "resisc45_runway_313",
+          "resisc45_bridge_327"
+        ]
+      },
+      "resisc45_forest_111": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 0,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_terrace_37",
+          "resisc45_terrace_148",
+          "resisc45_terrace_116",
+          "resisc45_airport_85",
+          "resisc45_airport_358",
+          "resisc45_meadow_34",
+          "resisc45_rectangular_farmland_91"
+        ]
+      },
+      "resisc45_terrace_116": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_terrace_148",
+          "resisc45_terrace_37",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_runway_241",
+          "resisc45_circular_farmland_47",
+          "resisc45_forest_111",
+          "resisc45_airport_358"
+        ]
+      },
+      "resisc45_airplane_119": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_runway_202",
+          "resisc45_airplane_136",
+          "resisc45_airplane_96",
+          "resisc45_airplane_46",
+          "resisc45_airport_51",
+          "resisc45_airport_14",
+          "resisc45_runway_319",
+          "resisc45_airport_85",
+          "resisc45_runway_241",
+          "resisc45_rectangular_farmland_91"
+        ]
+      },
+      "resisc45_airplane_136": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_airplane_96",
+          "resisc45_airplane_156",
+          "resisc45_airplane_46",
+          "resisc45_airplane_119",
+          "resisc45_airport_51",
+          "resisc45_runway_319",
+          "resisc45_airport_14",
+          "resisc45_runway_184",
+          "resisc45_bridge_230",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_terrace_148": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 1,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_rectangular_farmland_198",
+          "resisc45_terrace_116",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_airport_14",
+          "resisc45_runway_313",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_runway_202"
+        ]
+      },
+      "resisc45_airplane_156": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_airplane_136",
+          "resisc45_airplane_96",
+          "resisc45_airplane_119",
+          "resisc45_airplane_46",
+          "resisc45_airport_51",
+          "resisc45_runway_319",
+          "resisc45_bridge_230",
+          "resisc45_runway_184",
+          "resisc45_airport_14",
+          "resisc45_bridge_327"
+        ]
+      },
+      "resisc45_airport_157": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_basketball_court_62",
+          "resisc45_runway_184",
+          "resisc45_runway_313",
+          "resisc45_airport_358",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_bridge_230",
+          "resisc45_airport_14",
+          "resisc45_runway_241",
+          "resisc45_airport_85",
+          "resisc45_bridge_297"
+        ]
+      },
+      "resisc45_rectangular_farmland_171": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_circular_farmland_43",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_meadow_75",
+          "resisc45_circular_farmland_74",
+          "resisc45_meadow_34",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_forest_27",
+          "resisc45_terrace_37",
+          "resisc45_meadow_79",
+          "resisc45_forest_26"
+        ]
+      },
+      "resisc45_bridge_174": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_bridge_90",
+          "resisc45_bridge_230",
+          "resisc45_bridge_327",
+          "resisc45_bridge_297",
+          "resisc45_runway_313",
+          "resisc45_runway_202",
+          "resisc45_runway_184",
+          "resisc45_airport_14",
+          "resisc45_airport_157",
+          "resisc45_runway_241"
+        ]
+      },
+      "resisc45_runway_184": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_runway_319",
+          "resisc45_runway_202",
+          "resisc45_airport_157",
+          "resisc45_runway_241",
+          "resisc45_bridge_297",
+          "resisc45_bridge_230",
+          "resisc45_bridge_90",
+          "resisc45_runway_313",
+          "resisc45_bridge_327",
+          "resisc45_basketball_court_17"
+        ]
+      },
+      "resisc45_sparse_residential_196": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_367",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_meadow_13",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_forest_111",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_469",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_rectangular_farmland_198": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_airport_85",
+          "resisc45_terrace_148",
+          "resisc45_terrace_37",
+          "resisc45_airport_14",
+          "resisc45_sparse_residential_196",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_airport_358",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_runway_202": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_runway_319",
+          "resisc45_runway_241",
+          "resisc45_airport_14",
+          "resisc45_bridge_327",
+          "resisc45_runway_184",
+          "resisc45_runway_313",
+          "resisc45_terrace_148",
+          "resisc45_bridge_230",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_198"
+        ]
+      },
+      "resisc45_bridge_230": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_bridge_327",
+          "resisc45_bridge_174",
+          "resisc45_bridge_297",
+          "resisc45_runway_313",
+          "resisc45_bridge_90",
+          "resisc45_airport_51",
+          "resisc45_runway_202",
+          "resisc45_airport_14",
+          "resisc45_airport_157",
+          "resisc45_runway_319"
+        ]
+      },
+      "resisc45_runway_241": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_runway_202",
+          "resisc45_terrace_116",
+          "resisc45_runway_319",
+          "resisc45_runway_184",
+          "resisc45_runway_313",
+          "resisc45_terrace_148",
+          "resisc45_airport_157",
+          "resisc45_airport_85",
+          "resisc45_terrace_37",
+          "resisc45_airport_14"
+        ]
+      },
+      "resisc45_storage_tank_271": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_315",
+          "resisc45_storage_tank_272",
+          "resisc45_circular_farmland_47",
+          "resisc45_runway_313",
+          "resisc45_storage_tank_1",
+          "resisc45_bridge_230",
+          "resisc45_terrace_148",
+          "resisc45_airport_14",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_storage_tank_272": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_315",
+          "resisc45_storage_tank_1",
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_271",
+          "resisc45_circular_farmland_47",
+          "resisc45_circular_farmland_43",
+          "resisc45_runway_313",
+          "resisc45_circular_farmland_74",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_91"
+        ]
+      },
+      "resisc45_bridge_297": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_bridge_230",
+          "resisc45_bridge_90",
+          "resisc45_bridge_174",
+          "resisc45_bridge_327",
+          "resisc45_runway_184",
+          "resisc45_airport_157",
+          "resisc45_runway_313",
+          "resisc45_airport_358",
+          "resisc45_runway_241",
+          "resisc45_runway_202"
+        ]
+      },
+      "resisc45_runway_313": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 2,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_airport_14",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_bridge_230",
+          "resisc45_runway_319",
+          "resisc45_airport_51",
+          "resisc45_airport_358",
+          "resisc45_terrace_148",
+          "resisc45_bridge_327",
+          "resisc45_runway_202"
+        ]
+      },
+      "resisc45_storage_tank_315": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_271",
+          "resisc45_storage_tank_272",
+          "resisc45_storage_tank_1",
+          "resisc45_runway_313",
+          "resisc45_circular_farmland_47",
+          "resisc45_airport_14",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_bridge_230",
+          "resisc45_terrace_148"
+        ]
+      },
+      "resisc45_runway_319": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_runway_184",
+          "resisc45_runway_202",
+          "resisc45_runway_313",
+          "resisc45_runway_241",
+          "resisc45_terrace_148",
+          "resisc45_bridge_327",
+          "resisc45_bridge_230",
+          "resisc45_airport_14",
+          "resisc45_terrace_116",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_bridge_327": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_bridge_230",
+          "resisc45_runway_313",
+          "resisc45_bridge_174",
+          "resisc45_runway_202",
+          "resisc45_bridge_297",
+          "resisc45_bridge_90",
+          "resisc45_runway_319",
+          "resisc45_airport_51",
+          "resisc45_runway_184",
+          "resisc45_airport_14"
+        ]
+      },
+      "resisc45_airport_358": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 3,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_airport_14",
+          "resisc45_terrace_37",
+          "resisc45_runway_313",
+          "resisc45_terrace_116",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_airport_157",
+          "resisc45_terrace_148"
+        ]
+      },
+      "resisc45_sparse_residential_367": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_469",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_49",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_basketball_court_67"
+        ]
+      },
+      "resisc45_sparse_residential_421": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_469",
+          "resisc45_meadow_13",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_basketball_court_69",
+          "resisc45_basketball_court_49",
+          "resisc45_rectangular_farmland_21"
+        ]
+      },
+      "resisc45_sparse_residential_469": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_196",
+          "resisc45_meadow_13",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_basketball_court_67",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_basketball_court_69"
+        ]
+      },
+      "resisc45_sparse_residential_477": {
+        "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_469",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_69",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_basketball_court_49"
+        ]
+      }
+    },
+    "clip": {
+      "resisc45_storage_tank_1": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 2,
+        "resultIds": [
+          "resisc45_storage_tank_272",
+          "resisc45_circular_farmland_7",
+          "resisc45_storage_tank_315",
+          "resisc45_airplane_96",
+          "resisc45_runway_241",
+          "resisc45_airplane_46",
+          "resisc45_circular_farmland_74",
+          "resisc45_circular_farmland_43",
+          "resisc45_terrace_116",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_storage_tank_4": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_storage_tank_315",
+          "resisc45_storage_tank_271",
+          "resisc45_storage_tank_1",
+          "resisc45_airport_85",
+          "resisc45_bridge_230",
+          "resisc45_bridge_174",
+          "resisc45_circular_farmland_47",
+          "resisc45_airport_157",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_circular_farmland_7": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_circular_farmland_74",
+          "resisc45_storage_tank_272",
+          "resisc45_terrace_116",
+          "resisc45_storage_tank_1",
+          "resisc45_circular_farmland_43",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_terrace_87",
+          "resisc45_meadow_34",
+          "resisc45_forest_26",
+          "resisc45_forest_36"
+        ]
+      },
+      "resisc45_meadow_13": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 0,
+        "parentHits": 0,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_469",
+          "resisc45_sparse_residential_421",
+          "resisc45_runway_241",
+          "resisc45_basketball_court_62",
+          "resisc45_airport_157",
+          "resisc45_sparse_residential_367",
+          "resisc45_basketball_court_69"
+        ]
+      },
+      "resisc45_airport_14": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airport_51",
+          "resisc45_runway_313",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_airport_157",
+          "resisc45_airport_358",
+          "resisc45_terrace_148",
+          "resisc45_bridge_230",
+          "resisc45_bridge_174",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_terrace_16": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_terrace_87",
+          "resisc45_terrace_116",
+          "resisc45_forest_111",
+          "resisc45_terrace_148",
+          "resisc45_meadow_79",
+          "resisc45_circular_farmland_43",
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_47",
+          "resisc45_forest_20",
+          "resisc45_storage_tank_1"
+        ]
+      },
+      "resisc45_basketball_court_17": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_basketball_court_67",
+          "resisc45_basketball_court_62",
+          "resisc45_runway_184",
+          "resisc45_airplane_46",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_runway_241",
+          "resisc45_storage_tank_1",
+          "resisc45_storage_tank_272",
+          "resisc45_runway_319"
+        ]
+      },
+      "resisc45_forest_20": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 5,
+        "resultIds": [
+          "resisc45_forest_111",
+          "resisc45_forest_26",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_477",
+          "resisc45_terrace_116",
+          "resisc45_sparse_residential_367",
+          "resisc45_meadow_13",
+          "resisc45_airport_157",
+          "resisc45_sparse_residential_469"
+        ]
+      },
+      "resisc45_rectangular_farmland_21": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_47",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_55",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_terrace_116",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_bridge_327"
+        ]
+      },
+      "resisc45_forest_26": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_forest_36",
+          "resisc45_forest_20",
+          "resisc45_meadow_34",
+          "resisc45_forest_27",
+          "resisc45_meadow_45",
+          "resisc45_forest_111",
+          "resisc45_meadow_79",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_sparse_residential_196",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_forest_27": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_meadow_34",
+          "resisc45_forest_36",
+          "resisc45_forest_26",
+          "resisc45_meadow_45",
+          "resisc45_meadow_75",
+          "resisc45_circular_farmland_7",
+          "resisc45_meadow_79",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_terrace_87",
+          "resisc45_storage_tank_272"
+        ]
+      },
+      "resisc45_meadow_34": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_75",
+          "resisc45_forest_27",
+          "resisc45_forest_36",
+          "resisc45_forest_26",
+          "resisc45_meadow_79",
+          "resisc45_meadow_45",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_terrace_87",
+          "resisc45_circular_farmland_7",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_forest_36": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_34",
+          "resisc45_forest_26",
+          "resisc45_meadow_79",
+          "resisc45_forest_27",
+          "resisc45_meadow_75",
+          "resisc45_meadow_45",
+          "resisc45_terrace_87",
+          "resisc45_forest_20",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_circular_farmland_7"
+        ]
+      },
+      "resisc45_terrace_37": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 5,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_sparse_residential_196",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_367",
+          "resisc45_airport_358",
+          "resisc45_terrace_116",
+          "resisc45_runway_241",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_55"
+        ]
+      },
+      "resisc45_circular_farmland_43": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_circular_farmland_74",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_circular_farmland_7",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_47",
+          "resisc45_storage_tank_1",
+          "resisc45_storage_tank_272",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_55",
+          "resisc45_terrace_148"
+        ]
+      },
+      "resisc45_meadow_45": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_forest_36",
+          "resisc45_forest_111",
+          "resisc45_meadow_34",
+          "resisc45_forest_26",
+          "resisc45_runway_241",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_forest_27",
+          "resisc45_forest_20",
+          "resisc45_meadow_13"
+        ]
+      },
+      "resisc45_airplane_46": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airplane_96",
+          "resisc45_storage_tank_1",
+          "resisc45_airplane_136",
+          "resisc45_runway_184",
+          "resisc45_runway_319",
+          "resisc45_runway_241",
+          "resisc45_basketball_court_17",
+          "resisc45_airport_51",
+          "resisc45_airport_85",
+          "resisc45_storage_tank_315"
+        ]
+      },
+      "resisc45_circular_farmland_47": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_circular_farmland_55",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_43",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_terrace_116",
+          "resisc45_airport_51"
+        ]
+      },
+      "resisc45_basketball_court_49": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 2,
+        "resultIds": [
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_69",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_477",
+          "resisc45_basketball_court_62",
+          "resisc45_sparse_residential_469",
+          "resisc45_runway_241",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_367",
+          "resisc45_airport_157"
+        ]
+      },
+      "resisc45_airport_51": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_airport_14",
+          "resisc45_airport_85",
+          "resisc45_runway_313",
+          "resisc45_terrace_148",
+          "resisc45_bridge_230",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_airport_157",
+          "resisc45_airport_358"
+        ]
+      },
+      "resisc45_circular_farmland_55": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 1,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_367",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_airport_85",
+          "resisc45_terrace_116",
+          "resisc45_terrace_37"
+        ]
+      },
+      "resisc45_basketball_court_62": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_469",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_67",
+          "resisc45_sparse_residential_477",
+          "resisc45_basketball_court_69",
+          "resisc45_meadow_13",
+          "resisc45_runway_241",
+          "resisc45_basketball_court_17"
+        ]
+      },
+      "resisc45_basketball_court_67": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_basketball_court_62",
+          "resisc45_sparse_residential_196",
+          "resisc45_runway_241",
+          "resisc45_basketball_court_17",
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_469",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_477",
+          "resisc45_storage_tank_1",
+          "resisc45_airport_85"
+        ]
+      },
+      "resisc45_basketball_court_69": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_basketball_court_49",
+          "resisc45_basketball_court_62",
+          "resisc45_meadow_13",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_477",
+          "resisc45_runway_241",
+          "resisc45_airport_157",
+          "resisc45_sparse_residential_469",
+          "resisc45_basketball_court_67",
+          "resisc45_sparse_residential_367"
+        ]
+      },
+      "resisc45_circular_farmland_74": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_43",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_terrace_116",
+          "resisc45_storage_tank_272",
+          "resisc45_storage_tank_1",
+          "resisc45_runway_241",
+          "resisc45_circular_farmland_55",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_198"
+        ]
+      },
+      "resisc45_meadow_75": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_meadow_34",
+          "resisc45_forest_36",
+          "resisc45_meadow_79",
+          "resisc45_terrace_87",
+          "resisc45_forest_26",
+          "resisc45_forest_27",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_circular_farmland_7",
+          "resisc45_meadow_45",
+          "resisc45_terrace_116"
+        ]
+      },
+      "resisc45_meadow_79": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_forest_36",
+          "resisc45_meadow_34",
+          "resisc45_meadow_75",
+          "resisc45_terrace_87",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_forest_26",
+          "resisc45_terrace_116",
+          "resisc45_meadow_45",
+          "resisc45_terrace_16",
+          "resisc45_circular_farmland_7"
+        ]
+      },
+      "resisc45_airport_85": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_airport_157",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_airport_358",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_terrace_148",
+          "resisc45_airport_51",
+          "resisc45_runway_241",
+          "resisc45_airport_14",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_bridge_174"
+        ]
+      },
+      "resisc45_terrace_87": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_terrace_16",
+          "resisc45_terrace_116",
+          "resisc45_meadow_79",
+          "resisc45_forest_36",
+          "resisc45_meadow_34",
+          "resisc45_forest_26",
+          "resisc45_circular_farmland_7",
+          "resisc45_meadow_75",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_circular_farmland_43"
+        ]
+      },
+      "resisc45_rectangular_farmland_89": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_airport_157",
+          "resisc45_terrace_37",
+          "resisc45_circular_farmland_55",
+          "resisc45_circular_farmland_47",
+          "resisc45_forest_111"
+        ]
+      },
+      "resisc45_bridge_90": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_bridge_327",
+          "resisc45_bridge_297",
+          "resisc45_sparse_residential_196",
+          "resisc45_forest_111",
+          "resisc45_runway_184",
+          "resisc45_runway_241",
+          "resisc45_bridge_174",
+          "resisc45_bridge_230",
+          "resisc45_sparse_residential_367",
+          "resisc45_terrace_148"
+        ]
+      },
+      "resisc45_rectangular_farmland_91": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_circular_farmland_47",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_55",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_airport_85",
+          "resisc45_runway_313",
+          "resisc45_terrace_116",
+          "resisc45_bridge_327"
+        ]
+      },
+      "resisc45_airplane_96": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airplane_46",
+          "resisc45_airplane_136",
+          "resisc45_storage_tank_1",
+          "resisc45_runway_241",
+          "resisc45_runway_184",
+          "resisc45_airport_85",
+          "resisc45_runway_319",
+          "resisc45_airport_51",
+          "resisc45_storage_tank_272",
+          "resisc45_circular_farmland_7"
+        ]
+      },
+      "resisc45_forest_111": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 1,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_terrace_148",
+          "resisc45_forest_20",
+          "resisc45_meadow_45",
+          "resisc45_terrace_116",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_477",
+          "resisc45_airport_157",
+          "resisc45_bridge_90",
+          "resisc45_runway_241"
+        ]
+      },
+      "resisc45_terrace_116": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_terrace_148",
+          "resisc45_terrace_87",
+          "resisc45_runway_241",
+          "resisc45_terrace_16",
+          "resisc45_circular_farmland_7",
+          "resisc45_rectangular_farmland_171",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_43",
+          "resisc45_circular_farmland_74",
+          "resisc45_rectangular_farmland_21"
+        ]
+      },
+      "resisc45_airplane_119": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 0,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_runway_241",
+          "resisc45_airport_85",
+          "resisc45_runway_202",
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_477",
+          "resisc45_terrace_148",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_49",
+          "resisc45_airport_157"
+        ]
+      },
+      "resisc45_airplane_136": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_airplane_96",
+          "resisc45_airplane_46",
+          "resisc45_runway_184",
+          "resisc45_runway_319",
+          "resisc45_runway_241",
+          "resisc45_airplane_119",
+          "resisc45_airport_85",
+          "resisc45_storage_tank_1",
+          "resisc45_airplane_156",
+          "resisc45_storage_tank_315"
+        ]
+      },
+      "resisc45_terrace_148": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 1,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_rectangular_farmland_91",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_forest_20",
+          "resisc45_airport_85",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_55",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_airplane_156": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_airplane_96",
+          "resisc45_airplane_46",
+          "resisc45_airplane_136",
+          "resisc45_runway_319",
+          "resisc45_basketball_court_17",
+          "resisc45_airport_51",
+          "resisc45_storage_tank_1",
+          "resisc45_airport_358",
+          "resisc45_circular_farmland_43",
+          "resisc45_runway_184"
+        ]
+      },
+      "resisc45_airport_157": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_runway_241",
+          "resisc45_terrace_148",
+          "resisc45_sparse_residential_196",
+          "resisc45_airport_358",
+          "resisc45_sparse_residential_477",
+          "resisc45_forest_111",
+          "resisc45_bridge_230",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_basketball_court_49"
+        ]
+      },
+      "resisc45_rectangular_farmland_171": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 1,
+        "parentHits": 10,
+        "resultIds": [
+          "resisc45_circular_farmland_43",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_74",
+          "resisc45_meadow_45",
+          "resisc45_meadow_79",
+          "resisc45_meadow_34",
+          "resisc45_circular_farmland_7",
+          "resisc45_forest_26",
+          "resisc45_forest_36",
+          "resisc45_rectangular_farmland_21"
+        ]
+      },
+      "resisc45_bridge_174": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_bridge_230",
+          "resisc45_bridge_327",
+          "resisc45_airport_85",
+          "resisc45_bridge_90",
+          "resisc45_storage_tank_271",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_bridge_297",
+          "resisc45_airport_157",
+          "resisc45_airport_358"
+        ]
+      },
+      "resisc45_runway_184": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 9,
+        "resultIds": [
+          "resisc45_runway_319",
+          "resisc45_runway_241",
+          "resisc45_bridge_90",
+          "resisc45_bridge_327",
+          "resisc45_airport_85",
+          "resisc45_bridge_297",
+          "resisc45_airport_157",
+          "resisc45_airplane_96",
+          "resisc45_airplane_46",
+          "resisc45_basketball_court_49"
+        ]
+      },
+      "resisc45_sparse_residential_196": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_367",
+          "resisc45_meadow_13",
+          "resisc45_forest_111",
+          "resisc45_sparse_residential_477",
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_469",
+          "resisc45_forest_20",
+          "resisc45_runway_241",
+          "resisc45_meadow_45"
+        ]
+      },
+      "resisc45_rectangular_farmland_198": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_circular_farmland_47",
+          "resisc45_terrace_148",
+          "resisc45_circular_farmland_55",
+          "resisc45_airport_85",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_terrace_116",
+          "resisc45_bridge_174",
+          "resisc45_bridge_327"
+        ]
+      },
+      "resisc45_runway_202": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 5,
+        "resultIds": [
+          "resisc45_runway_241",
+          "resisc45_airplane_119",
+          "resisc45_airport_157",
+          "resisc45_airport_85",
+          "resisc45_terrace_148",
+          "resisc45_runway_184",
+          "resisc45_meadow_45",
+          "resisc45_basketball_court_49",
+          "resisc45_sparse_residential_196",
+          "resisc45_meadow_13"
+        ]
+      },
+      "resisc45_bridge_230": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_bridge_327",
+          "resisc45_bridge_174",
+          "resisc45_airport_157",
+          "resisc45_bridge_90",
+          "resisc45_airport_85",
+          "resisc45_bridge_297",
+          "resisc45_airport_51",
+          "resisc45_storage_tank_271",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_runway_241": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 5,
+        "resultIds": [
+          "resisc45_airport_157",
+          "resisc45_runway_184",
+          "resisc45_terrace_116",
+          "resisc45_airport_85",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_meadow_13",
+          "resisc45_runway_319",
+          "resisc45_forest_111",
+          "resisc45_runway_202"
+        ]
+      },
+      "resisc45_storage_tank_271": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 3,
+        "parentHits": 3,
+        "resultIds": [
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_315",
+          "resisc45_bridge_174",
+          "resisc45_airport_85",
+          "resisc45_bridge_230",
+          "resisc45_storage_tank_1",
+          "resisc45_airport_157",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_bridge_327",
+          "resisc45_runway_313"
+        ]
+      },
+      "resisc45_storage_tank_272": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 2,
+        "resultIds": [
+          "resisc45_storage_tank_1",
+          "resisc45_circular_farmland_7",
+          "resisc45_circular_farmland_74",
+          "resisc45_terrace_116",
+          "resisc45_circular_farmland_43",
+          "resisc45_runway_241",
+          "resisc45_storage_tank_315",
+          "resisc45_basketball_court_49",
+          "resisc45_terrace_148",
+          "resisc45_airplane_96"
+        ]
+      },
+      "resisc45_bridge_297": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 7,
+        "resultIds": [
+          "resisc45_bridge_90",
+          "resisc45_bridge_327",
+          "resisc45_bridge_230",
+          "resisc45_runway_184",
+          "resisc45_airport_157",
+          "resisc45_bridge_174",
+          "resisc45_runway_241",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_storage_tank_1"
+        ]
+      },
+      "resisc45_runway_313": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 0,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_airport_14",
+          "resisc45_airport_51",
+          "resisc45_airport_85",
+          "resisc45_terrace_148",
+          "resisc45_airport_157",
+          "resisc45_rectangular_farmland_91",
+          "resisc45_rectangular_farmland_89",
+          "resisc45_circular_farmland_47",
+          "resisc45_rectangular_farmland_21",
+          "resisc45_rectangular_farmland_198"
+        ]
+      },
+      "resisc45_storage_tank_315": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_storage_tank_4",
+          "resisc45_storage_tank_271",
+          "resisc45_storage_tank_1",
+          "resisc45_storage_tank_272",
+          "resisc45_airplane_46",
+          "resisc45_runway_241",
+          "resisc45_circular_farmland_43",
+          "resisc45_airplane_96",
+          "resisc45_airport_85",
+          "resisc45_basketball_court_67"
+        ]
+      },
+      "resisc45_runway_319": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 2,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_runway_184",
+          "resisc45_runway_241",
+          "resisc45_airplane_46",
+          "resisc45_bridge_327",
+          "resisc45_airport_85",
+          "resisc45_airplane_96",
+          "resisc45_bridge_90",
+          "resisc45_terrace_116",
+          "resisc45_storage_tank_1",
+          "resisc45_airport_358"
+        ]
+      },
+      "resisc45_bridge_327": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 8,
+        "resultIds": [
+          "resisc45_bridge_230",
+          "resisc45_bridge_174",
+          "resisc45_bridge_90",
+          "resisc45_bridge_297",
+          "resisc45_runway_184",
+          "resisc45_airport_85",
+          "resisc45_terrace_148",
+          "resisc45_rectangular_farmland_198",
+          "resisc45_runway_241",
+          "resisc45_airport_157"
+        ]
+      },
+      "resisc45_airport_358": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 6,
+        "resultIds": [
+          "resisc45_airport_85",
+          "resisc45_airport_157",
+          "resisc45_terrace_37",
+          "resisc45_runway_241",
+          "resisc45_airport_51",
+          "resisc45_sparse_residential_196",
+          "resisc45_bridge_174",
+          "resisc45_airport_14",
+          "resisc45_sparse_residential_367",
+          "resisc45_rectangular_farmland_89"
+        ]
+      },
+      "resisc45_sparse_residential_367": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_196",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_469",
+          "resisc45_forest_111",
+          "resisc45_circular_farmland_55",
+          "resisc45_terrace_148",
+          "resisc45_basketball_court_49",
+          "resisc45_terrace_37",
+          "resisc45_meadow_13"
+        ]
+      },
+      "resisc45_sparse_residential_421": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_469",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_49",
+          "resisc45_basketball_court_62",
+          "resisc45_forest_111",
+          "resisc45_bridge_90",
+          "resisc45_forest_20"
+        ]
+      },
+      "resisc45_sparse_residential_469": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_477",
+          "resisc45_sparse_residential_367",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_62",
+          "resisc45_meadow_13",
+          "resisc45_basketball_court_49",
+          "resisc45_forest_111",
+          "resisc45_forest_20",
+          "resisc45_airport_157"
+        ]
+      },
+      "resisc45_sparse_residential_477": {
+        "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "exactHits": 4,
+        "parentHits": 4,
+        "resultIds": [
+          "resisc45_sparse_residential_421",
+          "resisc45_sparse_residential_469",
+          "resisc45_sparse_residential_196",
+          "resisc45_basketball_court_49",
+          "resisc45_meadow_13",
+          "resisc45_sparse_residential_367",
+          "resisc45_forest_20",
+          "resisc45_airport_157",
+          "resisc45_forest_111",
+          "resisc45_terrace_148"
+        ]
+      }
+    }
+  }
+}

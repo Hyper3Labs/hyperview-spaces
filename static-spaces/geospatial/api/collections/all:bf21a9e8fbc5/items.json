@@ -16,8 +16,9 @@
           "image_id": "1",
           "parent_group": "built_environment",
           "scene_class": "storage tank",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -43,8 +44,9 @@
           "image_id": "4",
           "parent_group": "built_environment",
           "scene_class": "storage tank",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -70,8 +72,9 @@
           "image_id": "7",
           "parent_group": "agriculture_vegetation",
           "scene_class": "circular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -97,8 +100,9 @@
           "image_id": "13",
           "parent_group": "agriculture_vegetation",
           "scene_class": "meadow",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -124,8 +128,9 @@
           "image_id": "14",
           "parent_group": "transport",
           "scene_class": "airport",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -151,8 +156,9 @@
           "image_id": "16",
           "parent_group": "agriculture_vegetation",
           "scene_class": "terrace",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -178,8 +184,9 @@
           "image_id": "17",
           "parent_group": "sports_recreation",
           "scene_class": "basketball court",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -205,8 +212,9 @@
           "image_id": "20",
           "parent_group": "agriculture_vegetation",
           "scene_class": "forest",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -232,8 +240,9 @@
           "image_id": "21",
           "parent_group": "agriculture_vegetation",
           "scene_class": "rectangular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -259,8 +268,9 @@
           "image_id": "26",
           "parent_group": "agriculture_vegetation",
           "scene_class": "forest",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -286,8 +296,9 @@
           "image_id": "27",
           "parent_group": "agriculture_vegetation",
           "scene_class": "forest",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -313,8 +324,9 @@
           "image_id": "34",
           "parent_group": "agriculture_vegetation",
           "scene_class": "meadow",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -340,8 +352,9 @@
           "image_id": "36",
           "parent_group": "agriculture_vegetation",
           "scene_class": "forest",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -367,8 +380,9 @@
           "image_id": "37",
           "parent_group": "agriculture_vegetation",
           "scene_class": "terrace",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -394,8 +408,9 @@
           "image_id": "43",
           "parent_group": "agriculture_vegetation",
           "scene_class": "circular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -421,8 +436,9 @@
           "image_id": "45",
           "parent_group": "agriculture_vegetation",
           "scene_class": "meadow",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -448,8 +464,9 @@
           "image_id": "46",
           "parent_group": "transport",
           "scene_class": "airplane",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -475,8 +492,9 @@
           "image_id": "47",
           "parent_group": "agriculture_vegetation",
           "scene_class": "circular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -502,8 +520,9 @@
           "image_id": "49",
           "parent_group": "sports_recreation",
           "scene_class": "basketball court",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -529,8 +548,9 @@
           "image_id": "51",
           "parent_group": "transport",
           "scene_class": "airport",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -556,8 +576,9 @@
           "image_id": "55",
           "parent_group": "agriculture_vegetation",
           "scene_class": "circular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -583,8 +604,9 @@
           "image_id": "62",
           "parent_group": "sports_recreation",
           "scene_class": "basketball court",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -610,8 +632,9 @@
           "image_id": "67",
           "parent_group": "sports_recreation",
           "scene_class": "basketball court",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -637,8 +660,9 @@
           "image_id": "69",
           "parent_group": "sports_recreation",
           "scene_class": "basketball court",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -664,8 +688,9 @@
           "image_id": "74",
           "parent_group": "agriculture_vegetation",
           "scene_class": "circular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -691,8 +716,9 @@
           "image_id": "75",
           "parent_group": "agriculture_vegetation",
           "scene_class": "meadow",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -718,8 +744,9 @@
           "image_id": "79",
           "parent_group": "agriculture_vegetation",
           "scene_class": "meadow",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -745,8 +772,9 @@
           "image_id": "85",
           "parent_group": "transport",
           "scene_class": "airport",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -772,8 +800,9 @@
           "image_id": "87",
           "parent_group": "agriculture_vegetation",
           "scene_class": "terrace",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -799,8 +828,9 @@
           "image_id": "89",
           "parent_group": "agriculture_vegetation",
           "scene_class": "rectangular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -826,8 +856,9 @@
           "image_id": "90",
           "parent_group": "transport",
           "scene_class": "bridge",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -853,8 +884,9 @@
           "image_id": "91",
           "parent_group": "agriculture_vegetation",
           "scene_class": "rectangular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -880,8 +912,9 @@
           "image_id": "96",
           "parent_group": "transport",
           "scene_class": "airplane",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -907,8 +940,9 @@
           "image_id": "111",
           "parent_group": "agriculture_vegetation",
           "scene_class": "forest",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -934,8 +968,9 @@
           "image_id": "116",
           "parent_group": "agriculture_vegetation",
           "scene_class": "terrace",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -961,8 +996,9 @@
           "image_id": "119",
           "parent_group": "transport",
           "scene_class": "airplane",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -988,8 +1024,9 @@
           "image_id": "136",
           "parent_group": "transport",
           "scene_class": "airplane",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1015,8 +1052,9 @@
           "image_id": "148",
           "parent_group": "agriculture_vegetation",
           "scene_class": "terrace",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1042,8 +1080,9 @@
           "image_id": "156",
           "parent_group": "transport",
           "scene_class": "airplane",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1069,8 +1108,9 @@
           "image_id": "157",
           "parent_group": "transport",
           "scene_class": "airport",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1096,8 +1136,9 @@
           "image_id": "171",
           "parent_group": "agriculture_vegetation",
           "scene_class": "rectangular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1123,8 +1164,9 @@
           "image_id": "174",
           "parent_group": "transport",
           "scene_class": "bridge",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1150,8 +1192,9 @@
           "image_id": "184",
           "parent_group": "transport",
           "scene_class": "runway",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1177,8 +1220,9 @@
           "image_id": "196",
           "parent_group": "built_environment",
           "scene_class": "sparse residential",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1204,8 +1248,9 @@
           "image_id": "198",
           "parent_group": "agriculture_vegetation",
           "scene_class": "rectangular farmland",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1231,8 +1276,9 @@
           "image_id": "202",
           "parent_group": "transport",
           "scene_class": "runway",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1258,8 +1304,9 @@
           "image_id": "230",
           "parent_group": "transport",
           "scene_class": "bridge",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1285,8 +1332,9 @@
           "image_id": "241",
           "parent_group": "transport",
           "scene_class": "runway",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1312,8 +1360,9 @@
           "image_id": "271",
           "parent_group": "built_environment",
           "scene_class": "storage tank",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1339,8 +1388,9 @@
           "image_id": "272",
           "parent_group": "built_environment",
           "scene_class": "storage tank",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1366,8 +1416,9 @@
           "image_id": "297",
           "parent_group": "transport",
           "scene_class": "bridge",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1393,8 +1444,9 @@
           "image_id": "313",
           "parent_group": "transport",
           "scene_class": "runway",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1420,8 +1472,9 @@
           "image_id": "315",
           "parent_group": "built_environment",
           "scene_class": "storage tank",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1447,8 +1500,9 @@
           "image_id": "319",
           "parent_group": "transport",
           "scene_class": "runway",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1474,8 +1528,9 @@
           "image_id": "327",
           "parent_group": "transport",
           "scene_class": "bridge",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1501,8 +1556,9 @@
           "image_id": "358",
           "parent_group": "transport",
           "scene_class": "airport",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1528,8 +1584,9 @@
           "image_id": "367",
           "parent_group": "built_environment",
           "scene_class": "sparse residential",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1555,8 +1612,9 @@
           "image_id": "421",
           "parent_group": "built_environment",
           "scene_class": "sparse residential",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1582,8 +1640,9 @@
           "image_id": "469",
           "parent_group": "built_environment",
           "scene_class": "sparse residential",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,
@@ -1609,8 +1668,9 @@
           "image_id": "477",
           "parent_group": "built_environment",
           "scene_class": "sparse residential",
-          "source_dataset": "tanganke/resisc45",
-          "split": "test"
+          "source_dataset": "NWPU-RESISC45",
+          "source_provenance": "original mirror/split unrecorded",
+          "split": "prepared-subset"
         },
         "modality": "image",
         "text": null,

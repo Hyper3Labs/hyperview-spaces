@@ -1,5 +1,5 @@
 {
-  "active_workspace_id": "geospatial-resisc45-retrieval-evidence-v2",
+  "active_workspace_id": "geospatial-resisc45-v1-2026-10-09",
   "extensions": [],
   "panel_definitions": [
     {
@@ -270,14 +270,14 @@
       "title": "Embeddings"
     }
   ],
-  "runtime_id": "9e80c17054e84ce2a94b2f2d933446e0",
+  "runtime_id": "31070c4b29844c02a014ca50dbbae968",
   "tools": [],
   "version": 1,
   "workspace": {
     "collections": [
       {
-        "created_at": 1784730796,
-        "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+        "created_at": 1791544784,
+        "dataset_id": "resisc45_geospatial_v1",
         "entity_set_id": "samples",
         "id": "all:bf21a9e8fbc5",
         "kind": "all",
@@ -285,10 +285,10 @@
         "scores": null
       }
     ],
-    "dataset_name": "resisc45_clip_hyper3clip_curated_side_by_side",
-    "id": "geospatial-resisc45-retrieval-evidence-v2",
+    "dataset_name": "resisc45_geospatial_v1",
+    "id": "geospatial-resisc45-v1-2026-10-09",
     "ui": {
-      "active_layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+      "active_layout_key": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
       "active_panel_id": "geospatial-retrieval-readout",
       "custom_panels": [
         {
@@ -329,16 +329,16 @@
             "rank": {
               "anchorSampleId": "resisc45_airplane_119",
               "k": 10,
-              "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+              "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
               "showDistance": false,
-              "source": "Hyper3-CLIP v0.5 \u00b7 aerial neighbours"
+              "source": "Hyper3-CLIP V1 \u00b7 aerial neighbours"
             }
           },
           "reference_panel_id": null,
           "renderer": "native:samples",
           "source": "shipped",
           "state_revision": 0,
-          "title": "Hyper3-CLIP \u00b7 Ranked neighbours",
+          "title": "Hyper3-CLIP V1 \u00b7 Neighbours",
           "visible": true,
           "width": null
         },
@@ -368,7 +368,7 @@
             "width": null
           },
           "layout_dimension": 2,
-          "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+          "layout_key": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
           "max_height": null,
           "max_width": null,
           "min_height": 240,
@@ -460,7 +460,7 @@
           "renderer": "native:samples",
           "source": "shipped",
           "state_revision": 0,
-          "title": "CLIP B/32 \u00b7 Ranked neighbours",
+          "title": "CLIP ViT-B/32 \u00b7 Neighbours",
           "visible": true,
           "width": null
         },
@@ -536,10 +536,10 @@
           "width": null
         },
         {
-          "active": false,
+          "active": true,
           "builtin_panel": null,
           "data": {
-            "module_src": "/api/panels/content/geospatial-resisc45-retrieval-evidence-v2/geospatial-retrieval-readout/panel.js",
+            "module_src": "/api/panels/content/geospatial-resisc45-v1-2026-10-09/geospatial-retrieval-readout/panel.js",
             "static_compatible": true,
             "static_reason": null
           },
@@ -571,33 +571,28 @@
           "props": {
             "aggregate": {
               "clip": {
-                "exactP10": 0.2783333333,
-                "parentP10": 0.6216666667
+                "exactP10": 0.2783333333333333,
+                "parentP10": 0.6216666666666667
               },
               "delta": {
-                "exactP10": 0.0533333334,
-                "parentP10": 0.0816666666
+                "exactP10": 0.053333333333333344,
+                "parentP10": 0.08166666666666667
               },
               "hyper3": {
-                "exactP10": 0.3316666667,
-                "parentP10": 0.7033333333
+                "exactP10": 0.33166666666666667,
+                "parentP10": 0.7033333333333334
               }
             },
-            "artifactId": "resisc45-geospatial-retrieval-evidence-2026-07-22",
-            "businessQuestions": [
-              "From an anchor tile, do retrieved neighbours preserve land-use identity and avoid operationally costly confusions?",
-              "Do the two embedding models organize the full archive into coherent, inspectable topology, outliers, and drift?"
-            ],
+            "artifactId": "resisc45-geospatial-v1-2026-10-09",
             "cases": [
               {
                 "anchorSampleId": "resisc45_airplane_119",
-                "comparison": "Hyper3 keeps the operational transport cluster; CLIP drifts into unrelated land use that would waste analyst time.",
+                "comparison": "Hyper3 returns more same-class and same-group tiles.",
                 "exactClass": "airplane",
                 "id": "airplane-win",
                 "kind": "Aircraft",
                 "models": {
                   "clip": {
-                    "consequence": "Exact aircraft hits collapse; residential and meadow tiles enter the shortlist and raise false-positive cost.",
                     "exactHits": 0,
                     "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
                     "offGroupHits": 6,
@@ -617,9 +612,8 @@
                     "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
                   },
                   "hyper3": {
-                    "consequence": "Transport-family neighbours dominate; aircraft and airfield infrastructure stay together for follow-up review.",
                     "exactHits": 3,
-                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
                     "offGroupHits": 1,
                     "parentHits": 9,
                     "resultIds": [
@@ -634,23 +628,22 @@
                       "resisc45_runway_241",
                       "resisc45_rectangular_farmland_91"
                     ],
-                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                    "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce"
                   }
                 },
                 "parentGroup": "transport",
-                "question": "Does the neighborhood stay with aircraft and transport infrastructure?",
+                "question": "Do aircraft stay with airfield infrastructure?",
                 "sourceImageId": "119",
                 "title": "Airplane / transport"
               },
               {
                 "anchorSampleId": "resisc45_forest_20",
-                "comparison": "Hyper3 is safer for vegetation-identity QA; CLIP pulls built environment into the forest neighbourhood.",
+                "comparison": "Hyper3 returns more same-class and same-group tiles.",
                 "exactClass": "forest",
                 "id": "forest-win",
                 "kind": "Forest",
                 "models": {
                   "clip": {
-                    "consequence": "Half the neighbourhood leaves the vegetation parent; sparse residential tiles create costly confusions.",
                     "exactHits": 2,
                     "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
                     "offGroupHits": 5,
@@ -670,9 +663,8 @@
                     "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
                   },
                   "hyper3": {
-                    "consequence": "Vegetation stays coherent: forest plus meadow/farmland parents with minimal residential leakage.",
                     "exactHits": 4,
-                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
                     "offGroupHits": 1,
                     "parentHits": 9,
                     "resultIds": [
@@ -687,23 +679,22 @@
                       "resisc45_circular_farmland_74",
                       "resisc45_circular_farmland_43"
                     ],
-                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                    "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce"
                   }
                 },
                 "parentGroup": "agriculture_vegetation",
-                "question": "Does the neighborhood avoid residential and transport drift?",
+                "question": "Do forests stay with vegetation and farmland?",
                 "sourceImageId": "20",
                 "title": "Forest / vegetation"
               },
               {
                 "anchorSampleId": "resisc45_storage_tank_1",
-                "comparison": "Both confuse tanks with circular farmland, but Hyper3 recovers more exact industrial matches before drift.",
+                "comparison": "Hyper3 returns more same-class and same-group tiles.",
                 "exactClass": "storage tank",
                 "id": "storage-tank-win",
                 "kind": "Industrial",
                 "models": {
                   "clip": {
-                    "consequence": "Circular farmland competes with tanks early; industrial identity is harder to trust from the shortlist alone.",
                     "exactHits": 2,
                     "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
                     "offGroupHits": 8,
@@ -723,9 +714,8 @@
                     "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
                   },
                   "hyper3": {
-                    "consequence": "All four available same-class tank tiles are recovered; circular farmland still occupies the remaining shortlist positions.",
                     "exactHits": 4,
-                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
                     "offGroupHits": 6,
                     "parentHits": 4,
                     "resultIds": [
@@ -740,23 +730,22 @@
                       "resisc45_circular_farmland_47",
                       "resisc45_airport_14"
                     ],
-                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                    "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce"
                   }
                 },
                 "parentGroup": "built_environment",
-                "question": "Does circular industrial infrastructure stay separate from farmland?",
+                "question": "Do tanks stay distinct from circular farmland?",
                 "sourceImageId": "1",
                 "title": "Storage tank / built environment"
               },
               {
                 "anchorSampleId": "resisc45_airport_14",
-                "comparison": "Explicit regression: CLIP wins exact and parent quality here; use it to pressure-test Hyper3 airfield topology.",
+                "comparison": "CLIP returns more same-class and same-group tiles.",
                 "exactClass": "airport",
                 "id": "airport-regression",
                 "kind": "Airport",
                 "models": {
                   "clip": {
-                    "consequence": "Stronger exact airport hits and broader transport-parent coverage on this example.",
                     "exactHits": 4,
                     "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
                     "offGroupHits": 3,
@@ -776,9 +765,8 @@
                     "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
                   },
                   "hyper3": {
-                    "consequence": "Exact and parent transport hits drop; rectangular farmland enters the neighbourhood earlier than desired.",
                     "exactHits": 3,
-                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
                     "offGroupHits": 5,
                     "parentHits": 5,
                     "resultIds": [
@@ -793,11 +781,11 @@
                       "resisc45_circular_farmland_47",
                       "resisc45_rectangular_farmland_89"
                     ],
-                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                    "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce"
                   }
                 },
                 "parentGroup": "transport",
-                "question": "Which model keeps airports and transport infrastructure together?",
+                "question": "Do airports stay with transport infrastructure?",
                 "sourceImageId": "14",
                 "title": "Airport / transport"
               }
@@ -812,14 +800,14 @@
               },
               "hyper3": {
                 "geometry": "poincare",
-                "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
-                "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+                "layoutKey": "hyper-models__hyper3-clip-v1__12a8d89022ce__poincare_umap__2d_1a6bcbc4",
+                "spaceKey": "hyper-models__hyper3-clip-v1__12a8d89022ce",
                 "title": "Hyper3 archive map"
               }
             },
             "models": {
               "clip": "OpenAI CLIP ViT-B/32",
-              "hyper3": "Hyper3-CLIP v0.5"
+              "hyper3": "Hyper3-CLIP V1"
             },
             "neighbourK": 10,
             "panelIds": {
@@ -830,39 +818,120 @@
             },
             "protocol": {
               "baselineModel": "openai/clip-vit-base-patch32",
-              "candidateModel": "hyper3-clip-v0.5",
-              "claimBoundary": "A bounded neighborhood-quality probe, not a specialist remote-sensing benchmark.",
-              "dataset": "tanganke/resisc45",
+              "candidateModel": "hyper3-clip-v1",
+              "claimBoundary": "A small curated retrieval probe, not a full remote-sensing benchmark.",
+              "dataset": "NWPU-RESISC45",
               "distance": "Hyper3 hyperbolic; CLIP cosine",
               "gallery": 60,
               "k": 10,
-              "modelRevisionCaveat": "Exact model repository revisions were not captured in the original persisted run.",
+              "metricDefinition": "P@10 is matching neighbours divided by 10, averaged over all 60 anchors. Self-matches are excluded; only four same-class neighbours are available, so same-class P@10 is capped at 40%. Group counts include same-class matches.",
+              "modelRevisionCaveat": "Hyper3-CLIP V1 is pinned; the original CLIP checkpoint revision was not recorded.",
               "queries": 60,
               "selfMatch": "excluded",
-              "split": "test",
+              "sourceCaveat": "The original upstream source and split of this tile selection were not recorded. The committed tiles and their hashes define this probe.",
+              "split": "prepared 60-tile subset",
               "subset": "60 curated tiles; 12 scene classes; 5 tiles per class"
+            },
+            "provenance": {
+              "clip": {
+                "model": "openai/clip-vit-base-patch32",
+                "note": "Original frozen CLIP baseline vectors retained.",
+                "revision": null,
+                "vectorsSha256": "1f20d7d1c0f7192c0ca89abc8cfdd15bc1fbdc943a8b7c466d0dd419d9f5b5cb"
+              },
+              "hyper3": {
+                "checkpointSha256": "a2fb2f2fb19d239dff8017e6b895e2ff0fb3cc8f1f61a3348e4e97da3cc0d1a9",
+                "provider": "hyper-models",
+                "providerVersion": "0.4.0",
+                "repo": "hyper3labs/hyper3-clip-v1",
+                "revision": "12a8d89022cec75a3fbac91047683231cbc0fa82",
+                "vectorsSha256": "90c79174054a2f739b7cf18427036dd2af391ae0d4a958294346ae3852075993"
+              },
+              "imageSha256": {
+                "resisc45_airplane_119": "1cd0aadc5a3ebb7ff0cff5a2189bf8cfeb711e8001a9bac48e69e0884bdbe8dd",
+                "resisc45_airplane_136": "3cf50bbd5c21c3d178ac39b1da78eea33b97ffd823f7ec4ca99b0c7ec2fd6109",
+                "resisc45_airplane_156": "70e741323dc25b0b2b4e3cbc7bb37de8493c6b08dd1535db592f3955b42d0cfb",
+                "resisc45_airplane_46": "d347e1aaaacbb2bda0157dbb445eee0f33fe2f53aad23484ee55cfe951275908",
+                "resisc45_airplane_96": "4f2b0f3cdb153b26bcc1e020c2a538a4f9990af818e907c5e252a0c4ccedbd7b",
+                "resisc45_airport_14": "f21f70c2f2a739025172b17c785864b3ef620bb76732d0733e1a97055a76b542",
+                "resisc45_airport_157": "42f8972cc0d070a86c9dedf9671c2fd29a2c8ddc9a7334001103489555ba9389",
+                "resisc45_airport_358": "d441007ece5798ea85e770a58edcd0d4642db2c5740c7f28eb83b24c500f1df1",
+                "resisc45_airport_51": "4f3cd1fa12ba3c89b957696503b77c735058b57865763e7c679cc39dee552a8a",
+                "resisc45_airport_85": "3bd717c5e20438660ff9f63939798d41e62bca764e706cda2f71195683eeb0f7",
+                "resisc45_basketball_court_17": "6f85a9a349a3a5cab0e4da1c0d37d6f19c0255c42b826c8ad5ea7aacaa5c0422",
+                "resisc45_basketball_court_49": "d89b1f563f6bd3cf8459fb6cf697feb501cc0c36714724d8f481873e78b3c2da",
+                "resisc45_basketball_court_62": "9103deca378bac04e5c6a800a881bc844f1b89f9651e6c09b80dba04824cf49a",
+                "resisc45_basketball_court_67": "c6213743d814048ca881a8c2b4fde6b00c690323e66228146451d63d59d6ffb5",
+                "resisc45_basketball_court_69": "d53d6655259fc4fee903f0b2a5fbee243c39ea840d2cb4572c9236a5606b09e3",
+                "resisc45_bridge_174": "40997735f8379c79a975b833812aaf3198b4435b06ee24b00b63bb21f6f423c5",
+                "resisc45_bridge_230": "0c60937907c7f599d511967dd8d38c6e800d40a29334373903bd8b6ea1459ff6",
+                "resisc45_bridge_297": "971c2f5fd7f2f9a3e7f071f042517db4e4d4396ccbbd035212a686aac5420da9",
+                "resisc45_bridge_327": "5ece6188cbc70b1cba831d84fae0056c88f223ae2ba57262a5ca29924e1be47e",
+                "resisc45_bridge_90": "c6d730fbd32bc7c95d06e3c8b68d0371d1ccd09549a0697d0414de31843b76d5",
+                "resisc45_circular_farmland_43": "91fd1675eb889018900fbb045c95f3eb016d9cb32b34ae31ef7b703331d67da8",
+                "resisc45_circular_farmland_47": "ccee17a1de4d497b37c080fc8105e102c68ce11f832938ee157cb127a40a4fdf",
+                "resisc45_circular_farmland_55": "f44cd32d8a434d8bd1973f6917250715b49b2dc858c5b2f72ecf31cc13a4d428",
+                "resisc45_circular_farmland_7": "b70cc7850e1b81c770ac602e7fc674b5b39bd5e864937f92419af951b435b80e",
+                "resisc45_circular_farmland_74": "24fddf2af97e4ef94724a03c05f271137d8f87b6c0db23925e15fa01c7344582",
+                "resisc45_forest_111": "77199c96b7e1e77aaeac198305bcfd42e187b7a51213cf1c32b8cb95fa15524e",
+                "resisc45_forest_20": "5e8ce2012acd54f0498265210dc2f273f4ef92167aa4f30969da0839c32be34f",
+                "resisc45_forest_26": "6cdb277124fa178a1a26a9eb38c738b9f11aa4631d1e523ce4027ee859dbbd73",
+                "resisc45_forest_27": "082a55c88e7dfbbca74c9eb2c43bd1401e04a349f9813f6621566716b205e3cd",
+                "resisc45_forest_36": "d5a16cc9b1914a234a20422dd11965f40f439c255d12c12edd8b6ead1ec99f19",
+                "resisc45_meadow_13": "8ca4b75c81f263350317f3639be4868849ad5046ff30ff40dd69736527d7b7ab",
+                "resisc45_meadow_34": "3b0ce39f2a6a71a424533e040030df4e1f46f41e14790d1c18ba1ff912f3dcf1",
+                "resisc45_meadow_45": "44b43fe782988aa3f6fc2cce1a274b6ca9fdc9c5ec6ec2285b8f27eeef515832",
+                "resisc45_meadow_75": "fc775fd672ed05025423ca38c199f22ca473cef7e5925c2bff533054cffe8428",
+                "resisc45_meadow_79": "70de9beb53cafc661f0d31416694f9231687850a2e26804aaa12b54f1c8d6486",
+                "resisc45_rectangular_farmland_171": "5efae5e821183d603625cca18b541205a624e98dcee00393e223477aa8f85e4c",
+                "resisc45_rectangular_farmland_198": "aeeed559439380f8a325e6cc12d90dca6bb7571e75f187a79bbe700cedcada79",
+                "resisc45_rectangular_farmland_21": "b7df6fd3a053300f0ff05a60e8b9ca1321a27e7767315842a7a8cc2b89bfe8f8",
+                "resisc45_rectangular_farmland_89": "f89de394d8b226fd85eb70fb5893b549199a27d85ad0d7cb5d89d537616bfd0d",
+                "resisc45_rectangular_farmland_91": "63d0ce3e14da49db7e19ce813a2ae9c366c6632864569e85c2a010fbb94b4797",
+                "resisc45_runway_184": "5609d60613bd1159b5137a2ec8a3caf546813a68a7a1a51964676c93d04def26",
+                "resisc45_runway_202": "a92e168bd39a1e84ff5cdb2ed1a88ca1f7b7c911e4d63c392dda9752ac631d02",
+                "resisc45_runway_241": "2b66d36e5d169a169f67b13de9098ba1909de040affcf2621566e5fe0dc94f91",
+                "resisc45_runway_313": "2775934dcfc762b656d5626ae28a6845c6743d48277383f6aa09db18c12de02f",
+                "resisc45_runway_319": "41d80d3abd0bbbb656a595311f1e3c61ecd4cc185a86cd3d2ada6f8218b6c8fb",
+                "resisc45_sparse_residential_196": "a95acb31dac5d358ce48b93367146bf793cfe3bba09e0f7d2a755d44ccd51d4e",
+                "resisc45_sparse_residential_367": "5b422bcfb5b9d872ac7d3443da0233303fa9d452f9dbc28ff8798ff5d8fc745e",
+                "resisc45_sparse_residential_421": "ed0cac78dfdfb70472400ba1379b59108179fe1eeacbb95f23eaab9f1b5b5755",
+                "resisc45_sparse_residential_469": "26d67861cecbfa8fceb82d2bcb46146777e292b4a3efc0cc52b06330fb53f5e1",
+                "resisc45_sparse_residential_477": "3b12ff7b4f5a6bd66f248834b8099c895d68b2fc41046c16fa2fb27148354407",
+                "resisc45_storage_tank_1": "5254fc91b4410bcff92a86808299e1ea88821bcc77767c4309a25c1b2ccb6d3a",
+                "resisc45_storage_tank_271": "4e33bb4f0cd1450d2cd425acd66456436f6fd0a6fdef9614cc5cf4a25e45a008",
+                "resisc45_storage_tank_272": "edf1cd22458296da9e62a6012da03580bbc7083c538a19313f077c30e39170fe",
+                "resisc45_storage_tank_315": "46c75dbee8d0d6ed163dd0bc0ecdf8e5e28392a0e33abd8429869ba93d8254f5",
+                "resisc45_storage_tank_4": "17002e0ab01c54cc1f14f7cab8a21d38de8d961665d206d675df834d517ba093",
+                "resisc45_terrace_116": "1881ea5300d074710f82c9f8950e5ed3f426cbfb11748c75e58868f16ee8961a",
+                "resisc45_terrace_148": "93d88e3ea1cd4d9c5e5985c4f1cc9a09987b68e9bdd746d7b1be3ddedf3b8e24",
+                "resisc45_terrace_16": "c8ad7a14d1ffae2bac02266f61ca63227ed88ca2bd5b6274b3bdc15e9098630b",
+                "resisc45_terrace_37": "a89078a7d986ba6f6e77506b8bbbe8efb376aef08c623b260494deedc1e18d59",
+                "resisc45_terrace_87": "2e598d6a86d65e30753d0bddf97f2e4235144aa87e8be2258fe7617b8e3423b6"
+              },
+              "source": "scripts/eval_geospatial.py"
             },
             "workspaceSampleCount": 60
           },
           "reference_panel_id": null,
           "renderer": "module:panel.jsx",
           "source": "extension",
-          "state_revision": 23,
-          "title": "Aerial identity audit",
+          "state_revision": 0,
+          "title": "Compare aerial tiles",
           "visible": true,
           "width": 380
         }
       ],
       "has_explicit_view": true,
       "layout": null,
-      "layout_revision": 14,
+      "layout_revision": 3,
       "layout_views": {},
       "panels": {
         "clip-neighbours": {
           "state": {
             "collection": {
-              "created_at": 1784730796,
-              "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+              "created_at": 1791544784,
+              "dataset_id": "resisc45_geospatial_v1",
               "entity_set_id": "samples",
               "id": "all:bf21a9e8fbc5",
               "kind": "all",
@@ -877,13 +946,13 @@
           "state": {
             "activeCaseId": "airplane-win"
           },
-          "state_revision": 23
+          "state_revision": 0
         },
         "hyper3-neighbours": {
           "state": {
             "collection": {
-              "created_at": 1784730796,
-              "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+              "created_at": 1791544784,
+              "dataset_id": "resisc45_geospatial_v1",
               "entity_set_id": "samples",
               "id": "all:bf21a9e8fbc5",
               "kind": "all",
@@ -898,13 +967,13 @@
       "selected_ids": [
         "resisc45_airplane_119"
       ],
-      "view_revision": 26
+      "view_revision": 4
     }
   },
   "workspaces": [
     {
-      "dataset_name": "resisc45_clip_hyper3clip_curated_side_by_side",
-      "id": "geospatial-resisc45-retrieval-evidence-v2"
+      "dataset_name": "resisc45_geospatial_v1",
+      "id": "geospatial-resisc45-v1-2026-10-09"
     }
   ]
 }
