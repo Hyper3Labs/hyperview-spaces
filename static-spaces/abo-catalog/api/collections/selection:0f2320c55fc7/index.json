@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788430315,
+    "dataset_id": "abo_catalog_clip_hyper3clip_side_by_side",
+    "entity_set_id": "samples",
+    "id": "selection:0f2320c55fc7",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "B0746HFVWY_91-Pi95Hy9L",
+        "B075Z8769G_918OhgZ71BL",
+        "B0853L3W72_81mvF2gJy5L",
+        "B07QTD9VPM_81EXO8kXnhL",
+        "B0853KZW7Z_71LY8AELiuL",
+        "B07B7B244W_71DNWOd-5bL"
+      ],
+      "source": "Hyper3-CLIP \u00b7 Silver mid-century chair \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

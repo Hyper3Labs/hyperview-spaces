@@ -1,0 +1,204 @@
+{
+  "collection_id": "selection:fc7c42867d22",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "419e1902dcac2d77.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-01",
+        "label": "Related label \u00b7 Wine",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-01/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 1,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Wine",
+          "source_sample_id": "openimages_073_needs_review_419e1902dcac2d77"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "1de9f211102093d0.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-02",
+        "label": "Other flagged item \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-02/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 2,
+          "review_tag": "Other flagged item",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_110_needs_review_1de9f211102093d0"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "20d46de74f618aef.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-03",
+        "label": "Exact label \u00b7 Beer",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-03/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 3,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Beer",
+          "source_sample_id": "openimages_118_needs_review_20d46de74f618aef"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "5f1e938cac4f3753.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-04",
+        "label": "Exact label \u00b7 Beer",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-04/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 4,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Beer",
+          "source_sample_id": "openimages_100_needs_review_5f1e938cac4f3753"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "98e6698057654eff.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-05",
+        "label": "Related label \u00b7 Wine",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-05/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 5,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Wine",
+          "source_sample_id": "openimages_099_needs_review_98e6698057654eff"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-05",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "8fdbacd880af6412.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-06",
+        "label": "Exact label \u00b7 Beer",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-06/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 6,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Beer",
+          "source_sample_id": "openimages_074_needs_review_8fdbacd880af6412"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-06/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-06",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "2c87374e8d2f3a34.jpg",
+        "height": null,
+        "id": "visual-safety-alcohol-clip-07",
+        "label": "Exact label \u00b7 Beer",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-alcohol-clip-07/content",
+        "metadata": {
+          "anchor_id": "openimages_001_needs_review_58edc439809229e6",
+          "model": "clip",
+          "rank": 7,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Beer",
+          "source_sample_id": "openimages_112_needs_review_2c87374e8d2f3a34"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-alcohol-clip-07/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-alcohol-clip-07",
+      "score": null
+    }
+  ],
+  "limit": 7,
+  "offset": 0,
+  "total": 7
+}

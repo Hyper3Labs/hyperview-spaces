@@ -1,0 +1,970 @@
+{
+  "coords": [
+    [
+      0.3379041850566864,
+      0.5033033490180969
+    ],
+    [
+      -0.24169659614562988,
+      -0.03784278407692909
+    ],
+    [
+      0.18293341994285583,
+      0.2732934355735779
+    ],
+    [
+      0.3959260880947113,
+      0.3830835521221161
+    ],
+    [
+      0.16982732713222504,
+      0.11419010162353516
+    ],
+    [
+      0.3658562898635864,
+      0.15764185786247253
+    ],
+    [
+      -0.37756267189979553,
+      -0.768237292766571
+    ],
+    [
+      -0.3019290864467621,
+      -0.5614380836486816
+    ],
+    [
+      -0.15655095875263214,
+      0.2999449074268341
+    ],
+    [
+      -0.819549024105072,
+      -0.09998752176761627
+    ],
+    [
+      -0.7973138689994812,
+      -0.08573340624570847
+    ],
+    [
+      -0.8024152517318726,
+      -0.11109263449907303
+    ],
+    [
+      0.05325939133763313,
+      -0.0028850866947323084
+    ],
+    [
+      0.17572058737277985,
+      0.7772570848464966
+    ],
+    [
+      -0.02807714231312275,
+      0.22170472145080566
+    ],
+    [
+      0.07190004736185074,
+      0.8184452056884766
+    ],
+    [
+      0.17161154747009277,
+      0.7080234885215759
+    ],
+    [
+      0.09220882505178452,
+      0.8217249512672424
+    ],
+    [
+      0.06189177557826042,
+      0.7730912566184998
+    ],
+    [
+      0.10831789672374725,
+      0.6774418950080872
+    ],
+    [
+      0.1249934658408165,
+      0.7772730588912964
+    ],
+    [
+      0.509998083114624,
+      -0.2726990580558777
+    ],
+    [
+      0.5807759165763855,
+      -0.3169049918651581
+    ],
+    [
+      0.5052558779716492,
+      -0.24839124083518982
+    ],
+    [
+      0.4315718710422516,
+      0.4671289622783661
+    ],
+    [
+      0.3149382770061493,
+      0.48655617237091064
+    ],
+    [
+      0.3279217481613159,
+      0.08185326308012009
+    ],
+    [
+      0.4360080361366272,
+      0.3731187880039215
+    ],
+    [
+      -0.34022554755210876,
+      -0.5902326703071594
+    ],
+    [
+      -0.2961995005607605,
+      -0.6195566654205322
+    ],
+    [
+      -0.37464019656181335,
+      -0.716337263584137
+    ],
+    [
+      -0.34310969710350037,
+      -0.7357433438301086
+    ],
+    [
+      -0.18174304068088531,
+      0.3569074869155884
+    ],
+    [
+      -0.3787933588027954,
+      -0.7596330046653748
+    ],
+    [
+      -0.33577126264572144,
+      -0.7176371812820435
+    ],
+    [
+      -0.3531489670276642,
+      -0.7453163862228394
+    ],
+    [
+      -0.7291914820671082,
+      -0.09357836842536926
+    ],
+    [
+      -0.8131590485572815,
+      -0.11602465063333511
+    ],
+    [
+      -0.8504957556724548,
+      -0.1062282919883728
+    ],
+    [
+      -0.8295456171035767,
+      -0.10405755043029785
+    ],
+    [
+      -0.2136809527873993,
+      0.3906700611114502
+    ],
+    [
+      0.09833267331123352,
+      0.8130025863647461
+    ],
+    [
+      0.16271553933620453,
+      0.73214191198349
+    ],
+    [
+      0.14964701235294342,
+      0.705680787563324
+    ],
+    [
+      0.47473570704460144,
+      -0.24122858047485352
+    ],
+    [
+      0.538239061832428,
+      -0.3304426968097687
+    ],
+    [
+      0.6280447244644165,
+      -0.33253204822540283
+    ],
+    [
+      0.5389974117279053,
+      -0.2850930690765381
+    ],
+    [
+      0.11488857120275497,
+      0.15103133022785187
+    ],
+    [
+      -0.12651996314525604,
+      0.2731476128101349
+    ],
+    [
+      0.4701915383338928,
+      0.17771895229816437
+    ],
+    [
+      0.11467698961496353,
+      -0.08612179011106491
+    ],
+    [
+      -0.11147207021713257,
+      -0.037540119141340256
+    ],
+    [
+      -0.33254653215408325,
+      -0.6575871109962463
+    ],
+    [
+      -0.2876013219356537,
+      -0.562631368637085
+    ],
+    [
+      -0.3281644582748413,
+      -0.6435270309448242
+    ],
+    [
+      -0.2742863595485687,
+      -0.6020596623420715
+    ],
+    [
+      -0.8641152381896973,
+      -0.1114126592874527
+    ],
+    [
+      -0.8606874346733093,
+      -0.10160662978887558
+    ],
+    [
+      -0.6907991170883179,
+      -0.08566397428512573
+    ],
+    [
+      -0.11064080893993378,
+      -0.2941933274269104
+    ],
+    [
+      0.10187879204750061,
+      0.7839230895042419
+    ],
+    [
+      0.12215660512447357,
+      0.8058139085769653
+    ],
+    [
+      0.17498447000980377,
+      0.7672516703605652
+    ],
+    [
+      0.11935756355524063,
+      0.7556076049804688
+    ],
+    [
+      0.10445988178253174,
+      0.8115094900131226
+    ],
+    [
+      0.115132175385952,
+      0.7857625484466553
+    ],
+    [
+      0.6159129738807678,
+      -0.3010479807853699
+    ],
+    [
+      0.35841184854507446,
+      -0.18250694870948792
+    ],
+    [
+      -0.20445144176483154,
+      0.4340331256389618
+    ],
+    [
+      0.3512781858444214,
+      0.17481879889965057
+    ],
+    [
+      -0.13790801167488098,
+      0.2049197107553482
+    ],
+    [
+      0.41780734062194824,
+      0.16636385023593903
+    ],
+    [
+      -0.18570177257061005,
+      0.44374701380729675
+    ],
+    [
+      0.42367294430732727,
+      0.13724225759506226
+    ],
+    [
+      -0.33445924520492554,
+      -0.6757073402404785
+    ],
+    [
+      -0.36869680881500244,
+      -0.7393149733543396
+    ],
+    [
+      -0.3614034056663513,
+      -0.7187901139259338
+    ],
+    [
+      -0.7984517812728882,
+      -0.09682299196720123
+    ],
+    [
+      -0.7808853387832642,
+      -0.11061888933181763
+    ],
+    [
+      -0.8390908241271973,
+      -0.09539035707712173
+    ],
+    [
+      -0.2008211463689804,
+      -0.3883668780326843
+    ],
+    [
+      0.15586645901203156,
+      0.7555020451545715
+    ],
+    [
+      0.13389964401721954,
+      0.7165789604187012
+    ],
+    [
+      0.12044095247983932,
+      0.7817107439041138
+    ],
+    [
+      0.16336536407470703,
+      0.7945250272750854
+    ],
+    [
+      0.0454271174967289,
+      0.7016801238059998
+    ],
+    [
+      0.11246882379055023,
+      0.750792384147644
+    ],
+    [
+      0.10351568460464478,
+      0.8107675909996033
+    ],
+    [
+      0.6095901727676392,
+      -0.3250374495983124
+    ],
+    [
+      0.4316044747829437,
+      0.4666144549846649
+    ],
+    [
+      0.28663578629493713,
+      0.4487936198711395
+    ],
+    [
+      -0.3136056065559387,
+      -0.6820079684257507
+    ],
+    [
+      -0.35268914699554443,
+      -0.6938437223434448
+    ],
+    [
+      -0.18332049250602722,
+      0.4098452031612396
+    ],
+    [
+      -0.28191861510276794,
+      -0.6244896054267883
+    ],
+    [
+      -0.381313294172287,
+      -0.7491827607154846
+    ],
+    [
+      -0.3687627613544464,
+      -0.7466092109680176
+    ],
+    [
+      -0.8443334102630615,
+      -0.10470101237297058
+    ],
+    [
+      0.07699666917324066,
+      0.8085482120513916
+    ],
+    [
+      0.1659369021654129,
+      0.6622699499130249
+    ],
+    [
+      0.12465961277484894,
+      0.6804479360580444
+    ],
+    [
+      0.6170283555984497,
+      -0.3369915187358856
+    ],
+    [
+      -0.18087388575077057,
+      0.31305402517318726
+    ],
+    [
+      0.11610498279333115,
+      0.42464888095855713
+    ],
+    [
+      0.3904722034931183,
+      0.4621385335922241
+    ],
+    [
+      0.33621057868003845,
+      0.4626621901988983
+    ],
+    [
+      0.11759444326162338,
+      0.32531899213790894
+    ],
+    [
+      0.46625086665153503,
+      0.15914341807365417
+    ],
+    [
+      -0.30388492345809937,
+      -0.5775148868560791
+    ],
+    [
+      -0.3771801292896271,
+      -0.7337332963943481
+    ],
+    [
+      0.018561532720923424,
+      0.12850050628185272
+    ],
+    [
+      0.1825154721736908,
+      0.7614241242408752
+    ],
+    [
+      0.09847719222307205,
+      0.7225428819656372
+    ],
+    [
+      0.0044181556440889835,
+      0.023586224764585495
+    ],
+    [
+      -0.13638095557689667,
+      0.39442381262779236
+    ],
+    [
+      0.5573200583457947,
+      -0.31415414810180664
+    ],
+    [
+      0.6421276330947876,
+      -0.3502630293369293
+    ],
+    [
+      -0.7963491678237915,
+      -0.11056646704673767
+    ],
+    [
+      0.4119092524051666,
+      0.4339398741722107
+    ],
+    [
+      0.45133426785469055,
+      0.46270567178726196
+    ],
+    [
+      -0.3435826301574707,
+      -0.6905876994132996
+    ],
+    [
+      -0.34664177894592285,
+      -0.7316474914550781
+    ],
+    [
+      -0.23417730629444122,
+      0.42417293787002563
+    ],
+    [
+      -0.07941073179244995,
+      0.06407298147678375
+    ],
+    [
+      -0.8027991056442261,
+      -0.11301951855421066
+    ],
+    [
+      -0.7765740156173706,
+      -0.0793926864862442
+    ],
+    [
+      0.07806425541639328,
+      0.8233210444450378
+    ],
+    [
+      0.1504126340150833,
+      0.7726860642433167
+    ],
+    [
+      -0.23981425166130066,
+      -0.4339207708835602
+    ],
+    [
+      0.04518406465649605,
+      0.6226558685302734
+    ],
+    [
+      0.5190014839172363,
+      -0.32221636176109314
+    ],
+    [
+      0.5328740477561951,
+      -0.3316262364387512
+    ],
+    [
+      -0.037981897592544556,
+      0.330900639295578
+    ],
+    [
+      0.2482292801141739,
+      0.405915766954422
+    ],
+    [
+      0.33830204606056213,
+      0.42148616909980774
+    ],
+    [
+      0.21297650039196014,
+      0.4362746477127075
+    ],
+    [
+      0.41377654671669006,
+      0.20608001947402954
+    ],
+    [
+      0.26936575770378113,
+      0.4518009126186371
+    ],
+    [
+      0.3490368127822876,
+      0.38972029089927673
+    ],
+    [
+      -0.34971779584884644,
+      -0.5950058698654175
+    ],
+    [
+      -0.3710002899169922,
+      -0.7631059288978577
+    ],
+    [
+      -0.3550627827644348,
+      -0.7556585669517517
+    ],
+    [
+      -0.32356977462768555,
+      -0.5921929478645325
+    ],
+    [
+      -0.8543055653572083,
+      -0.10199329257011414
+    ],
+    [
+      -0.8012653589248657,
+      -0.12039503455162048
+    ],
+    [
+      -0.8188214898109436,
+      -0.11441661417484283
+    ],
+    [
+      0.1653420776128769,
+      0.7747274041175842
+    ],
+    [
+      0.08053698390722275,
+      0.7951154708862305
+    ],
+    [
+      0.11114989966154099,
+      0.8079974055290222
+    ],
+    [
+      -0.17338447272777557,
+      -0.30118465423583984
+    ],
+    [
+      0.12269396334886551,
+      0.8012195229530334
+    ],
+    [
+      -0.31174492835998535,
+      -0.49050989747047424
+    ],
+    [
+      0.12289954721927643,
+      -0.00238595949485898
+    ],
+    [
+      0.0979856327176094,
+      0.5918165445327759
+    ],
+    [
+      -0.25518402457237244,
+      -0.5424866080284119
+    ],
+    [
+      0.5788822174072266,
+      -0.314190149307251
+    ],
+    [
+      0.24591851234436035,
+      0.017681490629911423
+    ],
+    [
+      0.6175097823143005,
+      -0.34876054525375366
+    ],
+    [
+      0.6522966027259827,
+      -0.34901490807533264
+    ]
+  ],
+  "geometry": "poincare",
+  "ids": [
+    "logo_0007",
+    "logo_0009",
+    "logo_0011",
+    "logo_0012",
+    "logo_0019",
+    "logo_0032",
+    "logo_0052",
+    "logo_0068",
+    "logo_0077",
+    "logo_0078",
+    "logo_0086",
+    "logo_0087",
+    "logo_0099",
+    "logo_0100",
+    "logo_0110",
+    "logo_0123",
+    "logo_0124",
+    "logo_0127",
+    "logo_0130",
+    "logo_0135",
+    "logo_0136",
+    "logo_0140",
+    "logo_0141",
+    "logo_0147",
+    "logo_0015",
+    "logo_0017",
+    "logo_0021",
+    "logo_0035",
+    "logo_0046",
+    "logo_0050",
+    "logo_0053",
+    "logo_0054",
+    "logo_0055",
+    "logo_0057",
+    "logo_0061",
+    "logo_0064",
+    "logo_0074",
+    "logo_0080",
+    "logo_0081",
+    "logo_0090",
+    "logo_0111",
+    "logo_0112",
+    "logo_0126",
+    "logo_0128",
+    "logo_0145",
+    "logo_0150",
+    "logo_0151",
+    "logo_0152",
+    "logo_0004",
+    "logo_0033",
+    "logo_0034",
+    "logo_0036",
+    "logo_0038",
+    "logo_0042",
+    "logo_0048",
+    "logo_0069",
+    "logo_0070",
+    "logo_0073",
+    "logo_0085",
+    "logo_0091",
+    "logo_0101",
+    "logo_0116",
+    "logo_0117",
+    "logo_0118",
+    "logo_0125",
+    "logo_0131",
+    "logo_0137",
+    "logo_0146",
+    "logo_0159",
+    "logo_0000",
+    "logo_0010",
+    "logo_0013",
+    "logo_0014",
+    "logo_0024",
+    "logo_0030",
+    "logo_0039",
+    "logo_0058",
+    "logo_0065",
+    "logo_0075",
+    "logo_0076",
+    "logo_0082",
+    "logo_0095",
+    "logo_0102",
+    "logo_0105",
+    "logo_0108",
+    "logo_0113",
+    "logo_0114",
+    "logo_0121",
+    "logo_0129",
+    "logo_0143",
+    "logo_0008",
+    "logo_0016",
+    "logo_0040",
+    "logo_0041",
+    "logo_0044",
+    "logo_0047",
+    "logo_0056",
+    "logo_0059",
+    "logo_0092",
+    "logo_0109",
+    "logo_0120",
+    "logo_0139",
+    "logo_0154",
+    "logo_0002",
+    "logo_0005",
+    "logo_0025",
+    "logo_0028",
+    "logo_0029",
+    "logo_0037",
+    "logo_0049",
+    "logo_0067",
+    "logo_0088",
+    "logo_0097",
+    "logo_0103",
+    "logo_0107",
+    "logo_0122",
+    "logo_0148",
+    "logo_0158",
+    "logo_0006",
+    "logo_0018",
+    "logo_0022",
+    "logo_0045",
+    "logo_0060",
+    "logo_0066",
+    "logo_0071",
+    "logo_0079",
+    "logo_0083",
+    "logo_0094",
+    "logo_0098",
+    "logo_0104",
+    "logo_0138",
+    "logo_0142",
+    "logo_0153",
+    "logo_0001",
+    "logo_0003",
+    "logo_0020",
+    "logo_0023",
+    "logo_0026",
+    "logo_0027",
+    "logo_0031",
+    "logo_0043",
+    "logo_0051",
+    "logo_0062",
+    "logo_0063",
+    "logo_0072",
+    "logo_0084",
+    "logo_0089",
+    "logo_0093",
+    "logo_0096",
+    "logo_0106",
+    "logo_0115",
+    "logo_0119",
+    "logo_0132",
+    "logo_0133",
+    "logo_0134",
+    "logo_0144",
+    "logo_0149",
+    "logo_0155",
+    "logo_0156",
+    "logo_0157"
+  ],
+  "labels": [
+    "Cafe Restaurant Bar With Asian Food",
+    "Cafe Restaurant Bar With The Food Cover Khlosh And Leaves On The Sides",
+    "Cafe Restaurant Bar With The Golden Arch And Fish In It",
+    "Cafe Restaurant Bar With The Fork In Circle",
+    "Cafe Restaurant Bar With Pizza With Cheeze And Pepperoni On The Pan",
+    "Cafe Restaurant Bar With The Cocktail Glass In An Oval Frame And Inscriptions Outside",
+    "Flower Store",
+    "Flower Store",
+    "Coffee Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Coffee Shop",
+    "Barbershop Hair Salon",
+    "Coffee Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With Two Striped Parallelepipeds",
+    "Building Company With The Contour Of Three Parallelepipeds Intersect",
+    "Building Company With Three High-Rise Buildings That Look Like Arrows",
+    "Cafe Restaurant Bar With Lid For Serving Dishes And Spoon And Fork Printed On It",
+    "Cafe Restaurant Bar With The Bowl Of Nodles That Take Chinese Chopsticks",
+    "Cafe Restaurant Bar With Knife Fork With A Piece Of Meal And Spoon",
+    "Cafe Restaurant Bar With The Plate",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Coffee Shop",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Coffee Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With The Contour Of Three Parallelograms",
+    "Building Company With Three Parallelograms",
+    "Building Company With Two Simple Contours Of The House Intersect",
+    "Building Company With A Square Snake Forms The Shape Of A House",
+    "Cafe Restaurant Bar With A Circle With An Ornament On The Sides",
+    "Coffee Shop",
+    "Cafe Restaurant Bar With A Glass Of Wine In The Form Of A Liquid",
+    "Cafe Restaurant Bar With The Glass In The Rectangle",
+    "Cafe Restaurant Bar With The Fork Inside Abstract Arch",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With A Circle In Which A High-Rise Building Is Drawn With Lines",
+    "Building Company With The Outline Of A High-Rise Building",
+    "Coffee Shop",
+    "Cafe Restaurant Bar With A Hand Drawn Coctail Glass With A Straw And A Slice Of Orange As A Decoration",
+    "Coffee Shop",
+    "Cafe Restaurant Bar With The Small Glass And An Arc Above",
+    "Coffee Shop",
+    "Cafe Restaurant Bar With The Wine Glass",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With Abstract Building In The Shape Of A Cube",
+    "Cafe Restaurant Bar With Spoon",
+    "Asian Cafe Restaurant Bar With The Bowl Of Ramen",
+    "Flower Store",
+    "Flower Store",
+    "Coffee Shop",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Electronic Online Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With The Contour Of The Parallelepiped",
+    "Coffee Shop",
+    "Cafe Restaurant Butchery With A Circle And A Red Steak Inside It",
+    "Cafe Restaurant Bar With The Fork And Spoon That Cross The Square And One More Square At The Background",
+    "Asian Cafe Restaurant Bar With A Circle Inside Which Is Ramen With Noodles",
+    "Cafe Restaurant Bar With Fish Inside Golden Circle That Looks Like A Lifeline And Rope",
+    "Cafe Restaurant Bar With The Glass Of Champagne",
+    "Flower Store",
+    "Flower Store",
+    "Coffee Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Coffee Shop",
+    "Building Company With Three High-Rise Buildings That Look Like Parallelepipeds Are Bounded From Below By A Curved Arc",
+    "Building Company With The Contour Of The House With A Pipe And A Cutout For The Door",
+    "Cafe Restaurant Bar With A Bag And Shawarma With Lettuce Inside It",
+    "Cafe Restaurant Bar With The Fork And Knife And Plate With The Oysters And Lemon",
+    "Cafe Restaurant Bar With An Illustration Of A Knife And Fork On The Plate",
+    "Flower Store",
+    "Flower Store",
+    "Coffee Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Building Company With Three High-Rise Buildings",
+    "Building Company With Three High-Rise Buildings In Horizontal Stripes",
+    "Coffee Shop",
+    "Cafe Restaurant Bar Pizzeria With A Slice Of Pizza At The Top Part Of The Circle",
+    "Asian Cafe Restaurant Bar With A Bowl Of Soup With Noodles",
+    "Asian Cafe Restaurant Bar With A Bowl Of Noodles Stylized Like A Head With The Smile And Japaneese Bandage",
+    "Cafe Restaurant Bar With The Hand Of A Skeleton Holding A Martini Glass",
+    "Cafe Restaurant Bar With The Bowl Of Ramen",
+    "Cafe Restaurant Bar With An Image Of A Square With Four Pictures: A Knife And Fork In The Upper Left Corner",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Flower Store",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Electronic Online Shop",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Barbershop Hair Salon",
+    "Coffee Shop",
+    "Barbershop Hair Salon",
+    "Coffee Shop",
+    "Building Company With A Minimalistic Outline Of Four High-Rise Buildings",
+    "Coffee Shop",
+    "Building Company With The Contour Of The House",
+    "Building Company With Abstract Contour Of The House Made Of Sticks"
+  ],
+  "layout_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4"
+}

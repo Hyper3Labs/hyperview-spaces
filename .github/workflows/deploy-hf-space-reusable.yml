@@ -6,8 +6,8 @@ name: Deploy Hugging Face Space (Reusable)
 #                  Dockerfile builds the image and `demo.py` rebuilds the
 #                  workspace at boot. Only works when the demo can prepare its
 #                  own data inside the container.
-#   live-bundle    Publish an exported HyperView bundle - the same artifact the
-#                  landing site serves as a Static Space - with
+#   live-bundle    Publish an exported HyperView bundle from static-spaces/ -
+#                  the same artifact spaces.hyper3labs.com serves - with
 #                  `hyperview publish --mode live`. The generated image runs
 #                  `hyperview serve --from <bundle> --public`, so the container
 #                  restores prepared data instead of recomputing it.
@@ -36,7 +36,7 @@ on:
         default: ""
         type: string
       bundle_slug:
-        description: "live-bundle mode: bundle directory name under public/spaces/ in the site repository"
+        description: "live-bundle mode: bundle directory name under static-spaces/"
         required: false
         default: ""
         type: string
@@ -49,16 +49,6 @@ on:
         description: "live-bundle mode: additional pinned requirements for the image, one per line"
         required: false
         default: ""
-        type: string
-      site_repository:
-        description: "live-bundle mode: repository holding the exported bundles"
-        required: false
-        default: Hyper3Labs/hyper3labs.github.io
-        type: string
-      site_ref:
-        description: "live-bundle mode: branch or tag of the site repository to read the bundle from"
-        required: false
-        default: main
         type: string
 
 jobs:
@@ -102,7 +92,6 @@ jobs:
       # --- docker-folder ------------------------------------------------
 
       - name: Checkout
-        if: inputs.deploy_mode == 'docker-folder'
         uses: actions/checkout@v6
 
       - name: Install Hugging Face client
@@ -136,14 +125,6 @@ jobs:
 
       # --- live-bundle --------------------------------------------------
 
-      - name: Checkout the bundle site
-        if: inputs.deploy_mode == 'live-bundle'
-        uses: actions/checkout@v6
-        with:
-          repository: ${{ inputs.site_repository }}
-          ref: ${{ inputs.site_ref }}
-          path: site
-
       - name: Install HyperView
         if: inputs.deploy_mode == 'live-bundle'
         env:
@@ -165,16 +146,14 @@ jobs:
           BUNDLE_SLUG: ${{ inputs.bundle_slug }}
           HYPERVIEW_VERSION: ${{ inputs.hyperview_version }}
           EXTRA_PIP: ${{ inputs.extra_pip }}
-          SITE_REPOSITORY: ${{ inputs.site_repository }}
         run: |
           set -euo pipefail
-          bundle_dir="site/public/spaces/${BUNDLE_SLUG}"
-          [[ -d "$bundle_dir" ]] || { echo "Missing bundle: ${SITE_REPOSITORY}:public/spaces/${BUNDLE_SLUG}"; exit 1; }
+          bundle_dir="static-spaces/${BUNDLE_SLUG}"
+          [[ -d "$bundle_dir" ]] || { echo "Missing bundle: $bundle_dir"; exit 1; }
           [[ -f "$bundle_dir/hyperview-static.json" ]] || {
             echo "Not a HyperView bundle (no hyperview-static.json): $bundle_dir"
             exit 1
           }
-          site_sha="$(git -C site rev-parse --short HEAD)"
 
           # One argument per line, consumed with `mapfile` below, so a
           # requirement or a commit message never has to survive re-quoting.
@@ -189,7 +168,7 @@ jobs:
               printf '%s\n' "--extra-pip" "$trimmed"
             done <<< "${EXTRA_PIP}"
             printf '%s\n' "--commit-message" \
-              "Publish ${BUNDLE_SLUG} bundle (${SITE_REPOSITORY}@${site_sha}) from ${GITHUB_REPOSITORY}@${GITHUB_SHA::7}"
+              "Publish ${BUNDLE_SLUG} bundle from ${GITHUB_REPOSITORY}@${GITHUB_SHA::7}"
           } > "${RUNNER_TEMP}/publish-args"
           cat "${RUNNER_TEMP}/publish-args"
 

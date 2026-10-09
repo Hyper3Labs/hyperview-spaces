@@ -1,0 +1,212 @@
+{
+  "collection_id": "selection:c8eaafacb88a",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBK2P2G_41TnBzn9tFL.jpg",
+        "height": null,
+        "id": "B07DBK2P2G_41TnBzn9tFL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBK2P2G_41TnBzn9tFL/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Chrome With Blue Glass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41TnBzn9tFL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/c4/c4e9a238.jpg",
+          "item_id": "B07DBK2P2G",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Modern",
+          "title": "Amazon Brand \u2013 Ravenna Home Modern Round Table Lamp With LED Light Bulb - 17.50 Inches, Chrome with Blue Glass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBK2P2G_41TnBzn9tFL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBK2P2G_41TnBzn9tFL",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBHB6B5_41SHn0jzPOL.jpg",
+        "height": null,
+        "id": "B07DBHB6B5_41SHn0jzPOL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBHB6B5_41SHn0jzPOL/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Chrome With Clear Glass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41SHn0jzPOL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/56/56162342.jpg",
+          "item_id": "B07DBHB6B5",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Ravenna Home Modern Round Table Lamp With LED Light Bulb - 17.50 Inches, Chrome with Clear Glass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBHB6B5_41SHn0jzPOL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBHB6B5_41SHn0jzPOL",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "B001CD1GC0_71oh4KcBXJS.jpg",
+        "height": null,
+        "id": "B001CD1GC0_71oh4KcBXJS",
+        "label": "HOME_LIGHTING_AND_LAMPS",
+        "media_type": null,
+        "media_url": "/api/samples/B001CD1GC0_71oh4KcBXJS/content",
+        "metadata": {
+          "brand": "Pinzon by Amazon",
+          "color": "Chrome",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> home lighting and lamps",
+          "image_id": "71oh4KcBXJS",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/0a/0a50ffba.jpg",
+          "item_id": "B001CD1GC0",
+          "product_type": "HOME_LIGHTING_AND_LAMPS",
+          "product_type_readable": "home lighting and lamps",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Modern",
+          "title": "Pinzon Galaxy 28-Inch Table Lamp, Chrome"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B001CD1GC0_71oh4KcBXJS/thumbnail",
+        "width": null
+      },
+      "sample_id": "B001CD1GC0_71oh4KcBXJS",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07MBFDJQ3_51nyDMjCmHL.jpg",
+        "height": null,
+        "id": "B07MBFDJQ3_51nyDMjCmHL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07MBFDJQ3_51nyDMjCmHL/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Silver",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "51nyDMjCmHL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/0c/0c84de5f.jpg",
+          "item_id": "B07MBFDJQ3",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Ravenna Home Textured Ceramic Base Table Lamp with LED Light Bulb, 18\"H, Silver - 20465-002"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07MBFDJQ3_51nyDMjCmHL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07MBFDJQ3_51nyDMjCmHL",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "B073P3NK7T_81oTHF1PcUL.jpg",
+        "height": null,
+        "id": "B073P3NK7T_81oTHF1PcUL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B073P3NK7T_81oTHF1PcUL/content",
+        "metadata": {
+          "brand": "Stone & Beam",
+          "color": "Polished Nickel",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "81oTHF1PcUL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/f1/f154a661.jpg",
+          "item_id": "B073P3NK7T",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Rectangle",
+          "title": "Amazon Brand \u2013 Stone & Beam Modern Crystal Glass Rectangle Table Desk Lamp With Bulb And White Shade - 18 x 12 x 12 Inches"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B073P3NK7T_81oTHF1PcUL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B073P3NK7T_81oTHF1PcUL",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBJQC4S_41Jv3-wdZ3L.jpg",
+        "height": null,
+        "id": "B07DBJQC4S_41Jv3-wdZ3L",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBJQC4S_41Jv3-wdZ3L/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Dark Bronze With Smoke Glass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41Jv3-wdZ3L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/9c/9c81a7cf.jpg",
+          "item_id": "B07DBJQC4S",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Modern",
+          "title": "Amazon Brand \u2013 Ravenna Home Modern Round Table Lamp With LED Light Bulb - 17.50 Inches, Dark Bronze with Smoke Glass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBJQC4S_41Jv3-wdZ3L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBJQC4S_41Jv3-wdZ3L",
+      "score": null
+    }
+  ],
+  "limit": 6,
+  "offset": 0,
+  "total": 6
+}

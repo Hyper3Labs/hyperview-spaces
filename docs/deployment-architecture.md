@@ -27,8 +27,8 @@ generous Workers/KV/static-asset allowances are the target.
 - `.github/workflows/monitor-hf-spaces.yml` checks the registered Live Spaces
   hourly. The Worker status endpoint is the low-latency public view; Actions is
   the independent failing CI signal.
-- `.github/workflows/deploy-cloudflare-spaces.yml` assembles the six reviewed
-  bundles from `Hyper3Labs/hyper3labs.github.io`, validates the Worker upload,
+- `.github/workflows/deploy-cloudflare-spaces.yml` builds the gallery and
+  collects every committed bundle from `static-spaces/`, validates the Worker upload,
   and deploys after loading Cloudflare credentials from Infisical with GitHub
   OIDC. Until `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` exist in the
   Infisical `prod` environment and the two public identity/project variables
@@ -181,12 +181,10 @@ workbench" affordance, which doubles as the pip-install CTA.
 
 ### The demos index
 
-The landing site `/spaces` page (hyper3labs.github.io) lists every
-demo with a thumbnail, one-line story, live status badge (from
-`warm-worker` for the remaining Docker Spaces; Static Spaces are always
-"live"), and links. Served from the same Cloudflare Worker static assets as
-the landing page (e.g. `hyper3labs.com/demos`), generated from
-`live-spaces.registry.json` so the registry stays the single source of truth.
+The gallery at the root of spaces.hyper3labs.com lists every Space with a
+thumbnail, description, live status dot for Live Spaces (from the Worker's
+`/status.json`), and Open, Live Space and Source links. `scripts/build_spaces_site.py`
+generates it from both registries, so they stay the single source of truth.
 
 ### What stays out of scope
 
@@ -228,16 +226,9 @@ folder, or `hyperview publish --mode live`.
 
 ### Where the bundle comes from
 
-The exported bundles are committed to the landing site repository
-(`Hyper3Labs/hyper3labs.github.io`, `public/spaces/<slug>/`), because the site
-serves them as Static Spaces. Rather than keep a second copy here, the deploy
-job checks that repository out and publishes from it.
-
-The consequence is that the two repositories are coupled by a manual step: a
-re-exported bundle committed on the site does not deploy itself. Re-mount the
-bundle on the site, then trigger the Space's workflow here — `workflow_dispatch`
-by hand, or a `static-bundle-published` repository dispatch from an automation
-that has a token for this repository.
+The exported bundles are committed here, in `static-spaces/<slug>/`. The same
+files are served by spaces.hyper3labs.com and published to the Live Spaces, so
+committing a re-exported bundle to `main` redeploys both.
 
 Authentication is unchanged from Layer 1's workflows and deliberately so:
 `id-token: write` plus `HF_OIDC_RESOURCE=spaces/<owner>/<name>` lets

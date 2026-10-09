@@ -1,0 +1,236 @@
+{
+  "artifacts": {
+    "dataset": "api/dataset.json",
+    "embeddings": "api/embeddings/default.json",
+    "runtime": "api/runtime.json",
+    "samples": "api/samples/index.json",
+    "similarity": "api/search/similar/index.json"
+  },
+  "capabilities": {
+    "browse_samples": true,
+    "commands": {
+      "allowed": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor",
+        "workspace.panel.focus",
+        "workspace.panel.state.patch",
+        "workspace.panel.update",
+        "workspace.panel.update-props"
+      ],
+      "allowed_prefixes": [],
+      "panel_target": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.search.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor"
+      ]
+    },
+    "lasso_2d": true,
+    "lasso_3d": false,
+    "layouts": true,
+    "mode": "static",
+    "new_layouts": false,
+    "panel_state": "ephemeral",
+    "panels": [
+      {
+        "panel_id": "map-euclidean-3d",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "map-spherical-3d",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "map-poincare-2d",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "samples",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "hello-world-intro",
+        "panel_type": "hello-world-intro.hello-world-intro",
+        "reason": null,
+        "static_compatible": true
+      }
+    ],
+    "python_tools": false,
+    "runtime_mutations": false,
+    "sample_similarity": true,
+    "selection": true,
+    "server_runtime": false,
+    "similarity_k": 10,
+    "text_search": false
+  },
+  "created_at": "2026-10-09T06:43:58.736597+00:00",
+  "deployment": {
+    "cloudflare": {
+      "command": "npx wrangler deploy --config wrangler.jsonc",
+      "config": "wrangler.jsonc",
+      "mode": "static-assets-only",
+      "worker_name": "hyperview-hello-world"
+    },
+    "hosting": {
+      "mode": "static-assets"
+    },
+    "targets": {
+      "live": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode live"
+        ],
+        "space": "Live Space"
+      },
+      "static": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode static",
+          "hyperview publish <bundle> --to cloudflare",
+          "hyperview publish <bundle> --to dir:<path>"
+        ],
+        "space": "Static Space"
+      }
+    }
+  },
+  "hyperview_version": "1.2.0",
+  "kind": "hyperview-static-space",
+  "producer": {
+    "hyper_models": "0.4.0",
+    "hyperview": "1.2.0",
+    "python": "3.11.11"
+  },
+  "restore": {
+    "collections": [
+      "all:bf21a9e8fbc5"
+    ],
+    "dataset": {
+      "fields": "api/dataset.json",
+      "name": "hello_world_inat24_multigeometry",
+      "num_samples": 300,
+      "samples": "api/samples/index.json"
+    },
+    "extensions": [
+      {
+        "add_panels": false,
+        "name": "hello-world-intro",
+        "panels": [],
+        "path": "extensions/hello-world-intro",
+        "source": "extension",
+        "workspace_id": "hello-world"
+      }
+    ],
+    "layouts": [
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__3d_92b543de.json",
+        "count": 300,
+        "geometry": "euclidean",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__3d_92b543de",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.1,
+          "n_neighbors": 15
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+      },
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__spherical_umap__3d_92b543de.json",
+        "count": 300,
+        "geometry": "spherical",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__spherical_umap__3d_92b543de",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.1,
+          "n_neighbors": 15
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+      },
+      {
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v1__a2768d0f758e__poincare_umap__2d_92b543de.json",
+        "count": 300,
+        "geometry": "poincare",
+        "layout_key": "hyper-models__hyper3-clip-v1__a2768d0f758e__poincare_umap__2d_92b543de",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.1,
+          "n_neighbors": 15
+        },
+        "space_key": "hyper-models__hyper3-clip-v1__a2768d0f758e"
+      }
+    ],
+    "media": {
+      "filename": "content",
+      "root": "api/samples"
+    },
+    "schema_version": 1,
+    "spaces": [
+      {
+        "config": {
+          "dim": 512,
+          "geometry": "euclidean",
+          "modality": "multimodal",
+          "model_id": "openai/clip-vit-base-patch32",
+          "provider": "embed-anything"
+        },
+        "count": 300,
+        "dim": 512,
+        "geometry": "euclidean",
+        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "modality": "multimodal",
+        "model_id": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "multimodal",
+          "model_id": "hyper3-clip-v1",
+          "params": {
+            "curvature": 0.1000000008408015
+          },
+          "params_source": {
+            "curvature": "inferred"
+          },
+          "provider": "hyper-models",
+          "spatial_dim": 512
+        },
+        "count": 300,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper-models__hyper3-clip-v1__a2768d0f758e",
+        "modality": "multimodal",
+        "model_id": "hyper3-clip-v1",
+        "provider": "hyper-models",
+        "representation_id": "representation:hyper-models__hyper3-clip-v1__a2768d0f758e",
+        "space_key": "hyper-models__hyper3-clip-v1__a2768d0f758e",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v1__a2768d0f758e/vectors.npz"
+      }
+    ],
+    "supported": true,
+    "workspace_id": "hello-world"
+  },
+  "schema_version": 1,
+  "static": true,
+  "warnings": [],
+  "workspace": {
+    "dataset_name": "hello_world_inat24_multigeometry",
+    "fingerprint": "22403815d47efd51784b70378eb34b3f8bcf3f4cd0cf5769ca738023be383d81",
+    "id": "hello-world"
+  }
+}

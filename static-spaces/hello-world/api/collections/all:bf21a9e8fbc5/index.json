@@ -1,0 +1,15 @@
+{
+  "collection": {
+    "created_at": 1791528204,
+    "dataset_id": "hello_world_inat24_multigeometry",
+    "entity_set_id": "samples",
+    "id": "all:bf21a9e8fbc5",
+    "kind": "all",
+    "query": {},
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 300
+}

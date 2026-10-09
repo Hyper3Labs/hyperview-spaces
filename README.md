@@ -12,12 +12,12 @@ and every underlying sample are there to inspect.
 
 | Space | The question it answers |
 | --- | --- |
-| [ABO Catalog](https://hyper3labs.github.io/spaces/abo-catalog/) | Does the model find the right product, not just a plausible category match? |
-| [Fashion Products](https://hyper3labs.github.io/spaces/fashion-products/) | Does the exact SKU reach the shopper's first screen? |
-| [Precision Regions](https://hyper3labs.github.io/spaces/precision-regions/) | Does the exact region reach the operator's first screen? |
-| [Logo Search](https://hyper3labs.github.io/spaces/logo-search/) | Which existing logo best satisfies a detailed creative brief? |
-| [GeoSpatial](https://hyper3labs.github.io/spaces/geospatial/) | Do retrieved neighbours preserve land-use identity? |
-| [Visual Safety](https://hyper3labs.github.io/spaces/visual-safety/) | Is one extra catch worth five false reviews and six more queue slots? |
+| [ABO Catalog](https://spaces.hyper3labs.com/abo-catalog/) | Does the model find the right product, not just a plausible category match? |
+| [Fashion Products](https://spaces.hyper3labs.com/fashion-products/) | Does the exact SKU reach the shopper's first screen? |
+| [Precision Regions](https://spaces.hyper3labs.com/precision-regions/) | Does the exact region reach the operator's first screen? |
+| [Logo Search](https://spaces.hyper3labs.com/logo-search/) | Which existing logo best satisfies a detailed creative brief? |
+| [GeoSpatial](https://spaces.hyper3labs.com/geospatial/) | Do retrieved neighbours preserve land-use identity? |
+| [Visual Safety](https://spaces.hyper3labs.com/visual-safety/) | Is one extra catch worth five false reviews and six more queue slots? |
 
 Each one compares `hyper3-clip-v1` against OpenAI CLIP ViT-B/32 on the same
 bounded probe and shows the per-case evidence for both, including the cases
@@ -104,7 +104,7 @@ no HF deploy targets, and no active caller workflow. Static demo sources stay in
 >
 > ```bash
 > infisical run --projectId <project> --env dev -- \
->   hyperview publish ../hyper3labs.github.io/public/spaces/<slug> \
+>   hyperview publish static-spaces/<slug> \
 >     --to hf:hyper3labs/<Space> --mode live \
 >     --extra-pip "hyperview==1.2.0" --extra-pip "hyper-models[ml]==0.4.0" \
 >     --extra-pip "datasets>=4.5.0" --extra-pip "Pillow>=12.0.0" \
@@ -117,7 +117,7 @@ A Live Space can be built two ways, and the registry entry says which:
 | `deploy_mode` | What is uploaded | The container | Use it when |
 | --- | --- | --- | --- |
 | `docker-folder` | `demos/<slug>/` | Builds that `Dockerfile`, runs `demo.py`, which rebuilds the workspace on first boot | The demo can prepare its own data from public sources |
-| `live-bundle` | The exported bundle, from the landing site repository | A generated `Dockerfile` running `hyperview serve --from <bundle> --public` | The data was prepared locally, or the boot is too slow to sit through |
+| `live-bundle` | The exported bundle in `static-spaces/<slug>/` | A generated `Dockerfile` running `hyperview serve --from <bundle> --public` | The data was prepared locally, or the boot is too slow to sit through |
 
 Separately, `deploy_mode: static-bundle` publishes files to an HF Static HTML
 Space (`deploy_targets: ["hf-static"]`, `keep_warm: false`). It stays in the
@@ -135,13 +135,10 @@ layouts, panels — and `hyperview serve --from` restores it, so the same
 artifact the site publishes as a **Static Space** becomes the **Live Space**.
 One export, two hosts, no second copy of the data to keep in step.
 
-The bundles live in the landing site repository
-(`Hyper3Labs/hyper3labs.github.io`, under `public/spaces/<slug>/`), which is
-where they are already committed for the Static Spaces. The deploy job checks
-that repository out and publishes from it, so **a re-exported bundle does not
-deploy itself**: commit it on the site, then run the Space's workflow here with
-`workflow_dispatch` (or send it a `static-bundle-published` repository
-dispatch).
+Every bundle is committed in this repository under `static-spaces/<slug>/`,
+and the same files feed spaces.hyper3labs.com and the Live Spaces. Committing a
+re-exported bundle to `main` redeploys the Live Space whose workflow lists that
+path; `workflow_dispatch` reruns a deploy by hand.
 
 | Owner | How | Auth |
 | --- | --- | --- |
@@ -170,7 +167,7 @@ uv run --project ../ python scripts/deploy_hf_space.py \
 uv run --project ../ python scripts/deploy_hf_space.py \
   --space-id mnm-matin/HyperView-Logo-Brand-Search \
   --mode live-bundle \
-  --bundle ../../hyper3labs.github.io/public/spaces/logo-search \
+  --bundle static-spaces/logo-search \
   --extra-pip 'hyperview==1.2.0' --extra-pip 'hyper-models[ml]==0.4.0'
 ```
 

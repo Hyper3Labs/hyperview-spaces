@@ -1,0 +1,22 @@
+{
+  "collection": {
+    "created_at": 1788429637,
+    "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+    "entity_set_id": "samples",
+    "id": "selection:0f91eb45df77",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+        "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+        "WOMEN_Leggings_id_00001867_02_3_back"
+      ],
+      "source": "Fashion case visuals"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 3
+}

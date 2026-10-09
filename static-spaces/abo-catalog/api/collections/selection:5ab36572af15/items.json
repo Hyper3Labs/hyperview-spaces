@@ -1,0 +1,212 @@
+{
+  "collection_id": "selection:5ab36572af15",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07HSLKKXG_81MUeTeLXVL.jpg",
+        "height": null,
+        "id": "B07HSLKKXG_81MUeTeLXVL",
+        "label": "STOOL_SEATING",
+        "media_type": null,
+        "media_url": "/api/samples/B07HSLKKXG_81MUeTeLXVL/content",
+        "metadata": {
+          "brand": "Stone & Beam",
+          "color": "Gray",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> stool seating",
+          "image_id": "81MUeTeLXVL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/6b/6b3bc239.jpg",
+          "item_id": "B07HSLKKXG",
+          "product_type": "STOOL_SEATING",
+          "product_type_readable": "stool seating",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Stone & Beam Leon Modern Farmhouse Dining Room Kitchen Chairs, Set of 2, 36.5\"H, Dove Grey"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07HSLKKXG_81MUeTeLXVL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07HSLKKXG_81MUeTeLXVL",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07QFRSLZB_81t7ILRrXDL.jpg",
+        "height": null,
+        "id": "B07QFRSLZB_81t7ILRrXDL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B07QFRSLZB_81t7ILRrXDL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Ivory",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "81t7ILRrXDL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/44/44da33fc.jpg",
+          "item_id": "B07QFRSLZB",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Contemporary Channel-Back Dining Chair, 35\"H, Ivory, Set of 2"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07QFRSLZB_81t7ILRrXDL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07QFRSLZB_81t7ILRrXDL",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075YPTG2Q_710tYWSG8SL.jpg",
+        "height": null,
+        "id": "B075YPTG2Q_710tYWSG8SL",
+        "label": "STOOL_SEATING",
+        "media_type": null,
+        "media_url": "/api/samples/B075YPTG2Q_710tYWSG8SL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Aqua Blue",
+          "country": "US",
+          "department": "Catalog",
+          "hierarchy": "Catalog -> stool seating",
+          "image_id": "710tYWSG8SL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/02/028f7559.jpg",
+          "item_id": "B075YPTG2Q",
+          "product_type": "STOOL_SEATING",
+          "product_type_readable": "stool seating",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Julian Minimalist Modern Tufted Kitchen Bar Height Stools, Set of 2, 37.8 Inch Height, Synthetic Leather, Aqua Blue"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075YPTG2Q_710tYWSG8SL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075YPTG2Q_710tYWSG8SL",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075YP3C53_81tDegaK7zL.jpg",
+        "height": null,
+        "id": "B075YP3C53_81tDegaK7zL",
+        "label": "STOOL_SEATING",
+        "media_type": null,
+        "media_url": "/api/samples/B075YP3C53_81tDegaK7zL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Aqua Blue",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> stool seating",
+          "image_id": "81tDegaK7zL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/15/153ea213.jpg",
+          "item_id": "B075YP3C53",
+          "product_type": "STOOL_SEATING",
+          "product_type_readable": "stool seating",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Julian Minimalist Modern Tufted Dining Room Counter Height Bar Stools, Set of 2, 34.3 Inch Height, Synthetic Leather, Aqua Blue"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075YP3C53_81tDegaK7zL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075YP3C53_81tDegaK7zL",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "B0853KZW7Z_71LY8AELiuL.jpg",
+        "height": null,
+        "id": "B0853KZW7Z_71LY8AELiuL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B0853KZW7Z_71LY8AELiuL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Wax Elephant",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "71LY8AELiuL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/c3/c3b841db.jpg",
+          "item_id": "B0853KZW7Z",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Mid-Century Modern",
+          "title": "Amazon Brand \u2013 Rivet Logan Mid-Century Modern Faux Leather Dining Chair, Set of 2, 20.1\"W, Gray"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B0853KZW7Z_71LY8AELiuL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B0853KZW7Z_71LY8AELiuL",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07B7B3RVS_7196wQbG7KL.jpg",
+        "height": null,
+        "id": "B07B7B3RVS_7196wQbG7KL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B07B7B3RVS_7196wQbG7KL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Grey",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "7196wQbG7KL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/0a/0a0aa317.jpg",
+          "item_id": "B07B7B3RVS",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Allie Velvet Industrial Mid-Century Dining Kitchen Chair, 33\"H, Grey and Antique Brass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07B7B3RVS_7196wQbG7KL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07B7B3RVS_7196wQbG7KL",
+      "score": null
+    }
+  ],
+  "limit": 6,
+  "offset": 0,
+  "total": 6
+}

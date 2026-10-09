@@ -35,7 +35,7 @@
       "keep_warm": false,
       "status": "archived",
       "archived_at": "2026-09-11",
-      "archive_reason": "Redundant live runtime; retain the active ABO Catalog Static Space.",
+      "archive_reason": "Redundant live runtime; retain the active ABO Catalog Static Space. Deleted from Hugging Face on 2026-10-09; backup in business-development/archive/hf-spaces-2026-10-08.",
       "deploy_targets": [
         "cf-static"
       ],
@@ -99,7 +99,7 @@
       "keep_warm": false,
       "status": "archived",
       "archived_at": "2026-09-11",
-      "archive_reason": "Redundant live runtime; retain the active GeoSpatial Static Space.",
+      "archive_reason": "Redundant live runtime; retain the active GeoSpatial Static Space. Deleted from Hugging Face on 2026-10-09; backup in business-development/archive/hf-spaces-2026-10-08.",
       "manual_deploy": true,
       "deploy_targets": [
         "cf-static"
@@ -142,7 +142,7 @@
       "keep_warm": false,
       "status": "archived",
       "archived_at": "2026-09-11",
-      "archive_reason": "Redundant live runtime; retain the active Visual Safety Static Space.",
+      "archive_reason": "Redundant live runtime; retain the active Visual Safety Static Space. Deleted from Hugging Face on 2026-10-09; backup in business-development/archive/hf-spaces-2026-10-08.",
       "manual_deploy": true,
       "deploy_targets": [
         "cf-static"
@@ -166,7 +166,7 @@
       "keep_warm": false,
       "status": "archived",
       "archived_at": "2026-09-11",
-      "archive_reason": "Redundant live runtime; retain the active Logo Search Static Space.",
+      "archive_reason": "Redundant live runtime; retain the active Logo Search Static Space. Deleted from Hugging Face on 2026-10-09; backup in business-development/archive/hf-spaces-2026-10-08.",
       "manual_deploy": true,
       "deploy_targets": [
         "cf-static"

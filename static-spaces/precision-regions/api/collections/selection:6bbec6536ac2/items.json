@@ -1,0 +1,228 @@
+{
+  "collection_id": "selection:6bbec6536ac2",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "target_crop.jpg",
+        "height": null,
+        "id": "precision-facilities-target",
+        "label": "TARGET \u00b7 A grey couch with pillows on it.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-facilities-target/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            421.9,
+            158.44,
+            157.55,
+            106.81
+          ],
+          "business_question": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+          "case_id": "facilities",
+          "clip_rank": 7,
+          "crop_box": [
+            421,
+            158,
+            580,
+            266
+          ],
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "hyper3_rank": 1,
+          "image_id": "COCO_train2014_000000315297_115801.jpg",
+          "is_target": true,
+          "operational_slice": "Workspace / Facilities",
+          "refcocog_query_id": "115801",
+          "role": "ground_truth_region",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A grey couch with pillows on it."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-facilities-target/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-facilities-target",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_2.jpg",
+        "height": null,
+        "id": "precision-facilities-hyper3-02",
+        "label": "#2 \u00b7 A dark red armchair",
+        "media_type": null,
+        "media_url": "/api/samples/precision-facilities-hyper3-02/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            110.34,
+            406.21,
+            248.28,
+            212.41
+          ],
+          "business_question": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+          "case_id": "facilities",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000246102_113428.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Workspace / Facilities",
+          "rank": 2,
+          "refcocog_query_id": "113428",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A grey couch with pillows on it."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-facilities-hyper3-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-facilities-hyper3-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_3.jpg",
+        "height": null,
+        "id": "precision-facilities-hyper3-03",
+        "label": "#3 \u00b7 A brown couch sitting against the window.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-facilities-hyper3-03/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            4.13,
+            18.87,
+            623.48,
+            325.16
+          ],
+          "business_question": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+          "case_id": "facilities",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000337255_112603.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Workspace / Facilities",
+          "rank": 3,
+          "refcocog_query_id": "112603",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A grey couch with pillows on it."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-facilities-hyper3-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-facilities-hyper3-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_4.jpg",
+        "height": null,
+        "id": "precision-facilities-hyper3-04",
+        "label": "#4 \u00b7 A white arm chair by the fireplace",
+        "media_type": null,
+        "media_url": "/api/samples/precision-facilities-hyper3-04/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            14.68,
+            305.38,
+            132.48,
+            133.22
+          ],
+          "business_question": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+          "case_id": "facilities",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000386018_381178.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Workspace / Facilities",
+          "rank": 4,
+          "refcocog_query_id": "381178",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A grey couch with pillows on it."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-facilities-hyper3-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-facilities-hyper3-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_5.jpg",
+        "height": null,
+        "id": "precision-facilities-hyper3-05",
+        "label": "#5 \u00b7 A black and white designed chair on the outside dinning table",
+        "media_type": null,
+        "media_url": "/api/samples/precision-facilities-hyper3-05/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            31.64,
+            340.85,
+            126.56,
+            149.58
+          ],
+          "business_question": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+          "case_id": "facilities",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000434857_381043.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Workspace / Facilities",
+          "rank": 5,
+          "refcocog_query_id": "381043",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A grey couch with pillows on it."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-facilities-hyper3-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-facilities-hyper3-05",
+      "score": null
+    }
+  ],
+  "limit": 5,
+  "offset": 0,
+  "total": 5
+}

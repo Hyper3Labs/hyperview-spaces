@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "shard_size": 500,
+  "shards": [
+    {
+      "count": 160,
+      "label_counts": [
+        {
+          "count": 1,
+          "value": "Asian Cafe Restaurant Bar With A Bowl Of Noodles Stylized Like A Head With The Smile And Japaneese Bandage"
+        },
+        {
+          "count": 1,
+          "value": "Asian Cafe Restaurant Bar With A Bowl Of Soup With Noodles"
+        },
+        {
+          "count": 1,
+          "value": "Asian Cafe Restaurant Bar With A Circle Inside Which Is Ramen With Noodles"
+        },
+        {
+          "count": 1,
+          "value": "Asian Cafe Restaurant Bar With The Bowl Of Ramen"
+        },
+        {
+          "count": 42,
+          "value": "Barbershop Hair Salon"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With A Circle In Which A High-Rise Building Is Drawn With Lines"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With A Minimalistic Outline Of Four High-Rise Buildings"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With A Square Snake Forms The Shape Of A House"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Abstract Building In The Shape Of A Cube"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Abstract Contour Of The House Made Of Sticks"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Contour Of The House"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Contour Of The House With A Pipe And A Cutout For The Door"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Contour Of The Parallelepiped"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Contour Of Three Parallelepipeds Intersect"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Contour Of Three Parallelograms"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With The Outline Of A High-Rise Building"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Three High-Rise Buildings"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Three High-Rise Buildings In Horizontal Stripes"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Three High-Rise Buildings That Look Like Arrows"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Three High-Rise Buildings That Look Like Parallelepipeds Are Bounded From Below By A Curved Arc"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Three Parallelograms"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Two Simple Contours Of The House Intersect"
+        },
+        {
+          "count": 1,
+          "value": "Building Company With Two Striped Parallelepipeds"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar Pizzeria With A Slice Of Pizza At The Top Part Of The Circle"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With A Bag And Shawarma With Lettuce Inside It"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With A Circle With An Ornament On The Sides"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With A Glass Of Wine In The Form Of A Liquid"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With A Hand Drawn Coctail Glass With A Straw And A Slice Of Orange As A Decoration"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With An Illustration Of A Knife And Fork On The Plate"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With An Image Of A Square With Four Pictures: A Knife And Fork In The Upper Left Corner"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Asian Food"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Fish Inside Golden Circle That Looks Like A Lifeline And Rope"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Knife Fork With A Piece Of Meal And Spoon"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Lid For Serving Dishes And Spoon And Fork Printed On It"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Pizza With Cheeze And Pepperoni On The Pan"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With Spoon"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Bowl Of Nodles That Take Chinese Chopsticks"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Bowl Of Ramen"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Cocktail Glass In An Oval Frame And Inscriptions Outside"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Food Cover Khlosh And Leaves On The Sides"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Fork And Knife And Plate With The Oysters And Lemon"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Fork And Spoon That Cross The Square And One More Square At The Background"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Fork In Circle"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Fork Inside Abstract Arch"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Glass In The Rectangle"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Glass Of Champagne"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Golden Arch And Fish In It"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Hand Of A Skeleton Holding A Martini Glass"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Plate"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Small Glass And An Arc Above"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Bar With The Wine Glass"
+        },
+        {
+          "count": 1,
+          "value": "Cafe Restaurant Butchery With A Circle And A Red Steak Inside It"
+        },
+        {
+          "count": 18,
+          "value": "Coffee Shop"
+        },
+        {
+          "count": 20,
+          "value": "Electronic Online Shop"
+        },
+        {
+          "count": 29,
+          "value": "Flower Store"
+        }
+      ],
+      "offset": 0,
+      "path": "shards/000000.json",
+      "sample_ids": [
+        "logo_0000",
+        "logo_0001",
+        "logo_0002",
+        "logo_0003",
+        "logo_0004",
+        "logo_0005",
+        "logo_0006",
+        "logo_0007",
+        "logo_0008",
+        "logo_0009",
+        "logo_0010",
+        "logo_0011",
+        "logo_0012",
+        "logo_0013",
+        "logo_0014",
+        "logo_0015",
+        "logo_0016",
+        "logo_0017",
+        "logo_0018",
+        "logo_0019",
+        "logo_0020",
+        "logo_0021",
+        "logo_0022",
+        "logo_0023",
+        "logo_0024",
+        "logo_0025",
+        "logo_0026",
+        "logo_0027",
+        "logo_0028",
+        "logo_0029",
+        "logo_0030",
+        "logo_0031",
+        "logo_0032",
+        "logo_0033",
+        "logo_0034",
+        "logo_0035",
+        "logo_0036",
+        "logo_0037",
+        "logo_0038",
+        "logo_0039",
+        "logo_0040",
+        "logo_0041",
+        "logo_0042",
+        "logo_0043",
+        "logo_0044",
+        "logo_0045",
+        "logo_0046",
+        "logo_0047",
+        "logo_0048",
+        "logo_0049",
+        "logo_0050",
+        "logo_0051",
+        "logo_0052",
+        "logo_0053",
+        "logo_0054",
+        "logo_0055",
+        "logo_0056",
+        "logo_0057",
+        "logo_0058",
+        "logo_0059",
+        "logo_0060",
+        "logo_0061",
+        "logo_0062",
+        "logo_0063",
+        "logo_0064",
+        "logo_0065",
+        "logo_0066",
+        "logo_0067",
+        "logo_0068",
+        "logo_0069",
+        "logo_0070",
+        "logo_0071",
+        "logo_0072",
+        "logo_0073",
+        "logo_0074",
+        "logo_0075",
+        "logo_0076",
+        "logo_0077",
+        "logo_0078",
+        "logo_0079",
+        "logo_0080",
+        "logo_0081",
+        "logo_0082",
+        "logo_0083",
+        "logo_0084",
+        "logo_0085",
+        "logo_0086",
+        "logo_0087",
+        "logo_0088",
+        "logo_0089",
+        "logo_0090",
+        "logo_0091",
+        "logo_0092",
+        "logo_0093",
+        "logo_0094",
+        "logo_0095",
+        "logo_0096",
+        "logo_0097",
+        "logo_0098",
+        "logo_0099",
+        "logo_0100",
+        "logo_0101",
+        "logo_0102",
+        "logo_0103",
+        "logo_0104",
+        "logo_0105",
+        "logo_0106",
+        "logo_0107",
+        "logo_0108",
+        "logo_0109",
+        "logo_0110",
+        "logo_0111",
+        "logo_0112",
+        "logo_0113",
+        "logo_0114",
+        "logo_0115",
+        "logo_0116",
+        "logo_0117",
+        "logo_0118",
+        "logo_0119",
+        "logo_0120",
+        "logo_0121",
+        "logo_0122",
+        "logo_0123",
+        "logo_0124",
+        "logo_0125",
+        "logo_0126",
+        "logo_0127",
+        "logo_0128",
+        "logo_0129",
+        "logo_0130",
+        "logo_0131",
+        "logo_0132",
+        "logo_0133",
+        "logo_0134",
+        "logo_0135",
+        "logo_0136",
+        "logo_0137",
+        "logo_0138",
+        "logo_0139",
+        "logo_0140",
+        "logo_0141",
+        "logo_0142",
+        "logo_0143",
+        "logo_0144",
+        "logo_0145",
+        "logo_0146",
+        "logo_0147",
+        "logo_0148",
+        "logo_0149",
+        "logo_0150",
+        "logo_0151",
+        "logo_0152",
+        "logo_0153",
+        "logo_0154",
+        "logo_0155",
+        "logo_0156",
+        "logo_0157",
+        "logo_0158",
+        "logo_0159"
+      ]
+    }
+  ],
+  "total": 160
+}

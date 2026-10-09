@@ -1,0 +1,26 @@
+{
+  "collection": {
+    "created_at": 1788429987,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:317fddd17c44",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "visual-safety-weapon-clip-01",
+        "visual-safety-weapon-clip-02",
+        "visual-safety-weapon-clip-03",
+        "visual-safety-weapon-clip-04",
+        "visual-safety-weapon-clip-05",
+        "visual-safety-weapon-clip-06",
+        "visual-safety-weapon-clip-07"
+      ],
+      "source": "Weapon review batch \u00b7 OpenAI CLIP"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 7
+}

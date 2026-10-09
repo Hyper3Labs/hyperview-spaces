@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "shard_size": 500,
+  "shards": [
+    {
+      "count": 43,
+      "label_counts": [
+        {
+          "count": 2,
+          "value": "#1 \u00b7 A banana on a fork to the left of all the other bananas."
+        },
+        {
+          "count": 1,
+          "value": "#1 \u00b7 A beige loveseat with a throw pillow on it."
+        },
+        {
+          "count": 1,
+          "value": "#1 \u00b7 a red colored bus"
+        },
+        {
+          "count": 1,
+          "value": "#1 \u00b7 the chair on the bottom right"
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 A dark red armchair"
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 A white arm chair by the fireplace"
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 An empty hotdog bun."
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 An office chair closest to the corner."
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 The chair on the right, closest to the guy with no hat on."
+        },
+        {
+          "count": 1,
+          "value": "#2 \u00b7 a red colored bus"
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 A brown couch sitting against the window."
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 A dark red armchair"
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 A utensil with a wooden handle sitting to the right of a pizza."
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 A white tabletop."
+        },
+        {
+          "count": 2,
+          "value": "#3 \u00b7 A woman in a yellow skirt retrieves a purchase from a vending machine."
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 The white planter chair with the woman wearing dark clothes and white sneakers sitting in it."
+        },
+        {
+          "count": 1,
+          "value": "#3 \u00b7 the front bleacher"
+        },
+        {
+          "count": 1,
+          "value": "#4 \u00b7 A pizza is being eaten by a man."
+        },
+        {
+          "count": 1,
+          "value": "#4 \u00b7 A white arm chair by the fireplace"
+        },
+        {
+          "count": 2,
+          "value": "#4 \u00b7 An office chair with wheels"
+        },
+        {
+          "count": 1,
+          "value": "#4 \u00b7 The empty chair on the end of the row."
+        },
+        {
+          "count": 2,
+          "value": "#4 \u00b7 a truck number 14 on a snow bank."
+        },
+        {
+          "count": 1,
+          "value": "#4 \u00b7 the chair the man in the red shirt is sitting in"
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 A back rest of a wooden chair which was occupied by a man"
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 A black and white designed chair on the outside dinning table"
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 A doughnut with white frosting and red confetti sprinkles."
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 A muffin next to some larger food items."
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 A white truck with a worker standing on it, which is in front of the man who is directing traffic."
+        },
+        {
+          "count": 1,
+          "value": "#5 \u00b7 The open cabinet."
+        },
+        {
+          "count": 2,
+          "value": "#5 \u00b7 The wicker chair to the left."
+        },
+        {
+          "count": 1,
+          "value": "Apple slice source scene"
+        },
+        {
+          "count": 1,
+          "value": "Empty bench seat source scene"
+        },
+        {
+          "count": 1,
+          "value": "Green bus source scene"
+        },
+        {
+          "count": 1,
+          "value": "Grey couch source scene"
+        },
+        {
+          "count": 1,
+          "value": "TARGET \u00b7 A green and white bus next to people standing."
+        },
+        {
+          "count": 1,
+          "value": "TARGET \u00b7 A grey couch with pillows on it."
+        },
+        {
+          "count": 1,
+          "value": "TARGET \u00b7 An empty seat at on a bench."
+        },
+        {
+          "count": 1,
+          "value": "TARGET \u00b7 the slice of apple closest to the red bananas"
+        }
+      ],
+      "offset": 0,
+      "path": "shards/000000.json",
+      "sample_ids": [
+        "precision-facilities-source",
+        "precision-facilities-target",
+        "precision-facilities-hyper3-02",
+        "precision-facilities-hyper3-03",
+        "precision-facilities-hyper3-04",
+        "precision-facilities-hyper3-05",
+        "precision-facilities-clip-01",
+        "precision-facilities-clip-02",
+        "precision-facilities-clip-03",
+        "precision-facilities-clip-04",
+        "precision-facilities-clip-05",
+        "precision-retail-source",
+        "precision-retail-target",
+        "precision-retail-hyper3-01",
+        "precision-retail-hyper3-03",
+        "precision-retail-hyper3-04",
+        "precision-retail-hyper3-05",
+        "precision-retail-clip-01",
+        "precision-retail-clip-02",
+        "precision-retail-clip-03",
+        "precision-retail-clip-04",
+        "precision-retail-clip-05",
+        "precision-fleet-source",
+        "precision-fleet-target",
+        "precision-fleet-hyper3-02",
+        "precision-fleet-hyper3-03",
+        "precision-fleet-hyper3-04",
+        "precision-fleet-hyper3-05",
+        "precision-fleet-clip-01",
+        "precision-fleet-clip-03",
+        "precision-fleet-clip-04",
+        "precision-fleet-clip-05",
+        "precision-bench-source",
+        "precision-bench-target",
+        "precision-bench-hyper3-01",
+        "precision-bench-hyper3-02",
+        "precision-bench-hyper3-03",
+        "precision-bench-hyper3-04",
+        "precision-bench-hyper3-05",
+        "precision-bench-clip-02",
+        "precision-bench-clip-03",
+        "precision-bench-clip-04",
+        "precision-bench-clip-05"
+      ]
+    }
+  ],
+  "total": 43
+}

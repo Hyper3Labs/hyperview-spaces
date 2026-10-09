@@ -1,0 +1,228 @@
+{
+  "collection_id": "selection:344da96ddf90",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "target_crop.jpg",
+        "height": null,
+        "id": "precision-fleet-target",
+        "label": "TARGET \u00b7 A green and white bus next to people standing.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-fleet-target/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            471.14,
+            1.92,
+            166.0,
+            420.28
+          ],
+          "business_question": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+          "case_id": "fleet",
+          "clip_rank": 2,
+          "crop_box": [
+            471,
+            1,
+            638,
+            423
+          ],
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "hyper3_rank": 1,
+          "image_id": "COCO_train2014_000000324332_366497.jpg",
+          "is_target": true,
+          "operational_slice": "Fleet / Vehicles",
+          "refcocog_query_id": "366497",
+          "role": "ground_truth_region",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A green and white bus next to people standing."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-fleet-target/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-fleet-target",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_2.jpg",
+        "height": null,
+        "id": "precision-fleet-hyper3-02",
+        "label": "#2 \u00b7 a red colored bus",
+        "media_type": null,
+        "media_url": "/api/samples/precision-fleet-hyper3-02/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            32.5,
+            16.75,
+            172.5,
+            123.0
+          ],
+          "business_question": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+          "case_id": "fleet",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000287974_365993.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Fleet / Vehicles",
+          "rank": 2,
+          "refcocog_query_id": "365993",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A green and white bus next to people standing."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-fleet-hyper3-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-fleet-hyper3-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_3.jpg",
+        "height": null,
+        "id": "precision-fleet-hyper3-03",
+        "label": "#3 \u00b7 A woman in a yellow skirt retrieves a purchase from a vending machine.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-fleet-hyper3-03/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            125.12,
+            247.13,
+            174.03,
+            280.45
+          ],
+          "business_question": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+          "case_id": "fleet",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000026362_216928.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Fleet / Vehicles",
+          "rank": 3,
+          "refcocog_query_id": "216928",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A green and white bus next to people standing."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-fleet-hyper3-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-fleet-hyper3-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_4.jpg",
+        "height": null,
+        "id": "precision-fleet-hyper3-04",
+        "label": "#4 \u00b7 a truck number 14 on a snow bank.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-fleet-hyper3-04/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            355.36,
+            191.14,
+            199.64,
+            146.16
+          ],
+          "business_question": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+          "case_id": "fleet",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000307082_401571.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Fleet / Vehicles",
+          "rank": 4,
+          "refcocog_query_id": "401571",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A green and white bus next to people standing."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-fleet-hyper3-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-fleet-hyper3-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_5.jpg",
+        "height": null,
+        "id": "precision-fleet-hyper3-05",
+        "label": "#5 \u00b7 A white truck with a worker standing on it, which is in front of the man who is directing traffic.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-fleet-hyper3-05/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            347.97,
+            96.19,
+            167.93,
+            173.82
+          ],
+          "business_question": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+          "case_id": "fleet",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000429207_397485.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Fleet / Vehicles",
+          "rank": 5,
+          "refcocog_query_id": "397485",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "A green and white bus next to people standing."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-fleet-hyper3-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-fleet-hyper3-05",
+      "score": null
+    }
+  ],
+  "limit": 5,
+  "offset": 0,
+  "total": 5
+}

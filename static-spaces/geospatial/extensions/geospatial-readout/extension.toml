@@ -1,0 +1,8 @@
+name = "geospatial-readout"
+description = "Aerial identity audit for RESISC45 ranked-neighbour and topology comparison"
+
+[[panels]]
+id = "geospatial-comparison"
+title = "Aerial identity audit"
+position = "right"
+file = "panel.jsx"

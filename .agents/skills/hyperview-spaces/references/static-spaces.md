@@ -109,14 +109,14 @@ at a domain root or at any path inside a containing site:
 
 - Cloudflare Workers Static Assets - `hyperview export` writes a
   `wrangler.jsonc`, so `npx wrangler deploy` from the bundle directory works
-- Any static host or CDN. The site convention is `/spaces/<slug>`, but nothing
+- Any static host or CDN. The convention is `spaces.hyper3labs.com/<slug>/`, but nothing
   in the bundle depends on it
 - Hugging Face Static HTML Spaces (`sdk: static`, `app_file: index.html`).
   Jaguar uses the existing paper-facing HF repository, not a new CF URL.
 - Locally, any static file server rooted at the directory holding `spaces/`
 
-The landing site's `/spaces` page (hyper3labs.github.io, `lib/spaces.ts`) is the
-index over the published Static Spaces.
+The gallery at spaces.hyper3labs.com, built by `scripts/build_spaces_site.py`
+from both registries, is the index over the published Spaces.
 
 ## Choosing a mode
 

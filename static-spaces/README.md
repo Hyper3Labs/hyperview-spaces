@@ -4,13 +4,17 @@ A **Static Space** is a portable, read-only HyperView workspace. It preserves th
 full HyperView shell, prepared data, media, layouts, selections, and custom
 panels, but it does not offer actions that require a Python runtime.
 
-The canonical demo source lives in `../demos/`. Do not maintain a second copy of
-the demo here. Generate each ignored bundle from its source workspace:
+The canonical demo source lives in `../demos/`. Each folder here is the
+committed bundle exported from that source's workspace, and it is what
+spaces.hyper3labs.com and the Live Spaces serve. Re-export with the current
+HyperView release after any change, then commit:
 
 ```bash
-uv run hyperview export <workspace-id> \
-  --out hyperview-spaces/static-spaces/<slug>
+hyperview export <workspace-id> --out static-spaces/<slug>
+python scripts/check_static_spaces.py --require-bundles
 ```
+
+Jaguar is the exception: its bundle lives in its Hugging Face Space repository.
 
 `../static-spaces.registry.json` maps every reviewed Static Space to its canonical
 source, workspace ID, public mount path, and optional Live Space.

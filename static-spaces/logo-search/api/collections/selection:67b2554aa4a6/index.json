@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788429801,
+    "dataset_id": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+    "entity_set_id": "samples",
+    "id": "selection:67b2554aa4a6",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "logo_0132",
+        "logo_0048",
+        "logo_0068",
+        "logo_0040",
+        "logo_0120"
+      ],
+      "source": "Hyper3-CLIP \u00b7 Barber Franchise Mark \u00b7 Top 5 of 160 logos"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

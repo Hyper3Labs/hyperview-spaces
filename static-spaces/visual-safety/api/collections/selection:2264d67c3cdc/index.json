@@ -1,0 +1,26 @@
+{
+  "collection": {
+    "created_at": 1787478340,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:2264d67c3cdc",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "visual-safety-knife-hyper3-01",
+        "visual-safety-knife-hyper3-02",
+        "visual-safety-knife-hyper3-03",
+        "visual-safety-knife-hyper3-04",
+        "visual-safety-knife-hyper3-05",
+        "visual-safety-knife-hyper3-06",
+        "visual-safety-knife-hyper3-07"
+      ],
+      "source": "Knife \u00b7 Hyper3-CLIP review batch"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 7
+}

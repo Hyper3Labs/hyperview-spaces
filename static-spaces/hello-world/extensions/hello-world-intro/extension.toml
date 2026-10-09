@@ -1,0 +1,8 @@
+name = "hello-world-intro"
+description = "Short orientation panel for the HyperView Hello World workspace"
+
+[[panels]]
+id = "hello-world-intro"
+title = "Start here"
+position = "right"
+file = "panel.jsx"

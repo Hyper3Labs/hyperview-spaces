@@ -1,0 +1,23 @@
+{
+  "collection": {
+    "created_at": 1788429988,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:e0ff0ac6aacb",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "openimages_000_needs_review_e0c0a275bf9cdbff",
+        "openimages_001_needs_review_58edc439809229e6",
+        "openimages_083_needs_review_0c4b629e801e8181",
+        "openimages_104_needs_review_b053b1f12641af60"
+      ],
+      "source": "Visual Safety case anchors"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 4
+}

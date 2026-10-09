@@ -1,0 +1,132 @@
+{
+  "collection_id": "selection:e0ff0ac6aacb",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "e0c0a275bf9cdbff.jpg",
+        "height": null,
+        "id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+        "label": "Proxy positive",
+        "media_type": null,
+        "media_url": "/api/samples/openimages_000_needs_review_e0c0a275bf9cdbff/content",
+        "metadata": {
+          "clip_queued": true,
+          "clip_votes": 5,
+          "evidence_artifact": "openimages-visual-proxy-knn-ledger-2026-07-22",
+          "hyper3_queued": true,
+          "hyper3_votes": 7,
+          "license": "https://creativecommons.org/licenses/by/2.0/",
+          "proxy_label": "proxy_positive",
+          "source_label": "Knife",
+          "source_title": "Carrots on Epicurean Cutting Board",
+          "source_url": "https://open-images-dataset.s3.amazonaws.com/validation/e0c0a275bf9cdbff.jpg"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/openimages_000_needs_review_e0c0a275bf9cdbff/thumbnail",
+        "width": null
+      },
+      "sample_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "58edc439809229e6.jpg",
+        "height": null,
+        "id": "openimages_001_needs_review_58edc439809229e6",
+        "label": "Proxy positive",
+        "media_type": null,
+        "media_url": "/api/samples/openimages_001_needs_review_58edc439809229e6/content",
+        "metadata": {
+          "clip_queued": true,
+          "clip_votes": 7,
+          "evidence_artifact": "openimages-visual-proxy-knn-ledger-2026-07-22",
+          "hyper3_queued": true,
+          "hyper3_votes": 7,
+          "license": "https://creativecommons.org/licenses/by/2.0/",
+          "proxy_label": "proxy_positive",
+          "source_label": "Beer",
+          "source_title": "Paris: Spring 2011",
+          "source_url": "https://open-images-dataset.s3.amazonaws.com/validation/58edc439809229e6.jpg"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/openimages_001_needs_review_58edc439809229e6/thumbnail",
+        "width": null
+      },
+      "sample_id": "openimages_001_needs_review_58edc439809229e6",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "0c4b629e801e8181.jpg",
+        "height": null,
+        "id": "openimages_083_needs_review_0c4b629e801e8181",
+        "label": "Proxy positive",
+        "media_type": null,
+        "media_url": "/api/samples/openimages_083_needs_review_0c4b629e801e8181/content",
+        "metadata": {
+          "clip_queued": true,
+          "clip_votes": 7,
+          "evidence_artifact": "openimages-visual-proxy-knn-ledger-2026-07-22",
+          "hyper3_queued": true,
+          "hyper3_votes": 7,
+          "license": "https://creativecommons.org/licenses/by/2.0/",
+          "proxy_label": "proxy_positive",
+          "source_label": "Handgun",
+          "source_title": "Double-Shotgun_Hunting-Guns-Firearms__IMG_5099",
+          "source_url": "https://open-images-dataset.s3.amazonaws.com/validation/0c4b629e801e8181.jpg"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/openimages_083_needs_review_0c4b629e801e8181/thumbnail",
+        "width": null
+      },
+      "sample_id": "openimages_083_needs_review_0c4b629e801e8181",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "b053b1f12641af60.jpg",
+        "height": null,
+        "id": "openimages_104_needs_review_b053b1f12641af60",
+        "label": "Proxy positive",
+        "media_type": null,
+        "media_url": "/api/samples/openimages_104_needs_review_b053b1f12641af60/content",
+        "metadata": {
+          "clip_queued": false,
+          "clip_votes": 3,
+          "evidence_artifact": "openimages-visual-proxy-knn-ledger-2026-07-22",
+          "hyper3_queued": false,
+          "hyper3_votes": 4,
+          "license": "https://creativecommons.org/licenses/by/2.0/",
+          "proxy_label": "proxy_positive",
+          "source_label": "Wine",
+          "source_title": "IMG_2589",
+          "source_url": "https://open-images-dataset.s3.amazonaws.com/validation/b053b1f12641af60.jpg"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/openimages_104_needs_review_b053b1f12641af60/thumbnail",
+        "width": null
+      },
+      "sample_id": "openimages_104_needs_review_b053b1f12641af60",
+      "score": null
+    }
+  ],
+  "limit": 4,
+  "offset": 0,
+  "total": 4
+}

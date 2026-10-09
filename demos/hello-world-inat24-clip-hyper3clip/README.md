@@ -63,10 +63,9 @@ hyperview export hello-world --out ../../static-spaces/hello-world --similarity-
 `hyper3-clip-v1` is gated on Hugging Face: accept its terms and log in with
 `hf auth login` before the first build.
 
-Copy the bundle into the site repository's `public/spaces/hello-world/` with
-`scripts/mount-hyperview-spaces.py`, commit it there, then run the
-`Deploy HF Space - HyperView Hello World` workflow. It publishes the bundle with
-`hyperview publish --mode live`, and the Space runs
+Commit `static-spaces/hello-world/` to `main`. That redeploys spaces.hyper3labs.com
+and the `Deploy HF Space - HyperView Hello World` workflow, which publishes the
+bundle with `hyperview publish --mode live`; the Space runs
 `hyperview serve --from <bundle> --public`.
 
 ## Reuse this template

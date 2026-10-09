@@ -1,0 +1,4407 @@
+{
+  "k": 10,
+  "metric": "cosine",
+  "queries": {
+    "inat24_1001897": {
+      "results": [
+        {
+          "distance": 0.09543383121490479,
+          "sample_id": "inat24_4020459"
+        },
+        {
+          "distance": 0.11679071187973022,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.11803305149078369,
+          "sample_id": "inat24_2174251"
+        },
+        {
+          "distance": 0.11891001462936401,
+          "sample_id": "inat24_3581925"
+        },
+        {
+          "distance": 0.1208353042602539,
+          "sample_id": "inat24_3330601"
+        },
+        {
+          "distance": 0.12087613344192505,
+          "sample_id": "inat24_1003363"
+        },
+        {
+          "distance": 0.12806940078735352,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.13520675897598267,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.13752853870391846,
+          "sample_id": "inat24_2445045"
+        },
+        {
+          "distance": 0.13994711637496948,
+          "sample_id": "inat24_2534979"
+        }
+      ]
+    },
+    "inat24_1057675": {
+      "results": [
+        {
+          "distance": 0.1318753957748413,
+          "sample_id": "inat24_1348688"
+        },
+        {
+          "distance": 0.13646864891052246,
+          "sample_id": "inat24_4607538"
+        },
+        {
+          "distance": 0.15893030166625977,
+          "sample_id": "inat24_3922852"
+        },
+        {
+          "distance": 0.17792469263076782,
+          "sample_id": "inat24_4034038"
+        },
+        {
+          "distance": 0.1999070644378662,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.20109117031097412,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.20260190963745117,
+          "sample_id": "inat24_1200798"
+        },
+        {
+          "distance": 0.20992404222488403,
+          "sample_id": "inat24_670757"
+        },
+        {
+          "distance": 0.21071189641952515,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.21248412132263184,
+          "sample_id": "inat24_2551060"
+        }
+      ]
+    },
+    "inat24_1062197": {
+      "results": [
+        {
+          "distance": 0.12095820903778076,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.1295778751373291,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.14412444829940796,
+          "sample_id": "inat24_332422"
+        },
+        {
+          "distance": 0.15482741594314575,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.1806609034538269,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.18091750144958496,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.19286692142486572,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.19577527046203613,
+          "sample_id": "inat24_4475143"
+        },
+        {
+          "distance": 0.2071899175643921,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.2115567922592163,
+          "sample_id": "inat24_1918906"
+        }
+      ]
+    },
+    "inat24_1103438": {
+      "results": [
+        {
+          "distance": 0.08471721410751343,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.13991767168045044,
+          "sample_id": "inat24_1651076"
+        },
+        {
+          "distance": 0.16393113136291504,
+          "sample_id": "inat24_4790065"
+        },
+        {
+          "distance": 0.18113595247268677,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.18191492557525635,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.20258694887161255,
+          "sample_id": "inat24_2557001"
+        },
+        {
+          "distance": 0.2043740153312683,
+          "sample_id": "inat24_4245393"
+        },
+        {
+          "distance": 0.21656399965286255,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.2172532081604004,
+          "sample_id": "inat24_1909712"
+        },
+        {
+          "distance": 0.2192261815071106,
+          "sample_id": "inat24_3489975"
+        }
+      ]
+    },
+    "inat24_11242": {
+      "results": [
+        {
+          "distance": 0.12476688623428345,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.1513371467590332,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.1567668318748474,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.18103837966918945,
+          "sample_id": "inat24_1607871"
+        },
+        {
+          "distance": 0.18142032623291016,
+          "sample_id": "inat24_4465799"
+        },
+        {
+          "distance": 0.18491590023040771,
+          "sample_id": "inat24_1961692"
+        },
+        {
+          "distance": 0.20542192459106445,
+          "sample_id": "inat24_1612128"
+        },
+        {
+          "distance": 0.21613651514053345,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.21918469667434692,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.22293519973754883,
+          "sample_id": "inat24_2674818"
+        }
+      ]
+    },
+    "inat24_1163771": {
+      "results": [
+        {
+          "distance": 0.07981228828430176,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.14628583192825317,
+          "sample_id": "inat24_1879534"
+        },
+        {
+          "distance": 0.15609264373779297,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.15757471323013306,
+          "sample_id": "inat24_311497"
+        },
+        {
+          "distance": 0.15926480293273926,
+          "sample_id": "inat24_1601798"
+        },
+        {
+          "distance": 0.1618596911430359,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.16209083795547485,
+          "sample_id": "inat24_3330601"
+        },
+        {
+          "distance": 0.16315233707427979,
+          "sample_id": "inat24_2363661"
+        },
+        {
+          "distance": 0.16512572765350342,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.17142444849014282,
+          "sample_id": "inat24_3680081"
+        }
+      ]
+    },
+    "inat24_1184768": {
+      "results": [
+        {
+          "distance": 0.1139986515045166,
+          "sample_id": "inat24_3825474"
+        },
+        {
+          "distance": 0.11701351404190063,
+          "sample_id": "inat24_2475467"
+        },
+        {
+          "distance": 0.1363447904586792,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.14021360874176025,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.14787214994430542,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.1493467092514038,
+          "sample_id": "inat24_2445045"
+        },
+        {
+          "distance": 0.15317434072494507,
+          "sample_id": "inat24_839318"
+        },
+        {
+          "distance": 0.1606961488723755,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.16106438636779785,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.1672213077545166,
+          "sample_id": "inat24_670757"
+        }
+      ]
+    },
+    "inat24_1212752": {
+      "results": [
+        {
+          "distance": 0.08600777387619019,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.11410647630691528,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.11476236581802368,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.12658488750457764,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.12957775592803955,
+          "sample_id": "inat24_1062197"
+        },
+        {
+          "distance": 0.13148438930511475,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.1333392858505249,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.13397753238677979,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.1351534128189087,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.13597798347473145,
+          "sample_id": "inat24_332422"
+        }
+      ]
+    },
+    "inat24_1237216": {
+      "results": [
+        {
+          "distance": 0.09577822685241699,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.10125726461410522,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.10827559232711792,
+          "sample_id": "inat24_1017832"
+        },
+        {
+          "distance": 0.1118917465209961,
+          "sample_id": "inat24_188108"
+        },
+        {
+          "distance": 0.11824178695678711,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.12653714418411255,
+          "sample_id": "inat24_2185393"
+        },
+        {
+          "distance": 0.13459831476211548,
+          "sample_id": "inat24_4572446"
+        },
+        {
+          "distance": 0.14308500289916992,
+          "sample_id": "inat24_3825474"
+        },
+        {
+          "distance": 0.14352834224700928,
+          "sample_id": "inat24_311497"
+        },
+        {
+          "distance": 0.15082377195358276,
+          "sample_id": "inat24_4284996"
+        }
+      ]
+    },
+    "inat24_1243427": {
+      "results": [
+        {
+          "distance": 0.11639797687530518,
+          "sample_id": "inat24_4465799"
+        },
+        {
+          "distance": 0.12169617414474487,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.14763033390045166,
+          "sample_id": "inat24_1607871"
+        },
+        {
+          "distance": 0.1513371467590332,
+          "sample_id": "inat24_11242"
+        },
+        {
+          "distance": 0.1597813367843628,
+          "sample_id": "inat24_4259561"
+        },
+        {
+          "distance": 0.1612449288368225,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.16509246826171875,
+          "sample_id": "inat24_2544592"
+        },
+        {
+          "distance": 0.17745888233184814,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.17767596244812012,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.1819448471069336,
+          "sample_id": "inat24_3910931"
+        }
+      ]
+    },
+    "inat24_1278409": {
+      "results": [
+        {
+          "distance": 0.16550779342651367,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.16701346635818481,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.18025243282318115,
+          "sample_id": "inat24_2161550"
+        },
+        {
+          "distance": 0.18345791101455688,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.1883946657180786,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.19287031888961792,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.19516968727111816,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.20496660470962524,
+          "sample_id": "inat24_4582609"
+        },
+        {
+          "distance": 0.21049344539642334,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.2125709056854248,
+          "sample_id": "inat24_1828294"
+        }
+      ]
+    },
+    "inat24_137530": {
+      "results": [
+        {
+          "distance": 0.19282972812652588,
+          "sample_id": "inat24_2824770"
+        },
+        {
+          "distance": 0.19671201705932617,
+          "sample_id": "inat24_2592152"
+        },
+        {
+          "distance": 0.21896761655807495,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.22619754076004028,
+          "sample_id": "inat24_1878534"
+        },
+        {
+          "distance": 0.22746330499649048,
+          "sample_id": "inat24_4315206"
+        },
+        {
+          "distance": 0.2280064821243286,
+          "sample_id": "inat24_3703614"
+        },
+        {
+          "distance": 0.23579299449920654,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.23602676391601562,
+          "sample_id": "inat24_822840"
+        },
+        {
+          "distance": 0.2377285361289978,
+          "sample_id": "inat24_2205700"
+        },
+        {
+          "distance": 0.24140405654907227,
+          "sample_id": "inat24_1946165"
+        }
+      ]
+    },
+    "inat24_1440675": {
+      "results": [
+        {
+          "distance": 0.10125732421875,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.10583823919296265,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.10612708330154419,
+          "sample_id": "inat24_1017832"
+        },
+        {
+          "distance": 0.1134834885597229,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.11653083562850952,
+          "sample_id": "inat24_188108"
+        },
+        {
+          "distance": 0.13068175315856934,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.13460445404052734,
+          "sample_id": "inat24_3825474"
+        },
+        {
+          "distance": 0.13771283626556396,
+          "sample_id": "inat24_311497"
+        },
+        {
+          "distance": 0.13842558860778809,
+          "sample_id": "inat24_2185393"
+        },
+        {
+          "distance": 0.14888882637023926,
+          "sample_id": "inat24_646363"
+        }
+      ]
+    },
+    "inat24_1517076": {
+      "results": [
+        {
+          "distance": 0.13118284940719604,
+          "sample_id": "inat24_3317529"
+        },
+        {
+          "distance": 0.13816553354263306,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.14371776580810547,
+          "sample_id": "inat24_2194540"
+        },
+        {
+          "distance": 0.18008309602737427,
+          "sample_id": "inat24_1918906"
+        },
+        {
+          "distance": 0.18777817487716675,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.19589132070541382,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.19976288080215454,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.20133429765701294,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.20701032876968384,
+          "sample_id": "inat24_332422"
+        },
+        {
+          "distance": 0.20907938480377197,
+          "sample_id": "inat24_2234430"
+        }
+      ]
+    },
+    "inat24_1601798": {
+      "results": [
+        {
+          "distance": 0.14203304052352905,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.15730541944503784,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.1592649221420288,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.16124439239501953,
+          "sample_id": "inat24_1348688"
+        },
+        {
+          "distance": 0.16141515970230103,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.16315853595733643,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.17784303426742554,
+          "sample_id": "inat24_2363661"
+        },
+        {
+          "distance": 0.1782827377319336,
+          "sample_id": "inat24_1845826"
+        },
+        {
+          "distance": 0.17958605289459229,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.18063139915466309,
+          "sample_id": "inat24_2026256"
+        }
+      ]
+    },
+    "inat24_1607871": {
+      "results": [
+        {
+          "distance": 0.08829641342163086,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.10432255268096924,
+          "sample_id": "inat24_4259561"
+        },
+        {
+          "distance": 0.12700104713439941,
+          "sample_id": "inat24_4465799"
+        },
+        {
+          "distance": 0.12798207998275757,
+          "sample_id": "inat24_3870453"
+        },
+        {
+          "distance": 0.1476304531097412,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.16209739446640015,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.1650342345237732,
+          "sample_id": "inat24_4129723"
+        },
+        {
+          "distance": 0.181038498878479,
+          "sample_id": "inat24_11242"
+        },
+        {
+          "distance": 0.18482452630996704,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.1893768310546875,
+          "sample_id": "inat24_1651515"
+        }
+      ]
+    },
+    "inat24_1651076": {
+      "results": [
+        {
+          "distance": 0.13964378833770752,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.13991773128509521,
+          "sample_id": "inat24_1103438"
+        },
+        {
+          "distance": 0.14713233709335327,
+          "sample_id": "inat24_4790065"
+        },
+        {
+          "distance": 0.1582578420639038,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.1672859787940979,
+          "sample_id": "inat24_2557001"
+        },
+        {
+          "distance": 0.17328917980194092,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.17343926429748535,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1797926425933838,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.18441247940063477,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.18504208326339722,
+          "sample_id": "inat24_1907688"
+        }
+      ]
+    },
+    "inat24_172444": {
+      "results": [
+        {
+          "distance": 0.13115590810775757,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.16796201467514038,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.17467421293258667,
+          "sample_id": "inat24_3710976"
+        },
+        {
+          "distance": 0.18785542249679565,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.18825018405914307,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.18871504068374634,
+          "sample_id": "inat24_2670451"
+        },
+        {
+          "distance": 0.190504252910614,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.1906687617301941,
+          "sample_id": "inat24_2161550"
+        },
+        {
+          "distance": 0.19941258430480957,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.2018798589706421,
+          "sample_id": "inat24_4096792"
+        }
+      ]
+    },
+    "inat24_1832795": {
+      "results": [
+        {
+          "distance": 0.1378728747367859,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.13851654529571533,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.14385288953781128,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.14606410264968872,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.16309040784835815,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.1684536337852478,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.17119336128234863,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1724500060081482,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.17585116624832153,
+          "sample_id": "inat24_2161550"
+        },
+        {
+          "distance": 0.178009033203125,
+          "sample_id": "inat24_3321814"
+        }
+      ]
+    },
+    "inat24_1845826": {
+      "results": [
+        {
+          "distance": 0.1222604513168335,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.13502275943756104,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.13867926597595215,
+          "sample_id": "inat24_653405"
+        },
+        {
+          "distance": 0.14118123054504395,
+          "sample_id": "inat24_2174251"
+        },
+        {
+          "distance": 0.1569635272026062,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.16518497467041016,
+          "sample_id": "inat24_2026256"
+        },
+        {
+          "distance": 0.16775614023208618,
+          "sample_id": "inat24_266625"
+        },
+        {
+          "distance": 0.1696937084197998,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.17285454273223877,
+          "sample_id": "inat24_3581925"
+        },
+        {
+          "distance": 0.17828261852264404,
+          "sample_id": "inat24_1601798"
+        }
+      ]
+    },
+    "inat24_1879534": {
+      "results": [
+        {
+          "distance": 0.14628583192825317,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.15297168493270874,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.15387189388275146,
+          "sample_id": "inat24_2551060"
+        },
+        {
+          "distance": 0.15573972463607788,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.16035348176956177,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.1644166111946106,
+          "sample_id": "inat24_3680081"
+        },
+        {
+          "distance": 0.1732601523399353,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.18392413854599,
+          "sample_id": "inat24_1348688"
+        },
+        {
+          "distance": 0.18448197841644287,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.1851676106452942,
+          "sample_id": "inat24_1601798"
+        }
+      ]
+    },
+    "inat24_188108": {
+      "results": [
+        {
+          "distance": 0.0790022611618042,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.10889405012130737,
+          "sample_id": "inat24_1017832"
+        },
+        {
+          "distance": 0.1118917465209961,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.11518806219100952,
+          "sample_id": "inat24_2328890"
+        },
+        {
+          "distance": 0.11653077602386475,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.12116694450378418,
+          "sample_id": "inat24_646363"
+        },
+        {
+          "distance": 0.12195408344268799,
+          "sample_id": "inat24_2185393"
+        },
+        {
+          "distance": 0.13338011503219604,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.13568657636642456,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.14090394973754883,
+          "sample_id": "inat24_3825474"
+        }
+      ]
+    },
+    "inat24_1918906": {
+      "results": [
+        {
+          "distance": 0.06796115636825562,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.11575311422348022,
+          "sample_id": "inat24_2194540"
+        },
+        {
+          "distance": 0.1737384796142578,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.17917805910110474,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.18008309602737427,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.19128453731536865,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.1949416995048523,
+          "sample_id": "inat24_4577066"
+        },
+        {
+          "distance": 0.1952749490737915,
+          "sample_id": "inat24_3317529"
+        },
+        {
+          "distance": 0.19570404291152954,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.19583594799041748,
+          "sample_id": "inat24_3321814"
+        }
+      ]
+    },
+    "inat24_1946165": {
+      "results": [
+        {
+          "distance": 0.14656460285186768,
+          "sample_id": "inat24_4315206"
+        },
+        {
+          "distance": 0.1575995683670044,
+          "sample_id": "inat24_3791247"
+        },
+        {
+          "distance": 0.16016757488250732,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.1652510166168213,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.1676633358001709,
+          "sample_id": "inat24_3985334"
+        },
+        {
+          "distance": 0.16871672868728638,
+          "sample_id": "inat24_4475143"
+        },
+        {
+          "distance": 0.17014265060424805,
+          "sample_id": "inat24_3703614"
+        },
+        {
+          "distance": 0.17015314102172852,
+          "sample_id": "inat24_4452366"
+        },
+        {
+          "distance": 0.1707262396812439,
+          "sample_id": "inat24_640509"
+        },
+        {
+          "distance": 0.17076325416564941,
+          "sample_id": "inat24_2476256"
+        }
+      ]
+    },
+    "inat24_1961692": {
+      "results": [
+        {
+          "distance": 0.11509191989898682,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.12901997566223145,
+          "sample_id": "inat24_2674818"
+        },
+        {
+          "distance": 0.15422815084457397,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.1795867681503296,
+          "sample_id": "inat24_1612128"
+        },
+        {
+          "distance": 0.18491590023040771,
+          "sample_id": "inat24_11242"
+        },
+        {
+          "distance": 0.18869352340698242,
+          "sample_id": "inat24_4792308"
+        },
+        {
+          "distance": 0.1926255226135254,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.19264566898345947,
+          "sample_id": "inat24_4514673"
+        },
+        {
+          "distance": 0.1929839849472046,
+          "sample_id": "inat24_3980429"
+        },
+        {
+          "distance": 0.19888585805892944,
+          "sample_id": "inat24_3435923"
+        }
+      ]
+    },
+    "inat24_197364": {
+      "results": [
+        {
+          "distance": 0.17416059970855713,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.18394774198532104,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.18620085716247559,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.1877431869506836,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.18869292736053467,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.19725728034973145,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.1992071270942688,
+          "sample_id": "inat24_4060319"
+        },
+        {
+          "distance": 0.20598608255386353,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.2080647349357605,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.20860975980758667,
+          "sample_id": "inat24_795376"
+        }
+      ]
+    },
+    "inat24_2035985": {
+      "results": [
+        {
+          "distance": 0.13211435079574585,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.18037933111190796,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.18320989608764648,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.18665164709091187,
+          "sample_id": "inat24_4245393"
+        },
+        {
+          "distance": 0.19137728214263916,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.1984378695487976,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.20244938135147095,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.20586472749710083,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.2100425362586975,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.21264535188674927,
+          "sample_id": "inat24_4582609"
+        }
+      ]
+    },
+    "inat24_2036083": {
+      "results": [
+        {
+          "distance": 0.06796121597290039,
+          "sample_id": "inat24_1918906"
+        },
+        {
+          "distance": 0.10959786176681519,
+          "sample_id": "inat24_2194540"
+        },
+        {
+          "distance": 0.18252086639404297,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.18381649255752563,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.1958913803100586,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.20554661750793457,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.2062707543373108,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.2071899175643921,
+          "sample_id": "inat24_1062197"
+        },
+        {
+          "distance": 0.2122431993484497,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.2132352590560913,
+          "sample_id": "inat24_3854079"
+        }
+      ]
+    },
+    "inat24_206327": {
+      "results": [
+        {
+          "distance": 0.26911598443984985,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.2812598943710327,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.2816768288612366,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.2827509045600891,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.2850094437599182,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.2853810787200928,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.2911999225616455,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.29194343090057373,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.29315245151519775,
+          "sample_id": "inat24_3854079"
+        },
+        {
+          "distance": 0.302556574344635,
+          "sample_id": "inat24_4103908"
+        }
+      ]
+    },
+    "inat24_2101755": {
+      "results": [
+        {
+          "distance": 0.07708978652954102,
+          "sample_id": "inat24_4059203"
+        },
+        {
+          "distance": 0.08585149049758911,
+          "sample_id": "inat24_2097011"
+        },
+        {
+          "distance": 0.11448949575424194,
+          "sample_id": "inat24_1909712"
+        },
+        {
+          "distance": 0.11674684286117554,
+          "sample_id": "inat24_1042204"
+        },
+        {
+          "distance": 0.1172248125076294,
+          "sample_id": "inat24_4393179"
+        },
+        {
+          "distance": 0.12628710269927979,
+          "sample_id": "inat24_1140790"
+        },
+        {
+          "distance": 0.13238024711608887,
+          "sample_id": "inat24_668732"
+        },
+        {
+          "distance": 0.13498932123184204,
+          "sample_id": "inat24_4103908"
+        },
+        {
+          "distance": 0.14117765426635742,
+          "sample_id": "inat24_849314"
+        },
+        {
+          "distance": 0.150629460811615,
+          "sample_id": "inat24_640509"
+        }
+      ]
+    },
+    "inat24_2174251": {
+      "results": [
+        {
+          "distance": 0.06794941425323486,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.11467927694320679,
+          "sample_id": "inat24_1003363"
+        },
+        {
+          "distance": 0.11775124073028564,
+          "sample_id": "inat24_3581925"
+        },
+        {
+          "distance": 0.11803305149078369,
+          "sample_id": "inat24_1001897"
+        },
+        {
+          "distance": 0.12423449754714966,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.1302594542503357,
+          "sample_id": "inat24_2445045"
+        },
+        {
+          "distance": 0.13235384225845337,
+          "sample_id": "inat24_1572661"
+        },
+        {
+          "distance": 0.14118123054504395,
+          "sample_id": "inat24_1845826"
+        },
+        {
+          "distance": 0.14221733808517456,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.1431344747543335,
+          "sample_id": "inat24_2593062"
+        }
+      ]
+    },
+    "inat24_2194540": {
+      "results": [
+        {
+          "distance": 0.10959792137145996,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.11575323343276978,
+          "sample_id": "inat24_1918906"
+        },
+        {
+          "distance": 0.14371788501739502,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.1680617332458496,
+          "sample_id": "inat24_3317529"
+        },
+        {
+          "distance": 0.18504375219345093,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.19113463163375854,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.1983480453491211,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.20142531394958496,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.20903229713439941,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.21540391445159912,
+          "sample_id": "inat24_3321814"
+        }
+      ]
+    },
+    "inat24_2234430": {
+      "results": [
+        {
+          "distance": 0.13036996126174927,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.13261067867279053,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.13713175058364868,
+          "sample_id": "inat24_4096792"
+        },
+        {
+          "distance": 0.14790385961532593,
+          "sample_id": "inat24_4245393"
+        },
+        {
+          "distance": 0.150873064994812,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.1574426293373108,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.16283661127090454,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.16943055391311646,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.17448538541793823,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.17994672060012817,
+          "sample_id": "inat24_344586"
+        }
+      ]
+    },
+    "inat24_2242732": {
+      "results": [
+        {
+          "distance": 0.11654049158096313,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.12985283136367798,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.14843493700027466,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.1585262417793274,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.1611054539680481,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.1612294316291809,
+          "sample_id": "inat24_795376"
+        },
+        {
+          "distance": 0.18206161260604858,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.18936997652053833,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.19404226541519165,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.19641995429992676,
+          "sample_id": "inat24_243827"
+        }
+      ]
+    },
+    "inat24_2284286": {
+      "results": [
+        {
+          "distance": 0.09346336126327515,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.1024964451789856,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.11428195238113403,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.11438494920730591,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.126007080078125,
+          "sample_id": "inat24_1115929"
+        },
+        {
+          "distance": 0.12887531518936157,
+          "sample_id": "inat24_4582609"
+        },
+        {
+          "distance": 0.13148444890975952,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.133694589138031,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.13584792613983154,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.1385859251022339,
+          "sample_id": "inat24_2667713"
+        }
+      ]
+    },
+    "inat24_2328890": {
+      "results": [
+        {
+          "distance": 0.1062326431274414,
+          "sample_id": "inat24_311497"
+        },
+        {
+          "distance": 0.11262351274490356,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.11518800258636475,
+          "sample_id": "inat24_188108"
+        },
+        {
+          "distance": 0.135381817817688,
+          "sample_id": "inat24_1017832"
+        },
+        {
+          "distance": 0.14542585611343384,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.1477372646331787,
+          "sample_id": "inat24_646363"
+        },
+        {
+          "distance": 0.1522465944290161,
+          "sample_id": "inat24_2185393"
+        },
+        {
+          "distance": 0.1522829532623291,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.15952634811401367,
+          "sample_id": "inat24_2475467"
+        },
+        {
+          "distance": 0.16125249862670898,
+          "sample_id": "inat24_1440675"
+        }
+      ]
+    },
+    "inat24_2363661": {
+      "results": [
+        {
+          "distance": 0.09778189659118652,
+          "sample_id": "inat24_1945359"
+        },
+        {
+          "distance": 0.10704970359802246,
+          "sample_id": "inat24_3671011"
+        },
+        {
+          "distance": 0.11594688892364502,
+          "sample_id": "inat24_4284996"
+        },
+        {
+          "distance": 0.1430491805076599,
+          "sample_id": "inat24_4415465"
+        },
+        {
+          "distance": 0.15562933683395386,
+          "sample_id": "inat24_4294684"
+        },
+        {
+          "distance": 0.16315233707427979,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.16515833139419556,
+          "sample_id": "inat24_4577066"
+        },
+        {
+          "distance": 0.16585832834243774,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.16786795854568481,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.16787272691726685,
+          "sample_id": "inat24_390260"
+        }
+      ]
+    },
+    "inat24_2399279": {
+      "results": [
+        {
+          "distance": 0.12913668155670166,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1368202567100525,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.1530296802520752,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.15854227542877197,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.16094970703125,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.1697697639465332,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.17121660709381104,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.17328917980194092,
+          "sample_id": "inat24_1651076"
+        },
+        {
+          "distance": 0.17514389753341675,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.18252086639404297,
+          "sample_id": "inat24_2036083"
+        }
+      ]
+    },
+    "inat24_243827": {
+      "results": [
+        {
+          "distance": 0.08896291255950928,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.11178183555603027,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.119204580783844,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.12353277206420898,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.12490570545196533,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.12913668155670166,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.13623929023742676,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.13864392042160034,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.14590561389923096,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.14837580919265747,
+          "sample_id": "inat24_661096"
+        }
+      ]
+    },
+    "inat24_2476256": {
+      "results": [
+        {
+          "distance": 0.10249650478363037,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.11410659551620483,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.12655222415924072,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.12827372550964355,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.13354724645614624,
+          "sample_id": "inat24_4475143"
+        },
+        {
+          "distance": 0.13947778940200806,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.14156430959701538,
+          "sample_id": "inat24_4582609"
+        },
+        {
+          "distance": 0.14698785543441772,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.15113013982772827,
+          "sample_id": "inat24_1115929"
+        },
+        {
+          "distance": 0.1512448787689209,
+          "sample_id": "inat24_4315206"
+        }
+      ]
+    },
+    "inat24_2496479": {
+      "results": [
+        {
+          "distance": 0.11376112699508667,
+          "sample_id": "inat24_2161550"
+        },
+        {
+          "distance": 0.13124918937683105,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.1353347897529602,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.14328712224960327,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.14958679676055908,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.15389376878738403,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.15551692247390747,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1565171480178833,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.15771698951721191,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.15854233503341675,
+          "sample_id": "inat24_2399279"
+        }
+      ]
+    },
+    "inat24_2592152": {
+      "results": [
+        {
+          "distance": 0.12887078523635864,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.1331195831298828,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.14724725484848022,
+          "sample_id": "inat24_4315206"
+        },
+        {
+          "distance": 0.148948073387146,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.15527445077896118,
+          "sample_id": "inat24_164388"
+        },
+        {
+          "distance": 0.1594470739364624,
+          "sample_id": "inat24_4227402"
+        },
+        {
+          "distance": 0.16394615173339844,
+          "sample_id": "inat24_4582609"
+        },
+        {
+          "distance": 0.1663820743560791,
+          "sample_id": "inat24_2295007"
+        },
+        {
+          "distance": 0.16679978370666504,
+          "sample_id": "inat24_4778383"
+        },
+        {
+          "distance": 0.16813921928405762,
+          "sample_id": "inat24_1212752"
+        }
+      ]
+    },
+    "inat24_2670451": {
+      "results": [
+        {
+          "distance": 0.1485493779182434,
+          "sample_id": "inat24_3710976"
+        },
+        {
+          "distance": 0.15597039461135864,
+          "sample_id": "inat24_3414314"
+        },
+        {
+          "distance": 0.1595134735107422,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.16103893518447876,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.1624862551689148,
+          "sample_id": "inat24_3985334"
+        },
+        {
+          "distance": 0.1777338981628418,
+          "sample_id": "inat24_959388"
+        },
+        {
+          "distance": 0.184553325176239,
+          "sample_id": "inat24_4034038"
+        },
+        {
+          "distance": 0.1887149214744568,
+          "sample_id": "inat24_172444"
+        },
+        {
+          "distance": 0.1923220157623291,
+          "sample_id": "inat24_2551060"
+        },
+        {
+          "distance": 0.1928919553756714,
+          "sample_id": "inat24_4452366"
+        }
+      ]
+    },
+    "inat24_2797060": {
+      "results": [
+        {
+          "distance": 0.1282176971435547,
+          "sample_id": "inat24_1200798"
+        },
+        {
+          "distance": 0.16482895612716675,
+          "sample_id": "inat24_2697629"
+        },
+        {
+          "distance": 0.16769444942474365,
+          "sample_id": "inat24_3225323"
+        },
+        {
+          "distance": 0.17408913373947144,
+          "sample_id": "inat24_3719970"
+        },
+        {
+          "distance": 0.1765689253807068,
+          "sample_id": "inat24_3905699"
+        },
+        {
+          "distance": 0.1778872013092041,
+          "sample_id": "inat24_3828773"
+        },
+        {
+          "distance": 0.179124116897583,
+          "sample_id": "inat24_3082102"
+        },
+        {
+          "distance": 0.18075716495513916,
+          "sample_id": "inat24_1963975"
+        },
+        {
+          "distance": 0.18437010049819946,
+          "sample_id": "inat24_3084505"
+        },
+        {
+          "distance": 0.18841534852981567,
+          "sample_id": "inat24_3267478"
+        }
+      ]
+    },
+    "inat24_2824770": {
+      "results": [
+        {
+          "distance": 0.17481184005737305,
+          "sample_id": "inat24_1200798"
+        },
+        {
+          "distance": 0.175004780292511,
+          "sample_id": "inat24_4034038"
+        },
+        {
+          "distance": 0.18000543117523193,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.1827017068862915,
+          "sample_id": "inat24_3905699"
+        },
+        {
+          "distance": 0.18731480836868286,
+          "sample_id": "inat24_4315206"
+        },
+        {
+          "distance": 0.18781375885009766,
+          "sample_id": "inat24_3059690"
+        },
+        {
+          "distance": 0.1893002986907959,
+          "sample_id": "inat24_3225323"
+        },
+        {
+          "distance": 0.1907893419265747,
+          "sample_id": "inat24_3754716"
+        },
+        {
+          "distance": 0.19123083353042603,
+          "sample_id": "inat24_2592152"
+        },
+        {
+          "distance": 0.19127827882766724,
+          "sample_id": "inat24_3414314"
+        }
+      ]
+    },
+    "inat24_2976283": {
+      "results": [
+        {
+          "distance": 0.10148769617080688,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.12727820873260498,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.14148128032684326,
+          "sample_id": "inat24_3423218"
+        },
+        {
+          "distance": 0.1420329213142395,
+          "sample_id": "inat24_1601798"
+        },
+        {
+          "distance": 0.15128111839294434,
+          "sample_id": "inat24_4792308"
+        },
+        {
+          "distance": 0.1540711522102356,
+          "sample_id": "inat24_3376056"
+        },
+        {
+          "distance": 0.15422815084457397,
+          "sample_id": "inat24_1961692"
+        },
+        {
+          "distance": 0.1567668318748474,
+          "sample_id": "inat24_11242"
+        },
+        {
+          "distance": 0.1589931845664978,
+          "sample_id": "inat24_2598592"
+        },
+        {
+          "distance": 0.15910762548446655,
+          "sample_id": "inat24_89354"
+        }
+      ]
+    },
+    "inat24_3170323": {
+      "results": [
+        {
+          "distance": 0.1223684549331665,
+          "sample_id": "inat24_332422"
+        },
+        {
+          "distance": 0.12353277206420898,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1533312201499939,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.15570604801177979,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.15651708841323853,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.1605536937713623,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.16291338205337524,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.16622436046600342,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.1685773730278015,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.17514389753341675,
+          "sample_id": "inat24_2399279"
+        }
+      ]
+    },
+    "inat24_3253385": {
+      "results": [
+        {
+          "distance": 0.18860161304473877,
+          "sample_id": "inat24_4129723"
+        },
+        {
+          "distance": 0.22519069910049438,
+          "sample_id": "inat24_4056263"
+        },
+        {
+          "distance": 0.22666996717453003,
+          "sample_id": "inat24_3423218"
+        },
+        {
+          "distance": 0.23561787605285645,
+          "sample_id": "inat24_3934197"
+        },
+        {
+          "distance": 0.2411128282546997,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.2542955279350281,
+          "sample_id": "inat24_4227402"
+        },
+        {
+          "distance": 0.2563939690589905,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.2577793002128601,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.2589598298072815,
+          "sample_id": "inat24_3398947"
+        },
+        {
+          "distance": 0.2606692314147949,
+          "sample_id": "inat24_97266"
+        }
+      ]
+    },
+    "inat24_3317529": {
+      "results": [
+        {
+          "distance": 0.12750697135925293,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.13118290901184082,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.13511651754379272,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.1453494429588318,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.16372323036193848,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.16806167364120483,
+          "sample_id": "inat24_2194540"
+        },
+        {
+          "distance": 0.17900532484054565,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1835448145866394,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.18394231796264648,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.190903902053833,
+          "sample_id": "inat24_4176416"
+        }
+      ]
+    },
+    "inat24_3321814": {
+      "results": [
+        {
+          "distance": 0.11479896306991577,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.119204580783844,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.12750697135925293,
+          "sample_id": "inat24_3317529"
+        },
+        {
+          "distance": 0.13442450761795044,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.13533473014831543,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.1368202567100525,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.14455580711364746,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.1511048674583435,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.1533312201499939,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.15347737073898315,
+          "sample_id": "inat24_661096"
+        }
+      ]
+    },
+    "inat24_332422": {
+      "results": [
+        {
+          "distance": 0.1223684549331665,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.135978102684021,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.14412444829940796,
+          "sample_id": "inat24_1062197"
+        },
+        {
+          "distance": 0.15010863542556763,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.15046948194503784,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.15774321556091309,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.15988945960998535,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.15991193056106567,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.16158950328826904,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.18021750450134277,
+          "sample_id": "inat24_2079441"
+        }
+      ]
+    },
+    "inat24_3376056": {
+      "results": [
+        {
+          "distance": 0.1540711522102356,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.17193377017974854,
+          "sample_id": "inat24_3972954"
+        },
+        {
+          "distance": 0.18301117420196533,
+          "sample_id": "inat24_4493159"
+        },
+        {
+          "distance": 0.18453937768936157,
+          "sample_id": "inat24_4778383"
+        },
+        {
+          "distance": 0.1934351921081543,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.19971495866775513,
+          "sample_id": "inat24_1347459"
+        },
+        {
+          "distance": 0.20103996992111206,
+          "sample_id": "inat24_3423218"
+        },
+        {
+          "distance": 0.2028270959854126,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.21014857292175293,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.21336102485656738,
+          "sample_id": "inat24_89354"
+        }
+      ]
+    },
+    "inat24_3414314": {
+      "results": [
+        {
+          "distance": 0.13164252042770386,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.1411799192428589,
+          "sample_id": "inat24_4034038"
+        },
+        {
+          "distance": 0.14184141159057617,
+          "sample_id": "inat24_3225323"
+        },
+        {
+          "distance": 0.14362770318984985,
+          "sample_id": "inat24_1878534"
+        },
+        {
+          "distance": 0.1470922827720642,
+          "sample_id": "inat24_3703614"
+        },
+        {
+          "distance": 0.1559705138206482,
+          "sample_id": "inat24_2670451"
+        },
+        {
+          "distance": 0.1610196828842163,
+          "sample_id": "inat24_3754716"
+        },
+        {
+          "distance": 0.16183358430862427,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.16489171981811523,
+          "sample_id": "inat24_3985334"
+        },
+        {
+          "distance": 0.16539663076400757,
+          "sample_id": "inat24_2476256"
+        }
+      ]
+    },
+    "inat24_3423218": {
+      "results": [
+        {
+          "distance": 0.14148128032684326,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.17351335287094116,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.1935100555419922,
+          "sample_id": "inat24_4465799"
+        },
+        {
+          "distance": 0.19427019357681274,
+          "sample_id": "inat24_3040177"
+        },
+        {
+          "distance": 0.19545716047286987,
+          "sample_id": "inat24_89354"
+        },
+        {
+          "distance": 0.20103996992111206,
+          "sample_id": "inat24_3376056"
+        },
+        {
+          "distance": 0.20649540424346924,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.21326309442520142,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.21572422981262207,
+          "sample_id": "inat24_1601798"
+        },
+        {
+          "distance": 0.21827411651611328,
+          "sample_id": "inat24_1607871"
+        }
+      ]
+    },
+    "inat24_3435923": {
+      "results": [
+        {
+          "distance": 0.14765971899032593,
+          "sample_id": "inat24_3870453"
+        },
+        {
+          "distance": 0.16231173276901245,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.16698867082595825,
+          "sample_id": "inat24_4259561"
+        },
+        {
+          "distance": 0.16796082258224487,
+          "sample_id": "inat24_3107774"
+        },
+        {
+          "distance": 0.18400174379348755,
+          "sample_id": "inat24_1612128"
+        },
+        {
+          "distance": 0.18972355127334595,
+          "sample_id": "inat24_2674818"
+        },
+        {
+          "distance": 0.1910960078239441,
+          "sample_id": "inat24_1607871"
+        },
+        {
+          "distance": 0.19265204668045044,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.19299542903900146,
+          "sample_id": "inat24_3980429"
+        },
+        {
+          "distance": 0.19888579845428467,
+          "sample_id": "inat24_1961692"
+        }
+      ]
+    },
+    "inat24_3451186": {
+      "results": [
+        {
+          "distance": 0.08079725503921509,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.11428201198577881,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.13036996126174927,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.1543182134628296,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.15771692991256714,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.16550779342651367,
+          "sample_id": "inat24_1278409"
+        },
+        {
+          "distance": 0.1667952537536621,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.16862690448760986,
+          "sample_id": "inat24_959388"
+        },
+        {
+          "distance": 0.17576253414154053,
+          "sample_id": "inat24_4096792"
+        },
+        {
+          "distance": 0.1758939027786255,
+          "sample_id": "inat24_2309879"
+        }
+      ]
+    },
+    "inat24_3489975": {
+      "results": [
+        {
+          "distance": 0.08896291255950928,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.09728175401687622,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.10003268718719482,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.11601912975311279,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.1265850067138672,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.12985283136367798,
+          "sample_id": "inat24_2242732"
+        },
+        {
+          "distance": 0.13021624088287354,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.13124912977218628,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.13261067867279053,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.13442450761795044,
+          "sample_id": "inat24_3321814"
+        }
+      ]
+    },
+    "inat24_3581925": {
+      "results": [
+        {
+          "distance": 0.11304199695587158,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.11634314060211182,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.11775118112564087,
+          "sample_id": "inat24_2174251"
+        },
+        {
+          "distance": 0.11890995502471924,
+          "sample_id": "inat24_1001897"
+        },
+        {
+          "distance": 0.13015037775039673,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.13433361053466797,
+          "sample_id": "inat24_2534979"
+        },
+        {
+          "distance": 0.14413964748382568,
+          "sample_id": "inat24_653405"
+        },
+        {
+          "distance": 0.14689576625823975,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.1489936113357544,
+          "sample_id": "inat24_1003363"
+        },
+        {
+          "distance": 0.16715556383132935,
+          "sample_id": "inat24_3330601"
+        }
+      ]
+    },
+    "inat24_3641645": {
+      "results": [
+        {
+          "distance": 0.14471960067749023,
+          "sample_id": "inat24_3225323"
+        },
+        {
+          "distance": 0.17511069774627686,
+          "sample_id": "inat24_1878534"
+        },
+        {
+          "distance": 0.17614567279815674,
+          "sample_id": "inat24_822840"
+        },
+        {
+          "distance": 0.17966896295547485,
+          "sample_id": "inat24_1407741"
+        },
+        {
+          "distance": 0.17973417043685913,
+          "sample_id": "inat24_3754716"
+        },
+        {
+          "distance": 0.18513727188110352,
+          "sample_id": "inat24_3905699"
+        },
+        {
+          "distance": 0.18859338760375977,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.19334560632705688,
+          "sample_id": "inat24_1431996"
+        },
+        {
+          "distance": 0.19348633289337158,
+          "sample_id": "inat24_1001897"
+        },
+        {
+          "distance": 0.194349467754364,
+          "sample_id": "inat24_4034038"
+        }
+      ]
+    },
+    "inat24_3680081": {
+      "results": [
+        {
+          "distance": 0.15285736322402954,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.1566258668899536,
+          "sample_id": "inat24_2551060"
+        },
+        {
+          "distance": 0.16257613897323608,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.164228618144989,
+          "sample_id": "inat24_4589570"
+        },
+        {
+          "distance": 0.1644166111946106,
+          "sample_id": "inat24_1879534"
+        },
+        {
+          "distance": 0.17089968919754028,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.17142444849014282,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.17339575290679932,
+          "sample_id": "inat24_2445045"
+        },
+        {
+          "distance": 0.1762634515762329,
+          "sample_id": "inat24_487552"
+        },
+        {
+          "distance": 0.1764022707939148,
+          "sample_id": "inat24_2593062"
+        }
+      ]
+    },
+    "inat24_3703614": {
+      "results": [
+        {
+          "distance": 0.14294719696044922,
+          "sample_id": "inat24_3985334"
+        },
+        {
+          "distance": 0.14709216356277466,
+          "sample_id": "inat24_3414314"
+        },
+        {
+          "distance": 0.16264379024505615,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.1658760905265808,
+          "sample_id": "inat24_4452366"
+        },
+        {
+          "distance": 0.17014247179031372,
+          "sample_id": "inat24_1946165"
+        },
+        {
+          "distance": 0.1719312071800232,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.1752280592918396,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.1796545386314392,
+          "sample_id": "inat24_3905699"
+        },
+        {
+          "distance": 0.17970532178878784,
+          "sample_id": "inat24_3082102"
+        },
+        {
+          "distance": 0.18241053819656372,
+          "sample_id": "inat24_4315206"
+        }
+      ]
+    },
+    "inat24_3741363": {
+      "results": [
+        {
+          "distance": 0.21592628955841064,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.22557878494262695,
+          "sample_id": "inat24_3396825"
+        },
+        {
+          "distance": 0.22799938917160034,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.23468101024627686,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.2375624179840088,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.23759913444519043,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.2378663420677185,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.23964446783065796,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.24988150596618652,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.2548181414604187,
+          "sample_id": "inat24_1878534"
+        }
+      ]
+    },
+    "inat24_3754716": {
+      "results": [
+        {
+          "distance": 0.14580917358398438,
+          "sample_id": "inat24_3267478"
+        },
+        {
+          "distance": 0.152229905128479,
+          "sample_id": "inat24_2697629"
+        },
+        {
+          "distance": 0.15344536304473877,
+          "sample_id": "inat24_2298245"
+        },
+        {
+          "distance": 0.15382647514343262,
+          "sample_id": "inat24_1998170"
+        },
+        {
+          "distance": 0.15957164764404297,
+          "sample_id": "inat24_1878534"
+        },
+        {
+          "distance": 0.16095978021621704,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.1610196828842163,
+          "sample_id": "inat24_3414314"
+        },
+        {
+          "distance": 0.1635723114013672,
+          "sample_id": "inat24_1431996"
+        },
+        {
+          "distance": 0.1642768383026123,
+          "sample_id": "inat24_3225323"
+        },
+        {
+          "distance": 0.1733086109161377,
+          "sample_id": "inat24_4034038"
+        }
+      ]
+    },
+    "inat24_3789411": {
+      "results": [
+        {
+          "distance": 0.17862528562545776,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.21574294567108154,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.2242785096168518,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.22801518440246582,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.23345541954040527,
+          "sample_id": "inat24_1278409"
+        },
+        {
+          "distance": 0.23408615589141846,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.2362041473388672,
+          "sample_id": "inat24_1832795"
+        },
+        {
+          "distance": 0.23632895946502686,
+          "sample_id": "inat24_2161550"
+        },
+        {
+          "distance": 0.23680657148361206,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.23702043294906616,
+          "sample_id": "inat24_1907688"
+        }
+      ]
+    },
+    "inat24_3828773": {
+      "results": [
+        {
+          "distance": 0.1486201286315918,
+          "sample_id": "inat24_1963975"
+        },
+        {
+          "distance": 0.15616095066070557,
+          "sample_id": "inat24_3082102"
+        },
+        {
+          "distance": 0.15723025798797607,
+          "sample_id": "inat24_2295007"
+        },
+        {
+          "distance": 0.16183310747146606,
+          "sample_id": "inat24_1200798"
+        },
+        {
+          "distance": 0.16773641109466553,
+          "sample_id": "inat24_3985334"
+        },
+        {
+          "distance": 0.16919952630996704,
+          "sample_id": "inat24_991517"
+        },
+        {
+          "distance": 0.17699527740478516,
+          "sample_id": "inat24_1998170"
+        },
+        {
+          "distance": 0.17788726091384888,
+          "sample_id": "inat24_2797060"
+        },
+        {
+          "distance": 0.17863720655441284,
+          "sample_id": "inat24_4003741"
+        },
+        {
+          "distance": 0.1791974902153015,
+          "sample_id": "inat24_637613"
+        }
+      ]
+    },
+    "inat24_3854079": {
+      "results": [
+        {
+          "distance": 0.1424505114555359,
+          "sample_id": "inat24_2907658"
+        },
+        {
+          "distance": 0.15801477432250977,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.18672055006027222,
+          "sample_id": "inat24_2697629"
+        },
+        {
+          "distance": 0.18792134523391724,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.18854761123657227,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.1912117600440979,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.19334417581558228,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.1947343945503235,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.19659864902496338,
+          "sample_id": "inat24_1431996"
+        },
+        {
+          "distance": 0.1983606219291687,
+          "sample_id": "inat24_4128755"
+        }
+      ]
+    },
+    "inat24_3888710": {
+      "results": [
+        {
+          "distance": 0.14385294914245605,
+          "sample_id": "inat24_1832795"
+        },
+        {
+          "distance": 0.14689552783966064,
+          "sample_id": "inat24_2979993"
+        },
+        {
+          "distance": 0.150873064994812,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.15245574712753296,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.15801483392715454,
+          "sample_id": "inat24_3854079"
+        },
+        {
+          "distance": 0.1664178967475891,
+          "sample_id": "inat24_3710976"
+        },
+        {
+          "distance": 0.16796201467514038,
+          "sample_id": "inat24_172444"
+        },
+        {
+          "distance": 0.17190515995025635,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.17549782991409302,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.18829494714736938,
+          "sample_id": "inat24_3556100"
+        }
+      ]
+    },
+    "inat24_3922852": {
+      "results": [
+        {
+          "distance": 0.1158745288848877,
+          "sample_id": "inat24_1348688"
+        },
+        {
+          "distance": 0.13603389263153076,
+          "sample_id": "inat24_4607538"
+        },
+        {
+          "distance": 0.15893030166625977,
+          "sample_id": "inat24_1057675"
+        },
+        {
+          "distance": 0.1739845871925354,
+          "sample_id": "inat24_487552"
+        },
+        {
+          "distance": 0.1844962239265442,
+          "sample_id": "inat24_3680081"
+        },
+        {
+          "distance": 0.18576431274414062,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.18880850076675415,
+          "sample_id": "inat24_1572661"
+        },
+        {
+          "distance": 0.19037717580795288,
+          "sample_id": "inat24_4547058"
+        },
+        {
+          "distance": 0.19370877742767334,
+          "sample_id": "inat24_311497"
+        },
+        {
+          "distance": 0.1949254274368286,
+          "sample_id": "inat24_2593062"
+        }
+      ]
+    },
+    "inat24_3978997": {
+      "results": [
+        {
+          "distance": 0.1962043046951294,
+          "sample_id": "inat24_1918906"
+        },
+        {
+          "distance": 0.2085784673690796,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.21950984001159668,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.22258222103118896,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.23175698518753052,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.23225104808807373,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.23312270641326904,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.2353612780570984,
+          "sample_id": "inat24_88346"
+        },
+        {
+          "distance": 0.2414003610610962,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.24152004718780518,
+          "sample_id": "inat24_2557001"
+        }
+      ]
+    },
+    "inat24_4060319": {
+      "results": [
+        {
+          "distance": 0.09838944673538208,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.10907727479934692,
+          "sample_id": "inat24_795376"
+        },
+        {
+          "distance": 0.12783551216125488,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.1473863124847412,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.14947468042373657,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.1556462049484253,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.16933083534240723,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.1708088517189026,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.1746562123298645,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.17595458030700684,
+          "sample_id": "inat24_2284286"
+        }
+      ]
+    },
+    "inat24_4096792": {
+      "results": [
+        {
+          "distance": 0.13713175058364868,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.14350640773773193,
+          "sample_id": "inat24_4245393"
+        },
+        {
+          "distance": 0.14530909061431885,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.17576253414154053,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.17795777320861816,
+          "sample_id": "inat24_4790065"
+        },
+        {
+          "distance": 0.1924874186515808,
+          "sample_id": "inat24_3710976"
+        },
+        {
+          "distance": 0.19535017013549805,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.19776570796966553,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.19796955585479736,
+          "sample_id": "inat24_959388"
+        },
+        {
+          "distance": 0.2018798589706421,
+          "sample_id": "inat24_172444"
+        }
+      ]
+    },
+    "inat24_4129723": {
+      "results": [
+        {
+          "distance": 0.11510396003723145,
+          "sample_id": "inat24_4259561"
+        },
+        {
+          "distance": 0.14148372411727905,
+          "sample_id": "inat24_3870453"
+        },
+        {
+          "distance": 0.15726220607757568,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.16503417491912842,
+          "sample_id": "inat24_1607871"
+        },
+        {
+          "distance": 0.18837249279022217,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.18860167264938354,
+          "sample_id": "inat24_3253385"
+        },
+        {
+          "distance": 0.2094603180885315,
+          "sample_id": "inat24_3435923"
+        },
+        {
+          "distance": 0.21472477912902832,
+          "sample_id": "inat24_4465799"
+        },
+        {
+          "distance": 0.21853452920913696,
+          "sample_id": "inat24_4056263"
+        },
+        {
+          "distance": 0.23015469312667847,
+          "sample_id": "inat24_97266"
+        }
+      ]
+    },
+    "inat24_4167649": {
+      "results": [
+        {
+          "distance": 0.11470544338226318,
+          "sample_id": "inat24_2026256"
+        },
+        {
+          "distance": 0.1685059666633606,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.19389349222183228,
+          "sample_id": "inat24_3841152"
+        },
+        {
+          "distance": 0.1969221830368042,
+          "sample_id": "inat24_1601798"
+        },
+        {
+          "distance": 0.19905221462249756,
+          "sample_id": "inat24_3581925"
+        },
+        {
+          "distance": 0.20770925283432007,
+          "sample_id": "inat24_1845826"
+        },
+        {
+          "distance": 0.2164021134376526,
+          "sample_id": "inat24_2534979"
+        },
+        {
+          "distance": 0.2286626696586609,
+          "sample_id": "inat24_2174251"
+        },
+        {
+          "distance": 0.23033857345581055,
+          "sample_id": "inat24_3680081"
+        },
+        {
+          "distance": 0.2371455430984497,
+          "sample_id": "inat24_2363661"
+        }
+      ]
+    },
+    "inat24_4217311": {
+      "results": [
+        {
+          "distance": 0.0847172737121582,
+          "sample_id": "inat24_1103438"
+        },
+        {
+          "distance": 0.13964378833770752,
+          "sample_id": "inat24_1651076"
+        },
+        {
+          "distance": 0.14328628778457642,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.1490170955657959,
+          "sample_id": "inat24_4790065"
+        },
+        {
+          "distance": 0.14956891536712646,
+          "sample_id": "inat24_4245393"
+        },
+        {
+          "distance": 0.15133512020111084,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.16011512279510498,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.16224545240402222,
+          "sample_id": "inat24_795376"
+        },
+        {
+          "distance": 0.16621047258377075,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.1676819920539856,
+          "sample_id": "inat24_2309879"
+        }
+      ]
+    },
+    "inat24_4235443": {
+      "results": [
+        {
+          "distance": 0.14908289909362793,
+          "sample_id": "inat24_1407741"
+        },
+        {
+          "distance": 0.17341625690460205,
+          "sample_id": "inat24_822840"
+        },
+        {
+          "distance": 0.18000102043151855,
+          "sample_id": "inat24_1283238"
+        },
+        {
+          "distance": 0.23414826393127441,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.24145448207855225,
+          "sample_id": "inat24_4315206"
+        },
+        {
+          "distance": 0.24255222082138062,
+          "sample_id": "inat24_137530"
+        },
+        {
+          "distance": 0.2445628046989441,
+          "sample_id": "inat24_4572446"
+        },
+        {
+          "distance": 0.2505232095718384,
+          "sample_id": "inat24_2824770"
+        },
+        {
+          "distance": 0.25245022773742676,
+          "sample_id": "inat24_1878534"
+        },
+        {
+          "distance": 0.2526136040687561,
+          "sample_id": "inat24_3003418"
+        }
+      ]
+    },
+    "inat24_4245393": {
+      "results": [
+        {
+          "distance": 0.13817667961120605,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.14350634813308716,
+          "sample_id": "inat24_4096792"
+        },
+        {
+          "distance": 0.14790380001068115,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.1495688557624817,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.1866515874862671,
+          "sample_id": "inat24_2035985"
+        },
+        {
+          "distance": 0.1941087245941162,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.198603093624115,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.19888520240783691,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.20352691411972046,
+          "sample_id": "inat24_1909712"
+        },
+        {
+          "distance": 0.20381641387939453,
+          "sample_id": "inat24_1651076"
+        }
+      ]
+    },
+    "inat24_4286032": {
+      "results": [
+        {
+          "distance": 0.0790022611618042,
+          "sample_id": "inat24_188108"
+        },
+        {
+          "distance": 0.09577822685241699,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.10709273815155029,
+          "sample_id": "inat24_1017832"
+        },
+        {
+          "distance": 0.11262357234954834,
+          "sample_id": "inat24_2328890"
+        },
+        {
+          "distance": 0.11348342895507812,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.11613184213638306,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.11989104747772217,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.12437337636947632,
+          "sample_id": "inat24_3825474"
+        },
+        {
+          "distance": 0.13052111864089966,
+          "sample_id": "inat24_2185393"
+        },
+        {
+          "distance": 0.14123600721359253,
+          "sample_id": "inat24_2475467"
+        }
+      ]
+    },
+    "inat24_4294684": {
+      "results": [
+        {
+          "distance": 0.09248000383377075,
+          "sample_id": "inat24_4284996"
+        },
+        {
+          "distance": 0.1306464672088623,
+          "sample_id": "inat24_4577066"
+        },
+        {
+          "distance": 0.1375001072883606,
+          "sample_id": "inat24_3671011"
+        },
+        {
+          "distance": 0.13969182968139648,
+          "sample_id": "inat24_4762509"
+        },
+        {
+          "distance": 0.14759981632232666,
+          "sample_id": "inat24_1945359"
+        },
+        {
+          "distance": 0.15562933683395386,
+          "sample_id": "inat24_2363661"
+        },
+        {
+          "distance": 0.17011797428131104,
+          "sample_id": "inat24_4415465"
+        },
+        {
+          "distance": 0.17349117994308472,
+          "sample_id": "inat24_646363"
+        },
+        {
+          "distance": 0.18433064222335815,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.20364248752593994,
+          "sample_id": "inat24_1237216"
+        }
+      ]
+    },
+    "inat24_4368205": {
+      "results": [
+        {
+          "distance": 0.17249059677124023,
+          "sample_id": "inat24_721270"
+        },
+        {
+          "distance": 0.20460540056228638,
+          "sample_id": "inat24_4227402"
+        },
+        {
+          "distance": 0.21980297565460205,
+          "sample_id": "inat24_2858475"
+        },
+        {
+          "distance": 0.22396773099899292,
+          "sample_id": "inat24_1407741"
+        },
+        {
+          "distance": 0.2370213270187378,
+          "sample_id": "inat24_3754716"
+        },
+        {
+          "distance": 0.23895752429962158,
+          "sample_id": "inat24_3469791"
+        },
+        {
+          "distance": 0.24431908130645752,
+          "sample_id": "inat24_4778383"
+        },
+        {
+          "distance": 0.24506032466888428,
+          "sample_id": "inat24_822840"
+        },
+        {
+          "distance": 0.2469978928565979,
+          "sample_id": "inat24_469039"
+        },
+        {
+          "distance": 0.24927830696105957,
+          "sample_id": "inat24_3953656"
+        }
+      ]
+    },
+    "inat24_4379434": {
+      "results": [
+        {
+          "distance": 0.1798630952835083,
+          "sample_id": "inat24_2486741"
+        },
+        {
+          "distance": 0.20940691232681274,
+          "sample_id": "inat24_2674818"
+        },
+        {
+          "distance": 0.21726065874099731,
+          "sample_id": "inat24_4514673"
+        },
+        {
+          "distance": 0.22562777996063232,
+          "sample_id": "inat24_4493159"
+        },
+        {
+          "distance": 0.23576408624649048,
+          "sample_id": "inat24_3161030"
+        },
+        {
+          "distance": 0.24030029773712158,
+          "sample_id": "inat24_3107774"
+        },
+        {
+          "distance": 0.24182111024856567,
+          "sample_id": "inat24_1317305"
+        },
+        {
+          "distance": 0.24470120668411255,
+          "sample_id": "inat24_1845826"
+        },
+        {
+          "distance": 0.24904155731201172,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.24923557043075562,
+          "sample_id": "inat24_3360542"
+        }
+      ]
+    },
+    "inat24_4393179": {
+      "results": [
+        {
+          "distance": 0.11722469329833984,
+          "sample_id": "inat24_2101755"
+        },
+        {
+          "distance": 0.14917218685150146,
+          "sample_id": "inat24_4059203"
+        },
+        {
+          "distance": 0.15278887748718262,
+          "sample_id": "inat24_4452366"
+        },
+        {
+          "distance": 0.15352344512939453,
+          "sample_id": "inat24_668732"
+        },
+        {
+          "distance": 0.15367639064788818,
+          "sample_id": "inat24_1909712"
+        },
+        {
+          "distance": 0.15633291006088257,
+          "sample_id": "inat24_4103908"
+        },
+        {
+          "distance": 0.1578546166419983,
+          "sample_id": "inat24_1140790"
+        },
+        {
+          "distance": 0.1593695878982544,
+          "sample_id": "inat24_640509"
+        },
+        {
+          "distance": 0.16260367631912231,
+          "sample_id": "inat24_2097011"
+        },
+        {
+          "distance": 0.16621249914169312,
+          "sample_id": "inat24_1042204"
+        }
+      ]
+    },
+    "inat24_4465799": {
+      "results": [
+        {
+          "distance": 0.1163979172706604,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.1270008683204651,
+          "sample_id": "inat24_1607871"
+        },
+        {
+          "distance": 0.16210317611694336,
+          "sample_id": "inat24_1158489"
+        },
+        {
+          "distance": 0.17520803213119507,
+          "sample_id": "inat24_3910931"
+        },
+        {
+          "distance": 0.17921876907348633,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.18098711967468262,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.18142026662826538,
+          "sample_id": "inat24_11242"
+        },
+        {
+          "distance": 0.18365544080734253,
+          "sample_id": "inat24_4259561"
+        },
+        {
+          "distance": 0.19109177589416504,
+          "sample_id": "inat24_1962828"
+        },
+        {
+          "distance": 0.1935099959373474,
+          "sample_id": "inat24_3423218"
+        }
+      ]
+    },
+    "inat24_4475143": {
+      "results": [
+        {
+          "distance": 0.13354718685150146,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.14316153526306152,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.1571519374847412,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.16871660947799683,
+          "sample_id": "inat24_1946165"
+        },
+        {
+          "distance": 0.1703634262084961,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.17263978719711304,
+          "sample_id": "inat24_4582609"
+        },
+        {
+          "distance": 0.1854420304298401,
+          "sample_id": "inat24_1113704"
+        },
+        {
+          "distance": 0.18790322542190552,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.19197267293930054,
+          "sample_id": "inat24_1115929"
+        },
+        {
+          "distance": 0.19209682941436768,
+          "sample_id": "inat24_3703614"
+        }
+      ]
+    },
+    "inat24_4493159": {
+      "results": [
+        {
+          "distance": 0.08881562948226929,
+          "sample_id": "inat24_3972954"
+        },
+        {
+          "distance": 0.12147408723831177,
+          "sample_id": "inat24_2486741"
+        },
+        {
+          "distance": 0.16555100679397583,
+          "sample_id": "inat24_3360542"
+        },
+        {
+          "distance": 0.17491096258163452,
+          "sample_id": "inat24_2839687"
+        },
+        {
+          "distance": 0.18301117420196533,
+          "sample_id": "inat24_3376056"
+        },
+        {
+          "distance": 0.1834031343460083,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.2107100486755371,
+          "sample_id": "inat24_97266"
+        },
+        {
+          "distance": 0.22296351194381714,
+          "sample_id": "inat24_3423218"
+        },
+        {
+          "distance": 0.22303658723831177,
+          "sample_id": "inat24_89354"
+        },
+        {
+          "distance": 0.22562777996063232,
+          "sample_id": "inat24_4379434"
+        }
+      ]
+    },
+    "inat24_4547058": {
+      "results": [
+        {
+          "distance": 0.13942468166351318,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.14493119716644287,
+          "sample_id": "inat24_1572661"
+        },
+        {
+          "distance": 0.14927178621292114,
+          "sample_id": "inat24_3583572"
+        },
+        {
+          "distance": 0.15258252620697021,
+          "sample_id": "inat24_2551060"
+        },
+        {
+          "distance": 0.16598457098007202,
+          "sample_id": "inat24_3851955"
+        },
+        {
+          "distance": 0.17232096195220947,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.17514336109161377,
+          "sample_id": "inat24_2174251"
+        },
+        {
+          "distance": 0.18209964036941528,
+          "sample_id": "inat24_2445045"
+        },
+        {
+          "distance": 0.1839924454689026,
+          "sample_id": "inat24_3330601"
+        },
+        {
+          "distance": 0.18571019172668457,
+          "sample_id": "inat24_487552"
+        }
+      ]
+    },
+    "inat24_4551858": {
+      "results": [
+        {
+          "distance": 0.07727450132369995,
+          "sample_id": "inat24_1030592"
+        },
+        {
+          "distance": 0.11259931325912476,
+          "sample_id": "inat24_999566"
+        },
+        {
+          "distance": 0.11364710330963135,
+          "sample_id": "inat24_1963975"
+        },
+        {
+          "distance": 0.1170690655708313,
+          "sample_id": "inat24_469039"
+        },
+        {
+          "distance": 0.12670892477035522,
+          "sample_id": "inat24_4298960"
+        },
+        {
+          "distance": 0.12740075588226318,
+          "sample_id": "inat24_3155729"
+        },
+        {
+          "distance": 0.1294500231742859,
+          "sample_id": "inat24_1122590"
+        },
+        {
+          "distance": 0.14163637161254883,
+          "sample_id": "inat24_3142298"
+        },
+        {
+          "distance": 0.14492648839950562,
+          "sample_id": "inat24_4729978"
+        },
+        {
+          "distance": 0.14605176448822021,
+          "sample_id": "inat24_3347109"
+        }
+      ]
+    },
+    "inat24_4559640": {
+      "results": [
+        {
+          "distance": 0.1463722586631775,
+          "sample_id": "inat24_4792308"
+        },
+        {
+          "distance": 0.16355270147323608,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.18002384901046753,
+          "sample_id": "inat24_1962828"
+        },
+        {
+          "distance": 0.18302226066589355,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.19111686944961548,
+          "sample_id": "inat24_991517"
+        },
+        {
+          "distance": 0.19413411617279053,
+          "sample_id": "inat24_2703013"
+        },
+        {
+          "distance": 0.19617801904678345,
+          "sample_id": "inat24_653405"
+        },
+        {
+          "distance": 0.2093612551689148,
+          "sample_id": "inat24_1243427"
+        },
+        {
+          "distance": 0.21115642786026,
+          "sample_id": "inat24_2363661"
+        },
+        {
+          "distance": 0.21314376592636108,
+          "sample_id": "inat24_3841152"
+        }
+      ]
+    },
+    "inat24_4572446": {
+      "results": [
+        {
+          "distance": 0.13459831476211548,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.142289936542511,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.16654318571090698,
+          "sample_id": "inat24_2475467"
+        },
+        {
+          "distance": 0.17102080583572388,
+          "sample_id": "inat24_2205700"
+        },
+        {
+          "distance": 0.1744505763053894,
+          "sample_id": "inat24_188108"
+        },
+        {
+          "distance": 0.17655909061431885,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.1791725754737854,
+          "sample_id": "inat24_1407741"
+        },
+        {
+          "distance": 0.18248873949050903,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.18327182531356812,
+          "sample_id": "inat24_1184768"
+        },
+        {
+          "distance": 0.18460434675216675,
+          "sample_id": "inat24_3754716"
+        }
+      ]
+    },
+    "inat24_4589570": {
+      "results": [
+        {
+          "distance": 0.07981228828430176,
+          "sample_id": "inat24_1163771"
+        },
+        {
+          "distance": 0.11698168516159058,
+          "sample_id": "inat24_390260"
+        },
+        {
+          "distance": 0.14447873830795288,
+          "sample_id": "inat24_2400643"
+        },
+        {
+          "distance": 0.16315841674804688,
+          "sample_id": "inat24_1601798"
+        },
+        {
+          "distance": 0.164228618144989,
+          "sample_id": "inat24_3680081"
+        },
+        {
+          "distance": 0.16786795854568481,
+          "sample_id": "inat24_2363661"
+        },
+        {
+          "distance": 0.1732601523399353,
+          "sample_id": "inat24_1879534"
+        },
+        {
+          "distance": 0.17598843574523926,
+          "sample_id": "inat24_3330601"
+        },
+        {
+          "distance": 0.1763826608657837,
+          "sample_id": "inat24_2593062"
+        },
+        {
+          "distance": 0.17868703603744507,
+          "sample_id": "inat24_2174251"
+        }
+      ]
+    },
+    "inat24_4688431": {
+      "results": [
+        {
+          "distance": 0.05761516094207764,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.10003268718719482,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.11410641670227051,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.11438500881195068,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.11913830041885376,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.1277632713317871,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.12827372550964355,
+          "sample_id": "inat24_2476256"
+        },
+        {
+          "distance": 0.13026994466781616,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.13397765159606934,
+          "sample_id": "inat24_1212752"
+        },
+        {
+          "distance": 0.13623929023742676,
+          "sample_id": "inat24_243827"
+        }
+      ]
+    },
+    "inat24_4790065": {
+      "results": [
+        {
+          "distance": 0.14700210094451904,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.14713233709335327,
+          "sample_id": "inat24_1651076"
+        },
+        {
+          "distance": 0.1490170955657959,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.16303420066833496,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.16393119096755981,
+          "sample_id": "inat24_1103438"
+        },
+        {
+          "distance": 0.17795777320861816,
+          "sample_id": "inat24_4096792"
+        },
+        {
+          "distance": 0.1799505352973938,
+          "sample_id": "inat24_673856"
+        },
+        {
+          "distance": 0.18111705780029297,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.18406540155410767,
+          "sample_id": "inat24_2399279"
+        },
+        {
+          "distance": 0.18715351819992065,
+          "sample_id": "inat24_3451186"
+        }
+      ]
+    },
+    "inat24_4792308": {
+      "results": [
+        {
+          "distance": 0.1463722586631775,
+          "sample_id": "inat24_4559640"
+        },
+        {
+          "distance": 0.147868812084198,
+          "sample_id": "inat24_1651515"
+        },
+        {
+          "distance": 0.15002590417861938,
+          "sample_id": "inat24_2674818"
+        },
+        {
+          "distance": 0.15128111839294434,
+          "sample_id": "inat24_2976283"
+        },
+        {
+          "distance": 0.15512073040008545,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.18869352340698242,
+          "sample_id": "inat24_1961692"
+        },
+        {
+          "distance": 0.18989384174346924,
+          "sample_id": "inat24_2703013"
+        },
+        {
+          "distance": 0.19986450672149658,
+          "sample_id": "inat24_991517"
+        },
+        {
+          "distance": 0.2063484787940979,
+          "sample_id": "inat24_1962828"
+        },
+        {
+          "distance": 0.20908194780349731,
+          "sample_id": "inat24_1828294"
+        }
+      ]
+    },
+    "inat24_606399": {
+      "results": [
+        {
+          "distance": 0.15009289979934692,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.16780763864517212,
+          "sample_id": "inat24_3905699"
+        },
+        {
+          "distance": 0.16872936487197876,
+          "sample_id": "inat24_1828294"
+        },
+        {
+          "distance": 0.16993564367294312,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.1800866723060608,
+          "sample_id": "inat24_1982950"
+        },
+        {
+          "distance": 0.1843494176864624,
+          "sample_id": "inat24_3828773"
+        },
+        {
+          "distance": 0.18513429164886475,
+          "sample_id": "inat24_2295007"
+        },
+        {
+          "distance": 0.18934184312820435,
+          "sample_id": "inat24_991517"
+        },
+        {
+          "distance": 0.18950194120407104,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.19455158710479736,
+          "sample_id": "inat24_1347459"
+        }
+      ]
+    },
+    "inat24_645095": {
+      "results": [
+        {
+          "distance": 0.09688866138458252,
+          "sample_id": "inat24_795376"
+        },
+        {
+          "distance": 0.09838950634002686,
+          "sample_id": "inat24_4060319"
+        },
+        {
+          "distance": 0.1221170425415039,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.12447822093963623,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.1302163004875183,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.13027000427246094,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.13624906539916992,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.15305054187774658,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.15488266944885254,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.15620428323745728,
+          "sample_id": "inat24_3059690"
+        }
+      ]
+    },
+    "inat24_661096": {
+      "results": [
+        {
+          "distance": 0.12211698293685913,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.12783551216125488,
+          "sample_id": "inat24_4060319"
+        },
+        {
+          "distance": 0.14111918210983276,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.14455491304397583,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.14837580919265747,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.15078037977218628,
+          "sample_id": "inat24_795376"
+        },
+        {
+          "distance": 0.15245574712753296,
+          "sample_id": "inat24_3888710"
+        },
+        {
+          "distance": 0.15318703651428223,
+          "sample_id": "inat24_344586"
+        },
+        {
+          "distance": 0.15347737073898315,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.1574426293373108,
+          "sample_id": "inat24_2234430"
+        }
+      ]
+    },
+    "inat24_673856": {
+      "results": [
+        {
+          "distance": 0.11902326345443726,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.13864398002624512,
+          "sample_id": "inat24_243827"
+        },
+        {
+          "distance": 0.1432863473892212,
+          "sample_id": "inat24_4217311"
+        },
+        {
+          "distance": 0.14980638027191162,
+          "sample_id": "inat24_2557001"
+        },
+        {
+          "distance": 0.15570610761642456,
+          "sample_id": "inat24_3170323"
+        },
+        {
+          "distance": 0.15825790166854858,
+          "sample_id": "inat24_1651076"
+        },
+        {
+          "distance": 0.17519152164459229,
+          "sample_id": "inat24_2079441"
+        },
+        {
+          "distance": 0.1795244812965393,
+          "sample_id": "inat24_2284286"
+        },
+        {
+          "distance": 0.17995059490203857,
+          "sample_id": "inat24_4790065"
+        },
+        {
+          "distance": 0.1819150447845459,
+          "sample_id": "inat24_1103438"
+        }
+      ]
+    },
+    "inat24_795376": {
+      "results": [
+        {
+          "distance": 0.09688860177993774,
+          "sample_id": "inat24_645095"
+        },
+        {
+          "distance": 0.10907727479934692,
+          "sample_id": "inat24_4060319"
+        },
+        {
+          "distance": 0.1167154312133789,
+          "sample_id": "inat24_2667713"
+        },
+        {
+          "distance": 0.14299267530441284,
+          "sample_id": "inat24_1108956"
+        },
+        {
+          "distance": 0.14613038301467896,
+          "sample_id": "inat24_3489975"
+        },
+        {
+          "distance": 0.1473420262336731,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.14831417798995972,
+          "sample_id": "inat24_637613"
+        },
+        {
+          "distance": 0.15078037977218628,
+          "sample_id": "inat24_661096"
+        },
+        {
+          "distance": 0.15435761213302612,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.1612294316291809,
+          "sample_id": "inat24_2242732"
+        }
+      ]
+    },
+    "inat24_839318": {
+      "results": [
+        {
+          "distance": 0.1316007375717163,
+          "sample_id": "inat24_2475467"
+        },
+        {
+          "distance": 0.1509283185005188,
+          "sample_id": "inat24_3825474"
+        },
+        {
+          "distance": 0.1531742811203003,
+          "sample_id": "inat24_1184768"
+        },
+        {
+          "distance": 0.15961897373199463,
+          "sample_id": "inat24_1237216"
+        },
+        {
+          "distance": 0.16438573598861694,
+          "sample_id": "inat24_1440675"
+        },
+        {
+          "distance": 0.16552013158798218,
+          "sample_id": "inat24_1924275"
+        },
+        {
+          "distance": 0.17255616188049316,
+          "sample_id": "inat24_4286032"
+        },
+        {
+          "distance": 0.17598116397857666,
+          "sample_id": "inat24_2873677"
+        },
+        {
+          "distance": 0.19842654466629028,
+          "sample_id": "inat24_2328890"
+        },
+        {
+          "distance": 0.19884109497070312,
+          "sample_id": "inat24_4572446"
+        }
+      ]
+    },
+    "inat24_88346": {
+      "results": [
+        {
+          "distance": 0.1351165771484375,
+          "sample_id": "inat24_3317529"
+        },
+        {
+          "distance": 0.1381656527519226,
+          "sample_id": "inat24_1517076"
+        },
+        {
+          "distance": 0.15725934505462646,
+          "sample_id": "inat24_4176416"
+        },
+        {
+          "distance": 0.1791781783103943,
+          "sample_id": "inat24_1918906"
+        },
+        {
+          "distance": 0.1838165521621704,
+          "sample_id": "inat24_2036083"
+        },
+        {
+          "distance": 0.18504685163497925,
+          "sample_id": "inat24_3321814"
+        },
+        {
+          "distance": 0.1984483003616333,
+          "sample_id": "inat24_3556100"
+        },
+        {
+          "distance": 0.20142531394958496,
+          "sample_id": "inat24_2194540"
+        },
+        {
+          "distance": 0.20332908630371094,
+          "sample_id": "inat24_2496479"
+        },
+        {
+          "distance": 0.21085631847381592,
+          "sample_id": "inat24_1832795"
+        }
+      ]
+    },
+    "inat24_959388": {
+      "results": [
+        {
+          "distance": 0.15915226936340332,
+          "sample_id": "inat24_1907688"
+        },
+        {
+          "distance": 0.16862690448760986,
+          "sample_id": "inat24_3451186"
+        },
+        {
+          "distance": 0.17773401737213135,
+          "sample_id": "inat24_2670451"
+        },
+        {
+          "distance": 0.17987513542175293,
+          "sample_id": "inat24_2309879"
+        },
+        {
+          "distance": 0.1826210618019104,
+          "sample_id": "inat24_2481078"
+        },
+        {
+          "distance": 0.19005084037780762,
+          "sample_id": "inat24_2234430"
+        },
+        {
+          "distance": 0.19573616981506348,
+          "sample_id": "inat24_4688431"
+        },
+        {
+          "distance": 0.19796955585479736,
+          "sample_id": "inat24_4096792"
+        },
+        {
+          "distance": 0.19987791776657104,
+          "sample_id": "inat24_3396825"
+        },
+        {
+          "distance": 0.20078247785568237,
+          "sample_id": "inat24_3414314"
+        }
+      ]
+    }
+  },
+  "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+}

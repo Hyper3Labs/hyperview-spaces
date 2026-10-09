@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "shard_size": 500,
+  "shards": [
+    {
+      "count": 60,
+      "label_counts": [
+        {
+          "count": 5,
+          "value": "airplane"
+        },
+        {
+          "count": 5,
+          "value": "airport"
+        },
+        {
+          "count": 5,
+          "value": "basketball court"
+        },
+        {
+          "count": 5,
+          "value": "bridge"
+        },
+        {
+          "count": 5,
+          "value": "circular farmland"
+        },
+        {
+          "count": 5,
+          "value": "forest"
+        },
+        {
+          "count": 5,
+          "value": "meadow"
+        },
+        {
+          "count": 5,
+          "value": "rectangular farmland"
+        },
+        {
+          "count": 5,
+          "value": "runway"
+        },
+        {
+          "count": 5,
+          "value": "sparse residential"
+        },
+        {
+          "count": 5,
+          "value": "storage tank"
+        },
+        {
+          "count": 5,
+          "value": "terrace"
+        }
+      ],
+      "offset": 0,
+      "path": "shards/000000.json",
+      "sample_ids": [
+        "resisc45_storage_tank_1",
+        "resisc45_storage_tank_4",
+        "resisc45_circular_farmland_7",
+        "resisc45_meadow_13",
+        "resisc45_airport_14",
+        "resisc45_terrace_16",
+        "resisc45_basketball_court_17",
+        "resisc45_forest_20",
+        "resisc45_rectangular_farmland_21",
+        "resisc45_forest_26",
+        "resisc45_forest_27",
+        "resisc45_meadow_34",
+        "resisc45_forest_36",
+        "resisc45_terrace_37",
+        "resisc45_circular_farmland_43",
+        "resisc45_meadow_45",
+        "resisc45_airplane_46",
+        "resisc45_circular_farmland_47",
+        "resisc45_basketball_court_49",
+        "resisc45_airport_51",
+        "resisc45_circular_farmland_55",
+        "resisc45_basketball_court_62",
+        "resisc45_basketball_court_67",
+        "resisc45_basketball_court_69",
+        "resisc45_circular_farmland_74",
+        "resisc45_meadow_75",
+        "resisc45_meadow_79",
+        "resisc45_airport_85",
+        "resisc45_terrace_87",
+        "resisc45_rectangular_farmland_89",
+        "resisc45_bridge_90",
+        "resisc45_rectangular_farmland_91",
+        "resisc45_airplane_96",
+        "resisc45_forest_111",
+        "resisc45_terrace_116",
+        "resisc45_airplane_119",
+        "resisc45_airplane_136",
+        "resisc45_terrace_148",
+        "resisc45_airplane_156",
+        "resisc45_airport_157",
+        "resisc45_rectangular_farmland_171",
+        "resisc45_bridge_174",
+        "resisc45_runway_184",
+        "resisc45_sparse_residential_196",
+        "resisc45_rectangular_farmland_198",
+        "resisc45_runway_202",
+        "resisc45_bridge_230",
+        "resisc45_runway_241",
+        "resisc45_storage_tank_271",
+        "resisc45_storage_tank_272",
+        "resisc45_bridge_297",
+        "resisc45_runway_313",
+        "resisc45_storage_tank_315",
+        "resisc45_runway_319",
+        "resisc45_bridge_327",
+        "resisc45_airport_358",
+        "resisc45_sparse_residential_367",
+        "resisc45_sparse_residential_421",
+        "resisc45_sparse_residential_469",
+        "resisc45_sparse_residential_477"
+      ]
+    }
+  ],
+  "total": 60
+}

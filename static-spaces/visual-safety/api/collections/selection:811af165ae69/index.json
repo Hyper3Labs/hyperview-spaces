@@ -1,0 +1,26 @@
+{
+  "collection": {
+    "created_at": 1788429988,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:811af165ae69",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "visual-safety-hard-case-clip-01",
+        "visual-safety-hard-case-clip-02",
+        "visual-safety-hard-case-clip-03",
+        "visual-safety-hard-case-clip-04",
+        "visual-safety-hard-case-clip-05",
+        "visual-safety-hard-case-clip-06",
+        "visual-safety-hard-case-clip-07"
+      ],
+      "source": "Hard case review batch \u00b7 OpenAI CLIP"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 7
+}

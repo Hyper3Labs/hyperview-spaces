@@ -1,0 +1,223 @@
+{
+  "collection_id": "selection:5830ea2abca4",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_1.jpg",
+        "height": null,
+        "id": "precision-bench-hyper3-01",
+        "label": "#1 \u00b7 the chair on the bottom right",
+        "media_type": null,
+        "media_url": "/api/samples/precision-bench-hyper3-01/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            434.35,
+            261.74,
+            128.83,
+            165.26
+          ],
+          "business_question": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+          "case_id": "bench",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000434372_108076.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Hospitality / Seating",
+          "rank": 1,
+          "refcocog_query_id": "108076",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "An empty seat at on a bench."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-bench-hyper3-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-bench-hyper3-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_2.jpg",
+        "height": null,
+        "id": "precision-bench-hyper3-02",
+        "label": "#2 \u00b7 An office chair closest to the corner.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-bench-hyper3-02/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            43.26,
+            240.26,
+            104.02,
+            174.52
+          ],
+          "business_question": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+          "case_id": "bench",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000485014_1938820.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Hospitality / Seating",
+          "rank": 2,
+          "refcocog_query_id": "1938820",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "An empty seat at on a bench."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-bench-hyper3-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-bench-hyper3-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_3.jpg",
+        "height": null,
+        "id": "precision-bench-hyper3-03",
+        "label": "#3 \u00b7 the front bleacher",
+        "media_type": null,
+        "media_url": "/api/samples/precision-bench-hyper3-03/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            427.64,
+            199.43,
+            212.36,
+            76.77
+          ],
+          "business_question": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+          "case_id": "bench",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000012522_573614.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Hospitality / Seating",
+          "rank": 3,
+          "refcocog_query_id": "573614",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "An empty seat at on a bench."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-bench-hyper3-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-bench-hyper3-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_4.jpg",
+        "height": null,
+        "id": "precision-bench-hyper3-04",
+        "label": "#4 \u00b7 The empty chair on the end of the row.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-bench-hyper3-04/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            91.16,
+            284.27,
+            127.62,
+            139.13
+          ],
+          "business_question": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+          "case_id": "bench",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000344644_373167.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Hospitality / Seating",
+          "rank": 4,
+          "refcocog_query_id": "373167",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "An empty seat at on a bench."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-bench-hyper3-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-bench-hyper3-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "hyper3_5.jpg",
+        "height": null,
+        "id": "precision-bench-hyper3-05",
+        "label": "#5 \u00b7 The wicker chair to the left.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-bench-hyper3-05/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            30.71,
+            225.84,
+            121.2,
+            130.33
+          ],
+          "business_question": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+          "case_id": "bench",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000185116_108052.jpg",
+          "is_target": false,
+          "model": "hyper3-clip-v0.5",
+          "model_key": "hyper3",
+          "operational_slice": "Hospitality / Seating",
+          "rank": 5,
+          "refcocog_query_id": "108052",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "An empty seat at on a bench."
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-bench-hyper3-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-bench-hyper3-05",
+      "score": null
+    }
+  ],
+  "limit": 5,
+  "offset": 0,
+  "total": 5
+}

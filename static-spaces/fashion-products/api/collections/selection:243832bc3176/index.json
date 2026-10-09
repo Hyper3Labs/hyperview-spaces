@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788429636,
+    "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+    "entity_set_id": "samples",
+    "id": "selection:243832bc3176",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "fashion-evidence-text-light-denim-leggings-hyper3-01",
+        "fashion-evidence-text-light-denim-leggings-hyper3-02",
+        "fashion-evidence-text-light-denim-leggings-hyper3-03",
+        "fashion-evidence-text-light-denim-leggings-hyper3-04",
+        "fashion-evidence-text-light-denim-leggings-hyper3-05",
+        "fashion-evidence-text-light-denim-leggings-hyper3-06"
+      ],
+      "source": "Light denim leggings \u00b7 Hyper3-CLIP \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

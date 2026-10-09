@@ -1,0 +1,8 @@
+{
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "single-page-application"
+  },
+  "compatibility_date": "2026-10-09",
+  "name": "hyperview-abo-catalog-clip-hyper3clip-split"
+}

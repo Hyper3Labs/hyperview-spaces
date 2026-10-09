@@ -118,6 +118,11 @@ def main() -> int:
             errors.append(f"{slug}: bundle has export warnings: {manifest.get('warnings')!r}")
         if not isinstance(capabilities, dict) or capabilities.get("text_search") is not False:
             errors.append(f"{slug}: bundle exposes backend-only text search")
+        # The exporter writes an empty module when a panel's JSX fails to
+        # compile, and the panel then renders an error instead of its content.
+        for module in sorted((bundle / "api" / "panels" / "content").rglob("*.js")):
+            if module.stat().st_size == 0:
+                errors.append(f"{slug}: empty panel module {module.relative_to(bundle)}")
         # A bundle must not name its own URL prefix: that is what made it
         # break when published anywhere other than where it was built for.
         if "mount_path" in manifest:

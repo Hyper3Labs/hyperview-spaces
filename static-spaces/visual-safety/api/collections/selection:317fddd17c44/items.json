@@ -1,0 +1,204 @@
+{
+  "collection_id": "selection:317fddd17c44",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "56405a17c0ea8857.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-01",
+        "label": "Exact label \u00b7 Handgun",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-01/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 1,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Handgun",
+          "source_sample_id": "openimages_089_needs_review_56405a17c0ea8857"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "9e2e2c64173578bc.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-02",
+        "label": "Exact label \u00b7 Handgun",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-02/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 2,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Handgun",
+          "source_sample_id": "openimages_092_needs_review_9e2e2c64173578bc"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "1519b2618048f525.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-03",
+        "label": "Related label \u00b7 Weapon",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-03/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 3,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Weapon",
+          "source_sample_id": "openimages_091_needs_review_1519b2618048f525"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "1228bfe2f3dc2d29.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-04",
+        "label": "Other flagged item \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-04/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 4,
+          "review_tag": "Other flagged item",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_085_needs_review_1228bfe2f3dc2d29"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "bafd801621510353.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-05",
+        "label": "Other flagged item \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-05/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 5,
+          "review_tag": "Other flagged item",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_108_needs_review_bafd801621510353"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-05",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "0565bcccb1266f62.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-06",
+        "label": "Other flagged item \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-06/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 6,
+          "review_tag": "Other flagged item",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_107_needs_review_0565bcccb1266f62"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-06/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-06",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "4b00a3af27c5b2c6.jpg",
+        "height": null,
+        "id": "visual-safety-weapon-clip-07",
+        "label": "Other flagged item \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-weapon-clip-07/content",
+        "metadata": {
+          "anchor_id": "openimages_083_needs_review_0c4b629e801e8181",
+          "model": "clip",
+          "rank": 7,
+          "review_tag": "Other flagged item",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_096_needs_review_4b00a3af27c5b2c6"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-weapon-clip-07/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-weapon-clip-07",
+      "score": null
+    }
+  ],
+  "limit": 7,
+  "offset": 0,
+  "total": 7
+}

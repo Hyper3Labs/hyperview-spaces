@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594447,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:90cd325bb14b",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-retail-clip-01",
+        "precision-retail-clip-02",
+        "precision-retail-clip-03",
+        "precision-retail-clip-04",
+        "precision-retail-clip-05"
+      ],
+      "source": "Apple slice \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

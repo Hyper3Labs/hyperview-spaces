@@ -1,0 +1,204 @@
+{
+  "collection_id": "selection:89d735555911",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "4b00a3af27c5b2c6.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-01",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-01/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 1,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_096_needs_review_4b00a3af27c5b2c6"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "01b9021aa05e6e46.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-02",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-02/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 2,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_109_needs_review_01b9021aa05e6e46"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "6280218c3acff468.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-03",
+        "label": "Related label \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-03/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 3,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_070_needs_review_6280218c3acff468"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "a6e26ac77fdf81e0.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-04",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-04/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 4,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_084_needs_review_a6e26ac77fdf81e0"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "1228bfe2f3dc2d29.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-05",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-05/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 5,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_085_needs_review_1228bfe2f3dc2d29"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-05",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "5b11689076a3cc49.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-06",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-06/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 6,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_114_needs_review_5b11689076a3cc49"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-06/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-06",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "bafd801621510353.jpg",
+        "height": null,
+        "id": "visual-safety-knife-hyper3-07",
+        "label": "Related label \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-hyper3-07/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "hyper3",
+          "rank": 7,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_108_needs_review_bafd801621510353"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-hyper3-07/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-hyper3-07",
+      "score": null
+    }
+  ],
+  "limit": 7,
+  "offset": 0,
+  "total": 7
+}

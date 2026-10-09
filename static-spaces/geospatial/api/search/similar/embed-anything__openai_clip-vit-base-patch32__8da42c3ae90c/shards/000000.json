@@ -1,0 +1,2647 @@
+{
+  "k": 10,
+  "metric": "cosine",
+  "queries": {
+    "resisc45_airplane_119": {
+      "results": [
+        {
+          "distance": 0.16358715295791626,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.1657359004020691,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.17756003141403198,
+          "sample_id": "resisc45_runway_202"
+        },
+        {
+          "distance": 0.18092316389083862,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.18405687808990479,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.18563216924667358,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.1861722469329834,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.19176310300827026,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.1925293207168579,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.19398027658462524,
+          "sample_id": "resisc45_airport_157"
+        }
+      ]
+    },
+    "resisc45_airplane_136": {
+      "results": [
+        {
+          "distance": 0.12236595153808594,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.16454249620437622,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.20166975259780884,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.21797394752502441,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.23452651500701904,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.24030309915542603,
+          "sample_id": "resisc45_airplane_119"
+        },
+        {
+          "distance": 0.25094497203826904,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.2563427686691284,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.2621898651123047,
+          "sample_id": "resisc45_airplane_156"
+        },
+        {
+          "distance": 0.2686256170272827,
+          "sample_id": "resisc45_storage_tank_315"
+        }
+      ]
+    },
+    "resisc45_airplane_156": {
+      "results": [
+        {
+          "distance": 0.22458606958389282,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.22717159986495972,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.26218992471694946,
+          "sample_id": "resisc45_airplane_136"
+        },
+        {
+          "distance": 0.30369752645492554,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.3143102526664734,
+          "sample_id": "resisc45_basketball_court_17"
+        },
+        {
+          "distance": 0.314508318901062,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.3169991970062256,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.32577425241470337,
+          "sample_id": "resisc45_airport_358"
+        },
+        {
+          "distance": 0.34121018648147583,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.34121984243392944,
+          "sample_id": "resisc45_runway_184"
+        }
+      ]
+    },
+    "resisc45_airplane_46": {
+      "results": [
+        {
+          "distance": 0.10766381025314331,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.16405808925628662,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.16454249620437622,
+          "sample_id": "resisc45_airplane_136"
+        },
+        {
+          "distance": 0.1796480417251587,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.18455010652542114,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.18760406970977783,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.19129687547683716,
+          "sample_id": "resisc45_basketball_court_17"
+        },
+        {
+          "distance": 0.19170570373535156,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.19719558954238892,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.19901859760284424,
+          "sample_id": "resisc45_storage_tank_315"
+        }
+      ]
+    },
+    "resisc45_airplane_96": {
+      "results": [
+        {
+          "distance": 0.10766381025314331,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.12236595153808594,
+          "sample_id": "resisc45_airplane_136"
+        },
+        {
+          "distance": 0.15805208683013916,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.16351348161697388,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.1790955662727356,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.18313205242156982,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1888660192489624,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.19223612546920776,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.2077428102493286,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.21125996112823486,
+          "sample_id": "resisc45_circular_farmland_7"
+        }
+      ]
+    },
+    "resisc45_airport_14": {
+      "results": [
+        {
+          "distance": 0.08126753568649292,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.10819828510284424,
+          "sample_id": "resisc45_runway_313"
+        },
+        {
+          "distance": 0.12393099069595337,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.19349610805511475,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.19834750890731812,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.2010420560836792,
+          "sample_id": "resisc45_airport_358"
+        },
+        {
+          "distance": 0.20326703786849976,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.2128189206123352,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.21315079927444458,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.21786588430404663,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        }
+      ]
+    },
+    "resisc45_airport_157": {
+      "results": [
+        {
+          "distance": 0.08684772253036499,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.10116249322891235,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.12878364324569702,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.13418972492218018,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.13832879066467285,
+          "sample_id": "resisc45_airport_358"
+        },
+        {
+          "distance": 0.14211589097976685,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.14398986101150513,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.1460760235786438,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.15024369955062866,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.151658833026886,
+          "sample_id": "resisc45_basketball_court_49"
+        }
+      ]
+    },
+    "resisc45_airport_358": {
+      "results": [
+        {
+          "distance": 0.10217523574829102,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.13832879066467285,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.15862679481506348,
+          "sample_id": "resisc45_terrace_37"
+        },
+        {
+          "distance": 0.1730363965034485,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.18789464235305786,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.19516593217849731,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.19787168502807617,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.2010420560836792,
+          "sample_id": "resisc45_airport_14"
+        },
+        {
+          "distance": 0.20190298557281494,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.20231658220291138,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        }
+      ]
+    },
+    "resisc45_airport_51": {
+      "results": [
+        {
+          "distance": 0.08126753568649292,
+          "sample_id": "resisc45_airport_14"
+        },
+        {
+          "distance": 0.1164901852607727,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.12147659063339233,
+          "sample_id": "resisc45_runway_313"
+        },
+        {
+          "distance": 0.16169416904449463,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.17512142658233643,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.17645877599716187,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.1820756196975708,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.18283194303512573,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.18336790800094604,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.18789464235305786,
+          "sample_id": "resisc45_airport_358"
+        }
+      ]
+    },
+    "resisc45_airport_85": {
+      "results": [
+        {
+          "distance": 0.08684772253036499,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.09854531288146973,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.10217523574829102,
+          "sample_id": "resisc45_airport_358"
+        },
+        {
+          "distance": 0.11070483922958374,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.11298912763595581,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.1164901852607727,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.12203651666641235,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.12393099069595337,
+          "sample_id": "resisc45_airport_14"
+        },
+        {
+          "distance": 0.12881964445114136,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.13792288303375244,
+          "sample_id": "resisc45_bridge_174"
+        }
+      ]
+    },
+    "resisc45_basketball_court_17": {
+      "results": [
+        {
+          "distance": 0.17991501092910767,
+          "sample_id": "resisc45_basketball_court_67"
+        },
+        {
+          "distance": 0.1858055591583252,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.18735700845718384,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.19129681587219238,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.20355403423309326,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.20593243837356567,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.21340829133987427,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.224135160446167,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.23107481002807617,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.23449379205703735,
+          "sample_id": "resisc45_runway_319"
+        }
+      ]
+    },
+    "resisc45_basketball_court_49": {
+      "results": [
+        {
+          "distance": 0.08392751216888428,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.09004044532775879,
+          "sample_id": "resisc45_basketball_court_69"
+        },
+        {
+          "distance": 0.09709668159484863,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.10227882862091064,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.12304413318634033,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.13118267059326172,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.13315153121948242,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.1377047300338745,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.14829081296920776,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.1516587734222412,
+          "sample_id": "resisc45_airport_157"
+        }
+      ]
+    },
+    "resisc45_basketball_court_62": {
+      "results": [
+        {
+          "distance": 0.12304419279098511,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.12661445140838623,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.1384284496307373,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.13933879137039185,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.14291417598724365,
+          "sample_id": "resisc45_basketball_court_67"
+        },
+        {
+          "distance": 0.15177083015441895,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.15368545055389404,
+          "sample_id": "resisc45_basketball_court_69"
+        },
+        {
+          "distance": 0.15709435939788818,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.17098021507263184,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.18580561876296997,
+          "sample_id": "resisc45_basketball_court_17"
+        }
+      ]
+    },
+    "resisc45_basketball_court_67": {
+      "results": [
+        {
+          "distance": 0.14291417598724365,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.17255282402038574,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.1757066249847412,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.17991507053375244,
+          "sample_id": "resisc45_basketball_court_17"
+        },
+        {
+          "distance": 0.1801130771636963,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.1983736753463745,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.20020389556884766,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.20593291521072388,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.21097123622894287,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.2115330696105957,
+          "sample_id": "resisc45_airport_85"
+        }
+      ]
+    },
+    "resisc45_basketball_court_69": {
+      "results": [
+        {
+          "distance": 0.09004050493240356,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.15368545055389404,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.16937261819839478,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.1806519627571106,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.18344151973724365,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.19021302461624146,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.2004026174545288,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.20148658752441406,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.21492737531661987,
+          "sample_id": "resisc45_basketball_court_67"
+        },
+        {
+          "distance": 0.21609479188919067,
+          "sample_id": "resisc45_sparse_residential_367"
+        }
+      ]
+    },
+    "resisc45_bridge_174": {
+      "results": [
+        {
+          "distance": 0.10017001628875732,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.10066002607345581,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.13792288303375244,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.15906494855880737,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.1611272096633911,
+          "sample_id": "resisc45_storage_tank_271"
+        },
+        {
+          "distance": 0.17047834396362305,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.1736850142478943,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.18085116147994995,
+          "sample_id": "resisc45_bridge_297"
+        },
+        {
+          "distance": 0.1884952187538147,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.19787168502807617,
+          "sample_id": "resisc45_airport_358"
+        }
+      ]
+    },
+    "resisc45_bridge_230": {
+      "results": [
+        {
+          "distance": 0.0899079442024231,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.10017001628875732,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.1460760235786438,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.16214525699615479,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.16340667009353638,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1662670373916626,
+          "sample_id": "resisc45_bridge_297"
+        },
+        {
+          "distance": 0.17512142658233643,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.1776418685913086,
+          "sample_id": "resisc45_storage_tank_271"
+        },
+        {
+          "distance": 0.18167734146118164,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.18620336055755615,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        }
+      ]
+    },
+    "resisc45_bridge_297": {
+      "results": [
+        {
+          "distance": 0.12298601865768433,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.1561160683631897,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.1662670373916626,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.16909480094909668,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.17878186702728271,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.18085116147994995,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.187508225440979,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.19377613067626953,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.1968604326248169,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.19746434688568115,
+          "sample_id": "resisc45_storage_tank_1"
+        }
+      ]
+    },
+    "resisc45_bridge_327": {
+      "results": [
+        {
+          "distance": 0.0899079442024231,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.10066002607345581,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.1203845739364624,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.1561160683631897,
+          "sample_id": "resisc45_bridge_297"
+        },
+        {
+          "distance": 0.1592503786087036,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.1626332402229309,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1655670404434204,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.17313307523727417,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.17347073554992676,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.17577940225601196,
+          "sample_id": "resisc45_airport_157"
+        }
+      ]
+    },
+    "resisc45_bridge_90": {
+      "results": [
+        {
+          "distance": 0.12038451433181763,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.12298595905303955,
+          "sample_id": "resisc45_bridge_297"
+        },
+        {
+          "distance": 0.13362228870391846,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.14707452058792114,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.14920294284820557,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.1572883129119873,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.1590648889541626,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.16214519739151,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.16875094175338745,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.17540854215621948,
+          "sample_id": "resisc45_terrace_148"
+        }
+      ]
+    },
+    "resisc45_circular_farmland_43": {
+      "results": [
+        {
+          "distance": 0.1160241961479187,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.11979049444198608,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.13322079181671143,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.14095312356948853,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.14948439598083496,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.1698594093322754,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.17228275537490845,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.17351078987121582,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.1799570918083191,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.1832338571548462,
+          "sample_id": "resisc45_terrace_148"
+        }
+      ]
+    },
+    "resisc45_circular_farmland_47": {
+      "results": [
+        {
+          "distance": 0.07288461923599243,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.0823439359664917,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.08732950687408447,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.09447216987609863,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.09766393899917603,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.14948439598083496,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.1542816162109375,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.15689551830291748,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.16139793395996094,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.17645877599716187,
+          "sample_id": "resisc45_airport_51"
+        }
+      ]
+    },
+    "resisc45_circular_farmland_55": {
+      "results": [
+        {
+          "distance": 0.07288461923599243,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.09533810615539551,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.10558217763900757,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.11811721324920654,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.12092304229736328,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.14123737812042236,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.1563960313796997,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.16727876663208008,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.16852456331253052,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1759803295135498,
+          "sample_id": "resisc45_terrace_37"
+        }
+      ]
+    },
+    "resisc45_circular_farmland_7": {
+      "results": [
+        {
+          "distance": 0.11045598983764648,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.11281859874725342,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.12741893529891968,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.12947511672973633,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.13322067260742188,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.16479110717773438,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.17619377374649048,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.1781114935874939,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.18266010284423828,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.18293607234954834,
+          "sample_id": "resisc45_forest_36"
+        }
+      ]
+    },
+    "resisc45_circular_farmland_74": {
+      "results": [
+        {
+          "distance": 0.11045610904693604,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.1160241961479187,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.13943195343017578,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.1476961374282837,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.16158604621887207,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.16831636428833008,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.18478643894195557,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.18912577629089355,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.19839024543762207,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.20323282480239868,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        }
+      ]
+    },
+    "resisc45_forest_111": {
+      "results": [
+        {
+          "distance": 0.08364921808242798,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.09253180027008057,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.09270370006561279,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.1375613808631897,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.13907170295715332,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.14123600721359253,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.14318591356277466,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.14398986101150513,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.14707458019256592,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.14853638410568237,
+          "sample_id": "resisc45_runway_241"
+        }
+      ]
+    },
+    "resisc45_forest_20": {
+      "results": [
+        {
+          "distance": 0.09270370006561279,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.09383714199066162,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.11277377605438232,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.1245231032371521,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.13044846057891846,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.16339713335037231,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.16394877433776855,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.17322659492492676,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.1750727891921997,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.17510497570037842,
+          "sample_id": "resisc45_sparse_residential_469"
+        }
+      ]
+    },
+    "resisc45_forest_26": {
+      "results": [
+        {
+          "distance": 0.0866767168045044,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.09383714199066162,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.10152709484100342,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.13111281394958496,
+          "sample_id": "resisc45_forest_27"
+        },
+        {
+          "distance": 0.14394646883010864,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.15936213731765747,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.16150438785552979,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.16505831480026245,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.16982978582382202,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.1731969714164734,
+          "sample_id": "resisc45_terrace_116"
+        }
+      ]
+    },
+    "resisc45_forest_27": {
+      "results": [
+        {
+          "distance": 0.08628368377685547,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.12254399061203003,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.13111281394958496,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.16161060333251953,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.1967829465866089,
+          "sample_id": "resisc45_meadow_75"
+        },
+        {
+          "distance": 0.19947326183319092,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.2099795937538147,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.21150577068328857,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.2353113293647766,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.23633915185928345,
+          "sample_id": "resisc45_storage_tank_272"
+        }
+      ]
+    },
+    "resisc45_forest_36": {
+      "results": [
+        {
+          "distance": 0.08658057451248169,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.0866767168045044,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.10917067527770996,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.12254399061203003,
+          "sample_id": "resisc45_forest_27"
+        },
+        {
+          "distance": 0.12628871202468872,
+          "sample_id": "resisc45_meadow_75"
+        },
+        {
+          "distance": 0.13629794120788574,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.16682898998260498,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.1754963994026184,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.17817771434783936,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.1829361915588379,
+          "sample_id": "resisc45_circular_farmland_7"
+        }
+      ]
+    },
+    "resisc45_meadow_13": {
+      "results": [
+        {
+          "distance": 0.08236813545227051,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.08392757177352905,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.1032361388206482,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.1273859739303589,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.13751816749572754,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.14658123254776,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.15709435939788818,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.16148662567138672,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.16265463829040527,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.16937261819839478,
+          "sample_id": "resisc45_basketball_court_69"
+        }
+      ]
+    },
+    "resisc45_meadow_34": {
+      "results": [
+        {
+          "distance": 0.0847243070602417,
+          "sample_id": "resisc45_meadow_75"
+        },
+        {
+          "distance": 0.08628368377685547,
+          "sample_id": "resisc45_forest_27"
+        },
+        {
+          "distance": 0.08658057451248169,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.10152709484100342,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.12148427963256836,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.14254844188690186,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.1616361141204834,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.16868191957473755,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.17811161279678345,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.19755715131759644,
+          "sample_id": "resisc45_terrace_116"
+        }
+      ]
+    },
+    "resisc45_meadow_45": {
+      "results": [
+        {
+          "distance": 0.13328415155410767,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.13629794120788574,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.1375613808631897,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.14254844188690186,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.14394646883010864,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.15600377321243286,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.16067737340927124,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.16161060333251953,
+          "sample_id": "resisc45_forest_27"
+        },
+        {
+          "distance": 0.17570233345031738,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.17664146423339844,
+          "sample_id": "resisc45_meadow_13"
+        }
+      ]
+    },
+    "resisc45_meadow_75": {
+      "results": [
+        {
+          "distance": 0.0847243070602417,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.12628871202468872,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.1469435691833496,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.17906004190444946,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.18431824445724487,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.1967829465866089,
+          "sample_id": "resisc45_forest_27"
+        },
+        {
+          "distance": 0.2369357943534851,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.23924648761749268,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.24199718236923218,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.25420600175857544,
+          "sample_id": "resisc45_terrace_116"
+        }
+      ]
+    },
+    "resisc45_meadow_79": {
+      "results": [
+        {
+          "distance": 0.10917067527770996,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.12148427963256836,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.1469435691833496,
+          "sample_id": "resisc45_meadow_75"
+        },
+        {
+          "distance": 0.15884536504745483,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.16122794151306152,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.16150438785552979,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.16403472423553467,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.18061566352844238,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.1911177635192871,
+          "sample_id": "resisc45_terrace_16"
+        },
+        {
+          "distance": 0.19392037391662598,
+          "sample_id": "resisc45_circular_farmland_7"
+        }
+      ]
+    },
+    "resisc45_rectangular_farmland_171": {
+      "results": [
+        {
+          "distance": 0.11979037523269653,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.1389138102531433,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.13943183422088623,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.1606772541999817,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.16122782230377197,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.16163599491119385,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.16479110717773438,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.1650581955909729,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.1781775951385498,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.18242669105529785,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        }
+      ]
+    },
+    "resisc45_rectangular_farmland_198": {
+      "results": [
+        {
+          "distance": 0.06014972925186157,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.0646865963935852,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.08732950687408447,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.09982109069824219,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.10558217763900757,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.11070483922958374,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.13434052467346191,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.15675002336502075,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.17047834396362305,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.17313307523727417,
+          "sample_id": "resisc45_bridge_327"
+        }
+      ]
+    },
+    "resisc45_rectangular_farmland_21": {
+      "results": [
+        {
+          "distance": 0.0458984375,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.06014972925186157,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.09447216987609863,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.10595732927322388,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.11811721324920654,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.13823390007019043,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.14437472820281982,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.15638262033462524,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1824268102645874,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.1873563528060913,
+          "sample_id": "resisc45_bridge_327"
+        }
+      ]
+    },
+    "resisc45_rectangular_farmland_89": {
+      "results": [
+        {
+          "distance": 0.09854531288146973,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.10314410924911499,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.12212479114532471,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.13434052467346191,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.14437472820281982,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.15024369955062866,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.1536116600036621,
+          "sample_id": "resisc45_terrace_37"
+        },
+        {
+          "distance": 0.1563960313796997,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.15689551830291748,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.15720278024673462,
+          "sample_id": "resisc45_forest_111"
+        }
+      ]
+    },
+    "resisc45_rectangular_farmland_91": {
+      "results": [
+        {
+          "distance": 0.0458984375,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.0646865963935852,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.0823439359664917,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.08736151456832886,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.09533810615539551,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.10314410924911499,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.12881964445114136,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.17074543237686157,
+          "sample_id": "resisc45_runway_313"
+        },
+        {
+          "distance": 0.17259091138839722,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1773737668991089,
+          "sample_id": "resisc45_bridge_327"
+        }
+      ]
+    },
+    "resisc45_runway_184": {
+      "results": [
+        {
+          "distance": 0.10992652177810669,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.11827844381332397,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.14920300245285034,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.1592503786087036,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.1665734052658081,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.16909480094909668,
+          "sample_id": "resisc45_bridge_297"
+        },
+        {
+          "distance": 0.17657148838043213,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.1790955662727356,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.1796480417251587,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.17987340688705444,
+          "sample_id": "resisc45_basketball_court_49"
+        }
+      ]
+    },
+    "resisc45_runway_202": {
+      "results": [
+        {
+          "distance": 0.1507059931755066,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.17756003141403198,
+          "sample_id": "resisc45_airplane_119"
+        },
+        {
+          "distance": 0.1804215908050537,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.1848163604736328,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1978849172592163,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.19815582036972046,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.19842302799224854,
+          "sample_id": "resisc45_meadow_45"
+        },
+        {
+          "distance": 0.20185697078704834,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.20197218656539917,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.20398926734924316,
+          "sample_id": "resisc45_meadow_13"
+        }
+      ]
+    },
+    "resisc45_runway_241": {
+      "results": [
+        {
+          "distance": 0.10116249322891235,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.11827844381332397,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.11835968494415283,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.12203651666641235,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1258355975151062,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.1331515908241272,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.14658123254776,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.14813029766082764,
+          "sample_id": "resisc45_runway_319"
+        },
+        {
+          "distance": 0.14853638410568237,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.1507059931755066,
+          "sample_id": "resisc45_runway_202"
+        }
+      ]
+    },
+    "resisc45_runway_313": {
+      "results": [
+        {
+          "distance": 0.10819834470748901,
+          "sample_id": "resisc45_airport_14"
+        },
+        {
+          "distance": 0.12147665023803711,
+          "sample_id": "resisc45_airport_51"
+        },
+        {
+          "distance": 0.141448974609375,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.15075671672821045,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.1610841155052185,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.17074549198150635,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.18227845430374146,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.18607664108276367,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.19089341163635254,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.1940610408782959,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        }
+      ]
+    },
+    "resisc45_runway_319": {
+      "results": [
+        {
+          "distance": 0.10992652177810669,
+          "sample_id": "resisc45_runway_184"
+        },
+        {
+          "distance": 0.14813029766082764,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.18455010652542114,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.1847226619720459,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.1864107847213745,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1888660192489624,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.19612091779708862,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.19645512104034424,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.20744997262954712,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.20785647630691528,
+          "sample_id": "resisc45_airport_358"
+        }
+      ]
+    },
+    "resisc45_sparse_residential_196": {
+      "results": [
+        {
+          "distance": 0.08116894960403442,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.08236813545227051,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.08364921808242798,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.09295183420181274,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.09709674119949341,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.11428982019424438,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.12217909097671509,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.1245231032371521,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.1258355975151062,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.13328415155410767,
+          "sample_id": "resisc45_meadow_45"
+        }
+      ]
+    },
+    "resisc45_sparse_residential_367": {
+      "results": [
+        {
+          "distance": 0.08116894960403442,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.10581314563751221,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.11305296421051025,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.11443865299224854,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.14123600721359253,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.14123737812042236,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.14613127708435059,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.14829087257385254,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.1580842137336731,
+          "sample_id": "resisc45_terrace_37"
+        },
+        {
+          "distance": 0.16265463829040527,
+          "sample_id": "resisc45_meadow_13"
+        }
+      ]
+    },
+    "resisc45_sparse_residential_421": {
+      "results": [
+        {
+          "distance": 0.04684293270111084,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.06271660327911377,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.11305296421051025,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.11428982019424438,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.13751816749572754,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.1377047896385193,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.1384284496307373,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.17485934495925903,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.1829235553741455,
+          "sample_id": "resisc45_bridge_90"
+        },
+        {
+          "distance": 0.18603038787841797,
+          "sample_id": "resisc45_forest_20"
+        }
+      ]
+    },
+    "resisc45_sparse_residential_469": {
+      "results": [
+        {
+          "distance": 0.046842873096466064,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.06283777952194214,
+          "sample_id": "resisc45_sparse_residential_477"
+        },
+        {
+          "distance": 0.11443859338760376,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.12217903137207031,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.12661439180374146,
+          "sample_id": "resisc45_basketball_court_62"
+        },
+        {
+          "distance": 0.1273859143257141,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.13118267059326172,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.17036712169647217,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.17510491609573364,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.17975157499313354,
+          "sample_id": "resisc45_airport_157"
+        }
+      ]
+    },
+    "resisc45_sparse_residential_477": {
+      "results": [
+        {
+          "distance": 0.06271660327911377,
+          "sample_id": "resisc45_sparse_residential_421"
+        },
+        {
+          "distance": 0.06283783912658691,
+          "sample_id": "resisc45_sparse_residential_469"
+        },
+        {
+          "distance": 0.09295183420181274,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.10227888822555542,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.1032361388206482,
+          "sample_id": "resisc45_meadow_13"
+        },
+        {
+          "distance": 0.10581314563751221,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.13044846057891846,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.14211589097976685,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.14318591356277466,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.15171772241592407,
+          "sample_id": "resisc45_terrace_148"
+        }
+      ]
+    },
+    "resisc45_storage_tank_1": {
+      "results": [
+        {
+          "distance": 0.08447432518005371,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.12947523593902588,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.1334918737411499,
+          "sample_id": "resisc45_storage_tank_315"
+        },
+        {
+          "distance": 0.15805208683013916,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.16338831186294556,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.16405808925628662,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.16831636428833008,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.1698594093322754,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.17576497793197632,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.17898058891296387,
+          "sample_id": "resisc45_airport_85"
+        }
+      ]
+    },
+    "resisc45_storage_tank_271": {
+      "results": [
+        {
+          "distance": 0.10664749145507812,
+          "sample_id": "resisc45_storage_tank_4"
+        },
+        {
+          "distance": 0.12154912948608398,
+          "sample_id": "resisc45_storage_tank_315"
+        },
+        {
+          "distance": 0.1611272096633911,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.17481577396392822,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1776418685913086,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.19623017311096191,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.19683420658111572,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.20060980319976807,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.2057408094406128,
+          "sample_id": "resisc45_bridge_327"
+        },
+        {
+          "distance": 0.2090669870376587,
+          "sample_id": "resisc45_runway_313"
+        }
+      ]
+    },
+    "resisc45_storage_tank_272": {
+      "results": [
+        {
+          "distance": 0.08447432518005371,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.11281871795654297,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.16158604621887207,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.1708478331565857,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.17228275537490845,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.17985010147094727,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.18077528476715088,
+          "sample_id": "resisc45_storage_tank_315"
+        },
+        {
+          "distance": 0.1939687728881836,
+          "sample_id": "resisc45_basketball_court_49"
+        },
+        {
+          "distance": 0.20245516300201416,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.2077428102493286,
+          "sample_id": "resisc45_airplane_96"
+        }
+      ]
+    },
+    "resisc45_storage_tank_315": {
+      "results": [
+        {
+          "distance": 0.08557599782943726,
+          "sample_id": "resisc45_storage_tank_4"
+        },
+        {
+          "distance": 0.12154901027679443,
+          "sample_id": "resisc45_storage_tank_271"
+        },
+        {
+          "distance": 0.13349175453186035,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.18077516555786133,
+          "sample_id": "resisc45_storage_tank_272"
+        },
+        {
+          "distance": 0.1990184783935547,
+          "sample_id": "resisc45_airplane_46"
+        },
+        {
+          "distance": 0.20569288730621338,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.20808815956115723,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.2170005440711975,
+          "sample_id": "resisc45_airplane_96"
+        },
+        {
+          "distance": 0.21828687191009521,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.2217477560043335,
+          "sample_id": "resisc45_basketball_court_67"
+        }
+      ]
+    },
+    "resisc45_storage_tank_4": {
+      "results": [
+        {
+          "distance": 0.0855761170387268,
+          "sample_id": "resisc45_storage_tank_315"
+        },
+        {
+          "distance": 0.10664749145507812,
+          "sample_id": "resisc45_storage_tank_271"
+        },
+        {
+          "distance": 0.21624916791915894,
+          "sample_id": "resisc45_storage_tank_1"
+        },
+        {
+          "distance": 0.2233625054359436,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.2255966067314148,
+          "sample_id": "resisc45_bridge_230"
+        },
+        {
+          "distance": 0.22675275802612305,
+          "sample_id": "resisc45_bridge_174"
+        },
+        {
+          "distance": 0.22878336906433105,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.23887157440185547,
+          "sample_id": "resisc45_airport_157"
+        },
+        {
+          "distance": 0.24112796783447266,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.24263834953308105,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        }
+      ]
+    },
+    "resisc45_terrace_116": {
+      "results": [
+        {
+          "distance": 0.11432385444641113,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.11750024557113647,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.11835968494415283,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.1197403073310852,
+          "sample_id": "resisc45_terrace_16"
+        },
+        {
+          "distance": 0.12741905450820923,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.13891392946243286,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.13907170295715332,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.14095312356948853,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.1476961374282837,
+          "sample_id": "resisc45_circular_farmland_74"
+        },
+        {
+          "distance": 0.15638262033462524,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        }
+      ]
+    },
+    "resisc45_terrace_148": {
+      "results": [
+        {
+          "distance": 0.08736145496368408,
+          "sample_id": "resisc45_rectangular_farmland_91"
+        },
+        {
+          "distance": 0.09253174066543579,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.09766387939453125,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.09982103109359741,
+          "sample_id": "resisc45_rectangular_farmland_198"
+        },
+        {
+          "distance": 0.1059572696685791,
+          "sample_id": "resisc45_rectangular_farmland_21"
+        },
+        {
+          "distance": 0.11277371644973755,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.11298906803131104,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.11432379484176636,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1209229826927185,
+          "sample_id": "resisc45_circular_farmland_55"
+        },
+        {
+          "distance": 0.12212473154067993,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        }
+      ]
+    },
+    "resisc45_terrace_16": {
+      "results": [
+        {
+          "distance": 0.11005979776382446,
+          "sample_id": "resisc45_terrace_87"
+        },
+        {
+          "distance": 0.1197403073310852,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1579790711402893,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.16744327545166016,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.1911177635192871,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.1947791576385498,
+          "sample_id": "resisc45_circular_farmland_43"
+        },
+        {
+          "distance": 0.1974475383758545,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.20277798175811768,
+          "sample_id": "resisc45_circular_farmland_47"
+        },
+        {
+          "distance": 0.20604830980300903,
+          "sample_id": "resisc45_forest_20"
+        },
+        {
+          "distance": 0.21649318933486938,
+          "sample_id": "resisc45_storage_tank_1"
+        }
+      ]
+    },
+    "resisc45_terrace_37": {
+      "results": [
+        {
+          "distance": 0.15001177787780762,
+          "sample_id": "resisc45_airport_85"
+        },
+        {
+          "distance": 0.1536116600036621,
+          "sample_id": "resisc45_rectangular_farmland_89"
+        },
+        {
+          "distance": 0.15425854921340942,
+          "sample_id": "resisc45_sparse_residential_196"
+        },
+        {
+          "distance": 0.15509033203125,
+          "sample_id": "resisc45_terrace_148"
+        },
+        {
+          "distance": 0.1580842137336731,
+          "sample_id": "resisc45_sparse_residential_367"
+        },
+        {
+          "distance": 0.15862679481506348,
+          "sample_id": "resisc45_airport_358"
+        },
+        {
+          "distance": 0.15991634130477905,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.16658079624176025,
+          "sample_id": "resisc45_runway_241"
+        },
+        {
+          "distance": 0.17298215627670288,
+          "sample_id": "resisc45_forest_111"
+        },
+        {
+          "distance": 0.1759803295135498,
+          "sample_id": "resisc45_circular_farmland_55"
+        }
+      ]
+    },
+    "resisc45_terrace_87": {
+      "results": [
+        {
+          "distance": 0.11005985736846924,
+          "sample_id": "resisc45_terrace_16"
+        },
+        {
+          "distance": 0.11750030517578125,
+          "sample_id": "resisc45_terrace_116"
+        },
+        {
+          "distance": 0.1588454246520996,
+          "sample_id": "resisc45_meadow_79"
+        },
+        {
+          "distance": 0.16682904958724976,
+          "sample_id": "resisc45_forest_36"
+        },
+        {
+          "distance": 0.16868197917938232,
+          "sample_id": "resisc45_meadow_34"
+        },
+        {
+          "distance": 0.1737043261528015,
+          "sample_id": "resisc45_forest_26"
+        },
+        {
+          "distance": 0.1761939525604248,
+          "sample_id": "resisc45_circular_farmland_7"
+        },
+        {
+          "distance": 0.17906010150909424,
+          "sample_id": "resisc45_meadow_75"
+        },
+        {
+          "distance": 0.19599294662475586,
+          "sample_id": "resisc45_rectangular_farmland_171"
+        },
+        {
+          "distance": 0.20348429679870605,
+          "sample_id": "resisc45_circular_farmland_43"
+        }
+      ]
+    }
+  },
+  "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+}

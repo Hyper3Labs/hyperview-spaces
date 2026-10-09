@@ -1,0 +1,8 @@
+name = "logo-brand-readout"
+description = "Creative-brief controls and model evidence for logo retrieval"
+
+[[panels]]
+id = "logo-brand-comparison"
+title = "Creative brief desk"
+position = "right"
+file = "panel.jsx"

@@ -1,0 +1,1628 @@
+{
+  "collection_id": "all:bf21a9e8fbc5",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_storage_tank_1.jpg",
+        "height": null,
+        "id": "resisc45_storage_tank_1",
+        "label": "storage tank",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_storage_tank_1/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> storage tank",
+          "image_id": "1",
+          "parent_group": "built_environment",
+          "scene_class": "storage tank",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_storage_tank_1/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_storage_tank_1",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_storage_tank_4.jpg",
+        "height": null,
+        "id": "resisc45_storage_tank_4",
+        "label": "storage tank",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_storage_tank_4/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> storage tank",
+          "image_id": "4",
+          "parent_group": "built_environment",
+          "scene_class": "storage tank",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_storage_tank_4/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_storage_tank_4",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_circular_farmland_7.jpg",
+        "height": null,
+        "id": "resisc45_circular_farmland_7",
+        "label": "circular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_circular_farmland_7/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> circular farmland",
+          "image_id": "7",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "circular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_circular_farmland_7/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_circular_farmland_7",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_meadow_13.jpg",
+        "height": null,
+        "id": "resisc45_meadow_13",
+        "label": "meadow",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_meadow_13/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> meadow",
+          "image_id": "13",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "meadow",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_meadow_13/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_meadow_13",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airport_14.jpg",
+        "height": null,
+        "id": "resisc45_airport_14",
+        "label": "airport",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airport_14/content",
+        "metadata": {
+          "hierarchy": "Transport -> airport",
+          "image_id": "14",
+          "parent_group": "transport",
+          "scene_class": "airport",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airport_14/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airport_14",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_terrace_16.jpg",
+        "height": null,
+        "id": "resisc45_terrace_16",
+        "label": "terrace",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_terrace_16/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> terrace",
+          "image_id": "16",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "terrace",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_terrace_16/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_terrace_16",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_basketball_court_17.jpg",
+        "height": null,
+        "id": "resisc45_basketball_court_17",
+        "label": "basketball court",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_basketball_court_17/content",
+        "metadata": {
+          "hierarchy": "Sports Recreation -> basketball court",
+          "image_id": "17",
+          "parent_group": "sports_recreation",
+          "scene_class": "basketball court",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_basketball_court_17/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_basketball_court_17",
+      "score": null
+    },
+    {
+      "rank": 7,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_forest_20.jpg",
+        "height": null,
+        "id": "resisc45_forest_20",
+        "label": "forest",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_forest_20/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> forest",
+          "image_id": "20",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "forest",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_forest_20/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_forest_20",
+      "score": null
+    },
+    {
+      "rank": 8,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_rectangular_farmland_21.jpg",
+        "height": null,
+        "id": "resisc45_rectangular_farmland_21",
+        "label": "rectangular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_rectangular_farmland_21/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> rectangular farmland",
+          "image_id": "21",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "rectangular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_rectangular_farmland_21/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_rectangular_farmland_21",
+      "score": null
+    },
+    {
+      "rank": 9,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_forest_26.jpg",
+        "height": null,
+        "id": "resisc45_forest_26",
+        "label": "forest",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_forest_26/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> forest",
+          "image_id": "26",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "forest",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_forest_26/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_forest_26",
+      "score": null
+    },
+    {
+      "rank": 10,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_forest_27.jpg",
+        "height": null,
+        "id": "resisc45_forest_27",
+        "label": "forest",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_forest_27/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> forest",
+          "image_id": "27",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "forest",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_forest_27/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_forest_27",
+      "score": null
+    },
+    {
+      "rank": 11,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_meadow_34.jpg",
+        "height": null,
+        "id": "resisc45_meadow_34",
+        "label": "meadow",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_meadow_34/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> meadow",
+          "image_id": "34",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "meadow",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_meadow_34/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_meadow_34",
+      "score": null
+    },
+    {
+      "rank": 12,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_forest_36.jpg",
+        "height": null,
+        "id": "resisc45_forest_36",
+        "label": "forest",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_forest_36/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> forest",
+          "image_id": "36",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "forest",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_forest_36/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_forest_36",
+      "score": null
+    },
+    {
+      "rank": 13,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_terrace_37.jpg",
+        "height": null,
+        "id": "resisc45_terrace_37",
+        "label": "terrace",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_terrace_37/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> terrace",
+          "image_id": "37",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "terrace",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_terrace_37/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_terrace_37",
+      "score": null
+    },
+    {
+      "rank": 14,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_circular_farmland_43.jpg",
+        "height": null,
+        "id": "resisc45_circular_farmland_43",
+        "label": "circular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_circular_farmland_43/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> circular farmland",
+          "image_id": "43",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "circular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_circular_farmland_43/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_circular_farmland_43",
+      "score": null
+    },
+    {
+      "rank": 15,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_meadow_45.jpg",
+        "height": null,
+        "id": "resisc45_meadow_45",
+        "label": "meadow",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_meadow_45/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> meadow",
+          "image_id": "45",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "meadow",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_meadow_45/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_meadow_45",
+      "score": null
+    },
+    {
+      "rank": 16,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airplane_46.jpg",
+        "height": null,
+        "id": "resisc45_airplane_46",
+        "label": "airplane",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airplane_46/content",
+        "metadata": {
+          "hierarchy": "Transport -> airplane",
+          "image_id": "46",
+          "parent_group": "transport",
+          "scene_class": "airplane",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airplane_46/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airplane_46",
+      "score": null
+    },
+    {
+      "rank": 17,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_circular_farmland_47.jpg",
+        "height": null,
+        "id": "resisc45_circular_farmland_47",
+        "label": "circular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_circular_farmland_47/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> circular farmland",
+          "image_id": "47",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "circular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_circular_farmland_47/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_circular_farmland_47",
+      "score": null
+    },
+    {
+      "rank": 18,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_basketball_court_49.jpg",
+        "height": null,
+        "id": "resisc45_basketball_court_49",
+        "label": "basketball court",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_basketball_court_49/content",
+        "metadata": {
+          "hierarchy": "Sports Recreation -> basketball court",
+          "image_id": "49",
+          "parent_group": "sports_recreation",
+          "scene_class": "basketball court",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_basketball_court_49/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_basketball_court_49",
+      "score": null
+    },
+    {
+      "rank": 19,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airport_51.jpg",
+        "height": null,
+        "id": "resisc45_airport_51",
+        "label": "airport",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airport_51/content",
+        "metadata": {
+          "hierarchy": "Transport -> airport",
+          "image_id": "51",
+          "parent_group": "transport",
+          "scene_class": "airport",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airport_51/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airport_51",
+      "score": null
+    },
+    {
+      "rank": 20,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_circular_farmland_55.jpg",
+        "height": null,
+        "id": "resisc45_circular_farmland_55",
+        "label": "circular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_circular_farmland_55/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> circular farmland",
+          "image_id": "55",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "circular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_circular_farmland_55/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_circular_farmland_55",
+      "score": null
+    },
+    {
+      "rank": 21,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_basketball_court_62.jpg",
+        "height": null,
+        "id": "resisc45_basketball_court_62",
+        "label": "basketball court",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_basketball_court_62/content",
+        "metadata": {
+          "hierarchy": "Sports Recreation -> basketball court",
+          "image_id": "62",
+          "parent_group": "sports_recreation",
+          "scene_class": "basketball court",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_basketball_court_62/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_basketball_court_62",
+      "score": null
+    },
+    {
+      "rank": 22,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_basketball_court_67.jpg",
+        "height": null,
+        "id": "resisc45_basketball_court_67",
+        "label": "basketball court",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_basketball_court_67/content",
+        "metadata": {
+          "hierarchy": "Sports Recreation -> basketball court",
+          "image_id": "67",
+          "parent_group": "sports_recreation",
+          "scene_class": "basketball court",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_basketball_court_67/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_basketball_court_67",
+      "score": null
+    },
+    {
+      "rank": 23,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_basketball_court_69.jpg",
+        "height": null,
+        "id": "resisc45_basketball_court_69",
+        "label": "basketball court",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_basketball_court_69/content",
+        "metadata": {
+          "hierarchy": "Sports Recreation -> basketball court",
+          "image_id": "69",
+          "parent_group": "sports_recreation",
+          "scene_class": "basketball court",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_basketball_court_69/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_basketball_court_69",
+      "score": null
+    },
+    {
+      "rank": 24,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_circular_farmland_74.jpg",
+        "height": null,
+        "id": "resisc45_circular_farmland_74",
+        "label": "circular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_circular_farmland_74/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> circular farmland",
+          "image_id": "74",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "circular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_circular_farmland_74/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_circular_farmland_74",
+      "score": null
+    },
+    {
+      "rank": 25,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_meadow_75.jpg",
+        "height": null,
+        "id": "resisc45_meadow_75",
+        "label": "meadow",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_meadow_75/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> meadow",
+          "image_id": "75",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "meadow",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_meadow_75/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_meadow_75",
+      "score": null
+    },
+    {
+      "rank": 26,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_meadow_79.jpg",
+        "height": null,
+        "id": "resisc45_meadow_79",
+        "label": "meadow",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_meadow_79/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> meadow",
+          "image_id": "79",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "meadow",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_meadow_79/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_meadow_79",
+      "score": null
+    },
+    {
+      "rank": 27,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airport_85.jpg",
+        "height": null,
+        "id": "resisc45_airport_85",
+        "label": "airport",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airport_85/content",
+        "metadata": {
+          "hierarchy": "Transport -> airport",
+          "image_id": "85",
+          "parent_group": "transport",
+          "scene_class": "airport",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airport_85/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airport_85",
+      "score": null
+    },
+    {
+      "rank": 28,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_terrace_87.jpg",
+        "height": null,
+        "id": "resisc45_terrace_87",
+        "label": "terrace",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_terrace_87/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> terrace",
+          "image_id": "87",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "terrace",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_terrace_87/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_terrace_87",
+      "score": null
+    },
+    {
+      "rank": 29,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_rectangular_farmland_89.jpg",
+        "height": null,
+        "id": "resisc45_rectangular_farmland_89",
+        "label": "rectangular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_rectangular_farmland_89/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> rectangular farmland",
+          "image_id": "89",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "rectangular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_rectangular_farmland_89/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_rectangular_farmland_89",
+      "score": null
+    },
+    {
+      "rank": 30,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_bridge_90.jpg",
+        "height": null,
+        "id": "resisc45_bridge_90",
+        "label": "bridge",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_bridge_90/content",
+        "metadata": {
+          "hierarchy": "Transport -> bridge",
+          "image_id": "90",
+          "parent_group": "transport",
+          "scene_class": "bridge",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_bridge_90/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_bridge_90",
+      "score": null
+    },
+    {
+      "rank": 31,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_rectangular_farmland_91.jpg",
+        "height": null,
+        "id": "resisc45_rectangular_farmland_91",
+        "label": "rectangular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_rectangular_farmland_91/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> rectangular farmland",
+          "image_id": "91",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "rectangular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_rectangular_farmland_91/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_rectangular_farmland_91",
+      "score": null
+    },
+    {
+      "rank": 32,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airplane_96.jpg",
+        "height": null,
+        "id": "resisc45_airplane_96",
+        "label": "airplane",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airplane_96/content",
+        "metadata": {
+          "hierarchy": "Transport -> airplane",
+          "image_id": "96",
+          "parent_group": "transport",
+          "scene_class": "airplane",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airplane_96/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airplane_96",
+      "score": null
+    },
+    {
+      "rank": 33,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_forest_111.jpg",
+        "height": null,
+        "id": "resisc45_forest_111",
+        "label": "forest",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_forest_111/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> forest",
+          "image_id": "111",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "forest",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_forest_111/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_forest_111",
+      "score": null
+    },
+    {
+      "rank": 34,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_terrace_116.jpg",
+        "height": null,
+        "id": "resisc45_terrace_116",
+        "label": "terrace",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_terrace_116/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> terrace",
+          "image_id": "116",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "terrace",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_terrace_116/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_terrace_116",
+      "score": null
+    },
+    {
+      "rank": 35,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airplane_119.jpg",
+        "height": null,
+        "id": "resisc45_airplane_119",
+        "label": "airplane",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airplane_119/content",
+        "metadata": {
+          "hierarchy": "Transport -> airplane",
+          "image_id": "119",
+          "parent_group": "transport",
+          "scene_class": "airplane",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airplane_119/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airplane_119",
+      "score": null
+    },
+    {
+      "rank": 36,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airplane_136.jpg",
+        "height": null,
+        "id": "resisc45_airplane_136",
+        "label": "airplane",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airplane_136/content",
+        "metadata": {
+          "hierarchy": "Transport -> airplane",
+          "image_id": "136",
+          "parent_group": "transport",
+          "scene_class": "airplane",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airplane_136/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airplane_136",
+      "score": null
+    },
+    {
+      "rank": 37,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_terrace_148.jpg",
+        "height": null,
+        "id": "resisc45_terrace_148",
+        "label": "terrace",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_terrace_148/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> terrace",
+          "image_id": "148",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "terrace",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_terrace_148/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_terrace_148",
+      "score": null
+    },
+    {
+      "rank": 38,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airplane_156.jpg",
+        "height": null,
+        "id": "resisc45_airplane_156",
+        "label": "airplane",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airplane_156/content",
+        "metadata": {
+          "hierarchy": "Transport -> airplane",
+          "image_id": "156",
+          "parent_group": "transport",
+          "scene_class": "airplane",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airplane_156/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airplane_156",
+      "score": null
+    },
+    {
+      "rank": 39,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airport_157.jpg",
+        "height": null,
+        "id": "resisc45_airport_157",
+        "label": "airport",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airport_157/content",
+        "metadata": {
+          "hierarchy": "Transport -> airport",
+          "image_id": "157",
+          "parent_group": "transport",
+          "scene_class": "airport",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airport_157/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airport_157",
+      "score": null
+    },
+    {
+      "rank": 40,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_rectangular_farmland_171.jpg",
+        "height": null,
+        "id": "resisc45_rectangular_farmland_171",
+        "label": "rectangular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_rectangular_farmland_171/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> rectangular farmland",
+          "image_id": "171",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "rectangular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_rectangular_farmland_171/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_rectangular_farmland_171",
+      "score": null
+    },
+    {
+      "rank": 41,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_bridge_174.jpg",
+        "height": null,
+        "id": "resisc45_bridge_174",
+        "label": "bridge",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_bridge_174/content",
+        "metadata": {
+          "hierarchy": "Transport -> bridge",
+          "image_id": "174",
+          "parent_group": "transport",
+          "scene_class": "bridge",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_bridge_174/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_bridge_174",
+      "score": null
+    },
+    {
+      "rank": 42,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_runway_184.jpg",
+        "height": null,
+        "id": "resisc45_runway_184",
+        "label": "runway",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_runway_184/content",
+        "metadata": {
+          "hierarchy": "Transport -> runway",
+          "image_id": "184",
+          "parent_group": "transport",
+          "scene_class": "runway",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_runway_184/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_runway_184",
+      "score": null
+    },
+    {
+      "rank": 43,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_sparse_residential_196.jpg",
+        "height": null,
+        "id": "resisc45_sparse_residential_196",
+        "label": "sparse residential",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_sparse_residential_196/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> sparse residential",
+          "image_id": "196",
+          "parent_group": "built_environment",
+          "scene_class": "sparse residential",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_sparse_residential_196/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_sparse_residential_196",
+      "score": null
+    },
+    {
+      "rank": 44,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_rectangular_farmland_198.jpg",
+        "height": null,
+        "id": "resisc45_rectangular_farmland_198",
+        "label": "rectangular farmland",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_rectangular_farmland_198/content",
+        "metadata": {
+          "hierarchy": "Agriculture Vegetation -> rectangular farmland",
+          "image_id": "198",
+          "parent_group": "agriculture_vegetation",
+          "scene_class": "rectangular farmland",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_rectangular_farmland_198/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_rectangular_farmland_198",
+      "score": null
+    },
+    {
+      "rank": 45,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_runway_202.jpg",
+        "height": null,
+        "id": "resisc45_runway_202",
+        "label": "runway",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_runway_202/content",
+        "metadata": {
+          "hierarchy": "Transport -> runway",
+          "image_id": "202",
+          "parent_group": "transport",
+          "scene_class": "runway",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_runway_202/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_runway_202",
+      "score": null
+    },
+    {
+      "rank": 46,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_bridge_230.jpg",
+        "height": null,
+        "id": "resisc45_bridge_230",
+        "label": "bridge",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_bridge_230/content",
+        "metadata": {
+          "hierarchy": "Transport -> bridge",
+          "image_id": "230",
+          "parent_group": "transport",
+          "scene_class": "bridge",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_bridge_230/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_bridge_230",
+      "score": null
+    },
+    {
+      "rank": 47,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_runway_241.jpg",
+        "height": null,
+        "id": "resisc45_runway_241",
+        "label": "runway",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_runway_241/content",
+        "metadata": {
+          "hierarchy": "Transport -> runway",
+          "image_id": "241",
+          "parent_group": "transport",
+          "scene_class": "runway",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_runway_241/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_runway_241",
+      "score": null
+    },
+    {
+      "rank": 48,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_storage_tank_271.jpg",
+        "height": null,
+        "id": "resisc45_storage_tank_271",
+        "label": "storage tank",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_storage_tank_271/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> storage tank",
+          "image_id": "271",
+          "parent_group": "built_environment",
+          "scene_class": "storage tank",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_storage_tank_271/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_storage_tank_271",
+      "score": null
+    },
+    {
+      "rank": 49,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_storage_tank_272.jpg",
+        "height": null,
+        "id": "resisc45_storage_tank_272",
+        "label": "storage tank",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_storage_tank_272/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> storage tank",
+          "image_id": "272",
+          "parent_group": "built_environment",
+          "scene_class": "storage tank",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_storage_tank_272/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_storage_tank_272",
+      "score": null
+    },
+    {
+      "rank": 50,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_bridge_297.jpg",
+        "height": null,
+        "id": "resisc45_bridge_297",
+        "label": "bridge",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_bridge_297/content",
+        "metadata": {
+          "hierarchy": "Transport -> bridge",
+          "image_id": "297",
+          "parent_group": "transport",
+          "scene_class": "bridge",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_bridge_297/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_bridge_297",
+      "score": null
+    },
+    {
+      "rank": 51,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_runway_313.jpg",
+        "height": null,
+        "id": "resisc45_runway_313",
+        "label": "runway",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_runway_313/content",
+        "metadata": {
+          "hierarchy": "Transport -> runway",
+          "image_id": "313",
+          "parent_group": "transport",
+          "scene_class": "runway",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_runway_313/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_runway_313",
+      "score": null
+    },
+    {
+      "rank": 52,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_storage_tank_315.jpg",
+        "height": null,
+        "id": "resisc45_storage_tank_315",
+        "label": "storage tank",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_storage_tank_315/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> storage tank",
+          "image_id": "315",
+          "parent_group": "built_environment",
+          "scene_class": "storage tank",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_storage_tank_315/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_storage_tank_315",
+      "score": null
+    },
+    {
+      "rank": 53,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_runway_319.jpg",
+        "height": null,
+        "id": "resisc45_runway_319",
+        "label": "runway",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_runway_319/content",
+        "metadata": {
+          "hierarchy": "Transport -> runway",
+          "image_id": "319",
+          "parent_group": "transport",
+          "scene_class": "runway",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_runway_319/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_runway_319",
+      "score": null
+    },
+    {
+      "rank": 54,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_bridge_327.jpg",
+        "height": null,
+        "id": "resisc45_bridge_327",
+        "label": "bridge",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_bridge_327/content",
+        "metadata": {
+          "hierarchy": "Transport -> bridge",
+          "image_id": "327",
+          "parent_group": "transport",
+          "scene_class": "bridge",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_bridge_327/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_bridge_327",
+      "score": null
+    },
+    {
+      "rank": 55,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_airport_358.jpg",
+        "height": null,
+        "id": "resisc45_airport_358",
+        "label": "airport",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_airport_358/content",
+        "metadata": {
+          "hierarchy": "Transport -> airport",
+          "image_id": "358",
+          "parent_group": "transport",
+          "scene_class": "airport",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_airport_358/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_airport_358",
+      "score": null
+    },
+    {
+      "rank": 56,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_sparse_residential_367.jpg",
+        "height": null,
+        "id": "resisc45_sparse_residential_367",
+        "label": "sparse residential",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_sparse_residential_367/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> sparse residential",
+          "image_id": "367",
+          "parent_group": "built_environment",
+          "scene_class": "sparse residential",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_sparse_residential_367/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_sparse_residential_367",
+      "score": null
+    },
+    {
+      "rank": 57,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_sparse_residential_421.jpg",
+        "height": null,
+        "id": "resisc45_sparse_residential_421",
+        "label": "sparse residential",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_sparse_residential_421/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> sparse residential",
+          "image_id": "421",
+          "parent_group": "built_environment",
+          "scene_class": "sparse residential",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_sparse_residential_421/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_sparse_residential_421",
+      "score": null
+    },
+    {
+      "rank": 58,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_sparse_residential_469.jpg",
+        "height": null,
+        "id": "resisc45_sparse_residential_469",
+        "label": "sparse residential",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_sparse_residential_469/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> sparse residential",
+          "image_id": "469",
+          "parent_group": "built_environment",
+          "scene_class": "sparse residential",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_sparse_residential_469/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_sparse_residential_469",
+      "score": null
+    },
+    {
+      "rank": 59,
+      "sample": {
+        "duration_s": null,
+        "filename": "resisc45_sparse_residential_477.jpg",
+        "height": null,
+        "id": "resisc45_sparse_residential_477",
+        "label": "sparse residential",
+        "media_type": null,
+        "media_url": "/api/samples/resisc45_sparse_residential_477/content",
+        "metadata": {
+          "hierarchy": "Built Environment -> sparse residential",
+          "image_id": "477",
+          "parent_group": "built_environment",
+          "scene_class": "sparse residential",
+          "source_dataset": "tanganke/resisc45",
+          "split": "test"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/resisc45_sparse_residential_477/thumbnail",
+        "width": null
+      },
+      "sample_id": "resisc45_sparse_residential_477",
+      "score": null
+    }
+  ],
+  "limit": 60,
+  "offset": 0,
+  "total": 60
+}

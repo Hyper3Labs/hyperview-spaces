@@ -1,0 +1,204 @@
+{
+  "collection_id": "selection:3a962046de25",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "6280218c3acff468.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-01",
+        "label": "Related label \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-01/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 1,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_070_needs_review_6280218c3acff468"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "a6e26ac77fdf81e0.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-02",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-02/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 2,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_084_needs_review_a6e26ac77fdf81e0"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "0565bcccb1266f62.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-03",
+        "label": "Related label \u00b7 Kitchen knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-03/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 3,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Kitchen knife",
+          "source_sample_id": "openimages_107_needs_review_0565bcccb1266f62"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "c2c19be58ed7280b.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-04",
+        "label": "Check manually \u00b7 Apple",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-04/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 4,
+          "review_tag": "Check manually",
+          "role": "review_batch_result",
+          "source_label": "Apple",
+          "source_sample_id": "openimages_003_safe_c2c19be58ed7280b"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "41bf39cbdf4b0a05.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-05",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-05/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 5,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_116_needs_review_41bf39cbdf4b0a05"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-05",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "474d23651d5ca02a.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-06",
+        "label": "Exact label \u00b7 Knife",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-06/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 6,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Knife",
+          "source_sample_id": "openimages_105_needs_review_474d23651d5ca02a"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-06/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-06",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "084a9d12a2a486dc.jpg",
+        "height": null,
+        "id": "visual-safety-knife-clip-07",
+        "label": "Check manually \u00b7 Clothing",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-knife-clip-07/content",
+        "metadata": {
+          "anchor_id": "openimages_000_needs_review_e0c0a275bf9cdbff",
+          "model": "clip",
+          "rank": 7,
+          "review_tag": "Check manually",
+          "role": "review_batch_result",
+          "source_label": "Clothing",
+          "source_sample_id": "openimages_008_safe_084a9d12a2a486dc"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-knife-clip-07/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-knife-clip-07",
+      "score": null
+    }
+  ],
+  "limit": 7,
+  "offset": 0,
+  "total": 7
+}

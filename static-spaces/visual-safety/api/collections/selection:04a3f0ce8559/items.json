@@ -1,0 +1,204 @@
+{
+  "collection_id": "selection:04a3f0ce8559",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "a1cc464404c4a5a3.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-01",
+        "label": "Exact label \u00b7 Wine",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-01/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 1,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Wine",
+          "source_sample_id": "openimages_086_needs_review_a1cc464404c4a5a3"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "3722904d5b45c676.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-02",
+        "label": "Check manually \u00b7 Clothing",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-02/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 2,
+          "review_tag": "Check manually",
+          "role": "review_batch_result",
+          "source_label": "Clothing",
+          "source_sample_id": "openimages_002_safe_3722904d5b45c676"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "ccd1baf21b64d13a.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-03",
+        "label": "Exact label \u00b7 Wine",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-03/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 3,
+          "review_tag": "Exact label",
+          "role": "review_batch_result",
+          "source_label": "Wine",
+          "source_sample_id": "openimages_102_needs_review_ccd1baf21b64d13a"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "06a449c6ef03c172.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-04",
+        "label": "Related label \u00b7 Alcoholic beverage",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-04/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 4,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Alcoholic beverage",
+          "source_sample_id": "openimages_088_needs_review_06a449c6ef03c172"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "b14f752e43df1621.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-05",
+        "label": "Related label \u00b7 Beer",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-05/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 5,
+          "review_tag": "Related label",
+          "role": "review_batch_result",
+          "source_label": "Beer",
+          "source_sample_id": "openimages_072_needs_review_b14f752e43df1621"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-05",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "aaa12411c2d6378d.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-06",
+        "label": "Check manually \u00b7 Chair",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-06/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 6,
+          "review_tag": "Check manually",
+          "role": "review_batch_result",
+          "source_label": "Chair",
+          "source_sample_id": "openimages_006_safe_aaa12411c2d6378d"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-06/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-06",
+      "score": null
+    },
+    {
+      "rank": 6,
+      "sample": {
+        "duration_s": null,
+        "filename": "ea39fa9dc50811b0.jpg",
+        "height": null,
+        "id": "visual-safety-hard-case-hyper3-07",
+        "label": "Check manually \u00b7 Table",
+        "media_type": null,
+        "media_url": "/api/samples/visual-safety-hard-case-hyper3-07/content",
+        "metadata": {
+          "anchor_id": "openimages_104_needs_review_b053b1f12641af60",
+          "model": "hyper3",
+          "rank": 7,
+          "review_tag": "Check manually",
+          "role": "review_batch_result",
+          "source_label": "Table",
+          "source_sample_id": "openimages_057_safe_ea39fa9dc50811b0"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/visual-safety-hard-case-hyper3-07/thumbnail",
+        "width": null
+      },
+      "sample_id": "visual-safety-hard-case-hyper3-07",
+      "score": null
+    }
+  ],
+  "limit": 7,
+  "offset": 0,
+  "total": 7
+}

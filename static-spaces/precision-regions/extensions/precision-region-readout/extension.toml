@@ -1,0 +1,8 @@
+name = "precision-region-readout"
+description = "Region-query evidence and ground-truth controls"
+
+[[panels]]
+id = "precision-region-comparison"
+title = "Find the exact region"
+position = "right"
+file = "panel.jsx"

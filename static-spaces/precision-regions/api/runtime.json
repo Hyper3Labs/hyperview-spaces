@@ -1,0 +1,1351 @@
+{
+  "active_workspace_id": "precision-region-search-business-evidence-v3",
+  "extensions": [],
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": false,
+      "static_reason": "No layouts in this dataset",
+      "title": "Embeddings"
+    }
+  ],
+  "runtime_id": "ea911f0389cb4cdd81a184e93770ac8f",
+  "tools": [],
+  "version": 1,
+  "workspace": {
+    "collections": [
+      {
+        "created_at": 1788594448,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:2033ffc1cd10",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-bench-target",
+            "precision-bench-clip-02",
+            "precision-bench-clip-03",
+            "precision-bench-clip-04",
+            "precision-bench-clip-05"
+          ],
+          "source": "Empty bench seat \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594447,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:344da96ddf90",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-fleet-target",
+            "precision-fleet-hyper3-02",
+            "precision-fleet-hyper3-03",
+            "precision-fleet-hyper3-04",
+            "precision-fleet-hyper3-05"
+          ],
+          "source": "Green bus \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594448,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:549b0befa4ae",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-fleet-clip-01",
+            "precision-fleet-target",
+            "precision-fleet-clip-03",
+            "precision-fleet-clip-04",
+            "precision-fleet-clip-05"
+          ],
+          "source": "Green bus \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594448,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:5830ea2abca4",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-bench-hyper3-01",
+            "precision-bench-hyper3-02",
+            "precision-bench-hyper3-03",
+            "precision-bench-hyper3-04",
+            "precision-bench-hyper3-05"
+          ],
+          "source": "Empty bench seat \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594447,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:5c0cab6d75af",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-facilities-clip-01",
+            "precision-facilities-clip-02",
+            "precision-facilities-clip-03",
+            "precision-facilities-clip-04",
+            "precision-facilities-clip-05"
+          ],
+          "source": "Grey couch \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594447,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:6bbec6536ac2",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-facilities-target",
+            "precision-facilities-hyper3-02",
+            "precision-facilities-hyper3-03",
+            "precision-facilities-hyper3-04",
+            "precision-facilities-hyper3-05"
+          ],
+          "source": "Grey couch \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594447,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:90cd325bb14b",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-retail-clip-01",
+            "precision-retail-clip-02",
+            "precision-retail-clip-03",
+            "precision-retail-clip-04",
+            "precision-retail-clip-05"
+          ],
+          "source": "Apple slice \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788594447,
+        "dataset_id": "refcocog_text_region_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:d5acafc29797",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "precision-retail-hyper3-01",
+            "precision-retail-target",
+            "precision-retail-hyper3-03",
+            "precision-retail-hyper3-04",
+            "precision-retail-hyper3-05"
+          ],
+          "source": "Apple slice \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+        },
+        "scores": null
+      }
+    ],
+    "dataset_name": "refcocog_text_region_evidence_v3",
+    "id": "precision-region-search-business-evidence-v3",
+    "ui": {
+      "active_layout_key": null,
+      "active_panel_id": "samples",
+      "custom_panels": [
+        {
+          "active": false,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "samples",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 220,
+            "min_width": 180,
+            "position": "center",
+            "reference_panel_id": null,
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 220,
+          "min_width": 180,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "collectionId": "selection:6bbec6536ac2",
+            "mode": "results"
+          },
+          "reference_panel_id": null,
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Hyper3-CLIP \u00b7 Top 5 regions",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "right",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "precision-clip-results",
+          "layout": {
+            "direction": "right",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 220,
+            "min_width": 180,
+            "position": "center",
+            "reference_panel_id": "samples",
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 220,
+          "min_width": 180,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "collectionId": "selection:5c0cab6d75af",
+            "mode": "results"
+          },
+          "reference_panel_id": "samples",
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "OpenAI CLIP \u00b7 Top 5 regions",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": null,
+          "data": {
+            "module_src": "/api/panels/content/precision-region-search-business-evidence-v3/precision-region-readout/panel.js",
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": "precision-region-readout",
+          "extension_panel": "precision-region-comparison",
+          "geometry": null,
+          "height": null,
+          "id": "precision-region-readout",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": 520,
+            "min_height": 300,
+            "min_width": 320,
+            "position": "right",
+            "reference_panel_id": null,
+            "width": 400
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": 520,
+          "min_height": 300,
+          "min_width": 320,
+          "panel_type": "precision-region-readout.precision-region-comparison",
+          "position": "right",
+          "props": {
+            "benchmark": {
+              "clipHit1": "48.3%",
+              "clipHit10": "83.9%",
+              "clipMrr": "0.615",
+              "hyper3Hit1": "52.8%",
+              "hyper3Hit10": "90.6%",
+              "hyper3Mrr": "0.662",
+              "queryCount": 180,
+              "source": "scripts/eval_precision_regions.py"
+            },
+            "cases": [
+              {
+                "bbox": [
+                  421.9,
+                  158.44,
+                  157.55,
+                  106.81
+                ],
+                "business": "Facilities teams need the exact fixture inside inspection photos, not a broad room-level match.",
+                "collectionIds": {
+                  "clip": "selection:5c0cab6d75af",
+                  "hyper3": "selection:6bbec6536ac2"
+                },
+                "context": "Property inspection",
+                "cropBox": [
+                  421,
+                  158,
+                  580,
+                  266
+                ],
+                "id": "facilities",
+                "imageSize": [
+                  640,
+                  413
+                ],
+                "label": "Workspace / Facilities",
+                "query": "A grey couch with pillows on it.",
+                "questionId": "115801",
+                "results": {
+                  "clip": [
+                    {
+                      "bbox": [
+                        385.92,
+                        289.54,
+                        253.15,
+                        132.78
+                      ],
+                      "questionId": "291163",
+                      "rank": 1,
+                      "sampleId": "precision-facilities-clip-01",
+                      "sourceImageId": "COCO_train2014_000000250079_291163.jpg",
+                      "text": "A beige loveseat with a throw pillow on it."
+                    },
+                    {
+                      "bbox": [
+                        14.68,
+                        305.38,
+                        132.48,
+                        133.22
+                      ],
+                      "questionId": "381178",
+                      "rank": 2,
+                      "sampleId": "precision-facilities-clip-02",
+                      "sourceImageId": "COCO_train2014_000000386018_381178.jpg",
+                      "text": "A white arm chair by the fireplace"
+                    },
+                    {
+                      "bbox": [
+                        110.34,
+                        406.21,
+                        248.28,
+                        212.41
+                      ],
+                      "questionId": "113428",
+                      "rank": 3,
+                      "sampleId": "precision-facilities-clip-03",
+                      "sourceImageId": "COCO_train2014_000000246102_113428.jpg",
+                      "text": "A dark red armchair"
+                    },
+                    {
+                      "bbox": [
+                        0.0,
+                        178.11,
+                        68.38,
+                        270.66
+                      ],
+                      "questionId": "100704",
+                      "rank": 4,
+                      "sampleId": "precision-facilities-clip-04",
+                      "sourceImageId": "COCO_train2014_000000171374_100704.jpg",
+                      "text": "An office chair with wheels"
+                    },
+                    {
+                      "bbox": [
+                        30.71,
+                        225.84,
+                        121.2,
+                        130.33
+                      ],
+                      "questionId": "108052",
+                      "rank": 5,
+                      "sampleId": "precision-facilities-clip-05",
+                      "sourceImageId": "COCO_train2014_000000185116_108052.jpg",
+                      "text": "The wicker chair to the left."
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "bbox": [
+                        421.9,
+                        158.44,
+                        157.55,
+                        106.81
+                      ],
+                      "isTarget": true,
+                      "questionId": "115801",
+                      "rank": 1,
+                      "sampleId": "precision-facilities-target",
+                      "sourceImageId": "COCO_train2014_000000315297_115801.jpg",
+                      "text": "A grey couch with pillows on it."
+                    },
+                    {
+                      "bbox": [
+                        110.34,
+                        406.21,
+                        248.28,
+                        212.41
+                      ],
+                      "questionId": "113428",
+                      "rank": 2,
+                      "sampleId": "precision-facilities-hyper3-02",
+                      "sourceImageId": "COCO_train2014_000000246102_113428.jpg",
+                      "text": "A dark red armchair"
+                    },
+                    {
+                      "bbox": [
+                        4.13,
+                        18.87,
+                        623.48,
+                        325.16
+                      ],
+                      "questionId": "112603",
+                      "rank": 3,
+                      "sampleId": "precision-facilities-hyper3-03",
+                      "sourceImageId": "COCO_train2014_000000337255_112603.jpg",
+                      "text": "A brown couch sitting against the window."
+                    },
+                    {
+                      "bbox": [
+                        14.68,
+                        305.38,
+                        132.48,
+                        133.22
+                      ],
+                      "questionId": "381178",
+                      "rank": 4,
+                      "sampleId": "precision-facilities-hyper3-04",
+                      "sourceImageId": "COCO_train2014_000000386018_381178.jpg",
+                      "text": "A white arm chair by the fireplace"
+                    },
+                    {
+                      "bbox": [
+                        31.64,
+                        340.85,
+                        126.56,
+                        149.58
+                      ],
+                      "questionId": "381043",
+                      "rank": 5,
+                      "sampleId": "precision-facilities-hyper3-05",
+                      "sourceImageId": "COCO_train2014_000000434857_381043.jpg",
+                      "text": "A black and white designed chair on the outside dinning table"
+                    }
+                  ]
+                },
+                "shortLabel": "Grey couch",
+                "sourceImageId": "COCO_train2014_000000315297_115801.jpg",
+                "sourceSampleId": "precision-facilities-source",
+                "target": {
+                  "clipRank": 7,
+                  "hyper3Rank": 1
+                },
+                "targetSampleId": "precision-facilities-target"
+              },
+              {
+                "bbox": [
+                  243.95,
+                  192.0,
+                  90.36,
+                  194.26
+                ],
+                "business": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+                "collectionIds": {
+                  "clip": "selection:90cd325bb14b",
+                  "hyper3": "selection:d5acafc29797"
+                },
+                "context": "Produce counter",
+                "cropBox": [
+                  243,
+                  192,
+                  335,
+                  387
+                ],
+                "id": "retail",
+                "imageSize": [
+                  640,
+                  480
+                ],
+                "label": "Retail / Tabletop",
+                "query": "the slice of apple closest to the red bananas",
+                "questionId": "1048737",
+                "results": {
+                  "clip": [
+                    {
+                      "bbox": [
+                        1.0,
+                        0.89,
+                        201.48,
+                        103.24
+                      ],
+                      "questionId": "1044306",
+                      "rank": 1,
+                      "sampleId": "precision-retail-clip-01",
+                      "sourceImageId": "COCO_train2014_000000528756_1044306.jpg",
+                      "text": "A banana on a fork to the left of all the other bananas."
+                    },
+                    {
+                      "bbox": [
+                        252.05,
+                        340.18,
+                        221.34,
+                        84.08
+                      ],
+                      "questionId": "1069026",
+                      "rank": 2,
+                      "sampleId": "precision-retail-clip-02",
+                      "sourceImageId": "COCO_train2014_000000240331_1069026.jpg",
+                      "text": "An empty hotdog bun."
+                    },
+                    {
+                      "bbox": [
+                        0.0,
+                        204.78,
+                        253.65,
+                        166.01
+                      ],
+                      "questionId": "1620331",
+                      "rank": 3,
+                      "sampleId": "precision-retail-clip-03",
+                      "sourceImageId": "COCO_train2014_000000550235_1620331.jpg",
+                      "text": "A white tabletop."
+                    },
+                    {
+                      "bbox": [
+                        270.32,
+                        52.07,
+                        255.61,
+                        96.98
+                      ],
+                      "questionId": "1076634",
+                      "rank": 4,
+                      "sampleId": "precision-retail-clip-04",
+                      "sourceImageId": "COCO_train2014_000000495095_1076634.jpg",
+                      "text": "A pizza is being eaten by a man."
+                    },
+                    {
+                      "bbox": [
+                        439.95,
+                        88.78,
+                        192.87,
+                        135.63
+                      ],
+                      "questionId": "1084979",
+                      "rank": 5,
+                      "sampleId": "precision-retail-clip-05",
+                      "sourceImageId": "COCO_train2014_000000124835_1084979.jpg",
+                      "text": "A muffin next to some larger food items."
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "bbox": [
+                        1.0,
+                        0.89,
+                        201.48,
+                        103.24
+                      ],
+                      "questionId": "1044306",
+                      "rank": 1,
+                      "sampleId": "precision-retail-hyper3-01",
+                      "sourceImageId": "COCO_train2014_000000528756_1044306.jpg",
+                      "text": "A banana on a fork to the left of all the other bananas."
+                    },
+                    {
+                      "bbox": [
+                        243.95,
+                        192.0,
+                        90.36,
+                        194.26
+                      ],
+                      "isTarget": true,
+                      "questionId": "1048737",
+                      "rank": 2,
+                      "sampleId": "precision-retail-target",
+                      "sourceImageId": "COCO_train2014_000000269477_1048737.jpg",
+                      "text": "the slice of apple closest to the red bananas"
+                    },
+                    {
+                      "bbox": [
+                        403.29,
+                        54.15,
+                        236.6,
+                        333.89
+                      ],
+                      "questionId": "694426",
+                      "rank": 3,
+                      "sampleId": "precision-retail-hyper3-03",
+                      "sourceImageId": "COCO_train2014_000000470055_694426.jpg",
+                      "text": "A utensil with a wooden handle sitting to the right of a pizza."
+                    },
+                    {
+                      "bbox": [
+                        36.92,
+                        187.55,
+                        378.47,
+                        220.24
+                      ],
+                      "questionId": "379937",
+                      "rank": 4,
+                      "sampleId": "precision-retail-hyper3-04",
+                      "sourceImageId": "COCO_train2014_000000430950_379937.jpg",
+                      "text": "the chair the man in the red shirt is sitting in"
+                    },
+                    {
+                      "bbox": [
+                        176.22,
+                        44.32,
+                        262.7,
+                        235.68
+                      ],
+                      "questionId": "1081377",
+                      "rank": 5,
+                      "sampleId": "precision-retail-hyper3-05",
+                      "sourceImageId": "COCO_train2014_000000521674_1081377.jpg",
+                      "text": "A doughnut with white frosting and red confetti sprinkles."
+                    }
+                  ]
+                },
+                "shortLabel": "Apple slice",
+                "sourceImageId": "COCO_train2014_000000269477_1048737.jpg",
+                "sourceSampleId": "precision-retail-source",
+                "target": {
+                  "clipRank": 12,
+                  "hyper3Rank": 2
+                },
+                "targetSampleId": "precision-retail-target"
+              },
+              {
+                "bbox": [
+                  471.14,
+                  1.92,
+                  166.0,
+                  420.28
+                ],
+                "business": "Fleet operators need to find the exact vehicle or mobile asset in street, depot, and field imagery. This is a narrow case: both models surface the described bus inside the visible shortlist.",
+                "collectionIds": {
+                  "clip": "selection:549b0befa4ae",
+                  "hyper3": "selection:344da96ddf90"
+                },
+                "context": "Depot bay",
+                "cropBox": [
+                  471,
+                  1,
+                  638,
+                  423
+                ],
+                "id": "fleet",
+                "imageSize": [
+                  640,
+                  427
+                ],
+                "label": "Fleet / Vehicles",
+                "query": "A green and white bus next to people standing.",
+                "questionId": "366497",
+                "results": {
+                  "clip": [
+                    {
+                      "bbox": [
+                        32.5,
+                        16.75,
+                        172.5,
+                        123.0
+                      ],
+                      "questionId": "365993",
+                      "rank": 1,
+                      "sampleId": "precision-fleet-clip-01",
+                      "sourceImageId": "COCO_train2014_000000287974_365993.jpg",
+                      "text": "a red colored bus"
+                    },
+                    {
+                      "bbox": [
+                        471.14,
+                        1.92,
+                        166.0,
+                        420.28
+                      ],
+                      "isTarget": true,
+                      "questionId": "366497",
+                      "rank": 2,
+                      "sampleId": "precision-fleet-target",
+                      "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+                      "text": "A green and white bus next to people standing."
+                    },
+                    {
+                      "bbox": [
+                        125.12,
+                        247.13,
+                        174.03,
+                        280.45
+                      ],
+                      "questionId": "216928",
+                      "rank": 3,
+                      "sampleId": "precision-fleet-clip-03",
+                      "sourceImageId": "COCO_train2014_000000026362_216928.jpg",
+                      "text": "A woman in a yellow skirt retrieves a purchase from a vending machine."
+                    },
+                    {
+                      "bbox": [
+                        355.36,
+                        191.14,
+                        199.64,
+                        146.16
+                      ],
+                      "questionId": "401571",
+                      "rank": 4,
+                      "sampleId": "precision-fleet-clip-04",
+                      "sourceImageId": "COCO_train2014_000000307082_401571.jpg",
+                      "text": "a truck number 14 on a snow bank."
+                    },
+                    {
+                      "bbox": [
+                        18.65,
+                        404.66,
+                        330.05,
+                        190.86
+                      ],
+                      "questionId": "1121234",
+                      "rank": 5,
+                      "sampleId": "precision-fleet-clip-05",
+                      "sourceImageId": "COCO_train2014_000000391831_1121234.jpg",
+                      "text": "The open cabinet."
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "bbox": [
+                        471.14,
+                        1.92,
+                        166.0,
+                        420.28
+                      ],
+                      "isTarget": true,
+                      "questionId": "366497",
+                      "rank": 1,
+                      "sampleId": "precision-fleet-target",
+                      "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+                      "text": "A green and white bus next to people standing."
+                    },
+                    {
+                      "bbox": [
+                        32.5,
+                        16.75,
+                        172.5,
+                        123.0
+                      ],
+                      "questionId": "365993",
+                      "rank": 2,
+                      "sampleId": "precision-fleet-hyper3-02",
+                      "sourceImageId": "COCO_train2014_000000287974_365993.jpg",
+                      "text": "a red colored bus"
+                    },
+                    {
+                      "bbox": [
+                        125.12,
+                        247.13,
+                        174.03,
+                        280.45
+                      ],
+                      "questionId": "216928",
+                      "rank": 3,
+                      "sampleId": "precision-fleet-hyper3-03",
+                      "sourceImageId": "COCO_train2014_000000026362_216928.jpg",
+                      "text": "A woman in a yellow skirt retrieves a purchase from a vending machine."
+                    },
+                    {
+                      "bbox": [
+                        355.36,
+                        191.14,
+                        199.64,
+                        146.16
+                      ],
+                      "questionId": "401571",
+                      "rank": 4,
+                      "sampleId": "precision-fleet-hyper3-04",
+                      "sourceImageId": "COCO_train2014_000000307082_401571.jpg",
+                      "text": "a truck number 14 on a snow bank."
+                    },
+                    {
+                      "bbox": [
+                        347.97,
+                        96.19,
+                        167.93,
+                        173.82
+                      ],
+                      "questionId": "397485",
+                      "rank": 5,
+                      "sampleId": "precision-fleet-hyper3-05",
+                      "sourceImageId": "COCO_train2014_000000429207_397485.jpg",
+                      "text": "A white truck with a worker standing on it, which is in front of the man who is directing traffic."
+                    }
+                  ]
+                },
+                "shortLabel": "Green bus",
+                "sourceImageId": "COCO_train2014_000000324332_366497.jpg",
+                "sourceSampleId": "precision-fleet-source",
+                "target": {
+                  "clipRank": 2,
+                  "hyper3Rank": 1
+                },
+                "targetSampleId": "precision-fleet-target"
+              },
+              {
+                "bbox": [
+                  367.96,
+                  324.04,
+                  127.58,
+                  155.96
+                ],
+                "business": "Venue and hospitality teams look for one open seat or fixture inside a crowded scene photo. This is a case the baseline wins: hyper3-clip returns five other seats before reaching the annotated bench seat, while CLIP ranks it first.",
+                "collectionIds": {
+                  "clip": "selection:2033ffc1cd10",
+                  "hyper3": "selection:5830ea2abca4"
+                },
+                "context": "Venue seating",
+                "cropBox": [
+                  367,
+                  324,
+                  496,
+                  480
+                ],
+                "id": "bench",
+                "imageSize": [
+                  640,
+                  480
+                ],
+                "label": "Hospitality / Seating",
+                "query": "An empty seat at on a bench.",
+                "questionId": "2061563",
+                "results": {
+                  "clip": [
+                    {
+                      "bbox": [
+                        367.96,
+                        324.04,
+                        127.58,
+                        155.96
+                      ],
+                      "isTarget": true,
+                      "questionId": "2061563",
+                      "rank": 1,
+                      "sampleId": "precision-bench-target",
+                      "sourceImageId": "COCO_train2014_000000149921_2061563.jpg",
+                      "text": "An empty seat at on a bench."
+                    },
+                    {
+                      "bbox": [
+                        266.92,
+                        353.6,
+                        127.03,
+                        126.4
+                      ],
+                      "questionId": "1932002",
+                      "rank": 2,
+                      "sampleId": "precision-bench-clip-02",
+                      "sourceImageId": "COCO_train2014_000000574217_1932002.jpg",
+                      "text": "The chair on the right, closest to the guy with no hat on."
+                    },
+                    {
+                      "bbox": [
+                        27.69,
+                        1.58,
+                        114.69,
+                        317.2
+                      ],
+                      "questionId": "26893",
+                      "rank": 3,
+                      "sampleId": "precision-bench-clip-03",
+                      "sourceImageId": "COCO_train2014_000000469495_26893.jpg",
+                      "text": "The white planter chair with the woman wearing dark clothes and white sneakers sitting in it."
+                    },
+                    {
+                      "bbox": [
+                        0.0,
+                        178.11,
+                        68.38,
+                        270.66
+                      ],
+                      "questionId": "100704",
+                      "rank": 4,
+                      "sampleId": "precision-bench-clip-04",
+                      "sourceImageId": "COCO_train2014_000000171374_100704.jpg",
+                      "text": "An office chair with wheels"
+                    },
+                    {
+                      "bbox": [
+                        12.97,
+                        251.87,
+                        103.73,
+                        172.89
+                      ],
+                      "questionId": "385941",
+                      "rank": 5,
+                      "sampleId": "precision-bench-clip-05",
+                      "sourceImageId": "COCO_train2014_000000205202_385941.jpg",
+                      "text": "A back rest of a wooden chair which was occupied by a man"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "bbox": [
+                        434.35,
+                        261.74,
+                        128.83,
+                        165.26
+                      ],
+                      "questionId": "108076",
+                      "rank": 1,
+                      "sampleId": "precision-bench-hyper3-01",
+                      "sourceImageId": "COCO_train2014_000000434372_108076.jpg",
+                      "text": "the chair on the bottom right"
+                    },
+                    {
+                      "bbox": [
+                        43.26,
+                        240.26,
+                        104.02,
+                        174.52
+                      ],
+                      "questionId": "1938820",
+                      "rank": 2,
+                      "sampleId": "precision-bench-hyper3-02",
+                      "sourceImageId": "COCO_train2014_000000485014_1938820.jpg",
+                      "text": "An office chair closest to the corner."
+                    },
+                    {
+                      "bbox": [
+                        427.64,
+                        199.43,
+                        212.36,
+                        76.77
+                      ],
+                      "questionId": "573614",
+                      "rank": 3,
+                      "sampleId": "precision-bench-hyper3-03",
+                      "sourceImageId": "COCO_train2014_000000012522_573614.jpg",
+                      "text": "the front bleacher"
+                    },
+                    {
+                      "bbox": [
+                        91.16,
+                        284.27,
+                        127.62,
+                        139.13
+                      ],
+                      "questionId": "373167",
+                      "rank": 4,
+                      "sampleId": "precision-bench-hyper3-04",
+                      "sourceImageId": "COCO_train2014_000000344644_373167.jpg",
+                      "text": "The empty chair on the end of the row."
+                    },
+                    {
+                      "bbox": [
+                        30.71,
+                        225.84,
+                        121.2,
+                        130.33
+                      ],
+                      "questionId": "108052",
+                      "rank": 5,
+                      "sampleId": "precision-bench-hyper3-05",
+                      "sourceImageId": "COCO_train2014_000000185116_108052.jpg",
+                      "text": "The wicker chair to the left."
+                    }
+                  ]
+                },
+                "shortLabel": "Empty bench seat",
+                "sourceImageId": "COCO_train2014_000000149921_2061563.jpg",
+                "sourceSampleId": "precision-bench-source",
+                "target": {
+                  "clipRank": 1,
+                  "hyper3Rank": 9
+                },
+                "targetSampleId": "precision-bench-target"
+              }
+            ],
+            "clipPanelId": "precision-clip-results",
+            "collectionId": "selection:6bbec6536ac2",
+            "dataset": "lmms-lab/RefCOCOg",
+            "hyper3PanelId": "samples",
+            "initialCaseId": "facilities",
+            "models": {
+              "clip": "openai/clip-vit-base-patch32",
+              "hyper3": "hyper3-clip-v0.5"
+            },
+            "protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+            "split": "val"
+          },
+          "reference_panel_id": null,
+          "renderer": "module:panel.jsx",
+          "source": "extension",
+          "state_revision": 0,
+          "title": "Find the exact region",
+          "visible": true,
+          "width": 400
+        }
+      ],
+      "has_explicit_view": true,
+      "layout": null,
+      "layout_revision": 1,
+      "layout_views": {},
+      "panels": {
+        "precision-clip-results": {
+          "state": {
+            "collection": {
+              "created_at": 1788594447,
+              "dataset_id": "refcocog_text_region_evidence_v3",
+              "entity_set_id": "samples",
+              "id": "selection:5c0cab6d75af",
+              "kind": "selection",
+              "query": {
+                "ids": [
+                  "precision-facilities-clip-01",
+                  "precision-facilities-clip-02",
+                  "precision-facilities-clip-03",
+                  "precision-facilities-clip-04",
+                  "precision-facilities-clip-05"
+                ],
+                "source": "Grey couch \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+              },
+              "scores": null
+            },
+            "collection_id": "selection:5c0cab6d75af"
+          },
+          "state_revision": 0
+        },
+        "precision-region-readout": {
+          "state": {
+            "activeCaseId": "facilities"
+          },
+          "state_revision": 0
+        },
+        "samples": {
+          "state": {
+            "collection": {
+              "created_at": 1788594447,
+              "dataset_id": "refcocog_text_region_evidence_v3",
+              "entity_set_id": "samples",
+              "id": "selection:6bbec6536ac2",
+              "kind": "selection",
+              "query": {
+                "ids": [
+                  "precision-facilities-target",
+                  "precision-facilities-hyper3-02",
+                  "precision-facilities-hyper3-03",
+                  "precision-facilities-hyper3-04",
+                  "precision-facilities-hyper3-05"
+                ],
+                "source": "Grey couch \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+              },
+              "scores": null
+            },
+            "collection_id": "selection:6bbec6536ac2"
+          },
+          "state_revision": 0
+        }
+      },
+      "selected_ids": [
+        "precision-facilities-target"
+      ],
+      "view_revision": 1
+    }
+  },
+  "workspaces": [
+    {
+      "dataset_name": "refcocog_text_region_evidence_v3",
+      "id": "precision-region-search-business-evidence-v3"
+    }
+  ]
+}

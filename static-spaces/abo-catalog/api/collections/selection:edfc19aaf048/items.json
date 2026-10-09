@@ -1,0 +1,212 @@
+{
+  "collection_id": "selection:edfc19aaf048",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "B082VLTCM4_816VP-arPsL.jpg",
+        "height": null,
+        "id": "B082VLTCM4_816VP-arPsL",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B082VLTCM4_816VP-arPsL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Grey Velvet",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "816VP-arPsL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/6c/6c3e7a1d.jpg",
+          "item_id": "B082VLTCM4",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Frederick Mid-Century Modern Tufted Velvet Sofa Couch, 77.5\"W, Grey"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B082VLTCM4_816VP-arPsL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B082VLTCM4_816VP-arPsL",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075X4VM73_81oPx1e8s_L.jpg",
+        "height": null,
+        "id": "B075X4VM73_81oPx1e8s_L",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B075X4VM73_81oPx1e8s_L/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Charcoal",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "81oPx1e8s+L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/7c/7cabfcdd.jpg",
+          "item_id": "B075X4VM73",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Brass",
+          "title": "Amazon Brand \u2013 Rivet Uptown Mid-Century Velvet Tufted Customizable Daybed Sofa, 78\"W, Charcoal &amp; Brass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075X4VM73_81oPx1e8s_L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075X4VM73_81oPx1e8s_L",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07B4DBBPG_81dwblf8ogL.jpg",
+        "height": null,
+        "id": "B07B4DBBPG_81dwblf8ogL",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B07B4DBBPG_81dwblf8ogL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Forest Green Velvet",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "81dwblf8ogL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/7d/7d08f297.jpg",
+          "item_id": "B07B4DBBPG",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Glam",
+          "title": "Amazon Brand \u2013 Rivet Frederick Mid-Century Modern Tufted Velvet Sofa Couch, 77.5\"W, Forest Green"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07B4DBBPG_81dwblf8ogL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07B4DBBPG_81dwblf8ogL",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07B4N29DG_81f4K_PGY-L.jpg",
+        "height": null,
+        "id": "B07B4N29DG_81f4K_PGY-L",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B07B4N29DG_81f4K_PGY-L/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Navy Blue Velvet",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "81f4K+PGY-L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/93/93b7ae5f.jpg",
+          "item_id": "B07B4N29DG",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Glam",
+          "title": "Amazon Brand \u2013 Rivet Frederick Mid-Century Modern Tufted Velvet Sofa Couch, 77.5\"W, Navy Blue"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07B4N29DG_81f4K_PGY-L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07B4N29DG_81f4K_PGY-L",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075X2X4GY_81RzuSu3GLL.jpg",
+        "height": null,
+        "id": "B075X2X4GY_81RzuSu3GLL",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B075X2X4GY_81RzuSu3GLL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Dove Grey",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "81RzuSu3GLL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/b6/b6bc5cfd.jpg",
+          "item_id": "B075X2X4GY",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Brass",
+          "title": "Amazon Brand \u2013 Rivet Uptown Mid-Century Velvet Tufted Customizable Daybed Sofa, 78\"W, Dove Grey &amp; Brass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075X2X4GY_81RzuSu3GLL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075X2X4GY_81RzuSu3GLL",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075X4F56V_81Oy-OJ68KL.jpg",
+        "height": null,
+        "id": "B075X4F56V_81Oy-OJ68KL",
+        "label": "SOFA",
+        "media_type": null,
+        "media_url": "/api/samples/B075X4F56V_81Oy-OJ68KL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Hunter Green",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> sofa",
+          "image_id": "81Oy-OJ68KL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/65/65f669af.jpg",
+          "item_id": "B075X4F56V",
+          "product_type": "SOFA",
+          "product_type_readable": "sofa",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Brass",
+          "title": "Amazon Brand \u2013 Rivet Uptown Mid-Century Velvet Tufted Customizable Daybed Sofa, 78\"W, Hunter Green &amp; Brass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075X4F56V_81Oy-OJ68KL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075X4F56V_81Oy-OJ68KL",
+      "score": null
+    }
+  ],
+  "limit": 6,
+  "offset": 0,
+  "total": 6
+}

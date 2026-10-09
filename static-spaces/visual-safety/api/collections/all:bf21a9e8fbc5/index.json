@@ -1,0 +1,15 @@
+{
+  "collection": {
+    "created_at": 1787478340,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "all:bf21a9e8fbc5",
+    "kind": "all",
+    "query": {},
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 176
+}

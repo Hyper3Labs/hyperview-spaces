@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594447,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:d5acafc29797",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-retail-hyper3-01",
+        "precision-retail-target",
+        "precision-retail-hyper3-03",
+        "precision-retail-hyper3-04",
+        "precision-retail-hyper3-05"
+      ],
+      "source": "Apple slice \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

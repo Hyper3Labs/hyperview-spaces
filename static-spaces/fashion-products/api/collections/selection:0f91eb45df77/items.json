@@ -1,0 +1,101 @@
+{
+  "collection_id": "selection:0f91eb45df77",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional.jpg",
+        "height": null,
+        "id": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+        "label": "rompers",
+        "media_type": null,
+        "media_url": "/api/samples/WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional/content",
+        "metadata": {
+          "category": "rompers",
+          "color": "Orange purple",
+          "description": "['Warm weather days call for simple silhouettes and punchy prints. This romper delivers with its allover tribal print, smocked bodice, and self tie halter neckline. Plus, the self tie elasticized cutout back shows off a little skin (or a cute bralette). ', 'Elasticized waist', 'Unlined, woven', '100% rayon', '26\" bust to hem, 12\" waist to hem, 5\" inseam, 26\" waist, 28\" chest', 'Measured from Small', 'Hand wash cold', 'Made in Indonesia']",
+          "gender": "women",
+          "item_id": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+          "product_key": "WOMEN_Rompers_Jumpsuits_id_00000076_01",
+          "source_dataset": "Marqo/deepfashion-inshop",
+          "split": "data",
+          "subcategory": "jumpsuits",
+          "text": "Warm weather days call for simple silhouettes and punchy prints. This romper delivers with its allover tribal print, smocked bodice, and self tie halter neckline. Plus, the self tie elasticized cutout back shows off a little skin (or a cute bralette). || Elasticized waist || Unlined, woven || 100% rayon || 26\" bust to hem, 12\" waist to hem, 5\" inseam, 26\" waist, 28\" chest || Measured from Small || Hand wash cold"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional/thumbnail",
+        "width": null
+      },
+      "sample_id": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "WOMEN_Graphic_Tees_id_00000044_01_4_full.jpg",
+        "height": null,
+        "id": "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+        "label": "graphic",
+        "media_type": null,
+        "media_url": "/api/samples/WOMEN_Graphic_Tees_id_00000044_01_4_full/content",
+        "metadata": {
+          "category": "graphic",
+          "color": "Burgundy cream",
+          "description": "['Let the world know your two greatest characteristics with this muscle tee! Featuring a bold graphic that reads \"Beauty & Brains,\" dropped armholes, and side slits team this with skinny jeans and a lacey bralette for a flirty ensemble. ', 'Knit', 'Lightweight', '60% cotton, 40% modal', '25\" full length, 24\" chest, 38\" waist', 'Measured from Small', 'Hand wash cold', 'Imported']",
+          "gender": "women",
+          "item_id": "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+          "product_key": "WOMEN_Graphic_Tees_id_00000044_01",
+          "source_dataset": "Marqo/deepfashion-inshop",
+          "split": "data",
+          "subcategory": "tees",
+          "text": "Let the world know your two greatest characteristics with this muscle tee! Featuring a bold graphic that reads \"Beauty & Brains,\" dropped armholes, and side slits team this with skinny jeans and a lacey bralette for a flirty ensemble. || Knit || Lightweight || 60% cotton, 40% modal || 25\" full length, 24\" chest, 38\" waist || Measured from Small || Hand wash cold"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/WOMEN_Graphic_Tees_id_00000044_01_4_full/thumbnail",
+        "width": null
+      },
+      "sample_id": "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "WOMEN_Leggings_id_00001867_02_3_back.jpg",
+        "height": null,
+        "id": "WOMEN_Leggings_id_00001867_02_3_back",
+        "label": "leggings",
+        "media_type": null,
+        "media_url": "/api/samples/WOMEN_Leggings_id_00001867_02_3_back/content",
+        "metadata": {
+          "category": "leggings",
+          "color": "Light denim",
+          "description": "['Forever 21 Contemporary Crafted with the comfy features the five pocket construction, zip fly, and slight stretch and flattering fit you love, these skinny jeans will mesh with most of the tops in your wardrobe (and make you look good, too!). Those details are enough to make this pair a must have, but takes them from liked to loved is their classic light wash and distressed knees (a rough around the edges touch lending a major cool factor). ', 'Lightweight, woven', '99% cotton, 1% spandex', '29\" inseam, 28.5\" waist, 8.25\" rise', 'Measured from Size 25', 'Machine wash cold', 'Made in China']",
+          "gender": "women",
+          "item_id": "WOMEN_Leggings_id_00001867_02_3_back",
+          "product_key": "WOMEN_Leggings_id_00001867_02",
+          "source_dataset": "Marqo/deepfashion-inshop",
+          "split": "data",
+          "subcategory": "unknown",
+          "text": "Forever 21 Contemporary Crafted with the comfy features the five pocket construction, zip fly, and slight stretch and flattering fit you love, these skinny jeans will mesh with most of the tops in your wardrobe (and make you look good, too!). Those details are enough to make this pair a must have, but takes them from liked to loved is their classic light wash and distressed knees (a rough around the edges touch lending a major cool factor). || Lightweight, woven || 99% cotton, 1% spandex || 29\" inseam, 28.5\" waist, 8.25\" rise || Measured from Size 25 || Machine wash cold"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/WOMEN_Leggings_id_00001867_02_3_back/thumbnail",
+        "width": null
+      },
+      "sample_id": "WOMEN_Leggings_id_00001867_02_3_back",
+      "score": null
+    }
+  ],
+  "limit": 3,
+  "offset": 0,
+  "total": 3
+}

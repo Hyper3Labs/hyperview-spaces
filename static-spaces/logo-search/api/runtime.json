@@ -1,0 +1,1017 @@
+{
+  "active_workspace_id": "logo-brand-search-clip-hyper3clip-hf-live-v4",
+  "extensions": [],
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Embeddings"
+    }
+  ],
+  "runtime_id": "3352675545e2422fbc1b202a85392c21",
+  "tools": [],
+  "version": 1,
+  "workspace": {
+    "collections": [
+      {
+        "created_at": 1783995814,
+        "dataset_id": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+        "entity_set_id": "samples",
+        "id": "all:bf21a9e8fbc5",
+        "kind": "all",
+        "query": {},
+        "scores": null
+      },
+      {
+        "created_at": 1788429801,
+        "dataset_id": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+        "entity_set_id": "samples",
+        "id": "selection:67b2554aa4a6",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "logo_0132",
+            "logo_0048",
+            "logo_0068",
+            "logo_0040",
+            "logo_0120"
+          ],
+          "source": "Hyper3-CLIP \u00b7 Barber Franchise Mark \u00b7 Top 5 of 160 logos"
+        },
+        "scores": null
+      }
+    ],
+    "dataset_name": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+    "id": "logo-brand-search-clip-hyper3clip-hf-live-v4",
+    "ui": {
+      "active_layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+      "active_panel_id": "logo-brand-readout",
+      "custom_panels": [
+        {
+          "active": true,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "samples",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 340,
+            "min_width": 320,
+            "position": "center",
+            "reference_panel_id": null,
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 340,
+          "min_width": 320,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "collectionId": "selection:67b2554aa4a6",
+            "mode": "results"
+          },
+          "reference_panel_id": null,
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 18,
+          "title": "Top 5 of 160 logos",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "scatter",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "within",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": "poincare",
+          "height": null,
+          "id": "logo-style-topology",
+          "layout": {
+            "direction": "within",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 300,
+            "min_width": 320,
+            "position": "center",
+            "reference_panel_id": "samples",
+            "width": null
+          },
+          "layout_dimension": 2,
+          "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+          "max_height": null,
+          "max_width": null,
+          "min_height": 300,
+          "min_width": 320,
+          "panel_type": "scatter",
+          "position": "center",
+          "props": {
+            "preset": "euclidean-2d",
+            "presets": {
+              "euclidean-2d": {
+                "geometry": "euclidean",
+                "label": "Euclidean",
+                "layout_dimension": 2
+              },
+              "euclidean-3d": {
+                "geometry": "euclidean",
+                "label": "Euclidean 3D",
+                "layout_dimension": 3
+              },
+              "poincare-2d": {
+                "geometry": "poincare",
+                "label": "Hyperbolic",
+                "layout_dimension": 2
+              },
+              "spherical-2d": {
+                "geometry": "spherical",
+                "label": "Spherical",
+                "layout_dimension": 2
+              },
+              "spherical-3d": {
+                "geometry": "spherical",
+                "label": "Sphere 3D",
+                "layout_dimension": 3
+              }
+            }
+          },
+          "reference_panel_id": "samples",
+          "renderer": "native:scatter",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Logo style map \u00b7 Hyper3 multimodal",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": null,
+          "data": {
+            "module_src": "/api/panels/content/logo-brand-search-clip-hyper3clip-hf-live-v4/logo-brand-readout/panel.js",
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": "logo-brand-readout",
+          "extension_panel": "logo-brand-comparison",
+          "geometry": null,
+          "height": null,
+          "id": "logo-brand-readout",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": 410,
+            "min_height": null,
+            "min_width": 360,
+            "position": "right",
+            "reference_panel_id": null,
+            "width": 380
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": 410,
+          "min_height": null,
+          "min_width": 360,
+          "panel_type": "logo-brand-readout.logo-brand-comparison",
+          "position": "right",
+          "props": {
+            "aggregate": {
+              "candidateCount": 160,
+              "clipHit1": "16.3%",
+              "clipHit1Count": 26,
+              "clipHit5": "48.8%",
+              "clipHit5Count": 78,
+              "hyper3Hit1": "35.6%",
+              "hyper3Hit1Count": 57,
+              "hyper3Hit5": "73.1%",
+              "hyper3Hit5Count": 117,
+              "mrrDelta": "+0.207",
+              "queryCount": 160
+            },
+            "cases": [
+              {
+                "attributes": [
+                  {
+                    "label": "Category",
+                    "value": "Barbershop / hair salon"
+                  },
+                  {
+                    "label": "Motif",
+                    "value": "Vertical scissors with a flower ring"
+                  },
+                  {
+                    "label": "Composition",
+                    "value": "Arch, two-line inscription, symmetrical leaves"
+                  },
+                  {
+                    "label": "Palette",
+                    "value": "Black on white / whitesmoke"
+                  },
+                  {
+                    "label": "Style",
+                    "value": "Minimal, modern"
+                  }
+                ],
+                "business": "Franchise and agency teams can retrieve the exact grooming concept by described symbols, not filename tags.",
+                "id": "01-barber-franchise",
+                "label": "Barber Franchise Mark",
+                "modelReadout": {
+                  "clip": "Category is right, but the flower-ring and leaf-arch composition are absent; exact asset first appears at #30.",
+                  "hyper3": "Exact asset at #1; motif and arch composition survive the first-screen cutoff."
+                },
+                "query": "a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern",
+                "results": {
+                  "clip": [
+                    {
+                      "hfIndex": 125,
+                      "isTarget": false,
+                      "rank": 1,
+                      "sampleId": "logo_0125",
+                      "title": "Hairdressing tool"
+                    },
+                    {
+                      "hfIndex": 106,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0106",
+                      "title": "Barbershop logo"
+                    },
+                    {
+                      "hfIndex": 129,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0129",
+                      "title": "In the center"
+                    },
+                    {
+                      "hfIndex": 124,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0124",
+                      "title": "In the center between the images of a beard and hair is an inscription."
+                    },
+                    {
+                      "hfIndex": 139,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0139",
+                      "title": "The hairbrush is horizontal in the center"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "hfIndex": 132,
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "logo_0132",
+                      "title": "Scissors are depicted vertically in the center. instead of the right rin"
+                    },
+                    {
+                      "hfIndex": 48,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0048",
+                      "title": "In the center of the logo there is a twig of a shrub or some kind of gra"
+                    },
+                    {
+                      "hfIndex": 68,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0068",
+                      "title": "The letter h with a stretched arc"
+                    },
+                    {
+                      "hfIndex": 40,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0040",
+                      "title": "A flower with four leaves"
+                    },
+                    {
+                      "hfIndex": 120,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0120",
+                      "title": "In the middle of the image of the mustache and beard"
+                    }
+                  ]
+                },
+                "shortLabel": "Barber",
+                "target": {
+                  "clipRank": 30,
+                  "hfIndex": 132,
+                  "hyper3Rank": 1,
+                  "sampleId": "logo_0132",
+                  "title": "Scissors are depicted vertically in the center. instead of the right rin"
+                }
+              },
+              {
+                "attributes": [
+                  {
+                    "label": "Category",
+                    "value": "Flower store"
+                  },
+                  {
+                    "label": "Motif",
+                    "value": "Central shrub / grass twig"
+                  },
+                  {
+                    "label": "Composition",
+                    "value": "Oval text formed by upper, lower, and side lines"
+                  },
+                  {
+                    "label": "Palette",
+                    "value": "Dark gray on linen"
+                  },
+                  {
+                    "label": "Style",
+                    "value": "Minimal, modern"
+                  }
+                ],
+                "business": "Retail brand teams can search seasonal identity concepts by detailed motif, palette, and composition.",
+                "id": "02-floral-retail",
+                "label": "Floral Retail Identity",
+                "modelReadout": {
+                  "clip": "Generic floral marks dominate the first screen; exact composition first appears at #29.",
+                  "hyper3": "Exact asset at #1; the central twig and oval inscription structure are preserved."
+                },
+                "query": "a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern",
+                "results": {
+                  "clip": [
+                    {
+                      "hfIndex": 56,
+                      "isTarget": false,
+                      "rank": 1,
+                      "sampleId": "logo_0056",
+                      "title": "An oval frame depicts hand drawn rose with blossoming tons"
+                    },
+                    {
+                      "hfIndex": 43,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0043",
+                      "title": "A branch with a blossoming flower and leaves"
+                    },
+                    {
+                      "hfIndex": 46,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0046",
+                      "title": "A poppy-like flower"
+                    },
+                    {
+                      "hfIndex": 42,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0042",
+                      "title": "A fantasy branch of blooming flowers"
+                    },
+                    {
+                      "hfIndex": 61,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0061",
+                      "title": "Flowers resembling a chamomile inside a vicious circle. all this is loca"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "hfIndex": 48,
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "logo_0048",
+                      "title": "In the center of the logo there is a twig of a shrub or some kind of gra"
+                    },
+                    {
+                      "hfIndex": 61,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0061",
+                      "title": "Flowers resembling a chamomile inside a vicious circle. all this is loca"
+                    },
+                    {
+                      "hfIndex": 50,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0050",
+                      "title": "On a black square background there is a horizontal branch with five leav"
+                    },
+                    {
+                      "hfIndex": 132,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0132",
+                      "title": "Scissors are depicted vertically in the center. instead of the right rin"
+                    },
+                    {
+                      "hfIndex": 40,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0040",
+                      "title": "A flower with four leaves"
+                    }
+                  ]
+                },
+                "shortLabel": "Floral",
+                "target": {
+                  "clipRank": 29,
+                  "hfIndex": 48,
+                  "hyper3Rank": 1,
+                  "sampleId": "logo_0048",
+                  "title": "In the center of the logo there is a twig of a shrub or some kind of gra"
+                }
+              },
+              {
+                "attributes": [
+                  {
+                    "label": "Category",
+                    "value": "Building company"
+                  },
+                  {
+                    "label": "Motif",
+                    "value": "Abstract cube-shaped building"
+                  },
+                  {
+                    "label": "Composition",
+                    "value": "Three levels, columns, interlacing"
+                  },
+                  {
+                    "label": "Palette",
+                    "value": "Dark slate gray on whitesmoke"
+                  },
+                  {
+                    "label": "Style",
+                    "value": "Minimal, modern"
+                  }
+                ],
+                "business": "B2B teams can find a precise construction or real-estate mark inside a crowded concept library.",
+                "id": "03-construction-brand",
+                "label": "Construction Brand System",
+                "modelReadout": {
+                  "clip": "Building outlines are retrieved, but the exact cube-and-column structure first appears at #17.",
+                  "hyper3": "Exact asset reaches #2 behind one related building system."
+                },
+                "query": "a logo of building company with abstract building in the shape of a cube, three levels, columns, interlacing, whitesmoke background, darkslategray, whitesmoke foreground, minimalism, modern",
+                "results": {
+                  "clip": [
+                    {
+                      "hfIndex": 141,
+                      "isTarget": false,
+                      "rank": 1,
+                      "sampleId": "logo_0141",
+                      "title": "The contour of three parallelepipeds intersect"
+                    },
+                    {
+                      "hfIndex": 146,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0146",
+                      "title": "A circle in which a high-rise building is drawn with lines"
+                    },
+                    {
+                      "hfIndex": 154,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0154",
+                      "title": "The contour of the parallelepiped"
+                    },
+                    {
+                      "hfIndex": 149,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0149",
+                      "title": "A minimalistic outline of four high-rise buildings"
+                    },
+                    {
+                      "hfIndex": 157,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0157",
+                      "title": "Abstract contour of the house made of sticks"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "hfIndex": 142,
+                      "isTarget": false,
+                      "rank": 1,
+                      "sampleId": "logo_0142",
+                      "title": "Three high-rise buildings"
+                    },
+                    {
+                      "hfIndex": 143,
+                      "isTarget": true,
+                      "rank": 2,
+                      "sampleId": "logo_0143",
+                      "title": "Abstract building in the shape of a cube"
+                    },
+                    {
+                      "hfIndex": 141,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0141",
+                      "title": "The contour of three parallelepipeds intersect"
+                    },
+                    {
+                      "hfIndex": 146,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0146",
+                      "title": "A circle in which a high-rise building is drawn with lines"
+                    },
+                    {
+                      "hfIndex": 148,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0148",
+                      "title": "Three high-rise buildings that look like parallelepipeds are bounded fro"
+                    }
+                  ]
+                },
+                "shortLabel": "Construction",
+                "target": {
+                  "clipRank": 17,
+                  "hfIndex": 143,
+                  "hyper3Rank": 2,
+                  "sampleId": "logo_0143",
+                  "title": "Abstract building in the shape of a cube"
+                }
+              },
+              {
+                "attributes": [
+                  {
+                    "label": "Category",
+                    "value": "Cafe / restaurant / bar"
+                  },
+                  {
+                    "label": "Motif",
+                    "value": "Wine glass formed like a liquid"
+                  },
+                  {
+                    "label": "Composition",
+                    "value": "Single centered mark"
+                  },
+                  {
+                    "label": "Palette",
+                    "value": "Black and red wine on snow white"
+                  },
+                  {
+                    "label": "Style",
+                    "value": "Minimal, modern"
+                  }
+                ],
+                "business": "Hospitality operators can match a visual creative brief to the right bar or restaurant logo family.",
+                "id": "04-hospitality-bar",
+                "label": "Hospitality Bar Concept",
+                "modelReadout": {
+                  "clip": "Related drink marks lead the list, but the liquid-glass asset first appears at #17.",
+                  "hyper3": "Exact asset at #1; wine motif, sparse composition, and palette align."
+                },
+                "query": "a logo of cafe restaurant bar with a glass of wine in the form of a liquid, snow background, black, red wine foreground, minimalism, modern",
+                "results": {
+                  "clip": [
+                    {
+                      "hfIndex": 30,
+                      "isTarget": false,
+                      "rank": 1,
+                      "sampleId": "logo_0030",
+                      "title": "The wine glass"
+                    },
+                    {
+                      "hfIndex": 32,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0032",
+                      "title": "The cocktail glass in an oval frame and inscriptions outside"
+                    },
+                    {
+                      "hfIndex": 37,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0037",
+                      "title": "The glass of champagne"
+                    },
+                    {
+                      "hfIndex": 99,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0099",
+                      "title": "The porcelain coffee cup is depicted sideways and turned forward with th"
+                    },
+                    {
+                      "hfIndex": 28,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0028",
+                      "title": "A circle inside which is ramen with noodles"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "hfIndex": 34,
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "logo_0034",
+                      "title": "A glass of wine in the form of a liquid"
+                    },
+                    {
+                      "hfIndex": 14,
+                      "isTarget": false,
+                      "rank": 2,
+                      "sampleId": "logo_0014",
+                      "title": "The small glass and an arc above"
+                    },
+                    {
+                      "hfIndex": 37,
+                      "isTarget": false,
+                      "rank": 3,
+                      "sampleId": "logo_0037",
+                      "title": "The glass of champagne"
+                    },
+                    {
+                      "hfIndex": 30,
+                      "isTarget": false,
+                      "rank": 4,
+                      "sampleId": "logo_0030",
+                      "title": "The wine glass"
+                    },
+                    {
+                      "hfIndex": 10,
+                      "isTarget": false,
+                      "rank": 5,
+                      "sampleId": "logo_0010",
+                      "title": "A hand drawn coctail glass with a straw and a slice of orange as a decor"
+                    }
+                  ]
+                },
+                "shortLabel": "Hospitality",
+                "target": {
+                  "clipRank": 17,
+                  "hfIndex": 34,
+                  "hyper3Rank": 1,
+                  "sampleId": "logo_0034",
+                  "title": "A glass of wine in the form of a liquid"
+                }
+              }
+            ],
+            "claim": "Four curated wins illustrate retrieval behavior. The aggregate covers all 160 paired captions; this synthetic/curated probe is not a production DAM or trademark benchmark.",
+            "dataset": "logo-wizard/modern-logo-dataset",
+            "initialCaseId": "01-barber-franchise",
+            "initialModelKey": "hyper3",
+            "models": {
+              "clip": "OpenAI CLIP ViT-B/32",
+              "hyper3": "Hyper3-CLIP v0.5"
+            },
+            "protocol": "160 paired image-caption rows; each dataset caption ranks the same 160 logo images, and only the paired row is an exact positive.",
+            "samplesPanelId": "samples",
+            "split": "train[:160]",
+            "topologyPanelId": "logo-style-topology",
+            "workspaceBoundary": "The interactive catalog contains all 160 prepared logo assets with a Hyper3 multimodal style map. Prepared ranks are fixed evidence from the bounded probe and are not recomputed in static exports.",
+            "workspaceSampleCount": 160
+          },
+          "reference_panel_id": null,
+          "renderer": "module:panel.jsx",
+          "source": "extension",
+          "state_revision": 6,
+          "title": "Creative brief desk",
+          "visible": true,
+          "width": 380
+        }
+      ],
+      "has_explicit_view": true,
+      "layout": null,
+      "layout_revision": 6,
+      "layout_views": {},
+      "panels": {
+        "logo-brand-readout": {
+          "state": {
+            "activeCaseId": "01-barber-franchise",
+            "activeModelKey": "hyper3"
+          },
+          "state_revision": 6
+        },
+        "samples": {
+          "state": {
+            "collection": {
+              "created_at": 1787957442,
+              "dataset_id": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+              "entity_set_id": "samples",
+              "id": "selection:67b2554aa4a6",
+              "kind": "selection",
+              "query": {
+                "ids": [
+                  "logo_0132",
+                  "logo_0048",
+                  "logo_0068",
+                  "logo_0040",
+                  "logo_0120"
+                ],
+                "source": "Hyper3-CLIP \u00b7 Barber Franchise Mark \u00b7 Top 5 of 160 logos"
+              },
+              "scores": null
+            },
+            "collection_id": "selection:67b2554aa4a6",
+            "focus_request": null,
+            "mode": "collection",
+            "retrieval": null
+          },
+          "state_revision": 18
+        }
+      },
+      "selected_ids": [
+        "logo_0132"
+      ],
+      "view_revision": 10
+    }
+  },
+  "workspaces": [
+    {
+      "dataset_name": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+      "id": "logo-brand-search-clip-hyper3clip-hf-live-v4"
+    }
+  ]
+}

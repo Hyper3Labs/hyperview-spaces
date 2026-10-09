@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594448,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:2033ffc1cd10",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-bench-target",
+        "precision-bench-clip-02",
+        "precision-bench-clip-03",
+        "precision-bench-clip-04",
+        "precision-bench-clip-05"
+      ],
+      "source": "Empty bench seat \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

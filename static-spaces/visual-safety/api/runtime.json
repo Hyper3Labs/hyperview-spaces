@@ -1,0 +1,899 @@
+{
+  "active_workspace_id": "visual-safety-review-queue-evidence-v3",
+  "extensions": [],
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": false,
+      "static_reason": "No layouts in this dataset",
+      "title": "Embeddings"
+    }
+  ],
+  "runtime_id": "ca56fe44cd3d45cab274391506d2b674",
+  "tools": [],
+  "version": 1,
+  "workspace": {
+    "collections": [
+      {
+        "created_at": 1787478340,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "all:bf21a9e8fbc5",
+        "kind": "all",
+        "query": {},
+        "scores": null
+      },
+      {
+        "created_at": 1788429987,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:04a3f0ce8559",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-hard-case-hyper3-01",
+            "visual-safety-hard-case-hyper3-02",
+            "visual-safety-hard-case-hyper3-03",
+            "visual-safety-hard-case-hyper3-04",
+            "visual-safety-hard-case-hyper3-05",
+            "visual-safety-hard-case-hyper3-06",
+            "visual-safety-hard-case-hyper3-07"
+          ],
+          "source": "Hard case review batch \u00b7 Hyper3-CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429986,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:06201fe1ee8d",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-alcohol-hyper3-01",
+            "visual-safety-alcohol-hyper3-02",
+            "visual-safety-alcohol-hyper3-03",
+            "visual-safety-alcohol-hyper3-04",
+            "visual-safety-alcohol-hyper3-05",
+            "visual-safety-alcohol-hyper3-06",
+            "visual-safety-alcohol-hyper3-07"
+          ],
+          "source": "Alcohol review batch \u00b7 Hyper3-CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1787478340,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:2264d67c3cdc",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-knife-hyper3-01",
+            "visual-safety-knife-hyper3-02",
+            "visual-safety-knife-hyper3-03",
+            "visual-safety-knife-hyper3-04",
+            "visual-safety-knife-hyper3-05",
+            "visual-safety-knife-hyper3-06",
+            "visual-safety-knife-hyper3-07"
+          ],
+          "source": "Knife \u00b7 Hyper3-CLIP review batch"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429987,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:317fddd17c44",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-weapon-clip-01",
+            "visual-safety-weapon-clip-02",
+            "visual-safety-weapon-clip-03",
+            "visual-safety-weapon-clip-04",
+            "visual-safety-weapon-clip-05",
+            "visual-safety-weapon-clip-06",
+            "visual-safety-weapon-clip-07"
+          ],
+          "source": "Weapon review batch \u00b7 OpenAI CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429986,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:3a962046de25",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-knife-clip-01",
+            "visual-safety-knife-clip-02",
+            "visual-safety-knife-clip-03",
+            "visual-safety-knife-clip-04",
+            "visual-safety-knife-clip-05",
+            "visual-safety-knife-clip-06",
+            "visual-safety-knife-clip-07"
+          ],
+          "source": "Knife review batch \u00b7 OpenAI CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429987,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:73c466aa1839",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-weapon-hyper3-01",
+            "visual-safety-weapon-hyper3-02",
+            "visual-safety-weapon-hyper3-03",
+            "visual-safety-weapon-hyper3-04",
+            "visual-safety-weapon-hyper3-05",
+            "visual-safety-weapon-hyper3-06",
+            "visual-safety-weapon-hyper3-07"
+          ],
+          "source": "Weapon review batch \u00b7 Hyper3-CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429988,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:811af165ae69",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-hard-case-clip-01",
+            "visual-safety-hard-case-clip-02",
+            "visual-safety-hard-case-clip-03",
+            "visual-safety-hard-case-clip-04",
+            "visual-safety-hard-case-clip-05",
+            "visual-safety-hard-case-clip-06",
+            "visual-safety-hard-case-clip-07"
+          ],
+          "source": "Hard case review batch \u00b7 OpenAI CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429986,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:89d735555911",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-knife-hyper3-01",
+            "visual-safety-knife-hyper3-02",
+            "visual-safety-knife-hyper3-03",
+            "visual-safety-knife-hyper3-04",
+            "visual-safety-knife-hyper3-05",
+            "visual-safety-knife-hyper3-06",
+            "visual-safety-knife-hyper3-07"
+          ],
+          "source": "Knife review batch \u00b7 Hyper3-CLIP"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429988,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:e0ff0ac6aacb",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "openimages_000_needs_review_e0c0a275bf9cdbff",
+            "openimages_001_needs_review_58edc439809229e6",
+            "openimages_083_needs_review_0c4b629e801e8181",
+            "openimages_104_needs_review_b053b1f12641af60"
+          ],
+          "source": "Visual Safety case anchors"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429987,
+        "dataset_id": "openimages_visual_proxy_evidence_v3",
+        "entity_set_id": "samples",
+        "id": "selection:fc7c42867d22",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "visual-safety-alcohol-clip-01",
+            "visual-safety-alcohol-clip-02",
+            "visual-safety-alcohol-clip-03",
+            "visual-safety-alcohol-clip-04",
+            "visual-safety-alcohol-clip-05",
+            "visual-safety-alcohol-clip-06",
+            "visual-safety-alcohol-clip-07"
+          ],
+          "source": "Alcohol review batch \u00b7 OpenAI CLIP"
+        },
+        "scores": null
+      }
+    ],
+    "dataset_name": "openimages_visual_proxy_evidence_v3",
+    "id": "visual-safety-review-queue-evidence-v3",
+    "ui": {
+      "active_layout_key": null,
+      "active_panel_id": "visual-safety-readout",
+      "custom_panels": [
+        {
+          "active": false,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "samples",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 200,
+            "position": "center",
+            "reference_panel_id": null,
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 200,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "collectionId": "selection:89d735555911",
+            "mode": "results"
+          },
+          "reference_panel_id": null,
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 198,
+          "title": "The batch \u00b7 Hyper3-CLIP",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "right",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "visual-safety-clip-queue",
+          "layout": {
+            "direction": "right",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 200,
+            "position": "center",
+            "reference_panel_id": "samples",
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 200,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "collectionId": "selection:3a962046de25",
+            "mode": "results"
+          },
+          "reference_panel_id": "samples",
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "The batch \u00b7 OpenAI CLIP",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": null,
+          "data": {
+            "module_src": "/api/panels/content/visual-safety-review-queue-evidence-v3/visual-safety-readout/panel.js",
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": "safety-readout",
+          "extension_panel": "safety-comparison",
+          "geometry": null,
+          "height": null,
+          "id": "visual-safety-readout",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": 520,
+            "min_height": 260,
+            "min_width": 320,
+            "position": "right",
+            "reference_panel_id": null,
+            "width": 400
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": 520,
+          "min_height": 260,
+          "min_width": 320,
+          "panel_type": "safety-readout.safety-comparison",
+          "position": "right",
+          "props": {
+            "cases": [
+              {
+                "context": "Kitchen and utility blades",
+                "id": "knife",
+                "label": "Knife",
+                "models": {
+                  "clip": {
+                    "collectionId": "selection:3a962046de25",
+                    "manualReview": 2,
+                    "otherFlagged": 0,
+                    "relatedCategory": 2,
+                    "resultIds": [
+                      "visual-safety-knife-clip-01",
+                      "visual-safety-knife-clip-02",
+                      "visual-safety-knife-clip-03",
+                      "visual-safety-knife-clip-04",
+                      "visual-safety-knife-clip-05",
+                      "visual-safety-knife-clip-06",
+                      "visual-safety-knife-clip-07"
+                    ],
+                    "sameCategory": 3
+                  },
+                  "hyper3": {
+                    "collectionId": "selection:89d735555911",
+                    "manualReview": 0,
+                    "otherFlagged": 0,
+                    "relatedCategory": 2,
+                    "resultIds": [
+                      "visual-safety-knife-hyper3-01",
+                      "visual-safety-knife-hyper3-02",
+                      "visual-safety-knife-hyper3-03",
+                      "visual-safety-knife-hyper3-04",
+                      "visual-safety-knife-hyper3-05",
+                      "visual-safety-knife-hyper3-06",
+                      "visual-safety-knife-hyper3-07"
+                    ],
+                    "sameCategory": 5
+                  }
+                },
+                "sampleId": "openimages_000_needs_review_e0c0a275bf9cdbff",
+                "sourceLabel": "Knife",
+                "sourceTitle": "Carrots on Epicurean Cutting Board"
+              },
+              {
+                "context": "Beer and wine listings",
+                "id": "alcohol",
+                "label": "Alcohol",
+                "models": {
+                  "clip": {
+                    "collectionId": "selection:fc7c42867d22",
+                    "manualReview": 0,
+                    "otherFlagged": 1,
+                    "relatedCategory": 2,
+                    "resultIds": [
+                      "visual-safety-alcohol-clip-01",
+                      "visual-safety-alcohol-clip-02",
+                      "visual-safety-alcohol-clip-03",
+                      "visual-safety-alcohol-clip-04",
+                      "visual-safety-alcohol-clip-05",
+                      "visual-safety-alcohol-clip-06",
+                      "visual-safety-alcohol-clip-07"
+                    ],
+                    "sameCategory": 4
+                  },
+                  "hyper3": {
+                    "collectionId": "selection:06201fe1ee8d",
+                    "manualReview": 0,
+                    "otherFlagged": 1,
+                    "relatedCategory": 2,
+                    "resultIds": [
+                      "visual-safety-alcohol-hyper3-01",
+                      "visual-safety-alcohol-hyper3-02",
+                      "visual-safety-alcohol-hyper3-03",
+                      "visual-safety-alcohol-hyper3-04",
+                      "visual-safety-alcohol-hyper3-05",
+                      "visual-safety-alcohol-hyper3-06",
+                      "visual-safety-alcohol-hyper3-07"
+                    ],
+                    "sameCategory": 4
+                  }
+                },
+                "sampleId": "openimages_001_needs_review_58edc439809229e6",
+                "sourceLabel": "Beer",
+                "sourceTitle": "Paris: Spring 2011"
+              },
+              {
+                "context": "Handguns and related items",
+                "id": "weapon",
+                "label": "Weapon",
+                "models": {
+                  "clip": {
+                    "collectionId": "selection:317fddd17c44",
+                    "manualReview": 0,
+                    "otherFlagged": 4,
+                    "relatedCategory": 1,
+                    "resultIds": [
+                      "visual-safety-weapon-clip-01",
+                      "visual-safety-weapon-clip-02",
+                      "visual-safety-weapon-clip-03",
+                      "visual-safety-weapon-clip-04",
+                      "visual-safety-weapon-clip-05",
+                      "visual-safety-weapon-clip-06",
+                      "visual-safety-weapon-clip-07"
+                    ],
+                    "sameCategory": 2
+                  },
+                  "hyper3": {
+                    "collectionId": "selection:73c466aa1839",
+                    "manualReview": 0,
+                    "otherFlagged": 5,
+                    "relatedCategory": 0,
+                    "resultIds": [
+                      "visual-safety-weapon-hyper3-01",
+                      "visual-safety-weapon-hyper3-02",
+                      "visual-safety-weapon-hyper3-03",
+                      "visual-safety-weapon-hyper3-04",
+                      "visual-safety-weapon-hyper3-05",
+                      "visual-safety-weapon-hyper3-06",
+                      "visual-safety-weapon-hyper3-07"
+                    ],
+                    "sameCategory": 2
+                  }
+                },
+                "sampleId": "openimages_083_needs_review_0c4b629e801e8181",
+                "sourceLabel": "Handgun",
+                "sourceTitle": "Double-Shotgun_Hunting-Guns-Firearms__IMG_5099"
+              },
+              {
+                "context": "A subtle wine scene",
+                "id": "hard-case",
+                "label": "Hard case",
+                "models": {
+                  "clip": {
+                    "collectionId": "selection:811af165ae69",
+                    "manualReview": 4,
+                    "otherFlagged": 0,
+                    "relatedCategory": 1,
+                    "resultIds": [
+                      "visual-safety-hard-case-clip-01",
+                      "visual-safety-hard-case-clip-02",
+                      "visual-safety-hard-case-clip-03",
+                      "visual-safety-hard-case-clip-04",
+                      "visual-safety-hard-case-clip-05",
+                      "visual-safety-hard-case-clip-06",
+                      "visual-safety-hard-case-clip-07"
+                    ],
+                    "sameCategory": 2
+                  },
+                  "hyper3": {
+                    "collectionId": "selection:04a3f0ce8559",
+                    "manualReview": 3,
+                    "otherFlagged": 0,
+                    "relatedCategory": 2,
+                    "resultIds": [
+                      "visual-safety-hard-case-hyper3-01",
+                      "visual-safety-hard-case-hyper3-02",
+                      "visual-safety-hard-case-hyper3-03",
+                      "visual-safety-hard-case-hyper3-04",
+                      "visual-safety-hard-case-hyper3-05",
+                      "visual-safety-hard-case-hyper3-06",
+                      "visual-safety-hard-case-hyper3-07"
+                    ],
+                    "sameCategory": 2
+                  }
+                },
+                "sampleId": "openimages_104_needs_review_b053b1f12641af60",
+                "sourceLabel": "Wine",
+                "sourceTitle": "IMG_2589"
+              }
+            ],
+            "clipSamplesPanelId": "visual-safety-clip-queue",
+            "collectionId": "selection:e0ff0ac6aacb",
+            "hyper3SamplesPanelId": "samples",
+            "initialCaseId": "knife",
+            "metrics": {
+              "clip": {
+                "anchorCount": 60,
+                "auroc": 0.9815277777777778,
+                "cleanBatches": 47,
+                "fn": 2,
+                "fp": 4,
+                "precision": 0.9354838709677419,
+                "queued": 62,
+                "recall": 0.9666666666666667,
+                "relevantRate": 0.9476190476190476,
+                "sameCategoryRate": 0.4857142857142857,
+                "threshold": "at least 5 of 7 positive neighbours"
+              },
+              "hyper3": {
+                "anchorCount": 60,
+                "auroc": 0.9538888888888889,
+                "cleanBatches": 49,
+                "fn": 1,
+                "fp": 9,
+                "precision": 0.8676470588235294,
+                "queued": 68,
+                "recall": 0.9833333333333333,
+                "relevantRate": 0.9619047619047619,
+                "sameCategoryRate": 0.5023809523809524,
+                "threshold": "at least 5 of 7 positive neighbours"
+              }
+            },
+            "models": {
+              "clip": "OpenAI CLIP",
+              "hyper3": "Hyper3-CLIP v0.5"
+            }
+          },
+          "reference_panel_id": null,
+          "renderer": "module:panel.jsx",
+          "source": "extension",
+          "state_revision": 8,
+          "title": "Review batch walkthrough",
+          "visible": true,
+          "width": 400
+        }
+      ],
+      "has_explicit_view": true,
+      "layout": null,
+      "layout_revision": 10,
+      "layout_views": {},
+      "panels": {
+        "samples": {
+          "state": {
+            "collection": {
+              "created_at": 1787478340,
+              "dataset_id": "openimages_visual_proxy_evidence_v3",
+              "entity_set_id": "samples",
+              "id": "selection:2264d67c3cdc",
+              "kind": "selection",
+              "query": {
+                "ids": [
+                  "visual-safety-knife-hyper3-01",
+                  "visual-safety-knife-hyper3-02",
+                  "visual-safety-knife-hyper3-03",
+                  "visual-safety-knife-hyper3-04",
+                  "visual-safety-knife-hyper3-05",
+                  "visual-safety-knife-hyper3-06",
+                  "visual-safety-knife-hyper3-07"
+                ],
+                "source": "Knife \u00b7 Hyper3-CLIP review batch"
+              },
+              "scores": null
+            },
+            "collection_id": "selection:2264d67c3cdc",
+            "focus_request": null,
+            "mode": "collection",
+            "retrieval": null
+          },
+          "state_revision": 198
+        },
+        "visual-safety-clip-queue": {
+          "state": {
+            "collection": {
+              "created_at": 1784730234,
+              "dataset_id": "openimages_visual_proxy_evidence_v3",
+              "entity_set_id": "samples",
+              "id": "all:bf21a9e8fbc5",
+              "kind": "all",
+              "query": {},
+              "scores": null
+            },
+            "collection_id": "all:bf21a9e8fbc5"
+          },
+          "state_revision": 0
+        },
+        "visual-safety-readout": {
+          "state": {
+            "activeCaseId": "knife"
+          },
+          "state_revision": 8
+        }
+      },
+      "selected_ids": [
+        "openimages_000_needs_review_e0c0a275bf9cdbff"
+      ],
+      "view_revision": 15
+    }
+  },
+  "workspaces": [
+    {
+      "dataset_name": "openimages_visual_proxy_evidence_v3",
+      "id": "visual-safety-review-queue-evidence-v3"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ if (!sdk || sdk.version !== "2") {
 
 const { React, components = {}, hooks = {} } = sdk;
 const Panel = components.Panel || (({ children, className = "" }) => (
-  <div className={.trim()} style={{ height: "100%" }}>
+  <div className={`flex flex-col h-full bg-card overflow-hidden ${className}`.trim()} style={{ height: "100%" }}>
     {children}
   </div>
 ));

@@ -1,0 +1,981 @@
+{
+  "active_workspace_id": "fashion-typed-search-business-evidence-v3",
+  "extensions": [],
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Embeddings"
+    }
+  ],
+  "runtime_id": "2684cbf564a04b12a9623674d027abac",
+  "tools": [],
+  "version": 1,
+  "workspace": {
+    "collections": [
+      {
+        "created_at": 1787956929,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "all:bf21a9e8fbc5",
+        "kind": "all",
+        "query": {},
+        "scores": null
+      },
+      {
+        "created_at": 1788429637,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:0f91eb45df77",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+            "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+            "WOMEN_Leggings_id_00001867_02_3_back"
+          ],
+          "source": "Fashion case visuals"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429636,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:0fb56bf806aa",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-photo-ampersand-tee-clip-01",
+            "fashion-evidence-photo-ampersand-tee-clip-02",
+            "fashion-evidence-photo-ampersand-tee-clip-03",
+            "fashion-evidence-photo-ampersand-tee-clip-04",
+            "fashion-evidence-photo-ampersand-tee-clip-05",
+            "fashion-evidence-photo-ampersand-tee-clip-06"
+          ],
+          "source": "Ampersand tee \u00b7 OpenAI CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429636,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:243832bc3176",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-text-light-denim-leggings-hyper3-01",
+            "fashion-evidence-text-light-denim-leggings-hyper3-02",
+            "fashion-evidence-text-light-denim-leggings-hyper3-03",
+            "fashion-evidence-text-light-denim-leggings-hyper3-04",
+            "fashion-evidence-text-light-denim-leggings-hyper3-05",
+            "fashion-evidence-text-light-denim-leggings-hyper3-06"
+          ],
+          "source": "Light denim leggings \u00b7 Hyper3-CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429635,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:52fa8679928a",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-photo-patterned-romper-clip-01",
+            "fashion-evidence-photo-patterned-romper-clip-02",
+            "fashion-evidence-photo-patterned-romper-clip-03",
+            "fashion-evidence-photo-patterned-romper-clip-04",
+            "fashion-evidence-photo-patterned-romper-clip-05",
+            "fashion-evidence-photo-patterned-romper-clip-06"
+          ],
+          "source": "Patterned romper \u00b7 OpenAI CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429634,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:8d3f1c3ed208",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-photo-patterned-romper-hyper3-01",
+            "fashion-evidence-photo-patterned-romper-hyper3-02",
+            "fashion-evidence-photo-patterned-romper-hyper3-03",
+            "fashion-evidence-photo-patterned-romper-hyper3-04",
+            "fashion-evidence-photo-patterned-romper-hyper3-05",
+            "fashion-evidence-photo-patterned-romper-hyper3-06"
+          ],
+          "source": "Patterned romper \u00b7 Hyper3-CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429636,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:bdde175d223e",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-text-light-denim-leggings-clip-01",
+            "fashion-evidence-text-light-denim-leggings-clip-02",
+            "fashion-evidence-text-light-denim-leggings-clip-03",
+            "fashion-evidence-text-light-denim-leggings-clip-04",
+            "fashion-evidence-text-light-denim-leggings-clip-05",
+            "fashion-evidence-text-light-denim-leggings-clip-06"
+          ],
+          "source": "Light denim leggings \u00b7 OpenAI CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      },
+      {
+        "created_at": 1788429635,
+        "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+        "entity_set_id": "samples",
+        "id": "selection:e9a3f545c05a",
+        "kind": "selection",
+        "query": {
+          "ids": [
+            "fashion-evidence-photo-ampersand-tee-hyper3-01",
+            "fashion-evidence-photo-ampersand-tee-hyper3-02",
+            "fashion-evidence-photo-ampersand-tee-hyper3-03",
+            "fashion-evidence-photo-ampersand-tee-hyper3-04",
+            "fashion-evidence-photo-ampersand-tee-hyper3-05",
+            "fashion-evidence-photo-ampersand-tee-hyper3-06"
+          ],
+          "source": "Ampersand tee \u00b7 Hyper3-CLIP \u00b7 Top 6"
+        },
+        "scores": null
+      }
+    ],
+    "dataset_name": "deepfashion_text_search_clip_hyper3clip",
+    "id": "fashion-typed-search-business-evidence-v3",
+    "ui": {
+      "active_layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+      "active_panel_id": "fashion-search-readout",
+      "custom_panels": [
+        {
+          "active": true,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "samples",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 340,
+            "min_width": 240,
+            "position": "center",
+            "reference_panel_id": null,
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 340,
+          "min_width": 240,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "anchorSampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+            "collectionId": "selection:8d3f1c3ed208",
+            "mode": "auto",
+            "showTextSearch": true
+          },
+          "reference_panel_id": null,
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 203,
+          "title": "Hyper3-CLIP \u00b7 Product matches",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "scatter",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "within",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": "poincare",
+          "height": null,
+          "id": "fashion-catalog-map",
+          "layout": {
+            "direction": "within",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 300,
+            "min_width": 240,
+            "position": "center",
+            "reference_panel_id": "samples",
+            "width": null
+          },
+          "layout_dimension": 2,
+          "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+          "max_height": null,
+          "max_width": null,
+          "min_height": 300,
+          "min_width": 240,
+          "panel_type": "scatter",
+          "position": "center",
+          "props": {
+            "preset": "euclidean-2d",
+            "presets": {
+              "euclidean-2d": {
+                "geometry": "euclidean",
+                "label": "Euclidean",
+                "layout_dimension": 2
+              },
+              "euclidean-3d": {
+                "geometry": "euclidean",
+                "label": "Euclidean 3D",
+                "layout_dimension": 3
+              },
+              "poincare-2d": {
+                "geometry": "poincare",
+                "label": "Hyperbolic",
+                "layout_dimension": 2
+              },
+              "spherical-2d": {
+                "geometry": "spherical",
+                "label": "Spherical",
+                "layout_dimension": 2
+              },
+              "spherical-3d": {
+                "geometry": "spherical",
+                "label": "Sphere 3D",
+                "layout_dimension": 3
+              }
+            }
+          },
+          "reference_panel_id": "samples",
+          "renderer": "native:scatter",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Catalog similarity map",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "right",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "fashion-clip-results",
+          "layout": {
+            "direction": "right",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 340,
+            "min_width": 240,
+            "position": "center",
+            "reference_panel_id": "samples",
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 340,
+          "min_width": 240,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "anchorSampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+            "collectionId": "selection:52fa8679928a",
+            "mode": "results"
+          },
+          "reference_panel_id": "samples",
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "OpenAI CLIP \u00b7 Product matches",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": null,
+          "data": {
+            "module_src": "/api/panels/content/fashion-typed-search-business-evidence-v3/fashion-search-readout/panel.js",
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": "fashion-search-readout",
+          "extension_panel": "fashion-comparison",
+          "geometry": null,
+          "height": null,
+          "id": "fashion-search-readout",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": 420,
+            "min_height": null,
+            "min_width": 320,
+            "position": "right",
+            "reference_panel_id": null,
+            "width": 380
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": 420,
+          "min_height": null,
+          "min_width": 320,
+          "panel_type": "fashion-search-readout.fashion-comparison",
+          "position": "right",
+          "props": {
+            "aggregate": {
+              "candidateCount": 1120,
+              "clipHit1": 0.233,
+              "clipHit10": 0.55,
+              "clipHit50": 0.922,
+              "clipStrongWins": 9,
+              "definition": "Strong win: one model ranks a positive in the Top 10 while the other ranks its first positive at 20 or lower.",
+              "hyper3Hit1": 0.244,
+              "hyper3Hit10": 0.572,
+              "hyper3Hit50": 0.883,
+              "hyper3StrongWins": 13,
+              "queryCount": 180
+            },
+            "cases": [
+              {
+                "attributes": [
+                  "light denim",
+                  "leggings",
+                  "skinny fit",
+                  "zipper details",
+                  "five-pocket construction"
+                ],
+                "collectionIds": {
+                  "clip": "selection:bdde175d223e",
+                  "hyper3": "selection:243832bc3176"
+                },
+                "id": "light-denim-leggings",
+                "label": "Light denim leggings",
+                "modelReadout": {
+                  "clip": "The top results drift toward darker denim and leggings; the first matching view ranks #32.",
+                  "hyper3": "A matching view ranks first and preserves the light-denim leggings intent."
+                },
+                "query": "women's light denim leggings with skinny fit, zipper details, five-pocket construction, pockets",
+                "results": {
+                  "clip": [
+                    {
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-02"
+                    },
+                    {
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-clip-06"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-02"
+                    },
+                    {
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-text-light-denim-leggings-hyper3-06"
+                    }
+                  ]
+                },
+                "target": {
+                  "clipRank": 32,
+                  "hyper3Rank": 1,
+                  "productKey": "WOMEN_Leggings_id_00001867_02",
+                  "sampleId": "WOMEN_Leggings_id_00001867_02_3_back",
+                  "title": "Light denim leggings"
+                }
+              }
+            ],
+            "claim": "These selected cases expose concrete attribute and garment-category failure modes. The aggregate lift is modest and does not establish a universal text-search advantage.",
+            "clipSamplesPanelId": "fashion-clip-results",
+            "collectionId": "selection:0f91eb45df77",
+            "dataset": "Marqo/deepfashion-inshop",
+            "hyper3SamplesPanelId": "samples",
+            "initialPhotoCaseId": "patterned-romper",
+            "initialTextCaseId": "light-denim-leggings",
+            "models": {
+              "clip": "OpenAI CLIP ViT-B/32",
+              "hyper3": "Hyper3-CLIP v0.5"
+            },
+            "photoArtifact": {
+              "hashProjection": "canonical JSON of {photoBenchmark, photoCases}",
+              "id": "deepfashion-same-product-persisted-spaces-2026-08-12",
+              "readout": "PHOTO_EVIDENCE.md",
+              "sha256": "958017f729f73990b392530b37cbdbe8812c923141573077dbdc0c3f65213c4b"
+            },
+            "photoBenchmark": {
+              "candidateCount": 741,
+              "clipMap": 0.352022505,
+              "clipR1": 0.4563380282,
+              "clipR10": 0.8450704225,
+              "hyper3Map": 0.6352828462,
+              "hyper3R1": 0.7591549296,
+              "hyper3R10": 0.9704225352,
+              "queryCount": 710,
+              "selectionRule": "Largest first-match rank gap in each direction across the persisted 741-image catalog."
+            },
+            "photoCases": [
+              {
+                "anchorSampleId": "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional",
+                "collectionIds": {
+                  "clip": "selection:52fa8679928a",
+                  "hyper3": "selection:8d3f1c3ed208"
+                },
+                "context": "Back view to side view",
+                "id": "patterned-romper",
+                "label": "Patterned romper",
+                "modelReadout": {
+                  "clip": "A matching view first appears at #138.",
+                  "hyper3": "Another view of the same romper ranks first."
+                },
+                "results": {
+                  "clip": [
+                    {
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-02"
+                    },
+                    {
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-clip-06"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-02"
+                    },
+                    {
+                      "isTarget": true,
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-photo-patterned-romper-hyper3-06"
+                    }
+                  ]
+                },
+                "target": {
+                  "clipRank": 138,
+                  "hyper3Rank": 1,
+                  "productKey": "WOMEN_Rompers_Jumpsuits_id_00000076_01"
+                }
+              },
+              {
+                "anchorSampleId": "WOMEN_Graphic_Tees_id_00000044_01_4_full",
+                "collectionIds": {
+                  "clip": "selection:0fb56bf806aa",
+                  "hyper3": "selection:e9a3f545c05a"
+                },
+                "context": "Full look to product view",
+                "id": "ampersand-tee",
+                "label": "Ampersand tee",
+                "modelReadout": {
+                  "clip": "Another view of the same tee ranks first.",
+                  "hyper3": "The matching product appears at #12."
+                },
+                "results": {
+                  "clip": [
+                    {
+                      "isTarget": true,
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-02"
+                    },
+                    {
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-clip-06"
+                    }
+                  ],
+                  "hyper3": [
+                    {
+                      "rank": 1,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-01"
+                    },
+                    {
+                      "rank": 2,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-02"
+                    },
+                    {
+                      "rank": 3,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-03"
+                    },
+                    {
+                      "rank": 4,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-04"
+                    },
+                    {
+                      "rank": 5,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-05"
+                    },
+                    {
+                      "rank": 6,
+                      "sampleId": "fashion-evidence-photo-ampersand-tee-hyper3-06"
+                    }
+                  ]
+                },
+                "target": {
+                  "clipRank": 1,
+                  "hyper3Rank": 12,
+                  "productKey": "WOMEN_Graphic_Tees_id_00000044_01"
+                }
+              }
+            ],
+            "protocol": "Text embedding ranked against a fixed 1,120-image corpus from 260 products. A positive is any image view with the same DeepFashion product key as the metadata-generated query.",
+            "split": "data",
+            "workspaceBoundary": "The topology contains 741 catalog images from 199 products. Ranks come from a separate 1,120-image benchmark pool.",
+            "workspaceSampleCount": 741
+          },
+          "reference_panel_id": null,
+          "renderer": "module:panel.jsx",
+          "source": "extension",
+          "state_revision": 6,
+          "title": "Catalog search walkthrough",
+          "visible": true,
+          "width": 380
+        }
+      ],
+      "has_explicit_view": true,
+      "layout": null,
+      "layout_revision": 17,
+      "layout_views": {},
+      "panels": {
+        "fashion-clip-results": {
+          "state": {
+            "collection": {
+              "created_at": 1786542807,
+              "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+              "entity_set_id": "samples",
+              "id": "all:bf21a9e8fbc5",
+              "kind": "all",
+              "query": {},
+              "scores": null
+            },
+            "collection_id": "all:bf21a9e8fbc5"
+          },
+          "state_revision": 0
+        },
+        "fashion-search-readout": {
+          "state": {
+            "activeMode": "photo",
+            "activePhotoCaseId": "patterned-romper",
+            "activeTextCaseId": "light-denim-leggings"
+          },
+          "state_revision": 6
+        },
+        "samples": {
+          "state": {
+            "collection": {
+              "created_at": 1788429557,
+              "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+              "entity_set_id": "samples",
+              "id": "selection:8d3f1c3ed208",
+              "kind": "selection",
+              "query": {
+                "ids": [
+                  "fashion-evidence-photo-patterned-romper-hyper3-01",
+                  "fashion-evidence-photo-patterned-romper-hyper3-02",
+                  "fashion-evidence-photo-patterned-romper-hyper3-03",
+                  "fashion-evidence-photo-patterned-romper-hyper3-04",
+                  "fashion-evidence-photo-patterned-romper-hyper3-05",
+                  "fashion-evidence-photo-patterned-romper-hyper3-06"
+                ],
+                "source": "Patterned romper \u00b7 Hyper3-CLIP \u00b7 Top 6"
+              },
+              "scores": null
+            },
+            "collection_id": "selection:8d3f1c3ed208",
+            "focus_request": null,
+            "mode": "collection",
+            "retrieval": null
+          },
+          "state_revision": 203
+        }
+      },
+      "selected_ids": [
+        "WOMEN_Rompers_Jumpsuits_id_00000076_01_7_additional"
+      ],
+      "view_revision": 25
+    }
+  },
+  "workspaces": [
+    {
+      "dataset_name": "deepfashion_text_search_clip_hyper3clip",
+      "id": "fashion-typed-search-business-evidence-v3"
+    }
+  ]
+}

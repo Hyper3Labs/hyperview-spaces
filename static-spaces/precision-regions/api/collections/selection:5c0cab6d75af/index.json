@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594447,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:5c0cab6d75af",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-facilities-clip-01",
+        "precision-facilities-clip-02",
+        "precision-facilities-clip-03",
+        "precision-facilities-clip-04",
+        "precision-facilities-clip-05"
+      ],
+      "source": "Grey couch \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

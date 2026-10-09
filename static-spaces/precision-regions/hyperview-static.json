@@ -1,0 +1,145 @@
+{
+  "artifacts": {
+    "dataset": "api/dataset.json",
+    "embeddings": null,
+    "runtime": "api/runtime.json",
+    "samples": "api/samples/index.json",
+    "similarity": null
+  },
+  "capabilities": {
+    "browse_samples": true,
+    "commands": {
+      "allowed": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor",
+        "workspace.panel.focus",
+        "workspace.panel.state.patch",
+        "workspace.panel.update",
+        "workspace.panel.update-props"
+      ],
+      "allowed_prefixes": [],
+      "panel_target": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.search.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor"
+      ]
+    },
+    "lasso_2d": false,
+    "lasso_3d": false,
+    "layouts": false,
+    "mode": "static",
+    "new_layouts": false,
+    "panel_state": "ephemeral",
+    "panels": [
+      {
+        "panel_id": "samples",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "precision-clip-results",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "precision-region-readout",
+        "panel_type": "precision-region-readout.precision-region-comparison",
+        "reason": null,
+        "static_compatible": true
+      }
+    ],
+    "python_tools": false,
+    "runtime_mutations": false,
+    "sample_similarity": false,
+    "selection": true,
+    "server_runtime": false,
+    "similarity_k": 0,
+    "text_search": false
+  },
+  "created_at": "2026-09-05T07:47:39.004029+00:00",
+  "deployment": {
+    "cloudflare": {
+      "command": "npx wrangler deploy --config wrangler.jsonc",
+      "config": "wrangler.jsonc",
+      "mode": "static-assets-only",
+      "worker_name": "hyperview-precision-region-search-business-evidence-v3"
+    },
+    "hosting": {
+      "mode": "static-assets"
+    },
+    "targets": {
+      "live": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode live"
+        ],
+        "space": "Live Space"
+      },
+      "static": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode static",
+          "hyperview publish <bundle> --to cloudflare",
+          "hyperview publish <bundle> --to dir:<path>"
+        ],
+        "space": "Static Space"
+      }
+    }
+  },
+  "hyperview_version": "1.2.0",
+  "kind": "hyperview-static-space",
+  "producer": {
+    "hyper_models": "0.3.1",
+    "hyperview": "1.2.0",
+    "python": "3.11.11"
+  },
+  "restore": {
+    "collections": [
+      "selection:2033ffc1cd10",
+      "selection:344da96ddf90",
+      "selection:549b0befa4ae",
+      "selection:5830ea2abca4",
+      "selection:5c0cab6d75af",
+      "selection:6bbec6536ac2",
+      "selection:90cd325bb14b",
+      "selection:d5acafc29797"
+    ],
+    "dataset": {
+      "fields": "api/dataset.json",
+      "name": "refcocog_text_region_evidence_v3",
+      "num_samples": 43,
+      "samples": "api/samples/index.json"
+    },
+    "extensions": [
+      {
+        "add_panels": false,
+        "name": "precision-region-readout",
+        "panels": [],
+        "path": "extensions/precision-region-readout",
+        "source": "extension",
+        "workspace_id": "precision-region-search-business-evidence-v3"
+      }
+    ],
+    "layouts": [],
+    "media": {
+      "filename": "content",
+      "root": "api/samples"
+    },
+    "schema_version": 1,
+    "spaces": [],
+    "supported": true,
+    "workspace_id": "precision-region-search-business-evidence-v3"
+  },
+  "schema_version": 1,
+  "static": true,
+  "warnings": [],
+  "workspace": {
+    "dataset_name": "refcocog_text_region_evidence_v3",
+    "fingerprint": "0ed478e1af0f2151545323db5164e667a293bbe26ae376132b9d42e4d436f5de",
+    "id": "precision-region-search-business-evidence-v3"
+  }
+}

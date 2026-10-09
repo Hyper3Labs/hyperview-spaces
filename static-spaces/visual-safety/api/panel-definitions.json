@@ -1,0 +1,271 @@
+{
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": false,
+      "static_reason": "No layouts in this dataset",
+      "title": "Embeddings"
+    }
+  ]
+}

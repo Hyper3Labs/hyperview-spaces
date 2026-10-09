@@ -1,0 +1,910 @@
+{
+  "active_workspace_id": "geospatial-resisc45-retrieval-evidence-v2",
+  "extensions": [],
+  "panel_definitions": [
+    {
+      "allow_multiple": false,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "labels"
+      ],
+      "default_layout": {
+        "dock_zone": "left",
+        "id": "explorer",
+        "order": 0,
+        "position": "right"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "explorer",
+      "icon": "tags",
+      "label": "Explorer",
+      "panel_type": "explorer",
+      "props_schema": {
+        "type": "object"
+      },
+      "queries": [],
+      "renderer": "native:explorer",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Labels"
+    },
+    {
+      "allow_multiple": true,
+      "category": "dataset",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch",
+        "panel.samples.retrieval.set-anchor",
+        "panel.samples.retrieval.set-text-query",
+        "panel.samples.retrieval.set-k",
+        "panel.samples.retrieval.clear"
+      ],
+      "data_capabilities": [
+        "collection:samples",
+        "selection",
+        "text-query",
+        "neighbors"
+      ],
+      "default_layout": {
+        "id": "samples",
+        "order": 10,
+        "position": "center"
+      },
+      "default_props": {},
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "samples",
+      "icon": "grid",
+      "label": "Samples",
+      "panel_type": "samples",
+      "props_schema": {
+        "properties": {
+          "anchorSampleId": {
+            "type": "string"
+          },
+          "anchor_sample_id": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "collection_id": {
+            "type": "string"
+          },
+          "labelField": {
+            "type": "string"
+          },
+          "label_field": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "browse",
+              "ranked",
+              "results"
+            ],
+            "type": "string"
+          },
+          "rank": {
+            "properties": {
+              "anchorSampleId": {
+                "type": "string"
+              },
+              "anchor_sample_id": {
+                "type": "string"
+              },
+              "k": {
+                "type": "integer"
+              },
+              "layoutKey": {
+                "type": "string"
+              },
+              "layout_key": {
+                "type": "string"
+              },
+              "showDistance": {
+                "type": "boolean"
+              },
+              "show_distance": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "string"
+              },
+              "spaceKey": {
+                "type": "string"
+              },
+              "space_key": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "showTextSearch": {
+            "type": "boolean"
+          },
+          "show_text_search": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "samples.query",
+        "samples.similar"
+      ],
+      "renderer": "native:samples",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Samples"
+    },
+    {
+      "allow_multiple": true,
+      "category": "embedding",
+      "commands": [
+        "workspace.panel.state.get",
+        "workspace.panel.state.patch"
+      ],
+      "data_capabilities": [
+        "layout:2d",
+        "layout:3d",
+        "selection",
+        "labels"
+      ],
+      "default_layout": {
+        "direction": "right",
+        "id": "scatter",
+        "order": 20,
+        "position": "center",
+        "preset": "euclidean-2d",
+        "reference_panel_id": "samples"
+      },
+      "default_props": {
+        "preset": "euclidean-2d",
+        "presets": {
+          "euclidean-2d": {
+            "geometry": "euclidean",
+            "label": "Euclidean",
+            "layout_dimension": 2
+          },
+          "euclidean-3d": {
+            "geometry": "euclidean",
+            "label": "Euclidean 3D",
+            "layout_dimension": 3
+          },
+          "poincare-2d": {
+            "geometry": "poincare",
+            "label": "Hyperbolic",
+            "layout_dimension": 2
+          },
+          "spherical-2d": {
+            "geometry": "spherical",
+            "label": "Spherical",
+            "layout_dimension": 2
+          },
+          "spherical-3d": {
+            "geometry": "spherical",
+            "label": "Sphere 3D",
+            "layout_dimension": 3
+          }
+        }
+      },
+      "default_state": {},
+      "extension": "core",
+      "extension_panel": "scatter",
+      "icon": "scatter",
+      "label": "Scatter",
+      "panel_type": "scatter",
+      "props_schema": {
+        "properties": {
+          "geometry": {
+            "enum": [
+              "euclidean",
+              "poincare",
+              "spherical"
+            ],
+            "type": "string"
+          },
+          "layoutDimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layoutKey": {
+            "type": "string"
+          },
+          "layout_dimension": {
+            "enum": [
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "layout_key": {
+            "type": "string"
+          },
+          "pinnedLayout": {
+            "type": "boolean"
+          },
+          "pinned_layout": {
+            "type": "boolean"
+          },
+          "preset": {
+            "type": "string"
+          },
+          "presets": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "queries": [
+        "embeddings",
+        "layouts"
+      ],
+      "renderer": "native:scatter",
+      "source": "shipped",
+      "state_schema": {
+        "type": "object"
+      },
+      "static_compatible": true,
+      "static_reason": null,
+      "title": "Embeddings"
+    }
+  ],
+  "runtime_id": "9e80c17054e84ce2a94b2f2d933446e0",
+  "tools": [],
+  "version": 1,
+  "workspace": {
+    "collections": [
+      {
+        "created_at": 1784730796,
+        "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+        "entity_set_id": "samples",
+        "id": "all:bf21a9e8fbc5",
+        "kind": "all",
+        "query": {},
+        "scores": null
+      }
+    ],
+    "dataset_name": "resisc45_clip_hyper3clip_curated_side_by_side",
+    "id": "geospatial-resisc45-retrieval-evidence-v2",
+    "ui": {
+      "active_layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+      "active_panel_id": "geospatial-retrieval-readout",
+      "custom_panels": [
+        {
+          "active": true,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "hyper3-neighbours",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 220,
+            "position": "center",
+            "reference_panel_id": null,
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 220,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "mode": "ranked",
+            "rank": {
+              "anchorSampleId": "resisc45_airplane_119",
+              "k": 10,
+              "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+              "showDistance": false,
+              "source": "Hyper3-CLIP v0.5 \u00b7 aerial neighbours"
+            }
+          },
+          "reference_panel_id": null,
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Hyper3-CLIP \u00b7 Ranked neighbours",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "scatter",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "within",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": "poincare",
+          "height": null,
+          "id": "hyper3-map",
+          "layout": {
+            "direction": "within",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 220,
+            "position": "center",
+            "reference_panel_id": "hyper3-neighbours",
+            "width": null
+          },
+          "layout_dimension": 2,
+          "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 220,
+          "panel_type": "scatter",
+          "position": "center",
+          "props": {
+            "preset": "euclidean-2d",
+            "presets": {
+              "euclidean-2d": {
+                "geometry": "euclidean",
+                "label": "Euclidean",
+                "layout_dimension": 2
+              },
+              "euclidean-3d": {
+                "geometry": "euclidean",
+                "label": "Euclidean 3D",
+                "layout_dimension": 3
+              },
+              "poincare-2d": {
+                "geometry": "poincare",
+                "label": "Hyperbolic",
+                "layout_dimension": 2
+              },
+              "spherical-2d": {
+                "geometry": "spherical",
+                "label": "Spherical",
+                "layout_dimension": 2
+              },
+              "spherical-3d": {
+                "geometry": "spherical",
+                "label": "Sphere 3D",
+                "layout_dimension": 3
+              }
+            }
+          },
+          "reference_panel_id": "hyper3-neighbours",
+          "renderer": "native:scatter",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Archive map \u00b7 Hyper3-CLIP",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": true,
+          "builtin_panel": "samples",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "right",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": null,
+          "height": null,
+          "id": "clip-neighbours",
+          "layout": {
+            "direction": "right",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 220,
+            "position": "center",
+            "reference_panel_id": "hyper3-neighbours",
+            "width": null
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 220,
+          "panel_type": "samples",
+          "position": "center",
+          "props": {
+            "mode": "ranked",
+            "rank": {
+              "anchorSampleId": "resisc45_airplane_119",
+              "k": 10,
+              "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+              "showDistance": false,
+              "source": "OpenAI CLIP ViT-B/32 \u00b7 aerial neighbours"
+            }
+          },
+          "reference_panel_id": "hyper3-neighbours",
+          "renderer": "native:samples",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "CLIP B/32 \u00b7 Ranked neighbours",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": "scatter",
+          "data": {
+            "module_src": null,
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": "within",
+          "extension": null,
+          "extension_panel": null,
+          "geometry": "euclidean",
+          "height": null,
+          "id": "clip-map",
+          "layout": {
+            "direction": "within",
+            "height": null,
+            "max_height": null,
+            "max_width": null,
+            "min_height": 240,
+            "min_width": 220,
+            "position": "center",
+            "reference_panel_id": "clip-neighbours",
+            "width": null
+          },
+          "layout_dimension": 2,
+          "layout_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+          "max_height": null,
+          "max_width": null,
+          "min_height": 240,
+          "min_width": 220,
+          "panel_type": "scatter",
+          "position": "center",
+          "props": {
+            "preset": "euclidean-2d",
+            "presets": {
+              "euclidean-2d": {
+                "geometry": "euclidean",
+                "label": "Euclidean",
+                "layout_dimension": 2
+              },
+              "euclidean-3d": {
+                "geometry": "euclidean",
+                "label": "Euclidean 3D",
+                "layout_dimension": 3
+              },
+              "poincare-2d": {
+                "geometry": "poincare",
+                "label": "Hyperbolic",
+                "layout_dimension": 2
+              },
+              "spherical-2d": {
+                "geometry": "spherical",
+                "label": "Spherical",
+                "layout_dimension": 2
+              },
+              "spherical-3d": {
+                "geometry": "spherical",
+                "label": "Sphere 3D",
+                "layout_dimension": 3
+              }
+            }
+          },
+          "reference_panel_id": "clip-neighbours",
+          "renderer": "native:scatter",
+          "source": "shipped",
+          "state_revision": 0,
+          "title": "Archive map \u00b7 OpenAI CLIP",
+          "visible": true,
+          "width": null
+        },
+        {
+          "active": false,
+          "builtin_panel": null,
+          "data": {
+            "module_src": "/api/panels/content/geospatial-resisc45-retrieval-evidence-v2/geospatial-retrieval-readout/panel.js",
+            "static_compatible": true,
+            "static_reason": null
+          },
+          "direction": null,
+          "extension": "geospatial-readout",
+          "extension_panel": "geospatial-comparison",
+          "geometry": null,
+          "height": null,
+          "id": "geospatial-retrieval-readout",
+          "layout": {
+            "direction": null,
+            "height": null,
+            "max_height": null,
+            "max_width": 410,
+            "min_height": null,
+            "min_width": 360,
+            "position": "right",
+            "reference_panel_id": null,
+            "width": 380
+          },
+          "layout_dimension": null,
+          "layout_key": null,
+          "max_height": null,
+          "max_width": 410,
+          "min_height": null,
+          "min_width": 360,
+          "panel_type": "geospatial-readout.geospatial-comparison",
+          "position": "right",
+          "props": {
+            "aggregate": {
+              "clip": {
+                "exactP10": 0.2783333333,
+                "parentP10": 0.6216666667
+              },
+              "delta": {
+                "exactP10": 0.0533333334,
+                "parentP10": 0.0816666666
+              },
+              "hyper3": {
+                "exactP10": 0.3316666667,
+                "parentP10": 0.7033333333
+              }
+            },
+            "artifactId": "resisc45-geospatial-retrieval-evidence-2026-07-22",
+            "businessQuestions": [
+              "From an anchor tile, do retrieved neighbours preserve land-use identity and avoid operationally costly confusions?",
+              "Do the two embedding models organize the full archive into coherent, inspectable topology, outliers, and drift?"
+            ],
+            "cases": [
+              {
+                "anchorSampleId": "resisc45_airplane_119",
+                "comparison": "Hyper3 keeps the operational transport cluster; CLIP drifts into unrelated land use that would waste analyst time.",
+                "exactClass": "airplane",
+                "id": "airplane-win",
+                "kind": "Aircraft",
+                "models": {
+                  "clip": {
+                    "consequence": "Exact aircraft hits collapse; residential and meadow tiles enter the shortlist and raise false-positive cost.",
+                    "exactHits": 0,
+                    "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+                    "offGroupHits": 6,
+                    "parentHits": 4,
+                    "resultIds": [
+                      "resisc45_runway_241",
+                      "resisc45_airport_85",
+                      "resisc45_runway_202",
+                      "resisc45_sparse_residential_196",
+                      "resisc45_sparse_residential_367",
+                      "resisc45_sparse_residential_477",
+                      "resisc45_terrace_148",
+                      "resisc45_meadow_13",
+                      "resisc45_basketball_court_49",
+                      "resisc45_airport_157"
+                    ],
+                    "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+                  },
+                  "hyper3": {
+                    "consequence": "Transport-family neighbours dominate; aircraft and airfield infrastructure stay together for follow-up review.",
+                    "exactHits": 3,
+                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "offGroupHits": 1,
+                    "parentHits": 9,
+                    "resultIds": [
+                      "resisc45_runway_202",
+                      "resisc45_airplane_136",
+                      "resisc45_airplane_96",
+                      "resisc45_airplane_46",
+                      "resisc45_airport_51",
+                      "resisc45_airport_14",
+                      "resisc45_runway_319",
+                      "resisc45_airport_85",
+                      "resisc45_runway_241",
+                      "resisc45_rectangular_farmland_91"
+                    ],
+                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                  }
+                },
+                "parentGroup": "transport",
+                "question": "Does the neighborhood stay with aircraft and transport infrastructure?",
+                "sourceImageId": "119",
+                "title": "Airplane / transport"
+              },
+              {
+                "anchorSampleId": "resisc45_forest_20",
+                "comparison": "Hyper3 is safer for vegetation-identity QA; CLIP pulls built environment into the forest neighbourhood.",
+                "exactClass": "forest",
+                "id": "forest-win",
+                "kind": "Forest",
+                "models": {
+                  "clip": {
+                    "consequence": "Half the neighbourhood leaves the vegetation parent; sparse residential tiles create costly confusions.",
+                    "exactHits": 2,
+                    "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+                    "offGroupHits": 5,
+                    "parentHits": 5,
+                    "resultIds": [
+                      "resisc45_forest_111",
+                      "resisc45_forest_26",
+                      "resisc45_terrace_148",
+                      "resisc45_sparse_residential_196",
+                      "resisc45_sparse_residential_477",
+                      "resisc45_terrace_116",
+                      "resisc45_sparse_residential_367",
+                      "resisc45_meadow_13",
+                      "resisc45_airport_157",
+                      "resisc45_sparse_residential_469"
+                    ],
+                    "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+                  },
+                  "hyper3": {
+                    "consequence": "Vegetation stays coherent: forest plus meadow/farmland parents with minimal residential leakage.",
+                    "exactHits": 4,
+                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "offGroupHits": 1,
+                    "parentHits": 9,
+                    "resultIds": [
+                      "resisc45_forest_36",
+                      "resisc45_forest_26",
+                      "resisc45_forest_27",
+                      "resisc45_forest_111",
+                      "resisc45_meadow_34",
+                      "resisc45_meadow_75",
+                      "resisc45_terrace_148",
+                      "resisc45_sparse_residential_196",
+                      "resisc45_circular_farmland_74",
+                      "resisc45_circular_farmland_43"
+                    ],
+                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                  }
+                },
+                "parentGroup": "agriculture_vegetation",
+                "question": "Does the neighborhood avoid residential and transport drift?",
+                "sourceImageId": "20",
+                "title": "Forest / vegetation"
+              },
+              {
+                "anchorSampleId": "resisc45_storage_tank_1",
+                "comparison": "Both confuse tanks with circular farmland, but Hyper3 recovers more exact industrial matches before drift.",
+                "exactClass": "storage tank",
+                "id": "storage-tank-win",
+                "kind": "Industrial",
+                "models": {
+                  "clip": {
+                    "consequence": "Circular farmland competes with tanks early; industrial identity is harder to trust from the shortlist alone.",
+                    "exactHits": 2,
+                    "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+                    "offGroupHits": 8,
+                    "parentHits": 2,
+                    "resultIds": [
+                      "resisc45_storage_tank_272",
+                      "resisc45_circular_farmland_7",
+                      "resisc45_storage_tank_315",
+                      "resisc45_airplane_96",
+                      "resisc45_runway_241",
+                      "resisc45_airplane_46",
+                      "resisc45_circular_farmland_74",
+                      "resisc45_circular_farmland_43",
+                      "resisc45_terrace_116",
+                      "resisc45_airport_85"
+                    ],
+                    "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+                  },
+                  "hyper3": {
+                    "consequence": "All four available same-class tank tiles are recovered; circular farmland still occupies the remaining shortlist positions.",
+                    "exactHits": 4,
+                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "offGroupHits": 6,
+                    "parentHits": 4,
+                    "resultIds": [
+                      "resisc45_storage_tank_272",
+                      "resisc45_storage_tank_315",
+                      "resisc45_storage_tank_4",
+                      "resisc45_storage_tank_271",
+                      "resisc45_circular_farmland_7",
+                      "resisc45_circular_farmland_43",
+                      "resisc45_airplane_46",
+                      "resisc45_runway_313",
+                      "resisc45_circular_farmland_47",
+                      "resisc45_airport_14"
+                    ],
+                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                  }
+                },
+                "parentGroup": "built_environment",
+                "question": "Does circular industrial infrastructure stay separate from farmland?",
+                "sourceImageId": "1",
+                "title": "Storage tank / built environment"
+              },
+              {
+                "anchorSampleId": "resisc45_airport_14",
+                "comparison": "Explicit regression: CLIP wins exact and parent quality here; use it to pressure-test Hyper3 airfield topology.",
+                "exactClass": "airport",
+                "id": "airport-regression",
+                "kind": "Airport",
+                "models": {
+                  "clip": {
+                    "consequence": "Stronger exact airport hits and broader transport-parent coverage on this example.",
+                    "exactHits": 4,
+                    "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+                    "offGroupHits": 3,
+                    "parentHits": 7,
+                    "resultIds": [
+                      "resisc45_airport_51",
+                      "resisc45_runway_313",
+                      "resisc45_airport_85",
+                      "resisc45_rectangular_farmland_198",
+                      "resisc45_airport_157",
+                      "resisc45_airport_358",
+                      "resisc45_terrace_148",
+                      "resisc45_bridge_230",
+                      "resisc45_bridge_174",
+                      "resisc45_rectangular_farmland_89"
+                    ],
+                    "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+                  },
+                  "hyper3": {
+                    "consequence": "Exact and parent transport hits drop; rectangular farmland enters the neighbourhood earlier than desired.",
+                    "exactHits": 3,
+                    "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                    "offGroupHits": 5,
+                    "parentHits": 5,
+                    "resultIds": [
+                      "resisc45_airport_85",
+                      "resisc45_airport_51",
+                      "resisc45_runway_313",
+                      "resisc45_rectangular_farmland_198",
+                      "resisc45_rectangular_farmland_91",
+                      "resisc45_terrace_148",
+                      "resisc45_airport_358",
+                      "resisc45_runway_202",
+                      "resisc45_circular_farmland_47",
+                      "resisc45_rectangular_farmland_89"
+                    ],
+                    "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756"
+                  }
+                },
+                "parentGroup": "transport",
+                "question": "Which model keeps airports and transport infrastructure together?",
+                "sourceImageId": "14",
+                "title": "Airport / transport"
+              }
+            ],
+            "initialCaseId": "airplane-win",
+            "layouts": {
+              "clip": {
+                "geometry": "euclidean",
+                "layoutKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+                "spaceKey": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+                "title": "CLIP archive map"
+              },
+              "hyper3": {
+                "geometry": "poincare",
+                "layoutKey": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+                "spaceKey": "hyper-models__hyper3-clip-v0_5__42052c955756",
+                "title": "Hyper3 archive map"
+              }
+            },
+            "models": {
+              "clip": "OpenAI CLIP ViT-B/32",
+              "hyper3": "Hyper3-CLIP v0.5"
+            },
+            "neighbourK": 10,
+            "panelIds": {
+              "clipSamples": "clip-neighbours",
+              "clipScatter": "clip-map",
+              "hyper3Samples": "hyper3-neighbours",
+              "hyper3Scatter": "hyper3-map"
+            },
+            "protocol": {
+              "baselineModel": "openai/clip-vit-base-patch32",
+              "candidateModel": "hyper3-clip-v0.5",
+              "claimBoundary": "A bounded neighborhood-quality probe, not a specialist remote-sensing benchmark.",
+              "dataset": "tanganke/resisc45",
+              "distance": "Hyper3 hyperbolic; CLIP cosine",
+              "gallery": 60,
+              "k": 10,
+              "modelRevisionCaveat": "Exact model repository revisions were not captured in the original persisted run.",
+              "queries": 60,
+              "selfMatch": "excluded",
+              "split": "test",
+              "subset": "60 curated tiles; 12 scene classes; 5 tiles per class"
+            },
+            "workspaceSampleCount": 60
+          },
+          "reference_panel_id": null,
+          "renderer": "module:panel.jsx",
+          "source": "extension",
+          "state_revision": 23,
+          "title": "Aerial identity audit",
+          "visible": true,
+          "width": 380
+        }
+      ],
+      "has_explicit_view": true,
+      "layout": null,
+      "layout_revision": 14,
+      "layout_views": {},
+      "panels": {
+        "clip-neighbours": {
+          "state": {
+            "collection": {
+              "created_at": 1784730796,
+              "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+              "entity_set_id": "samples",
+              "id": "all:bf21a9e8fbc5",
+              "kind": "all",
+              "query": {},
+              "scores": null
+            },
+            "collection_id": "all:bf21a9e8fbc5"
+          },
+          "state_revision": 0
+        },
+        "geospatial-retrieval-readout": {
+          "state": {
+            "activeCaseId": "airplane-win"
+          },
+          "state_revision": 23
+        },
+        "hyper3-neighbours": {
+          "state": {
+            "collection": {
+              "created_at": 1784730796,
+              "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+              "entity_set_id": "samples",
+              "id": "all:bf21a9e8fbc5",
+              "kind": "all",
+              "query": {},
+              "scores": null
+            },
+            "collection_id": "all:bf21a9e8fbc5"
+          },
+          "state_revision": 0
+        }
+      },
+      "selected_ids": [
+        "resisc45_airplane_119"
+      ],
+      "view_revision": 26
+    }
+  },
+  "workspaces": [
+    {
+      "dataset_name": "resisc45_clip_hyper3clip_curated_side_by_side",
+      "id": "geospatial-resisc45-retrieval-evidence-v2"
+    }
+  ]
+}

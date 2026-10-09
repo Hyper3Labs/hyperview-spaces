@@ -1,0 +1,138 @@
+{
+  "collection_id": "selection:67b2554aa4a6",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "logo_0132.jpg",
+        "height": null,
+        "id": "logo_0132",
+        "label": "Barbershop Hair Salon",
+        "media_type": null,
+        "media_url": "/api/samples/logo_0132/content",
+        "metadata": {
+          "caption": "\"a logo of barbershop hair salon, Scissors are depicted vertically in the center. Instead of the right ring, there is a flower. Framing in the form of an arch. An inscription in two lines under the scissors. At the base of the arch there is a symmetrical branch of leaves. at the top of the arch is a sprig of leaves in a semicircle., white background, black, whitesmoke foreground, minimalism, modern\"",
+          "hf_index": 132,
+          "role": "candidate_logo",
+          "source_dataset": "logo-wizard/modern-logo-dataset",
+          "split": "train[:160]"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/logo_0132/thumbnail",
+        "width": null
+      },
+      "sample_id": "logo_0132",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "logo_0048.jpg",
+        "height": null,
+        "id": "logo_0048",
+        "label": "Flower Store",
+        "media_type": null,
+        "media_url": "/api/samples/logo_0048/content",
+        "metadata": {
+          "caption": "\"a logo of flower store, In the center of the logo there is a twig of a shrub or some kind of grass, above and below the inscription in a semicircle, on the sides of the branches to complement the oval with text, lines are shown, linen background, darkgray, dimgray foreground, minimalism, modern\"",
+          "hf_index": 48,
+          "role": "candidate_logo",
+          "source_dataset": "logo-wizard/modern-logo-dataset",
+          "split": "train[:160]"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/logo_0048/thumbnail",
+        "width": null
+      },
+      "sample_id": "logo_0048",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "logo_0068.jpg",
+        "height": null,
+        "id": "logo_0068",
+        "label": "Flower Store",
+        "media_type": null,
+        "media_url": "/api/samples/logo_0068/content",
+        "metadata": {
+          "caption": "\"a logo of flower store, The letter H with a stretched arc, a word is written under the letter and above the arc, a twig is in the background, circles are located nearby., white background, darkgray, dimgray foreground, minimalism, modern\"",
+          "hf_index": 68,
+          "role": "candidate_logo",
+          "source_dataset": "logo-wizard/modern-logo-dataset",
+          "split": "train[:160]"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/logo_0068/thumbnail",
+        "width": null
+      },
+      "sample_id": "logo_0068",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "logo_0040.jpg",
+        "height": null,
+        "id": "logo_0040",
+        "label": "Flower Store",
+        "media_type": null,
+        "media_url": "/api/samples/logo_0040/content",
+        "metadata": {
+          "caption": "\"a logo of flower store, A flower with four leaves, enclosed in an open circle containing small pieces, located above the word flower, soft-green background, dimgray, darkgray foreground, minimalism, modern\"",
+          "hf_index": 40,
+          "role": "candidate_logo",
+          "source_dataset": "logo-wizard/modern-logo-dataset",
+          "split": "train[:160]"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/logo_0040/thumbnail",
+        "width": null
+      },
+      "sample_id": "logo_0040",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "logo_0120.jpg",
+        "height": null,
+        "id": "logo_0120",
+        "label": "Barbershop Hair Salon",
+        "media_type": null,
+        "media_url": "/api/samples/logo_0120/content",
+        "metadata": {
+          "caption": "\"a logo of barbershop hair salon, In the middle of the image of the mustache and beard, to the left and right of them are two scissors. Captions above and below the figures. All in a decorative double frame., oldlace background, black, darkgray foreground, minimalism, modern\"",
+          "hf_index": 120,
+          "role": "candidate_logo",
+          "source_dataset": "logo-wizard/modern-logo-dataset",
+          "split": "train[:160]"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/logo_0120/thumbnail",
+        "width": null
+      },
+      "sample_id": "logo_0120",
+      "score": null
+    }
+  ],
+  "limit": 5,
+  "offset": 0,
+  "total": 5
+}

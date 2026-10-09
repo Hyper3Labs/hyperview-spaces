@@ -1,0 +1,148 @@
+{
+  "artifacts": {
+    "dataset": "api/dataset.json",
+    "embeddings": null,
+    "runtime": "api/runtime.json",
+    "samples": "api/samples/index.json",
+    "similarity": null
+  },
+  "capabilities": {
+    "browse_samples": true,
+    "commands": {
+      "allowed": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor",
+        "workspace.panel.focus",
+        "workspace.panel.state.patch",
+        "workspace.panel.update",
+        "workspace.panel.update-props"
+      ],
+      "allowed_prefixes": [],
+      "panel_target": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.search.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor"
+      ]
+    },
+    "lasso_2d": false,
+    "lasso_3d": false,
+    "layouts": false,
+    "mode": "static",
+    "new_layouts": false,
+    "panel_state": "ephemeral",
+    "panels": [
+      {
+        "panel_id": "samples",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "visual-safety-clip-queue",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "visual-safety-readout",
+        "panel_type": "safety-readout.safety-comparison",
+        "reason": null,
+        "static_compatible": true
+      }
+    ],
+    "python_tools": false,
+    "runtime_mutations": false,
+    "sample_similarity": false,
+    "selection": true,
+    "server_runtime": false,
+    "similarity_k": 0,
+    "text_search": false
+  },
+  "created_at": "2026-10-09T07:35:33.122400+00:00",
+  "deployment": {
+    "cloudflare": {
+      "command": "npx wrangler deploy --config wrangler.jsonc",
+      "config": "wrangler.jsonc",
+      "mode": "static-assets-only",
+      "worker_name": "hyperview-visual-safety-review-queue-evidence-v3"
+    },
+    "hosting": {
+      "mode": "static-assets"
+    },
+    "targets": {
+      "live": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode live"
+        ],
+        "space": "Live Space"
+      },
+      "static": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode static",
+          "hyperview publish <bundle> --to cloudflare",
+          "hyperview publish <bundle> --to dir:<path>"
+        ],
+        "space": "Static Space"
+      }
+    }
+  },
+  "hyperview_version": "1.2.0",
+  "kind": "hyperview-static-space",
+  "producer": {
+    "hyper_models": "0.4.0",
+    "hyperview": "1.2.0",
+    "python": "3.12.8"
+  },
+  "restore": {
+    "collections": [
+      "all:bf21a9e8fbc5",
+      "selection:04a3f0ce8559",
+      "selection:06201fe1ee8d",
+      "selection:2264d67c3cdc",
+      "selection:317fddd17c44",
+      "selection:3a962046de25",
+      "selection:73c466aa1839",
+      "selection:811af165ae69",
+      "selection:89d735555911",
+      "selection:e0ff0ac6aacb",
+      "selection:fc7c42867d22"
+    ],
+    "dataset": {
+      "fields": "api/dataset.json",
+      "name": "openimages_visual_proxy_evidence_v3",
+      "num_samples": 176,
+      "samples": "api/samples/index.json"
+    },
+    "extensions": [
+      {
+        "add_panels": false,
+        "name": "safety-readout",
+        "panels": [],
+        "path": "extensions/safety-readout",
+        "source": "extension",
+        "workspace_id": "visual-safety-review-queue-evidence-v3"
+      }
+    ],
+    "layouts": [],
+    "media": {
+      "filename": "content",
+      "root": "api/samples"
+    },
+    "schema_version": 1,
+    "spaces": [],
+    "supported": true,
+    "workspace_id": "visual-safety-review-queue-evidence-v3"
+  },
+  "schema_version": 1,
+  "static": true,
+  "warnings": [],
+  "workspace": {
+    "dataset_name": "openimages_visual_proxy_evidence_v3",
+    "fingerprint": "63df0b85ac377b79821a1c51c45f0bc418b31ed12a97f23389b22a155bf63e23",
+    "id": "visual-safety-review-queue-evidence-v3"
+  }
+}

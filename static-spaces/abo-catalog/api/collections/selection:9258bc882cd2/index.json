@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788430314,
+    "dataset_id": "abo_catalog_clip_hyper3clip_side_by_side",
+    "entity_set_id": "samples",
+    "id": "selection:9258bc882cd2",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "B07DBDV3FH_41YZdSq2qBL",
+        "B07DT153M1_418DZS6SpTL",
+        "B07374K538_71XEFMKYAGL",
+        "B07DBK2P2G_41TnBzn9tFL",
+        "B07DBJQC4S_41Jv3-wdZ3L",
+        "B0825CP3NS_41GKLMSqyIL"
+      ],
+      "source": "CLIP \u00b7 Chrome clear-glass lamp \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788429636,
+    "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+    "entity_set_id": "samples",
+    "id": "selection:bdde175d223e",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "fashion-evidence-text-light-denim-leggings-clip-01",
+        "fashion-evidence-text-light-denim-leggings-clip-02",
+        "fashion-evidence-text-light-denim-leggings-clip-03",
+        "fashion-evidence-text-light-denim-leggings-clip-04",
+        "fashion-evidence-text-light-denim-leggings-clip-05",
+        "fashion-evidence-text-light-denim-leggings-clip-06"
+      ],
+      "source": "Light denim leggings \u00b7 OpenAI CLIP \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

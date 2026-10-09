@@ -1,0 +1,15 @@
+{
+  "collection": {
+    "created_at": 1783995814,
+    "dataset_id": "logo_brand_search_clip_hyper3clip_hf_live_v4",
+    "entity_set_id": "samples",
+    "id": "all:bf21a9e8fbc5",
+    "kind": "all",
+    "query": {},
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 160
+}

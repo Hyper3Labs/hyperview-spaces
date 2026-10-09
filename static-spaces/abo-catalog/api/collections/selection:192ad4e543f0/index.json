@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788430313,
+    "dataset_id": "abo_catalog_clip_hyper3clip_side_by_side",
+    "entity_set_id": "samples",
+    "id": "selection:192ad4e543f0",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "B075X4F56V_81Oy-OJ68KL",
+        "B075X4VM73_81oPx1e8s_L",
+        "B075X4N4W9_81Z8ICQ9dUL",
+        "B082VLYCPC_71pzr1IKkIL",
+        "B082VLTCM4_816VP-arPsL",
+        "B075X2X4GY_81RzuSu3GLL"
+      ],
+      "source": "CLIP \u00b7 Grey velvet sofa \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

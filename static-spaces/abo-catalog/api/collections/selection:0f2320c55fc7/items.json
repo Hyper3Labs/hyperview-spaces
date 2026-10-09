@@ -1,0 +1,212 @@
+{
+  "collection_id": "selection:0f2320c55fc7",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "B0746HFVWY_91-Pi95Hy9L.jpg",
+        "height": null,
+        "id": "B0746HFVWY_91-Pi95Hy9L",
+        "label": "OTTOMAN",
+        "media_type": null,
+        "media_url": "/api/samples/B0746HFVWY_91-Pi95Hy9L/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Gunmetal",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> ottoman",
+          "image_id": "91-Pi95Hy9L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/23/23a3cb60.jpg",
+          "item_id": "B0746HFVWY",
+          "product_type": "OTTOMAN",
+          "product_type_readable": "ottoman",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Rivet Jackson Leather Swivel Chair and Ottoman,"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B0746HFVWY_91-Pi95Hy9L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B0746HFVWY_91-Pi95Hy9L",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "B075Z8769G_918OhgZ71BL.jpg",
+        "height": null,
+        "id": "B075Z8769G_918OhgZ71BL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B075Z8769G_918OhgZ71BL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Grey",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "918OhgZ71BL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/ad/adb9ea28.jpg",
+          "item_id": "B075Z8769G",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Mid-Century Swope Curved Arm Swivel Office Chair, 26\"W, Felt Grey"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B075Z8769G_918OhgZ71BL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B075Z8769G_918OhgZ71BL",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "B0853L3W72_81mvF2gJy5L.jpg",
+        "height": null,
+        "id": "B0853L3W72_81mvF2gJy5L",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B0853L3W72_81mvF2gJy5L/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Silver",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "81mvF2gJy5L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/a6/a66c5c3d.jpg",
+          "item_id": "B0853L3W72",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Mid-Century Modern",
+          "title": "Amazon Brand \u2013 Rivet Logan Mid-Century Modern Dining Chair, Set of 2, 20.1\"W, Silver"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B0853L3W72_81mvF2gJy5L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B0853L3W72_81mvF2gJy5L",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07QTD9VPM_81EXO8kXnhL.jpg",
+        "height": null,
+        "id": "B07QTD9VPM_81EXO8kXnhL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B07QTD9VPM_81EXO8kXnhL/content",
+        "metadata": {
+          "brand": "Movian",
+          "color": "Light Grey",
+          "country": "GB",
+          "department": "Home & Kitchen",
+          "hierarchy": "Home & Kitchen -> chair",
+          "image_id": "81EXO8kXnhL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/2c/2c927913.jpg",
+          "item_id": "B07QTD9VPM",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Set of 2 Bar Stools",
+          "title": "Amazon Brand - Movian Arendsee Set of 2 Dining Chairs, 55 x 48.5 x 85 cm, Light grey"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07QTD9VPM_81EXO8kXnhL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07QTD9VPM_81EXO8kXnhL",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "B0853KZW7Z_71LY8AELiuL.jpg",
+        "height": null,
+        "id": "B0853KZW7Z_71LY8AELiuL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B0853KZW7Z_71LY8AELiuL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Wax Elephant",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "71LY8AELiuL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/c3/c3b841db.jpg",
+          "item_id": "B0853KZW7Z",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Mid-Century Modern",
+          "title": "Amazon Brand \u2013 Rivet Logan Mid-Century Modern Faux Leather Dining Chair, Set of 2, 20.1\"W, Gray"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B0853KZW7Z_71LY8AELiuL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B0853KZW7Z_71LY8AELiuL",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07B7B244W_71DNWOd-5bL.jpg",
+        "height": null,
+        "id": "B07B7B244W_71DNWOd-5bL",
+        "label": "CHAIR",
+        "media_type": null,
+        "media_url": "/api/samples/B07B7B244W_71DNWOd-5bL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Brown Leather",
+          "country": "US",
+          "department": "Furniture",
+          "hierarchy": "Furniture -> chair",
+          "image_id": "71DNWOd-5bL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/86/86bb70ad.jpg",
+          "item_id": "B07B7B244W",
+          "product_type": "CHAIR",
+          "product_type_readable": "chair",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": null,
+          "title": "Amazon Brand \u2013 Rivet Allie Leather Industrial Mid-Century Dining Room Kitchen Chair, 33\"H, Brown and Black"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07B7B244W_71DNWOd-5bL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07B7B244W_71DNWOd-5bL",
+      "score": null
+    }
+  ],
+  "limit": 6,
+  "offset": 0,
+  "total": 6
+}

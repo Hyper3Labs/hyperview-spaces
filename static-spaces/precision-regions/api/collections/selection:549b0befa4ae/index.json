@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594448,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:549b0befa4ae",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-fleet-clip-01",
+        "precision-fleet-target",
+        "precision-fleet-clip-03",
+        "precision-fleet-clip-04",
+        "precision-fleet-clip-05"
+      ],
+      "source": "Green bus \u00b7 openai/clip-vit-base-patch32 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

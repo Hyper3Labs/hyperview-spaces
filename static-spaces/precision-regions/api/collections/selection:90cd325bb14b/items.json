@@ -1,0 +1,223 @@
+{
+  "collection_id": "selection:90cd325bb14b",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "clip_1.jpg",
+        "height": null,
+        "id": "precision-retail-clip-01",
+        "label": "#1 \u00b7 A banana on a fork to the left of all the other bananas.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-retail-clip-01/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            1.0,
+            0.89,
+            201.48,
+            103.24
+          ],
+          "business_question": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+          "case_id": "retail",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000528756_1044306.jpg",
+          "is_target": false,
+          "model": "openai/clip-vit-base-patch32",
+          "model_key": "clip",
+          "operational_slice": "Retail / Tabletop",
+          "rank": 1,
+          "refcocog_query_id": "1044306",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "the slice of apple closest to the red bananas"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-retail-clip-01/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-retail-clip-01",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "clip_2.jpg",
+        "height": null,
+        "id": "precision-retail-clip-02",
+        "label": "#2 \u00b7 An empty hotdog bun.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-retail-clip-02/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            252.05,
+            340.18,
+            221.34,
+            84.08
+          ],
+          "business_question": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+          "case_id": "retail",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000240331_1069026.jpg",
+          "is_target": false,
+          "model": "openai/clip-vit-base-patch32",
+          "model_key": "clip",
+          "operational_slice": "Retail / Tabletop",
+          "rank": 2,
+          "refcocog_query_id": "1069026",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "the slice of apple closest to the red bananas"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-retail-clip-02/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-retail-clip-02",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "clip_3.jpg",
+        "height": null,
+        "id": "precision-retail-clip-03",
+        "label": "#3 \u00b7 A white tabletop.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-retail-clip-03/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            0.0,
+            204.78,
+            253.65,
+            166.01
+          ],
+          "business_question": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+          "case_id": "retail",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000550235_1620331.jpg",
+          "is_target": false,
+          "model": "openai/clip-vit-base-patch32",
+          "model_key": "clip",
+          "operational_slice": "Retail / Tabletop",
+          "rank": 3,
+          "refcocog_query_id": "1620331",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "the slice of apple closest to the red bananas"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-retail-clip-03/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-retail-clip-03",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "clip_4.jpg",
+        "height": null,
+        "id": "precision-retail-clip-04",
+        "label": "#4 \u00b7 A pizza is being eaten by a man.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-retail-clip-04/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            270.32,
+            52.07,
+            255.61,
+            96.98
+          ],
+          "business_question": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+          "case_id": "retail",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000495095_1076634.jpg",
+          "is_target": false,
+          "model": "openai/clip-vit-base-patch32",
+          "model_key": "clip",
+          "operational_slice": "Retail / Tabletop",
+          "rank": 4,
+          "refcocog_query_id": "1076634",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "the slice of apple closest to the red bananas"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-retail-clip-04/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-retail-clip-04",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "clip_5.jpg",
+        "height": null,
+        "id": "precision-retail-clip-05",
+        "label": "#5 \u00b7 A muffin next to some larger food items.",
+        "media_type": null,
+        "media_url": "/api/samples/precision-retail-clip-05/content",
+        "metadata": {
+          "baseline_model": "openai/clip-vit-base-patch32",
+          "bbox": [
+            439.95,
+            88.78,
+            192.87,
+            135.63
+          ],
+          "business_question": "Retail and food-service teams search busy operational photos for the precise shelf or tabletop item.",
+          "case_id": "retail",
+          "evaluation_protocol": "precomputed text-to-region ranking over the same evaluation crop pool for both models",
+          "hyper3_model": "hyper3-clip-v0.5",
+          "image_id": "COCO_train2014_000000124835_1084979.jpg",
+          "is_target": false,
+          "model": "openai/clip-vit-base-patch32",
+          "model_key": "clip",
+          "operational_slice": "Retail / Tabletop",
+          "rank": 5,
+          "refcocog_query_id": "1084979",
+          "role": "ranked_region_result",
+          "source_dataset": "lmms-lab/RefCOCOg",
+          "split": "val",
+          "text_query": "the slice of apple closest to the red bananas"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/precision-retail-clip-05/thumbnail",
+        "width": null
+      },
+      "sample_id": "precision-retail-clip-05",
+      "score": null
+    }
+  ],
+  "limit": 5,
+  "offset": 0,
+  "total": 5
+}

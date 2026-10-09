@@ -1,0 +1,8 @@
+name = "abo-catalog-readout"
+description = "Catalog-search and image-neighbour comparison controls"
+
+[[panels]]
+id = "catalog-comparison"
+title = "Catalog retrieval questions"
+position = "right"
+file = "panel.jsx"

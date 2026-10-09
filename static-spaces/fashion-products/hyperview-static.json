@@ -1,0 +1,295 @@
+{
+  "artifacts": {
+    "dataset": "api/dataset.json",
+    "embeddings": "api/embeddings/default.json",
+    "runtime": "api/runtime.json",
+    "samples": "api/samples/index.json",
+    "similarity": null
+  },
+  "capabilities": {
+    "browse_samples": true,
+    "commands": {
+      "allowed": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor",
+        "workspace.panel.focus",
+        "workspace.panel.state.patch",
+        "workspace.panel.update",
+        "workspace.panel.update-props"
+      ],
+      "allowed_prefixes": [],
+      "panel_target": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.search.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor"
+      ]
+    },
+    "lasso_2d": true,
+    "lasso_3d": false,
+    "layouts": true,
+    "mode": "static",
+    "new_layouts": false,
+    "panel_state": "ephemeral",
+    "panels": [
+      {
+        "panel_id": "samples",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "fashion-catalog-map",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "fashion-clip-results",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "fashion-search-readout",
+        "panel_type": "fashion-search-readout.fashion-comparison",
+        "reason": null,
+        "static_compatible": true
+      }
+    ],
+    "python_tools": false,
+    "runtime_mutations": false,
+    "sample_similarity": false,
+    "selection": true,
+    "server_runtime": false,
+    "similarity_k": 0,
+    "text_search": false
+  },
+  "created_at": "2026-10-09T07:35:26.670894+00:00",
+  "deployment": {
+    "cloudflare": {
+      "command": "npx wrangler deploy --config wrangler.jsonc",
+      "config": "wrangler.jsonc",
+      "mode": "static-assets-only",
+      "worker_name": "hyperview-fashion-typed-search-business-evidence-v3"
+    },
+    "hosting": {
+      "mode": "static-assets"
+    },
+    "targets": {
+      "live": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode live"
+        ],
+        "space": "Live Space"
+      },
+      "static": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode static",
+          "hyperview publish <bundle> --to cloudflare",
+          "hyperview publish <bundle> --to dir:<path>"
+        ],
+        "space": "Static Space"
+      }
+    }
+  },
+  "hyperview_version": "1.2.0",
+  "kind": "hyperview-static-space",
+  "producer": {
+    "hyper_models": "0.4.0",
+    "hyperview": "1.2.0",
+    "python": "3.12.8"
+  },
+  "restore": {
+    "collections": [
+      "all:bf21a9e8fbc5",
+      "selection:0f91eb45df77",
+      "selection:0fb56bf806aa",
+      "selection:243832bc3176",
+      "selection:52fa8679928a",
+      "selection:8d3f1c3ed208",
+      "selection:bdde175d223e",
+      "selection:e9a3f545c05a"
+    ],
+    "dataset": {
+      "fields": "api/dataset.json",
+      "name": "deepfashion_text_search_clip_hyper3clip",
+      "num_samples": 777,
+      "samples": "api/samples/index.json"
+    },
+    "extensions": [
+      {
+        "add_panels": false,
+        "name": "fashion-search-readout",
+        "panels": [],
+        "path": "extensions/fashion-search-readout",
+        "source": "extension",
+        "workspace_id": "fashion-typed-search-business-evidence-v3"
+      }
+    ],
+    "layouts": [
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4.json",
+        "count": 741,
+        "geometry": "euclidean",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8"
+      },
+      {
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4.json",
+        "count": 741,
+        "geometry": "poincare",
+        "layout_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15"
+      },
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4.json",
+        "count": 741,
+        "geometry": "euclidean",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+      },
+      {
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4.json",
+        "count": 741,
+        "geometry": "poincare",
+        "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756"
+      }
+    ],
+    "media": {
+      "filename": "content",
+      "root": "api/samples"
+    },
+    "schema_version": 1,
+    "spaces": [
+      {
+        "config": {
+          "dim": 512,
+          "geometry": "euclidean",
+          "modality": "image",
+          "model_id": "openai/clip-vit-base-patch32",
+          "provider": "embed-anything"
+        },
+        "count": 741,
+        "dim": 512,
+        "geometry": "euclidean",
+        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "modality": "image",
+        "model_id": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__4771034973d8/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "image",
+          "model_id": "hyper3-clip-v0.5",
+          "params": {
+            "curvature": 0.10000000085302468
+          },
+          "params_source": {
+            "curvature": "inferred"
+          },
+          "provider": "hyper-models",
+          "spatial_dim": 512
+        },
+        "count": 741,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "modality": "image",
+        "model_id": "hyper3-clip-v0.5",
+        "provider": "hyper-models",
+        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__33d32a431c15/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 512,
+          "geometry": "euclidean",
+          "modality": "multimodal",
+          "model_id": "openai/clip-vit-base-patch32",
+          "provider": "embed-anything"
+        },
+        "count": 741,
+        "dim": 512,
+        "geometry": "euclidean",
+        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "modality": "multimodal",
+        "model_id": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "multimodal",
+          "model_id": "hyper3-clip-v0.5",
+          "params": {
+            "curvature": 0.10000000091064717
+          },
+          "params_source": {
+            "curvature": "inferred"
+          },
+          "provider": "hyper-models",
+          "spatial_dim": 512
+        },
+        "count": 741,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper-models__hyper3-clip-v0_5__42052c955756",
+        "modality": "multimodal",
+        "model_id": "hyper3-clip-v0.5",
+        "provider": "hyper-models",
+        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__42052c955756",
+        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__42052c955756/vectors.npz"
+      }
+    ],
+    "supported": true,
+    "workspace_id": "fashion-typed-search-business-evidence-v3"
+  },
+  "schema_version": 1,
+  "static": true,
+  "warnings": [],
+  "workspace": {
+    "dataset_name": "deepfashion_text_search_clip_hyper3clip",
+    "fingerprint": "e4e71a40cf8c4a1eed7bd0caca68b0269c73212ba95e9c43b9de8a8efc33d02b",
+    "id": "fashion-typed-search-business-evidence-v3"
+  }
+}

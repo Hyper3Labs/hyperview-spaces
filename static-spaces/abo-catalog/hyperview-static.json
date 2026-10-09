@@ -1,0 +1,346 @@
+{
+  "artifacts": {
+    "dataset": "api/dataset.json",
+    "embeddings": "api/embeddings/default.json",
+    "runtime": "api/runtime.json",
+    "samples": "api/samples/index.json",
+    "similarity": "api/search/similar/index.json"
+  },
+  "capabilities": {
+    "browse_samples": true,
+    "commands": {
+      "allowed": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor",
+        "workspace.panel.focus",
+        "workspace.panel.state.patch",
+        "workspace.panel.update",
+        "workspace.panel.update-props"
+      ],
+      "allowed_prefixes": [],
+      "panel_target": [
+        "collection.filter.set",
+        "collection.neighbors.create",
+        "collection.search.create",
+        "collection.selection.set",
+        "panel.samples.retrieval.set-anchor"
+      ]
+    },
+    "lasso_2d": true,
+    "lasso_3d": false,
+    "layouts": true,
+    "mode": "static",
+    "new_layouts": false,
+    "panel_state": "ephemeral",
+    "panels": [
+      {
+        "panel_id": "candidate-nearest-neighbours",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "samples",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "candidate-catalog-map",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "clip-nearest-neighbours",
+        "panel_type": "samples",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "clip-catalog-map",
+        "panel_type": "scatter",
+        "reason": null,
+        "static_compatible": true
+      },
+      {
+        "panel_id": "catalog-hierarchy-readout",
+        "panel_type": "abo-catalog-readout.catalog-comparison",
+        "reason": null,
+        "static_compatible": true
+      }
+    ],
+    "python_tools": false,
+    "runtime_mutations": false,
+    "sample_similarity": true,
+    "selection": true,
+    "server_runtime": false,
+    "similarity_k": 10,
+    "text_search": false
+  },
+  "created_at": "2026-10-09T07:35:17.602668+00:00",
+  "deployment": {
+    "cloudflare": {
+      "command": "npx wrangler deploy --config wrangler.jsonc",
+      "config": "wrangler.jsonc",
+      "mode": "static-assets-only",
+      "worker_name": "hyperview-abo-catalog-clip-hyper3clip-split"
+    },
+    "hosting": {
+      "mode": "static-assets"
+    },
+    "targets": {
+      "live": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode live"
+        ],
+        "space": "Live Space"
+      },
+      "static": {
+        "commands": [
+          "hyperview publish <bundle> --to hf:<owner>/<name> --mode static",
+          "hyperview publish <bundle> --to cloudflare",
+          "hyperview publish <bundle> --to dir:<path>"
+        ],
+        "space": "Static Space"
+      }
+    }
+  },
+  "hyperview_version": "1.2.0",
+  "kind": "hyperview-static-space",
+  "producer": {
+    "hyper_models": "0.4.0",
+    "hyperview": "1.2.0",
+    "python": "3.12.8"
+  },
+  "restore": {
+    "collections": [
+      "all:bf21a9e8fbc5",
+      "selection:0f2320c55fc7",
+      "selection:192ad4e543f0",
+      "selection:5ab36572af15",
+      "selection:9258bc882cd2",
+      "selection:b92d2a21c33f",
+      "selection:c8eaafacb88a",
+      "selection:edfc19aaf048"
+    ],
+    "dataset": {
+      "fields": "api/dataset.json",
+      "name": "abo_catalog_clip_hyper3clip_side_by_side",
+      "num_samples": 531,
+      "samples": "api/samples/index.json"
+    },
+    "extensions": [
+      {
+        "add_panels": false,
+        "name": "abo-catalog-readout",
+        "panels": [],
+        "path": "extensions/abo-catalog-readout",
+        "source": "extension",
+        "workspace_id": "abo-catalog-clip-hyper3clip-split"
+      }
+    ],
+    "layouts": [
+      {
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4.json",
+        "count": 531,
+        "geometry": "poincare",
+        "layout_key": "hyper-models__hyper3-clip-v0_5__42052c955756__poincare_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756"
+      },
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4.json",
+        "count": 531,
+        "geometry": "euclidean",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c__euclidean_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c"
+      },
+      {
+        "coords": "api/embeddings/hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8__poincare_umap__2d_1a6bcbc4.json",
+        "count": 500,
+        "geometry": "poincare",
+        "layout_key": "hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8__poincare_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8"
+      },
+      {
+        "coords": "api/embeddings/embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4.json",
+        "count": 530,
+        "geometry": "euclidean",
+        "layout_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8__euclidean_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8"
+      },
+      {
+        "coords": "api/embeddings/hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4.json",
+        "count": 530,
+        "geometry": "poincare",
+        "layout_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15__poincare_umap__2d_1a6bcbc4",
+        "method": "umap",
+        "params": {
+          "metric": "cosine",
+          "min_dist": 0.08,
+          "n_neighbors": 20
+        },
+        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15"
+      }
+    ],
+    "media": {
+      "filename": "content",
+      "root": "api/samples"
+    },
+    "schema_version": 1,
+    "spaces": [
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "multimodal",
+          "model_id": "hyper3-clip-v0.5",
+          "params": {
+            "curvature": 0.10000000134646432
+          },
+          "params_source": {
+            "curvature": "inferred"
+          },
+          "provider": "hyper-models",
+          "spatial_dim": 512
+        },
+        "count": 531,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper-models__hyper3-clip-v0_5__42052c955756",
+        "modality": "multimodal",
+        "model_id": "hyper3-clip-v0.5",
+        "provider": "hyper-models",
+        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__42052c955756",
+        "space_key": "hyper-models__hyper3-clip-v0_5__42052c955756",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__42052c955756/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 512,
+          "geometry": "euclidean",
+          "modality": "multimodal",
+          "model_id": "openai/clip-vit-base-patch32",
+          "provider": "embed-anything"
+        },
+        "count": 531,
+        "dim": 512,
+        "geometry": "euclidean",
+        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "modality": "multimodal",
+        "model_id": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c",
+        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__8da42c3ae90c/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "image",
+          "model_id": "hyper3labs/hyper3-clip-v0.5",
+          "params": {
+            "curvature": 0.10000000149011612
+          },
+          "params_source": {
+            "curvature": "provider"
+          },
+          "provider": "hyper3-clip",
+          "spatial_dim": 512
+        },
+        "count": 500,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8",
+        "modality": "image",
+        "model_id": "hyper3labs/hyper3-clip-v0.5",
+        "provider": "hyper3-clip",
+        "representation_id": "representation:hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8",
+        "space_key": "hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8",
+        "vectors": "restore/spaces/hyper3-clip__hyper3labs_hyper3-clip-v0_5__3ba218e7cbb8/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 512,
+          "geometry": "euclidean",
+          "modality": "image",
+          "model_id": "openai/clip-vit-base-patch32",
+          "provider": "embed-anything"
+        },
+        "count": 530,
+        "dim": 512,
+        "geometry": "euclidean",
+        "index_id": "space:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "modality": "image",
+        "model_id": "openai/clip-vit-base-patch32",
+        "provider": "embed-anything",
+        "representation_id": "representation:embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "space_key": "embed-anything__openai_clip-vit-base-patch32__4771034973d8",
+        "vectors": "restore/spaces/embed-anything__openai_clip-vit-base-patch32__4771034973d8/vectors.npz"
+      },
+      {
+        "config": {
+          "dim": 513,
+          "geometry": "hyperboloid",
+          "modality": "image",
+          "model_id": "hyper3-clip-v0.5",
+          "params": {
+            "curvature": 0.10000000131773623
+          },
+          "params_source": {
+            "curvature": "inferred"
+          },
+          "provider": "hyper-models",
+          "spatial_dim": 512
+        },
+        "count": 530,
+        "dim": 513,
+        "geometry": "hyperboloid",
+        "index_id": "space:hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "modality": "image",
+        "model_id": "hyper3-clip-v0.5",
+        "provider": "hyper-models",
+        "representation_id": "representation:hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "space_key": "hyper-models__hyper3-clip-v0_5__33d32a431c15",
+        "vectors": "restore/spaces/hyper-models__hyper3-clip-v0_5__33d32a431c15/vectors.npz"
+      }
+    ],
+    "supported": true,
+    "workspace_id": "abo-catalog-clip-hyper3clip-split"
+  },
+  "schema_version": 1,
+  "static": true,
+  "warnings": [],
+  "workspace": {
+    "dataset_name": "abo_catalog_clip_hyper3clip_side_by_side",
+    "fingerprint": "4919d78baa70bd12892242c04be2ae986431650373daa99d13f782660d0f3d42",
+    "id": "abo-catalog-clip-hyper3clip-split"
+  }
+}

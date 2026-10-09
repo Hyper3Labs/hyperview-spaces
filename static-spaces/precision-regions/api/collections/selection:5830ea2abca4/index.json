@@ -1,0 +1,24 @@
+{
+  "collection": {
+    "created_at": 1788594448,
+    "dataset_id": "refcocog_text_region_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:5830ea2abca4",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "precision-bench-hyper3-01",
+        "precision-bench-hyper3-02",
+        "precision-bench-hyper3-03",
+        "precision-bench-hyper3-04",
+        "precision-bench-hyper3-05"
+      ],
+      "source": "Empty bench seat \u00b7 hyper3-clip-v0.5 \u00b7 Top 5"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 5
+}

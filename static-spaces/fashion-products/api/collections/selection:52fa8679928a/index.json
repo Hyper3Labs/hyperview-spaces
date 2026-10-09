@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788429635,
+    "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+    "entity_set_id": "samples",
+    "id": "selection:52fa8679928a",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "fashion-evidence-photo-patterned-romper-clip-01",
+        "fashion-evidence-photo-patterned-romper-clip-02",
+        "fashion-evidence-photo-patterned-romper-clip-03",
+        "fashion-evidence-photo-patterned-romper-clip-04",
+        "fashion-evidence-photo-patterned-romper-clip-05",
+        "fashion-evidence-photo-patterned-romper-clip-06"
+      ],
+      "source": "Patterned romper \u00b7 OpenAI CLIP \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

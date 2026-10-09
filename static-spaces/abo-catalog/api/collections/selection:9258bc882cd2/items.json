@@ -1,0 +1,212 @@
+{
+  "collection_id": "selection:9258bc882cd2",
+  "items": [
+    {
+      "rank": 0,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBDV3FH_41YZdSq2qBL.jpg",
+        "height": null,
+        "id": "B07DBDV3FH_41YZdSq2qBL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBDV3FH_41YZdSq2qBL/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Brushed Steel",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41YZdSq2qBL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/98/981466b0.jpg",
+          "item_id": "B07DBDV3FH",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Floor Lamp",
+          "title": "Amazon Brand \u2013 Ravenna Home Swing Arm Living Room Floor Lamp With LED Light Bulb - 58 Inches, Brushed Steel"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBDV3FH_41YZdSq2qBL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBDV3FH_41YZdSq2qBL",
+      "score": null
+    },
+    {
+      "rank": 1,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DT153M1_418DZS6SpTL.jpg",
+        "height": null,
+        "id": "B07DT153M1_418DZS6SpTL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DT153M1_418DZS6SpTL/content",
+        "metadata": {
+          "brand": "Stone & Beam",
+          "color": "Matte Black",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "418DZS6SpTL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/61/6138372f.jpg",
+          "item_id": "B07DT153M1",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Floor Lamp",
+          "title": "Amazon Brand \u2013 Stone & Beam Modern Farmhouse Wood Base Adjustable Living Room Floor Lamp With LED Light Bulb And White Shade- 16 x 16 x 66.25 Inches, Black"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DT153M1_418DZS6SpTL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DT153M1_418DZS6SpTL",
+      "score": null
+    },
+    {
+      "rank": 2,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07374K538_71XEFMKYAGL.jpg",
+        "height": null,
+        "id": "B07374K538_71XEFMKYAGL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07374K538_71XEFMKYAGL/content",
+        "metadata": {
+          "brand": "Stone & Beam",
+          "color": "Brushed Brass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "71XEFMKYAGL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/28/283d9256.jpg",
+          "item_id": "B07374K538",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Table Lamp",
+          "title": "Amazon Brand \u2013 Stone & Beam Glass Column Living Room Table Desk Lamp With Light Bulb and Linen Shade, 23\"H, Brushed Brass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07374K538_71XEFMKYAGL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07374K538_71XEFMKYAGL",
+      "score": null
+    },
+    {
+      "rank": 3,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBK2P2G_41TnBzn9tFL.jpg",
+        "height": null,
+        "id": "B07DBK2P2G_41TnBzn9tFL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBK2P2G_41TnBzn9tFL/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Chrome With Blue Glass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41TnBzn9tFL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/c4/c4e9a238.jpg",
+          "item_id": "B07DBK2P2G",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Modern",
+          "title": "Amazon Brand \u2013 Ravenna Home Modern Round Table Lamp With LED Light Bulb - 17.50 Inches, Chrome with Blue Glass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBK2P2G_41TnBzn9tFL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBK2P2G_41TnBzn9tFL",
+      "score": null
+    },
+    {
+      "rank": 4,
+      "sample": {
+        "duration_s": null,
+        "filename": "B07DBJQC4S_41Jv3-wdZ3L.jpg",
+        "height": null,
+        "id": "B07DBJQC4S_41Jv3-wdZ3L",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B07DBJQC4S_41Jv3-wdZ3L/content",
+        "metadata": {
+          "brand": "Ravenna Home",
+          "color": "Dark Bronze With Smoke Glass",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41Jv3-wdZ3L",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/9c/9c81a7cf.jpg",
+          "item_id": "B07DBJQC4S",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Modern",
+          "title": "Amazon Brand \u2013 Ravenna Home Modern Round Table Lamp With LED Light Bulb - 17.50 Inches, Dark Bronze with Smoke Glass"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B07DBJQC4S_41Jv3-wdZ3L/thumbnail",
+        "width": null
+      },
+      "sample_id": "B07DBJQC4S_41Jv3-wdZ3L",
+      "score": null
+    },
+    {
+      "rank": 5,
+      "sample": {
+        "duration_s": null,
+        "filename": "B0825CP3NS_41GKLMSqyIL.jpg",
+        "height": null,
+        "id": "B0825CP3NS_41GKLMSqyIL",
+        "label": "LAMP",
+        "media_type": null,
+        "media_url": "/api/samples/B0825CP3NS_41GKLMSqyIL/content",
+        "metadata": {
+          "brand": "Rivet",
+          "color": "Beige",
+          "country": "US",
+          "department": "Lighting & Ceiling Fans",
+          "hierarchy": "Lighting & Ceiling Fans -> lamp",
+          "image_id": "41GKLMSqyIL",
+          "image_url": "https://amazon-berkeley-objects.s3.amazonaws.com/images/small/a3/a3b67955.jpg",
+          "item_id": "B0825CP3NS",
+          "product_type": "LAMP",
+          "product_type_readable": "lamp",
+          "source": "hyper3labs/amazon-berkeley-objects",
+          "style": "Stick",
+          "title": "Amazon Brand \u2013 Rivet Scandinavian Real Blond-Wood Table Lamp with Marble Bottom, LED Bulb Included, 18.5\"H, Beige"
+        },
+        "modality": "image",
+        "text": null,
+        "thumbnail": null,
+        "thumbnail_url": "/api/samples/B0825CP3NS_41GKLMSqyIL/thumbnail",
+        "width": null
+      },
+      "sample_id": "B0825CP3NS_41GKLMSqyIL",
+      "score": null
+    }
+  ],
+  "limit": 6,
+  "offset": 0,
+  "total": 6
+}

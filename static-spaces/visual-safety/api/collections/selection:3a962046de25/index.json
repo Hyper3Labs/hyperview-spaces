@@ -1,0 +1,26 @@
+{
+  "collection": {
+    "created_at": 1788429986,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:3a962046de25",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "visual-safety-knife-clip-01",
+        "visual-safety-knife-clip-02",
+        "visual-safety-knife-clip-03",
+        "visual-safety-knife-clip-04",
+        "visual-safety-knife-clip-05",
+        "visual-safety-knife-clip-06",
+        "visual-safety-knife-clip-07"
+      ],
+      "source": "Knife review batch \u00b7 OpenAI CLIP"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 7
+}

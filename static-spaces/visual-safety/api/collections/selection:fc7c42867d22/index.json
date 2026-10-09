@@ -1,0 +1,26 @@
+{
+  "collection": {
+    "created_at": 1788429987,
+    "dataset_id": "openimages_visual_proxy_evidence_v3",
+    "entity_set_id": "samples",
+    "id": "selection:fc7c42867d22",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "visual-safety-alcohol-clip-01",
+        "visual-safety-alcohol-clip-02",
+        "visual-safety-alcohol-clip-03",
+        "visual-safety-alcohol-clip-04",
+        "visual-safety-alcohol-clip-05",
+        "visual-safety-alcohol-clip-06",
+        "visual-safety-alcohol-clip-07"
+      ],
+      "source": "Alcohol review batch \u00b7 OpenAI CLIP"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 7
+}

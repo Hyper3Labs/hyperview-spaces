@@ -1,0 +1,25 @@
+{
+  "collection": {
+    "created_at": 1788429635,
+    "dataset_id": "deepfashion_text_search_clip_hyper3clip",
+    "entity_set_id": "samples",
+    "id": "selection:e9a3f545c05a",
+    "kind": "selection",
+    "query": {
+      "ids": [
+        "fashion-evidence-photo-ampersand-tee-hyper3-01",
+        "fashion-evidence-photo-ampersand-tee-hyper3-02",
+        "fashion-evidence-photo-ampersand-tee-hyper3-03",
+        "fashion-evidence-photo-ampersand-tee-hyper3-04",
+        "fashion-evidence-photo-ampersand-tee-hyper3-05",
+        "fashion-evidence-photo-ampersand-tee-hyper3-06"
+      ],
+      "source": "Ampersand tee \u00b7 Hyper3-CLIP \u00b7 Top 6"
+    },
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 6
+}

@@ -1,10 +1,9 @@
 name: Deploy HF Space - HyperView Hello World
 
-# live-bundle mode: the Space serves the exported `hello-world` bundle, so it
-# starts in seconds and downloads no dataset or model at boot. To change what
-# it shows, rerun demos/hello-world-inat24-clip-hyper3clip/demo.py, export the
-# `hello-world` workspace into the site's public/spaces/hello-world/, commit it
-# there, then run this workflow.
+# live-bundle mode: the Space serves static-spaces/hello-world, so it starts in
+# seconds and downloads no dataset or model at boot. To change what it shows,
+# rerun demos/hello-world-inat24-clip-hyper3clip/demo.py, re-export the
+# `hello-world` workspace into static-spaces/hello-world and commit it.
 #
 # The Trusted Publisher on hyper3labs/HyperView is keyed to this filename.
 
@@ -12,15 +11,11 @@ on:
   push:
     branches: [main]
     paths:
+      - static-spaces/hello-world/**
       - .github/workflows/deploy-hf-space-hyperview.yml
   repository_dispatch:
     types: [static-bundle-published]
   workflow_dispatch:
-    inputs:
-      site_ref:
-        description: "Branch or tag of the site repository to read the bundle from"
-        required: false
-        default: main
 
 concurrency:
   group: deploy-hf-space-hyperview
@@ -36,5 +31,4 @@ jobs:
       deploy_mode: live-bundle
       bundle_slug: hello-world
       hyperview_version: "1.2.0"
-      site_ref: ${{ inputs.site_ref || 'main' }}
       space_id: hyper3labs/HyperView

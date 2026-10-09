@@ -1,0 +1,15 @@
+{
+  "collection": {
+    "created_at": 1784730796,
+    "dataset_id": "resisc45_clip_hyper3clip_curated_side_by_side",
+    "entity_set_id": "samples",
+    "id": "all:bf21a9e8fbc5",
+    "kind": "all",
+    "query": {},
+    "scores": null
+  },
+  "shards": [
+    "items.json"
+  ],
+  "total": 60
+}

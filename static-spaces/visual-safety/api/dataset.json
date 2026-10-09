@@ -1,0 +1,145 @@
+{
+  "fields": {
+    "duration_s": {
+      "nullable": true,
+      "source": "builtin",
+      "type": "scalar"
+    },
+    "filepath": {
+      "nullable": true,
+      "source": "builtin",
+      "type": "media"
+    },
+    "id": {
+      "nullable": false,
+      "source": "builtin",
+      "type": "scalar"
+    },
+    "label": {
+      "nullable": true,
+      "source": "builtin",
+      "type": "label"
+    },
+    "media_type": {
+      "nullable": true,
+      "source": "builtin",
+      "type": "scalar"
+    },
+    "metadata.anchor_id": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.clip_queued": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.clip_votes": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.evidence_artifact": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.hyper3_queued": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.hyper3_votes": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.license": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.model": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.proxy_label": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.rank": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.review_tag": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.role": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.source_label": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.source_sample_id": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.source_title": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "metadata.source_url": {
+      "nullable": true,
+      "source": "metadata",
+      "type": "scalar"
+    },
+    "modality": {
+      "nullable": false,
+      "source": "builtin",
+      "type": "scalar"
+    },
+    "text": {
+      "nullable": true,
+      "source": "builtin",
+      "type": "text"
+    }
+  },
+  "indexes": [],
+  "labels": [
+    "Check manually \u00b7 Apple",
+    "Check manually \u00b7 Chair",
+    "Check manually \u00b7 Clothing",
+    "Check manually \u00b7 Dress",
+    "Check manually \u00b7 Table",
+    "Exact label \u00b7 Beer",
+    "Exact label \u00b7 Handgun",
+    "Exact label \u00b7 Knife",
+    "Exact label \u00b7 Wine",
+    "Other flagged item \u00b7 Kitchen knife",
+    "Other flagged item \u00b7 Knife",
+    "Proxy negative",
+    "Proxy positive",
+    "Related label \u00b7 Alcoholic beverage",
+    "Related label \u00b7 Beer",
+    "Related label \u00b7 Kitchen knife",
+    "Related label \u00b7 Weapon",
+    "Related label \u00b7 Wine"
+  ],
+  "layouts": [],
+  "name": "openimages_visual_proxy_evidence_v3",
+  "num_samples": 176,
+  "representations": [],
+  "spaces": []
+}

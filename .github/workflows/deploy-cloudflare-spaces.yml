@@ -6,6 +6,7 @@ on:
     paths:
       - live-spaces.registry.json
       - static-spaces.registry.json
+      - static-spaces/**
       - scripts/build_spaces_site.py
       - spaces-site/**
       - .github/workflows/deploy-cloudflare-spaces.yml
@@ -25,14 +26,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout registry and Worker
+      - name: Checkout registries, bundles and Worker
         uses: actions/checkout@v6
-
-      - name: Checkout reviewed Static Space bundles
-        uses: actions/checkout@v6
-        with:
-          repository: Hyper3Labs/hyper3labs.github.io
-          path: bundle-site
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -40,7 +35,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install released HyperView
-        run: python -m pip install --disable-pip-version-check "hyperview[publish]==1.1.1"
+        run: python -m pip install --disable-pip-version-check "hyperview[publish]==1.2.0"
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
@@ -52,9 +47,7 @@ jobs:
       - name: Install Worker dependencies
         run: npm ci --prefix spaces-site
 
-      - name: Assemble every registered Static Space
-        env:
-          HYPERVIEW_STATIC_SPACES_ROOT: ${{ github.workspace }}/bundle-site/public/spaces
+      - name: Build the gallery and collect every bundle
         run: python scripts/build_spaces_site.py
 
       - name: Validate Worker upload
