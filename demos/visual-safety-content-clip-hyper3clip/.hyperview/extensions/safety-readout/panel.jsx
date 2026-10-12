@@ -103,7 +103,7 @@ export default function SafetyComparisonPanel() {
           <BatchCard name={props.models?.clip || "OpenAI CLIP"} color="#f59e0b" model={active.models.clip} />
         </section>
 
-        <p className="vs-legend">Exact and related labels stay within the confirmed item’s policy group. Other flagged items belong elsewhere; manual-review items may be noise.</p>
+        <p className="vs-legend">Exact and related labels share the confirmed item’s policy group. Other flagged items belong to a different group; manual-review items may be noise.</p>
 
         <nav className="vs-cases" aria-label="Confirmed item examples">
           {cases.map((item) => <button key={item.id} type="button" className={`vs-case${busy ? " vs-busy" : ""}`} aria-pressed={item.id === active.id} disabled={busy} onClick={() => chooseCase(item)}><strong>{item.label}</strong><small>{item.context}</small></button>)}
@@ -111,13 +111,13 @@ export default function SafetyComparisonPanel() {
 
         <section className="vs-benchmark" aria-label="Full batch benchmark">
           <span className="vs-kicker">What the queue misses</span>
-          <h3>120 items · five-of-seven queue threshold</h3>
-          <p className="vs-caption">A missed item ships harm to users; an extra queued item costs one human review. Review queues are tuned recall-first.</p>
+          <h3>120 items · queued at five of seven</h3>
+          <p className="vs-caption">An item is queued when at least five of its seven neighbours are flagged. Queues favour recall: a miss reaches users, an extra item costs one review.</p>
           <div className="vs-headline">
-            <div><span className="vs-kicker" style={{color:"#60a5fa"}}>Hyper3-CLIP</span><strong>{metrics.hyper3?.fn}</strong><small>of 60 harmful items missed · {percent(metrics.hyper3?.recall)} recall</small></div>
-            <div><span className="vs-kicker" style={{color:"#f59e0b"}}>OpenAI CLIP</span><strong>{metrics.clip?.fn}</strong><small>of 60 harmful items missed · {percent(metrics.clip?.recall)} recall</small></div>
+            <div><span className="vs-kicker" style={{color:"#60a5fa"}}>Hyper3-CLIP</span><strong>{metrics.hyper3?.fn}</strong><small>of 60 flagged items missed · {percent(metrics.hyper3?.recall)} recall</small></div>
+            <div><span className="vs-kicker" style={{color:"#f59e0b"}}>OpenAI CLIP</span><strong>{metrics.clip?.fn}</strong><small>of 60 flagged items missed · {percent(metrics.clip?.recall)} recall</small></div>
           </div>
-          <p className="vs-caption">60 proxy-positive and 60 proxy-negative Open Images items. Full ledger, both directions:</p>
+          <p className="vs-caption">60 flagged and 60 unflagged Open Images items, with labels standing in for review categories.</p>
           <table className="vs-table"><thead><tr><th>Batch measure</th><th style={{color:"#60a5fa"}}>Hyper3</th><th style={{color:"#f59e0b"}}>CLIP</th></tr></thead><tbody>
             <tr><td>False negatives (missed)</td><td>{metrics.hyper3?.fn}</td><td>{metrics.clip?.fn}</td></tr>
             <tr><td>Queue recall</td><td>{percent(metrics.hyper3?.recall)}</td><td>{percent(metrics.clip?.recall)}</td></tr>
@@ -126,7 +126,7 @@ export default function SafetyComparisonPanel() {
             <tr><td>Queue precision</td><td>{percent(metrics.hyper3?.precision)}</td><td>{percent(metrics.clip?.precision)}</td></tr>
             <tr><td>AUROC (chance 50%)</td><td>{percent(metrics.hyper3?.auroc)}</td><td>{percent(metrics.clip?.auroc)}</td></tr>
           </tbody></table>
-          <p className="vs-boundary">The same {metrics.hyper3?.threshold || "five-of-seven"} rule is used for both models. Open Images labels approximate review categories; the balanced 60/60 proxy split is not a production prevalence estimate. Small differences are descriptive, not proof of superiority.</p>
+          <p className="vs-boundary">Both models use the same threshold. The balanced 60/60 split does not reflect real-world prevalence, and small differences are descriptive.</p>
         </section>
 
         {samplePage.error ? <div className="vs-error">{samplePage.error}</div> : null}

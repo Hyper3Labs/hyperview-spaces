@@ -104,7 +104,7 @@ export default function FashionSearchPanel() {
 
         <button type="button" className="fs-visual" onClick={() => void setSelection([visualSampleId])}>
           {visualUrl ? <img src={visualUrl} alt={active.label} /> : null}
-          <span><span className="fs-kicker">{mode === "photo" ? "Starting photo" : "Matching product"}</span><strong>{active.label}</strong><small>{mode === "photo" ? active.context : "Any view of this product counts as a match."}</small>{mode === "photo" ? <small>Correct means the same product ID, not a similar style.</small> : null}</span>
+          <span><span className="fs-kicker">{mode === "photo" ? "Starting photo" : "Matching product"}</span><strong>{active.label}</strong><small>{mode === "photo" ? active.context : "Any view of this product counts as a match."}</small></span>
         </button>
 
         <section className="fs-models" aria-label="First matching product rank">
@@ -117,13 +117,13 @@ export default function FashionSearchPanel() {
         <section className="fs-benchmark" aria-label="Full benchmark results">
           <span className="fs-kicker">How the models compare</span>
           {mode === "photo" ? <>
-            <h3>{photoBenchmark.queryCount} queries · {photoBenchmark.candidateCount} catalog photos</h3><p className="fs-caption">Correct means another view of the same product.</p>
+            <h3>{photoBenchmark.queryCount} queries · {photoBenchmark.candidateCount} catalog photos</h3><p className="fs-caption">Correct means another view of the same product, not a similar style.</p>
             <table className="fs-table"><thead><tr><th>Correct product</th><th style={{color:"#60a5fa"}}>Hyper3</th><th style={{color:"#f59e0b"}}>CLIP</th></tr></thead><tbody><tr><td>Ranked first</td><td>{percentage(photoBenchmark.hyper3R1)}</td><td>{percentage(photoBenchmark.clipR1)}</td></tr><tr><td>Within top ten</td><td>{percentage(photoBenchmark.hyper3R10)}</td><td>{percentage(photoBenchmark.clipR10)}</td></tr><tr><td>Mean average precision</td><td>{Number(photoBenchmark.hyper3Map).toFixed(3)}</td><td>{Number(photoBenchmark.clipMap).toFixed(3)}</td></tr></tbody></table>
-            <p className="fs-note">Cases use the largest first-match rank gap in each direction, so the CLIP win is shown too. Photo matching and typed retrieval are separate evaluations; their scores are not interchangeable.</p>
+            <p className="fs-note">The examples are the largest rank gaps in each direction, so a CLIP win is included. Photo and typed search are separate evaluations.</p>
           </> : <>
             <h3>{typed.queryCount} written requests · {typed.candidateCount} photos</h3><p className="fs-caption">Correct means any view of the described product.</p>
             <table className="fs-table"><thead><tr><th>Correct product</th><th style={{color:"#60a5fa"}}>Hyper3</th><th style={{color:"#f59e0b"}}>CLIP</th></tr></thead><tbody><tr><td>Ranked first</td><td>{percentage(typed.hyper3Hit1)}</td><td>{percentage(typed.clipHit1)}</td></tr><tr><td>Within top ten</td><td>{percentage(typed.hyper3Hit10)}</td><td>{percentage(typed.clipHit10)}</td></tr><tr><td>Within top fifty</td><td>{percentage(typed.hyper3Hit50)}</td><td>{percentage(typed.clipHit50)}</td></tr></tbody></table>
-            <p className="fs-note">This is one illustrative Hyper3 win. Across the full 1,120-photo benchmark, the models are close and OpenAI CLIP is ahead at fifty results. The visible workspace map contains {props.workspaceSampleCount || 741} catalog photos.</p>
+            <p className="fs-note">This example is a Hyper3 win. Across the full 1,120-photo benchmark the models are close, and OpenAI CLIP leads at fifty results. The map shows {props.workspaceSampleCount || 741} catalog photos.</p>
           </>}
         </section>
 

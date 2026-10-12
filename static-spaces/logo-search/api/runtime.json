@@ -938,7 +938,7 @@
                 }
               }
             ],
-            "claim": "Four curated wins illustrate retrieval behavior. The aggregate covers all 160 paired captions; this synthetic/curated probe is not a production DAM or trademark benchmark.",
+            "claim": "The four examples are selected Hyper3 wins from a synthetic, curated dataset. The table covers all 160 captions.",
             "dataset": "logo-wizard/modern-logo-dataset",
             "initialCaseId": "01-barber-franchise",
             "initialModelKey": "hyper3",

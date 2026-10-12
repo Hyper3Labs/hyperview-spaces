@@ -244,9 +244,8 @@ def readout_props(payload: dict[str, Any], briefs: dict[str, Any]) -> dict[str, 
             "160 logo images, and only the paired row is an exact positive."
         ),
         "claim": (
-            "Four curated wins illustrate retrieval behavior. The aggregate covers "
-            "all 160 paired captions; this synthetic/curated probe is not a "
-            "production DAM or trademark benchmark."
+            "The four examples are selected Hyper3 wins from a synthetic, curated "
+            "dataset. The table covers all 160 captions."
         ),
         "workspaceBoundary": (
             "The interactive catalog contains all 160 prepared logo assets with a "

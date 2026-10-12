@@ -85,7 +85,7 @@ PAGE = """<!doctype html>
   header nav {{ display: flex; gap: 16px; margin-left: auto; font-size: 14px; color: var(--muted); }}
   header nav a {{ text-decoration: none; }}
   header nav a:hover {{ color: var(--fg); }}
-  .intro {{ max-width: 760px; padding: 48px 0 32px; }}
+  .intro {{ max-width: 720px; padding: 48px 0 28px; }}
   h1 {{ margin: 0; font-size: clamp(32px, 6vw, 48px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }}
   .intro p {{ margin: 16px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }}
   .intro p a {{ color: var(--fg); text-decoration-color: #4b5563; }}
@@ -98,9 +98,10 @@ PAGE = """<!doctype html>
   @media (min-width: 1024px) {{ .grid {{ grid-template-columns: repeat(3, 1fr); }} }}
   .card {{ display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--card); transition: border-color .15s; }}
   .card:hover {{ border-color: rgb(103 232 249 / .3); }}
+  .card:hover .thumb img {{ opacity: 1; }}
   .card[hidden] {{ display: none; }}
   .thumb {{ display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #0d1117; border-bottom: 1px solid var(--line); }}
-  .thumb img {{ width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }}
+  .thumb img {{ width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; opacity: .88; transition: opacity .15s; }}
   .body {{ display: flex; flex: 1; flex-direction: column; padding: 16px; }}
   .tags {{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }}
   .tag {{ font: 10px/1.4 var(--mono); padding: 2px 8px; border-radius: 999px; border: 1px solid rgb(255 255 255 / .09); color: var(--muted); }}
@@ -140,7 +141,7 @@ PAGE = """<!doctype html>
 <main>
   <div class="intro">
     <h1>HyperView Spaces</h1>
-    <p>Each Space is a complete <a href="https://github.com/Hyper3Labs/HyperView">HyperView</a> workspace that opens in your browser, with no install and no backend. Most compare a hyperbolic model, Hyper3-CLIP, with OpenAI CLIP on the same task, including the cases CLIP wins. Every Space links to the code that built it, so you can point it at your own data.</p>
+    <p>Explore model comparisons through prepared examples in interactive <a href="https://github.com/Hyper3Labs/HyperView">HyperView</a> workspaces, with nothing to install. Most compare Hyper3-CLIP, our hyperbolic image–text model, with OpenAI CLIP. Each links to its source code.</p>
   </div>
   <div class="filters" role="group" aria-label="Filter Spaces">
 {filters}
@@ -150,12 +151,12 @@ PAGE = """<!doctype html>
   </div>
   <section class="build">
     <h2>Build your own</h2>
-    <p>Copy a folder from <a href="https://github.com/Hyper3Labs/hyperview-spaces">hyperview-spaces</a>, change the dataset and models at the top of its <code>demo.py</code>, then export and publish it with <code>hyperview publish</code>. The <a href="{docs}">HyperView docs</a> cover each step.</p>
+    <p>Copy a folder from <a href="https://github.com/Hyper3Labs/hyperview-spaces">hyperview-spaces</a>, set your dataset and models at the top of <code>demo.py</code>, and publish with <code>hyperview publish</code>. See the <a href="{docs}">HyperView docs</a>.</p>
   </section>
 </main>
 <footer>
-  <span>HyperView is open source under the MIT licence, built by <a href="https://hyper3labs.com">hyper&#179;labs</a>.</span>
-  <span><a href="https://demos.hyper3labs.com">More demos</a></span>
+  <span>HyperView is MIT-licensed open source from <a href="https://hyper3labs.com">hyper&#179;labs</a>.</span>
+  <span><a href="https://demos.hyper3labs.com">More demos &#8599;</a></span>
 </footer>
 <script>
 for (const button of document.querySelectorAll('.filters button')) {{
@@ -215,7 +216,7 @@ def card(space: dict[str, Any]) -> str:
     tags = f'<span class="tag">{e["workflow"]}</span>'
     if space["host"] == "huggingface":
         tags += '<span class="tag hf">Hugging Face</span>'
-    links = f'<a class="primary" href="{e["url"]}"{target}>Open &#8599;</a>'
+    links = f'<a class="primary" href="{e["url"]}"{target}>Open{" &#8599;" if external else ""}</a>'
     if space.get("live_space_id"):
         space_id = html.escape(space["live_space_id"])
         links += (

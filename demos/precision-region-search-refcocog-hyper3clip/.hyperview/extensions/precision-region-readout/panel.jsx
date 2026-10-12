@@ -97,7 +97,7 @@ export default function PrecisionRegionPanel() {
         <header className="pr-header">
           <span className="pr-kicker">Language-guided region search</span>
           <h2>Which region matches the description?</h2>
-          <p>Each case boxes the annotated RefCOCOg region in its own source photo. The two lists are each model’s top five from the shared crop pool; the cards below give the rank the boxed region actually reached.</p>
+          <p>Each description has one correct region, boxed below. The two lists show each model’s top five; the cards show where the correct region ranked.</p>
         </header>
 
         <blockquote className="pr-query">“{active.query}”</blockquote>
@@ -110,13 +110,13 @@ export default function PrecisionRegionPanel() {
             <span>Target</span>
           </span>
         </button>
-        <p className="pr-note">Source image {active.sourceImageId} · {formatSize(active.imageSize)} · box x {formatBox(active.bbox)} · RefCOCOg query {active.questionId}. Every tile in this Space carries its own image id, box and query id in its metadata, so any crop here can be re-cut from RefCOCOg.</p>
+        <p className="pr-note">RefCOCOg query {active.questionId} · {active.sourceImageId} · {formatSize(active.imageSize)} · box {formatBox(active.bbox)}</p>
 
         <section className="pr-ranks" aria-label="Exact target ranks">
           <RankCard name="Hyper3-CLIP" color="#60a5fa" rank={active.target.hyper3Rank} />
           <RankCard name="OpenAI CLIP" color="#f59e0b" rank={active.target.clipRank} />
         </section>
-        <p className="pr-note">Both models rank the same pool of {benchmark.queryCount || 180} region crops cut from across the source images; each list shows its top five, so a boxed region ranked below five is not in the visible shortlist.</p>
+        <p className="pr-note">Both models rank the same {benchmark.queryCount || 180} crops. A region ranked below #5 is not in the visible list.</p>
 
         <nav className="pr-cases" aria-label="Object search examples">
           {cases.map((item) => (
@@ -129,13 +129,13 @@ export default function PrecisionRegionPanel() {
         <section className="pr-benchmark" aria-label="Full benchmark results">
           <span className="pr-kicker">How the models compare</span>
           <h3>RefCOCOg · {benchmark.queryCount || 180} descriptions</h3>
-          <p className="pr-caption">One correct region per description in this 180-description diagnostic subset.</p>
+          <p className="pr-caption">One correct region per description, on a 180-description diagnostic subset.</p>
           <table className="pr-table"><thead><tr><th>Correct region</th><th style={{color:"#60a5fa"}}>Hyper3</th><th style={{color:"#f59e0b"}}>CLIP</th></tr></thead><tbody>
             <tr><td>Ranked first</td><td>{benchmark.hyper3Hit1}</td><td>{benchmark.clipHit1}</td></tr>
             <tr><td>Within top ten</td><td>{benchmark.hyper3Hit10}</td><td>{benchmark.clipHit10}</td></tr>
             <tr><td>Average rank score</td><td>{benchmark.hyper3Mrr}</td><td>{benchmark.clipMrr}</td></tr>
           </tbody></table>
-          <p className="pr-note">The four cases are diagnostic, not a highlight reel: two show Hyper3-CLIP surfacing a region the baseline buries, one is a narrow win, and one is a case the baseline wins outright. The table covers the whole subset and is descriptive, not a significance claim.</p>
+          <p className="pr-note">The examples include a close call and a case CLIP wins. The table covers the full subset; differences are descriptive, not significance-tested.</p>
         </section>
 
         {sourceError || targetError ? <div className="pr-error">{sourceError || targetError}</div> : null}
